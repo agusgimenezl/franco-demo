@@ -4,8 +4,8 @@ services:
     runtime: node
     plan: starter
     rootDir: frontend
-    buildCommand: npm install && npm run build
-    startCommand: npm run start
+    buildCommand: npm ci && npm run build
+    startCommand: npm ci && npm run build && npm run start
     healthCheckPath: /
     envVars:
       - key: N8N_WEBHOOK_URL
