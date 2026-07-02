@@ -1,0 +1,12 @@
+services:
+  - name: franco-demo-frontend
+    type: web
+    runtime: node
+    plan: starter
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: N8N_WEBHOOK_URL
+        value: https://n8n.utopiaflow.tech/webhook/franco-chat
