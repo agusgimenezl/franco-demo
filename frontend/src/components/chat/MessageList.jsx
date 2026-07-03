@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import MessageBubble from './MessageBubble'
+import AudioBubble from './AudioBubble'
 import ImageGroup from './ImageGroup'
 import ProductCarousel from './ProductCarousel'
 import ErrorBubble from './ErrorBubble'
@@ -9,6 +10,8 @@ function ChatItem({ item }) {
   switch (item.kind) {
     case 'user-text':
       return <MessageBubble text={item.text} timestamp={item.timestamp} isUser />
+    case 'user-audio':
+      return <AudioBubble timestamp={item.timestamp} />
     case 'franco-text':
       return <MessageBubble text={item.text} timestamp={item.timestamp} isUser={false} />
     case 'image-group':
@@ -22,7 +25,7 @@ function ChatItem({ item }) {
   }
 }
 
-export default function MessageList({ items, isSending }) {
+export default function MessageList({ items, isSending, pendingType }) {
   const bottomRef = useRef(null)
 
   useEffect(() => {
@@ -40,7 +43,11 @@ export default function MessageList({ items, isSending }) {
         {items.map((item) => (
           <ChatItem key={item.id} item={item} />
         ))}
-        {isSending && <TypingIndicator />}
+        {isSending && (
+          <TypingIndicator
+            label={pendingType === 'audio' ? 'Franco está transcribiendo' : 'Franco está escribiendo'}
+          />
+        )}
         <div ref={bottomRef} />
       </div>
     </div>

@@ -10,7 +10,8 @@ const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL
 const UPSTREAM_TIMEOUT_MS = 30_000
 
 const app = express()
-app.use(express.json({ limit: '1mb' }))
+// Límite holgado: los mensajes de audio llegan como base64 y pueden pesar.
+app.use(express.json({ limit: '15mb' }))
 
 // Único endpoint del cliente. Reenvía server-side al webhook real de n8n:
 // mismo origen para el navegador, sin CORS, y con control total de método,

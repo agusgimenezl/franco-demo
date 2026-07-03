@@ -75,60 +75,97 @@ export function useChat() {
   const [sessionId, setSessionId] = useState(() => crypto.randomUUID())
   const [items, setItems] = useState([])
   const [isSending, setIsSending] = useState(false)
+  // Qué tipo de entrada está esperando respuesta ('text' | 'audio' | null).
+  // El indicador cambia entre "escribiendo..." y "transcribiendo..." según esto.
+  const [pendingType, setPendingType] = useState(null)
   const sessionIdRef = useRef(sessionId)
   sessionIdRef.current = sessionId
+  const isSendingRef = useRef(false)
+
+  // Envío compartido por texto y audio: agrega la burbuja del usuario, llama al
+  // webhook y revela las burbujas de Franco de a una.
+  const deliver = useCallback(async ({ type, content, userItem }) => {
+    if (isSendingRef.current) return
+    isSendingRef.current = true
+
+    setItems((prev) => [...prev, userItem])
+    setIsSending(true)
+    setPendingType(type)
+
+    try {
+      const response = await sendMessageToWebhook({
+        sessionId: sessionIdRef.current,
+        type,
+        content,
+      })
+
+      if (response?.session_id && response.session_id !== sessionIdRef.current) {
+        setSessionId(response.session_id)
+      }
+
+      const francoItems = buildFrancoItems(response)
+      if (francoItems.length === 0) {
+        francoItems.push({
+          id: makeId(),
+          kind: 'error',
+          text: 'Franco no mandó respuesta esta vez. Probá de nuevo.',
+        })
+      }
+
+      // Reveladas de a una: la primera aparece al toque (el usuario ya
+      // esperó al webhook con el indicador visible); antes de cada
+      // siguiente, una pausa corta durante la cual isSending sigue en true,
+      // así el indicador "escribiendo..." se muestra entre burbuja y burbuja.
+      for (let i = 0; i < francoItems.length; i++) {
+        if (i > 0) await sleep(BUBBLE_DELAY_MS)
+        const item = francoItems[i]
+        setItems((prev) => [...prev, item])
+      }
+    } catch (err) {
+      const text =
+        err instanceof WebhookError
+          ? err.userMessage
+          : 'Uy, algo falló de nuestro lado. Probá de nuevo en un momento.'
+      setItems((prev) => [...prev, { id: makeId(), kind: 'error', text }])
+    } finally {
+      isSendingRef.current = false
+      setIsSending(false)
+      setPendingType(null)
+    }
+  }, [])
 
   const sendMessage = useCallback(
-    async (rawText) => {
+    (rawText) => {
       const text = rawText.trim()
-      if (!text || isSending) return
-
-      setItems((prev) => [
-        ...prev,
-        { id: makeId(), kind: 'user-text', text, timestamp: new Date().toISOString() },
-      ])
-      setIsSending(true)
-
-      try {
-        const response = await sendMessageToWebhook({
-          sessionId: sessionIdRef.current,
-          type: 'text',
-          content: text,
-        })
-
-        if (response?.session_id && response.session_id !== sessionIdRef.current) {
-          setSessionId(response.session_id)
-        }
-
-        const francoItems = buildFrancoItems(response)
-        if (francoItems.length === 0) {
-          francoItems.push({
-            id: makeId(),
-            kind: 'error',
-            text: 'Franco no mandó respuesta esta vez. Probá de nuevo.',
-          })
-        }
-
-        // Reveladas de a una: la primera aparece al toque (el usuario ya
-        // esperó al webhook con el indicador visible); antes de cada
-        // siguiente, una pausa corta durante la cual isSending sigue en true,
-        // así el indicador "escribiendo..." se muestra entre burbuja y burbuja.
-        for (let i = 0; i < francoItems.length; i++) {
-          if (i > 0) await sleep(BUBBLE_DELAY_MS)
-          const item = francoItems[i]
-          setItems((prev) => [...prev, item])
-        }
-      } catch (err) {
-        const text =
-          err instanceof WebhookError
-            ? err.userMessage
-            : 'Uy, algo falló de nuestro lado. Probá de nuevo en un momento.'
-        setItems((prev) => [...prev, { id: makeId(), kind: 'error', text }])
-      } finally {
-        setIsSending(false)
-      }
+      if (!text) return
+      return deliver({
+        type: 'text',
+        content: text,
+        userItem: {
+          id: makeId(),
+          kind: 'user-text',
+          text,
+          timestamp: new Date().toISOString(),
+        },
+      })
     },
-    [isSending],
+    [deliver],
+  )
+
+  const sendAudio = useCallback(
+    (base64) => {
+      if (!base64) return
+      return deliver({
+        type: 'audio',
+        content: base64,
+        userItem: {
+          id: makeId(),
+          kind: 'user-audio',
+          timestamp: new Date().toISOString(),
+        },
+      })
+    },
+    [deliver],
   )
 
   const startNewConversation = useCallback(() => {
@@ -136,5 +173,5 @@ export function useChat() {
     setItems([])
   }, [])
 
-  return { sessionId, items, isSending, sendMessage, startNewConversation }
+  return { sessionId, items, isSending, pendingType, sendMessage, sendAudio, startNewConversation }
 }
