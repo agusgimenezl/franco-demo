@@ -1,6 +1,14 @@
 import { useCallback, useRef, useState } from 'react'
 import { sendMessageToWebhook, WebhookError } from '../lib/webhook'
 
+// Pausa entre burbujas consecutivas de Franco, para que se sienta como una
+// persona mandando varios mensajes seguidos en vez de un bloque de golpe.
+const BUBBLE_DELAY_MS = 300
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 function makeId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2)}`
 }
@@ -100,7 +108,16 @@ export function useChat() {
             text: 'Franco no mandó respuesta esta vez. Probá de nuevo.',
           })
         }
-        setItems((prev) => [...prev, ...francoItems])
+
+        // Reveladas de a una: la primera aparece al toque (el usuario ya
+        // esperó al webhook con el indicador visible); antes de cada
+        // siguiente, una pausa corta durante la cual isSending sigue en true,
+        // así el indicador "escribiendo..." se muestra entre burbuja y burbuja.
+        for (let i = 0; i < francoItems.length; i++) {
+          if (i > 0) await sleep(BUBBLE_DELAY_MS)
+          const item = francoItems[i]
+          setItems((prev) => [...prev, item])
+        }
       } catch (err) {
         const text =
           err instanceof WebhookError
