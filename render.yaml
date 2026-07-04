@@ -10,3 +10,6 @@ services:
     envVars:
       - key: N8N_WEBHOOK_URL
         value: https://n8n.utopiaflow.tech/webhook/franco-chat
+      # Secreto: se carga en el dashboard de Render, no en el repo.
+      - key: OPENAI_API_KEY
+        sync: false

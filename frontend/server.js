@@ -1,13 +1,17 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import express from 'express'
+import { transcribeBase64 } from './server/transcribe.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST_DIR = path.join(__dirname, 'dist')
 
 const PORT = process.env.PORT || 10000
 const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL
-const UPSTREAM_TIMEOUT_MS = 30_000
+// El webhook puede tardar hasta ~40s (procesa un prompt largo y a veces arma
+// el catálogo de autos). Le damos 60s antes de abortar, para no cortar una
+// respuesta que todavía viene en camino. El cliente usa el mismo tope.
+const UPSTREAM_TIMEOUT_MS = 60_000
 
 const app = express()
 // Límite holgado: los mensajes de audio llegan como base64 y pueden pesar.
@@ -15,7 +19,7 @@ app.use(express.json({ limit: '15mb' }))
 
 // Único endpoint del cliente. Reenvía server-side al webhook real de n8n:
 // mismo origen para el navegador, sin CORS, y con control total de método,
-// body y timeout (el webhook puede tardar hasta ~25s en responder).
+// body y timeout (el webhook puede tardar hasta ~40s en responder).
 app.post('/api/franco', async (req, res) => {
   if (!N8N_WEBHOOK_URL) {
     res.status(500).json({ error: 'N8N_WEBHOOK_URL no está configurada en el servidor.' })
@@ -37,6 +41,15 @@ app.post('/api/franco', async (req, res) => {
   } catch {
     res.status(502).json({ error: 'No se pudo contactar al webhook de n8n.' })
   }
+})
+
+// Transcribe un audio (base64 webm/opus) con Whisper y devuelve { text }. Lo
+// llama el frontend por CADA audio antes de armar el mensaje de texto que va al
+// webhook (ver src/hooks/useChat.js). La lógica vive en ./server/transcribe.js,
+// compartida con el proxy de dev.
+app.post('/api/transcribe', async (req, res) => {
+  const { status, body } = await transcribeBase64(req.body?.audio)
+  res.status(status).json(body)
 })
 
 app.use(express.static(DIST_DIR))

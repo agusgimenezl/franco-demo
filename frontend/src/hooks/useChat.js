@@ -1,9 +1,15 @@
-import { useCallback, useRef, useState } from 'react'
-import { sendMessageToWebhook, WebhookError } from '../lib/webhook'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { sendMessageToWebhook, transcribeAudio, WebhookError } from '../lib/webhook'
 
 // Pausa entre burbujas consecutivas de Franco, para que se sienta como una
 // persona mandando varios mensajes seguidos en vez de un bloque de golpe.
 const BUBBLE_DELAY_MS = 300
+
+// Cuando el usuario manda varias burbujas seguidas, esperamos este tiempo de
+// inactividad desde la última antes de llamar al webhook, y mandamos toda la
+// ráfaga en una sola request. Así Franco responde una vez a una idea partida
+// en varias burbujas, en vez de una vez por burbuja.
+const BURST_DEBOUNCE_MS = 5000
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -82,21 +88,69 @@ export function useChat() {
   sessionIdRef.current = sessionId
   const isSendingRef = useRef(false)
 
-  // Envío compartido por texto y audio: agrega la burbuja del usuario, llama al
-  // webhook y revela las burbujas de Franco de a una.
-  const deliver = useCallback(async ({ type, content, userItem }) => {
-    if (isSendingRef.current) return
-    isSendingRef.current = true
+  // Ráfaga acumulada: partes {type, content} en orden de llegada. No se manda
+  // al webhook hasta que pasen BURST_DEBOUNCE_MS sin actividad.
+  const burstRef = useRef([])
+  const flushTimerRef = useRef(null)
 
-    setItems((prev) => [...prev, userItem])
+  // Vacía la ráfaga acumulada en una única llamada al webhook y revela las
+  // burbujas de Franco de a una.
+  const flush = useCallback(async () => {
+    flushTimerRef.current = null
+
+    // Si hay una request en vuelo, reintentá en breve sin perder la ráfaga.
+    if (isSendingRef.current) {
+      flushTimerRef.current = setTimeout(flush, 300)
+      return
+    }
+
+    const parts = burstRef.current
+    if (parts.length === 0) return
+    burstRef.current = []
+
+    const hasAudio = parts.some((part) => part.type === 'audio')
+    isSendingRef.current = true
     setIsSending(true)
-    setPendingType(type)
+    // Con audio en la ráfaga mostramos "transcribiendo..."; solo texto, "escribiendo...".
+    setPendingType(hasAudio ? 'audio' : 'text')
 
     try {
+      // Transcribimos TODO el audio acá (en paralelo) y mandamos siempre texto
+      // al webhook. n8n nunca ve audio. Las partes de texto pasan tal cual.
+      let text
+      if (hasAudio) {
+        const results = await Promise.allSettled(
+          parts.map((part) =>
+            part.type === 'audio' ? transcribeAudio(part.content) : Promise.resolve(part.content),
+          ),
+        )
+        const failed = results.find((r) => r.status === 'rejected')
+        if (failed) {
+          throw failed.reason instanceof WebhookError
+            ? failed.reason
+            : new WebhookError('transcription_error', 'No pudimos transcribir tu audio. Probá de nuevo.')
+        }
+        // Unimos las partes en orden; descartamos vacíos (audio en silencio).
+        text = results
+          .map((r) => r.value.trim())
+          .filter(Boolean)
+          .join('\n')
+        // Ya transcribimos: el indicador pasa a "escribiendo..." para la respuesta.
+        setPendingType('text')
+      } else {
+        text = parts
+          .map((part) => part.content.trim())
+          .filter(Boolean)
+          .join('\n')
+      }
+
+      if (!text) {
+        throw new WebhookError('empty_message', 'No te llegué a escuchar bien, probá de nuevo.')
+      }
+
       const response = await sendMessageToWebhook({
         sessionId: sessionIdRef.current,
-        type,
-        content,
+        content: text,
       })
 
       if (response?.session_id && response.session_id !== sessionIdRef.current) {
@@ -134,43 +188,52 @@ export function useChat() {
     }
   }, [])
 
+  // Agrega la burbuja del usuario al instante, suma la parte a la ráfaga y
+  // (re)arranca el contador de 5s. Cada nueva burbuja reinicia el contador.
+  const enqueue = useCallback(
+    (part, userItem) => {
+      setItems((prev) => [...prev, userItem])
+      burstRef.current = [...burstRef.current, part]
+      if (flushTimerRef.current) clearTimeout(flushTimerRef.current)
+      flushTimerRef.current = setTimeout(flush, BURST_DEBOUNCE_MS)
+    },
+    [flush],
+  )
+
   const sendMessage = useCallback(
     (rawText) => {
       const text = rawText.trim()
       if (!text) return
-      return deliver({
-        type: 'text',
-        content: text,
-        userItem: {
-          id: makeId(),
-          kind: 'user-text',
-          text,
-          timestamp: new Date().toISOString(),
-        },
-      })
+      enqueue(
+        { type: 'text', content: text },
+        { id: makeId(), kind: 'user-text', text, timestamp: new Date().toISOString() },
+      )
     },
-    [deliver],
+    [enqueue],
   )
 
   const sendAudio = useCallback(
     (base64) => {
       if (!base64) return
-      return deliver({
-        type: 'audio',
-        content: base64,
-        userItem: {
-          id: makeId(),
-          kind: 'user-audio',
-          timestamp: new Date().toISOString(),
-        },
-      })
+      enqueue(
+        { type: 'audio', content: base64 },
+        { id: makeId(), kind: 'user-audio', timestamp: new Date().toISOString() },
+      )
     },
-    [deliver],
+    [enqueue],
   )
 
   const startNewConversation = useCallback(() => {
+    if (flushTimerRef.current) clearTimeout(flushTimerRef.current)
+    flushTimerRef.current = null
+    burstRef.current = []
     setSessionId(crypto.randomUUID())
     setItems([])
+  }, [])
+
+  // Cancelá cualquier ráfaga pendiente si el componente se desmonta.
+  useEffect(() => () => {
+    if (flushTimerRef.current) clearTimeout(flushTimerRef.current)
   }, [])
 
   return { sessionId, items, isSending, pendingType, sendMessage, sendAudio, startNewConversation }
