@@ -1,5 +1,5 @@
 services:
-  - name: franco-demo-frontend
+  - name: Asistente-Franco
     type: web
     runtime: node
     plan: starter
