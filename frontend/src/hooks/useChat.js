@@ -27,6 +27,19 @@ function extractErrorText(error) {
   return null
 }
 
+// Red de seguridad: el prompt de Franco le pide separar ideas distintas en
+// burbujas propias usando el array 'messages'. A veces el modelo no lo respeta
+// y empaqueta varios párrafos (separados por línea en blanco) en un solo
+// item. Si eso pasa, los partimos acá para no mostrar un muro de texto. Si no
+// hay separador, devuelve el texto tal cual en un único item.
+function splitIntoBubbles(content) {
+  const paragraphs = String(content ?? '')
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+  return paragraphs.length > 0 ? paragraphs : ['']
+}
+
 // Convierte la respuesta cruda del webhook en una lista plana de items
 // renderizables, intercalando imágenes y cards en el orden que pide el
 // contrato (imágenes después del mensaje cuyo índice indican).
@@ -38,11 +51,13 @@ function buildFrancoItems(response) {
   const now = new Date().toISOString()
 
   messages.forEach((message, index) => {
-    items.push({
-      id: makeId(),
-      kind: 'franco-text',
-      text: message?.content ?? '',
-      timestamp: now,
+    splitIntoBubbles(message?.content).forEach((paragraph) => {
+      items.push({
+        id: makeId(),
+        kind: 'franco-text',
+        text: paragraph,
+        timestamp: now,
+      })
     })
 
     const imagesForIndex = images
