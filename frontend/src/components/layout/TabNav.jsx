@@ -10,14 +10,9 @@ export default function TabNav({ activeTab, onChange }) {
           <button
             key={tab.id}
             type="button"
-            disabled={!tab.enabled}
-            onClick={() => tab.enabled && onChange(tab.id)}
+            onClick={() => onChange(tab.id)}
             className={`flex flex-1 flex-col items-center gap-0.5 py-2 text-[11px] font-medium transition ${
-              isActive
-                ? 'text-emerald-600'
-                : tab.enabled
-                  ? 'text-slate-500 hover:text-slate-700'
-                  : 'text-slate-300'
+              isActive ? 'text-emerald-600' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             <TabIcon id={tab.id} />

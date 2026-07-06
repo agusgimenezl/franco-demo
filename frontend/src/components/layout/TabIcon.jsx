@@ -18,31 +18,10 @@ const ICONS = {
       />
     </>
   ),
-  stock: (
-    <path
-      d="M4 8l8-4 8 4-8 4-8-4Zm0 0v8l8 4m0-12v12m8-12v8l-8 4"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-  ),
   historial: (
     <>
       <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.6" />
       <path d="M12 8v4l3 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </>
-  ),
-  config: (
-    <>
-      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.6" />
-      <circle
-        cx="12"
-        cy="12"
-        r="8"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeDasharray="2 3.2"
-      />
     </>
   ),
 }

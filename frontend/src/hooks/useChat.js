@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { sendMessageToWebhook, transcribeAudio, WebhookError } from '../lib/webhook'
 import { normalizeSupabaseUrl } from '../lib/supabaseUrl'
+import { addVisibleSessionId } from '../lib/visibleSessions'
 
 // Pausa entre burbujas consecutivas de Franco, para que se sienta como una
 // persona mandando varios mensajes seguidos en vez de un bloque de golpe.
@@ -255,6 +256,13 @@ export function useChat() {
   useEffect(() => () => {
     if (flushTimerRef.current) clearTimeout(flushTimerRef.current)
   }, [])
+
+  // Registra en localStorage cada session_id que este navegador tuvo (la
+  // inicial y cada "Nueva conversación"), para poder mandarlo como visible_ids
+  // en los tabs de Leads e Historial aunque la sesión no esté guardada.
+  useEffect(() => {
+    addVisibleSessionId(sessionId)
+  }, [sessionId])
 
   return { sessionId, items, isSending, pendingType, sendMessage, sendAudio, startNewConversation }
 }

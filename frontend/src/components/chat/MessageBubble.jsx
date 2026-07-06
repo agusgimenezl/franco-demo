@@ -1,15 +1,19 @@
 function formatTime(timestamp) {
+  if (!timestamp) return ''
   try {
-    return new Date(timestamp).toLocaleTimeString('es-AR', {
-      hour: '2-digit',
-      minute: '2-digit',
-    })
+    const date = new Date(timestamp)
+    if (Number.isNaN(date.getTime())) return ''
+    return date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })
   } catch {
     return ''
   }
 }
 
+// timestamp es opcional: el historial (session-messages) no lo trae, así que
+// la burbuja simplemente no muestra hora en ese caso.
 export default function MessageBubble({ text, timestamp, isUser }) {
+  const time = formatTime(timestamp)
+
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
       <div
@@ -20,13 +24,15 @@ export default function MessageBubble({ text, timestamp, isUser }) {
         }`}
       >
         <p>{text}</p>
-        <span
-          className={`mt-1 block text-right text-[11px] ${
-            isUser ? 'text-emerald-100' : 'text-slate-400'
-          }`}
-        >
-          {formatTime(timestamp)}
-        </span>
+        {time && (
+          <span
+            className={`mt-1 block text-right text-[11px] ${
+              isUser ? 'text-emerald-100' : 'text-slate-400'
+            }`}
+          >
+            {time}
+          </span>
+        )}
       </div>
     </div>
   )

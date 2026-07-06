@@ -2,6 +2,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import express from 'express'
 import { transcribeBase64 } from './server/transcribe.js'
+import { forwardToN8n } from './server/n8n.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST_DIR = path.join(__dirname, 'dist')
@@ -50,6 +51,27 @@ app.post('/api/franco', async (req, res) => {
 app.post('/api/transcribe', async (req, res) => {
   const { status, body } = await transcribeBase64(req.body?.audio)
   res.status(status).json(body)
+})
+
+// Endpoints del CRM (tabs Leads e Historial). Mismo origen que /api/franco
+// (N8N_WEBHOOK_URL): solo cambia el path de n8n. Ver ./server/n8n.js.
+async function proxyGet(req, res, n8nPath) {
+  const search = new URLSearchParams(req.query).toString()
+  const { status, text, contentType } = await forwardToN8n({ method: 'GET', path: n8nPath, search })
+  res.status(status).set('Content-Type', contentType).send(text)
+}
+
+app.get('/api/leads', (req, res) => proxyGet(req, res, '/webhook/leads'))
+app.get('/api/sessions', (req, res) => proxyGet(req, res, '/webhook/sessions'))
+app.get('/api/session-messages', (req, res) => proxyGet(req, res, '/webhook/session-messages'))
+
+app.post('/api/session-save', async (req, res) => {
+  const { status, text, contentType } = await forwardToN8n({
+    method: 'POST',
+    path: '/webhook/session-save',
+    body: req.body,
+  })
+  res.status(status).set('Content-Type', contentType).send(text)
 })
 
 app.use(express.static(DIST_DIR))
