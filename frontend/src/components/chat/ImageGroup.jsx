@@ -19,7 +19,7 @@ export default function ImageGroup({ images }) {
               src={url}
               alt="Foto del vehículo"
               className="h-full w-full object-cover"
-              loading="lazy"
+              loading="eager"
             />
           </button>
         ))}
