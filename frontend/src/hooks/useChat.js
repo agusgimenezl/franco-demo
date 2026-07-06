@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { sendMessageToWebhook, transcribeAudio, WebhookError } from '../lib/webhook'
+import { normalizeSupabaseUrl } from '../lib/supabaseUrl'
 
 // Pausa entre burbujas consecutivas de Franco, para que se sienta como una
 // persona mandando varios mensajes seguidos en vez de un bloque de golpe.
@@ -62,7 +63,7 @@ function buildFrancoItems(response) {
 
     const imagesForIndex = images
       .filter((img) => img?.after_message_index === index)
-      .map((img) => img.url)
+      .map((img) => normalizeSupabaseUrl(img.url))
       .filter(Boolean)
 
     if (imagesForIndex.length > 0) {
@@ -73,7 +74,7 @@ function buildFrancoItems(response) {
   const lastIndex = messages.length - 1
   const strayImages = images
     .filter((img) => img?.after_message_index == null || img.after_message_index > lastIndex)
-    .map((img) => img.url)
+    .map((img) => normalizeSupabaseUrl(img.url))
     .filter(Boolean)
 
   if (strayImages.length > 0) {
@@ -81,7 +82,11 @@ function buildFrancoItems(response) {
   }
 
   if (productCards.length > 0) {
-    items.push({ id: makeId(), kind: 'product-cards', cards: productCards })
+    const normalizedCards = productCards.map((card) => ({
+      ...card,
+      foto_principal: normalizeSupabaseUrl(card.foto_principal),
+    }))
+    items.push({ id: makeId(), kind: 'product-cards', cards: normalizedCards })
   }
 
   const errorText = extractErrorText(response?.error)
