@@ -1,3 +1,5 @@
+import CardImage from './CardImage'
+
 export default function ProductCarousel({ cards }) {
   if (!cards || cards.length === 0) return null
 
@@ -10,12 +12,7 @@ export default function ProductCarousel({ cards }) {
             className="w-40 flex-shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
           >
             <div className="aspect-[4/3] w-full bg-slate-100">
-              <img
-                src={card.foto_principal}
-                alt={card.titulo}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
+              <CardImage src={card.foto_principal} alt={card.titulo} />
             </div>
             <div className="p-2.5">
               <p className="line-clamp-2 text-sm font-medium text-slate-800">{card.titulo}</p>
