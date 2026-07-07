@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { sendMessageToWebhook, transcribeAudio, WebhookError } from '../lib/webhook'
-import { normalizeSupabaseUrl } from '../lib/supabaseUrl'
+import { normalizeSupabaseUrl, resolveProductCardPhoto } from '../lib/supabaseUrl'
 import { addVisibleSessionId } from '../lib/visibleSessions'
 
 // Pausa entre burbujas consecutivas de Franco, para que se sienta como una
@@ -85,7 +85,7 @@ function buildFrancoItems(response) {
   if (productCards.length > 0) {
     const normalizedCards = productCards.map((card) => ({
       ...card,
-      foto_principal: normalizeSupabaseUrl(card.foto_principal),
+      foto_principal: resolveProductCardPhoto(card.foto_principal, card.id),
     }))
     items.push({ id: makeId(), kind: 'product-cards', cards: normalizedCards })
   }
