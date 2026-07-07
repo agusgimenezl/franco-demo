@@ -41,6 +41,7 @@ function crmDevPlugin() {
     '/api/sessions': '/webhook/sessions',
     '/api/session-messages': '/webhook/session-messages',
     '/api/session-save': '/webhook/session-save',
+    '/api/session-delete': '/webhook/session-delete',
   }
 
   return {

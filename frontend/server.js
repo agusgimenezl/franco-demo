@@ -74,6 +74,15 @@ app.post('/api/session-save', async (req, res) => {
   res.status(status).set('Content-Type', contentType).send(text)
 })
 
+app.post('/api/session-delete', async (req, res) => {
+  const { status, text, contentType } = await forwardToN8n({
+    method: 'POST',
+    path: '/webhook/session-delete',
+    body: req.body,
+  })
+  res.status(status).set('Content-Type', contentType).send(text)
+})
+
 app.use(express.static(DIST_DIR))
 
 // Catch-all vía middleware (no ruta con patrón) para no depender de la

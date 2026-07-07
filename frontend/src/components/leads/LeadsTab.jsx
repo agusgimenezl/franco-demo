@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { fetchLeads } from '../../lib/crm'
+import { fetchLeads, deleteSession } from '../../lib/crm'
 import { getVisibleSessionIds } from '../../lib/visibleSessions'
 import LeadCard from './LeadCard'
+import PinModal from '../common/PinModal'
 
 const POLL_INTERVAL_MS = 4000
 
@@ -22,6 +23,16 @@ function LeadsSkeleton() {
 export default function LeadsTab() {
   const [leads, setLeads] = useState([])
   const [status, setStatus] = useState('loading') // 'loading' | 'ready' | 'error'
+  // session_id del lead que el usuario pidió eliminar (abre el modal de PIN).
+  const [pendingDeleteId, setPendingDeleteId] = useState(null)
+
+  // El borrado real lo hace el backend; solo si responde ok sacamos la fila.
+  const handleConfirmDelete = async () => {
+    const id = pendingDeleteId
+    await deleteSession(id)
+    setLeads((prev) => prev.filter((lead) => lead.session_id !== id))
+    setPendingDeleteId(null)
+  }
 
   useEffect(() => {
     let cancelled = false
@@ -68,9 +79,24 @@ export default function LeadsTab() {
             </p>
           )}
           {status === 'ready' &&
-            leads.map((lead) => <LeadCard key={lead.session_id} lead={lead} />)}
+            leads.map((lead) => (
+              <LeadCard
+                key={lead.session_id}
+                lead={lead}
+                onDelete={() => setPendingDeleteId(lead.session_id)}
+              />
+            ))}
         </div>
       </div>
+
+      {pendingDeleteId && (
+        <PinModal
+          title="Eliminar lead"
+          description="Ingresá el PIN para borrar este registro del CRM. Esta acción no se puede deshacer."
+          onConfirm={handleConfirmDelete}
+          onCancel={() => setPendingDeleteId(null)}
+        />
+      )}
     </div>
   )
 }

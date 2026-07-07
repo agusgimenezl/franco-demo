@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { TemperatureBadge, EstadoBadge } from '../common/Badge'
+import TrashIcon from '../common/TrashIcon'
 
 function ChevronIcon({ open }) {
   return (
@@ -23,7 +24,7 @@ function Field({ label, value }) {
   )
 }
 
-export default function LeadCard({ lead }) {
+export default function LeadCard({ lead, onDelete }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -33,7 +34,17 @@ export default function LeadCard({ lead }) {
           <p className="truncate text-sm font-semibold text-slate-800">{lead.nombre || 'Sin nombre'}</p>
           <p className="truncate text-xs text-slate-500">{lead.vehiculo_interes || 'Interés no especificado'}</p>
         </div>
-        <TemperatureBadge value={lead.temperatura} />
+        <div className="flex flex-shrink-0 items-center gap-1.5">
+          <TemperatureBadge value={lead.temperatura} />
+          <button
+            type="button"
+            onClick={onDelete}
+            aria-label="Eliminar lead"
+            className="rounded-full p-1.5 text-slate-400 transition hover:bg-red-50 hover:text-red-600 active:scale-95"
+          >
+            <TrashIcon />
+          </button>
+        </div>
       </div>
 
       <div className="mt-2 flex items-center justify-between gap-2">

@@ -6,6 +6,7 @@ const LEADS_PATH = '/api/leads'
 const SESSIONS_PATH = '/api/sessions'
 const SESSION_MESSAGES_PATH = '/api/session-messages'
 const SESSION_SAVE_PATH = '/api/session-save'
+const SESSION_DELETE_PATH = '/api/session-delete'
 const REQUEST_TIMEOUT_MS = 20_000
 
 async function getJson(path, params) {
@@ -75,5 +76,26 @@ export async function saveSession(sessionId) {
 
   if (!response.ok) {
     throw new WebhookError('http_error', 'No pudimos guardar la conversación.')
+  }
+}
+
+// Elimina un lead del CRM y los mensajes de su conversación (el backend limpia
+// ambas tablas). session_id es el del registro que se está borrando, no uno
+// fijo. Si no tira, se borró.
+export async function deleteSession(sessionId) {
+  let response
+  try {
+    response = await fetch(SESSION_DELETE_PATH, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId }),
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    })
+  } catch {
+    throw new WebhookError('network', 'No pudimos eliminar el registro. Revisá tu conexión.')
+  }
+
+  if (!response.ok) {
+    throw new WebhookError('http_error', 'No pudimos eliminar el registro.')
   }
 }

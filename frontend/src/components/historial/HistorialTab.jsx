@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { fetchSessions } from '../../lib/crm'
+import { fetchSessions, deleteSession } from '../../lib/crm'
 import { getVisibleSessionIds } from '../../lib/visibleSessions'
 import SessionCard from './SessionCard'
 import SessionDetail from './SessionDetail'
+import PinModal from '../common/PinModal'
 
 // activeSessionId: el session_id actual del hook de chat (App.jsx), para
 // distinguir "tu conversación activa" (permite Continuar) de una guardada
@@ -11,6 +12,16 @@ export default function HistorialTab({ activeSessionId, onContinueActive }) {
   const [sessions, setSessions] = useState([])
   const [status, setStatus] = useState('loading') // 'loading' | 'ready' | 'error'
   const [openSessionId, setOpenSessionId] = useState(null)
+  // session_id de la conversación que el usuario pidió eliminar (abre el PIN).
+  const [pendingDeleteId, setPendingDeleteId] = useState(null)
+
+  // El borrado real lo hace el backend; solo si responde ok sacamos el item.
+  const handleConfirmDelete = async () => {
+    const id = pendingDeleteId
+    await deleteSession(id)
+    setSessions((prev) => prev.filter((session) => session.session_id !== id))
+    setPendingDeleteId(null)
+  }
 
   useEffect(() => {
     let cancelled = false
@@ -70,11 +81,21 @@ export default function HistorialTab({ activeSessionId, onContinueActive }) {
                 key={session.session_id}
                 session={session}
                 isActive={session.session_id === activeSessionId}
-                onClick={() => setOpenSessionId(session.session_id)}
+                onOpen={() => setOpenSessionId(session.session_id)}
+                onDelete={() => setPendingDeleteId(session.session_id)}
               />
             ))}
         </div>
       </div>
+
+      {pendingDeleteId && (
+        <PinModal
+          title="Eliminar conversación"
+          description="Ingresá el PIN para borrar esta conversación y su lead. Esta acción no se puede deshacer."
+          onConfirm={handleConfirmDelete}
+          onCancel={() => setPendingDeleteId(null)}
+        />
+      )}
     </div>
   )
 }
