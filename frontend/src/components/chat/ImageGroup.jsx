@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import CardImage from './CardImage'
 
 export default function ImageGroup({ images }) {
   const [expandedUrl, setExpandedUrl] = useState(null)
@@ -15,12 +16,7 @@ export default function ImageGroup({ images }) {
             onClick={() => setExpandedUrl(url)}
             className="h-28 w-28 flex-shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100"
           >
-            <img
-              src={url}
-              alt="Foto del vehículo"
-              className="h-full w-full object-cover"
-              loading="eager"
-            />
+            <CardImage src={url} alt="Foto del vehículo" />
           </button>
         ))}
       </div>
