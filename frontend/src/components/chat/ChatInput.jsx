@@ -30,6 +30,19 @@ function MicIcon() {
   )
 }
 
+// Ícono de emoji decorativo (como WhatsApp). No abre nada: es solo para que la
+// barra de input se lea como la de WhatsApp en la demo.
+function EmojiIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M8.8 14.5a4.2 4.2 0 0 0 6.4 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="9" cy="10" r="1" fill="currentColor" />
+      <circle cx="15" cy="10" r="1" fill="currentColor" />
+    </svg>
+  )
+}
+
 export default function ChatInput({ onSend, onSendAudio, disabled }) {
   const [value, setValue] = useState('')
   const [recError, setRecError] = useState('')
@@ -74,27 +87,30 @@ export default function ChatInput({ onSend, onSendAudio, disabled }) {
   }
 
   return (
-    <div className="flex-shrink-0 border-t border-slate-200 bg-white">
-      {recError && (
-        <p className="px-4 pt-2 text-center text-xs text-red-500">{recError}</p>
-      )}
-      <div className="flex items-center gap-2 px-3 py-3">
+    <div className="flex-shrink-0 bg-[#f0f2f5]">
+      {recError && <p className="px-4 pt-2 text-center text-xs text-red-500">{recError}</p>}
+      <div className="flex items-center gap-2 px-3 py-2.5">
         {recorder.isRecording ? (
-          <div className="flex flex-1 items-center gap-2 rounded-full bg-red-50 px-4 py-2.5 text-[15px] text-red-600">
+          <div className="flex min-h-[46px] flex-1 items-center gap-2 rounded-3xl bg-white px-4 text-[15px] text-red-600 shadow-sm">
             <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-red-500" />
             <span className="font-medium">Grabando…</span>
-            <span className="ml-auto text-xs text-red-400">Soltá para enviar</span>
+            <span className="ml-auto text-xs text-[#8696a0]">Soltá para enviar</span>
           </div>
         ) : (
-          <input
-            type="text"
-            value={value}
-            onChange={(event) => setValue(event.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Escribí tu mensaje..."
-            disabled={disabled}
-            className="flex-1 rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-[15px] text-slate-800 outline-none focus:border-emerald-400 focus:bg-white disabled:opacity-60"
-          />
+          <div className="flex min-h-[46px] flex-1 items-center rounded-3xl bg-white px-3 shadow-sm">
+            <span className="text-[#8696a0]" aria-hidden="true">
+              <EmojiIcon />
+            </span>
+            <input
+              type="text"
+              value={value}
+              onChange={(event) => setValue(event.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Mensaje"
+              disabled={disabled}
+              className="flex-1 bg-transparent px-3 py-2.5 text-[15px] text-[#111b21] outline-none placeholder-[#8696a0] disabled:opacity-60"
+            />
+          </div>
         )}
 
         {hasText ? (
@@ -102,7 +118,7 @@ export default function ChatInput({ onSend, onSendAudio, disabled }) {
             type="button"
             onClick={handleSend}
             disabled={disabled}
-            className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white transition disabled:cursor-not-allowed disabled:bg-slate-300 active:scale-95"
+            className="flex h-[46px] w-[46px] flex-shrink-0 items-center justify-center rounded-full bg-[#00a884] text-white shadow-sm transition hover:bg-[#008f6f] disabled:cursor-not-allowed disabled:bg-[#8696a0] active:scale-95"
             aria-label="Enviar mensaje"
           >
             <SendIcon />
@@ -115,8 +131,8 @@ export default function ChatInput({ onSend, onSendAudio, disabled }) {
             onPointerCancel={stopRecording}
             onContextMenu={(event) => event.preventDefault()}
             disabled={disabled}
-            className={`flex h-10 w-10 flex-shrink-0 touch-none items-center justify-center rounded-full text-white transition disabled:cursor-not-allowed disabled:bg-slate-300 active:scale-95 ${
-              recorder.isRecording ? 'bg-red-500 scale-110' : 'bg-emerald-600'
+            className={`flex h-[46px] w-[46px] flex-shrink-0 touch-none items-center justify-center rounded-full text-white shadow-sm transition disabled:cursor-not-allowed disabled:bg-[#8696a0] active:scale-95 ${
+              recorder.isRecording ? 'scale-110 bg-red-500' : 'bg-[#00a884] hover:bg-[#008f6f]'
             }`}
             aria-label={recorder.isRecording ? 'Soltá para enviar el audio' : 'Mantené presionado para grabar'}
           >

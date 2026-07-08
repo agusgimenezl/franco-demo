@@ -33,10 +33,10 @@ export default function MessageList({ items, isSending, pendingType }) {
   }, [items, isSending])
 
   return (
-    <div className="min-h-0 flex-1 overflow-y-auto px-3 py-4">
-      <div className="mx-auto flex max-w-2xl flex-col gap-3">
+    <div className="min-h-0 flex-1 overflow-y-auto bg-[#efeae2] px-3 py-4">
+      <div className="mx-auto flex max-w-2xl flex-col gap-2">
         {items.length === 0 && !isSending && (
-          <p className="mt-10 text-center text-sm text-slate-400">
+          <p className="mt-10 text-center text-sm text-slate-500">
             Escribile a Franco para empezar la conversación.
           </p>
         )}

@@ -29,27 +29,27 @@ export default function ChatHeader({ sessionId, onNewConversation }) {
   }
 
   return (
-    <header className="flex flex-shrink-0 items-center justify-between gap-2 border-b border-slate-200 bg-white px-4 py-3 shadow-sm">
+    <header className="flex flex-shrink-0 items-center justify-between gap-2 bg-[#008069] px-3 py-2.5 shadow-sm">
       <div className="flex min-w-0 items-center gap-3">
-        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-600 text-base font-semibold text-white">
+        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#00a884] text-lg font-semibold text-white shadow-inner">
           F
         </div>
         <div className="min-w-0">
-          <h1 className="text-[15px] font-semibold leading-tight text-slate-900">Franco</h1>
-          <p className="truncate text-xs leading-tight text-slate-500">Asistente de Automotores Tucumán</p>
+          <h1 className="text-[16px] font-medium leading-tight text-white">Franco</h1>
+          <p className="truncate text-[12px] leading-tight text-white/80">Asistente de Automotores Tucumán</p>
         </div>
       </div>
-      <div className="flex flex-shrink-0 items-center gap-1.5">
+      <div className="flex flex-shrink-0 items-center gap-2">
         <button
           type="button"
           onClick={handleSave}
           disabled={saveStatus === 'saving'}
-          className={`rounded-full border px-3 py-1.5 text-xs font-medium transition active:scale-95 disabled:opacity-60 ${
+          className={`rounded-full px-3 py-1.5 text-[11px] font-medium transition active:scale-95 disabled:opacity-70 ${
             saveStatus === 'saved'
-              ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+              ? 'bg-white text-[#008069]'
               : saveStatus === 'error'
-                ? 'border-red-200 bg-red-50 text-red-600'
-                : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                ? 'border border-white/40 bg-red-500/20 text-white'
+                : 'border border-white/40 text-white hover:bg-white/10'
           }`}
         >
           {SAVE_LABELS[saveStatus]}
@@ -57,9 +57,9 @@ export default function ChatHeader({ sessionId, onNewConversation }) {
         <button
           type="button"
           onClick={onNewConversation}
-          className="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-50 active:scale-95"
+          className="rounded-full bg-white px-3 py-1.5 text-[11px] font-bold text-[#008069] shadow-sm transition hover:bg-gray-100 active:scale-95"
         >
-          Nueva conversación
+          Nueva
         </button>
       </div>
     </header>

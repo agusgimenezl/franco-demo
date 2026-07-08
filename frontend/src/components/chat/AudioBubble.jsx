@@ -24,14 +24,17 @@ function MicIcon() {
 }
 
 // El usuario no ve la transcripción (la hace n8n con Whisper); mostramos una
-// burbuja simple que indica que mandó una nota de voz.
+// burbuja simple que indica que mandó una nota de voz. Estilo WhatsApp: burbuja
+// verde de usuario, misma que los mensajes de texto.
 export default function AudioBubble({ timestamp }) {
   return (
     <div className="flex justify-end">
-      <div className="flex max-w-[80%] items-center gap-2 rounded-2xl rounded-br-sm bg-emerald-600 px-4 py-2 text-[15px] text-white shadow-sm">
-        <MicIcon />
+      <div className="flex max-w-[85%] items-center gap-2 rounded-lg rounded-tr-none bg-[#d9fdd3] px-3 py-2 text-[14.5px] text-[#111b21] shadow-sm">
+        <span className="text-[#00a884]">
+          <MicIcon />
+        </span>
         <span>Mensaje de voz</span>
-        <span className="ml-1 text-[11px] text-emerald-100">{formatTime(timestamp)}</span>
+        <span className="ml-1 text-[11px] text-[#667781]">{formatTime(timestamp)}</span>
       </div>
     </div>
   )
