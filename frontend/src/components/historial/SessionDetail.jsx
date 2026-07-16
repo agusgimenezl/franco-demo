@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchSessionMessages } from '../../lib/crm'
-import { extractHistoryTexts } from '../../lib/historyMessages'
-import MessageBubble from '../chat/MessageBubble'
+import { buildFrancoItems, makeId } from '../../lib/francoItems'
+import ChatItem from '../chat/ChatItem'
 
 function BackIcon() {
   return (
@@ -11,18 +11,43 @@ function BackIcon() {
   )
 }
 
-// Aplana los mensajes del historial a burbujas. Cada fila 'ai' puede traer
-// varios textos empaquetados en su JSON (ver extractHistoryTexts), y cada uno
-// se muestra como su propia burbuja, igual que en el chat en vivo.
-function toBubbles(messages) {
-  const bubbles = []
+// El backend guarda cada fila como { rol, contenido }. contenido puede venir
+// como objeto o como string JSON: lo normalizamos con parseo seguro.
+function parseContenido(contenido) {
+  if (contenido == null) return null
+  if (typeof contenido === 'string') {
+    try {
+      return JSON.parse(contenido)
+    } catch {
+      return null
+    }
+  }
+  return contenido
+}
+
+// Convierte la conversación guardada a la MISMA lista de items del chat vivo:
+// - rol "user": una burbuja de usuario con contenido.text.
+// - rol "franco": contenido es { messages, images, product_cards } igual que la
+//   respuesta del chat vivo, así que lo pasamos por el mismo buildFrancoItems
+//   (texto + cards + fotos, respetando after_message_index).
+// Un mensaje que no parsea se saltea sin romper la vista. Sin timestamp: el
+// historial no guarda hora, así las burbujas no muestran una hora engañosa.
+function buildHistoryItems(messages) {
+  const items = []
   messages.forEach((message) => {
-    const isUser = message.tipo === 'human'
-    extractHistoryTexts(message.contenido).forEach((text) => {
-      bubbles.push({ text, isUser })
-    })
+    const contenido = parseContenido(message.contenido)
+    if (!contenido) return
+
+    if (message.rol === 'user') {
+      const text = typeof contenido.text === 'string' ? contenido.text : ''
+      if (text) items.push({ id: makeId(), kind: 'user-text', text })
+    } else if (message.rol === 'franco') {
+      buildFrancoItems(contenido).forEach((item) => {
+        items.push({ ...item, timestamp: undefined })
+      })
+    }
   })
-  return bubbles
+  return items
 }
 
 // Detalle read-only de una conversación histórica, con el mismo look de chat.
@@ -50,7 +75,7 @@ export default function SessionDetail({ sessionId, isActive, onBack, onContinue 
     }
   }, [sessionId])
 
-  const bubbles = toBubbles(messages)
+  const items = buildHistoryItems(messages)
 
   return (
     <div className="flex h-full min-h-0 flex-col">
@@ -83,15 +108,12 @@ export default function SessionDetail({ sessionId, isActive, onBack, onContinue 
           {status === 'error' && (
             <p className="mt-10 text-center text-sm text-red-500">No pudimos cargar esta conversación.</p>
           )}
-          {status === 'ready' && bubbles.length === 0 && (
+          {status === 'ready' && items.length === 0 && (
             <p className="mt-10 text-center text-sm text-slate-500">
               Esta conversación todavía no tiene mensajes.
             </p>
           )}
-          {status === 'ready' &&
-            bubbles.map((bubble, index) => (
-              <MessageBubble key={index} text={bubble.text} isUser={bubble.isUser} />
-            ))}
+          {status === 'ready' && items.map((item) => <ChatItem key={item.id} item={item} />)}
         </div>
       </div>
     </div>
