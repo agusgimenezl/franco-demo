@@ -88,6 +88,11 @@ export default function SessionDetail({ sessionId, isActive, onBack, onContinue 
         >
           <BackIcon />
         </button>
+        <img
+          src="/franco-avatar.jpg"
+          alt="Franco"
+          className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
+        />
         <h1 className="min-w-0 flex-1 truncate text-[16px] font-medium text-white">Conversación</h1>
         {isActive && (
           <button

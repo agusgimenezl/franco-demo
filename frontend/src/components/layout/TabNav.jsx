@@ -3,7 +3,7 @@ import TabIcon from './TabIcon'
 
 export default function TabNav({ activeTab, onChange }) {
   return (
-    <nav className="flex flex-shrink-0 border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)]">
+    <nav className="flex flex-shrink-0 border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
       {TABS.map((tab) => {
         const isActive = tab.id === activeTab
         return (
