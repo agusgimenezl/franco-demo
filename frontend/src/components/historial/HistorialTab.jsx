@@ -11,7 +11,9 @@ import PinModal from '../common/PinModal'
 export default function HistorialTab({ activeSessionId, onContinueActive }) {
   const [sessions, setSessions] = useState([])
   const [status, setStatus] = useState('loading') // 'loading' | 'ready' | 'error'
-  const [openSessionId, setOpenSessionId] = useState(null)
+  // Sesión completa (no solo el id): así el header del detalle puede mostrar
+  // el nombre/teléfono sin pedir de nuevo /leads o /sessions.
+  const [openSession, setOpenSession] = useState(null)
   // session_id de la conversación que el usuario pidió eliminar (abre el PIN).
   const [pendingDeleteId, setPendingDeleteId] = useState(null)
 
@@ -42,12 +44,13 @@ export default function HistorialTab({ activeSessionId, onContinueActive }) {
     }
   }, [])
 
-  if (openSessionId) {
+  if (openSession) {
     return (
       <SessionDetail
-        sessionId={openSessionId}
-        isActive={openSessionId === activeSessionId}
-        onBack={() => setOpenSessionId(null)}
+        sessionId={openSession.session_id}
+        contactName={openSession.nombre}
+        isActive={openSession.session_id === activeSessionId}
+        onBack={() => setOpenSession(null)}
         onContinue={onContinueActive}
       />
     )
@@ -81,7 +84,7 @@ export default function HistorialTab({ activeSessionId, onContinueActive }) {
                 key={session.session_id}
                 session={session}
                 isActive={session.session_id === activeSessionId}
-                onOpen={() => setOpenSessionId(session.session_id)}
+                onOpen={() => setOpenSession(session)}
                 onDelete={() => setPendingDeleteId(session.session_id)}
               />
             ))}

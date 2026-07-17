@@ -51,7 +51,11 @@ function buildHistoryItems(messages) {
 }
 
 // Detalle read-only de una conversación histórica, con el mismo look de chat.
-export default function SessionDetail({ sessionId, isActive, onBack, onContinue }) {
+// contactName es el campo 'nombre' de la sesión (viene de /sessions, ya
+// resuelto por el backend a nombre real o teléfono ficticio si no lo dio):
+// no hace falta pedir nada más para mostrarlo en el header, tipo contacto de
+// WhatsApp.
+export default function SessionDetail({ sessionId, contactName, isActive, onBack, onContinue }) {
   const [messages, setMessages] = useState([])
   const [status, setStatus] = useState('loading') // 'loading' | 'ready' | 'error'
 
@@ -93,7 +97,9 @@ export default function SessionDetail({ sessionId, isActive, onBack, onContinue 
           alt="Franco"
           className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
         />
-        <h1 className="min-w-0 flex-1 truncate text-[16px] font-medium text-white">Conversación</h1>
+        <h1 className="min-w-0 flex-1 truncate text-[16px] font-medium text-white">
+          {contactName || 'Contacto'}
+        </h1>
         {isActive && (
           <button
             type="button"
