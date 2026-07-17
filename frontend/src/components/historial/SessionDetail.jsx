@@ -11,6 +11,20 @@ function BackIcon() {
   )
 }
 
+// Avatar genérico (silueta gris) para el contacto/lead en el header del
+// historial. A propósito NO es la foto de Franco: acá el protagonista del
+// header es el cliente, no el asistente (esa foto sigue solo en el tab Chat).
+function ContactAvatar() {
+  return (
+    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-200 text-slate-500">
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+      </svg>
+    </div>
+  )
+}
+
 // El backend guarda cada fila como { rol, contenido }. contenido puede venir
 // como objeto o como string JSON: lo normalizamos con parseo seguro.
 function parseContenido(contenido) {
@@ -92,11 +106,7 @@ export default function SessionDetail({ sessionId, contactName, isActive, onBack
         >
           <BackIcon />
         </button>
-        <img
-          src="/franco-avatar.jpg"
-          alt="Franco"
-          className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
-        />
+        <ContactAvatar />
         <h1 className="min-w-0 flex-1 truncate text-[16px] font-medium text-white">
           {contactName || 'Contacto'}
         </h1>
