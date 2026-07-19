@@ -18,9 +18,9 @@ export default function HistorialTab({ activeSessionId, onContinueActive }) {
   const [pendingDeleteId, setPendingDeleteId] = useState(null)
 
   // El borrado real lo hace el backend; solo si responde ok sacamos el item.
-  const handleConfirmDelete = async () => {
+  const handleConfirmDelete = async (pin) => {
     const id = pendingDeleteId
-    await deleteSession(id)
+    await deleteSession(id, pin)
     setSessions((prev) => prev.filter((session) => session.session_id !== id))
     setPendingDeleteId(null)
   }

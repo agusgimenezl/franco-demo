@@ -9,10 +9,21 @@ const DIST_DIR = path.join(__dirname, 'dist')
 
 const PORT = process.env.PORT || 10000
 const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL
+const N8N_AUTH_TOKEN = process.env.N8N_AUTH_TOKEN
+const CRM_PIN = process.env.CRM_PIN
 // El webhook puede tardar hasta ~40s (procesa un prompt largo y a veces arma
 // el catálogo de autos). Le damos 60s antes de abortar, para no cortar una
 // respuesta que todavía viene en camino. El cliente usa el mismo tope.
 const UPSTREAM_TIMEOUT_MS = 60_000
+
+// Sin esto, n8n responde 403 en cuanto Nicolás active el auth ahí y acá se ve
+// como un fallo random del chat/CRM en vez de una env var faltante.
+if (!N8N_AUTH_TOKEN) {
+  console.warn('[franco] N8N_AUTH_TOKEN no está configurada: las llamadas a n8n van sin autenticar.')
+}
+if (!CRM_PIN) {
+  console.warn('[franco] CRM_PIN no está configurada: /api/session-delete va a rechazar todos los borrados.')
+}
 
 const app = express()
 // Límite holgado: los mensajes de audio llegan como base64 y pueden pesar.
@@ -30,7 +41,10 @@ app.post('/api/franco', async (req, res) => {
   try {
     const upstream = await fetch(N8N_WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        ...(N8N_AUTH_TOKEN ? { 'X-Franco-Auth': N8N_AUTH_TOKEN } : {}),
+      },
       body: JSON.stringify(req.body),
       signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
     })
@@ -75,10 +89,17 @@ app.post('/api/session-save', async (req, res) => {
 })
 
 app.post('/api/session-delete', async (req, res) => {
+  // El PIN es la única traba entre un curl a ciegas y borrar un lead real.
+  // Si no coincide (o CRM_PIN no está seteada), cortamos acá: n8n nunca se entera.
+  if (!CRM_PIN || req.body?.pin !== CRM_PIN) {
+    res.status(403).json({ error: 'PIN incorrecto.' })
+    return
+  }
+
   const { status, text, contentType } = await forwardToN8n({
     method: 'POST',
     path: '/webhook/session-delete',
-    body: req.body,
+    body: { session_id: req.body?.session_id },
   })
   res.status(status).set('Content-Type', contentType).send(text)
 })

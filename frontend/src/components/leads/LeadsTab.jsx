@@ -27,9 +27,9 @@ export default function LeadsTab() {
   const [pendingDeleteId, setPendingDeleteId] = useState(null)
 
   // El borrado real lo hace el backend; solo si responde ok sacamos la fila.
-  const handleConfirmDelete = async () => {
+  const handleConfirmDelete = async (pin) => {
     const id = pendingDeleteId
-    await deleteSession(id)
+    await deleteSession(id, pin)
     setLeads((prev) => prev.filter((lead) => lead.session_id !== id))
     setPendingDeleteId(null)
   }

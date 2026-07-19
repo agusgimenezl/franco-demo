@@ -1,13 +1,10 @@
 import { useState } from 'react'
 
-// Traba de conveniencia para la demo: evita borrar sin querer. NO es seguridad
-// real (el PIN vive en el bundle del cliente). Cambialo acá si hace falta.
-const DELETE_PIN = '1234'
-
 // Modal reutilizable de confirmación con PIN de 4 dígitos. Lo usan tanto Leads
-// como Historial. El borrado real lo hace onConfirm (async) en el componente
-// padre; acá solo validamos el PIN y mostramos el estado. Si onConfirm rechaza,
-// el modal queda abierto con el error (no se da falsa sensación de borrado).
+// como Historial. El PIN se valida en el server (ver server.js), no acá: esto
+// es solo el input. onConfirm(pin) hace el borrado real; si el server lo
+// rechaza (PIN incorrecto u otro error), el modal queda abierto mostrando el
+// mensaje que devolvió (no se da falsa sensación de borrado).
 export default function PinModal({ title, description, onConfirm, onCancel }) {
   const [pin, setPin] = useState('')
   const [error, setError] = useState('')
@@ -22,17 +19,13 @@ export default function PinModal({ title, description, onConfirm, onCancel }) {
 
   const handleConfirm = async () => {
     if (busy) return
-    if (pin !== DELETE_PIN) {
-      setError('PIN incorrecto')
-      return
-    }
     setBusy(true)
     setError('')
     try {
-      await onConfirm()
+      await onConfirm(pin)
       // En éxito, el padre desmonta el modal (saca el registro de la vista).
-    } catch {
-      setError('No se pudo eliminar. Probá de nuevo.')
+    } catch (err) {
+      setError(err?.userMessage || 'No se pudo eliminar. Probá de nuevo.')
       setBusy(false)
     }
   }

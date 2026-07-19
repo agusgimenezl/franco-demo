@@ -81,18 +81,31 @@ export async function saveSession(sessionId) {
 
 // Elimina un lead del CRM y los mensajes de su conversación (el backend limpia
 // ambas tablas). session_id es el del registro que se está borrando, no uno
-// fijo. Si no tira, se borró.
-export async function deleteSession(sessionId) {
+// fijo. El PIN lo valida el server (ver server.js) antes de tocar n8n: si no
+// coincide, responde 403 con un mensaje para mostrar en el modal. Si no tira,
+// se borró.
+export async function deleteSession(sessionId, pin) {
   let response
   try {
     response = await fetch(SESSION_DELETE_PATH, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ session_id: sessionId }),
+      body: JSON.stringify({ session_id: sessionId, pin }),
       signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     })
   } catch {
     throw new WebhookError('network', 'No pudimos eliminar el registro. Revisá tu conexión.')
+  }
+
+  if (response.status === 403) {
+    let message = 'PIN incorrecto.'
+    try {
+      const data = await response.json()
+      if (data?.error) message = data.error
+    } catch {
+      // Sin body parseable, nos quedamos con el mensaje genérico.
+    }
+    throw new WebhookError('forbidden', message)
   }
 
   if (!response.ok) {

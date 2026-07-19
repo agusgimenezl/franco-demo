@@ -98,6 +98,12 @@ export default defineConfig(({ mode }) => {
     process.env.N8N_WEBHOOK_URL = webhookUrl.href
   }
 
+  // Igual que arriba: forwardToN8n (crmDevPlugin) lee process.env directo.
+  // Sin esto, Leads/Historial en dev pegarían sin auth aunque n8n ya la exija.
+  if (env.N8N_AUTH_TOKEN && !process.env.N8N_AUTH_TOKEN) {
+    process.env.N8N_AUTH_TOKEN = env.N8N_AUTH_TOKEN
+  }
+
   // El módulo de transcripción lee process.env; en dev pasamos lo que haya en el
   // .env para poder transcribir localmente sin exportar variables a mano.
   if (env.OPENAI_API_KEY && !process.env.OPENAI_API_KEY) {
@@ -119,6 +125,8 @@ export default defineConfig(({ mode }) => {
           // de dev no corte la espera antes que el cliente (paridad con prod).
           proxyTimeout: 60_000,
           timeout: 60_000,
+          // Sin esto, dev deja de andar en cuanto n8n empiece a exigir el header.
+          headers: env.N8N_AUTH_TOKEN ? { 'X-Franco-Auth': env.N8N_AUTH_TOKEN } : undefined,
         },
       },
     },

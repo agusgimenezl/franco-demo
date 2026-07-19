@@ -15,6 +15,15 @@ function getN8nOrigin() {
   }
 }
 
+// Se arma siempre (incluso para GET, que no tienen body) para que el header de
+// auth también viaje en Leads/Historial. Content-Type solo cuando hay body.
+function buildHeaders(hasBody) {
+  const headers = {}
+  if (hasBody) headers['Content-Type'] = 'application/json'
+  if (process.env.N8N_AUTH_TOKEN) headers['X-Franco-Auth'] = process.env.N8N_AUTH_TOKEN
+  return headers
+}
+
 // Devuelve el texto crudo de la respuesta tal cual (mismo patrón que
 // /api/franco): sin parsear ni transformar el body de n8n.
 export async function forwardToN8n({ method, path, search, body }) {
@@ -32,7 +41,7 @@ export async function forwardToN8n({ method, path, search, body }) {
   try {
     const upstream = await fetch(url, {
       method,
-      headers: body !== undefined ? { 'Content-Type': 'application/json' } : undefined,
+      headers: buildHeaders(body !== undefined),
       body: body !== undefined ? JSON.stringify(body) : undefined,
       signal: AbortSignal.timeout(N8N_PROXY_TIMEOUT_MS),
     })
