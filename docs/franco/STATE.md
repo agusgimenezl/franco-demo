@@ -96,6 +96,14 @@ Cosas que no se pudieron verificar contra la base:
 - **¿El CRM necesita `gpt-4.1`?** Ahora recibe 750 tokens de texto limpio en vez de 9.200 de
   JSON crudo. `gpt-4.1-mini` probablemente alcance: más barato y con límite propio.
   Experimento de un minuto ahora que hay evals.
+- **¿`CRM_PIN` es de exactamente 4 dígitos?** `PinModal` filtra a solo dígitos y corta en 4
+  (`replace(/\D/g,'').slice(0,4)`, `maxLength={4}`). Si el valor en Render no cumple eso, el
+  modal nunca puede mandar un PIN que coincida y el borrado da 403 para siempre — parece un
+  bug del server, es una config incompatible. Confirmar borrando una sesión de prueba.
+- **El PIN de 4 dígitos no tiene rate limiting.** 10.000 combinaciones, forzables con un
+  script. Frena el `curl` a ciegas y el borrado accidental, no a alguien decidido.
+  Dimensionado a propósito para una demo con datos ficticios; revisar junto con el header
+  auth cuando entren datos de clientes reales.
 - **Mínimo de financiación.** La FAQ solo tiene el máximo (50%). Decisión de negocio
   pendiente de Nicolás — Franco no puede dar un dato que no existe.
 
