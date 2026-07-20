@@ -1,5 +1,3 @@
-import { normalizeSupabaseUrl, resolveProductCardPhoto } from './supabaseUrl'
-
 // Lógica compartida por el chat vivo (useChat) y el historial (SessionDetail):
 // convierte una respuesta de Franco ({ messages, images, product_cards }) en la
 // lista plana de items que renderiza <ChatItem>. Vive acá para que ambos usen
@@ -54,7 +52,7 @@ export function buildFrancoItems(response) {
 
     const imagesForIndex = images
       .filter((img) => img?.after_message_index === index)
-      .map((img) => normalizeSupabaseUrl(img.url))
+      .map((img) => img.url)
       .filter(Boolean)
 
     if (imagesForIndex.length > 0) {
@@ -65,7 +63,7 @@ export function buildFrancoItems(response) {
   const lastIndex = messages.length - 1
   const strayImages = images
     .filter((img) => img?.after_message_index == null || img.after_message_index > lastIndex)
-    .map((img) => normalizeSupabaseUrl(img.url))
+    .map((img) => img.url)
     .filter(Boolean)
 
   if (strayImages.length > 0) {
@@ -73,11 +71,7 @@ export function buildFrancoItems(response) {
   }
 
   if (productCards.length > 0) {
-    const normalizedCards = productCards.map((card) => ({
-      ...card,
-      foto_principal: resolveProductCardPhoto(card.foto_principal, card.id),
-    }))
-    items.push({ id: makeId(), kind: 'product-cards', cards: normalizedCards })
+    items.push({ id: makeId(), kind: 'product-cards', cards: productCards })
   }
 
   const errorText = extractErrorText(response?.error)
