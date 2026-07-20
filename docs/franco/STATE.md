@@ -39,17 +39,18 @@ Todo esto está en producción y verificado con evals (línea de base v5: 15/19 
 | pendiente #1 | Franco inventaba datos que el cliente había dado ("efectivo", "Ka automático") | `Leer lead (estado)` + bloque `estado_cliente` en el prompt |
 | pendiente #5 | El `¿` reaparecía pese al prompt | strip por código |
 | cierre comercial | Se perdía cuando había 1-2 autos (el guard solo cubría 3+ cards) | guard extendido a toda respuesta |
+| **C5 (proxy)** | El PIN de borrado vivía en el bundle; `POST /api/session-delete` borraba sin autenticación | PIN validado en Express contra `CRM_PIN`, **falla cerrado**. Verificado en producción: 403 |
+| **C5 (header)** | El frontend no mandaba header de auth a n8n | Manda `X-Franco-Auth` en las 3 rutas, incluidos los GET. n8n todavía **no lo exige** (estado intermedio correcto) |
 
 ## Abierto
 
 | Prioridad | ID | Qué | Por qué importa |
 |---|---|---|---|
-| 1 | **C5 (proxy)** | El PIN de borrado vive en el bundle; `POST /api/session-delete` borra sin autenticación. **Confirmado explotable en vivo** | La URL de Render es la que se les muestra a las concesionarias |
-| 2 | **C2** | El agente devuelve datos en vez de ids | Causa común del parser que falla, las URLs corruptas y el rate limit |
-| 3 | **A2** | Config declarado pero no usado; 6 variables hardcodeadas en otro lado | Bloqueante para vender a la segunda concesionaria |
-| 4 | **M1** | `Listar stock` sin `LIMIT` | Con 200 autos revienta contexto y costo |
-| 5 | revectorizar | `motor`/`transmisión`/`equipamiento` solo en el texto de `content`, no en `metadata` | Datos estructurados > texto interpretado |
-| 6 | **M2** | El saludo no se persiste en memoria | El historial del dueño difiere de lo que vio el cliente; el CRM lee una conversación que no es la real |
+| 1 | **C2** | El agente devuelve datos en vez de ids | Causa común del parser que falla, las URLs corruptas y el rate limit |
+| 2 | **A2** | Config declarado pero no usado; 6 variables hardcodeadas en otro lado | Bloqueante para vender a la segunda concesionaria |
+| 3 | **M1** | `Listar stock` sin `LIMIT` | Con 200 autos revienta contexto y costo |
+| 4 | revectorizar | `motor`/`transmisión`/`equipamiento` solo en el texto de `content`, no en `metadata` | Datos estructurados > texto interpretado |
+| 5 | **M2** | El saludo no se persiste en memoria | El historial del dueño difiere de lo que vio el cliente; el CRM lee una conversación que no es la real |
 
 Detalle completo de cada ID en `auditoria/AUDITORIA-FRANCO.md`.
 
@@ -57,10 +58,12 @@ Detalle completo de cada ID en `auditoria/AUDITORIA-FRANCO.md`.
 
 No re-proponer como pendientes: fueron evaluadas y decididas.
 
-- **Header auth desactivado** (2026-07-19). Existe `franco-n8n-v6-auth.json` y
-  `auditoria/C5-runbook.md`. Datos ficticios de demo. **Revisar cuando entre el primer dato
-  de un cliente real.** No activar sin coordinar: rompe la demo si el frontend no manda el
-  header primero.
+- **Header auth: el frontend ya lo manda, n8n todavía no lo exige** (2026-07-19). Es el
+  estado intermedio correcto y es seguro: n8n ignora headers desconocidos. Para activarlo,
+  importar `franco-n8n-v6-auth.json` y crear la credencial Header Auth (ver
+  `auditoria/C5-runbook.md`). Pospuesto a conciencia: datos ficticios de demo. **Revisar
+  cuando entre el primer dato de un cliente real.** Al activarlo, los evals necesitan
+  `FRANCO_TOKEN`.
 - **`/api/leads` y `/api/sessions` abiertos a propósito.** El dueño tiene que ver el CRM
   llenándose en vivo durante la demo. `visible_ids` desde localStorage limita a cada
   visitante a sus propias sesiones más las `is_saved`.
