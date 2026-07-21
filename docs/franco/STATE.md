@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v11.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v14.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,7 +14,7 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 27 casos · baseline-v11.json → 25/27 |
+| Evals | 29 casos · baseline-v11.json → 25/27 |
 
 **Invariantes:** ✅ los 5 pasan
 
@@ -44,11 +44,38 @@ Todo esto está en producción y verificado con evals (línea de base v5: 15/19 
 | recomendación por criterio (2026-07-20) | Pidiendo "cambiar el Mobi manteniendo el tamaño", encabezaba con un **Cronos** (4,36 m vs 3,57 m), en párrafo corrido y justificando con algo falso ("todos son autos compactos"). Reproducido 3/3, cada corrida fallando por un síntoma distinto: no había ninguna política para recomendar con restricción, así que improvisaba | Sección nueva `## Recomendación por criterio` en el prompt: primero los que cumplen, tamaño según `carroceria` de la ficha (no de memoria), motivo corto por auto sacado de la ficha, lo que no cumple va en grupo aparte y explícito, sin repetirle al cliente su intención. Eval `recomendacion-por-tamano` (3/3 fallando → **4/4 estable**) |
 | **C5 (proxy)** | El PIN de borrado vivía en el bundle; `POST /api/session-delete` borraba sin autenticación | PIN validado en Express contra `CRM_PIN`, **falla cerrado**. Verificado en producción: 403 |
 | **C5 (header)** | El frontend no mandaba header de auth a n8n | Manda `X-Franco-Auth` en las 3 rutas, incluidos los GET. n8n todavía **no lo exige** (estado intermedio correcto) |
+| **criterio fuera de presupuesto** (2026-07-21) | Con un presupuesto activo, al agregar un criterio (ej: "menos de 50.000 km") Franco contestaba "no tenemos opciones" aunque existieran, más caras. Reproducido en `km-con-presupuesto` **0/4**. **Tres intentos, todos medidos:** v12 puso una política en el prompt (1/4, y una vez presentó el Cronos de 58k como si cumpliera) → **revertido**; v13 agregó `km_max` a las tools (2/4) → el log 3963 mostró que el filtro andaba pero la **combinación** presupuesto+km daba `response: []`, y desde ahí Franco no sabía que los autos existían; v14 lo resolvió en SQL | **`franco-n8n-v14.json`** (`scripts/criterio-sin-resultados.mjs`): en `Listar stock` el techo de precio pasa de filtro duro a **preferencia**. El criterio del cliente (km) filtra siempre; si con presupuesto no queda nada, un `UNION ALL … WHERE NOT EXISTS` devuelve igual los que cumplen con `categoria='fuera'`. El `CASE` de categoría se conservó byte a byte; `precio_num` queda dentro del CTE para no sumar tokens. Medido: `km-con-presupuesto` **2/3** (el "no hay opciones" desapareció; queda un ~1/3 donde pregunta antes de mostrar, ver Abierto), controles de presupuesto **15/15** (`presupuesto-aproximado`, `rango-14-20`, `permuta`, `memoria`). `km_max` (v13) queda en las tools: `km-maximo` sigue 3/3 |
 | **fotos repetidas** (2026-07-21) | `Armar respuesta` armaba `images` desde `auto_ids` en cada turno, sin noción de "ya mostrado": si el cliente seguía preguntando por el mismo auto ("cuál es el consumo?"), Franco reenviaba las mismas 3 fotos. Quedaba robótico. Eval `fotos-no-repetidas` **0/5**, siempre 3 imágenes repetidas en el turno 2 | Nodo nuevo `Autos ya mostrados` (Postgres) entre `Hidratar autos` y `Armar respuesta`: saca de las URLs de las `images` de los **últimos 8 mensajes** qué autos ya tienen fotos enviadas (`foto-2-1.webp` → 2). `franco-n8n-v11.json` (`scripts/fotos-no-repetidas.mjs`, 34 → 35 nodos). **Dos límites deliberados:** (1) sólo mira `images` previas, NO `product_cards` — ver la ficha con fotos después de la miniatura es un flujo válido; (2) sólo filtra en la rama de 1-2 autos, nunca en listas de 3+, que si no saldrían incompletas. El guard de cierre sigue usando la lista completa. Si el nodo falla, no se filtra nada (mejor repetir una foto que ocultar un auto). Medido: `fotos-no-repetidas` **0/5 → 3/3** (`t2` de 3 a 0 imágenes), y los límites verificados: `detalle-un-auto-fotos` 3/3 (`t1` 6 cards → `t2` 3 fotos) y `stock-general-completo` con las 17 cards completas |
 | **color en `metadata`** (2026-07-21) | `armar_metadata()` nunca guardó `color`: sólo vivía en el texto de `content`, y las tools leen `metadata`. Franco podía describir el color de UN auto (lo leía de la ficha) pero no listar todos los grises — contestaba literalmente *"no tengo un filtro específico por color automático"*. Eval `color-gris` **0/3** | **(1)** `scripts/color-metadata.sql` (generado desde `stock.csv` por `gen-color-sql.mjs`): `UPDATE` aditivo e idempotente que suma la clave `color` al jsonb. **No toca `content` ni `embedding`** — no hizo falta revectorizar. **(2)** `franco-n8n-v10.json` (`scripts/color-en-tools.mjs`): `color` como columna en `Listar stock`, `Buscar auto` y `Detalle auto`, y filtro en `Buscar auto` por **dos caminos** (parámetro `color` explícito + color sumado al concat del ILIKE), para no depender de que el modelo elija bien el parámetro. El script verifica automáticamente la **trampa 3** sobre las 18 keys `$fromAI` del workflow. Medido: `color-gris` **0/3 → 3/3**, con `product_cards` = `[1,4,5,11,14]` exacto en las 3 corridas (los 5 grises, cero colados) |
 | **M2 / historial fiel** (2026-07-21) | **Franco SÍ saludaba** — el bug nunca fue el saludo. `Armar respuesta` devolvía dos objetos: `respuesta.messages = finalMsgs` (lo que ve el cliente) e `historial.messages = messages`, la variable **previa** a todo el post-proceso. Como `Guardar mensajes (historial)` persiste `historial` en `mensajes_demo` y de ahí sale la pestaña **Historial**, el dueño veía una conversación sin saludo, sin la pregunta de cierre del guard y con los `¿` que el cliente nunca vio. Detectado por dos capturas independientes (saludo faltante y `¿` presente), las dos predichas por el código | `historial: { messages: finalMsgs, images: finalImgs, product_cards }` (`franco-n8n-v9.json`, `scripts/m2-historial-fiel.mjs`, aplicado a mano). **Instrumento nuevo**, que era el agujero de fondo: el runner ahora lee `mensajes_demo` vía `/webhook/session-messages` y soporta `history_checks` (`first_bubble_greeting`, `no_apertura`, `bubbles_min`) — antes **todos** los checks miraban sólo la respuesta del webhook, por eso el bug vivía sin que nadie lo viera. Medido: `saludo-solo` **0/2 → 3/3**, con historial y respuesta byte a byte iguales. El `historial` de `fallback()` se dejó intacto a propósito: ya era fiel. **No se tocó `esPrimero`** |
 | **C2 (auditoría)** (2026-07-21) | `Buscar auto` era un `toolVectorStore`: le pasaba las fichas a su **propio LLM**, que las resumía, antes de dárselas a Franco. El `content` vectorizado no tiene el `id` (`armar_content()` no lo escribe), así que el id le llegaba a Franco sólo por un canal accidental: las URLs de las fotos (`foto-5-1.webp` → 5), como se ve en la ejecución 3626 | `franco-n8n-v8.json`, generado por `scripts/c2-buscar-auto-postgres.mjs` con aserciones (37 → 34 nodos: caen `Supabase Vector Store`, `Embeddings OpenAI` y `OpenAI Chat Model (Tool)`). `Buscar auto` pasa a `postgresTool` y devuelve **filas crudas con `id`**, igual que `Listar stock`; `typeVersion` y credenciales copiadas de un nodo que ya funcionaba (trampas 6 y 7), `precio_min`/`precio_max` byte-idénticos (trampa 3), texto sanitizado a alfanuméricos en vez de escapado. Aplicado en producción y medido: `typos` 3/3, `detalle-un-auto-fotos` 3/3, `lead-sin-nombre` 3/3 (4 cards con las 4 pickups reales), control `permuta` 3/3 y `memoria` 3/3. Verificado en la ejecución **3677**: la tool devuelve las filas con `id` y Franco los **copia** en vez de inferirlos; el nodo baja de ~8.300 ms a **20 ms** y desaparece un LLM de la ruta. **No arregla el "tipo B"** (ver Deuda consciente): no era su causa |
 | **C2** (2026-07-20) | El agente devolvía datos en vez de ids: precios/URLs mutaban al pasar por el LLM | `franco-n8n-v7.json` (activo en n8n, versionado en el repo). Schema `{messages, auto_ids}`, nodo `Hidratar autos` (Postgres) + `Armar respuesta` (Code) arman `product_cards`/`images` desde datos reales. Medido: 22/22 evals, `photo_urls_canonical` y `card_photo_matches_id` pasan por construcción (`--repeat 5` en los dos casos que ejercitan el camino nuevo, 5/5 estable). Queda una falla de parser conocida, ver Deuda consciente. |
+
+## ⚠️ BLOQUEANTE — la demo está caída (2026-07-21, 22:20)
+
+**Se agotó el crédito de la API key de OpenAI** (credencial `Demo key 2`, id `3rQJbWcRh84K3CCT`).
+Error exacto en el log de n8n (ejecución **4392**, y en todas las posteriores):
+
+```
+Insufficient quota detected.   ← nodos OpenAI Chat Model / OpenAI Chat Model (CRM)
+```
+
+**Síntoma:** Franco contesta *"Uy, se me trabó el sistema un segundo. Me repetís lo último?"* a
+**todo**, incluido un simple "hola". El blindaje de `Armar respuesta` funciona como fue
+diseñado, pero no hay respuesta real. **Cualquier visitante de la demo ve esto.**
+
+**Qué NO es:** no es v14, no es contención de TPM y no es lógica. `saludo-solo` no llama
+ninguna tool y también falla. Se descartó contención relanzando la suite con `--delay 5000`:
+volvió a fallar 29/29, y ahí el log dio el error real.
+
+**Fix:** recargar saldo en la cuenta de OpenAI. No hay nada que tocar en el workflow.
+
+**Consecuencia para los evals:** no hay `baseline-v14.json` — la corrida salió 100% roja por la
+cuota y se descartó en vez de guardarla (habría quedado una baseline falsa). La última baseline
+válida es **`baseline-v7.json`** (23/23) y la última corrida completa real es la de
+**`baseline-v11.json` (25/27)**. Regenerar la de v14 apenas haya crédito.
+
+---
 
 ## Abierto
 
@@ -59,8 +86,7 @@ política de fuera-de-presupuesto · **5)** trato por nombre de pila · **6)** f
 
 | Prioridad | ID | Qué | Por qué importa |
 |---|---|---|---|
-| 0 | **tipo B** | El schema del parser (`jsonSchemaExample`) no marca nada `required`, así que un output sin `auto_ids` pasa la validación y el cliente ve la respuesta sin cards ni fotos. Diagnosticado (ejecución 3681), fix candidato definido, **sin aplicar** | Es lo que el dueño de la concesionaria está comprando; reproduce ~1/3 en `stock-general-completo` |
-| 1 | **km sin filtro** (2026-07-21, captura) | `Listar stock` y `Buscar auto` no tienen ningún parámetro de kilometraje: sólo `precio_objetivo`, `tiene_permuta`, `precio_min`, `precio_max`. Pedido "algo con menos de 50.000 km", Franco repitió autos ya rechazados y ninguno cumplía. Hay 5 en stock bajo 50.000 km (Onix, T-Cross, Vento, Ranger, S10), todos caros | El cliente pone una condición explícita y Franco no tiene con qué responderla. **Fix determinístico:** `km_max` como `$fromAI` (cuidado trampa 3) |
+| 1 | **criterio fuera de presupuesto: queda un ~1/3** (2026-07-21) | Con v14 la query ya le entrega los autos que cumplen el criterio aunque excedan el presupuesto, y Franco lo sabe. En ~1 de cada 3 corridas, en vez de mostrarlos **pregunta si los quiere ver** ("querés que te muestre algunas opciones que están por encima del presupuesto?"). No dice más "no tenemos". **Es defendible comercialmente**: decidir si se muestran directo o se pregunta es criterio de negocio, no un bug. Si se retoma, va por prompt y midiendo | Bajo. El "no hay opciones" (el problema real) está resuelto |
 | 5 | **trato por nombre de pila** (2026-07-21, captura) | El cliente dice "Maximiliano Rodriguez" y Franco contesta "Listo Maximiliano Rodriguez, ...". Debe dirigirse **sólo por el nombre de pila** ("Gracias Maximiliano"), pero seguir **pidiendo y guardando nombre + apellido** | Suena a formulario, no a vendedor. **Es prompt legítimo** (trato = lenguaje), pero con riesgo de yo-yo contra los 5 reemplazos de "nombre y apellido" de 2026-07-20. Guardarraíles ya existentes: `text_matches "(?i)apellido"` en t2 y `field_matches nombre` en `lead_checks`. **Falta el check que lo caza** (hoy fallaría, como debe ser): `text_not_contains` del apellido en `derivacion-no-repite-asesor` t3 (`Miguez`), `nombre-con-apostrofe` (`D'Angelo`) y `control-nombre-sin-apostrofe` (`Dangelo`) |
 | 4 | **el CRM guardó el teléfono como nombre** (2026-07-21, suite completa) | En `derivacion-no-repite-asesor` el lead quedó con `nombre = "+54 381 555-6175"` en vez de "Julieta Miguez". Es el mismo modo de falla que ya vigilan `field_not_matches nombre "^\\+54"` en los dos casos de apóstrofe — que esa corrida **sí** pasaron. **No es regresión de los cambios de hoy** (ninguno tocó el CRM ni `Guardar lead`); parece intermitente. **Reproducir con `--repeat` antes de tocar nada** | El asesor recibe un lead sin nombre real |
 | 5 | **A2** | Config declarado pero no usado; 6 variables hardcodeadas en otro lado | Bloqueante para vender a la segunda concesionaria |
@@ -73,6 +99,21 @@ Detalle completo de cada ID en `auditoria/AUDITORIA-FRANCO.md`.
 
 No re-proponer como pendientes: fueron evaluadas y decididas.
 
+- **Tipo B ("respuesta sin cards"): diagnosticado y POSPUESTO a conciencia** (2026-07-21).
+  Causa raíz confirmada en la ejecución **3681**: `Franco (AI Agent)` devolvió
+  `output: { messages: [...] }` con la clave **`auto_ids` ausente** (no vacía: ausente), así
+  que `Hidratar autos` armó `'{}'` y trajo 0 filas. El schema del parser usa
+  `jsonSchemaExample`, que **no marca nada `required`**, y por eso un output sin `auto_ids`
+  pasa la validación. **Frecuencia medida: 1 de 172 turnos** (check `media_si_lista_autos`
+  aplicado a todas las respuestas guardadas, 0 falsos positivos). Con esa tasa, ningún fix es
+  demostrable: distinguir 1/172 de 0/172 necesitaría cientos de corridas. Decisión de negocio:
+  no vale el riesgo ni el tiempo ahora. **Los dos fixes evaluados, para cuando se retome:**
+  (a) marcar `auto_ids` como `required` — riesgoso, puede convertir turnos sin autos en
+  burbujas de fallback, igual que pasó con Auto-Fix Format (40% → 100%); (b) hacer
+  `Hidratar autos` tolerante, recuperando por SQL los autos que Franco nombró en el texto
+  cuando `auto_ids` viene vacío — puramente aditivo, en el peor caso queda como hoy.
+  **Preferir (b).** El check `media_si_lista_autos` queda en ALWAYS vigilando: si la tasa sube,
+  se va a ver solo.
 - **Header auth: el frontend ya lo manda, n8n todavía no lo exige** (2026-07-19). Es el
   estado intermedio correcto y es seguro: n8n ignora headers desconocidos. Para activarlo,
   importar `franco-n8n-v6-auth.json` y crear la credencial Header Auth (ver

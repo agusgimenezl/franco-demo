@@ -277,11 +277,33 @@ const CHECKS = {
     return hit ? `burbuja de fallback (parser falló): ${JSON.stringify(hit.content)}` : null
   },
 
+  // "Tipo B": Franco lista autos en el texto pero la respuesta llega sin cards NI imágenes,
+  // y sin burbuja de fallback. Causa conocida: el schema del parser no exige `auto_ids`, así
+  // que un output que omite la clave pasa la validación y "Hidratar autos" no recibe ningún
+  // id (ejecución 3681).
+  //
+  // Corre en TODOS los turnos a propósito: el bug es intermitente (~1 de cada 10) y buscarlo
+  // en un solo caso desperdicia toda la superficie de la suite. Acá cada turno de cada caso
+  // es una oportunidad de detección.
+  //
+  // El umbral de 3 modelos es para no dar rojos falsos: Franco nombra un auto suelto en
+  // despedidas y derivaciones ("el Etios que viste") sin tener que mostrarlo, pero nadie
+  // enumera 3 autos del catálogo sin estar mostrando stock.
+  media_si_lista_autos: (r) => {
+    const t = allText(r)
+    const nombrados = CATALOGO.filter((m) => t.toLowerCase().includes(m.toLowerCase())).length
+    if (nombrados < 3) return null
+    const media = (r.product_cards || []).length + (r.images || []).length
+    return media > 0
+      ? null
+      : `TIPO B: nombró ${nombrados} autos del catálogo y no mandó ninguna card ni imagen`
+  },
+
   manual: (_r, note) => ({ manual: note }),
 }
 
 // Checks que corren en cada turno de cada caso, sin declararlos.
-const ALWAYS = ['no_template_leak', 'no_fallback_bubble']
+const ALWAYS = ['no_template_leak', 'no_fallback_bubble', 'media_si_lista_autos']
 
 // Checks sobre el historial guardado. Corren contra `mensajes_demo`, no contra la
 // respuesta del webhook.

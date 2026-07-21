@@ -90,6 +90,42 @@
     },
 
     {
+      "id": "km-con-presupuesto",
+      "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (58k/82k/88k/92k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+      "turns": [
+        {
+          "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
+          "checks": [
+            ["media_min", 1]
+          ]
+        },
+        {
+          "say": "prefiero algo con menos de 50.000 km",
+          "checks": [
+            ["text_matches", "(?i)ranger|s10|t-cross|vento|onix"],
+            ["manual", "Los ÚNICOS con menos de 50.000 km son Onix, T-Cross, Vento, Ranger y S10, todos por encima de 13 millones. Debe mostrarlos igual aclarando que se van de presupuesto (con permuta/financiación), NO repetir los de 58k+ km que ya había ofrecido."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "km-maximo",
+      "bug": "captura: pidió 'menos de 50.000 km' y Franco le repitió autos de 58k/82k/88k/92k que ya había rechazado. Las tools no tienen ningún filtro de kilometraje",
+      "turns": [
+        {
+          "say": "qué autos tenés con menos de 50.000 km?",
+          "checks": [
+            ["text_contains_all", ["Ranger", "S10", "T-Cross", "Vento", "Onix"]],
+            ["media_min", 1],
+            ["ends_with_question"],
+            ["manual", "Los 5 del stock bajo 50.000 km son Onix(6.500), T-Cross(7.600), Vento(9.000), Ranger(9.800) y S10(11.500). Son los más caros. NO debe ofrecer como si cumplieran autos de 58k+ km."]
+          ]
+        }
+      ]
+    },
+
+    {
       "id": "fotos-no-repetidas",
       "bug": "reenvía las mismas fotos al seguir hablando del mismo auto; queda robótico",
       "turns": [
