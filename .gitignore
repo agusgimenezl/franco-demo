@@ -1,0 +1,11 @@
+# CREDENCIALES EN TEXTO PLANO — no versionar.
+# Estos dos scripts tienen hardcodeadas la API key de OpenAI y la service_role de
+# Supabase (que saltea RLS: acceso total a la base). Siguen sin trackear, así que
+# todavía no se filtraron al historial de git. Antes de versionarlos hay que moverlas
+# a variables de entorno Y rotarlas. Ver "Credenciales expuestas" en docs/franco/STATE.md.
+revectorizar_con_consumo.py
+revectorizar_con_consumo_v2.py
+
+node_modules/
+.env
+.env.*

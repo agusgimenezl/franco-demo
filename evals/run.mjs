@@ -42,6 +42,11 @@ if (!BASE) {
 
 const C = { red: '\x1b[31m', grn: '\x1b[32m', yel: '\x1b[33m', dim: '\x1b[2m', off: '\x1b[0m' }
 
+// Los 17 modelos del stock. Se usa para razonar sobre qué autos nombró Franco en el texto.
+const CATALOGO = ['Ranger', 'S10', 'Hilux', 'Amarok', 'T-Cross', 'Vento', 'Renegade',
+  'Corolla', 'Onix', 'EcoSport', 'Duster', 'Kangoo', '208', 'Cronos', 'Etios',
+  'Gol Trend', 'Fiesta']
+
 const PHOTO_RE =
   /^https:\/\/qfmsdgjtlduravrtqrif\.supabase\.co\/storage\/v1\/object\/public\/fotos-vehiculos-stock\/foto-\d+-\d+\.webp$/
 
@@ -78,6 +83,31 @@ async function getLead(sessionId) {
   return (Array.isArray(rows) ? rows : []).find((r) => r.session_id === sessionId) || null
 }
 
+// El historial que se guarda en `mensajes_demo` es lo que ve el DUEÑO en la pestaña
+// "Historial" de la demo. No es lo mismo que la respuesta del webhook: "Armar respuesta"
+// devuelve `respuesta` (con saludo, guard y sin ¿/¡) y `historial` por separado. Si se
+// desincronizan, el dueño ve una conversación peor que la que tuvo el cliente, y ningún
+// check de los de arriba se entera porque todos miran la respuesta.
+async function getHistory(sessionId) {
+  const res = await fetch(
+    `${BASE}/webhook/session-messages?session_id=${encodeURIComponent(sessionId)}`,
+    { headers: headers(), signal: AbortSignal.timeout(TIMEOUT_MS) },
+  )
+  if (!res.ok) throw new Error(`GET /session-messages -> HTTP ${res.status}`)
+  const rows = await res.json()
+  return Array.isArray(rows) ? rows : []
+}
+
+// Las burbujas de Franco tal como quedaron guardadas, en orden.
+const historyBubbles = (rows) =>
+  rows
+    .filter((r) => r?.rol === 'franco')
+    .flatMap((r) => {
+      let c = r.contenido
+      if (typeof c === 'string') { try { c = JSON.parse(c) } catch { c = null } }
+      return (c && Array.isArray(c.messages) ? c.messages : []).map((m) => String(m?.content ?? ''))
+    })
+
 const allText = (r) => (r.messages || []).map((m) => m?.content || '').join('\n')
 const allPhotoUrls = (r) => [
   ...(r.images || []).map((i) => i?.url),
@@ -105,6 +135,14 @@ const CHECKS = {
     return last.endsWith('?') ? null : `la última burbuja no cierra con pregunta: ${JSON.stringify(last.slice(-70))}`
   },
 
+  // El opuesto: en un turno de CIERRE (el cliente se está despidiendo) la respuesta NO
+  // debe terminar en una pregunta de venta forzada. El guard de "Armar respuesta" pegaba
+  // una pregunta genérica a toda respuesta que no terminara en "?"; esto lo detecta.
+  not_ends_with_question: (r) => {
+    const last = (r.messages || []).at(-1)?.content?.trim() || ''
+    return last.endsWith('?') ? `la última burbuja cierra con pregunta y debería ser un cierre: ${JSON.stringify(last.slice(-70))}` : null
+  },
+
   no_apertura: (r) => {
     const t = allText(r)
     const hits = [...t.matchAll(/[¿¡]/g)].length
@@ -116,6 +154,36 @@ const CHECKS = {
   bubbles_min: (r, n) =>
     (r.messages || []).length >= n ? null : `${(r.messages || []).length} burbujas, mínimo ${n}`,
 
+  // El PRIMER auto nombrado es la recomendación principal: es el que el cliente lee primero
+  // y el que ancla la conversación. Si puso una restricción (mantener el tamaño), el primero
+  // tiene que cumplirla — no vale liderar con uno que no encaja y aclararlo después.
+  first_car_in: (r, modelos) => {
+    const t = allText(r).toLowerCase()
+    let primero = null
+    let pos = Infinity
+    for (const m of CATALOGO) {
+      const i = t.indexOf(m.toLowerCase())
+      if (i !== -1 && i < pos) { pos = i; primero = m }
+    }
+    if (!primero) return 'no nombró ningún auto del catálogo'
+    return modelos.some((m) => m.toLowerCase() === primero.toLowerCase())
+      ? null
+      : `el primer auto recomendado es ${primero}, que no cumple lo que pidió el cliente; esperaba uno de: ${modelos.join(', ')}`
+  },
+
+  // Si nombra 3+ autos, tienen que ir en lista (uno por renglón), no en un párrafo corrido.
+  // Condicional a propósito: recomendar UN auto en prosa bien justificada es válido y no
+  // debe dar rojo — el bug era el párrafo con varios autos encadenados.
+  cars_in_list_format: (r) => {
+    const t = allText(r)
+    const nombrados = CATALOGO.filter((m) => t.toLowerCase().includes(m.toLowerCase())).length
+    if (nombrados < 3) return null
+    const items = t.split('\n').filter((l) => /^\s*(?:[-•*]|\d+[.)])\s+\S/.test(l)).length
+    return items >= 3
+      ? null
+      : `nombró ${nombrados} autos pero solo ${items} en formato lista — van uno por renglón, no en párrafo corrido`
+  },
+
   cards_min: (r, n) =>
     (r.product_cards || []).length >= n ? null : `${(r.product_cards || []).length} cards, mínimo ${n}`,
   cards_empty: (r) =>
@@ -124,6 +192,18 @@ const CHECKS = {
     (r.images || []).length >= n ? null : `${(r.images || []).length} imágenes, mínimo ${n}`,
   images_empty: (r) =>
     (r.images || []).length === 0 ? null : `esperaba 0 imágenes, hay ${r.images.length}`,
+
+  // Tipo B: el turno muestra autos en el texto pero llegan 0 cards Y 0 imágenes.
+  // No sirve pedir cards_min ni images_min por separado: "Armar respuesta" manda cards
+  // con 3+ autos e imágenes con 1-2, así que un umbral fijo da rojos falsos según cuántos
+  // autos haya elegido Franco. Lo que el cliente tiene que ver es material gráfico, sea
+  // cual sea la forma.
+  media_min: (r, n) => {
+    const total = (r.product_cards || []).length + (r.images || []).length
+    return total >= n
+      ? null
+      : `${total} piezas gráficas (${(r.product_cards || []).length} cards + ${(r.images || []).length} imágenes), mínimo ${n}`
+  },
 
   cards_xor_images: (r) => {
     const c = (r.product_cards || []).length
@@ -188,11 +268,50 @@ const CHECKS = {
     return m ? `matcheó /${pattern}/ y no debería: ${JSON.stringify(m[0].slice(0, 80))}` : null
   },
 
+  // Detectado en v7: cuando el Structured Output Parser no devuelve {messages, auto_ids}
+  // válido, "Armar respuesta" cae a esta burbuja genérica. Es HTTP 200 con error: null,
+  // indistinguible del éxito para el resto de los checks. Reproducido 2/8 veces en
+  // fuera-de-alcance (--repeat 8). Corre en TODOS los turnos.
+  no_fallback_bubble: (r) => {
+    const hit = (r.messages || []).find((m) => /se me trabó el sistema/i.test(m?.content || ''))
+    return hit ? `burbuja de fallback (parser falló): ${JSON.stringify(hit.content)}` : null
+  },
+
   manual: (_r, note) => ({ manual: note }),
 }
 
 // Checks que corren en cada turno de cada caso, sin declararlos.
-const ALWAYS = ['no_template_leak']
+const ALWAYS = ['no_template_leak', 'no_fallback_bubble']
+
+// Checks sobre el historial guardado. Corren contra `mensajes_demo`, no contra la
+// respuesta del webhook.
+const HISTORY_CHECKS = {
+  // El saludo lo agrega "Armar respuesta" solo en `respuesta`. Si `historial` se lleva la
+  // copia previa, el dueño ve la conversación arrancando sin saludo.
+  first_bubble_greeting: (rows) => {
+    const b = historyBubbles(rows)
+    if (b.length === 0) return 'el historial no tiene ninguna burbuja de Franco'
+    return /^Hola! Soy /.test(b[0])
+      ? null
+      : `la primera burbuja guardada no es el saludo: ${JSON.stringify(b[0].slice(0, 70))}`
+  },
+
+  // Mismo strip de ¿/¡ que se le aplica al cliente. Si el historial guarda el texto crudo,
+  // los signos aparecen ahí aunque el cliente nunca los haya visto.
+  no_apertura: (rows) => {
+    const hits = historyBubbles(rows).join('\n').match(/[¿¡]/g) || []
+    return hits.length === 0
+      ? null
+      : `el historial guardó ${hits.length} signo(s) de apertura que el cliente no vio`
+  },
+
+  // El historial tiene que tener al menos tantas burbujas como mandó Franco: si le falta
+  // la pregunta de cierre del guard, quedan menos.
+  bubbles_min: (rows, n) => {
+    const b = historyBubbles(rows)
+    return b.length >= n ? null : `${b.length} burbujas guardadas, mínimo ${n}`
+  },
+}
 
 const LEAD_CHECKS = {
   field_equals: (lead, field, expected) =>
@@ -266,6 +385,32 @@ async function runCase(c) {
       result.lead = lead
       result.leadWaitMs = Date.now() - t0
       for (const f of fails) result.failures.push(`lead (tras ${Math.round(result.leadWaitMs / 1000)}s): ${f}`)
+    }
+
+    if (c.history_checks?.length) {
+      // "Guardar mensajes (historial)" corre dentro de la cadena, pero la fila puede tardar
+      // en estar visible. Mismo patrón de poleo que los lead_checks.
+      const DEADLINE_MS = 15_000
+      const INTERVAL_MS = 2000
+      const t0 = Date.now()
+      let rows = []
+      let fails = []
+
+      while (Date.now() - t0 < DEADLINE_MS) {
+        await new Promise((r) => setTimeout(r, INTERVAL_MS))
+        rows = await getHistory(sessionId)
+        fails = rows.length
+          ? c.history_checks.map(([n, ...a]) => {
+              const fn = HISTORY_CHECKS[n]
+              if (!fn) throw new Error(`history check desconocido: ${n}`)
+              return fn(rows, ...a)
+            }).filter(Boolean)
+          : ['no se guardó ninguna fila en mensajes_demo']
+        if (fails.length === 0) break
+      }
+
+      result.history = rows
+      for (const f of fails) result.failures.push(`historial: ${f}`)
     }
   } catch (err) {
     result.error = err.message

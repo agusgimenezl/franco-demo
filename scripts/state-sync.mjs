@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const argFile = process.argv.indexOf('--file')
 // --file permite auditar un workflow ANTES de importarlo a n8n (ej. el v7 en progreso).
-const WORKFLOW = argFile !== -1 ? join(ROOT, process.argv[argFile + 1]) : join(ROOT, 'franco-n8n-v6.json')
+const WORKFLOW = argFile !== -1 ? join(ROOT, process.argv[argFile + 1]) : join(ROOT, 'franco-n8n-v11.json')
 const STATE = join(ROOT, 'docs/franco/STATE.md')
 const checkOnly = process.argv.includes('--check') || argFile !== -1
 
@@ -92,8 +92,16 @@ const modelos = wf.nodes
 const casos = existsSync(join(ROOT, 'evals/cases.json'))
   ? JSON.parse(readFileSync(join(ROOT, 'evals/cases.json'), 'utf8')).cases.length
   : 0
+// Ordenado por NÚMERO de versión, no alfabéticamente: con .sort() a secas,
+// "baseline-v11" queda antes que "baseline-v7" (compara "1" contra "7") y el bloque de
+// arriba termina citando una baseline vieja como si fuera la última.
 const baselines = existsSync(join(ROOT, 'evals'))
-  ? readdirSync(join(ROOT, 'evals')).filter((f) => f.startsWith('baseline')).sort()
+  ? readdirSync(join(ROOT, 'evals'))
+      .filter((f) => f.startsWith('baseline'))
+      .sort((a, b) => {
+        const n = (s) => parseInt(s.match(/v(\d+)/)?.[1] ?? '0', 10)
+        return n(a) - n(b)
+      })
   : []
 let baselineTxt = 'sin baseline guardada'
 if (baselines.length) {
@@ -104,7 +112,7 @@ if (baselines.length) {
 
 const bloque = `<!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** \`${WORKFLOW.split('/').pop()}\` · ${wf.nodes.length} nodos
+**Workflow en producción:** \`${WORKFLOW.split(/[\\/]/).pop()}\` · ${wf.nodes.length} nodos
 
 | | |
 |---|---|

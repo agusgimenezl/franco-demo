@@ -17,6 +17,10 @@
             ["text_not_contains", ["Mirá todo lo que tenemos", "1."]]
           ]
         }
+      ],
+      "history_checks": [
+        ["first_bubble_greeting"],
+        ["no_apertura"]
       ]
     },
 
@@ -86,6 +90,43 @@
     },
 
     {
+      "id": "fotos-no-repetidas",
+      "bug": "reenvía las mismas fotos al seguir hablando del mismo auto; queda robótico",
+      "turns": [
+        {
+          "say": "contame del volkswagen gol trend",
+          "checks": [
+            ["media_min", 1]
+          ]
+        },
+        {
+          "say": "quiero saber su consumo en km/l",
+          "checks": [
+            ["images_empty"],
+            ["cards_empty"],
+            ["manual", "Ya mostró las fotos del Gol Trend en el turno 1. Acá debe responder el consumo SIN reenviarlas."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "color-gris",
+      "bug": "no podía listar por color: `color` no estaba en metadata, solo en el texto de content",
+      "turns": [
+        {
+          "say": "qué opciones tenés en color gris?",
+          "checks": [
+            ["text_contains_all", ["Cronos", "Etios", "Corolla", "Duster", "Ranger"]],
+            ["media_min", 1],
+            ["ends_with_question"],
+            ["manual", "Los 5 grises del stock son Cronos(1), Etios(4), Corolla(5), Duster(11) y Ranger(14). No debe ofrecer autos de otro color como si fueran grises."]
+          ]
+        }
+      ]
+    },
+
+    {
       "id": "typos",
       "bug": "#interpretación coloquial: 'toyot corola'",
       "turns": [
@@ -94,7 +135,8 @@
           "checks": [
             ["text_matches", "(?i)corolla|amarok"],
             ["ends_with_question"],
-            ["no_apertura"]
+            ["no_apertura"],
+            ["media_min", 1]
           ]
         }
       ]
@@ -348,6 +390,68 @@
           "checks": [
             ["bubbles_min", 1],
             ["manual", "Debe pedir que reformule, sin romperse"]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "recomendacion-por-tamano",
+      "bug": "captura 2 — recomendó un Cronos (4,36m) primero a quien pidió mantener el tamaño de un Mobi (3,57m), en párrafo corrido y sin justificar ninguna opción",
+      "turns": [
+        {
+          "say": "quiero cambiar mi fiat mobi, por un modelo un poco mas actualizado pero manteniendo el tamaño y bajo consumo. que me recomiendas?",
+          "checks": [
+            ["cars_in_list_format"],
+            ["first_car_in", ["Etios", "208", "Gol Trend", "Fiesta", "Onix"]],
+            ["text_matches", "(?i)etios|208"],
+            ["text_not_matches", "(?i)todos (ellos |estos )?son (autos )?compactos"],
+            ["no_apertura"],
+            ["manual", "INTENCIÓN: pidió MANTENER EL TAMAÑO del Mobi (3,57m). No debe liderar con el Cronos (4,36m, 80cm más largo) como si cumpliera ese criterio. Si lo ofrece, va aparte y aclarando que es más grande"],
+            ["manual", "JUSTIFICACIÓN: cada auto recomendado necesita un motivo corto de por qué encaja, no solo nombre/km/precio"],
+            ["manual", "NO REDUNDANCIA: no debe devolverle al cliente su propia intención ('para que no pierdas eso que valorás')"]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "derivacion-no-repite-asesor",
+      "bug": "captura 1 — ya había aceptado el asesor y dado su nombre, y Franco volvió a ofrecerle un asesor. Además pide solo el nombre, no el apellido",
+      "turns": [
+        { "say": "hola, me interesa el toyota etios", "checks": [] },
+        {
+          "say": "dale quiero un asesor",
+          "checks": [
+            ["text_matches", "(?i)apellido"],
+            ["manual", "Al pedir los datos debe pedir nombre Y apellido, no solo el nombre"]
+          ]
+        },
+        {
+          "say": "Julieta Miguez",
+          "checks": [
+            ["text_not_contains", ["Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido"]],
+            ["text_not_matches", "(?i)quer[eé]s que (un asesor|te contacte|te prepare)"],
+            ["manual", "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"]
+          ]
+        }
+      ],
+      "lead_checks": [["field_matches", "nombre", "(?i)julieta\\s+miguez"]]
+    },
+
+    {
+      "id": "cierre-conversacion",
+      "bug": "guard de cierre: pega una pregunta de venta genérica al despedirse, en vez de cerrar con gracia",
+      "turns": [
+        { "say": "hola, tenés algún volkswagen?", "checks": [] },
+        { "say": "gracias, por ahora estoy solo mirando", "checks": [] },
+        {
+          "say": "buenísimo, gracias. por ahora estoy bien, capaz vuelvo más adelante",
+          "checks": [
+            ["text_not_contains", ["Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido"]],
+            ["not_ends_with_question"],
+            ["no_apertura"],
+            ["manual", "Debe cerrar con gracia: quedar a disposición, sin pregunta de venta forzada. Idealmente personalizado al Volkswagen que estaba mirando."]
           ]
         }
       ]
