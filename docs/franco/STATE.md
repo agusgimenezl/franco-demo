@@ -14,7 +14,7 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 29 casos · baseline-v11.json → 25/27 |
+| Evals | 29 casos · baseline-v14.json → 27/29 |
 
 **Invariantes:** ✅ los 5 pasan
 
@@ -50,32 +50,6 @@ Todo esto está en producción y verificado con evals (línea de base v5: 15/19 
 | **M2 / historial fiel** (2026-07-21) | **Franco SÍ saludaba** — el bug nunca fue el saludo. `Armar respuesta` devolvía dos objetos: `respuesta.messages = finalMsgs` (lo que ve el cliente) e `historial.messages = messages`, la variable **previa** a todo el post-proceso. Como `Guardar mensajes (historial)` persiste `historial` en `mensajes_demo` y de ahí sale la pestaña **Historial**, el dueño veía una conversación sin saludo, sin la pregunta de cierre del guard y con los `¿` que el cliente nunca vio. Detectado por dos capturas independientes (saludo faltante y `¿` presente), las dos predichas por el código | `historial: { messages: finalMsgs, images: finalImgs, product_cards }` (`franco-n8n-v9.json`, `scripts/m2-historial-fiel.mjs`, aplicado a mano). **Instrumento nuevo**, que era el agujero de fondo: el runner ahora lee `mensajes_demo` vía `/webhook/session-messages` y soporta `history_checks` (`first_bubble_greeting`, `no_apertura`, `bubbles_min`) — antes **todos** los checks miraban sólo la respuesta del webhook, por eso el bug vivía sin que nadie lo viera. Medido: `saludo-solo` **0/2 → 3/3**, con historial y respuesta byte a byte iguales. El `historial` de `fallback()` se dejó intacto a propósito: ya era fiel. **No se tocó `esPrimero`** |
 | **C2 (auditoría)** (2026-07-21) | `Buscar auto` era un `toolVectorStore`: le pasaba las fichas a su **propio LLM**, que las resumía, antes de dárselas a Franco. El `content` vectorizado no tiene el `id` (`armar_content()` no lo escribe), así que el id le llegaba a Franco sólo por un canal accidental: las URLs de las fotos (`foto-5-1.webp` → 5), como se ve en la ejecución 3626 | `franco-n8n-v8.json`, generado por `scripts/c2-buscar-auto-postgres.mjs` con aserciones (37 → 34 nodos: caen `Supabase Vector Store`, `Embeddings OpenAI` y `OpenAI Chat Model (Tool)`). `Buscar auto` pasa a `postgresTool` y devuelve **filas crudas con `id`**, igual que `Listar stock`; `typeVersion` y credenciales copiadas de un nodo que ya funcionaba (trampas 6 y 7), `precio_min`/`precio_max` byte-idénticos (trampa 3), texto sanitizado a alfanuméricos en vez de escapado. Aplicado en producción y medido: `typos` 3/3, `detalle-un-auto-fotos` 3/3, `lead-sin-nombre` 3/3 (4 cards con las 4 pickups reales), control `permuta` 3/3 y `memoria` 3/3. Verificado en la ejecución **3677**: la tool devuelve las filas con `id` y Franco los **copia** en vez de inferirlos; el nodo baja de ~8.300 ms a **20 ms** y desaparece un LLM de la ruta. **No arregla el "tipo B"** (ver Deuda consciente): no era su causa |
 | **C2** (2026-07-20) | El agente devolvía datos en vez de ids: precios/URLs mutaban al pasar por el LLM | `franco-n8n-v7.json` (activo en n8n, versionado en el repo). Schema `{messages, auto_ids}`, nodo `Hidratar autos` (Postgres) + `Armar respuesta` (Code) arman `product_cards`/`images` desde datos reales. Medido: 22/22 evals, `photo_urls_canonical` y `card_photo_matches_id` pasan por construcción (`--repeat 5` en los dos casos que ejercitan el camino nuevo, 5/5 estable). Queda una falla de parser conocida, ver Deuda consciente. |
-
-## ⚠️ BLOQUEANTE — la demo está caída (2026-07-21, 22:20)
-
-**Se agotó el crédito de la API key de OpenAI** (credencial `Demo key 2`, id `3rQJbWcRh84K3CCT`).
-Error exacto en el log de n8n (ejecución **4392**, y en todas las posteriores):
-
-```
-Insufficient quota detected.   ← nodos OpenAI Chat Model / OpenAI Chat Model (CRM)
-```
-
-**Síntoma:** Franco contesta *"Uy, se me trabó el sistema un segundo. Me repetís lo último?"* a
-**todo**, incluido un simple "hola". El blindaje de `Armar respuesta` funciona como fue
-diseñado, pero no hay respuesta real. **Cualquier visitante de la demo ve esto.**
-
-**Qué NO es:** no es v14, no es contención de TPM y no es lógica. `saludo-solo` no llama
-ninguna tool y también falla. Se descartó contención relanzando la suite con `--delay 5000`:
-volvió a fallar 29/29, y ahí el log dio el error real.
-
-**Fix:** recargar saldo en la cuenta de OpenAI. No hay nada que tocar en el workflow.
-
-**Consecuencia para los evals:** no hay `baseline-v14.json` — la corrida salió 100% roja por la
-cuota y se descartó en vez de guardarla (habría quedado una baseline falsa). La última baseline
-válida es **`baseline-v7.json`** (23/23) y la última corrida completa real es la de
-**`baseline-v11.json` (25/27)**. Regenerar la de v14 apenas haya crédito.
-
----
 
 ## Abierto
 
@@ -249,6 +223,14 @@ Cosas que no se pudieron verificar contra la base:
   auth cuando entren datos de clientes reales.
 - **Mínimo de financiación.** La FAQ solo tiene el máximo (50%). Decisión de negocio
   pendiente de Nicolás — Franco no puede dar un dato que no existe.
+- **La cuota de OpenAI se agotó en producción el 2026-07-21** y tiró la demo entera: todas
+  las ejecuciones fallaban con `Insufficient quota` y Franco contestaba la burbuja de
+  fallback a cualquier mensaje, incluido "hola" (ejecución **4392**). Se recargó y volvió a
+  la normalidad. **Cómo reconocerlo rápido:** si TODOS los casos fallan a la vez, incluido
+  `saludo-solo` (que no llama ninguna tool), no es lógica ni contención de TPM — es la
+  cuenta. Se descarta contención relanzando con `--delay`; si igual falla todo, leer el log
+  y buscar `Insufficient quota`. Correr la suite completa consume cuota real: un día de
+  diagnóstico intensivo fueron ~250 turnos.
 
 ## Cómo verificar el estado
 
