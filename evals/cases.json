@@ -236,7 +236,140 @@
           "checks": [
             ["text_matches", "(?i)despeje|ripio|camino roto|uso rudo"],
             ["text_not_matches", "(?i)(?:(?<!\\b(?:tu|su|un|una|el|la|los|las|mi) )\\busad[oa]s?\\b|\\bseminuev[oa]s?\\b)"],
-            ["manual", "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Si menciona un condicionante, tiene que sonar a criterio honesto de vendedor, NO a lista de defectos"]
+            ["text_not_matches", "(?i)\\bjusta\\b|sin sensores|sensores de estacionamiento|consumo alto|ten[eé] en cuenta"],
+            ["manual", "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"]
+          ]
+        },
+        {
+          "say": "y del vento qué me contás?",
+          "checks": [
+            ["text_not_matches", "(?i)nafta de buena calidad|service al d[ií]a|ten[eé] en cuenta|consumo.{0,25}m[áa]s alto"],
+            ["text_not_matches", "(?i)est[áa]\\s+(blanco|blanca|gris|negro|negra|azul|rojo|roja|verde)"],
+            ["manual", "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "filtro-por-anio",
+      "bug": "captura 1: pidió 'autos usados de los últimos 4 años' y Franco devolvió los 17, incluidos 2018 y 2019. NO es del prompt: las tools no tienen NINGÚN parámetro de año (sólo precio_min, precio_max, km_max), así que el criterio es infiltrable y Franco muestra todo. Con el stock actual y 2026 corriente, 'últimos 4 años' = 2022 en adelante = Ranger 2025, S10 2024, T-Cross 2025, Vento 2024, Onix 2024.",
+      "turns": [
+        {
+          "say": "Hola, quiero averiguar autos usados de los últimos 4 años por favor",
+          "checks": [
+            ["text_matches", "(?i)ranger|s10|t-cross|vento|onix"],
+            ["text_not_matches", "(?i)\\b(2018|2019|2020)\\b"],
+            ["cards_max", 6],
+            ["manual", "Sólo los de 2022 en adelante. Si no puede filtrar por año debe decirlo, nunca devolver el catálogo entero como si cumpliera"]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "no-repreguntar-asesor",
+      "bug": "capturas 3-5, MISMA conversación: el cliente aceptó el asesor y Franco se lo volvió a ofrecer CINCO veces. RAÍZ (verificada): `Leer lead (estado)` no trae la columna `estado`, así que el bloque `estado_cliente` nunca le dice a Franco que el lead ya está en 'Requiere asesor'. No tiene con qué saberlo. También: dice 'querés que TE PASE los datos' cuando el agente no manda datos, los PIDE; y ofrece fotos que ya mandó en el turno anterior.",
+      "turns": [
+        { "say": "hola, me interesa el ford fiesta. hay algún plan de pago?", "checks": [] },
+        {
+          "say": "Si pero antes decime cuánto es el consumo de combustible?",
+          "checks": [
+            ["text_matches", "(?i)6[.,]8|consumo"],
+            ["text_not_matches", "(?i)(quer[eé]s|te interesa|te gustar[ií]a|preferís)[^.?!]{0,70}asesor[^.?!]{0,70}\\?"],
+            ["text_not_matches", "(?i)te pase los datos|pasarte los datos"],
+            ["manual", "Ya dijo que SÍ al asesor ('Si pero antes...'). Contesta el consumo y avanza con la derivación: NO vuelve a preguntar si quiere un asesor"]
+          ]
+        },
+        {
+          "say": "Si porfa",
+          "checks": [
+            ["text_matches", "(?i)nombre"],
+            ["text_not_matches", "(?i)(quer[eé]s|te interesa|te gustar[ií]a|preferís)[^.?!]{0,70}asesor[^.?!]{0,70}\\?"],
+            ["text_not_matches", "(?i)te (puedo )?(pasar|mostrar) las fotos"],
+            ["manual", "Segunda confirmación. Debe pedir el nombre para derivar, NO preguntar por tercera vez si quiere asesor, NI ofrecer fotos que ya mandó"]
+          ]
+        }
+      ],
+      "lead_checks": [["field_equals", "estado", "Requiere asesor"]]
+    },
+
+    {
+      "id": "permuta-una-pregunta-por-vez",
+      "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+      "turns": [
+        {
+          "say": "Mira tengo 8 millones y un usado, reciben?",
+          "checks": [
+            ["text_matches", "(?i)(recibimos|tomamos|aceptamos|s[ií],? (claro|por supuesto)|claro que s[ií])"],
+            ["text_not_matches", "(?i)apellido"],
+            ["text_not_matches", "(?i)asesor"],
+            ["text_matches", "(?i)(qu[ée] auto|marca|modelo)"],
+            ["max_preguntas", 2],
+            ["cards_empty"],
+            ["images_empty"],
+            ["manual", "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"]
+          ]
+        },
+        {
+          "say": "Tengo un Gol Trend 2017",
+          "checks": [
+            ["text_matches", "(?i)kil[oó]metr|\\bkm\\b"],
+            ["text_not_matches", "(?i)apellido"],
+            ["max_preguntas", 2],
+            ["manual", "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"]
+          ]
+        },
+        {
+          "say": "90.000 km",
+          "checks": [
+            ["text_matches", "(?i)nombre"],
+            ["max_preguntas", 2],
+            ["manual", "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "derivacion-pide-datos-del-usado",
+      "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+      "turns": [
+        { "say": "hola, me interesa el toyota etios", "checks": [] },
+        {
+          "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+          "checks": [
+            ["text_matches", "(?i)(modelo|marca|a[ñn]o|km|kil[oó]metr)[^.?!]{0,90}(usado|entreg|tu auto)|(usado|entreg|tu auto)[^.?!]{0,90}(modelo|marca|a[ñn]o|km|kil[oó]metr)"],
+            ["max_preguntas", 2],
+            ["manual", "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"]
+          ]
+        },
+        {
+          "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+          "checks": [
+            ["text_not_matches", "(?i)quer[eé]s que (un asesor|te contacte|te prepare)"],
+            ["cards_empty"],
+            ["manual", "Ya pidió asesor y ya dio todos los datos: confirma y CIERRA. No debe relanzar la narrativa de permuta con lista de autos y cards — eso le dice al cliente que no lo escucharon"]
+          ]
+        }
+      ],
+      "lead_checks": [
+        ["field_matches", "nombre", "(?i)julieta\\s+miguez"],
+        ["field_matches", "descripcion_usado", "(?i)gol.*2015"],
+        ["field_equals", "entrega", "Sí"]
+      ]
+    },
+
+    {
+      "id": "condicionante-si-preguntan",
+      "bug": "GUARDARRAÍL de descripcion-que-aporta. Franco tiene perfil comercial y no debe volcar los contras solo, pero si el cliente PREGUNTA por ellos, ocultarlos es peor: lo deja sin respuesta y le hace perder la confianza. Este caso existe para que el fix de 'no cantar los condicionantes' no se pase de freno y termine en un vendedor que esquiva preguntas.",
+      "turns": [
+        { "say": "contame del renault duster", "checks": [] },
+        {
+          "say": "y algún punto flojo que tenga? qué tendría que tener en cuenta?",
+          "checks": [
+            ["text_matches", "(?i)\\bjusta\\b|potencia|sensores|consumo"],
+            ["manual", "Le preguntaron DIRECTO por los contras: acá SÍ tiene que responder con el condicionante real, sin esquivar. Pero sin dramatizarlo ni encadenar una lista de defectos"]
           ]
         }
       ]
@@ -324,7 +457,7 @@
           "checks": [
             ["cards_min", 1],
             ["text_matches", "(?i)asesor|tasa"],
-            ["text_not_contains", ["no puedo tasar", "no puedo cotizar"]],
+            ["text_not_matches", "(?i)no puedo (tasar|cotizar)\\b(?![^.!?]*porque)"],
             ["ends_with_question"],
             ["manual", "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"]
           ]

@@ -149,6 +149,19 @@ const CHECKS = {
     return hits === 0 ? null : `usó ${hits} signo(s) de apertura (¿ o ¡), están prohibidos`
   },
 
+  // "Una pregunta a la vez" es contable, así que se mide en vez de dejarlo a criterio.
+  // Pedirle al cliente nombre + apellido + marca + modelo + año + km de una sola vez se lee
+  // como formulario y es donde abandona. Cuenta signos "?" en todo el turno: el guard de
+  // cierre agrega una pregunta comercial, así que el mínimo razonable para un turno que
+  // además pide un dato es 2, no 1.
+  max_preguntas: (r, n) => {
+    const t = allText(r)
+    const preguntas = (t.match(/\?/g) || []).length
+    return preguntas <= n
+      ? null
+      : `${preguntas} preguntas en el turno, máximo ${n} — al cliente le llega como formulario`
+  },
+
   bubbles_max: (r, n) =>
     (r.messages || []).length <= n ? null : `${r.messages.length} burbujas, máximo ${n}`,
   bubbles_min: (r, n) =>
@@ -186,6 +199,14 @@ const CHECKS = {
 
   cards_min: (r, n) =>
     (r.product_cards || []).length >= n ? null : `${(r.product_cards || []).length} cards, mínimo ${n}`,
+  // Techo de cards. Sirve para criterios que RECORTAN el stock (año, color, carrocería):
+  // devolver el catálogo entero cuando el cliente pidió un subconjunto es el bug, y
+  // `cards_min` no lo caza porque 17 >= 1.
+  cards_max: (r, n) =>
+    (r.product_cards || []).length <= n
+      ? null
+      : `${r.product_cards.length} cards, máximo ${n} — devolvió de más para el criterio que pidió`,
+
   cards_empty: (r) =>
     (r.product_cards || []).length === 0 ? null : `esperaba 0 cards, hay ${r.product_cards.length}`,
   images_min: (r, n) =>
