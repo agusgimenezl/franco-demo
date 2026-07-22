@@ -1,0 +1,45 @@
+-- Agrega `descripcion`, `condicionantes` y `tamano` al metadata de autos_disponibles.
+-- Generado por scripts/gen-descripcion-sql.mjs desde stock.csv (2026-07-21). No editar a mano.
+--
+-- Idempotente: se puede correr las veces que haga falta.
+-- Aditivo: sólo suma tres claves al jsonb. NO toca `content` ni `embedding`, así que no
+-- hay que revectorizar ni regenerar embeddings.
+--
+-- BACKUP ANTES DE CORRER (por las dudas, aunque sea aditivo):
+--   CREATE TABLE autos_disponibles_backup_20260721 AS SELECT * FROM autos_disponibles;
+
+UPDATE autos_disponibles a
+SET metadata = a.metadata || jsonb_build_object(
+  'descripcion',    v.descripcion,
+  'condicionantes', v.condicionantes,
+  'tamano',         v.tamano
+)
+FROM (VALUES
+  (1, 'Sedán con baúl de verdad al precio de un hatchback, y el de menos kilómetros de su rango. Mecánica simple y repuesto en cualquier taller: es el auto de menor costo de mantenimiento del stock.', 'El 1.3 aspirado rinde bien en ciudad y ruta llana, pero va justo cargado con cinco personas en subida. No tiene cámara ni sensores de estacionamiento.', 'mediano'),
+  (2, 'Mecánica conocidísima: cualquier taller lo atiende y los repuestos son baratos y se consiguen en el día. Es el auto con menos sorpresas de mantenimiento del stock, y el 1.6 responde mejor que los motores chicos del segmento.', 'Equipamiento básico, sin pantalla ni cámara. Con 82.000 km conviene pedir el historial de service.', 'chico'),
+  (3, 'El más barato de todo el stock y, al mismo tiempo, el más potente de los autos chicos. Es el único de esa combinación: entrada de gama sin resignar andar en ruta, y ya viene con pantalla multimedia.', 'Es el de más kilómetros entre los chicos. No tiene cámara ni sensores.', 'chico'),
+  (4, 'El que menos combustible consume de los hatchbacks, con mecánica Toyota: es el argumento de reventa más fuerte de esta franja de precio, porque se deprecia menos que sus competidores.', 'No tiene pantalla multimedia y las terminaciones son austeras. Es un auto para durar, no para lucir.', 'chico'),
+  (5, 'Sedán mediano con caja automática y equipamiento completo, cámara y sensores incluidos. Toyota con caja CVT es de las combinaciones que mejor sostienen valor de reventa en el mercado local.', 'La caja CVT necesita su service específico, con aceite propio. No es la transmisión indicada si se piensa remolcar o cargar peso seguido.', 'mediano'),
+  (6, 'Prácticamente sin uso y con motor turbo de 150 HP, la mayor potencia entre los autos no pickup del stock. Anda como un 0 km sin la espera ni el costo de patentamiento de una unidad nueva.', 'Motor turbo: pide nafta de buena calidad y service al día. El consumo es más alto que el de un aspirado equivalente.', 'mediano'),
+  (7, 'El que menos consume de todo el stock, gracias al 1.2 turbo, y con los kilómetros más bajos entre los autos. Rinde como un auto chico y anda como uno mediano.', 'Es caja manual: si la búsqueda es automático, no es este. No tiene sensores de estacionamiento, aunque sí cámara.', 'mediano'),
+  (8, 'El más equipado de los hatchbacks del stock y el que mejor va en ruta del grupo: la suspensión europea se nota en viaje largo.', 'Kilometraje alto y repuestos de marca europea, más caros y a veces de pedido, a diferencia de Fiat, Volkswagen o Chevrolet.', 'chico'),
+  (9, 'La SUV más equipada por debajo de su rango: cámara, sensores y pantalla. Da altura para calle rota y cordón alto sin el costo ni el tamaño de una SUV grande.', 'Consumo claramente mayor al de un auto chico. Es caja manual.', 'mediano'),
+  (10, 'El auto más nuevo del stock fuera de las pickups y prácticamente sin uso. SUV automática con equipamiento completo: es la opción de quien quiere 0 km sin esperar.', 'Es el precio más alto fuera de las pickups. El 1.6 aspirado prioriza suavidad antes que empuje.', 'mediano'),
+  (11, 'La SUV más barata del stock. Despeje alto y baúl grande, pensada para ripio y camino roto: es la que mejor aguanta el uso rudo por lo que cuesta.', 'La potencia es justa para el tamaño: cargada y en subida hay que exigirla. Consumo alto y sin sensores de estacionamiento.', 'mediano'),
+  (12, 'La única SUV automática de su rango de precio, con equipamiento completo. Presencia y terminación por encima del promedio del segmento.', 'Es el de mayor consumo entre los autos nafta del stock. Service y repuestos por encima del promedio, y kilometraje considerable.', 'mediano'),
+  (13, 'Pickup 4x4 diésel con la mecánica de mejor reventa del segmento: es la que más valor sostiene con los años, y eso se recupera al momento de venderla.', 'Es la pickup con más kilómetros después de la Amarok: conviene revisar embrague, suspensión y el historial de service. Caja manual.', 'grande'),
+  (14, 'La pickup más nueva y más potente del stock, 4x4 diésel automática y con equipamiento completo. Es la única que combina tracción integral con caja automática: lista para trabajo pesado sin resignar confort de manejo.', 'Es el precio más alto del stock y también el mayor consumo. Motor y caja grandes: el mantenimiento acompaña.', 'grande'),
+  (15, 'La 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. La opción para quien necesita tracción real y no quiere pagar una unidad reciente.', 'Es la unidad con más kilómetros de todo el stock. Recomendable revisión mecánica previa a la compra, sobre todo de la cadena de distribución. Caja manual.', 'grande'),
+  (16, 'Pickup casi sin uso, con la misma potencia que la unidad más cara del stock por bastante menos plata. Buena ecuación para trabajo liviano y ruta.', 'Es 4x2, no 4x4: para barro, ripio suelto o campo no reemplaza a una tracción integral. Caja manual.', 'grande'),
+  (17, 'Utilitario con espacio de carga real y el consumo de un auto chico. Costo de patente y mantenimiento de utilitario, que es lo que lo hace rendir para quien trabaja con él.', 'Tiene sólo dos asientos: no sirve como auto familiar. Equipamiento básico, sin pantalla ni cámara.', 'mediano')
+) AS v(id, descripcion, condicionantes, tamano)
+WHERE (a.metadata->>'id')::int = v.id;
+
+-- Verificación: 17 filas, ninguna con descripcion NULL o vacía.
+SELECT (metadata->>'id')::int AS id,
+       metadata->>'marca' || ' ' || (metadata->>'modelo') AS auto,
+       metadata->>'tamano' AS tamano,
+       length(metadata->>'descripcion') AS len_desc,
+       length(metadata->>'condicionantes') AS len_cond
+FROM autos_disponibles
+ORDER BY 1;
