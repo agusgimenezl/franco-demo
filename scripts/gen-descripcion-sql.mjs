@@ -57,103 +57,103 @@ const AUTOS = {
     descripcion:
       'Sedán con baúl de verdad al precio de un hatchback, y el de menos kilómetros de su rango. Mecánica simple y repuesto en cualquier taller: es el auto de menor costo de mantenimiento del stock.',
     condicionantes:
-      'El 1.3 aspirado rinde bien en ciudad y ruta llana, pero va justo cargado con cinco personas en subida. No tiene cámara ni sensores de estacionamiento.',
+      'Con el 1.3, si el uso va a ser sobre todo ruta cargado y con cinco personas, conviene mirar algo de más motor. Para ciudad y viajes normales va sobrado.',
   },
   2: {
     descripcion:
       'Mecánica conocidísima: cualquier taller lo atiende y los repuestos son baratos y se consiguen en el día. Es el auto con menos sorpresas de mantenimiento del stock, y el 1.6 responde mejor que los motores chicos del segmento.',
     condicionantes:
-      'Equipamiento básico, sin pantalla ni cámara. Con 82.000 km conviene pedir el historial de service.',
+      'Es equipamiento básico: si pesa tener pantalla y cámara, el 208 o el Cronos las traen. Por los km, pedile al asesor el historial de service.',
   },
   3: {
     descripcion:
       'El más barato de todo el stock y, al mismo tiempo, el más potente de los autos chicos. Es el único de esa combinación: entrada de gama sin resignar andar en ruta, y ya viene con pantalla multimedia.',
     condicionantes:
-      'Es el de más kilómetros entre los chicos. No tiene cámara ni sensores.',
+      'Por los km que tiene, pedile al asesor el historial de service antes de decidir.',
   },
   4: {
     descripcion:
       'El que menos combustible consume de los hatchbacks, con mecánica Toyota: es el argumento de reventa más fuerte de esta franja de precio, porque se deprecia menos que sus competidores.',
     condicionantes:
-      'No tiene pantalla multimedia y las terminaciones son austeras. Es un auto para durar, no para lucir.',
+      'No trae pantalla multimedia: si eso pesa en la decisión, el 208 y el Cronos la tienen.',
   },
   5: {
     descripcion:
       'Sedán mediano con caja automática y equipamiento completo, cámara y sensores incluidos. Toyota con caja CVT es de las combinaciones que mejor sostienen valor de reventa en el mercado local.',
     condicionantes:
-      'La caja CVT necesita su service específico, con aceite propio. No es la transmisión indicada si se piensa remolcar o cargar peso seguido.',
+      'La caja CVT tiene su service específico. No es la transmisión indicada si vas a remolcar o cargar peso seguido.',
   },
   6: {
     descripcion:
       'Prácticamente sin uso y con motor turbo de 150 HP, la mayor potencia entre los autos no pickup del stock. Anda como un 0 km sin la espera ni el costo de patentamiento de una unidad nueva.',
     condicionantes:
-      'Motor turbo: pide nafta de buena calidad y service al día. El consumo es más alto que el de un aspirado equivalente.',
+      'Es turbo: pide nafta de buena calidad y service al día para rendir como corresponde.',
   },
   7: {
     descripcion:
       'El que menos consume de todo el stock, gracias al 1.2 turbo, y con los kilómetros más bajos entre los autos. Rinde como un auto chico y anda como uno mediano.',
     condicionantes:
-      'Es caja manual: si la búsqueda es automático, no es este. No tiene sensores de estacionamiento, aunque sí cámara.',
+      'Es caja manual: si buscás automático, el Vento es el equivalente del stock.',
   },
   8: {
     descripcion:
       'El más equipado de los hatchbacks del stock y el que mejor va en ruta del grupo: la suspensión europea se nota en viaje largo.',
     condicionantes:
-      'Kilometraje alto y repuestos de marca europea, más caros y a veces de pedido, a diferencia de Fiat, Volkswagen o Chevrolet.',
+      'Los repuestos son de marca europea: se consiguen, pero a veces son de pedido. Si priorizás repuesto en el día, el Gol o el Cronos.',
   },
   9: {
     descripcion:
       'La SUV más equipada por debajo de su rango: cámara, sensores y pantalla. Da altura para calle rota y cordón alto sin el costo ni el tamaño de una SUV grande.',
     condicionantes:
-      'Consumo claramente mayor al de un auto chico. Es caja manual.',
+      'Es caja manual: si buscás una SUV automática, el T-Cross o el Renegade.',
   },
   10: {
     descripcion:
       'El auto más nuevo del stock fuera de las pickups y prácticamente sin uso. SUV automática con equipamiento completo: es la opción de quien quiere 0 km sin esperar.',
     condicionantes:
-      'Es el precio más alto fuera de las pickups. El 1.6 aspirado prioriza suavidad antes que empuje.',
+      'El 1.6 aspirado prioriza suavidad antes que empuje: si buscás respuesta fuerte en ruta, el Vento turbo va mejor.',
   },
   11: {
     descripcion:
       'La SUV más barata del stock. Despeje alto y baúl grande, pensada para ripio y camino roto: es la que mejor aguanta el uso rudo por lo que cuesta.',
     condicionantes:
-      'La potencia es justa para el tamaño: cargada y en subida hay que exigirla. Consumo alto y sin sensores de estacionamiento.',
+      'La potencia es justa para el tamaño: si la vas a llevar cargada y en subida seguido, conviene una SUV de más motor.',
   },
   12: {
     descripcion:
       'La única SUV automática de su rango de precio, con equipamiento completo. Presencia y terminación por encima del promedio del segmento.',
     condicionantes:
-      'Es el de mayor consumo entre los autos nafta del stock. Service y repuestos por encima del promedio, y kilometraje considerable.',
+      'El service y los repuestos están por encima del promedio del segmento: conviene tenerlo en cuenta en el costo de mantenimiento.',
   },
   13: {
     descripcion:
       'Pickup 4x4 diésel con la mecánica de mejor reventa del segmento: es la que más valor sostiene con los años, y eso se recupera al momento de venderla.',
     condicionantes:
-      'Es la pickup con más kilómetros después de la Amarok: conviene revisar embrague, suspensión y el historial de service. Caja manual.',
+      'Por los km que tiene, conviene que el asesor te muestre el historial de service y el estado de embrague y suspensión.',
   },
   14: {
     descripcion:
       'La pickup más nueva y más potente del stock, 4x4 diésel automática y con equipamiento completo. Es la única que combina tracción integral con caja automática: lista para trabajo pesado sin resignar confort de manejo.',
     condicionantes:
-      'Es el precio más alto del stock y también el mayor consumo. Motor y caja grandes: el mantenimiento acompaña.',
+      'Es una pickup grande de trabajo: si el uso va a ser sobre todo ciudad, una SUV te va a resultar más práctica.',
   },
   15: {
     descripcion:
       'La 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. La opción para quien necesita tracción real y no quiere pagar una unidad reciente.',
     condicionantes:
-      'Es la unidad con más kilómetros de todo el stock. Recomendable revisión mecánica previa a la compra, sobre todo de la cadena de distribución. Caja manual.',
+      'Por los km que tiene, conviene una revisión mecánica previa, sobre todo de la cadena de distribución. El asesor la coordina sin cargo.',
   },
   16: {
     descripcion:
       'Pickup casi sin uso, con la misma potencia que la unidad más cara del stock por bastante menos plata. Buena ecuación para trabajo liviano y ruta.',
     condicionantes:
-      'Es 4x2, no 4x4: para barro, ripio suelto o campo no reemplaza a una tracción integral. Caja manual.',
+      'Es 4x2, no 4x4: para barro, ripio suelto o campo no reemplaza a una tracción integral.',
   },
   17: {
     descripcion:
       'Utilitario con espacio de carga real y el consumo de un auto chico. Costo de patente y mantenimiento de utilitario, que es lo que lo hace rendir para quien trabaja con él.',
     condicionantes:
-      'Tiene sólo dos asientos: no sirve como auto familiar. Equipamiento básico, sin pantalla ni cámara.',
+      'Tiene sólo dos asientos: no sirve como auto familiar.',
   },
 }
 
@@ -247,6 +247,24 @@ for (const [id, a] of Object.entries(AUTOS)) {
     if (/\b(usad[oa]s?|seminuev[oa]s?)\b/i.test(txt)) {
       fail(`auto ${id}: "${campo}" dice usado/seminuevo, y Franco no tiene que aclararlo`)
     }
+  }
+}
+
+// Un `condicionante` es un CRITERIO DE USO ("no sirve como familiar", "es 4x2, no 4x4"),
+// no un defecto. Franco es un vendedor: un dato que sólo resta y que además ya está a la
+// vista en la card —el precio, el consumo— no aporta nada y baja la venta. Agustina lo marcó
+// sobre dos capturas: "es la opción más cara y con mayor consumo del stock" y "su consumo es
+// un poco más alto que el de un aspirado equivalente".
+// La forma correcta es hacia adelante: para qué uso NO encaja, y qué del stock encaja mejor.
+for (const [id, a] of Object.entries(AUTOS)) {
+  const negativo = a.condicionantes.match(
+    /m[áa]s car[oa]|el m[áa]s caro|mayor consumo|consumo (es )?(m[áa]s )?alto|precio m[áa]s alto/i,
+  )
+  if (negativo) {
+    fail(
+      `auto ${id}: el condicionante es un negativo puro ("${negativo[0]}"), y encima ya está a la vista en la card. ` +
+        'Reescribilo como criterio de uso: para qué NO encaja y qué del stock encaja mejor.',
+    )
   }
 }
 
