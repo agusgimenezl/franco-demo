@@ -406,7 +406,16 @@ async function runCase(c) {
 
       result.lead = lead
       result.leadWaitMs = Date.now() - t0
-      for (const f of fails) result.failures.push(`lead (tras ${Math.round(result.leadWaitMs / 1000)}s): ${f}`)
+      // Agotar el margen y leer un dato equivocado son DOS fallas distintas con la misma
+      // pinta. Si se agotó, lo más probable es que el CRM todavía no haya escrito el último
+      // turno y la fila leída sea de un turno anterior — no un dato corrupto. Pasó una vez
+      // en 38 observaciones (baseline-v11: 31071ms contra una mediana de ~2.9s) y se leyó
+      // durante una sesión entera como "el CRM guardó el teléfono como nombre".
+      result.leadTimedOut = fails.length > 0 && result.leadWaitMs >= DEADLINE_MS
+      const prefijo = result.leadTimedOut
+        ? `lead TIMEOUT (${Math.round(result.leadWaitMs / 1000)}s sin que el CRM escriba; la fila leída puede ser de un turno anterior, no un dato corrupto)`
+        : `lead (tras ${Math.round(result.leadWaitMs / 1000)}s)`
+      for (const f of fails) result.failures.push(`${prefijo}: ${f}`)
     }
 
     if (c.history_checks?.length) {
