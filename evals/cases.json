@@ -220,7 +220,23 @@
             ["cards_xor_images"],
             ["photo_urls_canonical"],
             ["ends_with_question"],
-            ["no_apertura"]
+            ["no_apertura"],
+            ["text_not_matches", "(?i)(?:(?<!\\b(?:tu|su|un|una|el|la|los|las|mi) )\\busad[oa]s?\\b|\\bseminuev[oa]s?\\b)"]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "descripcion-que-aporta",
+      "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+      "turns": [
+        {
+          "say": "contame del renault duster",
+          "checks": [
+            ["text_matches", "(?i)despeje|ripio|camino roto|uso rudo"],
+            ["text_not_matches", "(?i)(?:(?<!\\b(?:tu|su|un|una|el|la|los|las|mi) )\\busad[oa]s?\\b|\\bseminuev[oa]s?\\b)"],
+            ["manual", "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Si menciona un condicionante, tiene que sonar a criterio honesto de vendedor, NO a lista de defectos"]
           ]
         }
       ]
@@ -265,20 +281,30 @@
 
     {
       "id": "no-inventar-datos-del-cliente",
-      "bug": "PENDIENTE #1 — alucinó 'efectivo' y 'Ka automático'",
+      "bug": "PENDIENTE #1 — alucinó 'efectivo' y 'Ka automático'. DOS correcciones de instrumento, las dos medidas: (1) el check vivía SOLO en el turno 3, y la invención nace antes — se vio en turno 1 y turno 2; (2) prohibía el substring 'en efectivo' a secas, que da FALSO POSITIVO con la pregunta legítima ('tenés un monto aproximado en efectivo para sumar?'), que es justo lo que Franco DEBE hacer cuando no sabe el presupuesto. Lo que es bug es AFIRMAR que el cliente tiene efectivo ('tu efectivo', 'podrías cubrir en efectivo'), no PREGUNTARLE. Con el check a secas la tasa medía ~12%; con el patrón de afirmación sobre todos los turnos, la tasa real antes del fix era 5/12 (42%).",
       "turns": [
-        { "say": "hola, quiero cambiar mi auto por algo más nuevo", "checks": [] },
+        {
+          "say": "hola, quiero cambiar mi auto por algo más nuevo",
+          "checks": [
+            ["text_not_matches", "(?i)(tu|su) efectivo"],
+            ["text_not_matches", "(?i)(cubrir|cubre|cubrís|cubren|alcanza|alcanzan)[^.?!]{0,40}en efectivo"]
+          ]
+        },
         {
           "say": "tengo un ford ka 2013 con 100k kilometros, es manual",
           "checks": [
             ["text_not_matches", "(?i)\\bka\\b[^.!?]{0,60}autom"],
-            ["manual", "NO debe asumir que el cliente tiene efectivo (nunca lo dijo) ni que el Ka es automático (dijo manual)"]
+            ["text_not_matches", "(?i)(tu|su) efectivo"],
+            ["text_not_matches", "(?i)(cubrir|cubre|cubrís|cubren|alcanza|alcanzan)[^.?!]{0,40}en efectivo"],
+            ["manual", "NO debe asumir que el cliente tiene efectivo (nunca lo dijo) ni que el Ka es automático (dijo manual). PREGUNTARLE si tiene efectivo SÍ es correcto"]
           ]
         },
         {
           "say": "y qué me podés ofrecer?",
           "checks": [
-            ["text_not_contains", ["tu efectivo", "en efectivo", "automático"]],
+            ["text_not_contains", ["automático"]],
+            ["text_not_matches", "(?i)(tu|su) efectivo"],
+            ["text_not_matches", "(?i)(cubrir|cubre|cubrís|cubren|alcanza|alcanzan)[^.?!]{0,40}en efectivo"],
             ["manual", "Sigue sin inventar forma de pago"]
           ]
         }
@@ -313,16 +339,20 @@
 
     {
       "id": "nombre-con-apostrofe",
-      "bug": "#8 — comillas simples rompiendo el INSERT. ESTE ES EL TEST DE C1.",
+      "bug": "#8 — comillas simples rompiendo el INSERT. ESTE ES EL TEST DE C1. Lo que detecta C1 es que el lead SE GUARDE (field_not_matches ^\\+54): si la comilla rompe el INSERT no hay fila y queda el placeholder del teléfono. Que el apóstrofe sobreviva literal NO se exige: es cosmético para una demo y da rojos que no significan nada. Por eso los patrones son (?i)d.?angelo y matchean D'Angelo, DAngelo y D Angelo por igual.",
       "turns": [
         { "say": "hola, me interesa comprar un auto", "checks": [] },
         {
           "say": "soy Martín D'Angelo, quiero que me contacte un asesor",
-          "checks": [["manual", "Debe confirmar que un asesor lo contacta"]]
+          "checks": [
+            ["text_not_matches", "(?i)d.?angelo"],
+            ["manual", "Debe confirmar que un asesor lo contacta"],
+            ["manual", "TRATO: por el nombre de pila ('Martín'), sin el apellido. El apellido igual se guarda — lo verifica lead_checks"]
+          ]
         }
       ],
       "lead_checks": [
-        ["field_matches", "nombre", "D'Angelo"],
+        ["field_matches", "nombre", "(?i)d.?angelo"],
         ["field_not_matches", "nombre", "^\\+54"]
       ]
     },
@@ -332,10 +362,13 @@
       "bug": "CONTROL de nombre-con-apostrofe: idéntico pero sin comilla. Si este pasa y el otro falla, la causa ES la comilla. Si ambos fallan, el problema está en la cadena del CRM, no en el escapado.",
       "turns": [
         { "say": "hola, me interesa comprar un auto", "checks": [] },
-        { "say": "soy Martin Dangelo, quiero que me contacte un asesor", "checks": [] }
+        {
+          "say": "soy Martin Dangelo, quiero que me contacte un asesor",
+          "checks": [["text_not_matches", "(?i)d.?angelo"]]
+        }
       ],
       "lead_checks": [
-        ["field_matches", "nombre", "Dangelo"],
+        ["field_matches", "nombre", "(?i)d.?angelo"],
         ["field_not_matches", "nombre", "^\\+54"]
       ]
     },
@@ -468,7 +501,9 @@
           "checks": [
             ["text_not_contains", ["Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido"]],
             ["text_not_matches", "(?i)quer[eé]s que (un asesor|te contacte|te prepare)"],
-            ["manual", "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"]
+            ["text_not_contains", ["Miguez"]],
+            ["manual", "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"],
+            ["manual", "TRATO: debe dirigirse por el nombre de pila ('Listo Julieta'), no por nombre y apellido. El apellido se PIDE y se GUARDA (ver lead_checks), pero no se le dice en la cara"]
           ]
         }
       ],
