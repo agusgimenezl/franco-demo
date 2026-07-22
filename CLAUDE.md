@@ -17,9 +17,10 @@ qué está abierto, qué se decidió a conciencia y qué deuda es intencional.
 
 ---
 
-## Las 5 trampas de n8n
+## Las trampas
 
-Cada una costó semanas de diagnóstico equivocado. No las redescubras.
+Las 5 primeras son de n8n y cada una costó semanas de diagnóstico equivocado. La 6 y la 7
+son del prompt y costaron tres intentos fallidos en un día. No las redescubras.
 
 1. **Un campo solo se evalúa como expresión si arranca con `=`.** El `systemMessage` de
    Franco no lo tenía: sus 18 expresiones `{{ }}` eran texto literal y el agente nunca
@@ -35,6 +36,25 @@ Cada una costó semanas de diagnóstico equivocado. No las redescubras.
 5. **`gpt-4.1` tiene 30.000 TPM en esta organización.** Mandarle JSON crudo con URLs al
    agente CRM lo reventaba y se perdían leads al azar. Cuidar el volumen de tokens y dejar
    `retryOnFail` puesto.
+
+6. **En un prompt, el EJEMPLO CONCRETO le gana a la regla abstracta.** Si querés que Franco
+   deje de decir algo, no alcanza con prohibirlo: hay que **reemplazar el guion que se lo
+   enseña**. Pasó tres veces en un día, siempre igual — el modelo copia lo que más se parece
+   a lo que está por escribir, no arbitra entre "regla" y "ejemplo".
+
+   | Bug | Lo que había en el prompt | Lo que Franco hacía |
+   |---|---|---|
+   | "efectivo" (v16) | `"tu efectivo cubre el total de estas"` como guion | Lo recitaba aunque no hubiera presupuesto |
+   | condicionantes (v18→v20→v23) | `"tené en cuenta que la potencia es justa"` como ejemplo | Abría tres de tres respuestas con esa frase |
+   | permuta (v25→v26) | `"Me dejás tu nombre y apellido, y qué auto entregarías: marca, modelo, año y km?"` | El formulario de 6 campos, textual |
+
+   En los tres casos se intentó primero una **prohibición arriba del guion** y no funcionó.
+   Lo que sí funcionó fue reescribir el guion. Corolario para escribir el fix: si la regla
+   nueva no tiene un ejemplo, va a perder contra el ejemplo viejo que quedó abajo.
+
+7. **Antes de culpar al prompt, fijate si la frase la inyecta el código.** El guard de cierre
+   de `Armar respuesta` agrega una pregunta comercial y una de sus variantes ofrece un
+   asesor. Más de una vez se atribuyó a Franco algo que escribía ese nodo.
 
 ```bash
 node scripts/state-sync.mjs --check    # verifica las 5 automáticamente
