@@ -1,0 +1,54 @@
+-- Tabla de referencia de valores de usados para la permuta.
+-- Generado por scripts/gen-valores-usados.mjs desde valores_usados.csv (2026-07-23). No editar a mano.
+--
+-- Idempotente: crea la tabla si no existe, la vacía y la recarga. Correr las veces que haga falta.
+-- El valor es ancla 2020; la consulta lo ajusta por año. Fallback por categoría (chico/mediano/grande).
+
+CREATE TABLE IF NOT EXISTS valores_usados_referencia (
+  id             serial PRIMARY KEY,
+  marca          text   NOT NULL,
+  modelo         text   NOT NULL,
+  categoria      text   NOT NULL,
+  valor_ref_2020 bigint NOT NULL,
+  fuente         text
+);
+
+DELETE FROM valores_usados_referencia;
+
+INSERT INTO valores_usados_referencia (marca, modelo, categoria, valor_ref_2020, fuente) VALUES
+  ('Volkswagen', 'Gol Trend', 'chico', 15550000, 'Infobae 2026-07 (2020)'),
+  ('Volkswagen', 'Gol', 'chico', 11100000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Ford', 'Ka', 'chico', 12696000, 'Infobae 2026-07 (2020)'),
+  ('Fiat', 'Palio', 'chico', 11164000, 'Infobae 2026-07 (2020)'),
+  ('Fiat', 'Uno', 'chico', 10400000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Peugeot', '208', 'chico', 14606000, 'Infobae 2026-07 (2020)'),
+  ('Peugeot', '207', 'chico', 9500000, 'estimado por segmento'),
+  ('Toyota', 'Etios', 'chico', 16800000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Chevrolet', 'Onix', 'chico', 14000000, 'estimado por segmento'),
+  ('Chevrolet', 'Corsa', 'chico', 8000000, 'estimado por segmento'),
+  ('Chevrolet', 'Classic', 'chico', 9500000, 'Infobae 2026-07 (2016 ajustado)'),
+  ('Renault', 'Sandero', 'chico', 13400000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Renault', 'Clio', 'chico', 9000000, 'estimado por segmento'),
+  ('Citroen', 'C3', 'chico', 12000000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Nissan', 'March', 'chico', 13600000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Volkswagen', 'Up', 'chico', 14400000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Volkswagen', 'Fox', 'chico', 12000000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Volkswagen', 'Polo', 'chico', 16000000, 'estimado por segmento'),
+  ('Ford', 'Fiesta', 'chico', 12000000, 'estimado por segmento'),
+  ('Fiat', 'Cronos', 'mediano', 14000000, 'estimado por segmento'),
+  ('Volkswagen', 'Vento', 'mediano', 18000000, 'estimado por segmento'),
+  ('Toyota', 'Corolla', 'mediano', 20545000, 'Infobae 2026-07 (2020)'),
+  ('Renault', 'Logan', 'mediano', 13500000, 'LA NACION 2026-03 (<=2015 escalado)'),
+  ('Ford', 'Focus', 'mediano', 14000000, 'estimado por segmento'),
+  ('Chevrolet', 'Cruze', 'mediano', 18000000, 'estimado por segmento'),
+  ('Ford', 'EcoSport', 'grande', 18472000, 'Infobae 2026-07 (2020)'),
+  ('Renault', 'Duster', 'grande', 16000000, 'estimado por segmento'),
+  ('Toyota', 'Hilux', 'grande', 22468000, 'Infobae 2026-07 (2020)'),
+  ('Ford', 'Ranger', 'grande', 18409000, 'Infobae 2026-07 (2020)'),
+  ('Volkswagen', 'Amarok', 'grande', 19098000, 'Infobae 2026-07 (2020)');
+
+-- Verificación: filas cargadas, y valor de referencia por categoría (para el fallback).
+SELECT categoria, count(*) AS modelos, round(avg(valor_ref_2020)) AS promedio_2020
+FROM valores_usados_referencia
+GROUP BY categoria
+ORDER BY 1;
