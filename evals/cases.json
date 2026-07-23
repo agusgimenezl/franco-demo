@@ -91,7 +91,7 @@
 
     {
       "id": "km-con-presupuesto",
-      "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (58k/82k/88k/92k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+      "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
       "turns": [
         {
           "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
@@ -102,8 +102,8 @@
         {
           "say": "prefiero algo con menos de 50.000 km",
           "checks": [
-            ["text_matches", "(?i)ranger|s10|t-cross|vento|onix"],
-            ["manual", "Los ÚNICOS con menos de 50.000 km son Onix, T-Cross, Vento, Ranger y S10, todos por encima de 13 millones. Debe mostrarlos igual aclarando que se van de presupuesto (con permuta/financiación), NO repetir los de 58k+ km que ya había ofrecido."]
+            ["text_matches", "(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla"],
+            ["manual", "Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido."]
           ]
         }
       ]
@@ -253,15 +253,15 @@
 
     {
       "id": "filtro-por-anio",
-      "bug": "captura 1: pidió 'autos usados de los últimos 4 años' y Franco devolvió los 17, incluidos 2018 y 2019. NO es del prompt: las tools no tienen NINGÚN parámetro de año (sólo precio_min, precio_max, km_max), así que el criterio es infiltrable y Franco muestra todo. Con el stock actual y 2026 corriente, 'últimos 4 años' = 2022 en adelante = Ranger 2025, S10 2024, T-Cross 2025, Vento 2024, Onix 2024.",
+      "bug": "captura 1: pidió 'autos usados de los últimos 4 años' y Franco devolvió los 17, incluidos 2018 y 2019. NO es del prompt: las tools no tienen NINGÚN parámetro de año (sólo precio_min, precio_max, km_max), así que el criterio es infiltrable y Franco muestra todo. Con el stock nuevo (2026-07-23) y 2026 corriente, 'últimos 4 años' = 2022 en adelante = T-Cross 2025, 208 2025, Ranger 2024, Onix 2024, Vento 2023, Duster 2023, Cronos 2023, S10 2022, Corolla 2022 (9 autos).",
       "turns": [
         {
           "say": "Hola, quiero averiguar autos usados de los últimos 4 años por favor",
           "checks": [
             ["text_matches", "(?i)ranger|s10|t-cross|vento|onix"],
-            ["text_not_matches", "(?i)\\b(2018|2019|2020)\\b"],
-            ["cards_max", 6],
-            ["manual", "Sólo los de 2022 en adelante. Si no puede filtrar por año debe decirlo, nunca devolver el catálogo entero como si cumpliera"]
+            ["text_not_matches", "(?i)\\b(2017|2018|2019|2020|2021)\\b"],
+            ["cards_max", 9],
+            ["manual", "Sólo los de 2022 en adelante (9 autos: T-Cross, 208, Ranger, Onix, Vento, Duster, Cronos, S10, Corolla). Excluir 2021 y anteriores. Si no puede filtrar por año debe decirlo, nunca devolver el catálogo entero como si cumpliera"]
           ]
         }
       ]
@@ -339,7 +339,7 @@
         {
           "say": "tengo un auto para entregar y quiero que me contacte un asesor",
           "checks": [
-            ["text_matches", "(?i)(modelo|marca|a[ñn]o|km|kil[oó]metr)[^.?!]{0,90}(usado|entreg|tu auto)|(usado|entreg|tu auto)[^.?!]{0,90}(modelo|marca|a[ñn]o|km|kil[oó]metr)"],
+            ["text_matches", "(?i)(modelo|marca|a[ñn]o|km|kil[oó]metr)[^.!]{0,90}(usado|entreg|tu auto)|(usado|entreg|tu auto)[^.!]{0,90}(modelo|marca|a[ñn]o|km|kil[oó]metr)"],
             ["max_preguntas", 2],
             ["manual", "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"]
           ]
@@ -349,7 +349,8 @@
           "checks": [
             ["text_not_matches", "(?i)quer[eé]s que (un asesor|te contacte|te prepare)"],
             ["cards_empty"],
-            ["manual", "Ya pidió asesor y ya dio todos los datos: confirma y CIERRA. No debe relanzar la narrativa de permuta con lista de autos y cards — eso le dice al cliente que no lo escucharon"]
+            ["text_not_matches", "(?i)(tu nombre|nombre y apellido)[^.!?]{0,20}\\?"],
+            ["manual", "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."]
           ]
         }
       ],
@@ -357,6 +358,139 @@
         ["field_matches", "nombre", "(?i)julieta\\s+miguez"],
         ["field_matches", "descripcion_usado", "(?i)gol.*2015"],
         ["field_equals", "entrega", "Sí"]
+      ]
+    },
+
+    {
+      "id": "asesor-ve-estado-no-km",
+      "bug": "#2 (captura 2): al recibir un usado con km, Franco dice 'un asesor necesita ver el estado Y LOS KILÓMETROS'. Los km los DIO el cliente; el asesor revisa el ESTADO/condición en persona, no los km. Fuente: punto 4 de ## Permuta ('Explicá por qué no cotizás el usado en vivo'). Reproducido offline en outputs de v33 y v34 (la frase se recita casi textual).",
+      "turns": [
+        {
+          "say": "hola, tengo 10 millones y un Ford Ka 2013 con 100.000 km para entregar. qué opciones tengo?",
+          "checks": [
+            ["text_not_matches", "(?i)estado y (los |las )?(kil[oó]metr|km)"],
+            ["manual", "El asesor revisa el ESTADO/condición del usado en persona, no los km (esos ya los dio el cliente). No debe decir que un asesor 've el estado Y los kilómetros': solo el estado en persona."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "derivacion-completada-nueva-pregunta",
+      "bug": "#1 MEGA (captura 1, de v33, NO cerrado): el cliente aceptó el asesor, dio 'Natalia Giménez Lascano', Franco confirmó y cerró. Después preguntó otra cosa (financiación) y Franco (a) volvió a OFRECER el asesor y (b) al aceptar, volvió a PEDIR 'me dejás tu nombre y apellido?' teniéndolo ya en el lead. estado_cliente va un turno atrasado, pero acá el nombre está hace varios turnos y Franco igual re-pregunta -> también es adherencia de prompt.",
+      "turns": [
+        { "say": "hola, me interesa el toyota etios. quiero que me contacte un asesor", "checks": [] },
+        {
+          "say": "Natalia Giménez Lascano",
+          "checks": [
+            ["text_not_matches", "(?i)(tu nombre|nombre y apellido)[^.!?]{0,20}\\?"],
+            ["manual", "Confirma que un asesor la contacta y la trata por el nombre de pila ('Natalia'). No re-ofrece asesor ni re-pide datos."]
+          ]
+        },
+        {
+          "say": "buenísimo. una consulta: financian? cuánto?",
+          "checks": [
+            ["text_matches", "(?i)50\\s?%|financ"],
+            ["text_not_matches", "(?i)(quer[eé]s|te gustar[ií]a|prefer[ií]s)[^.?!]{0,60}(un asesor|que te contacte|una cotizaci)"],
+            ["manual", "Ya está en derivación (aceptó y dio nombre). Responde la FAQ (financian hasta 50%). NO debe re-ofrecer el asesor: ya está aceptado."]
+          ]
+        },
+        {
+          "say": "dale, perfecto. sí, que me contacte el asesor entonces",
+          "checks": [
+            ["text_not_matches", "(?i)(tu nombre|nombre y apellido)[^.!?]{0,20}\\?"],
+            ["text_matches", "(?i)natalia"],
+            ["manual", "EL BUG: ya dio el nombre (Natalia Giménez Lascano) hace 2 turnos y está en el lead. NO debe re-pedirlo. Debe confirmar que ya la va a contactar un asesor, tratándola por el nombre de pila."]
+          ]
+        }
+      ],
+      "lead_checks": [
+        ["field_matches", "nombre", "(?i)natalia\\s+gim[eé]nez"],
+        ["field_equals", "estado", "Requiere asesor"]
+      ]
+    },
+
+    {
+      "id": "financiacion-documentacion",
+      "bug": "FEATURE (demo financiación): Franco debe poder informar qué documentación necesita el comprador para financiar con prenda (DNI, CUIT/CUIL, Formulario 08, verificación, demostración de ingresos). Hoy no está en el FAQ → Franco deriva o improvisa. Va al empresa_faq del Config.",
+      "turns": [
+        {
+          "say": "qué papeles necesito para comprar financiado con prenda?",
+          "checks": [
+            ["text_matches", "(?i)\\bdni\\b|cuit|cuil|formulario 08"],
+            ["manual", "Debe listar la documentación del comprador (DNI, CUIT/CUIL, Formulario 08, ingresos) en tono conversacional, sin montos en pesos, y puede cerrar diciendo que el asesor confirma según el caso."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "financiacion-gastos",
+      "bug": "FEATURE (demo financiación): además del precio, Franco debe poder informar los gastos de la operación (aranceles del Registro, sellos, inscripción de prenda, gestoría, seguro) SIN dar montos en pesos. Hoy no está en el FAQ.",
+      "turns": [
+        {
+          "say": "aparte del precio del auto, qué otros gastos tiene comprarlo financiado?",
+          "checks": [
+            ["text_matches", "(?i)sellos|aranceles|gestor[ií]a|inscripci[oó]n de"],
+            ["manual", "Debe nombrar los gastos del rubro (aranceles registrales, sellos, inscripción de prenda, gestoría, seguro) sin montos exactos en pesos, y aclarar que el asesor arma el detalle."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "financiacion-preperfilado",
+      "bug": "FEATURE (demo financiación): al consultar por financiación, Franco adelanta trabajo al asesor pre-perfilando: pregunta anticipo (monto o usado) y en cuántas cuotas. Hoy no lo hace.",
+      "turns": [
+        {
+          "say": "me interesa financiar un auto, cómo es?",
+          "checks": [
+            ["text_matches", "(?i)cu[aá]nt[ao]s? cuotas"],
+            ["text_matches", "(?i)de anticipo|anticipo|cu[aá]nto.{0,25}(entreg|adelant|inicial|poner)"],
+            ["manual", "Responde la condición (50%, cuotas) y pre-perfila para el asesor: pregunta anticipo (monto o usado a entregar) y en cuántas cuotas. Sin montos en pesos."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "asesor-en-marcha-no-reofrece",
+      "bug": "captura (Pato Garcia): pidió asesor (T1), dio el nombre (T2), Franco confirmó y cerró. En T3 pregunta financiación + una Hilux puntual; Franco muestra la Hilux y CIERRA con 'querés que te conecte con un asesor para que te arme una simulación?' — RE-OFRECE conectar con el asesor cuando YA está en marcha. Debe reflejar que el asesor ya se va a contactar: 'como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?'. Dispara por el cierre del Paso 3 (línea 163) sobre un auto puntual, con la derivación ya aceptada.",
+      "turns": [
+        { "say": "me gustaria que me pases con un asesor", "checks": [] },
+        {
+          "say": "Pato Garcia",
+          "checks": [
+            ["text_not_matches", "(?i)(tu nombre|nombre y apellido)[^.!?]{0,20}\\?"],
+            ["manual", "Confirma que un asesor lo contacta, trato por nombre de pila (Pato)."]
+          ]
+        },
+        {
+          "say": "me gustaria saber como es el tema de la financiación y si tienen alguna hilux",
+          "checks": [
+            ["text_matches", "(?i)50\\s?%|financ"],
+            ["text_not_matches", "(?i)(te (conecte|contacte|pase|derive|comunique)|conectarte|quer[eé]s hablar)[^.?!]{0,30}(con )?(un )?asesor"],
+            ["manual", "EL BUG: el asesor YA está en marcha (Pato lo pidió y dio el nombre). Al cerrar el detalle de la Hilux NO debe re-ofrecer 'conectarte con un asesor' como acción nueva; debe reflejar que el asesor ya se va a contactar ('como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?')."]
+          ]
+        }
+      ],
+      "lead_checks": [
+        ["field_equals", "estado", "Requiere asesor"]
+      ]
+    },
+
+    {
+      "id": "recomendacion-sin-redundancia",
+      "bug": "#4: al recomendar VARIOS autos por criterio blando ('económico y confiable'), Franco abre repitiendo el criterio ('te recomiendo estas opciones de autos usados de los últimos 4 años') y cierra repitiéndolo otra vez ('combinan economía y confiabilidad... y están dentro de los últimos 4 años'). Debe ser concreto: intro corto SIN eco del criterio, una línea por auto con UN beneficio, y cierre simple ('te interesa alguno o preferís que te muestre otras?'). Ni # No repitas lo que ya hiciste (v30) ni recomendacion-por-tamano cubren este caso.",
+      "turns": [
+        {
+          "say": "qué autos usados me recomendás que sean económicos y confiables?",
+          "checks": [
+            ["cards_min", 1],
+            ["text_not_matches", "(?i)(todos|todas|ideales para|combinan|en conjunto|en resumen|todas estas|todas ellas)[^.!?]{0,50}(econom|confiab|segur)"],
+            ["manual", "El bug real (v36-medido, aceptado por Agustina): NO cerrar con un resumen que repite el criterio ('todos son económicos', 'ideales para economizar', 'combinan economía y confiabilidad'). Un eco breve en el intro ('estas te pueden servir por ser económicas') es aceptable. Ideal: intro directo, lista con motivo por auto, cierre simple."]
+          ]
+        }
       ]
     },
 

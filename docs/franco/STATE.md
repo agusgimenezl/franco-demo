@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v33.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v39.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,17 +14,142 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 35 casos · baseline-v23.json → 31/32 |
+| Evals | 42 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
 
-> ⚠️ **v33 está en producción pero SIN baseline propia.** El "baseline-v23.json → 31/32" de
-> arriba es el último que existe: state-sync toma el de número más alto, y no se corrió la
-> suite completa desde v23. **Primer paso de la próxima sesión: correr la suite y guardar
-> `baseline-v33`.** Entre v24 y v33 se tocaron el prompt de Franco, el del CRM, las tools y
-> `Armar respuesta` — hay 10 versiones sin una corrida completa que las cubra juntas.
+> **Sesión 2026-07-23. REDISEÑO DE STOCK (datos, no workflow). APLICADO EN SUPABASE Y VALIDADO.**
+> Pedido de Agustina: redistribuir año/km/precio de los 17 autos para reflejar un mercado más real,
+> **manteniendo marca y modelo** (atados a las fotos, `foto-{id}-N.webp`). Cambio de DATOS, no de
+> workflow: no genera versión nueva de `franco-n8n`. Se hizo por el pipeline de `stock.csv` (los
+> generadores lo leen y verifican).
+>
+> **Lo que se tocó:** (1) `stock.csv` — año/km/precio de los 17 + condición del 208 (2025/8k →
+> Seminuevo) y la S10 (2022/68k → Usado), que quedaban incoherentes (condición es vestigial: sale de
+> `ficha_completa` y no la leen las tools, pero se corrigió por honestidad del dato fuente). (2) **3
+> descripciones curadas quedaron MINTIENDO** y las cazó el verificador de superlativos de
+> `gen-descripcion-sql.mjs`: **Onix** ("km más bajos" → ahora T-Cross 5.2k y 208 8k son menores),
+> **T-Cross** ("el más nuevo fuera de pickups" → empata con 208 2025), **Duster** ("la SUV más barata"
+> → ahora EcoSport 19.8M es más barata). Reescritas + 2 absolutas que el verificador NO caza (**Vento**
+> "prácticamente sin uso" con 24k, **S10** "casi sin uso" con 68k). CLAIMS actualizados: se quitaron 2
+> y se cambió el de T-Cross por `10 tiene los km más bajos del stock` (verdadero). Verificado
+> `✓ 19 superlativos`. (3) `content` se reescribe junto con año/km/precio: `Detalle auto` devuelve
+> `ficha_completa` = `content` tal cual, que tiene año/km/precio embebidos — sin esto Franco daría el
+> precio nuevo (metadata) y el viejo (ficha) en la misma llamada.
+>
+> **Por qué NO se revectoriza** (no se corre `revectorizar_con_consumo_v2.py`): (a) `Buscar auto` dejó
+> de ser vectorial en v8, la columna `embedding` ya no se usa para recuperar; (b) el `armar_metadata`
+> del .py NO incluye color/descripcion/condicionantes/tamano — correrlo los BORRARÍA. El nuevo
+> `scripts/gen-stock-update-sql.mjs` emite un UPDATE aditivo idempotente (pisa solo las 4 claves que
+> cambian + reescribe content), mismo patrón que color/descripcion.
+>
+> **Evals realineados** (tenían valores viejos cableados): `km-con-presupuesto` (ahora el único
+> <50k km Y ≤13M es el Etios 12.5M; el resto <50k km se va de presupuesto) y `filtro-por-anio`
+> (últimos 4 años = 2022+ = **9 autos** ahora, no 5; se agregó 2021 al `text_not_matches` y `cards_max`
+> 6→9). **Corrido 2026-07-23 contra n8n: `filtro-por-anio`, `km-con-presupuesto`,
+> `presupuesto-aproximado`, `rango-14-20`, `presupuesto-en-dolares` → 5/5 ok.** Manual: km-con-presupuesto
+> lidera con el Etios (único <50k km Y ≤13M); filtro-por-anio arranca por Ranger 2024 y no cuela ningún
+> 2017-2021 (cards_max 9 pasó). Sin expectativas viejas que reajustar. Los casos de permuta 8/10/12M no
+> se corrieron (miden flujo, no autos puntuales); ojo que ya nada entra ≤8M (Fiesta 8.2M es el piso).
+>
+> **Aplicado en Supabase** (backup `autos_disponibles_backup_20260723`): se corrieron
+> `scripts/stock-update-metadata.sql` (base + content) y `scripts/descripcion-metadata.sql` (regenerado).
+> **Cards verificadas por código:** `Hidratar autos` (v37, línea 305) arma título+precio desde
+> `metadata->>'año'`/`->>'precio'` fresco cada turno → se actualizan solas, foto sigue atada al id.
+> **Falta:** commit (`stock.csv scripts/ evals/cases.json docs/franco/STATE.md`).
+
+> **Sesión 2026-07-22 (cerrada). Producción: v37, alineado** (state-sync apunta a
+> `franco-n8n-v37.json`; el puntero de producción está hardcodeado en `scripts/state-sync.mjs`
+> línea 18 — actualizarlo al desplegar cada versión). Se pegaron y verificaron byte a byte, en
+> orden, v34 → v35 → v36 → v37. Resumen de la tanda:
+>
+> **Baseline-v33 corrida: `evals/baseline-v33.json` → 30/35.** Triage de las 5 fallas:
+> - `control-nombre-sin-apostrofe`: **ruido** (lead TIMEOUT 31s, cola de latencia del CRM, no dato corrupto — trampa 10).
+> - `no-repreguntar-asesor`: la cola #1 conocida-abierta; su `lead_check estado="Requiere asesor"` **pasa** (v32 aguanta).
+> - `permuta-una-pregunta-por-vez` (0/4) y `derivacion-pide-datos-del-usado` (0/4): **regresiones reales** del clúster permuta/derivación (STATE las daba por cerradas en v23/v29). `permuta-mas-efectivo` flaky 2/4.
+>
+> **v34 (`franco-n8n-v34.json`, PEGADO Y VERIFICADO byte a byte 2026-07-22):** fix del pedido
+> del nombre en T3 de la progresión de permuta. Medido: `permuta-una-pregunta-por-vez` name-ask
+> **0/4 → 2/3** (mejora, no cerrado); controles `permuta-mas-efectivo` **2/4 → 3/3**,
+> `derivacion-no-repite-asesor`/`detalle-un-auto-fotos`/`cierre-conversacion` **3/3**. Sin
+> regresiones. Agustina decidió aceptarlo así y seguir con otros fixes.
+>
+> **Instrumento arreglado:** el check T2 de `derivacion-pide-datos-del-usado` usaba `[^.?!]` y
+> daba **falso positivo** cuando Franco preguntaba "qué auto entregás**?** Marca..." (el `?`
+> cortaba el match). Cambiado a `[^.!]`, verificado por replay offline sobre 4 T2 guardados
+> (Franco contestaba bien las 4 veces). Esa parte de la falla era del check, no de Franco.
+>
+> **v36 (`franco-n8n-v36.json`, PEGADO Y MEDIDO 2026-07-22):** apila dos fixes de secciones
+> distintas, cada uno con su eval. Medido `evals/v36-medicion.json`:
+> - **#2 RESUELTO** (`scripts/asesor-revisa-estado-no-km.mjs`, v34→v35): el asesor "ve el estado
+>   del auto en persona" (ya no "el estado y los kilómetros"). `asesor-ve-estado-no-km` **3/3**;
+>   verificación fuerte estructural (la frase se borró del prompt, no puede recitarse).
+> - **#4 RESUELTO (core)** (`scripts/recomendacion-concreta.mjs`, v35→v36): recomendación con
+>   molde (intro directo, lista con motivo, cierre simple). **El bookending desapareció 3/3** (el
+>   bug de la captura: repetir el criterio al inicio Y al final). Queda un eco leve de intro en
+>   2/3 ("estas te pueden servir por ser económicas") que **Agustina aceptó** como natural. El
+>   check `recomendacion-sin-redundancia` se relajó para medir el bug real (resumen de cierre que
+>   repite el criterio) y no el eco de intro: **v36 pasa 3/3**, y sigue cazando el bookend de v34.
+>   Controles `recomendacion-por-tamano`/`detalle-un-auto-fotos` **3/3**, sin regresiones.
+>
+> **#1 (re-pide el nombre teniéndolo): NO se reproduce en v34.** El eval nuevo
+> `derivacion-completada-nueva-pregunta` (derivación aceptada → da nombre → nueva pregunta FAQ →
+> re-acepta) da **2/3** — Franco confirma sin re-pedir las 3 veces; el único rojo es cosmético
+> (1/3 no la nombró "Natalia"). El lead queda `estado=Requiere asesor` + nombre correcto 3/3.
+> El laburo de v30–v33 lo mitigó más de lo que STATE le acreditaba. **Para reproducir hace falta
+> la captura exacta** (¿la nueva pregunta era sobre cuotas de un auto puntual? ¿había permuta?
+> ¿el re-pedido fue apenas dado el nombre, con estado_cliente atrasado?). Sin reproducir no se
+> arregla (regla de fierro). Eval queda como guardarraíl.
+>
+> **v37 (`franco-n8n-v37.json`, PEGADO Y MEDIDO 2026-07-22): regresión "derivación manda" RESUELTA.**
+> Medido `evals/v37-medicion.json`: `derivacion-pide-datos-del-usado` **0/4 (v33) → 1/3 (v36) → 3/3 (v37)**.
+> Controles `permuta-mas-efectivo` y `derivacion-no-repite-asesor` **3/3**. `permuta-una-pregunta-por-vez`
+> name-ask: 2/3 (v34) · 1/3 (v37 r3) · 3/5 (v37 r5) = **4/8 (50%) en v37** → es el mismo ~50-55%
+> inestable de v34, **v37 NO lo regresó** (el 1/3 era muestra chica). Sigue siendo el name-ask a
+> mejorar, ya decidido "dejar por ahora". Detalle:
+> `scripts/derivacion-manda-confirma-cierra.mjs` (v36→v37). Con el asesor ya pedido, al recibir
+> los datos del usado Franco relanzaba la permuta con 7-8 cards y a veces re-pedía el nombre ya
+> dado. Medido v36: `derivacion-pide-datos-del-usado` **1/3** (era 0/4 en v33). Causa trampa 6:
+> "LA DERIVACIÓN MANDA" decía "confirmás y cerrás" en abstracto, y el único ejemplo concreto de
+> cierre era sobre recibir el NOMBRE, no el usado → al llegar el usado Franco caía en la permuta.
+> Fix: se le da a "LA DERIVACIÓN MANDA" el ejemplo concreto que falta (recibir usado → UNA
+> burbuja que confirma nombrando el usado y cierra, `auto_ids` VACÍO, sin re-pedir el nombre).
+> Al no mandar cards, el guard de `Armar respuesta` tampoco dispara (trampa 7 desactivada por el
+> prompt). El eval se endureció: check nuevo en T3 que caza el re-pedido del nombre; reproduce
+> 1/3 en v36. **Al pegar v37, medir:** `derivacion-pide-datos-del-usado` (objetivo verde) +
+> controles `permuta-una-pregunta-por-vez`, `derivacion-no-repite-asesor`, `permuta-mas-efectivo`.
+>
+> **v38 (`franco-n8n-v38.json`, PEGADO Y MEDIDO 2026-07-22): FEATURE de financiación para demo.**
+> `scripts/financiacion-demo.mjs`. Pedido de Agustina: mostrarle a dueños que Franco maneja
+> financiación con solvencia (empresa ficticia, sin accuracy provincial que cuidar). Dos partes
+> (regla del proyecto: dato→FAQ, lenguaje→prompt): **(A)** `empresa_faq` (Config) +2 entradas —
+> documentación del comprador para prenda (DNI, CUIT/CUIL, ingresos, Formulario 08) y gastos de la
+> operación (aranceles, sellos, prenda, gestoría, seguro), **cero montos en pesos**. **(B)** bloque
+> `# Financiación` en el prompt — pre-perfilado (preguntar anticipo + cuántas cuotas para el asesor)
+> + reframe "asesor en marcha" (si ya lo pidió/aceptó, no re-ofrecer conectar). Medido
+> `evals/v38-medicion.json`: `financiacion-documentacion`/`-gastos`/`-preperfilado` y
+> `asesor-en-marcha-no-reofrece` **3/3 cada uno** (fallaban 0/2 en v37). **Adherencia OK pese al
+> +1k de prompt:** `derivacion-pide-datos-del-usado` y `permuta-mas-efectivo` **3/3**;
+> `permuta-una-pregunta-por-vez` 1/3 (name-ask ~50% de siempre, no regresión). El bug de la captura
+> (re-ofrecer asesor ya en marcha) NO reproducía en v37 (ya mitigado); el reframe quedó como refuerzo.
+> **PENDIENTE: verificación byte-a-byte por MCP** (el server de n8n se desconectó durante la sesión;
+> re-verificar `franco-n8n-v38.json` y `franco-n8n-v39.json` contra el vivo cuando reconecte).
+>
+> **v39 (`franco-n8n-v39.json`, PEGADO Y MEDIDO 2026-07-22): intento de cerrar el name-ask, NO
+> alcanzó — aceptado como deuda consciente.** `scripts/permuta-nombre-burbuja-final.mjs`. Segundo
+> intento de subir `permuta-una-pregunta-por-vez` del ~50% (el primero fue v34). Medido
+> `evals/v39-medicion.json` **2/5** — sigue ~45%. Controles `derivacion-pide-datos-del-usado` y
+> `derivacion-no-repite-asesor` **5/5**, `permuta-mas-efectivo` **4/5**: sin regresión. **Mecanismo
+> entendido (mirando los 5 T3):** las corridas que ACIERTAN no muestran opciones (confirman el usado
+> y piden el nombre); las que FALLAN muestran opciones y cierran en pregunta comercial. O sea:
+> mostrar opciones en ese turno descarrila el pedido del nombre. Dos intentos de prompt (v34, v39)
+> quedaron ~50% — es el patrón yo-yo del CLAUDE.md, el prompt no lo fuerza. **El fix que cerraría:**
+> cero opciones en ese turno (sólo confirmar + pedir nombre), evaluado y **DECIDIDO NO hacerlo**
+> (2026-07-22): Agustina prefiere conservar que Franco muestre opciones ahí; el fallo no es grave
+> (Franco sigue la charla, sólo no toma el nombre en ese turno exacto). Deuda consciente medida:
+> ~50%, resistente a prompt, con el fix determinístico-de-diseño identificado si se retoma.
 
 ---
 
