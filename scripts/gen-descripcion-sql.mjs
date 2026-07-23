@@ -85,13 +85,13 @@ const AUTOS = {
   },
   6: {
     descripcion:
-      'Prácticamente sin uso y con motor turbo de 150 HP, la mayor potencia entre los autos no pickup del stock. Anda como un 0 km sin la espera ni el costo de patentamiento de una unidad nueva.',
+      'Motor turbo de 150 HP, la mayor potencia entre los autos no pickup del stock, y con pocos kilómetros encima. Andar de gama alta sin el costo de patentamiento de una unidad nueva.',
     condicionantes:
       'Es turbo: pide nafta de buena calidad y service al día para rendir como corresponde.',
   },
   7: {
     descripcion:
-      'El que menos consume de todo el stock, gracias al 1.2 turbo, y con los kilómetros más bajos entre los autos. Rinde como un auto chico y anda como uno mediano.',
+      'El que menos consume de todo el stock, gracias al 1.2 turbo, y con muy pocos kilómetros. Rinde como un auto chico y anda como uno mediano.',
     condicionantes:
       'Es caja manual: si buscás automático, el Vento es el equivalente del stock.',
   },
@@ -109,13 +109,13 @@ const AUTOS = {
   },
   10: {
     descripcion:
-      'El auto más nuevo del stock fuera de las pickups y prácticamente sin uso. SUV automática con equipamiento completo: es la opción de quien quiere 0 km sin esperar.',
+      'Prácticamente sin uso, con los kilómetros más bajos de todo el stock. SUV automática con equipamiento completo: es la opción de quien quiere 0 km sin esperar.',
     condicionantes:
       'El 1.6 aspirado prioriza suavidad antes que empuje: si buscás respuesta fuerte en ruta, el Vento turbo va mejor.',
   },
   11: {
     descripcion:
-      'La SUV más barata del stock. Despeje alto y baúl grande, pensada para ripio y camino roto: es la que mejor aguanta el uso rudo por lo que cuesta.',
+      'SUV moderna y de pocos kilómetros. Despeje alto y baúl grande, pensada para ripio y camino roto: es la que mejor aguanta el uso rudo por lo que cuesta.',
     condicionantes:
       'La potencia es justa para el tamaño: si la vas a llevar cargada y en subida seguido, conviene una SUV de más motor.',
   },
@@ -145,7 +145,7 @@ const AUTOS = {
   },
   16: {
     descripcion:
-      'Pickup casi sin uso, con la misma potencia que la unidad más cara del stock por bastante menos plata. Buena ecuación para trabajo liviano y ruta.',
+      'Misma potencia que la unidad más cara del stock (200 HP) por bastante menos plata. Pickup de trabajo con rodaje real, buena ecuación para carga y ruta.',
     condicionantes:
       'Es 4x2, no 4x4: para barro, ripio suelto o campo no reemplaza a una tracción integral.',
   },
@@ -209,11 +209,9 @@ const CLAIMS = [
   ['3 es el hatchback más potente', maxPor('hp', hatch).id === 3],
   ['4 es el hatchback de menor consumo', minPor('consumo', hatch).id === 4],
   ['7 es el de menor consumo de todo el stock', minPor('consumo').id === 7],
-  ['7 tiene los km más bajos entre los no-pickup', minPor('km', noPickup).id === 7],
   ['6 es el más potente entre los no-pickup', maxPor('hp', noPickup).id === 6],
-  ['10 es el más nuevo entre los no-pickup', maxPor('anio', noPickup).id === 10],
+  ['10 tiene los km más bajos de todo el stock', minPor('km').id === 10],
   ['10 es el más caro entre los no-pickup', maxPor('precio', noPickup).id === 10],
-  ['11 es la SUV más barata', minPor('precio', suv).id === 11],
   ['12 es el de mayor consumo entre los nafta', maxPor('consumo', nafta).id === 12],
   ['14 es la pickup más nueva', maxPor('anio', pickup).id === 14],
   ['14 es la única 4x4 automática', stock.filter((a) => es4x4(a) && a.transmision === 'Automática').length === 1 && es4x4(de(14))],
