@@ -1,0 +1,246 @@
+[
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "c118614b-a9c4-49a2-99ef-129c16bf80aa",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 5732,
+        "response": {
+          "session_id": "c118614b-a9c4-49a2-99ef-129c16bf80aa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Este Toyota Etios 2019, color gris, tiene 45.000 km y es un hatchback chico que gasta unos 6.3 litros cada 100 km, con un motor naftero 1.5L y transmisión manual. Es el que menos consume en su segmento, ideal para mantener gastos bajos. Su precio es $12.500.000 e incluye aire acondicionado.\n\nTe lo puedo mostrar en persona o te paso opciones similares; querés que te ayude con alguna financiación o viendo si podés entregar un usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 2355,
+        "response": {
+          "session_id": "c118614b-a9c4-49a2-99ef-129c16bf80aa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del auto, ya sea con la financiación propia de la agencia o mediante prenda, según el perfil y el auto. Se toma un anticipo inicial y el saldo se paga en cuotas; el número exacto de cuotas y el monto dependen de lo que puedas dar de entrada y en cuántas cuotas quieras pagar. Para avanzar, me decís cuánto pensás poner de anticipo y en cuántas cuotas te gustaría financiar (por ejemplo 12, 24, 36 o 48)."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 3017,
+        "response": {
+          "session_id": "c118614b-a9c4-49a2-99ef-129c16bf80aa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, 24 cuotas es una opción muy común. Ahora, contame si tenés pensado entregar un auto usado como parte de pago o si la financiación sería solo con anticipo y cuotas."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 2098,
+        "response": {
+          "session_id": "c118614b-a9c4-49a2-99ef-129c16bf80aa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, entonces vamos con financiación solo con anticipo y cuotas. Te recomiendo que me digas un aproximado del anticipo que podrías dar para que pueda pasarle esa info a un asesor y que te prepare una simulación personalizada."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_matches: no matcheó /(?i)cu[aá]nt|monto|de cu[aá]nto/",
+          "turno 4 · text_not_matches: matcheó /(?i)que te prepar[oe] (una )?(simulaci|cotizaci)|te preparo (una )?(simulaci|cotizaci)/ y no debería: \"que te prepare una simulaci\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · text_matches: no matcheó /(?i)cu[aá]nt|monto|de cu[aá]nto/",
+      "turno 4 · text_not_matches: matcheó /(?i)que te prepar[oe] (una )?(simulaci|cotizaci)|te preparo (una )?(simulaci|cotizaci)/ y no debería: \"que te prepare una simulaci\""
+    ],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "El cliente dijo 'con anticipo' SIN el monto: Franco debe PEDIR el monto del anticipo (una pregunta), NO avanzar a pedir el nombre ni confirmar la derivación. La simulación la arma el ASESOR (Franco no ofrece 'prepararte una simulación' él mismo). Sin saturar de burbujas. En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "306e3946-93fa-41f4-9952-6aa49a2e8e18",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 5206,
+        "response": {
+          "session_id": "306e3946-93fa-41f4-9952-6aa49a2e8e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es un hatchback gris con 45.000 km. Tiene motor 1.5L de 103 HP naftero y transmisión manual, con un consumo aproximado de 6.3 L/100km. Es el que menos combustible consume entre los hatchbacks con mecánica Toyota, lo que lo hace atractivo por su buena reventa. Viene con aire acondicionado. El precio es $12.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 3148,
+        "response": {
+          "session_id": "306e3946-93fa-41f4-9952-6aa49a2e8e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del vehículo. Se toma una entrega inicial y el saldo lo podés pagar en cuotas. El valor exacto de las cuotas depende del monto a financiar, el plazo y las condiciones específicas, que un asesor te puede armar con una simulación personalizada."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar en la simulación, pensás poner algún anticipo o tenés un usado para entregar? En cuántas cuotas te gustaría financiar, por ejemplo 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 2213,
+        "response": {
+          "session_id": "306e3946-93fa-41f4-9952-6aa49a2e8e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, 24 cuotas está buenísimo para ir con ritmo cómodo. Vas a entregar un usado como parte de pago o bancarías el anticipo sin permuta?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 2170,
+        "response": {
+          "session_id": "306e3946-93fa-41f4-9952-6aa49a2e8e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, con anticipo y 24 cuotas un asesor te puede armar la simulación personalizada para que veas cómo queda."
+            },
+            {
+              "type": "text",
+              "content": "Para pasarle toda la info y que te contacte, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_matches: no matcheó /(?i)cu[aá]nt|monto|de cu[aá]nto/",
+          "turno 4 · text_not_matches: matcheó /(?i)nombre y apellido|dej[aá]s tu nombre|dejame tu nombre|pas[aá]s tu nombre/ y no debería: \"dejás tu nombre\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · text_matches: no matcheó /(?i)cu[aá]nt|monto|de cu[aá]nto/",
+      "turno 4 · text_not_matches: matcheó /(?i)nombre y apellido|dej[aá]s tu nombre|dejame tu nombre|pas[aá]s tu nombre/ y no debería: \"dejás tu nombre\""
+    ],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "El cliente dijo 'con anticipo' SIN el monto: Franco debe PEDIR el monto del anticipo (una pregunta), NO avanzar a pedir el nombre ni confirmar la derivación. La simulación la arma el ASESOR (Franco no ofrece 'prepararte una simulación' él mismo). Sin saturar de burbujas. En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null
+  }
+]

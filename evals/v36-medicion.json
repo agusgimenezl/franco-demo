@@ -1,0 +1,1054 @@
+[
+  {
+    "id": "detalle-un-auto-fotos",
+    "bug": "#6 alucinaba URLs de fotos en el detalle",
+    "sessionId": "daaa212c-495a-45fd-acbb-0d1a1c9f8ed4",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 9461,
+        "response": {
+          "session_id": "daaa212c-495a-45fd-acbb-0d1a1c9f8ed4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, dentro de los 20 millones estos autos entran bien en tu presupuesto:\n- Renault Duster 2020 — 71.000 km — $19.500.000 (SUV, ideal para una familia o para alguien que busca espacio)\n- Renault Kangoo 2020 — 65.000 km — $18.000.000 (utilitario, práctico y versátil para trabajo o uso mixto)\n- Peugeot 208 2018 — 92.000 km — $12.800.000 (hatchback, compacto y económico)\n- Fiat Cronos 2020 — 58.000 km — $12.500.000 (sedán, confortable y moderno)\n\nY si podés estirar un poco, estas opciones quedan un poco más arriba y podés pagarlas con financiación o entregando un usado:\n- Ford EcoSport 2019 — 68.000 km — $20.500.000 (SUV compacto y funcional)\n- Chevrolet Onix 2024 — 6.500 km — $21.800.000 (sedán, nuevo y con bajo consumo)\n\nTambién, si querés algo más grande o distinto, están el Toyota Corolla 2019 y el Jeep Renegade 2019, pero están por encima del presupuesto.\n\nY si querés te paso todo el stock que tenemos, avisame.\nCuál te llama la atención?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2020",
+              "precio": "$19.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2020",
+              "precio": "$18.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2019",
+              "precio": "$20.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2019",
+              "precio": "$22.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2019",
+              "precio": "$24.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "contame más del primero, cuál es el motor y la transmisión?",
+        "ms": 3601,
+        "response": {
+          "session_id": "daaa212c-495a-45fd-acbb-0d1a1c9f8ed4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2020 que tenemos es una SUV gris con 71.000 km. Es la SUV más económica que tenemos, con despeje alto y baúl grande, ideal para caminos rudos y ripio.\n\nViene con motor 1.6L de 106 HP naftero y transmisión manual. El consumo promedio aproximado es de 8.5 litros cada 100 km.\n\nEstá equipada con aire acondicionado, pantalla multimedia y cámara de retroceso.\n\nTe interesa saber cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [],
+    "error": null
+  },
+  {
+    "id": "detalle-un-auto-fotos",
+    "bug": "#6 alucinaba URLs de fotos en el detalle",
+    "sessionId": "80450cb3-6587-41ac-b5fd-0cfebdca769c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 5825,
+        "response": {
+          "session_id": "80450cb3-6587-41ac-b5fd-0cfebdca769c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, con un techo de 20 millones te recomiendo estas opciones que entran justo en tu presupuesto:\n- Renault Duster 2020 — 71.000 km — $19.500.000 (SUV, buen tamaño y año reciente)\n- Renault Kangoo 2020 — 65.000 km — $18.000.000 (utilitario práctico, buen consumo)\n- Fiat Cronos 2020 — 58.000 km — $12.500.000 (sedán, consumo eficiente)\n- Peugeot 208 2018 — 92.000 km — $12.800.000 (hatchback, económico y ágil para ciudad)\n\nSi querés algo un poco más top, te puedo mostrar también estas opciones para estirar un poco con financiación o permuta:\n- Ford EcoSport 2019 — 68.000 km — $20.500.000 (SUV compacto)\n- Chevrolet Onix 2024 — 6.500 km — $21.800.000 (sedán casi 0 km)\n\nY si querés, te paso todo el stock que tenemos, avisame. Cuál te interesa para contarte más o querés que te ayude por otro lado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2020",
+              "precio": "$19.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2020",
+              "precio": "$18.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2019",
+              "precio": "$20.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "contame más del primero, cuál es el motor y la transmisión?",
+        "ms": 4008,
+        "response": {
+          "session_id": "80450cb3-6587-41ac-b5fd-0cfebdca769c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2020 que tenemos es color gris y tiene 71.000 km. Es una SUV pensada para uso rudo, con despeje alto y un baúl grande. Viene con motor 1.6L de 106 HP naftero y transmisión manual. El consumo promedio es de 8.5 L/100km. Además, tiene aire acondicionado, pantalla multimedia y cámara de retroceso.\n\nTe la puedo mostrar en persona o preparo una simulación de financiación o entregando tu usado, cómo te gustaría seguir?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [],
+    "error": null
+  },
+  {
+    "id": "detalle-un-auto-fotos",
+    "bug": "#6 alucinaba URLs de fotos en el detalle",
+    "sessionId": "e4399ee0-0978-40db-9613-08ab856cbe91",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 4669,
+        "response": {
+          "session_id": "e4399ee0-0978-40db-9613-08ab856cbe91",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas opciones entran justo en tu presupuesto hasta 20 millones:\n- Renault Duster 2020 — 71.000 km — $19.500.000\n- Renault Kangoo 2020 — 65.000 km — $18.000.000\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\nY algo más económico para que compares:\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n\nSi querés, también te puedo mostrar algunas opciones para estirar un poco el presupuesto o si te interesa alguna en particular."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2020",
+              "precio": "$19.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2020",
+              "precio": "$18.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2019",
+              "precio": "$24.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2019",
+              "precio": "$22.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2019",
+              "precio": "$20.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$33.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2019",
+              "precio": "$42.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2024",
+              "precio": "$45.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2025",
+              "precio": "$59.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "contame más del primero, cuál es el motor y la transmisión?",
+        "ms": 4633,
+        "response": {
+          "session_id": "e4399ee0-0978-40db-9613-08ab856cbe91",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2020 es una SUV gris con 71.000 km, buena para caminos irregulares y con despeje alto. Tiene motor 1.6L de 106 HP naftero y transmisión manual. El consumo promedio es de 8.5 litros cada 100 km. Entre su equipamiento destaca aire acondicionado, pantalla multimedia y cámara de retroceso.\n\nTe interesa saber cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [],
+    "error": null
+  },
+  {
+    "id": "asesor-ve-estado-no-km",
+    "bug": "#2 (captura 2): al recibir un usado con km, Franco dice 'un asesor necesita ver el estado Y LOS KILÓMETROS'. Los km los DIO el cliente; el asesor revisa el ESTADO/condición en persona, no los km. Fuente: punto 4 de ## Permuta ('Explicá por qué no cotizás el usado en vivo'). Reproducido offline en outputs de v33 y v34 (la frase se recita casi textual).",
+    "sessionId": "4e7efa6c-fdf3-4de7-a912-f7f9255f61ec",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un Ford Ka 2013 con 100.000 km para entregar. qué opciones tengo?",
+        "ms": 10356,
+        "response": {
+          "session_id": "4e7efa6c-fdf3-4de7-a912-f7f9255f61ec",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con el Ford Ka 2013 para entregar y tu presupuesto de 10 millones, aún te faltaría un poco para cubrir autos disponibles, pero con la tasación de tu usado seguro que varias opciones se acomodan para vos."
+            },
+            {
+              "type": "text",
+              "content": "Estas son las opciones que tu efectivo puede cubrir hoy, y el valor de tu Ford Ka te quedaría a favor:\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n\nY si querés algo un poco mejor, entregando tu Ka podrías acceder a estas también, dependiendo de cuánto te tomen:\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n\nSi querés, te paso todo el stock que tenemos para que veas más opciones."
+            },
+            {
+              "type": "text",
+              "content": "Contame, te interesa ver todo el stock o preferís que te ayude con alguna de estas opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "El asesor revisa el ESTADO/condición del usado en persona, no los km (esos ya los dio el cliente). No debe decir que un asesor 've el estado Y los kilómetros': solo el estado en persona."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "asesor-ve-estado-no-km",
+    "bug": "#2 (captura 2): al recibir un usado con km, Franco dice 'un asesor necesita ver el estado Y LOS KILÓMETROS'. Los km los DIO el cliente; el asesor revisa el ESTADO/condición en persona, no los km. Fuente: punto 4 de ## Permuta ('Explicá por qué no cotizás el usado en vivo'). Reproducido offline en outputs de v33 y v34 (la frase se recita casi textual).",
+    "sessionId": "85262001-d24a-4b5f-9f17-cf8aa1d53c99",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un Ford Ka 2013 con 100.000 km para entregar. qué opciones tengo?",
+        "ms": 5635,
+        "response": {
+          "session_id": "85262001-d24a-4b5f-9f17-cf8aa1d53c99",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Un Ford Ka 2013 con 100.000 km es un modelo buscado que te da ventaja al entregar. No puedo darte el valor exacto de tu usado de forma automática porque un asesor necesita verlo en persona, pero con eso más tu efectivo seguramente entren varias opciones, e incluso algunas de más valor si la tasación acompaña."
+            },
+            {
+              "type": "text",
+              "content": "Con tu presupuesto y la permuta, estas opciones entran total o parcialmente cubiertas:\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n\nY si querés algo mejor, entregando tu usado podrías llegar a estos otros que pueden ser un paso arriba:\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Para seguir avanzando, contame: qué uso le das a tu Ford Ka para saber qué opciones se ajustan más a lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "El asesor revisa el ESTADO/condición del usado en persona, no los km (esos ya los dio el cliente). No debe decir que un asesor 've el estado Y los kilómetros': solo el estado en persona."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "asesor-ve-estado-no-km",
+    "bug": "#2 (captura 2): al recibir un usado con km, Franco dice 'un asesor necesita ver el estado Y LOS KILÓMETROS'. Los km los DIO el cliente; el asesor revisa el ESTADO/condición en persona, no los km. Fuente: punto 4 de ## Permuta ('Explicá por qué no cotizás el usado en vivo'). Reproducido offline en outputs de v33 y v34 (la frase se recita casi textual).",
+    "sessionId": "efed1b19-4a50-4222-95a1-5b106c5cb596",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un Ford Ka 2013 con 100.000 km para entregar. qué opciones tengo?",
+        "ms": 5136,
+        "response": {
+          "session_id": "efed1b19-4a50-4222-95a1-5b106c5cb596",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Un Ford Ka 2013 con 100.000 km es un usado bastante buscado. No puedo darte el valor exacto de tu usado automáticamente porque un asesor necesita verlo en persona, pero con eso más tu usado seguramente entran varias opciones, e incluso alguna de más valor si la tasación acompaña. \n\nCon tu presupuesto de 10 millones más la permuta, tu efectivo cubre el total de estas opciones dentro de ese rango:\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n\nY si querés algo un poco de más categoría, entregando tu usado podrías llegar a estas otras opciones, dependiendo de cuánto te lo tomen:\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n\nCon eso ya te puedo pasar todo a un asesor para que coordine la tasación. Me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "El asesor revisa el ESTADO/condición del usado en persona, no los km (esos ya los dio el cliente). No debe decir que un asesor 've el estado Y los kilómetros': solo el estado en persona."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-sin-redundancia",
+    "bug": "#4: al recomendar VARIOS autos por criterio blando ('económico y confiable'), Franco abre repitiendo el criterio ('te recomiendo estas opciones de autos usados de los últimos 4 años') y cierra repitiéndolo otra vez ('combinan economía y confiabilidad... y están dentro de los últimos 4 años'). Debe ser concreto: intro corto SIN eco del criterio, una línea por auto con UN beneficio, y cierre simple ('te interesa alguno o preferís que te muestre otras?'). Ni # No repitas lo que ya hiciste (v30) ni recomendacion-por-tamano cubren este caso.",
+    "sessionId": "3eba12f2-d28d-49c8-b623-16def06f5522",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos usados me recomendás que sean económicos y confiables?",
+        "ms": 6320,
+        "response": {
+          "session_id": "3eba12f2-d28d-49c8-b623-16def06f5522",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir:\n- Toyota Etios 2019, hatchback, consume 6,3 L/100km\n- Peugeot 208 2018, hatchback, consume 6,6 L/100km\n- Fiat Cronos 2020, sedán, consume 6,5 L/100km\n- Ford Fiesta 2018, hatchback, consume 6,8 L/100km\n- Volkswagen Gol Trend 2019, hatchback, consume 7,0 L/100km\n\nSi querés te puedo mostrar otras opciones de diferentes tamaños o precios. Te interesa alguna o preferís que te muestre otras?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Intro corto SIN devolverle el criterio ('económico/confiable/seguro'), una línea por auto con UN beneficio concreto de la ficha, y cierre simple. NO repetir el criterio al inicio Y al final (ni 'para opciones económicas y confiables...' ni 'todos son económicos / ideales para economizar')."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-sin-redundancia",
+    "bug": "#4: al recomendar VARIOS autos por criterio blando ('económico y confiable'), Franco abre repitiendo el criterio ('te recomiendo estas opciones de autos usados de los últimos 4 años') y cierra repitiéndolo otra vez ('combinan economía y confiabilidad... y están dentro de los últimos 4 años'). Debe ser concreto: intro corto SIN eco del criterio, una línea por auto con UN beneficio, y cierre simple ('te interesa alguno o preferís que te muestre otras?'). Ni # No repitas lo que ya hiciste (v30) ni recomendacion-por-tamano cubren este caso.",
+    "sessionId": "2558c4a1-aa0a-428a-bea5-61b7bcd29c8c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos usados me recomendás que sean económicos y confiables?",
+        "ms": 6325,
+        "response": {
+          "session_id": "2558c4a1-aa0a-428a-bea5-61b7bcd29c8c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir por ser económicas y confiables según su consumo y año:"
+            },
+            {
+              "type": "text",
+              "content": "- Chevrolet Onix 2024, sedán, 6.0 L/100km, 6.500 km\n- Toyota Etios 2019, hatchback, 6.3 L/100km, 88.000 km\n- Fiat Cronos 2020, sedán, 6.5 L/100km, 58.000 km\n- Peugeot 208 2018, hatchback, 6.6 L/100km, 92.000 km\n- Ford Fiesta 2018, hatchback, 6.8 L/100km, 95.000 km"
+            },
+            {
+              "type": "text",
+              "content": "Y si querés algo un poco más grande, con buen consumo pero un poco más gastadores, están estas otras:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen Gol Trend 2019, hatchback, 7.0 L/100km, 82.000 km\n- Toyota Corolla 2019, sedán, 7.2 L/100km, 78.000 km\n- Volkswagen Vento 2024, sedán, 7.5 L/100km, 9.000 km\n- Renault Kangoo 2020, utilitario, 7.8 L/100km, 65.000 km"
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre fotos y detalles de alguno en particular o querés que te pase más opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2019",
+              "precio": "$22.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2024",
+              "precio": "$29.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2020",
+              "precio": "$18.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)(para|estas|estos)[^.!?]{0,30}(econ[oó]mic|confiab|segur)/ y no debería: \"estas te pueden servir por ser económic\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)(para|estas|estos)[^.!?]{0,30}(econ[oó]mic|confiab|segur)/ y no debería: \"estas te pueden servir por ser económic\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Intro corto SIN devolverle el criterio ('económico/confiable/seguro'), una línea por auto con UN beneficio concreto de la ficha, y cierre simple. NO repetir el criterio al inicio Y al final (ni 'para opciones económicas y confiables...' ni 'todos son económicos / ideales para economizar')."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-sin-redundancia",
+    "bug": "#4: al recomendar VARIOS autos por criterio blando ('económico y confiable'), Franco abre repitiendo el criterio ('te recomiendo estas opciones de autos usados de los últimos 4 años') y cierra repitiéndolo otra vez ('combinan economía y confiabilidad... y están dentro de los últimos 4 años'). Debe ser concreto: intro corto SIN eco del criterio, una línea por auto con UN beneficio, y cierre simple ('te interesa alguno o preferís que te muestre otras?'). Ni # No repitas lo que ya hiciste (v30) ni recomendacion-por-tamano cubren este caso.",
+    "sessionId": "53e22401-a636-44c7-ae9f-1810d9c775d1",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos usados me recomendás que sean económicos y confiables?",
+        "ms": 5221,
+        "response": {
+          "session_id": "53e22401-a636-44c7-ae9f-1810d9c775d1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, te puedo recomendar estos autos que son económicos y confiables según el stock que tenemos ahora:\n\n- Peugeot 208 2018 — 92.000 km — $12.800.000 (hatchback chico, consumo 6,6 L/100km)\n- Fiat Cronos 2020 — 58.000 km — $12.500.000 (sedán mediano, consumo 6,5 L/100km)\n- Toyota Etios 2019 — 88.000 km — $10.500.000 (hatchback chico, consumo 6,3 L/100km)\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000 (hatchback chico, consumo 7 L/100km)\n- Ford Fiesta 2018 — 95.000 km — $8.500.000 (hatchback chico, consumo 6,8 L/100km)\n\nSi querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)(para|estas|estos)[^.!?]{0,30}(econ[oó]mic|confiab|segur)/ y no debería: \"estos autos que son económicos y confiab\"",
+          "turno 1 · text_not_matches: matcheó /(?i)(todos|todas|ideales|ambos|son)[^.!?]{0,45}(econ[oó]mic|confiab|economizar|segur)/ y no debería: \"son económicos y confiab\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)(para|estas|estos)[^.!?]{0,30}(econ[oó]mic|confiab|segur)/ y no debería: \"estos autos que son económicos y confiab\"",
+      "turno 1 · text_not_matches: matcheó /(?i)(todos|todas|ideales|ambos|son)[^.!?]{0,45}(econ[oó]mic|confiab|economizar|segur)/ y no debería: \"son económicos y confiab\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Intro corto SIN devolverle el criterio ('económico/confiable/seguro'), una línea por auto con UN beneficio concreto de la ficha, y cierre simple. NO repetir el criterio al inicio Y al final (ni 'para opciones económicas y confiables...' ni 'todos son económicos / ideales para economizar')."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-por-tamano",
+    "bug": "captura 2 — recomendó un Cronos (4,36m) primero a quien pidió mantener el tamaño de un Mobi (3,57m), en párrafo corrido y sin justificar ninguna opción",
+    "sessionId": "cd84541d-85ea-4b6a-bb7b-f4941d0efbdc",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi, por un modelo un poco mas actualizado pero manteniendo el tamaño y bajo consumo. que me recomiendas?",
+        "ms": 5584,
+        "response": {
+          "session_id": "cd84541d-85ea-4b6a-bb7b-f4941d0efbdc",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir para mantener el tamaño y consumo similares a tu Fiat Mobi, que es un hatchback chico:\n- Toyota Etios 2019, hatchback, consume 6.3 L/100km.\n- Peugeot 208 2018, hatchback, consume 6.6 L/100km.\n- Volkswagen Gol Trend 2019, hatchback, consume 7.0 L/100km.\n- Ford Fiesta 2018, hatchback, consume 6.8 L/100km.\n\nSi no te molesta algo un poco más grande, podrías ver también algunos sedanes o SUVs medianos como opciones diferentes.\n\nTe interesa alguna de estas o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "INTENCIÓN: pidió MANTENER EL TAMAÑO del Mobi (3,57m). No debe liderar con el Cronos (4,36m, 80cm más largo) como si cumpliera ese criterio. Si lo ofrece, va aparte y aclarando que es más grande"
+      },
+      {
+        "turn": 1,
+        "note": "JUSTIFICACIÓN: cada auto recomendado necesita un motivo corto de por qué encaja, no solo nombre/km/precio"
+      },
+      {
+        "turn": 1,
+        "note": "NO REDUNDANCIA: no debe devolverle al cliente su propia intención ('para que no pierdas eso que valorás')"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-por-tamano",
+    "bug": "captura 2 — recomendó un Cronos (4,36m) primero a quien pidió mantener el tamaño de un Mobi (3,57m), en párrafo corrido y sin justificar ninguna opción",
+    "sessionId": "9099afde-ba8a-407d-84f7-2e63dd5b34dd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi, por un modelo un poco mas actualizado pero manteniendo el tamaño y bajo consumo. que me recomiendas?",
+        "ms": 3883,
+        "response": {
+          "session_id": "9099afde-ba8a-407d-84f7-2e63dd5b34dd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir para mantener el tamaño y el consumo bajo:\n- Toyota Etios 2019, hatchback chico y consume 6.3 L/100km.\n- Peugeot 208 2018, hatchback chico y consume 6.6 L/100km.\n- Ford Fiesta 2018, hatchback chico y consume 6.8 L/100km.\n- Volkswagen Gol Trend 2019, hatchback chico y consume 7.0 L/100km.\n\nTe interesa alguna o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "INTENCIÓN: pidió MANTENER EL TAMAÑO del Mobi (3,57m). No debe liderar con el Cronos (4,36m, 80cm más largo) como si cumpliera ese criterio. Si lo ofrece, va aparte y aclarando que es más grande"
+      },
+      {
+        "turn": 1,
+        "note": "JUSTIFICACIÓN: cada auto recomendado necesita un motivo corto de por qué encaja, no solo nombre/km/precio"
+      },
+      {
+        "turn": 1,
+        "note": "NO REDUNDANCIA: no debe devolverle al cliente su propia intención ('para que no pierdas eso que valorás')"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-por-tamano",
+    "bug": "captura 2 — recomendó un Cronos (4,36m) primero a quien pidió mantener el tamaño de un Mobi (3,57m), en párrafo corrido y sin justificar ninguna opción",
+    "sessionId": "1510172c-4bf4-4e47-9ca6-237ef12dad34",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi, por un modelo un poco mas actualizado pero manteniendo el tamaño y bajo consumo. que me recomiendas?",
+        "ms": 4473,
+        "response": {
+          "session_id": "1510172c-4bf4-4e47-9ca6-237ef12dad34",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir para mantener un tamaño chico y bajo consumo:\n- Toyota Etios 2019, consume 6,3 L/100km, hatchback, un año más nuevo que tu Mobi\n- Peugeot 208 2018, consume 6,6 L/100km, hatchback, el más equipado del grupo\n- Ford Fiesta 2018, consume 6,8 L/100km, hatchback, más potente y con pantalla multimedia\n- Volkswagen Gol Trend 2019, consume 7,0 L/100km, hatchback, mecánica muy conocida y repuestos fáciles\n\nTe interesa alguna o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "INTENCIÓN: pidió MANTENER EL TAMAÑO del Mobi (3,57m). No debe liderar con el Cronos (4,36m, 80cm más largo) como si cumpliera ese criterio. Si lo ofrece, va aparte y aclarando que es más grande"
+      },
+      {
+        "turn": 1,
+        "note": "JUSTIFICACIÓN: cada auto recomendado necesita un motivo corto de por qué encaja, no solo nombre/km/precio"
+      },
+      {
+        "turn": 1,
+        "note": "NO REDUNDANCIA: no debe devolverle al cliente su propia intención ('para que no pierdas eso que valorás')"
+      }
+    ],
+    "error": null
+  }
+]

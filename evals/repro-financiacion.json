@@ -1,0 +1,240 @@
+[
+  {
+    "id": "financiacion-documentacion",
+    "bug": "FEATURE (demo financiación): Franco debe poder informar qué documentación necesita el comprador para financiar con prenda (DNI, CUIT/CUIL, Formulario 08, verificación, demostración de ingresos). Hoy no está en el FAQ → Franco deriva o improvisa. Va al empresa_faq del Config.",
+    "sessionId": "44d39f82-43b1-4a28-ae80-5c9afeaf504d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué papeles necesito para comprar financiado con prenda?",
+        "ms": 3619,
+        "response": {
+          "session_id": "44d39f82-43b1-4a28-ae80-5c9afeaf504d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para comprar con financiación mediante prenda podés dar una entrega inicial y pagar el saldo en cuotas. Financiamos hasta el 50% del valor del vehículo según el auto y tu perfil. Al cerrar, te ayudamos con toda la documentación y la transferencia. Querés que te muestre autos que podés financiar o preferís que te pase con un asesor para más detalles?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)dni|cuit|cuil|formulario 08|verificaci|ingresos/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)dni|cuit|cuil|formulario 08|verificaci|ingresos/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe listar la documentación del comprador (DNI, CUIT/CUIL, Formulario 08, verificación, ingresos) en tono conversacional, sin montos en pesos, y puede cerrar diciendo que el asesor confirma según el caso."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-documentacion",
+    "bug": "FEATURE (demo financiación): Franco debe poder informar qué documentación necesita el comprador para financiar con prenda (DNI, CUIT/CUIL, Formulario 08, verificación, demostración de ingresos). Hoy no está en el FAQ → Franco deriva o improvisa. Va al empresa_faq del Config.",
+    "sessionId": "9610ce27-c330-4ce8-a89d-bdf04701a696",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué papeles necesito para comprar financiado con prenda?",
+        "ms": 2589,
+        "response": {
+          "session_id": "9610ce27-c330-4ce8-a89d-bdf04701a696",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para comprar un auto con financiación y prenda, necesitás una entrega inicial y después podés pagar el saldo en cuotas según el monto, plazo y condiciones que se acuerden. La concesionaria te ayuda con toda la gestión de la documentación, incluyendo transferencia y verificación policial. Los gastos de transferencia corren para el comprador. Querés que te cuente qué autos tenemos disponibles o te paso a un asesor para armar una financiación personalizada?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe listar la documentación del comprador (DNI, CUIT/CUIL, Formulario 08, verificación, ingresos) en tono conversacional, sin montos en pesos, y puede cerrar diciendo que el asesor confirma según el caso."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-gastos",
+    "bug": "FEATURE (demo financiación): además del precio, Franco debe poder informar los gastos de la operación (aranceles del Registro, sellos, inscripción de prenda, gestoría, seguro) SIN dar montos en pesos. Hoy no está en el FAQ.",
+    "sessionId": "43de927f-20dd-49ac-bf47-1556ad470222",
+    "turns": [
+      {
+        "n": 1,
+        "say": "aparte del precio del auto, qué otros gastos tiene comprarlo financiado?",
+        "ms": 2888,
+        "response": {
+          "session_id": "43de927f-20dd-49ac-bf47-1556ad470222",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Además del precio del auto, cuando comprás financiado en Automotores Tucumán tenés que considerar una entrega inicial y luego las cuotas del saldo restante. El valor de las cuotas depende del monto que financies, el plazo y las condiciones de la operación. También corren por cuenta del comprador los gastos de transferencia. Te ayudamos con la gestión de papeles para que sea más sencillo.\n\nQuerés que te cuente sobre alguna financiación en particular o te paso opciones de autos para que veas cómo sería la financiación según el modelo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)sellos|aranceles|inscripci[oó]n|prenda|gestor|registro/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)sellos|aranceles|inscripci[oó]n|prenda|gestor|registro/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe nombrar los gastos del rubro (aranceles registrales, sellos, inscripción de prenda, gestoría, seguro) sin montos exactos en pesos, y aclarar que el asesor arma el detalle."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-gastos",
+    "bug": "FEATURE (demo financiación): además del precio, Franco debe poder informar los gastos de la operación (aranceles del Registro, sellos, inscripción de prenda, gestoría, seguro) SIN dar montos en pesos. Hoy no está en el FAQ.",
+    "sessionId": "faf77563-d657-46c2-a2c5-9c8cadca85fa",
+    "turns": [
+      {
+        "n": 1,
+        "say": "aparte del precio del auto, qué otros gastos tiene comprarlo financiado?",
+        "ms": 3064,
+        "response": {
+          "session_id": "faf77563-d657-46c2-a2c5-9c8cadca85fa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Además del precio del auto, al comprar financiado suele haber que considerar la entrega inicial, las cuotas restantes, los gastos de transferencia que corren por el comprador, y los intereses según el plan del crédito. También hay que pensar en la documentación, patente y seguro que no están incluidos en la financiación.\n\nEn Automotores Tucumán te ayudamos con toda la gestión de papeles y la transferencia, y todos los autos se entregan con la documentación al día.\n\nQuerés que te pase opciones de autos para que te armen una simulación con una entrega inicial y cuotas? O preferís que te explique cómo funciona la financiación con un asesor?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)sellos|aranceles|inscripci[oó]n|prenda|gestor|registro/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)sellos|aranceles|inscripci[oó]n|prenda|gestor|registro/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe nombrar los gastos del rubro (aranceles registrales, sellos, inscripción de prenda, gestoría, seguro) sin montos exactos en pesos, y aclarar que el asesor arma el detalle."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-preperfilado",
+    "bug": "FEATURE (demo financiación): al consultar por financiación, Franco adelanta trabajo al asesor pre-perfilando: pregunta anticipo (monto o usado) y en cuántas cuotas. Hoy no lo hace.",
+    "sessionId": "93238b2d-0332-432d-89f9-783a7f4491bd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa financiar un auto, cómo es?",
+        "ms": 2560,
+        "response": {
+          "session_id": "93238b2d-0332-432d-89f9-783a7f4491bd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, puede ser con financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Se toma una entrega inicial y el saldo se puede pagar en cuotas, cuyo valor depende del monto financiado, el plazo elegido y las condiciones de la operación.\n\nPara darte un número exacto de cuotas o una simulación personalizada con entrega y requisitos, te puedo pasar con un asesor. Querés que te contacte uno para que te prepare esa información?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Responde la condición (50%, cuotas) y pre-perfila para el asesor: pregunta anticipo (monto o usado a entregar) y en cuántas cuotas. Sin montos en pesos."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-preperfilado",
+    "bug": "FEATURE (demo financiación): al consultar por financiación, Franco adelanta trabajo al asesor pre-perfilando: pregunta anticipo (monto o usado) y en cuántas cuotas. Hoy no lo hace.",
+    "sessionId": "8b608d90-375e-4e54-8f77-d19ad356fa8c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa financiar un auto, cómo es?",
+        "ms": 2626,
+        "response": {
+          "session_id": "8b608d90-375e-4e54-8f77-d19ad356fa8c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con financiación propia o mediante prenda, según el auto y tu perfil. Para avanzar, se toma una entrega inicial y el saldo se paga en cuotas, cuyo valor depende del monto, plazo y condiciones de la operación. Un asesor puede armarte una simulación personalizada con la cuota y requisitos exactos."
+            },
+            {
+              "type": "text",
+              "content": "Contame, tenés un presupuesto en mente o un modelo que te guste para empezar a buscar opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Responde la condición (50%, cuotas) y pre-perfila para el asesor: pregunta anticipo (monto o usado a entregar) y en cuántas cuotas. Sin montos en pesos."
+      }
+    ],
+    "error": null
+  }
+]

@@ -1,0 +1,691 @@
+[
+  {
+    "id": "financiacion-no-re-ofrece-largo",
+    "bug": "variante del re-ofrecimiento de financiación con DISTANCIA (Agustina: el bug aparece tras ~10 mensajes de ida y vuelta, no continuo). Recolecta anticipo (10M) + cuotas (36), después 4-5 turnos de preguntas sueltas (garantía, aire, km, color), y recién ahí el pivote 'más info'. Prueba si el fix v52 (leer la conversación reciente) aguanta cuando el anticipo/cuotas quedan lejos en la ventana. Si falla, confirma que hace falta que el anticipo/cuotas vivan en 'Lo que ya sabés de este cliente' (estado_cliente) — territorio C.",
+    "sessionId": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 5434,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna, con pocos kilómetros y buen despeje para caminos rotos o ripio, ideal para uso rudo a buen precio. Tiene motor 1.6L de 106 HP, naftero, transmisión manual y consume alrededor de 8.5 L/100km. Viene con aire acondicionado, pantalla multimedia y cámara de retroceso. Cuesta $22.500.000 y está en color gris.\n\nTe la muestro con fotos para que la veas bien."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 3034,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, y puede ser con financiación propia o mediante prenda, según el auto y tu perfil. Para avanzar, necesitás dar una entrega inicial (anticipo) y el saldo se puede pagar en cuotas. El monto de la cuota depende del anticipo, el plazo y las condiciones de la operación."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme una simulación exacta con los montos finales, de cuánto pensás poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2197,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con 10 millones de anticipo ya podemos empezar a evaluar opciones de financiamiento para la Duster o algún otro auto que te interese. Contás con un usado para entregar o pensás comprar solo con efectivo y cuotas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 1851,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, tomé nota de 36 cuotas para la financiación. Para seguir con la simulación exacta, antes necesito saber si vas a entregar un auto usado como parte de pago o si será todo contado y cuotas."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "qué garantía tiene?",
+        "ms": 2180,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Todos los autos salen con 3 meses de garantía de motor y caja. Además hacemos una revisión mecánica antes de la entrega para asegurarnos que esté todo en orden."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te ayude con algo más sobre la Duster o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 6,
+        "say": "el aire acondicionado anda bien?",
+        "ms": 2043,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, la Renault Duster 2023 viene equipada con aire acondicionado funcional incluido en su equipamiento, ideal para tu comodidad."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te ayude con la financiación o preferís coordinar un asesor para verla en persona?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 7,
+        "say": "cuántos km tiene?",
+        "ms": 1728,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que te mostré tiene 27.000 km."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te acerque la simulación con tu anticipo y las cuotas, o preferís conocer opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 8,
+        "say": "de qué color es?",
+        "ms": 1996,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Es de color gris."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase todos los detalles para coordinar una visita o te interesa ver otras opciones parecidas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 9,
+        "say": "tenés más info de la duster?",
+        "ms": 4011,
+        "response": {
+          "session_id": "46386f6b-1349-4686-b9a3-b45a03ee6d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV mediana de 5 puertas y 5 asientos, color gris y con 31.000 km. Trae motor 1.6L de 106 HP, naftero, y transmisión manual. El consumo promedio aproximado es de 8.5 L/100km. Viene equipada con aire acondicionado, pantalla multimedia y cámara de retroceso. Es ideal para caminos de ripio o uso rudo, con buen despeje y baúl espacioso.\n\nTené en cuenta que la potencia es justa para su tamaño; si pensás llevar carga frecuente en subida, conviene una SUV con más motor."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare los datos para coordinar una visita o te muestro otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 9,
+        "note": "DISTANCIA: anticipo (10M) + cuotas (36) fueron ~6 turnos atrás. Tras el pivote 'más info', Franco NO debe RE-OFRECER la financiación: consolida ('le dejo anotado al asesor la simulación...') y ofrece otro paso. Si re-ofrece, el fix por prompt no aguanta la distancia → hace falta estado_cliente (C)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-no-re-ofrece-largo",
+    "bug": "variante del re-ofrecimiento de financiación con DISTANCIA (Agustina: el bug aparece tras ~10 mensajes de ida y vuelta, no continuo). Recolecta anticipo (10M) + cuotas (36), después 4-5 turnos de preguntas sueltas (garantía, aire, km, color), y recién ahí el pivote 'más info'. Prueba si el fix v52 (leer la conversación reciente) aguanta cuando el anticipo/cuotas quedan lejos en la ventana. Si falla, confirma que hace falta que el anticipo/cuotas vivan en 'Lo que ya sabés de este cliente' (estado_cliente) — territorio C.",
+    "sessionId": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 5170,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que tenemos es una SUV moderna y de pocos kilómetros, ideal para ripio y caminos rotos por su despeje alto y baúl grande. Es de color gris, tiene 31.000 km, motor 1.6L naftero con 106 HP, y transmisión manual. El consumo promedio es de 8.5 L/100km. Viene equipada con aire acondicionado, pantalla multimedia y cámara de retroceso. El precio es $22.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés saber cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 1972,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, y podés combinar una entrega inicial con cuotas para el saldo. Los gastos de transferencia y otros están aparte. Para armar la simulación exacta con cuotas y monto, un asesor lo prepara y te explica todos los requisitos."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar, de cuánto pensás poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2047,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $10 millones de anticipo ya le dejo anotado al asesor para que arme la simulación. Tenés un auto usado para entregar como parte de pago o solo sería esta financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 1891,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, 36 cuotas está perfecto. Solo me falta saber si entregás un auto usado para poder dejar todo anotado para el asesor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "qué garantía tiene?",
+        "ms": 2690,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Todos los autos salen con 3 meses de garantía de motor y caja, y hacemos una revisión mecánica antes de la entrega para que compres tranquilo. Si querés, puedo coordinar que un asesor te brinde toda la info que necesites."
+            },
+            {
+              "type": "text",
+              "content": "Querés contarme si entregás un usado para la financiación, o preferís que te pase más detalles del auto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 6,
+        "say": "el aire acondicionado anda bien?",
+        "ms": 2145,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El aire acondicionado forma parte del equipamiento que tiene la Duster 2023 que te conté, y está en buen estado según la revisión mecánica que hacemos antes de la entrega."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo armar contacto con un asesor para que coordinen un test drive o que te prepare la financiación, querés?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 7,
+        "say": "cuántos km tiene?",
+        "ms": 1943,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que te mencioné tiene 31.000 km."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería una reserva o preferís que un asesor te prepare una cotización completa con la financiación y entrega de usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 8,
+        "say": "de qué color es?",
+        "ms": 1617,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El color de la Renault Duster 2023 que tenemos es gris."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa verla en persona o querés que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 9,
+        "say": "tenés más info de la duster?",
+        "ms": 5202,
+        "response": {
+          "session_id": "9dfd550a-f72d-4367-9391-92f1eada00cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV mediana, color gris, con 31.000 km. Tiene un motor 1.6L de 106 HP naftero y transmisión manual. El consumo promedio es de 8.5 L/100km. Viene equipada con aire acondicionado, pantalla multimedia y cámara de retroceso. Está pensada para ripio y camino roto, con despeje alto y baúl grande."
+            },
+            {
+              "type": "text",
+              "content": "Si querés, te puedo coordinar con un asesor para que te prepare una simulación de financiación o para que la veas y hagas un test drive."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 9,
+        "note": "DISTANCIA: anticipo (10M) + cuotas (36) fueron ~6 turnos atrás. Tras el pivote 'más info', Franco NO debe RE-OFRECER la financiación: consolida ('le dejo anotado al asesor la simulación...') y ofrece otro paso. Si re-ofrece, el fix por prompt no aguanta la distancia → hace falta estado_cliente (C)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-no-re-ofrece-largo",
+    "bug": "variante del re-ofrecimiento de financiación con DISTANCIA (Agustina: el bug aparece tras ~10 mensajes de ida y vuelta, no continuo). Recolecta anticipo (10M) + cuotas (36), después 4-5 turnos de preguntas sueltas (garantía, aire, km, color), y recién ahí el pivote 'más info'. Prueba si el fix v52 (leer la conversación reciente) aguanta cuando el anticipo/cuotas quedan lejos en la ventana. Si falla, confirma que hace falta que el anticipo/cuotas vivan en 'Lo que ya sabés de este cliente' (estado_cliente) — territorio C.",
+    "sessionId": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 4624,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna con solo 31.000 km, ideal para caminos rústicos gracias a su despeje alto y baúl grande. Viene con motor 1.6L naftero de 106 HP y transmisión manual. El consumo promedio es de 8.5 L/100km. Entre su equipamiento incluye aire acondicionado, pantalla multimedia y cámara de retroceso. Está a $22.500.000 y es de color gris.\n\nTe interesa saber cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2250,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con la financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Para avanzar, se toma un anticipo inicial y el saldo puede pagarse en cuotas. El monto exacto de cada cuota lo arma un asesor en una simulación personalizada, porque depende de cuánto des de anticipo, las cuotas que elijas y otros factores.\n\nPara que un asesor te pueda armar esa simulación exacta, de cuánto pensarías poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2213,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con un anticipo de $10.000.000 podés cubrir hasta el 50% del valor del vehículo en cuotas, si necesitás financiar el saldo. Contame, tenés un auto para entregar como parte de pago o pagarías todo con ese anticipo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 4561,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Entiendo que las 36 cuotas serían el plazo que te interesa para la financiación, pero primero necesito saber si vas a entregar un usado como parte de pago o si todo es con ese anticipo de $10.000.000 que mencionaste. Me confirmás eso?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "qué garantía tiene?",
+        "ms": 2370,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Todos los autos salen con 3 meses de garantía sobre motor y caja y además les hacemos una revisión mecánica completa antes de entregarlos.\n\nTe gustaría que coordinemos para que un asesor te muestre la Duster y te explique todo en detalle?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 6,
+        "say": "el aire acondicionado anda bien?",
+        "ms": 4127,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El aire acondicionado es parte del equipamiento de la Duster 2023 que te conté, y sale en la ficha oficial del auto. Para detalles específicos sobre su funcionamiento te lo puede confirmar un asesor cuando la veas en persona.\n\nQuerés que te pase el contacto de un asesor para coordinar una visita o una prueba?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 7,
+        "say": "cuántos km tiene?",
+        "ms": 4377,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que te interesa tiene 31.000 km. Querés coordinar para verla en persona o que te pase opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 8,
+        "say": "de qué color es?",
+        "ms": 4330,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 está de color gris. Querés que te pase el contacto de un asesor para coordinar una visita o para que te arme la financiación exacta?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 9,
+        "say": "tenés más info de la duster?",
+        "ms": 6308,
+        "response": {
+          "session_id": "7f1dc23c-54ad-42e3-979e-2e0459b5828c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 9 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 9 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\""
+    ],
+    "manuals": [
+      {
+        "turn": 9,
+        "note": "DISTANCIA: anticipo (10M) + cuotas (36) fueron ~6 turnos atrás. Tras el pivote 'más info', Franco NO debe RE-OFRECER la financiación: consolida ('le dejo anotado al asesor la simulación...') y ofrece otro paso. Si re-ofrece, el fix por prompt no aguanta la distancia → hace falta estado_cliente (C)."
+      }
+    ],
+    "error": null
+  }
+]

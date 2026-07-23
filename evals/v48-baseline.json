@@ -1,0 +1,304 @@
+[
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "8593bd29-6d91-49bf-95f3-7038bd1a23db",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2903,
+        "response": {
+          "session_id": "8593bd29-6d91-49bf-95f3-7038bd1a23db",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Para seguir, contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 2373,
+        "response": {
+          "session_id": "8593bd29-6d91-49bf-95f3-7038bd1a23db",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto, un Toyota Yaris 2020. Ahora, para avanzar, cuántos kilómetros tiene tu Yaris?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar mejor el valor'). En v47 es verboso → falla text_not_matches."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "c10b0f02-7105-4c07-bc29-af0358469038",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2349,
+        "response": {
+          "session_id": "c10b0f02-7105-4c07-bc29-af0358469038",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para ayudarte mejor, contame qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 2147,
+        "response": {
+          "session_id": "c10b0f02-7105-4c07-bc29-af0358469038",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Yaris 2020. Ahora sí, para darte opciones adecuadas, me podés contar cuántos kilómetros tiene el Yaris?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar mejor el valor'). En v47 es verboso → falla text_not_matches."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "bd624add-34e6-47e9-a17b-32655254f8e9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2035,
+        "response": {
+          "session_id": "bd624add-34e6-47e9-a17b-32655254f8e9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, recibo que contás con un presupuesto de $10.000.000 y tenés un usado para entregar. Para mostrarte las opciones más acordes, necesito que me digas qué auto es el que entregarías: la marca, el modelo y el año. Así puedo hacer una estimación preliminar y mostrarte las mejores opciones para vos."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 2223,
+        "response": {
+          "session_id": "bd624add-34e6-47e9-a17b-32655254f8e9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, tenés un Toyota Yaris 2020 para entregar como parte de pago. Ahora necesito que me digas cuántos kilómetros tiene para poder hacer la estimación del valor de tu usado y mostrarte las opciones que entran dentro de tu presupuesto con esa entrega."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 7139,
+        "response": {
+          "session_id": "bd624add-34e6-47e9-a17b-32655254f8e9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo y una estimación preliminar de tu auto usado, acá te paso algunas opciones que podrías considerar dentro de ese rango:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, un hatchback compacto que puede ajustarse a tu presupuesto.\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, también hatchback y con kilómetros similares.\n\nY si querés estirar un poco, con la permuta podrías llegar a modelos como:\n- Toyota Etios 2019 — 45.000 km — $12.500.000, un hatchback un poco más nuevo y con menos kilómetros."
+            },
+            {
+              "type": "text",
+              "content": "Si querés, te paso todo el stock que tenemos para que veas más opciones. Cuál de estos te llama la atención? O preferís que te ayude a buscar según otro criterio?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "0e420a26-7e1d-46cd-a1dd-7884f3b21b82",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 1718,
+        "response": {
+          "session_id": "0e420a26-7e1d-46cd-a1dd-7884f3b21b82",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para ayudarte con opciones que se ajusten a tu presupuesto y el usado que querés entregar, primero necesito algunos datos de ese auto para estimar bien las alternativas. Qué marca, modelo y año tiene tu usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 2750,
+        "response": {
+          "session_id": "0e420a26-7e1d-46cd-a1dd-7884f3b21b82",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Yaris 2020. Ahora me falta saber cuántos kilómetros tiene para poder darte opciones que entren bien con tu usado y el presupuesto."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 7429,
+        "response": {
+          "session_id": "0e420a26-7e1d-46cd-a1dd-7884f3b21b82",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu anticipo de $10.000.000 y el Toyota Yaris 2020 con 65.000 km como parte de pago, considerando que podés financiar hasta el 50%, por ahora las opciones que te entran están un poco por encima de ese presupuesto. Los autos que cumplen con condición de precio y financiamiento disponibles son:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo un poco mejor entregando tu usado, podrías ver el Toyota Etios 2019, que está en un tramo un poco superior:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n\nEstas son algunas ideas para que arranquemos. Si querés, te paso todo el stock que tenemos para que veas más opciones. Querés que te lo mande o preferís que coordinemos que un asesor te ayude con la tasación de tu usado para avanzar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  }
+]

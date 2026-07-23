@@ -1,0 +1,210 @@
+[
+  {
+    "id": "recomendacion-sin-redundancia",
+    "bug": "#4: al recomendar VARIOS autos por criterio blando ('económico y confiable'), Franco abre repitiendo el criterio ('te recomiendo estas opciones de autos usados de los últimos 4 años') y cierra repitiéndolo otra vez ('combinan economía y confiabilidad... y están dentro de los últimos 4 años'). Debe ser concreto: intro corto SIN eco del criterio, una línea por auto con UN beneficio, y cierre simple ('te interesa alguno o preferís que te muestre otras?'). Ni # No repitas lo que ya hiciste (v30) ni recomendacion-por-tamano cubren este caso.",
+    "sessionId": "0504ee41-590d-42ec-8c7a-0f612a15dd96",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos usados me recomendás que sean económicos y confiables?",
+        "ms": 5273,
+        "response": {
+          "session_id": "0504ee41-590d-42ec-8c7a-0f612a15dd96",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para una opción económica y confiable, te recomiendo algunos autos chicos y medianos que consumen poco y están en buen estado:\n- Ford Fiesta 2018 — 95.000 km — $8.500.000, hatchback, consumo 6.8 L/100km\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000, hatchback, consumo 7.0 L/100km\n- Toyota Etios 2019 — 88.000 km — $10.500.000, hatchback, consumo 6.3 L/100km\n- Fiat Cronos 2020 — 58.000 km — $12.500.000, sedán, consumo 6.5 L/100km\n- Peugeot 208 2018 — 92.000 km — $12.800.000, hatchback, consumo 6.6 L/100km\n\nSi querés autos más grandes o con otras características, avisame y te paso más opciones."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Intro corto SIN devolverle el criterio ('económico/confiable/seguro'), una línea por auto con UN beneficio concreto de la ficha, y cierre simple. NO repetir el criterio al inicio Y al final."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-sin-redundancia",
+    "bug": "#4: al recomendar VARIOS autos por criterio blando ('económico y confiable'), Franco abre repitiendo el criterio ('te recomiendo estas opciones de autos usados de los últimos 4 años') y cierra repitiéndolo otra vez ('combinan economía y confiabilidad... y están dentro de los últimos 4 años'). Debe ser concreto: intro corto SIN eco del criterio, una línea por auto con UN beneficio, y cierre simple ('te interesa alguno o preferís que te muestre otras?'). Ni # No repitas lo que ya hiciste (v30) ni recomendacion-por-tamano cubren este caso.",
+    "sessionId": "a4fc837d-8dda-45df-95eb-2e54878e5874",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos usados me recomendás que sean económicos y confiables?",
+        "ms": 4854,
+        "response": {
+          "session_id": "a4fc837d-8dda-45df-95eb-2e54878e5874",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para opciones económicas y confiables, te recomiendo estos autos usados que tenemos:\n- Ford Fiesta 2018 — 95.000 km — $8.500.000 (hatchback, consumo 6.8 L/100km)\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000 (hatchback, consumo 7.0 L/100km)\n- Toyota Etios 2019 — 88.000 km — $10.500.000 (hatchback, consumo 6.3 L/100km)\n- Fiat Cronos 2020 — 58.000 km — $12.500.000 (sedán, consumo 6.5 L/100km)\n- Peugeot 208 2018 — 92.000 km — $12.800.000 (hatchback, consumo 6.6 L/100km)\n\nSi querés, te puedo pasar más detalles o mostrarte otras opciones. Qué modelo te interesa más para contarte más?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Intro corto SIN devolverle el criterio ('económico/confiable/seguro'), una línea por auto con UN beneficio concreto de la ficha, y cierre simple. NO repetir el criterio al inicio Y al final."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "recomendacion-sin-redundancia",
+    "bug": "#4: al recomendar VARIOS autos por criterio blando ('económico y confiable'), Franco abre repitiendo el criterio ('te recomiendo estas opciones de autos usados de los últimos 4 años') y cierra repitiéndolo otra vez ('combinan economía y confiabilidad... y están dentro de los últimos 4 años'). Debe ser concreto: intro corto SIN eco del criterio, una línea por auto con UN beneficio, y cierre simple ('te interesa alguno o preferís que te muestre otras?'). Ni # No repitas lo que ya hiciste (v30) ni recomendacion-por-tamano cubren este caso.",
+    "sessionId": "4657454f-380f-4f40-a29f-8818df378bd5",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos usados me recomendás que sean económicos y confiables?",
+        "ms": 5713,
+        "response": {
+          "session_id": "4657454f-380f-4f40-a29f-8818df378bd5",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para opciones económicas y confiables, te recomiendo estos autos usados:\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n\nTodos son autos chicos o medianos con buen consumo de combustible, ideales para economizar. Querés que te muestre alguno en detalle o te paso más opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Intro corto SIN devolverle el criterio ('económico/confiable/seguro'), una línea por auto con UN beneficio concreto de la ficha, y cierre simple. NO repetir el criterio al inicio Y al final."
+      }
+    ],
+    "error": null
+  }
+]

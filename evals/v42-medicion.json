@@ -1,0 +1,341 @@
+[
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "fa507122-fa00-49b1-93e3-373b2e3c5219",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 9208,
+        "response": {
+          "session_id": "fa507122-fa00-49b1-93e3-373b2e3c5219",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que tenemos es gris y hatchback, con solo 45.000 km. Es conocido por ser el que menos combustible consume entre los hatchbacks y tiene mecánica Toyota, lo que ayuda a que se deprecie menos que otros en su franja. Tiene un motor 1.5L de 103 HP, naftero, con transmisión manual, y un consumo promedio de 6.3 L/100km. Viene con aire acondicionado. El precio es $12.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 1837,
+        "response": {
+          "session_id": "fa507122-fa00-49b1-93e3-373b2e3c5219",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto! Para pasarle toda la info al asesor y que te contacte, me decís marca, modelo y año del auto que querés entregar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 16565,
+        "response": {
+          "session_id": "fa507122-fa00-49b1-93e3-373b2e3c5219",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, con el Gol 2015 con 90.000 km ya le paso todo a un asesor para que coordine la tasación y te contacte. El horario de atención es lunes a viernes de 9:00 a 21:00 y sábados de 8:00 a 13:00, y la dirección es Av. Aconquija 1557, Yerba Buena, Tucumán."
+            },
+            {
+              "type": "text",
+              "content": "Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "fa507122-fa00-49b1-93e3-373b2e3c5219",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-3330",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Interesada en Toyota Etios, entrega Gol 2015 con 90.000 km, pide contacto de asesor.",
+      "fecha_contacto": "23/07/2026 14:52",
+      "ultima_actualizacion": "23/07/2026 14:53",
+      "is_saved": false
+    },
+    "leadWaitMs": 6006,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "ff01d116-a4ca-405a-8ac8-cddb717df0b2",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 13541,
+        "response": {
+          "session_id": "ff01d116-a4ca-405a-8ac8-cddb717df0b2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "string",
+              "content": "Con tu anticipo de 12 millones y entregando un Toyota Yaris 2021 con 85.000 km, considerando una estimación preliminar de tu usado al 70% de valor y sin financiar, la capacidad de compra te permite ver estas opciones dentro del rango de tu efectivo y usado:"
+            },
+            {
+              "type": "string",
+              "content": "- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, más barato que tu presupuesto)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, más barato que tu presupuesto)\n\nY si querés algo de un nivel un poco más alto entregando tu usado, estas opciones entran en el rango un poco por encima de tu capital inicial, sin financiación:"
+            },
+            {
+              "type": "string",
+              "content": "- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, más moderno y bastante cuidado)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, estirando con usado)\n\nLa valuación final de tu Toyota Yaris la hace un asesor en la inspección. Mientras, te puedo dar más detalles de cualquier auto o coordinar que un asesor te contacte para avanzar con la tasación. Qué te interesa más?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "ff01d116-a4ca-405a-8ac8-cddb717df0b2",
+      "nombre": "+54 381 555-9013",
+      "telefono": "+54 381 555-9013",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Cuenta con $12M y entrega Toyota Yaris 2021 con 85.000 km como parte de pago.",
+      "fecha_contacto": "23/07/2026 14:53",
+      "ultima_actualizacion": "23/07/2026 14:53",
+      "is_saved": false
+    },
+    "leadWaitMs": 5641,
+    "leadTimedOut": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco debe mostrar un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70%; techo x2 por financiar hasta 50%). v42 exige los 4 datos del usado (marca/modelo/año/KM) ANTES de calcular: si falta el km, lo pide; con los 4, estima el valor del usado, arma el Capital Base y muestra 2 por tramo (entrada/intermedio/alto), carrocerías distintas, hablando de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "7608cb65-1fac-4b9d-a00d-400d1077fc89",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 6768,
+        "response": {
+          "session_id": "7608cb65-1fac-4b9d-a00d-400d1077fc89",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 para entregar y un anticipo de 7 millones, y considerando que te interesa financiar, no puedo darte el valor exacto estimado de tu usado ya que eso lo hace un asesor en persona, pero con esa base tenés varias opciones para elegir. Primero, contame cuántos kilómetros tiene tu Ford Ka para poder estimar un poco mejor y mostrarte modelos que combinen con tu capacidad real de compra."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 10126,
+        "response": {
+          "session_id": "7608cb65-1fac-4b9d-a00d-400d1077fc89",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta que entregás tu Ford Ka 2015 con 100.000 km, lo que suma a tu anticipo de 7 millones y la posibilidad de financiar hasta el 50%, te armé este abanico de opciones para que elijas:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, chico, entrada)  \n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, chico, entrada)  \n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, chico, intermedio)  \n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, mediano, alto)"
+            },
+            {
+              "type": "text",
+              "content": "Dentro de tu capacidad de compra estas opciones te quedan cómodas, y si querés algo de más categoría, la tasación de tu usado podría servir para llegar a modelos más caros, siempre dependiendo cuánto te lo tomen. Recuerda que la tasación final se hace en persona por un asesor.\n\nCuál de estas te interesa más o quieres que te muestre más opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Falta el KM del usado (dio marca/modelo/año). v42 debe PEDIR el km antes de mostrar o calcular nada (gate de 4 datos), auto_ids vacío. NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos ya calcula: estima el valor del Ka, arma el Capital Base (anticipo + usado al 70%) y muestra el abanico por tramos (entrada/intermedio/alto), ~2 por tramo (o los que haya), carrocerías distintas, hablando de 'anticipo' no 'efectivo', con el deslinde (estimación preliminar, tasación final del asesor)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-pide-usado-primero",
+    "bug": "captura (prueba en vivo de v41): 'tengo un usado para entregar, 7M de anticipo, financiar en 1-2 años, qué opciones?' SIN decir qué auto entrega. Franco mostró el abanico de tramos igual. Debe pedir PRIMERO qué usado entrega (marca/modelo/año) antes de mostrar opciones — es la regla del punto 2 de ## Permuta ('si no sabés qué auto entrega, FRENÁ, auto_ids vacío, una sola pregunta'), que el guion nuevo de tramos (v40) pisa. Fix v42: el abanico va recién cuando ya sabe qué entrega.",
+    "sessionId": "edb8622f-9981-4d47-913e-cc663dfa1786",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar y unos 7 millones de anticipo, me gustaría financiar en 1 o 2 años. qué opciones tengo?",
+        "ms": 9641,
+        "response": {
+          "session_id": "edb8622f-9981-4d47-913e-cc663dfa1786",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)qu[eé] auto|marca|modelo/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)qu[eé] auto|marca|modelo/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Sin saber qué auto entrega, NO debe mostrar el abanico: primero pregunta qué usado entrega (marca, modelo y año), una sola pregunta, auto_ids vacío. El abanico de tramos va recién cuando sabe qué entrega (regla del punto 2 de ## Permuta)."
+      }
+    ],
+    "error": null
+  }
+]

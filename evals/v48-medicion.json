@@ -1,0 +1,1559 @@
+[
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "4bcd3cf7-fd60-41b6-bc1d-6401d0496091",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 3952,
+        "response": {
+          "session_id": "4bcd3cf7-fd60-41b6-bc1d-6401d0496091",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Para darte opciones que te entren bien con lo que tenés, contame qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2001,
+        "response": {
+          "session_id": "4bcd3cf7-fd60-41b6-bc1d-6401d0496091",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, y cuántos kilómetros tiene tu Gol Trend 2017?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 7061,
+        "response": {
+          "session_id": "4bcd3cf7-fd60-41b6-bc1d-6401d0496091",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo, el Gol Trend 2017 que entregás y la posibilidad de financiar hasta el 50%, tenés estas opciones como punto de partida:\n\nEntrada\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000\n- Ford Fiesta 2017, 105.000 km, $8.200.000\n\nEstas opciones están un poco por encima de tu presupuesto de $8.000.000, pero al entregar tu usado y financiar podés llegar a ellas. La tasación final de tu auto la hace un asesor cuando lo ve presencialmente.\n\nSi querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "75edcd24-2a61-42fa-9a07-e4a5b05fcc39",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 1903,
+        "response": {
+          "session_id": "75edcd24-2a61-42fa-9a07-e4a5b05fcc39",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Para ayudarte mejor, contame qué auto entregás: la marca, el modelo y el año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2749,
+        "response": {
+          "session_id": "75edcd24-2a61-42fa-9a07-e4a5b05fcc39",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto, ya sé qué auto entregás. Ahora, para ajustar bien tus opciones, cuánto kilometraje tiene el Gol Trend 2017?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 5374,
+        "response": {
+          "session_id": "75edcd24-2a61-42fa-9a07-e4a5b05fcc39",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado Gol Trend 2017 con 90.000 km y un presupuesto de $8.000.000 para anticipo, tu capacidad de compra sin financiar te permite ver estas opciones dentro de lo que podrías alcanzar:\n\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, similar tamaño al Gol Trend)\n\nY si querés algo un poco mejor, entregando tu usado podrías llegar a estos otros:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, modelo un año más nuevo)\n\nSi querés, te paso todo el stock que tenemos para que veas más opciones o podemos coordinar para que un asesor vea tu usado y afine la tasación. Qué te parece?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "74591b4f-a625-4968-b1da-f1eec11fa657",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 1748,
+        "response": {
+          "session_id": "74591b4f-a625-4968-b1da-f1eec11fa657",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Qué auto entregás como usado? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2217,
+        "response": {
+          "session_id": "74591b4f-a625-4968-b1da-f1eec11fa657",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene ese Gol Trend 2017?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 6245,
+        "response": {
+          "session_id": "74591b4f-a625-4968-b1da-f1eec11fa657",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Gol Trend 2017 y 90.000 km cubriendo parte de la operación y un presupuesto de $8.000.000, podrías mirar estos autos como opciones:\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000 (un paso arriba en modelo y año)\n- Ford Fiesta 2017, 105.000 km, $8.200.000 (similar en año, un poco más nuevo y económico en consumo)\n\nEstas opciones superan un poco tu presupuesto, pero con la permuta de tu usado podrías llegar a alguna de estas según tasación y condiciones de pago. Y si querés, te puedo pasar todo el stock que tenemos, avisame.\n\nCuál te interesa más o querés que te muestre otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "c387da6a-2762-463e-95ae-c25896cb9f95",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 2125,
+        "response": {
+          "session_id": "c387da6a-2762-463e-95ae-c25896cb9f95",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entran varias opciones, e incluso alguna de más valor si la tasación acompaña. Contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 12179,
+        "response": {
+          "session_id": "c387da6a-2762-463e-95ae-c25896cb9f95",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 1993,
+        "response": {
+          "session_id": "c387da6a-2762-463e-95ae-c25896cb9f95",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya sé los kilómetros. Ahora necesito que me digas la marca, modelo y año del auto que entregás para poder continuar."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)nombre|entrada|intermedio|\\balto\\b|opcion|opción|abanico|financ|capacidad|asesor|tasaci/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/",
+      "turno 3 · text_matches: no matcheó /(?i)nombre|entrada|intermedio|\\balto\\b|opcion|opción|abanico|financ|capacidad|asesor|tasaci/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "756afc6e-751a-4c46-845d-60c3af6b6353",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 1570,
+        "response": {
+          "session_id": "756afc6e-751a-4c46-845d-60c3af6b6353",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Para darte opciones que entren con tu usado, necesito saber qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2041,
+        "response": {
+          "session_id": "756afc6e-751a-4c46-845d-60c3af6b6353",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Ahora, cuántos kilómetros tiene tu Gol Trend 2017?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 7458,
+        "response": {
+          "session_id": "756afc6e-751a-4c46-845d-60c3af6b6353",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Gol Trend 2017 y tu presupuesto de $8.000.000, estas son algunas opciones que te podrían interesar:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (un poco arriba, pero entregando tu usado podrías llegar)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (otro hatchback similar, también estirando el presupuesto con tu usado)\n\nY si querés te paso todo el stock que tenemos, avisame. Qué te parece alguna de estas opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "75300c74-8bba-4aef-8851-5b7547bef295",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 2254,
+        "response": {
+          "session_id": "75300c74-8bba-4aef-8851-5b7547bef295",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para orientarte mejor, contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 7635,
+        "response": {
+          "session_id": "75300c74-8bba-4aef-8851-5b7547bef295",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con el Gol Trend 2017 para orientarte bien necesito saber cuántos kilómetros tiene. Me pasás esa data?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 5900,
+        "response": {
+          "session_id": "75300c74-8bba-4aef-8851-5b7547bef295",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $8.000.000 y tu Gol Trend 2017 con 90.000 km, te puedo mostrar estas opciones que podrían entrar entregando tu usado, aunque están un poco por encima de los $8 millones de presupuesto actual:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nSi querés conocer otras opciones o ver todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "7f90a1c6-b6e8-428c-808c-3b646a8b2c36",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2409,
+        "response": {
+          "session_id": "7f90a1c6-b6e8-428c-808c-3b646a8b2c36",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos autos usados como parte de pago. Para avanzar, me podés decir qué auto entregás? Marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 2554,
+        "response": {
+          "session_id": "7f90a1c6-b6e8-428c-808c-3b646a8b2c36",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos kilómetros tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "0aef1aba-1b62-4161-af3f-96e262fcb820",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2167,
+        "response": {
+          "session_id": "0aef1aba-1b62-4161-af3f-96e262fcb820",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Para avanzar, decime qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 6404,
+        "response": {
+          "session_id": "0aef1aba-1b62-4161-af3f-96e262fcb820",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto, y cuántos km tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "be31f599-97ab-4e5e-bb23-5ac8ccae58dd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2011,
+        "response": {
+          "session_id": "be31f599-97ab-4e5e-bb23-5ac8ccae58dd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para avanzar, contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 2556,
+        "response": {
+          "session_id": "be31f599-97ab-4e5e-bb23-5ac8ccae58dd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto, un Yaris 2020. Ahora, cuántos kilómetros tiene tu Yaris?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "88ef76e4-4b49-40c7-855c-14ff37babb94",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 5488,
+        "response": {
+          "session_id": "88ef76e4-4b49-40c7-855c-14ff37babb94",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Para orientarte mejor, contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 2022,
+        "response": {
+          "session_id": "88ef76e4-4b49-40c7-855c-14ff37babb94",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto, un Yaris 2020. Ahora necesitás contarme cuántos kilómetros tiene para poder avanzar con las opciones."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_not_matches: matcheó /(?i)muy buscad|muy valorad|de los m[aá]s buscad|para (que pueda |poder )?(estimar|avanzar|darte|ofrecerte|mostrarte|acercarte|armar|darle)/ y no debería: \"para poder avanzar\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_not_matches: matcheó /(?i)muy buscad|muy valorad|de los m[aá]s buscad|para (que pueda |poder )?(estimar|avanzar|darte|ofrecerte|mostrarte|acercarte|armar|darle)/ y no debería: \"para poder avanzar\""
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "11bf94b5-b2e1-47fe-873e-b745c13d2664",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2847,
+        "response": {
+          "session_id": "11bf94b5-b2e1-47fe-873e-b745c13d2664",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, incluso de más valor si la tasación acompaña. Para comenzar, qué auto entregás, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1888,
+        "response": {
+          "session_id": "11bf94b5-b2e1-47fe-873e-b745c13d2664",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto, un Yaris 2020. y cuántos kilómetros tiene el auto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "32ec9d3a-0c94-4198-8f45-d23af6784409",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 1885,
+        "response": {
+          "session_id": "32ec9d3a-0c94-4198-8f45-d23af6784409",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para ayudarte mejor, contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1789,
+        "response": {
+          "session_id": "32ec9d3a-0c94-4198-8f45-d23af6784409",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, y cuántos km tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "20b329e5-d4e8-4199-826d-e9b85a1349cb",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 1820,
+        "response": {
+          "session_id": "20b329e5-d4e8-4199-826d-e9b85a1349cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, recibo que tenés un presupuesto de 10 millones y un usado para entregar como parte de pago. Para orientarte mejor, necesitá que me digas qué auto entregás: la marca, el modelo y el año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 7450,
+        "response": {
+          "session_id": "20b329e5-d4e8-4199-826d-e9b85a1349cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2020 para entregar y un presupuesto de 10 millones, entran estas opciones:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, perfecto para mantener un auto chico.\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, también hatchback y consumos razonables.\n\nY si querés estirar un poco entregando tu usado, podés considerar el Toyota Etios 2019, 45.000 km, $12.500.000, hatchback mejor año y consumo eficiente.\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 5835,
+        "response": {
+          "session_id": "20b329e5-d4e8-4199-826d-e9b85a1349cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con el Yaris 2020 y 65.000 km para entregar, y un presupuesto de 10 millones, entran estas opciones:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, hatchback similar en tamaño.\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, también hatchback y bajos consumos.\n\nY si querés estirar un poco entregando tu usado, podés considerar el Toyota Etios 2019, 45.000 km, $12.500.000, hatchback con consumo promedio de 6.3 L/100km.\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "219718fd-ce00-41ff-b9ba-a8c2237ec7f4",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 1962,
+        "response": {
+          "session_id": "219718fd-ce00-41ff-b9ba-a8c2237ec7f4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, recibo que tenés un presupuesto de 10 millones y un usado para entregar como forma de pago. Para avanzar con opciones acordes, primero necesito saber qué auto entrega: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 12599,
+        "response": {
+          "session_id": "219718fd-ce00-41ff-b9ba-a8c2237ec7f4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 3019,
+        "response": {
+          "session_id": "219718fd-ce00-41ff-b9ba-a8c2237ec7f4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya sé que tu usado tiene 65 mil km. Ahora me falta la marca, modelo y año para poder acercarte opciones acorde a tu real capacidad con anticipo y financiación. Cuál es el auto que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)stock completo|todo el stock|toda la lista|ver todo lo que/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/",
+      "turno 3 · text_matches: no matcheó /(?i)stock completo|todo el stock|toda la lista|ver todo lo que/"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "956b6008-9507-463e-adf3-f4bb34465c02",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2130,
+        "response": {
+          "session_id": "956b6008-9507-463e-adf3-f4bb34465c02",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Buenísimo que tenés un usado para entregar! Para darte las opciones que mejor te cierren necesito que me digas qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 1717,
+        "response": {
+          "session_id": "956b6008-9507-463e-adf3-f4bb34465c02",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, el Yaris 2020. Ahora contame, cuántos kilómetros tiene aproximadamente?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 7382,
+        "response": {
+          "session_id": "956b6008-9507-463e-adf3-f4bb34465c02",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2020 con 65.000 km más un presupuesto de 10 millones, estas son algunas opciones que te pueden servir:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, hatchback y dentro de tu presupuesto\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, hatchback y también entra justo en el presupuesto"
+            },
+            {
+              "type": "text",
+              "content": "Y si querés algo un poco más arriba entregando tu usado, podrías considerar el Toyota Etios 2019 con 45.000 km a $12.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Y si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "27027284-fc3e-4c6a-9090-37002b811476",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 1685,
+        "response": {
+          "session_id": "27027284-fc3e-4c6a-9090-37002b811476",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para ayudarte mejor necesito saber qué auto usás como parte de pago. Contame la marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 12004,
+        "response": {
+          "session_id": "27027284-fc3e-4c6a-9090-37002b811476",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 2143,
+        "response": {
+          "session_id": "27027284-fc3e-4c6a-9090-37002b811476",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Buenísimo, gracias por los km. Ahora contame qué marca, modelo y año es el usado que entregás."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)stock completo|todo el stock|toda la lista|ver todo lo que/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/",
+      "turno 3 · text_matches: no matcheó /(?i)stock completo|todo el stock|toda la lista|ver todo lo que/"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "ad5dccac-d50c-4618-b946-731b153049c2",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2357,
+        "response": {
+          "session_id": "ad5dccac-d50c-4618-b946-731b153049c2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, tomá en cuenta que para mostrarte las opciones que te entrarían con tu usado necesito saber qué auto entregás como parte de pago. Me podés decir la marca, modelo y año de tu usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 6324,
+        "response": {
+          "session_id": "ad5dccac-d50c-4618-b946-731b153049c2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y para terminar de calcular te falta decirme cuántos kilómetros tiene tu Yaris 2020."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 6945,
+        "response": {
+          "session_id": "ad5dccac-d50c-4618-b946-731b153049c2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo, una estimación preliminar de tu Yaris 2020 con 65.000 km, y la posibilidad de financiar hasta el 50%, tenés este abanico de autos:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a este Toyota Etios 2019, 45.000 km, $12.500.000."
+            },
+            {
+              "type": "text",
+              "content": "La estimación del usado es preliminar; para la tasación final un asesor tiene que ver el auto en persona. Cuál de estas opciones te interesa o querés que te pase todo el stock que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-ofrece-stock-completo",
+    "bug": "captura: cliente con 10M + usado (Yaris 2020). Tras mostrar opciones al contado, Franco salta directo a 'me dejás tu nombre para que un asesor coordine la tasación', sin ofrecer antes ver el STOCK COMPLETO. El '## Enfoque comercial' dice 'SIEMPRE ofrecele ver el stock completo' pero la rama permuta no lo hereda. Fix v48: en la rama contado, ofrecer el stock completo antes de proponer la tasación con el asesor. OJO: roza el name-ask (STATE lo peleó); medir permuta-una-pregunta-por-vez de control.",
+    "sessionId": "b7638e7e-82b6-4e98-80fb-81b02bf35247",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 1882,
+        "response": {
+          "session_id": "b7638e7e-82b6-4e98-80fb-81b02bf35247",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Buenísimo, recibimos usados como parte de pago. Para orientarte bien, me podés decir qué auto entregás como usado? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "yaris 2020",
+        "ms": 16008,
+        "response": {
+          "session_id": "b7638e7e-82b6-4e98-80fb-81b02bf35247",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tenés estos autos que podrían entrar dentro de tu presupuesto entregando el Yaris 2020 como parte de pago:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, hatchback, cómodo para ciudad\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, hatchback, ideal para uso urbano\n\nY si te interesa algo un poco más alto, entregando tu usado podrías considerar:\n- Toyota Etios 2019 — 45.000 km — $12.500.000, hatchback, cuatro años más nuevo\n\nY si querés, te puedo mostrar todo el stock que tenemos, avisame.\n\nCuál te llama la atención para seguir viendo detalles o para saber cómo seguir con la financiación o la tasación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65mil km",
+        "ms": 12298,
+        "response": {
+          "session_id": "b7638e7e-82b6-4e98-80fb-81b02bf35247",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, entregando tu Yaris 2020 con 65.000 km, teniendo en cuenta tu presupuesto de 10 millones y la posibilidad de financiar hasta el 50%, tengo una mejor idea de tus opciones."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar, me dejás tu nombre y apellido? Así le paso todo a un asesor para que te contacte, coordine la tasación de tu usado y te prepare una simulación personalizada."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)stock completo|todo el stock|toda la lista|ver todo lo que/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)stock completo|todo el stock|toda la lista|ver todo lo que/"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras mostrar opciones al contado + permuta, antes de derivar al asesor Franco debe ofrecer ver el STOCK COMPLETO ('si querés te paso todo el stock que tenemos'). En v47 salta directo al nombre/asesor → falla. Verificar que NO regrese el name-ask (permuta-una-pregunta-por-vez)."
+      }
+    ],
+    "error": null
+  }
+]

@@ -4,21 +4,206 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v45.json` · 36 nodos
+**Workflow en producción:** `franco-n8n-v56.json` · 35 nodos
 
 | | |
 |---|---|
 | Webhooks | 6 (auth: ninguna) |
-| Nodos Postgres | 16 |
-| Tools de Franco | Listar stock, Buscar auto, Guardar lead, Detalle auto, Valuar usado |
+| Nodos Postgres | 15 |
+| Tools de Franco | Listar stock, Buscar auto, Guardar lead, Detalle auto |
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 46 casos · baseline-v33.json → 30/35 |
+| Evals | 55 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **Sesión 2026-07-23. SESIÓN C (confiabilidad/arquitectura) — EN CURSO. Target (a): colapso determinístico.**
+> Baseline limpio medido (`evals/c-baseline-cadena-eco.json`, `c-baseline-estado.json`): parser fallback spikea
+> (3/5 en `permuta-contado` a --delay 3000), eco residual, re-ofrecimiento a la distancia 1/3 limpio. **Hallazgo
+> param-level (ejecución 7351):** el abanico corto NO es solo `usado_valor=0` — aun con la cadena perfecta
+> (usado_km=65000, usado_valor=12.4M OK), Franco manda un `precio_max=12.5M` de su cosecha que colapsa el techo
+> `estirar` determinístico. La tesis de C en su forma pura.
+> - **a2 — `scripts/precio-max-no-colapsa-permuta.mjs` (v52→v53). PEGADO Y MEDIDO.** En `Listar stock`, `precio_max`
+>   no se aplica cuando `tiene_permuta=1 OR con_financiacion=1` (el techo lo fija el SQL, el LLM no lo achica).
+>   Verificado byte a byte (Listar stock 6330, systemMessage 40825 intacto). **Prueba vinculante (log 7412, mismos
+>   params que 7351):** Franco SIGUE mandando `precio_max=12.5M` pero el guard lo ignora → `estirar` ahora llega a
+>   Cronos (16.8M) y Kangoo (18.5M). Atribución airtight. Auto-checks `permuta-contado` 1/5→4/5.
+> - **EFECTO COLATERAL de a2 (run4):** al no filtrar `precio_max`, Listar stock en contado devuelve también las
+>   filas `categoria='fuera'` (financiación las strippea, contado NO) → Franco sobre-ofreció Renegade 25.5M /
+>   Corolla 24.8M / Duster 22.5M como "estirar" (overshoot tipo $38M/v45, reintroducido en contado).
+> - **a2.1 — `scripts/permuta-no-muestra-fuera.mjs` (v53→v54). PEGADO Y MEDIDO.** Strippea `categoria='fuera'`
+>   cuando `tiene_permuta=1`, espejo del strip de financiación (v45). Completa a2: el techo estirar es el cap, el
+>   LLM no lo achica (a2) ni lo excede (a2.1). Verificado byte a byte (Listar stock 6496, systemMessage 40825
+>   intacto). **Medido:** logs 7430 (`precio_max=12.5M`) y 7423 (`precio_max=0`) devuelven las MISMAS 5 filas
+>   accesibles (Kangoo/Cronos/Etios estirar + Gol/Fiesta entra), **cero filas `fuera`** (a2/7412 traía 17 con 12
+>   fuera). Chat `permuta-contado` 5/5 SIN overshoot (adiós Renegade/Corolla/Duster $22-25M). Auto-checks 4/5 (el
+>   miss es parser fallback en t2 = ruido TPM, trampa 5, no el abanico).
+> - **a1a — `scripts/colapso-valuacion-en-listar-stock.mjs` (v54→v55). PEGADO Y MEDIDO.** La valuación del usado
+>   pasa a un CTE `usado_val` DENTRO de `Listar stock` (expresión extraída byte a byte de `Valuar usado`, gate
+>   `tiene_permuta=1 AND usado_anio>0`); las 5 refs a `usado_valor` → `usado_val.valor`; **la key `usado_valor`
+>   se removió del schema** → el LLM ya no puede mandar 0. Prompt pto 5 (fin+contado) + pto 6 reescritos (pasa
+>   descriptores directo, no llama `Valuar usado`; el valor ni se lo devuelven). Verificado byte a byte (Listar
+>   stock 7329, systemMessage 40941). **Medido (logs 7445/7438):** Franco pasa `usado_marca/modelo/anio/km/categoria`,
+>   NO `usado_valor`; `Listar stock` computa el valor interno (≈12.4M) y el `estirar` llega a Cronos/Kangoo; SQL
+>   válido, 5 filas limpias, 0 overshoot. Chat 4/5 (miss = parser fallback). Eco del km bajó a 1/5.
+>   **Residual:** Franco TODAVÍA llama a `Valuar usado` (resultado ignorado) → llamada TPM desperdiciada → a1b.
+> - **a1b — `scripts/remover-valuar-usado-huerfano.mjs` (v55→v56). PEGADO Y MEDIDO.** Removido el nodo `Valuar
+>   usado` (huérfano; la valuación vive copiada en el CTE). Verificado vivo = **35 nodos**, `Valuar usado` fuera,
+>   Listar stock/systemMessage byte-idénticos. **Medido:** `parser fallback 0/5` (a1a 1/5, baseline 3/5 → la
+>   llamada de tool de menos baja TPM), 0 overshoot, abanico correcto. Invariantes ✓.
+> **✅ TARGET (a) COMPLETO** (a2 guard precio_max + a2.1 strip fuera + a1a colapso valuación + a1b remoción):
+>   el techo del abanico es 100% determinístico (el LLM no lo achica ni lo excede ni puede mandar usado_valor=0),
+>   sin cadena de 3 pasos, con una llamada de tool menos. **Puntero: v56 vivo.**
+> - **HALLAZGO para target-b (líder):** `product_cards` sale INCONSISTENTE — batch a1b 3/5 con `product_cards=0`
+>   pese a listar 4 autos en el texto del abanico (TIPO B); a2.1/a1a fueron 1/5. Es la flakiness A4 (el LLM decide
+>   `product_cards` free-form; remover un nodo no toca el output schema → preexistente, quizás nudgeada, n=5 no
+>   discrimina ruido). **Target-b lo mata:** armar el abanico + las cards por CÓDIGO desde las filas hidratadas
+>   (como el cierre comercial de "Armar respuesta", trampa 7) en vez de que Franco elija `product_cards`. Eso
+>   resuelve de una: cards inconsistentes, eco del modelo/km en el encabezado (~1-2/5) y presentación floja.
+> **Sin pushear aún** (branch `fixes/historial-color-fotos`, tanda v34–v56 acumulada). Agustina autorizó pushear
+> cuando esté maduro; Target (a) es un hito coherente para respaldar.
+
+> **Sesión 2026-07-23. v52 PEGADO Y MEDIDO (bug del re-ofrecimiento de financiación). Parcial; el resto es C.**
+> `scripts/financiacion-no-reofrece.mjs`. Captura: Franco recolectó anticipo (10M) + cuotas (36) de la Duster; el
+> cliente pivotea a "más info del auto"; Franco da la ficha y RE-OFRECE la financiación ("te interesa financiarla o
+> entregando tu usado?"). RAÍZ: el cierre comercial de ## Paso 3 tenía el ejemplo "te interesa financiarlo..." y su
+> única excepción era la permuta (name-ask). Fix: **Excepción 2** — si ya dio anticipo/cuotas, consolidar con una
+> AFIRMACIÓN, no re-preguntar. Verificado byte a byte (systemMessage 40825). **Medido:**
+> - `financiacion-no-re-ofrece` (corto): **0/4 → 2/3**. El fix ayuda cuando la financiación está cerca.
+> - `financiacion-no-re-ofrece-largo` (~9 turnos, con ida y vuelta): **1/3**. Agustina precisó que el bug aparece tras
+>   ~10 mensajes, no continuo: **a la distancia el fix por prompt NO aguanta** (el anticipo/cuotas quedan lejos en la
+>   ventana y "mirá la conversación reciente" no alcanza). **Fix robusto = que `estado_cliente` capture anticipo/cuotas**
+>   (siempre en contexto) → C.
+> - `financiacion-pide-anticipo` (control): **0/3 pero es RUIDO DEL PARSER**, no regresión. Las fallas son la burbuja de
+>   fallback ("se me trabó el sistema") en el TURNO 1 (Structured Output Parser intermitente); el turno 4 responde bien
+>   ("de cuánto sería el anticipo?"). El parser fallback SPIKEÓ esta sesión — probable carga/TPM (trampa 5) de correr
+>   muchos evals seguidos. **Anotar para C:** medir el parser fallback aislado (con --delay alto) y ver si es TPM.
+> **Puntero: v52.** Sin pushear.
+
+> **Sesión 2026-07-23. TANDA DE PERMUTA CERRADA (v48→v51, todo pegado y medido). Terreno listo para C.**
+> Sobre 3 capturas + el pedido de "concreto y sin redundancias". Resumen de la tanda (producción = **v51**):
+> - **v48 — verbosidad #3 (WIN) + ofrecer stock #2 (parcial).** pto 3 seco: `permuta-km-conciso` 1/6→5/6 (v51: 4/4).
+> - **v49 — contado proporcional #1 (WIN, verificado en log 7118):** el `estirar` factoriza el usado (×0.70), techo
+>   14M→18.68M, deja de subtasar. Falta que Agustina sume populares (Yaris, etc.) a `valores_usados.csv` para que el
+>   fallback no lo deje corto.
+> - **v50 — anti-eco del abanico (pto 6)** y **v51 — anti-eco GLOBAL (# Tono).** El eco ("recibo que tenés 10 millones
+>   y un usado", "tu Yaris 2020 con 65.000 km") se atacó en dos capas. Medido: `permuta-sin-eco-primer-turno` 2/4→**4/4**
+>   (v51 mató el eco del primer turno); `permuta-sin-eco-datos` (eco del km en el ENCABEZADO del abanico) 0/4→3/4 (v50)→
+>   ~2/4 (v51): **residual flaky ~50%**. Reforzarlo más por prompt es whack-a-mole → va a C.
+> - Verificado byte a byte vivo==v51 en cada paso (systemMessage 40286). Invariantes ✓. **Sin pushear** (branch
+>   `fixes/historial-color-fotos`). Evals nuevos: `permuta-km-conciso`, `permuta-ofrece-stock-completo`,
+>   `permuta-contado-factoriza-usado`, `permuta-sin-eco-datos`, `permuta-sin-eco-primer-turno`.
+>
+> **TERRENO PARA C (sesión propia, es rediseño no parche).** Todo lo que quedó flaky en esta tanda tiene la MISMA raíz:
+> gpt-4.1-mini no orquesta confiable la cadena de 3 pasos ni mantiene el contexto. Síntomas medidos esta sesión:
+> - **usado_km / usado_valor inconsistentes:** Franco pasa `usado_km=0` (km fix dormido, logs 6921/6930) o `usado_valor=0`
+>   (abanico colapsa) unas veces y bien otras (log 7118 pasó km=65000 y valor OK). Sin patrón estable.
+> - **Pérdida de contexto:** Franco olvida el modelo del usado ("ya tengo los km, ahora la marca/modelo/año") — visto en
+>   varios runs de `permuta-ofrece-stock` y `sin-eco`.
+> - **Ruteo contado vs financiación ambiguo:** "10M de presupuesto" cae a veces en contado, a veces en financiación.
+> - **Financiación no persiste:** anticipo/cuotas NO viven en `estado_cliente` (solo memoria de conversación) → tras
+>   ~10 mensajes Franco re-ofrece la financiación que ya recolectó (v52 lo mitigó cerca, no a la distancia). Fix: que
+>   el CRM extraiga anticipo/cuotas a `estado_cliente`, como ya hace con nombre/usado/financia.
+> - **Parser fallback ("se me trabó el sistema") intermitente** — spikea bajo carga; medir aislado (TPM, trampa 5).
+> - **Presentación floja + gate del km leakea 5/5** (ya en STATE).
+> - **Eco residual del encabezado del abanico** (~50%): el encabezado lo arma el LLM free-form.
+> **Hipótesis de fondo para C (regla del proyecto: lo determinístico va a código):** colapsar la cadena a UN salto —
+> que `Listar stock` valúe el usado internamente (o `Valuar usado` devuelva ya los tramos), y que el ENCABEZADO del
+> abanico lo arme un guard/código (como el cierre comercial de "Armar respuesta", trampa 7) en vez del prompt. Eso
+> mataría de raíz: km dormido, usado_valor=0, eco del encabezado, y descargaría el prompt (40k chars, empeora la
+> orquestación). Ojo trampa 5 (TPM) si se suman nodos/subagentes. Arrancar C con su propio plan y baseline.
+
+> **Sesión 2026-07-23. v49 PEGADO Y VERIFICADO (Tarea B: contado proporcional). WIN determinístico.**
+> `scripts/contado-proporcional.mjs`. El contado+permuta subtasaba (techo estirar = efectivo×1.40 = 14M, no
+> factorizaba el usado → al cliente del Yaris 2020 le ofrecía autos más viejos). Fix (factor ×0.70, decisión de
+> Agustina): SQL `estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70)` (degrada solo si usado_valor=0) +
+> prompt (la rama contado pasa usado_valor con con_financiacion=0). Verificado byte a byte (systemMessage 39560,
+> Listar stock 6015). **BINDING VERIFICADO en el log 7118:** Valuar usado (Yaris 2020/65k → $12.406.105 fallback
+> categoría, y Franco pasó usado_km=65000 — la cadena del km funcionó acá) → Listar stock (usado_valor=12406105,
+> con_financiacion=0) → **categoría `estirar` = Kangoo $18.5M, Cronos $16.8M, Etios $12.5M** (techo subió a 18.68M vs
+> 14M en v48). El subtasado está arreglado. Nota: con el Yaris en la tabla a valor real (~16M) el techo llegaría a
+> ~21M (Onix/208/EcoSport); el fallback lo deja en Kangoo/Cronos → **Agustina: sumar populares a `valores_usados.csv`.**
+> **REDUNDANCIA (énfasis de Agustina, ABIERTO):** Franco recita "tu Yaris 2020 con 65.000 km" en los encabezados de la
+> narrativa de permuta/capacidad, repitiendo lo que el cliente acaba de decir. La regla global "No repitas los datos
+> que el cliente acaba de darte" no aguanta ahí (el guion del encabezado invita el eco). Próximo fix (v50): anti-eco en
+> los encabezados de permuta con ejemplo concreto (trampa 6). **Puntero: v49.** Falta C (colapsar la cadena de 3 pasos).
+
+> **Sesión 2026-07-23. v48 PEGADO Y MEDIDO (Tarea A de la tanda de permuta). #3 WIN, #2 parcial.**
+> Pedido de Agustina sobre 2 capturas (permuta al contado con 10M + Yaris 2020) + revisión general del flujo. Tres temas:
+> #3 verbosidad, #2 no ofrece el stock completo, #1 subtasa (contado proporcional). A = #2 + #3 (prompt); B = #1 (SQL);
+> C = confiabilidad de la cadena. **v48 (`scripts/permuta-conciso-ofrece-stock.mjs`):**
+> - **#3 verbosidad — WIN.** pto 3 reescrito seco (sacó el guion "valorá lo que entrega (es de los más buscados)" que
+>   enseñaba el piropo; ejemplo terso "genial, y cuántos km tiene?"). Eval `permuta-km-conciso` **1/6 → 5/6**. Verificado
+>   byte a byte (systemMessage 39342). name-ask control `permuta-una-pregunta-por-vez` **5/6, sin regresión**.
+> - **#2 ofrecer stock — PARCIAL.** Ofrecimiento agregado a la rama contado; funciona cuando Franco se queda en contado
+>   (runs 1/3/5: "y si querés te paso todo el stock"), pero el eval quedó **4/6 → 3/6** por DOS cosas ajenas al fix
+>   (log): (a) **pérdida de contexto** — Franco a veces olvida el "Yaris 2020" del turno previo y re-pide marca/modelo/año;
+>   (b) **ruteo a financiación** — trata "10M de presupuesto" como anticipo → va por el abanico (donde el ofrecimiento no
+>   está). La parte que falta de #2 se resuelve con B (arreglar el ruteo contado vs financiación).
+> **HALLAZGO para B:** el subtasado del Yaris (#1) tiene DOS causas: (1) la rama contado usa el techo viejo (efectivo×1.40,
+> no factoriza el usado); (2) el ruteo "10M presupuesto" → a veces contado, a veces financiación, inconsistente. B tiene que
+> desambiguar el ruteo Y factorizar el usado en la capacidad al contado. **Puntero de producción: v48.** Sigue B (contado
+> proporcional, con sim de números antes) y C (confiabilidad de la cadena de 3 pasos). Sin pushear.
+
+> **Sesión 2026-07-23. v47 PEGADO Y MEDIDO (bundle v46+v47). Tarea B: WIN. Tarea A (km): instalada pero DORMIDA.**
+> Dos cambios en secciones separadas, cada uno con su eval que falló en v45. Agustina pegó v47 (acumulativo: km fix +
+> financiación). Verificado byte a byte vs el vivo (systemMessage 38859, Valuar usado 2010, Listar stock 5272 — idénticos).
+>
+> **v46 (`scripts/km-ajusta-valor.mjs`, "el 2"): el km del usado AJUSTA el valor (Valuar usado).** Backlog del
+> gate del km. Hoy `valor = base_2020 * 0.93^edad`, el km no entra → el gate ("pedí el km antes de mostrar") no
+> tiene razón computacional y Franco lo saltea (reforzarlo por prompt fue whack-a-mole). Fix (regla del proyecto,
+> determinístico → SQL): Valuar usado multiplica por un `km_factor` = `clamp(0.65..1.0, 0.88^((km - km_esperado)/50000))`,
+> `km_esperado = 15000*(año_actual-año)`. **Penaliza el exceso de km sobre el esperado para la edad, NO premia el bajo
+> km (techo 1.0)** — decisión de Agustina. Param nuevo `usado_km`. Con `km=0` (Franco no lo pidió) → factor 1.0 →
+> degrada EXACTO a v45 (no rompe nada si el gate leakea). Prompt pto 5: (a) corrige la frase "el km es obligatorio
+> **aunque no cambie el cálculo del valor**" (ahora es falsa → el km SÍ cambia el valor, eso le da razón al gate);
+> (b) suma `usado_km` a la llamada y aclara que el km del usado NO es filtro de stock (en el log Franco lo mandaba
+> como `km_max`).
+> - **Matiz honesto (dicho a Agustina):** meter el km al valor es la arquitectura correcta y le da SENTIDO al gate,
+>   pero NO fuerza a Franco a gatear ("pedí el km" sigue siendo lenguaje). Sí garantiza valuaciones realistas cuando
+>   Franco tiene el km.
+> - **Verificación VINCULANTE (el chat-text NO discrimina):** sim offline `scripts/sim-km-valor.mjs` (espejo fiel del
+>   SQL) — Ka 2015 250k km → valor $7.1M, techo ~24M → **Corolla (24.8M) y Renegade (25.5M) pasan a `fuera` y el SQL
+>   los FILTRA** (hardening v45). Post-paste: correr `capacidad-km-alto-achica` y LEER el output de `Listar stock` en
+>   el log (get_execution): Corolla/Renegade ya no deben venir (en v45 vienen en tramo `alto`).
+> - **HALLAZGO del baseline (log 6897, método #1):** con Ka 2015 250k km, `Valuar usado` devolvió 8.83M (km ignorado,
+>   correcto) y `Listar stock` devolvió el abanico COMPLETO con Corolla/Renegade en `alto` — **pero Franco en el texto
+>   mostró solo los 3 más baratos** (Etios/Fiesta/Gol, ids 4/2/3). NO era `usado_valor=0` (hipótesis descartada por el
+>   log): es la **presentación floja** (Franco elige los más baratos, no llega al techo), ya anotada en STATE. Por eso
+>   el eval `capacidad-km-alto-achica` va con la composición del abanico en MANUAL y checks reales solo en lo
+>   determinístico (pickups filtradas, no recita el valor). Baseline v45: **0/3** (falla, como debe).
+>
+> **v47 (`scripts/financiacion-anticipo-transparencia.mjs`): flujo de financiación (las 2 capturas).** Cliente
+> interesado en el Etios pregunta cómo financiarlo; Franco preguntaba compuesto ("anticipo O usado" + "cuántas
+> cuotas"), el cliente skipeaba el MONTO del anticipo, y Franco avanzaba a pedir el nombre "con el anticipo que tenés"
+> (que nunca dio) + ofrecía "prepararte una simulación" como si la hiciera él. Fix (trampa 6, se REEMPLAZA el guion
+> en `# Financiación`): (R1) la simulación SIEMPRE la arma el asesor, Franco nunca ofrece prepararla él; (R2)
+> pre-perfil de a UNA pregunta, ANTICIPO primero — sin el monto NO avanza (ni confirma, ni pide nombre, ni deriva),
+> salvo derivación explícita; + regla de DATO INCOMPLETO (si contesta a medias, re-pedir el faltante; si en la 2da no
+> sabe/quiere, no insistir); (R3) saca el ejemplo ambiguo "que te prepare la simulación". Baseline v45 (eval
+> `financiacion-pide-anticipo`, 4 turnos fieles a la captura): **0/2** — run2 reproduce exacto el bug (pide el nombre
+> sin el monto). Transparencia va en MANUAL (el "te prepare" es ambiguo en español, el regex no discrimina).
+>
+> **MEDIDO (v47 en el vivo):**
+> - **Tarea B `financiacion-pide-anticipo`: 0/2 → 3/3.** Las 3 veces Franco pide el MONTO del anticipo ("de cuánto sería
+>   el anticipo, más o menos?"), no avanza al nombre, y atribuye la simulación al asesor. WIN limpio, verificado en texto.
+> - **Tarea A (km) `capacidad-km-alto-achica`: 3/3 en los checks deterministas, pero DORMIDA.** Log 6921/6930: Franco llama
+>   a Valuar usado con **usado_km=0** en las dos ejecuciones — NO le pasa el km real (100k ni 250k). La valuación queda en
+>   8.83M (factor 1.0). El SQL del km_factor está bien y es inofensivo (km=0 → idéntico a v45), pero **Franco no le alimenta
+>   el km al tool**, así que el fix no tiene efecto observable todavía. Cadena flaky de gpt-4.1-mini (misma familia que el
+>   gate). El matiz se predijo de antemano.
+> - **Control `capacidad-de-compra-financiada`: 0/5 — NO es regresión.** El gate leakea 5/5 (turno 1 muestra el abanico
+>   sin pedir el km) = el "único abierto" que STATE ya marcaba en v45. El turno-2 (abanico real) sale ~3/5 (flakiness de
+>   presentación de siempre). Log 6921: en 1 run Franco pasó usado_valor=0 → abanico chico (orquestación flaky, no valuación
+>   rota). El abanico funciona cuando orquesta bien.
+> **Puntero de producción: v47** (state-sync.mjs L18 actualizado, encabezado regenerado). **Backlog:** (1) el km fix está
+> DORMIDO hasta que Franco pase usado_km — bajo impacto, no forzar por prompt (whack-a-mole); (2) **presentación floja del
+> abanico + gate del km** (Franco muestra los más baratos / no gatea) es el tema de calidad que más se nota — candidato a
+> fondo por SQL/estructura, no prompt; (3) contado proporcional; purga global "efectivo". **Sin pushear** (branch
+> fixes/historial-color-fotos).
 
 > **Sesión 2026-07-23. v41: fix de la regresión del name-ask. PEGADO Y MEDIDO — OK.** v40 regresó
 > `permuta-una-pregunta-por-vez` a 0/5 (el guion de tramos se metía en el turno del name-ask).

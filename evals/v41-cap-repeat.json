@@ -1,0 +1,446 @@
+[
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con 7M de anticipo + un Ford Ka 2015 + financiación, Franco mostró SOLO la Fiesta 8.2M (la más barata) y el Gol 9.2M, tratando los 7M como el techo total. La capacidad real es efectivo + usado (tasa el asesor) + hasta 50% financiado (~15-28M). Debe explicar la capacidad y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, segmentos distintos. RAIZ: ## Permuta pto 5 arma 'dos caminos' anclados al efectivo crudo; la financiacion no entra en el calculo del stock. Fix v40: `financia` en Listar stock (tramo por capacidad) + reescritura del guion.",
+    "sessionId": "79516408-a188-402f-a905-b1eadfb30eae",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 10566,
+        "response": {
+          "session_id": "79516408-a188-402f-a905-b1eadfb30eae",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 para entregar y un anticipo de $7.000.000, sumado a la posibilidad de financiar hasta el 50% del valor del vehículo, tenés un abanico amplio de opciones para elegir en distintos tramos de precio."
+            },
+            {
+              "type": "text",
+              "content": "Empecemos con algunas opciones para la entrada, que se pagan casi con tu efectivo y la tasación de tu usado:\n- Fiat Cronos 2023, Sedán, 28.000 km, $16.800.000\n- Toyota Etios 2019, Hatchback, 45.000 km, $12.500.000\n\nPara un tramo intermedio, que requiera una financiación moderada:\n- Chevrolet Onix 2024, Sedán, 12.000 km, $21.500.000\n- Peugeot 208 2025, Hatchback, 8.000 km, $21.000.000\n- Ford EcoSport 2020, SUV, 55.000 km, $19.800.000\n- Renault Kangoo 2021, Utilitario, 82.000 km, $18.500.000\n\nY para el techo, donde aprovechás al máximo la financiación:\n- Jeep Renegade 2021, SUV, 42.000 km, $25.500.000\n- Toyota Corolla 2022, Sedán, 35.000 km, $24.800.000\n- Renault Duster 2023, SUV, 31.000 km, $22.500.000\n\nEstas opciones muestran diferentes tamaños y estilos para que elijas la que mejor te convenga."
+            },
+            {
+              "type": "text",
+              "content": "Si querés, te paso todo el stock que tenemos para que veas más opciones."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe explicar la capacidad de compra (efectivo + usado a tasar + hasta 50% financiado) y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, marcas/segmentos distintos. NO tratar los 7M como techo (v39 mostraba solo Fiesta 8.2M + Gol 9.2M). Autos esperables: entrada Etios/Cronos, intermedio EcoSport/208, techo Corolla/Renegade."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con 7M de anticipo + un Ford Ka 2015 + financiación, Franco mostró SOLO la Fiesta 8.2M (la más barata) y el Gol 9.2M, tratando los 7M como el techo total. La capacidad real es efectivo + usado (tasa el asesor) + hasta 50% financiado (~15-28M). Debe explicar la capacidad y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, segmentos distintos. RAIZ: ## Permuta pto 5 arma 'dos caminos' anclados al efectivo crudo; la financiacion no entra en el calculo del stock. Fix v40: `financia` en Listar stock (tramo por capacidad) + reescritura del guion.",
+    "sessionId": "ab8204c7-7697-4d09-8688-e675ddc38b2e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 6875,
+        "response": {
+          "session_id": "ab8204c7-7697-4d09-8688-e675ddc38b2e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 para entregar y $7 millones de anticipo, y la posibilidad de financiar hasta el 50% del valor, tenés varias opciones para elegir según lo que prefieras y cuánto te tome la tasación de tu usado. Te muestro algunas opciones agrupadas por capacidad de compra:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada (cubren casi todo con tu efectivo y tu usado):\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n\nIntermedio (requieren una financiación moderada):\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000\n- Peugeot 208 2025 — 8.000 km — $21.000.000\n\nTecho (aprovechando hasta el 50% financiado):\n- Jeep Renegade 2021 — 42.000 km — $25.500.000\n- Toyota Corolla 2022 — 35.000 km — $24.800.000\n\nSi te interesa, un asesor puede coordinar la tasación de tu Ka para definir el plan más ajustado a vos. Querés que te pase con un asesor para avanzar con la tasación y la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe explicar la capacidad de compra (efectivo + usado a tasar + hasta 50% financiado) y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, marcas/segmentos distintos. NO tratar los 7M como techo (v39 mostraba solo Fiesta 8.2M + Gol 9.2M). Autos esperables: entrada Etios/Cronos, intermedio EcoSport/208, techo Corolla/Renegade."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con 7M de anticipo + un Ford Ka 2015 + financiación, Franco mostró SOLO la Fiesta 8.2M (la más barata) y el Gol 9.2M, tratando los 7M como el techo total. La capacidad real es efectivo + usado (tasa el asesor) + hasta 50% financiado (~15-28M). Debe explicar la capacidad y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, segmentos distintos. RAIZ: ## Permuta pto 5 arma 'dos caminos' anclados al efectivo crudo; la financiacion no entra en el calculo del stock. Fix v40: `financia` en Listar stock (tramo por capacidad) + reescritura del guion.",
+    "sessionId": "3aee320b-d00f-455d-bf32-3e7299e1f227",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 8736,
+        "response": {
+          "session_id": "3aee320b-d00f-455d-bf32-3e7299e1f227",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 7 millones, que entregás un Ford Ka 2015 y la posibilidad de financiar hasta el 50%, tenés un abanico amplio de opciones."
+            },
+            {
+              "type": "text",
+              "content": "Para que te des una idea, estas son algunas opciones ordenadas por capacidad de compra:\n\nEntrada (lo que podrías pagar casi solo con tu efectivo y tu usado):\n- Fiat Cronos 2023, 28.000 km, $16.800.000\n- Toyota Etios 2019, 45.000 km, $12.500.000\n\nIntermedio (con una financiación moderada):\n- Chevrolet Onix 2024, 12.000 km, $21.500.000\n- Peugeot 208 2025, 8.000 km, $21.000.000\n\nTecho (aprovechando hasta el 50% financiado):\n- Jeep Renegade 2021, 42.000 km, $25.500.000\n- Toyota Corolla 2022, 35.000 km, $24.800.000\n\nEstas opciones son una muestra para que puedas ir viendo qué te gusta."
+            },
+            {
+              "type": "text",
+              "content": "Si querés, puedo pasarle tus datos a un asesor para que te haga la tasación oficial de tu Ford Ka y te arme una simulación personalizada con cuotas y entrega. Cómo te gustaría seguir adelante?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe explicar la capacidad de compra (efectivo + usado a tasar + hasta 50% financiado) y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, marcas/segmentos distintos. NO tratar los 7M como techo (v39 mostraba solo Fiesta 8.2M + Gol 9.2M). Autos esperables: entrada Etios/Cronos, intermedio EcoSport/208, techo Corolla/Renegade."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con 7M de anticipo + un Ford Ka 2015 + financiación, Franco mostró SOLO la Fiesta 8.2M (la más barata) y el Gol 9.2M, tratando los 7M como el techo total. La capacidad real es efectivo + usado (tasa el asesor) + hasta 50% financiado (~15-28M). Debe explicar la capacidad y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, segmentos distintos. RAIZ: ## Permuta pto 5 arma 'dos caminos' anclados al efectivo crudo; la financiacion no entra en el calculo del stock. Fix v40: `financia` en Listar stock (tramo por capacidad) + reescritura del guion.",
+    "sessionId": "d6939445-ccd8-43b9-9775-8015aff2178b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 7776,
+        "response": {
+          "session_id": "d6939445-ccd8-43b9-9775-8015aff2178b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 para entregar y un anticipo de 7 millones más la posibilidad de financiar hasta el 50%, tenés un abanico interesante de opciones para considerar."
+            },
+            {
+              "type": "text",
+              "content": "Aquí te resumo algunas de las opciones según la capacidad de pago real considerando tu usado y el anticipo:"
+            },
+            {
+              "type": "text",
+              "content": "- Entrada (casi cubiertas con efectivo y usado):\n  Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, medio)\n  Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, chico)\n- Intermedio (requiere financiación moderada):\n  Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, medio)\n  Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, chico)\n- Techo (máximo aprovechando financiamiento):\n  Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV, mediano)\n  Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán, mediano)\n\nEstas opciones pueden ajustarse en función de la tasación de tu Ford Ka y las cuotas que prefieras."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo seguir para coordinar la tasación de tu usado y avanzar con un asesor preparando el plan a tu medida?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe explicar la capacidad de compra (efectivo + usado a tasar + hasta 50% financiado) y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, marcas/segmentos distintos. NO tratar los 7M como techo (v39 mostraba solo Fiesta 8.2M + Gol 9.2M). Autos esperables: entrada Etios/Cronos, intermedio EcoSport/208, techo Corolla/Renegade."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con 7M de anticipo + un Ford Ka 2015 + financiación, Franco mostró SOLO la Fiesta 8.2M (la más barata) y el Gol 9.2M, tratando los 7M como el techo total. La capacidad real es efectivo + usado (tasa el asesor) + hasta 50% financiado (~15-28M). Debe explicar la capacidad y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, segmentos distintos. RAIZ: ## Permuta pto 5 arma 'dos caminos' anclados al efectivo crudo; la financiacion no entra en el calculo del stock. Fix v40: `financia` en Listar stock (tramo por capacidad) + reescritura del guion.",
+    "sessionId": "6868e1ab-78e9-4f46-b189-52fde9b5db4c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 10371,
+        "response": {
+          "session_id": "6868e1ab-78e9-4f46-b189-52fde9b5db4c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 para entregar y un anticipo de 7 millones, teniendo en cuenta que podés financiar hasta el 50% del valor, tenés un abanico amplio de opciones para elegir dependiendo de cómo se tase tu usado y el plan de financiación que elijas."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo mostrar algunas opciones agrupadas por la capacidad de compra que tendrías:\n\n1. Entrada (casi cubrís el auto con tu efectivo y la permuta):\n- Fiat Cronos 2023, 28.000 km, $16.800.000\n- Toyota Etios 2019, 45.000 km, $12.500.000\n\n2. Intermedio (con una financiación moderada):\n- Chevrolet Onix 2024, 12.000 km, $21.500.000\n- Peugeot 208 2025, 8.000 km, $21.000.000\n\n3. Techo (aprovechando hasta el 50% financiado):\n- Jeep Renegade 2021, 42.000 km, $25.500.000\n- Toyota Corolla 2022, 35.000 km, $24.800.000\n\nSi querés te puedo pasar todas las opciones que tenemos o te ayudo a armar una simulación con un asesor."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe explicar la capacidad de compra (efectivo + usado a tasar + hasta 50% financiado) y mostrar un abanico por tramos (entrada/intermedio/techo), ~2 por tramo, marcas/segmentos distintos. NO tratar los 7M como techo (v39 mostraba solo Fiesta 8.2M + Gol 9.2M). Autos esperables: entrada Etios/Cronos, intermedio EcoSport/208, techo Corolla/Renegade."
+      }
+    ],
+    "error": null
+  }
+]

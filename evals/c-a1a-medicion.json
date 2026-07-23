@@ -1,0 +1,550 @@
+[
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "43f80ac8-1d2c-4bc6-bafb-499e74372970",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 6203,
+        "response": {
+          "session_id": "43f80ac8-1d2c-4bc6-bafb-499e74372970",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Claro, recibimos usados como parte de pago. Con eso más tu efectivo seguramente entran varias opciones interesantes, e incluso algún auto de mayor valor si la tasación acompaña. Para seguir, me podés decir qué auto es el que entregás: marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 11064,
+        "response": {
+          "session_id": "43f80ac8-1d2c-4bc6-bafb-499e74372970",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 10 millones y una estimación preliminar del valor de tu usado, te presento este abanico sin financiación disponible: \n\nEntrada (autos que cubre tu efectivo con el usado como parte de pago):\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nIntermedio (autos un poco más arriba que podrías considerar):\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n\nSi querés algo de más categoría, entregando tu usado podrías llegar a estas opciones:\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n- Renault Kangoo 2021 — 82.000 km — $18.500.000\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Cuál de estas opciones te llama más la atención?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 8458,
+        "response": {
+          "session_id": "43f80ac8-1d2c-4bc6-bafb-499e74372970",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con 65.000 km en tu usado y tus 10 millones de anticipo para toda la operación, estas son las opciones que te entrarían sin financiar, entregando tu usado:\n\nDentro de tu presupuesto (cubierto por tu efectivo y el usado):\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nSi querés algo un poco más caro, entregando tu usado podrías ver:\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n\nY para algo de más categoría:\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n- Renault Kangoo 2021 — 82.000 km — $18.500.000\n\nTambién puedo pasarte todo el stock si querés, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Cuál de estas opciones te interesa ver o querés que te explique más detalles?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "2ffdab96-594e-44e3-b3ea-83b809fef44b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 5249,
+        "response": {
+          "session_id": "2ffdab96-594e-44e3-b3ea-83b809fef44b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para ayudarte necesito que me digas qué auto entregás como usado: marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 6386,
+        "response": {
+          "session_id": "2ffdab96-594e-44e3-b3ea-83b809fef44b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 6545,
+        "response": {
+          "session_id": "2ffdab96-594e-44e3-b3ea-83b809fef44b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu efectivo y que entregás tu usado, estas son algunas opciones para vos:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, hatchback, dentro de tu presupuesto.\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, hatchback, opción económica dentro de tu rango.\n\nY si querés algo un poco más arriba, estas otras están un poco por encima de tu presupuesto y quizás podrías considerar:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000, hatchback, un poco más nuevo.\n- Fiat Cronos 2023 — 28.000 km — $16.800.000, sedán, bastante más nuevo.\n\nSi quieres, puedo pasarte todo el stock que tenemos, sólo avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "6af2f0ab-d83a-4e38-a335-e8041fc0b805",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 2751,
+        "response": {
+          "session_id": "6af2f0ab-d83a-4e38-a335-e8041fc0b805",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para ofrecerte las mejores opciones con tu efectivo y usado sin financiar, necesito que me digas qué auto es el que entregarías como parte de pago. Marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 5808,
+        "response": {
+          "session_id": "6af2f0ab-d83a-4e38-a335-e8041fc0b805",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos kilómetros tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 10457,
+        "response": {
+          "session_id": "6af2f0ab-d83a-4e38-a335-e8041fc0b805",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo en efectivo y la entrega de tu usado, estas son las opciones que entran justo en tu presupuesto:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo un poco más nuevo o de un poco más de categoría, entregando tu usado podrías ver estas opciones:\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n\nSi querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "8c0f517c-42bd-470b-b31c-2bf7e432ff22",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 2987,
+        "response": {
+          "session_id": "8c0f517c-42bd-470b-b31c-2bf7e432ff22",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar con las opciones necesito saber qué auto entregás como parte de pago: la marca, el modelo y el año, por fa."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1938,
+        "response": {
+          "session_id": "8c0f517c-42bd-470b-b31c-2bf7e432ff22",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene ese Yaris 2020 que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 5476,
+        "response": {
+          "session_id": "8c0f517c-42bd-470b-b31c-2bf7e432ff22",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $10.000.000 y el usado que entregás, estas son algunas opciones que podrían entrar sin financiamiento:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, hatchback chico\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, hatchback chico\n\nY si querés algo un poco más nuevo o distinto, entregando tu usado podrías llegar a estas otras opciones:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000, hatchback chico\n- Fiat Cronos 2023 — 28.000 km — $16.800.000, sedán mediano\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "9517377f-1f23-416c-a990-559c512bb37a",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 3856,
+        "response": {
+          "session_id": "9517377f-1f23-416c-a990-559c512bb37a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para ayudarte con opciones entregando tu usado sin financiar, necesito que me digas qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 16434,
+        "response": {
+          "session_id": "9517377f-1f23-416c-a990-559c512bb37a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 16027,
+        "response": {
+          "session_id": "9517377f-1f23-416c-a990-559c512bb37a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, gracias por el dato. Ahora necesito saber la marca, modelo y año del auto que entregás."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  }
+]

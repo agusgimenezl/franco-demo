@@ -1,0 +1,898 @@
+[
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "68ff8d5d-1ad9-4089-b18d-38aae986958e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 3617,
+        "response": {
+          "session_id": "68ff8d5d-1ad9-4089-b18d-38aae986958e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar necesito que me digas qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "6d931df7-9a0d-4a01-8b35-b4c1cb7bd09c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2904,
+        "response": {
+          "session_id": "6d931df7-9a0d-4a01-8b35-b4c1cb7bd09c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar con las opciones que te puede permitir tu usado como forma de pago, necesito que me digas qué auto entregás: marca, modelo y año, porfa."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "f6284906-062b-4940-a433-6ab2a2edcfd7",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2909,
+        "response": {
+          "session_id": "f6284906-062b-4940-a433-6ab2a2edcfd7",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, antes de mostrarte opciones necesito saber qué auto entregás como parte de pago. Contame marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "8de77ff2-1ad7-467f-8575-c9cb0616caa2",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 1749,
+        "response": {
+          "session_id": "8de77ff2-1ad7-467f-8575-c9cb0616caa2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para poder calcular qué autos te entran con tu presupuesto y tu usado, necesito saber qué auto entregás como parte de pago: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-datos",
+    "bug": "énfasis de Agustina: Franco recita los datos que el cliente acaba de dar. En los encabezados de la narrativa de permuta dice 'teniendo en cuenta tu Yaris 2020 con 65.000 km...', repitiendo modelo/año/km recién dados. La regla global 'no repitas los datos que el cliente acaba de darte' no aguanta ahí (el guion del encabezado invita el eco). Fix v50: anti-eco concreto en pto 6 de ## Permuta (trampa 6). El km del usado (65.000) no debe aparecer en la respuesta; los km de los autos del stock sí (ninguno del stock tiene 65.000).",
+    "sessionId": "227490f4-8b2a-40ab-a90d-c251b8a0638b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar como parte de pago",
+        "ms": 2207,
+        "response": {
+          "session_id": "227490f4-8b2a-40ab-a90d-c251b8a0638b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Genial, sí claro, recibimos usados como parte de pago. Para avanzar, contame qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1934,
+        "response": {
+          "session_id": "227490f4-8b2a-40ab-a90d-c251b8a0638b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, y cuántos km tiene tu Yaris?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65000 km",
+        "ms": 5610,
+        "response": {
+          "session_id": "227490f4-8b2a-40ab-a90d-c251b8a0638b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo y una estimación preliminar de tu usado, estas opciones te podrían interesar:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (entra en tu presupuesto)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (entra en tu presupuesto)\n\nY si querés algo un poco más caro, podrías ver el Toyota Etios 2019, 45.000 km, $12.500.000, entregando tu usado.\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras dar 'Yaris 2020' + '65000 km', el encabezado del abanico NO debe recitar los datos del usado ('tu Yaris 2020 con 65.000 km'): dice 'tu usado' a secas. El km del usado (65.000) NO debe aparecer (ningún auto del stock tiene 65.000 km, así que si aparece es eco). En v49 lo recita → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-datos",
+    "bug": "énfasis de Agustina: Franco recita los datos que el cliente acaba de dar. En los encabezados de la narrativa de permuta dice 'teniendo en cuenta tu Yaris 2020 con 65.000 km...', repitiendo modelo/año/km recién dados. La regla global 'no repitas los datos que el cliente acaba de darte' no aguanta ahí (el guion del encabezado invita el eco). Fix v50: anti-eco concreto en pto 6 de ## Permuta (trampa 6). El km del usado (65.000) no debe aparecer en la respuesta; los km de los autos del stock sí (ninguno del stock tiene 65.000).",
+    "sessionId": "9e3b702c-6710-4ea7-a640-e31ef5f8a6b0",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar como parte de pago",
+        "ms": 1756,
+        "response": {
+          "session_id": "9e3b702c-6710-4ea7-a640-e31ef5f8a6b0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, recibimos usados como parte de pago. Para ayudarte mejor, contame qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 12602,
+        "response": {
+          "session_id": "9e3b702c-6710-4ea7-a640-e31ef5f8a6b0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $10.000.000, una estimación preliminar del valor de tu usado y la posibilidad de financiar hasta el 50%, te muestro estas opciones según tu capacidad de compra:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada:\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000\n- Ford Fiesta 2017, 105.000 km, $8.200.000"
+            },
+            {
+              "type": "text",
+              "content": "Estirar:\n- Renault Kangoo 2021, 82.000 km, $18.500.000\n- Fiat Cronos 2023, 28.000 km, $16.800.000"
+            },
+            {
+              "type": "text",
+              "content": "Y si querés, te puedo pasar todo el stock que tenemos para que veas todas las opciones. Contame, qué te llama la atención o querés que te arme la comunicación con un asesor para que te oriente?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65000 km",
+        "ms": 8181,
+        "response": {
+          "session_id": "9e3b702c-6710-4ea7-a640-e31ef5f8a6b0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Gracias por el dato de los kilómetros. Con eso y tu anticipo de $10.000.000, estimo que tu usado aporta para varias opciones interesantes, y podés llegar a financiar para alcanzar otras de un poco más de valor."
+            },
+            {
+              "type": "text",
+              "content": "Dentro de tu presupuesto y con tu usado, mirá estas opciones:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nSi querés algo un poco más caro, pero entregando tu usado y financiando, podés ver:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n\nY si querés, te paso todo el stock que tenemos para que veas más opciones."
+            },
+            {
+              "type": "text",
+              "content": "Me dejás tu nombre y apellido para que un asesor pueda coordinar la tasación de tu usado y ayudarte con la compra?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras dar 'Yaris 2020' + '65000 km', el encabezado del abanico NO debe recitar los datos del usado ('tu Yaris 2020 con 65.000 km'): dice 'tu usado' a secas. El km del usado (65.000) NO debe aparecer (ningún auto del stock tiene 65.000 km, así que si aparece es eco). En v49 lo recita → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-datos",
+    "bug": "énfasis de Agustina: Franco recita los datos que el cliente acaba de dar. En los encabezados de la narrativa de permuta dice 'teniendo en cuenta tu Yaris 2020 con 65.000 km...', repitiendo modelo/año/km recién dados. La regla global 'no repitas los datos que el cliente acaba de darte' no aguanta ahí (el guion del encabezado invita el eco). Fix v50: anti-eco concreto en pto 6 de ## Permuta (trampa 6). El km del usado (65.000) no debe aparecer en la respuesta; los km de los autos del stock sí (ninguno del stock tiene 65.000).",
+    "sessionId": "a9ebbadd-4933-4a0c-9fc3-f37fdecf907f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar como parte de pago",
+        "ms": 2299,
+        "response": {
+          "session_id": "a9ebbadd-4933-4a0c-9fc3-f37fdecf907f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "perfecto, recibimos usados como parte de pago. Para avanzar necesito qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 7496,
+        "response": {
+          "session_id": "a9ebbadd-4933-4a0c-9fc3-f37fdecf907f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu efectivo y el usado que querés entregar, estas son las opciones para pagar al contado que te pueden cerrar dentro de ese monto:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras, dependiendo de cuánto te lo tomen:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n\nY si querés, te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65000 km",
+        "ms": 10393,
+        "response": {
+          "session_id": "a9ebbadd-4933-4a0c-9fc3-f37fdecf907f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2020 con 65.000 km como parte de pago y tu presupuesto, estas opciones entran justo:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si te interesa, hay también un Toyota Etios 2019, $12.500.000, que es un paso arriba pero un poco por encima de tu presupuesto.\n\nY si querés, te puedo pasar todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_not_matches: matcheó /(?i)65\\.?000|65 ?mil|sesenta y cinco mil/ y no debería: \"65.000\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_not_matches: matcheó /(?i)65\\.?000|65 ?mil|sesenta y cinco mil/ y no debería: \"65.000\""
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras dar 'Yaris 2020' + '65000 km', el encabezado del abanico NO debe recitar los datos del usado ('tu Yaris 2020 con 65.000 km'): dice 'tu usado' a secas. El km del usado (65.000) NO debe aparecer (ningún auto del stock tiene 65.000 km, así que si aparece es eco). En v49 lo recita → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-datos",
+    "bug": "énfasis de Agustina: Franco recita los datos que el cliente acaba de dar. En los encabezados de la narrativa de permuta dice 'teniendo en cuenta tu Yaris 2020 con 65.000 km...', repitiendo modelo/año/km recién dados. La regla global 'no repitas los datos que el cliente acaba de darte' no aguanta ahí (el guion del encabezado invita el eco). Fix v50: anti-eco concreto en pto 6 de ## Permuta (trampa 6). El km del usado (65.000) no debe aparecer en la respuesta; los km de los autos del stock sí (ninguno del stock tiene 65.000).",
+    "sessionId": "f0d9f49c-8716-47ae-b2f6-246b0f754898",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar como parte de pago",
+        "ms": 1744,
+        "response": {
+          "session_id": "f0d9f49c-8716-47ae-b2f6-246b0f754898",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, recibimos tu usado como parte de pago. Para avanzar, cuéntame qué auto vas a entregar: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1892,
+        "response": {
+          "session_id": "f0d9f49c-8716-47ae-b2f6-246b0f754898",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65000 km",
+        "ms": 7786,
+        "response": {
+          "session_id": "f0d9f49c-8716-47ae-b2f6-246b0f754898",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $10.000.000, una estimación preliminar de tu Yaris 2020 con 65.000 km y la posibilidad de financiar hasta el 50%, tenés este abanico de opciones:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nIntermedio:\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n\nSi querés, te puedo pasar todo el stock que tenemos para que veas más opciones. Querés que lo haga?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_not_matches: matcheó /(?i)65\\.?000|65 ?mil|sesenta y cinco mil/ y no debería: \"65.000\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_not_matches: matcheó /(?i)65\\.?000|65 ?mil|sesenta y cinco mil/ y no debería: \"65.000\""
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Tras dar 'Yaris 2020' + '65000 km', el encabezado del abanico NO debe recitar los datos del usado ('tu Yaris 2020 con 65.000 km'): dice 'tu usado' a secas. El km del usado (65.000) NO debe aparecer (ningún auto del stock tiene 65.000 km, así que si aparece es eco). En v49 lo recita → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "4f887106-24d3-4694-9635-ed7986ff0022",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2047,
+        "response": {
+          "session_id": "4f887106-24d3-4694-9635-ed7986ff0022",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para seguir, qué auto entregás? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 3969,
+        "response": {
+          "session_id": "4f887106-24d3-4694-9635-ed7986ff0022",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto, y cuántos kilómetros tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "cfaa2e57-62cd-4787-9121-9dfa749eea3d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2579,
+        "response": {
+          "session_id": "cfaa2e57-62cd-4787-9121-9dfa749eea3d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para avanzar, qué auto entregás? Marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1940,
+        "response": {
+          "session_id": "cfaa2e57-62cd-4787-9121-9dfa749eea3d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "genial, y cuántos km tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "03cfe0a2-3d8d-4c16-8eff-54a38fab5ebd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2420,
+        "response": {
+          "session_id": "03cfe0a2-3d8d-4c16-8eff-54a38fab5ebd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para avanzar, contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 2100,
+        "response": {
+          "session_id": "03cfe0a2-3d8d-4c16-8eff-54a38fab5ebd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-km-conciso",
+    "bug": "captura: cliente ofrece un usado; Franco pide el km con relleno — 'Perfecto, un Yaris 2020 es un auto muy buscado para permuta. Ahora me falta saber cuántos kilómetros tiene para que pueda estimar mejor el valor de tu usado. Cuántos kilómetros tiene el Yaris?'. Debería ser directo: 'Genial, y cuántos km tiene?'. Raíz: pto 3 de ## Permuta enseña 'valorá lo que entrega (es de los más buscados)' (trampa 6: el ejemplo enseña el relleno). Fix v48: pto 3 seco, sin elogiar el usado ni explicar por qué pide el dato.",
+    "sessionId": "fd254d9d-5670-495a-8527-62eac5b30fcd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar como parte de pago",
+        "ms": 2565,
+        "response": {
+          "session_id": "fd254d9d-5670-495a-8527-62eac5b30fcd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para seguir y mostrarte opciones, qué auto entregás? Necesito marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1974,
+        "response": {
+          "session_id": "fd254d9d-5670-495a-8527-62eac5b30fcd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, y cuántos km tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El pedido del km debe ser CORTO y directo ('genial, y cuántos km tiene?'), 1 burbuja, sin elogiar el usado ('muy buscado/valorado') ni explicar por qué pide el dato ('para estimar/avanzar/darte opciones'). Bug flaky: medir la tasa con --repeat. Fix v48: pto 3 seco."
+      }
+    ],
+    "error": null
+  }
+]

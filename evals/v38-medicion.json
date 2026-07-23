@@ -1,0 +1,1540 @@
+[
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "fa9e4916-32b3-4694-9fe7-e11532f7d522",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 3315,
+        "response": {
+          "session_id": "fa9e4916-32b3-4694-9fe7-e11532f7d522",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para poder ayudarte mejor, me decís qué auto entregás? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 8046,
+        "response": {
+          "session_id": "fa9e4916-32b3-4694-9fe7-e11532f7d522",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Gol Trend 2017 es de los más buscados para permuta. No puedo darte el valor exacto de tu usado de forma automática porque un asesor necesita ver el estado del auto en persona, pero con eso más tu usado seguramente tengas varias opciones interesantes."
+            },
+            {
+              "type": "text",
+              "content": "Contame, cuántos kilómetros tiene el Gol Trend?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 14409,
+        "response": {
+          "session_id": "fa9e4916-32b3-4694-9fe7-e11532f7d522",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu presupuesto de $8.000.000 y entregando tu Gol Trend 2017, estas son algunas opciones que podrías considerar dentro de lo que te cubre tu efectivo y el valor de tu usado a favor:"
+            },
+            {
+              "type": "text",
+              "content": "- Ford Fiesta 2018 — 95.000 km — $8.500.000 (hatchback, tamaño chico, años cercanos)\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000 (hatchback, tamaño chico, un poco más nuevo)\n- Toyota Etios 2019 — 88.000 km — $10.500.000 (hatchback, tamaño chico, cuatro años más nuevo)\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras opciones, aunque estarían un poco por encima y habría que ver la tasación:"
+            },
+            {
+              "type": "text",
+              "content": "- Renault Duster 2020 — 71.000 km — $19.500.000 (SUV, tamaño mediano)\n- Ford EcoSport 2019 — 68.000 km — $20.500.000 (SUV, tamaño mediano)"
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2020",
+              "precio": "$19.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2019",
+              "precio": "$20.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)nombre/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)nombre/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "1b7761ba-0a92-469c-b614-8dc4d5a66558",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 1895,
+        "response": {
+          "session_id": "1b7761ba-0a92-469c-b614-8dc4d5a66558",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con tu usado como parte de pago, contame con qué auto estás pensando para entregarlo y te acerco las opciones que mejor te cierren junto con tu presupuesto."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2924,
+        "response": {
+          "session_id": "1b7761ba-0a92-469c-b614-8dc4d5a66558",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Gol Trend 2017 es de los más buscados para permuta, así que es una buena ventaja para vos. No puedo darte el valor exacto de tu usado de forma automática porque un asesor necesita ver el estado del auto en persona, pero con eso más tu efectivo seguramente entren varias opciones, incluso alguna de más valor dependiendo de cuánto te lo tomen.\n\nPara continuar, cuántos kilómetros tiene ese Gol Trend?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 5153,
+        "response": {
+          "session_id": "1b7761ba-0a92-469c-b614-8dc4d5a66558",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu presupuesto de $8.000.000 y entregando el Gol Trend 2017, estas son las opciones que tu efectivo cubre totalmente, con el valor de tu usado a favor:\n- Ford Fiesta 2018, hatchback, 95.000 km, $8.500.000\n\nY si querés algo un poco más arriba en categoría, entregando tu usado podrías llegar a estas otras opciones:\n- Volkswagen Gol Trend 2019, hatchback, 82.000 km, $9.800.000\n- Toyota Etios 2019, hatchback, 88.000 km, $10.500.000\n\nSi querés, te paso todo el stock que tenemos para que veas más opciones. Te interesa alguna de estas para seguir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)nombre/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)nombre/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "659e8c05-6c71-43fe-b427-461599ddc4b2",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 1964,
+        "response": {
+          "session_id": "659e8c05-6c71-43fe-b427-461599ddc4b2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con tu usado como parte de pago, contame con qué auto estás pensando para entregarlo, marca, modelo y año, y te acerco las opciones que te podrían entrar con ese presupuesto y entrega."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2843,
+        "response": {
+          "session_id": "659e8c05-6c71-43fe-b427-461599ddc4b2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Gol Trend 2017 es de los más buscados para permuta. No puedo darte el valor exacto de tu usado de forma automática porque un asesor necesita verlo en persona, pero con eso más tu usado seguramente entren varias opciones, incluso de un poco más valor, según la tasación."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar, contame cuántos kilómetros tiene tu Gol Trend 2017."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 4851,
+        "response": {
+          "session_id": "659e8c05-6c71-43fe-b427-461599ddc4b2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu presupuesto de $8.000.000 y tu Gol Trend 2017 con 90.000 km, tu efectivo cubre autos como estos:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000 (para estirar un poco, esta opción es ideal si estás dispuesto a financiar o usar la permuta)"
+            },
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, podrías acceder a autos de más categoría que el efectivo no cubre solo, dependiendo de cuánto te tomen por tu Gol."
+            },
+            {
+              "type": "text",
+              "content": "Con eso ya le puedo pasar todo a un asesor para que coordine la tasación. Me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "9950efd0-df93-4552-8ba9-b317f5a2464f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 4542,
+        "response": {
+          "session_id": "9950efd0-df93-4552-8ba9-b317f5a2464f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 gris es un hatchback chico que consume aproximadamente 6.3 L/100km. Tiene motor 1.5L de 103 HP con transmisión manual y nafta. Está en $10.500.000 y tiene 88.000 km. Viene con aire acondicionado. Es el que menos combustible consume de los hatchbacks y su mecánica Toyota ayuda a que se deprecie menos que otros en su rango de precio.\n\nTe hago una pregunta: te interesa saber cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 1859,
+        "response": {
+          "session_id": "9950efd0-df93-4552-8ba9-b317f5a2464f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar necesito que me digas qué auto entregás: marca, modelo y año. Así el asesor podrá hacer la tasación y te contactará."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 3181,
+        "response": {
+          "session_id": "9950efd0-df93-4552-8ba9-b317f5a2464f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, con el Gol 2015 con 90.000 km ya le paso todo a un asesor para que coordine la tasación y te contacte. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "9950efd0-df93-4552-8ba9-b317f5a2464f",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-7104",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, entrega Gol 2015 con 90.000 km, pidió contacto de un asesor.",
+      "fecha_contacto": "23/07/2026 12:35",
+      "ultima_actualizacion": "23/07/2026 12:35",
+      "is_saved": false
+    },
+    "leadWaitMs": 3218,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "d355b451-a9eb-4e9a-8834-83a6e9a05091",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 31564,
+        "response": {
+          "session_id": "d355b451-a9eb-4e9a-8834-83a6e9a05091",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 gris es hatchback chico con mecánica Toyota muy confiable y el que menos combustible consume de los hatchbacks (6.3 L/100km promedio). Tiene 88.000 km, motor 1.5L de 103 HP naftero, y transmisión manual. Viene con aire acondicionado. El precio es $10.500.000.\n\nTe puedo mostrar las fotos y ayudarte con formas de pago o financiación."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase una cotización o te cuento cómo sería financiarlo o entregando un usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 1925,
+        "response": {
+          "session_id": "d355b451-a9eb-4e9a-8834-83a6e9a05091",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar con la tasación necesito que me digas qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 2972,
+        "response": {
+          "session_id": "d355b451-a9eb-4e9a-8834-83a6e9a05091",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, con el Gol 2015 con 90.000 km ya le paso todo a un asesor para que coordine la tasación. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "d355b451-a9eb-4e9a-8834-83a6e9a05091",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-9069",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, entrega Gol 2015 con 90.000 km, derivar a asesor.",
+      "fecha_contacto": "23/07/2026 12:36",
+      "ultima_actualizacion": "23/07/2026 12:36",
+      "is_saved": false
+    },
+    "leadWaitMs": 3473,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "cc171cf4-d55d-465e-89c0-590ec0a248e6",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 5511,
+        "response": {
+          "session_id": "cc171cf4-d55d-465e-89c0-590ec0a248e6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 gris es un hatchback chico con mecánica Toyota que consume apenas 6.3 L/100km, ideal para quien busca economía y buena reventa. Tiene 88.000 km, motor 1.5L de 103 HP con transmisión manual y aire acondicionado. Su precio es $10.500.000.\n\nSi te interesa, puedo contarte cómo financiarlo o entregando tu usado, o coordinar que lo veas en persona. Qué te gustaría? "
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 2344,
+        "response": {
+          "session_id": "cc171cf4-d55d-465e-89c0-590ec0a248e6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar necesito que me digas qué auto entregás: la marca, el modelo y el año. Así le paso esa info al asesor para que coordine la tasación y te contacte. Cuál es el auto que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 3284,
+        "response": {
+          "session_id": "cc171cf4-d55d-465e-89c0-590ec0a248e6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, con el Gol 2015 y 90.000 km ya le paso todo a un asesor para que coordine la tasación y te contacte. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "cc171cf4-d55d-465e-89c0-590ec0a248e6",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-3475",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, entrega Gol 2015 con 90.000 km y solicita contacto de asesor.",
+      "fecha_contacto": "23/07/2026 12:36",
+      "ultima_actualizacion": "23/07/2026 12:36",
+      "is_saved": false
+    },
+    "leadWaitMs": 3194,
+    "leadTimedOut": false
+  },
+  {
+    "id": "financiacion-documentacion",
+    "bug": "FEATURE (demo financiación): Franco debe poder informar qué documentación necesita el comprador para financiar con prenda (DNI, CUIT/CUIL, Formulario 08, verificación, demostración de ingresos). Hoy no está en el FAQ → Franco deriva o improvisa. Va al empresa_faq del Config.",
+    "sessionId": "3c5e6380-d417-4abd-9cb1-b9afb5f32bf3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué papeles necesito para comprar financiado con prenda?",
+        "ms": 3151,
+        "response": {
+          "session_id": "3c5e6380-d417-4abd-9cb1-b9afb5f32bf3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para financiar un auto con prenda necesitás presentar tu DNI vigente y CUIT o CUIL, más una demostración de ingresos, que puede ser recibo de sueldo, monotributo o algo equivalente según tu perfil. Para la transferencia del vehículo se firma el Formulario 08 y se hace la verificación policial de la unidad. Lo que no te pueda anticipar acá te lo confirma un asesor que te acompañe en el trámite. Contame cuánto pensás poner de anticipo o si entregarías un usado, y en cuántas cuotas te gustaría pagar, para que te deje anotado eso al asesor en la simulación."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe listar la documentación del comprador (DNI, CUIT/CUIL, Formulario 08, ingresos) en tono conversacional, sin montos en pesos, y puede cerrar diciendo que el asesor confirma según el caso."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-documentacion",
+    "bug": "FEATURE (demo financiación): Franco debe poder informar qué documentación necesita el comprador para financiar con prenda (DNI, CUIT/CUIL, Formulario 08, verificación, demostración de ingresos). Hoy no está en el FAQ → Franco deriva o improvisa. Va al empresa_faq del Config.",
+    "sessionId": "e07d416d-c994-46d0-8cf5-4897ebf06821",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué papeles necesito para comprar financiado con prenda?",
+        "ms": 2679,
+        "response": {
+          "session_id": "e07d416d-c994-46d0-8cf5-4897ebf06821",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para financiar con prenda necesitás DNI vigente y CUIT o CUIL, más una demostración de ingresos como recibo de sueldo o monotributo, según tu perfil. Además, para la transferencia se firma el Formulario 08 y se hace la verificación policial del auto. Querés que te deje anotado algún monto aproximado de anticipo o cuotas para que un asesor te arme una simulación personalizada?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe listar la documentación del comprador (DNI, CUIT/CUIL, Formulario 08, ingresos) en tono conversacional, sin montos en pesos, y puede cerrar diciendo que el asesor confirma según el caso."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-documentacion",
+    "bug": "FEATURE (demo financiación): Franco debe poder informar qué documentación necesita el comprador para financiar con prenda (DNI, CUIT/CUIL, Formulario 08, verificación, demostración de ingresos). Hoy no está en el FAQ → Franco deriva o improvisa. Va al empresa_faq del Config.",
+    "sessionId": "3c4f84a9-8adc-46cb-8781-1d14c5e291c2",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué papeles necesito para comprar financiado con prenda?",
+        "ms": 2978,
+        "response": {
+          "session_id": "3c4f84a9-8adc-46cb-8781-1d14c5e291c2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para financiar con prenda necesitás presentar tu DNI vigente y CUIT o CUIL, más una demostración de ingresos como recibo de sueldo o monotributo, según tu perfil. Además se firma un Formulario 08 para la transferencia y se realiza la verificación policial del vehículo. Querés que te deje anotado que te prepare una simulación de financiación con alguna entrega y plazo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe listar la documentación del comprador (DNI, CUIT/CUIL, Formulario 08, ingresos) en tono conversacional, sin montos en pesos, y puede cerrar diciendo que el asesor confirma según el caso."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-gastos",
+    "bug": "FEATURE (demo financiación): además del precio, Franco debe poder informar los gastos de la operación (aranceles del Registro, sellos, inscripción de prenda, gestoría, seguro) SIN dar montos en pesos. Hoy no está en el FAQ.",
+    "sessionId": "3a7f2b51-a6d7-4b8f-ba9b-f12fad587ac0",
+    "turns": [
+      {
+        "n": 1,
+        "say": "aparte del precio del auto, qué otros gastos tiene comprarlo financiado?",
+        "ms": 3386,
+        "response": {
+          "session_id": "3a7f2b51-a6d7-4b8f-ba9b-f12fad587ac0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Además del precio del auto, una compra financiada suele incluir gastos de transferencia e inscripción en el Registro Automotor, impuesto de sellos, inscripción de la prenda, gestoría y el seguro del vehículo durante la prenda. No puedo darte los montos exactos porque dependen del valor final y la jurisdicción, pero un asesor te los desglosa cuando haces la simulación. Contame, cuánto pensás poner de anticipo o si tenés un usado que quieras entregar? Y en cuántas cuotas te gustaría financiar."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe nombrar los gastos del rubro (aranceles registrales, sellos, inscripción de prenda, gestoría, seguro) sin montos exactos en pesos, y aclarar que el asesor arma el detalle."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-gastos",
+    "bug": "FEATURE (demo financiación): además del precio, Franco debe poder informar los gastos de la operación (aranceles del Registro, sellos, inscripción de prenda, gestoría, seguro) SIN dar montos en pesos. Hoy no está en el FAQ.",
+    "sessionId": "e689b806-85eb-423f-9049-4399bc445ed5",
+    "turns": [
+      {
+        "n": 1,
+        "say": "aparte del precio del auto, qué otros gastos tiene comprarlo financiado?",
+        "ms": 2733,
+        "response": {
+          "session_id": "e689b806-85eb-423f-9049-4399bc445ed5",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Además del precio del auto, al financiar con prenda suelen sumarse gastos de transferencia e inscripción, impuesto de sellos, inscripción de la prenda, gestoría, y el seguro del vehículo mientras dure la prenda. Los montos exactos varían según la valuación y la jurisdicción, y un asesor te puede armar un detalle personalizado.\n\nContame, pensás dar algún anticipo o entregar un usado para la financiación? Y en cuántas cuotas te gustaría pagar, por ejemplo 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe nombrar los gastos del rubro (aranceles registrales, sellos, inscripción de prenda, gestoría, seguro) sin montos exactos en pesos, y aclarar que el asesor arma el detalle."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-gastos",
+    "bug": "FEATURE (demo financiación): además del precio, Franco debe poder informar los gastos de la operación (aranceles del Registro, sellos, inscripción de prenda, gestoría, seguro) SIN dar montos en pesos. Hoy no está en el FAQ.",
+    "sessionId": "0b230c91-dbee-4bd8-ae3e-a2534b68cd8a",
+    "turns": [
+      {
+        "n": 1,
+        "say": "aparte del precio del auto, qué otros gastos tiene comprarlo financiado?",
+        "ms": 2692,
+        "response": {
+          "session_id": "0b230c91-dbee-4bd8-ae3e-a2534b68cd8a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Además del precio del auto, una compra financiada incluye gastos como transferencia e inscripción en el Registro Automotor, impuesto de sellos, inscripción de la prenda, gestoría y el seguro del vehículo mientras dure la prenda. Los montos exactos varían según la valuación y la jurisdicción, y un asesor puede armarte el detalle completo en una simulación personalizada.\n\nQuerés que te cuente cómo sería la financiación con cuotas y entrega inicial, o tenés alguna otra pregunta sobre los autos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe nombrar los gastos del rubro (aranceles registrales, sellos, inscripción de prenda, gestoría, seguro) sin montos exactos en pesos, y aclarar que el asesor arma el detalle."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-preperfilado",
+    "bug": "FEATURE (demo financiación): al consultar por financiación, Franco adelanta trabajo al asesor pre-perfilando: pregunta anticipo (monto o usado) y en cuántas cuotas. Hoy no lo hace.",
+    "sessionId": "a30ce9ba-210e-4b2c-b296-f2ffbc57e571",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa financiar un auto, cómo es?",
+        "ms": 3579,
+        "response": {
+          "session_id": "a30ce9ba-210e-4b2c-b296-f2ffbc57e571",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, puede ser con financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Se necesita una entrega inicial y el resto se paga en cuotas. El monto y el número de cuotas dependen de lo que elijas y te lo arma un asesor con una simulación personalizada.\n\nPara avanzar, contame cuánto pensás poner de anticipo o si vas a entregar un usado, y en cuántas cuotas te gustaría financiar, así dejo todo anotado para el asesor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Responde la condición (50%, cuotas) y pre-perfila para el asesor: pregunta anticipo (monto o usado a entregar) y en cuántas cuotas. Sin montos en pesos."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-preperfilado",
+    "bug": "FEATURE (demo financiación): al consultar por financiación, Franco adelanta trabajo al asesor pre-perfilando: pregunta anticipo (monto o usado) y en cuántas cuotas. Hoy no lo hace.",
+    "sessionId": "f0e05846-cb9d-418f-8462-fc2044f37c30",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa financiar un auto, cómo es?",
+        "ms": 3215,
+        "response": {
+          "session_id": "f0e05846-cb9d-418f-8462-fc2044f37c30",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, con financiación propia o mediante prenda, según el auto y tu perfil. Se toma una entrega inicial, y el saldo se puede pagar en cuotas, cuyo importe exacto depende del monto, plazo y condiciones. Para avanzar, cuéntame cuánto querés poner de anticipo o si pensás entregar un usado, y en cuántas cuotas te gustaría financiar (12, 24, 36, 48)?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Responde la condición (50%, cuotas) y pre-perfila para el asesor: pregunta anticipo (monto o usado a entregar) y en cuántas cuotas. Sin montos en pesos."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-preperfilado",
+    "bug": "FEATURE (demo financiación): al consultar por financiación, Franco adelanta trabajo al asesor pre-perfilando: pregunta anticipo (monto o usado) y en cuántas cuotas. Hoy no lo hace.",
+    "sessionId": "25fb35b1-d8ea-44a4-b57c-d49ccfc18fca",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa financiar un auto, cómo es?",
+        "ms": 3048,
+        "response": {
+          "session_id": "25fb35b1-d8ea-44a4-b57c-d49ccfc18fca",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, puede ser con financiación propia de la agencia o mediante prenda, dependiendo del auto y tu perfil. Para avanzar se toma una entrega inicial y el saldo lo podés pagar en cuotas. El valor de las cuotas depende del monto financiado, plazo y condiciones específicas.\n\nPara darte un número exacto, un asesor te arma una simulación personalizada. Contame, cuánto pensás poner de anticipo o tenés un usado para entregar? Y en cuántas cuotas te gustaría financiar, por ejemplo 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Responde la condición (50%, cuotas) y pre-perfila para el asesor: pregunta anticipo (monto o usado a entregar) y en cuántas cuotas. Sin montos en pesos."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "asesor-en-marcha-no-reofrece",
+    "bug": "captura (Pato Garcia): pidió asesor (T1), dio el nombre (T2), Franco confirmó y cerró. En T3 pregunta financiación + una Hilux puntual; Franco muestra la Hilux y CIERRA con 'querés que te conecte con un asesor para que te arme una simulación?' — RE-OFRECE conectar con el asesor cuando YA está en marcha. Debe reflejar que el asesor ya se va a contactar: 'como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?'. Dispara por el cierre del Paso 3 (línea 163) sobre un auto puntual, con la derivación ya aceptada.",
+    "sessionId": "4377dd52-0551-4e92-ae4a-d8875e6ecbee",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me gustaria que me pases con un asesor",
+        "ms": 1730,
+        "response": {
+          "session_id": "4377dd52-0551-4e92-ae4a-d8875e6ecbee",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "claro, te paso con un asesor para que te ayude con lo que necesites. Me dejás tu nombre y apellido para que te contacten?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Pato Garcia",
+        "ms": 2143,
+        "response": {
+          "session_id": "4377dd52-0551-4e92-ae4a-d8875e6ecbee",
+          "messages": [
+            {
+              "type": "text",
+              "content": "perfecto Pato, un asesor te va a contactar pronto para ayudarte con lo que necesites. Mientras tanto, querés que te muestre algunos autos o preferís contarme qué estás buscando?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "me gustaria saber como es el tema de la financiación y si tienen alguna hilux",
+        "ms": 3743,
+        "response": {
+          "session_id": "4377dd52-0551-4e92-ae4a-d8875e6ecbee",
+          "messages": [
+            {
+              "type": "text",
+              "content": "la financiación puede cubrir hasta el 50% del valor del vehículo. Se puede usar financiación propia de la agencia o mediante prenda, depende del auto y tu perfil. Para avanzar se pide una entrega inicial y el saldo se paga en cuotas, que varían según monto, plazo y condiciones. Un asesor puede hacerte una simulación personalizada si querés.\n\nTe busqué las Hilux que tenemos ahora:"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor lo contacta, trato por nombre de pila (Pato)."
+      },
+      {
+        "turn": 3,
+        "note": "EL BUG: el asesor YA está en marcha (Pato lo pidió y dio el nombre). Al cerrar el detalle de la Hilux NO debe re-ofrecer 'conectarte con un asesor' como acción nueva; debe reflejar que el asesor ya se va a contactar ('como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?')."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "4377dd52-0551-4e92-ae4a-d8875e6ecbee",
+      "nombre": "Pato Garcia",
+      "telefono": "+54 381 555-0762",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Pidió ser contactado por un asesor, no mencionó datos de interés aún.",
+      "fecha_contacto": "23/07/2026 12:37",
+      "ultima_actualizacion": "23/07/2026 12:37",
+      "is_saved": false
+    },
+    "leadWaitMs": 2821,
+    "leadTimedOut": false
+  },
+  {
+    "id": "asesor-en-marcha-no-reofrece",
+    "bug": "captura (Pato Garcia): pidió asesor (T1), dio el nombre (T2), Franco confirmó y cerró. En T3 pregunta financiación + una Hilux puntual; Franco muestra la Hilux y CIERRA con 'querés que te conecte con un asesor para que te arme una simulación?' — RE-OFRECE conectar con el asesor cuando YA está en marcha. Debe reflejar que el asesor ya se va a contactar: 'como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?'. Dispara por el cierre del Paso 3 (línea 163) sobre un auto puntual, con la derivación ya aceptada.",
+    "sessionId": "6edb1b30-d8b6-46df-b871-ce11dc91e1ac",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me gustaria que me pases con un asesor",
+        "ms": 1754,
+        "response": {
+          "session_id": "6edb1b30-d8b6-46df-b871-ce11dc91e1ac",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, le paso la info a un asesor para que te contacte. Me dejás tu nombre y apellido para que te identifique bien?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Pato Garcia",
+        "ms": 2227,
+        "response": {
+          "session_id": "6edb1b30-d8b6-46df-b871-ce11dc91e1ac",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Pato, un asesor te va a contactar por acá en el horario de atención. Mientras tanto, necesitás que te ayude con algo más?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "me gustaria saber como es el tema de la financiación y si tienen alguna hilux",
+        "ms": 3001,
+        "response": {
+          "session_id": "6edb1b30-d8b6-46df-b871-ce11dc91e1ac",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sobre la financiación, podemos financiar hasta el 50% del valor del vehículo. Puede ser con financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Para avanzar se toma una entrega inicial y el saldo se paga en cuotas. El monto y cantidad de cuotas depende de la operación, y el asesor te puede preparar una simulación personalizada con eso.\n\nAhora te paso las Hilux que tenemos, y me decís cuál te interesa o si querés que te prepare algo con financiación."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor lo contacta, trato por nombre de pila (Pato)."
+      },
+      {
+        "turn": 3,
+        "note": "EL BUG: el asesor YA está en marcha (Pato lo pidió y dio el nombre). Al cerrar el detalle de la Hilux NO debe re-ofrecer 'conectarte con un asesor' como acción nueva; debe reflejar que el asesor ya se va a contactar ('como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?')."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "6edb1b30-d8b6-46df-b871-ce11dc91e1ac",
+      "nombre": "Pato Garcia",
+      "telefono": "+54 381 555-9504",
+      "vehiculo_interes": "Hilux",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "Sí",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Solicita asesor, consulta por financiación y disponibilidad de Hilux.",
+      "fecha_contacto": "23/07/2026 12:37",
+      "ultima_actualizacion": "23/07/2026 12:37",
+      "is_saved": false
+    },
+    "leadWaitMs": 2767,
+    "leadTimedOut": false
+  },
+  {
+    "id": "asesor-en-marcha-no-reofrece",
+    "bug": "captura (Pato Garcia): pidió asesor (T1), dio el nombre (T2), Franco confirmó y cerró. En T3 pregunta financiación + una Hilux puntual; Franco muestra la Hilux y CIERRA con 'querés que te conecte con un asesor para que te arme una simulación?' — RE-OFRECE conectar con el asesor cuando YA está en marcha. Debe reflejar que el asesor ya se va a contactar: 'como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?'. Dispara por el cierre del Paso 3 (línea 163) sobre un auto puntual, con la derivación ya aceptada.",
+    "sessionId": "07a26c26-a1a8-40bb-809c-2c7a268d658c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me gustaria que me pases con un asesor",
+        "ms": 1859,
+        "response": {
+          "session_id": "07a26c26-a1a8-40bb-809c-2c7a268d658c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, le paso la info a un asesor para que te contacte. Me dejás tu nombre y apellido para que puedan identificarse con vos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Pato Garcia",
+        "ms": 2562,
+        "response": {
+          "session_id": "07a26c26-a1a8-40bb-809c-2c7a268d658c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Pato, un asesor te contacta en breve para ayudarte con lo que necesites. Querés que te muestre algunas opciones de autos mientras tanto o preferís esperar que te llamen?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "me gustaria saber como es el tema de la financiación y si tienen alguna hilux",
+        "ms": 3887,
+        "response": {
+          "session_id": "07a26c26-a1a8-40bb-809c-2c7a268d658c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "En Automotores Tucumán financiamos hasta el 50% del valor del vehículo. Puede ser con financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Se toma una entrega inicial y el saldo se puede pagar en cuotas. El valor exacto de la cuota depende del monto financiado, el plazo y las condiciones de la operación. Para darte un número exacto, un asesor arma una simulación personalizada con entrega, cuotas y requisitos.\n\nAhora te busco las Hilux que tenemos disponibles."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor lo contacta, trato por nombre de pila (Pato)."
+      },
+      {
+        "turn": 3,
+        "note": "EL BUG: el asesor YA está en marcha (Pato lo pidió y dio el nombre). Al cerrar el detalle de la Hilux NO debe re-ofrecer 'conectarte con un asesor' como acción nueva; debe reflejar que el asesor ya se va a contactar ('como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?')."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "07a26c26-a1a8-40bb-809c-2c7a268d658c",
+      "nombre": "Pato Garcia",
+      "telefono": "+54 381 555-2490",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Pidió contacto de asesor, sin detalles de interés aún.",
+      "fecha_contacto": "23/07/2026 12:38",
+      "ultima_actualizacion": "23/07/2026 12:38",
+      "is_saved": false
+    },
+    "leadWaitMs": 2771,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "b3fad557-b8cc-477e-a671-0d75d8c70bcd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 5626,
+        "response": {
+          "session_id": "b3fad557-b8cc-477e-a671-0d75d8c70bcd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, con tu Yaris 2021 como parte de pago y 12 millones en efectivo seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña, ya que un asesor tiene que ver el estado del auto en persona para la tasación exacta.\n\nCon lo que tenés, tu efectivo cubre el total de estas opciones, y el valor de tu Yaris te queda a favor:\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras, dependiendo de cuánto te lo tomen:\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n\nMe decís cuál te llamaría la atención para contarte más o querés que te pase todo lo que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "b3fad557-b8cc-477e-a671-0d75d8c70bcd",
+      "nombre": "+54 381 555-5193",
+      "telefono": "+54 381 555-5193",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entrega Yaris 2021 (85.000 km) y tiene $12M en efectivo. Espera opciones.",
+      "fecha_contacto": "23/07/2026 12:38",
+      "ultima_actualizacion": "23/07/2026 12:38",
+      "is_saved": false
+    },
+    "leadWaitMs": 2877,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "c1d2d744-9301-401e-8f5d-8aa8da1c221a",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 17053,
+        "response": {
+          "session_id": "c1d2d744-9301-401e-8f5d-8aa8da1c221a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2021 como parte de pago, que es un auto bastante buscado, tenés varias opciones para considerar. No puedo darte el valor exacto del usado porque un asesor necesita verlo en persona para tasarlo, pero con eso más tu efectivo de 12 millones entran estas buenas opciones:\n\n- Toyota Etios 2019 — 88.000 km — $10.500.000, hatchback chico, consumo aproximado 6.3 L/100km\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000, hatchback chico, consumo alrededor de 7.0 L/100km\n\nY si querés algo más nuevo o de gama un poco más alta, entregando tu usado también podrías llegar a estas otras:\n\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n\nMe contás con cuánto efectivo pensás completar la compra para buscar lo que mejor te cierre?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "c1d2d744-9301-401e-8f5d-8aa8da1c221a",
+      "nombre": "+54 381 555-1065",
+      "telefono": "+54 381 555-1065",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entrega Yaris 2021 con 85.000 km y $12M en efectivo para operación.",
+      "fecha_contacto": "23/07/2026 12:38",
+      "ultima_actualizacion": "23/07/2026 12:38",
+      "is_saved": false
+    },
+    "leadWaitMs": 2786,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "0986075d-7423-4a67-a3a8-2155fade3b8c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 6703,
+        "response": {
+          "session_id": "0986075d-7423-4a67-a3a8-2155fade3b8c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2021 con 85.000 km para entregar, que es un auto bastante buscado, la tasación la va a hacer un asesor viendo el auto en persona, así que no puedo darte un valor exacto ahora, pero puedo mostrarte opciones que con lo que tenés más el usado podrías alcanzar.\n\nEstas son las opciones que entrarían dentro del monto que podrías cubrir con tu efectivo:\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras:\n- Peugeot 208 2018 — 92.000 km — $12.800.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n\nCon esto en mente, contame, qué presupuesto aproximado pensás poner junto con tu usado para que te acerque las opciones que más te cierren?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "0986075d-7423-4a67-a3a8-2155fade3b8c",
+      "nombre": "+54 381 555-4043",
+      "telefono": "+54 381 555-4043",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Tiene $12M en efectivo y entrega Yaris 2021 - 85.000 km.",
+      "fecha_contacto": "23/07/2026 12:38",
+      "ultima_actualizacion": "23/07/2026 12:38",
+      "is_saved": false
+    },
+    "leadWaitMs": 2765,
+    "leadTimedOut": false
+  }
+]

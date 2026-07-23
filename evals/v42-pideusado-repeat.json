@@ -1,0 +1,125 @@
+[
+  {
+    "id": "financiacion-pide-usado-primero",
+    "bug": "captura (prueba en vivo de v41): 'tengo un usado para entregar, 7M de anticipo, financiar en 1-2 años, qué opciones?' SIN decir qué auto entrega. Franco mostró el abanico de tramos igual. Debe pedir PRIMERO qué usado entrega (marca/modelo/año) antes de mostrar opciones — es la regla del punto 2 de ## Permuta ('si no sabés qué auto entrega, FRENÁ, auto_ids vacío, una sola pregunta'), que el guion nuevo de tramos (v40) pisa. Fix v42: el abanico va recién cuando ya sabe qué entrega.",
+    "sessionId": "fb440f08-b71b-4d44-a6dc-0fabbbd6adb6",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar y unos 7 millones de anticipo, me gustaría financiar en 1 o 2 años. qué opciones tengo?",
+        "ms": 11508,
+        "response": {
+          "session_id": "fb440f08-b71b-4d44-a6dc-0fabbbd6adb6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)qu[eé] auto|marca|modelo/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)qu[eé] auto|marca|modelo/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Sin saber qué auto entrega, NO debe mostrar el abanico: primero pregunta qué usado entrega (marca, modelo y año), una sola pregunta, auto_ids vacío. El abanico de tramos va recién cuando sabe qué entrega (regla del punto 2 de ## Permuta)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-pide-usado-primero",
+    "bug": "captura (prueba en vivo de v41): 'tengo un usado para entregar, 7M de anticipo, financiar en 1-2 años, qué opciones?' SIN decir qué auto entrega. Franco mostró el abanico de tramos igual. Debe pedir PRIMERO qué usado entrega (marca/modelo/año) antes de mostrar opciones — es la regla del punto 2 de ## Permuta ('si no sabés qué auto entrega, FRENÁ, auto_ids vacío, una sola pregunta'), que el guion nuevo de tramos (v40) pisa. Fix v42: el abanico va recién cuando ya sabe qué entrega.",
+    "sessionId": "9d0b1b27-fc19-4d8e-bdd9-78d36c578765",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar y unos 7 millones de anticipo, me gustaría financiar en 1 o 2 años. qué opciones tengo?",
+        "ms": 23350,
+        "response": {
+          "session_id": "9d0b1b27-fc19-4d8e-bdd9-78d36c578765",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)qu[eé] auto|marca|modelo/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)qu[eé] auto|marca|modelo/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Sin saber qué auto entrega, NO debe mostrar el abanico: primero pregunta qué usado entrega (marca, modelo y año), una sola pregunta, auto_ids vacío. El abanico de tramos va recién cuando sabe qué entrega (regla del punto 2 de ## Permuta)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-pide-usado-primero",
+    "bug": "captura (prueba en vivo de v41): 'tengo un usado para entregar, 7M de anticipo, financiar en 1-2 años, qué opciones?' SIN decir qué auto entrega. Franco mostró el abanico de tramos igual. Debe pedir PRIMERO qué usado entrega (marca/modelo/año) antes de mostrar opciones — es la regla del punto 2 de ## Permuta ('si no sabés qué auto entrega, FRENÁ, auto_ids vacío, una sola pregunta'), que el guion nuevo de tramos (v40) pisa. Fix v42: el abanico va recién cuando ya sabe qué entrega.",
+    "sessionId": "32a8b57a-f576-44f8-a9fb-e07ec1483bb8",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un usado para entregar y unos 7 millones de anticipo, me gustaría financiar en 1 o 2 años. qué opciones tengo?",
+        "ms": 2710,
+        "response": {
+          "session_id": "32a8b57a-f576-44f8-a9fb-e07ec1483bb8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar necesito que me digas qué usado vas a entregar: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Sin saber qué auto entrega, NO debe mostrar el abanico: primero pregunta qué usado entrega (marca, modelo y año), una sola pregunta, auto_ids vacío. El abanico de tramos va recién cuando sabe qué entrega (regla del punto 2 de ## Permuta)."
+      }
+    ],
+    "error": null
+  }
+]

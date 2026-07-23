@@ -1,0 +1,1083 @@
+[
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "bfef6adb-abea-4ba7-9251-d5698581de4c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 8883,
+        "response": {
+          "session_id": "bfef6adb-abea-4ba7-9251-d5698581de4c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $7.000.000, tu Ford Ka 2015 para entregar y la posibilidad de financiar hasta el 50%, tenés este abanico de opciones que podrían entrar dentro de tu capacidad de compra."
+            },
+            {
+              "type": "text",
+              "content": "Entrada (autos que entran fácilmente):\n- Toyota Etios 2019, hatchback, 45.000 km, $12.500.000\n- Volkswagen Gol Trend 2018, hatchback, 110.000 km, $9.200.000\n\nIntermedio (autos mejor equipados o más nuevos):\n- Renault Kangoo 2021, utilitario, 82.000 km, $18.500.000\n- Fiat Cronos 2023, sedán, 28.000 km, $16.800.000\n\nEconómica:\n- Ford Fiesta 2017, hatchback, 105.000 km, $8.200.000"
+            },
+            {
+              "type": "text",
+              "content": "La tasación final de tu Ford Ka la hace un asesor cuando lo vea en persona, pero esta es una estimación preliminar para ayudarte a elegir. \n\nCuál de estas opciones te llamó más la atención o querés ver algún otro modelo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 5"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 10022,
+        "response": {
+          "session_id": "bfef6adb-abea-4ba7-9251-d5698581de4c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 con 100.000 km para entregar, tu anticipo de $7.000.000 y la financiación hasta el 50%, las opciones que podés considerar quedan así:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada (autos que entran más seguro):\n- Toyota Etios 2019, hatchback, 45.000 km, $12.500.000\n- Volkswagen Gol Trend 2018, hatchback, 110.000 km, $9.200.000\n- Ford Fiesta 2017, hatchback, 105.000 km, $8.200.000\n\nIntermedio (autos con un poco más de valor, por si querés estirar un poco):\n- Renault Kangoo 2021, utilitario, 82.000 km, $18.500.000\n- Fiat Cronos 2023, sedán, 28.000 km, $16.800.000\n\nAlto (estos están por encima de tu capacidad, pero pueden verse con financiación extra o cambios en tu entrega):\n- Jeep Renegade 2021, SUV, 42.000 km, $25.500.000\n- Toyota Corolla 2022, sedán, 35.000 km, $24.800.000\n\nTené en cuenta que la tasación final de tu Ford Ka la hace un asesor en persona para ajustar valores. Querés que te pase fotos y detalles de alguno de estos modelos o preferís que un asesor te ayude con una simulación personalizada?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 5"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) hasta el techo (~26M → alcanza Corolla/Renegade). HARDENING v45: NO deben aparecer pickups de $38M+ (Hilux/S10/Amarok/Ranger son 'fuera', el SQL los filtra). NO dice NINGÚN monto por el usado (interno). 'anticipo' con financiación 50% y deslinde."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "cd56bb1c-1ede-4f0a-8b38-0041fe795220",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 6415,
+        "response": {
+          "session_id": "cd56bb1c-1ede-4f0a-8b38-0041fe795220",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Tenés un Ford Ka 2015 para entregar y unos $7.000.000 de anticipo para financiar, con eso tenés este abanico de opciones para elegir teniendo en cuenta la posibilidad de financiar hasta el 50% del valor del vehículo:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, consumo aproximado 6,3 L/100km)\n\nY si querés algo un poco arriba, podrías ver estas opciones entregando tu usado y financiando:\n\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, consumo aproximado 6,5 L/100km)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, consumo aproximado 7,8 L/100km)\n\nCon gusto te paso todo el stock que tenemos, querés? O si preferís, qué auto te llama más la atención para seguir con detalles o cotización?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 7718,
+        "response": {
+          "session_id": "cd56bb1c-1ede-4f0a-8b38-0041fe795220",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con esos 100.000 km en el Ford Ka 2015 y $7.000.000 de anticipo para financiar, te puedo mostrar algunas opciones que entrarían en tu capacidad de compra actual:\n\nEntrada:\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, consumo aproximado 6,3 L/100km)\n\nIntermedio:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, consumo aproximado 7,8 L/100km)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, consumo aproximado 6,5 L/100km)\n\nEstirar:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback)\n\nLa tasación final de tu usado la hará un asesor al verlo en persona, así que estas opciones son una referencia preliminar. Querés que coordine que un asesor te contacte para avanzar con la tasación y la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 3",
+      "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) hasta el techo (~26M → alcanza Corolla/Renegade). HARDENING v45: NO deben aparecer pickups de $38M+ (Hilux/S10/Amarok/Ranger son 'fuera', el SQL los filtra). NO dice NINGÚN monto por el usado (interno). 'anticipo' con financiación 50% y deslinde."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "2594bd3d-7424-4c03-8207-ff626d697985",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 10990,
+        "response": {
+          "session_id": "2594bd3d-7424-4c03-8207-ff626d697985",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $7.000.000 y el Ford Ka 2015 que querés entregar, que es un modelo muy buscado, tu capacidad de compra incluye autos con financiación de hasta el 50% del valor. Esto te permite acceder a un abanico interesante para financiar."
+            },
+            {
+              "type": "text",
+              "content": "Estas opciones están para tu capacidad:\n\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, entrada a tu abanico)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, nivel intermedio)\n\nY si querés estirar un poco más, tenés:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, gama alta)\n\nLa tasación definitiva de tu usado la hace un asesor cuando lo vea en persona, así que esta es una estimación preliminar. Te dejo estas opciones para que vayas viendo, y si alguna te interesa, puedo pedir que un asesor te arme una simulación personalizada de financiación y te coordine la tasación oficial de tu Ford Ka."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 6484,
+        "response": {
+          "session_id": "2594bd3d-7424-4c03-8207-ff626d697985",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con 100.000 km en tu Ford Ka 2015 y el anticipo de $7.000.000 tenés estas opciones para financiar con permuta:"
+            },
+            {
+              "type": "text",
+              "content": "Autos que entran justo en tu capacidad:\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, consumo 6,3 L/100km)\n\nOpciones económicas:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo un poco más caro para estirar la compra:\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n- Peugeot 208 2025 — 8.000 km — $21.000.000\n\nLa cotización de tu usado la hace un asesor cuando lo vea. Querés que te pase todo el stock para que vos veas o preferís que te arme una simulación con cuotas y financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) hasta el techo (~26M → alcanza Corolla/Renegade). HARDENING v45: NO deben aparecer pickups de $38M+ (Hilux/S10/Amarok/Ranger son 'fuera', el SQL los filtra). NO dice NINGÚN monto por el usado (interno). 'anticipo' con financiación 50% y deslinde."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-km-alto-achica",
+    "bug": "el 2 (v46): el km del usado ajusta el valor de mercado (Valuar usado) y por lo tanto la capacidad de compra. En v45 el km NO entra al cálculo (valor = base * 0.93^edad): un Ka 2015 con 250.000 km da la MISMA capacidad que con 30.000 km, y Listar stock devuelve Corolla/Renegade en tramo 'alto' (verificado en log de ejecución 6897). Fix v46: km por encima del promedio esperado para la edad (15k/año) baja el valor (clamp 0.65..1.0, penaliza el exceso, no premia). Ka 2015 250k km + 7M → valor ~7.1M, techo ~24M → Corolla (24.8M) y Renegade (25.5M) pasan a tramo 'fuera' y el SQL los FILTRA (hardening v45). El valor sigue INTERNO. VERIFICACIÓN VINCULANTE: sim offline (scripts/sim-km-valor.mjs) + lectura del output de Listar stock en el log post-paste (Corolla/Renegade ya no deben venir). El chat-text NO discrimina (la presentación floja de Franco confunde), por eso la composición del abanico va como MANUAL; los checks reales son deterministas (pickups filtradas, no recita el valor).",
+    "sessionId": "26a38c3a-a0c0-40ba-84d8-421057a1a504",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 8833,
+        "response": {
+          "session_id": "26a38c3a-a0c0-40ba-84d8-421057a1a504",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 como parte de pago y un anticipo de $7.000.000, teniendo en cuenta que podés financiar hasta el 50% del valor del vehículo, tenés estas opciones dentro de tu capacidad de compra:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada (los más accesibles para tu capacidad):\n- Ford Fiesta 2017, 105.000 km, $8.200.000, hatchback similar en tamaño\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000, hatchback, un poco más nuevo\n\nIntermedio (un paso arriba):\n- Toyota Etios 2019, 45.000 km, $12.500.000, hatchback, más nuevo y con menor kilometraje\n\nAlto (el tope máximo de tu capacidad, modelos más caros):\n- Peugeot 208 2025, 8.000 km, $21.000.000, hatchback, último modelo\n- Chevrolet Onix 2024, 12.000 km, $21.500.000, sedán, bastante nuevo y bajo kilometraje"
+            },
+            {
+              "type": "text",
+              "content": "Tené en cuenta que el valor de tu usado se toma como referencia para saber qué autos pueden entrar, pero la tasación final la hace un asesor en persona. Querés que te muestre fotos y detalles de alguno de estos o preferís que un asesor te ayude con la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 250.000 km",
+        "ms": 7357,
+        "response": {
+          "session_id": "26a38c3a-a0c0-40ba-84d8-421057a1a504",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con 250.000 km en tu Ford Ka 2015, la estimación preliminar para tu usado sigue ayudando a armar el abanico, pero estas opciones quedaron un poco por encima de tu anticipo y financiación combinados:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada (los más accesibles, aunque igual están un poco afuera de tu presupuesto):\n- Ford Fiesta 2017, 105.000 km, $8.200.000\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000\n\nIntermedio:\n- Toyota Etios 2019, 45.000 km, $12.500.000\n\nAlto:\n- Peugeot 208 2025, 8.000 km, $21.000.000\n- Chevrolet Onix 2024, 12.000 km, $21.500.000"
+            },
+            {
+              "type": "text",
+              "content": "Tu Ford Ka con ese kilometraje tiene un valor más limitado, por eso no te alcanza para cubrir las opciones dentro del anticipo + financiación usual. La tasación final y ver cuánto te cubre exactamente un asesor cuando vea el auto en persona. Mientras tanto, querés que un asesor te contacte para coordinar la tasación y ayudarte con la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Turno 1 (gate del km): debería PEDIR el km, auto_ids vacío, sin abanico. Gate conocido-flaky (whack-a-mole); v46 le da una razón real (el km ahora cambia el valor) pero no lo fuerza. Informativo, no gate."
+      },
+      {
+        "turn": 2,
+        "note": "Ka 2015 con 250.000 km (muy rodado): con v46 el km baja el valor → techo ~24M → Corolla (24.8M) y Renegade (25.5M) pasan a 'fuera' y el SQL los saca. Verificar en el LOG (output de Listar stock): Corolla/Renegade NO deben venir; en v45 vienen en tramo 'alto'. El chat-text no basta (presentación flaky). Valor del usado INTERNO (ningún monto)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-km-alto-achica",
+    "bug": "el 2 (v46): el km del usado ajusta el valor de mercado (Valuar usado) y por lo tanto la capacidad de compra. En v45 el km NO entra al cálculo (valor = base * 0.93^edad): un Ka 2015 con 250.000 km da la MISMA capacidad que con 30.000 km, y Listar stock devuelve Corolla/Renegade en tramo 'alto' (verificado en log de ejecución 6897). Fix v46: km por encima del promedio esperado para la edad (15k/año) baja el valor (clamp 0.65..1.0, penaliza el exceso, no premia). Ka 2015 250k km + 7M → valor ~7.1M, techo ~24M → Corolla (24.8M) y Renegade (25.5M) pasan a tramo 'fuera' y el SQL los FILTRA (hardening v45). El valor sigue INTERNO. VERIFICACIÓN VINCULANTE: sim offline (scripts/sim-km-valor.mjs) + lectura del output de Listar stock en el log post-paste (Corolla/Renegade ya no deben venir). El chat-text NO discrimina (la presentación floja de Franco confunde), por eso la composición del abanico va como MANUAL; los checks reales son deterministas (pickups filtradas, no recita el valor).",
+    "sessionId": "19b47225-caab-4545-a824-ecd570679440",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 9597,
+        "response": {
+          "session_id": "19b47225-caab-4545-a824-ecd570679440",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 7 millones y que entregás un Ford Ka 2015, se estima un valor preliminar para tu usado que nos ayuda a armar las opciones para financiar hasta el 50% del valor del vehículo. Esto es una referencia, la tasación final la hace un asesor cuando vea tu auto en persona."
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas opciones podrían entrar financiando con lo que tenés:\n\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (tramo entrada)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (tramo intermedio)\n\nY si querés algo más caro, con financiación podrías llegar al Toyota Etios 2019, 45.000 km, $12.500.000 (tramo alto) dependiendo de la valuación y condiciones."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase detalles de alguno en particular, o preferís que un asesor te contacte para coordinar la tasación y la financiación exacta?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 250.000 km",
+        "ms": 6765,
+        "response": {
+          "session_id": "19b47225-caab-4545-a824-ecd570679440",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 y sus 250.000 km, sumado a tu capital inicial de 7 millones y financiando hasta el 50%, te dejo opciones que podrían entrar:\n\nOpciones entrada para tu capacidad:\n- Ford Fiesta 2017, 105.000 km — $8.200.000\n- Volkswagen Gol Trend 2018, 110.000 km — $9.200.000\n\nSi querés estirar un poco, estas otras opciones están un poco por arriba:\n- Toyota Etios 2019, 45.000 km — $12.500.000\n\nLa tasación definitiva de tu usado la hace un asesor cuando lo vea en persona. Querés que te pase datos más detallados de alguno o que un asesor te contacte para avanzar con la tasación y financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Turno 1 (gate del km): debería PEDIR el km, auto_ids vacío, sin abanico. Gate conocido-flaky (whack-a-mole); v46 le da una razón real (el km ahora cambia el valor) pero no lo fuerza. Informativo, no gate."
+      },
+      {
+        "turn": 2,
+        "note": "Ka 2015 con 250.000 km (muy rodado): con v46 el km baja el valor → techo ~24M → Corolla (24.8M) y Renegade (25.5M) pasan a 'fuera' y el SQL los saca. Verificar en el LOG (output de Listar stock): Corolla/Renegade NO deben venir; en v45 vienen en tramo 'alto'. El chat-text no basta (presentación flaky). Valor del usado INTERNO (ningún monto)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-km-alto-achica",
+    "bug": "el 2 (v46): el km del usado ajusta el valor de mercado (Valuar usado) y por lo tanto la capacidad de compra. En v45 el km NO entra al cálculo (valor = base * 0.93^edad): un Ka 2015 con 250.000 km da la MISMA capacidad que con 30.000 km, y Listar stock devuelve Corolla/Renegade en tramo 'alto' (verificado en log de ejecución 6897). Fix v46: km por encima del promedio esperado para la edad (15k/año) baja el valor (clamp 0.65..1.0, penaliza el exceso, no premia). Ka 2015 250k km + 7M → valor ~7.1M, techo ~24M → Corolla (24.8M) y Renegade (25.5M) pasan a tramo 'fuera' y el SQL los FILTRA (hardening v45). El valor sigue INTERNO. VERIFICACIÓN VINCULANTE: sim offline (scripts/sim-km-valor.mjs) + lectura del output de Listar stock en el log post-paste (Corolla/Renegade ya no deben venir). El chat-text NO discrimina (la presentación floja de Franco confunde), por eso la composición del abanico va como MANUAL; los checks reales son deterministas (pickups filtradas, no recita el valor).",
+    "sessionId": "4767ed00-ba40-43f2-ba29-fb733b66c5f9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 14049,
+        "response": {
+          "session_id": "4767ed00-ba40-43f2-ba29-fb733b66c5f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 como parte de pago y un anticipo de 7 millones, teniendo en cuenta que podés financiar hasta el 50%, tenés varias opciones para considerar dentro de tu capacidad de compra real. Como referencia, la tasación final de tu usado la hace un asesor en persona.\n\nEstas son algunas opciones para empezar:\n\nEntrada:\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, chico y económico)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, espacio similar)\n\nIntermedio:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, ideal para aprovechar espacio y carga)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, más nuevo y con buen consumo)\n\nAlto:\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, modelo último)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, último año y bajo km)\n\nY si querés te paso todo el stock que tenemos para que veas otras opciones. Qué te interesa ver primero?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 250.000 km",
+        "ms": 10328,
+        "response": {
+          "session_id": "4767ed00-ba40-43f2-ba29-fb733b66c5f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 con 250.000 km y un anticipo de 7 millones, tenés opciones para financiar, pero están por encima de tu presupuesto habitual. Dentro de tu presupuesto no hay opciones, pero estas que te paso son las que se ajustan mejor si considerás financiar y entregar tu usado:\n\nEntrada:\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, chico)\n\nIntermedio:\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, más nuevo)\n\nAlto:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, para carga)\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, buen tamaño)\n\nEstas opciones están un poco altas porque el recorrido de tu auto es elevado, pero entregando tu usado y con financiación son alcanzables. La tasación final la hace un asesor cuando vea el auto en persona.\n\nTe puedo pasar todo el stock que tenemos también, o te interesa ver detalles de alguno en particular?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Turno 1 (gate del km): debería PEDIR el km, auto_ids vacío, sin abanico. Gate conocido-flaky (whack-a-mole); v46 le da una razón real (el km ahora cambia el valor) pero no lo fuerza. Informativo, no gate."
+      },
+      {
+        "turn": 2,
+        "note": "Ka 2015 con 250.000 km (muy rodado): con v46 el km baja el valor → techo ~24M → Corolla (24.8M) y Renegade (25.5M) pasan a 'fuera' y el SQL los saca. Verificar en el LOG (output de Listar stock): Corolla/Renegade NO deben venir; en v45 vienen en tramo 'alto'. El chat-text no basta (presentación flaky). Valor del usado INTERNO (ningún monto)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "de8f9331-07af-4f6d-8d6f-52bf92e9d332",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 5058,
+        "response": {
+          "session_id": "de8f9331-07af-4f6d-8d6f-52bf92e9d332",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 gris que tenemos es hatchback, con 45.000 km y motor 1.5L naftero de 103 HP, transmisión manual y un consumo aproximado de 6.3 L/100km. Está equipado con aire acondicionado y sale $12.500.000. Es uno de los hatchbacks que menos consume y tiene mecánica Toyota, lo que lo hace con buena reventa."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarlo o entregando un usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 3299,
+        "response": {
+          "session_id": "de8f9331-07af-4f6d-8d6f-52bf92e9d332",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del Etios, y para eso se toma un anticipo como entrega inicial, luego el saldo se paga en cuotas. El monto y la cantidad de cuotas exactas lo define un asesor según tu perfil y la operación."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor arme la simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 2624,
+        "response": {
+          "session_id": "de8f9331-07af-4f6d-8d6f-52bf92e9d332",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, 24 cuotas es una opción muy común para financiar. Ahora, para avanzar con la simulación, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 2027,
+        "response": {
+          "session_id": "de8f9331-07af-4f6d-8d6f-52bf92e9d332",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, me podés decir aproximadamente de cuánto sería ese anticipo o capital inicial que tenés pensado poner?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "8a16eb72-4d3c-4b25-8c89-af0d9084bab9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 6015,
+        "response": {
+          "session_id": "8a16eb72-4d3c-4b25-8c89-af0d9084bab9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019, de color gris y con 45.000 km, es uno de los hatchbacks con menor consumo de combustible, con mecánica Toyota que asegura buena reventa. Tiene motor 1.5L de 103 HP, naftero, y transmisión manual. El consumo promedio aproximado es de 6.3 L/100km y viene con aire acondicionado. Está a $12.500.000.\n\nTe puedo mostrar las fotos y contarte más, o si querés te paso info sobre financiación o cómo sería entregando tu usado, qué te interesa?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 2987,
+        "response": {
+          "session_id": "8a16eb72-4d3c-4b25-8c89-af0d9084bab9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Para financiar el Toyota Etios, se puede cubrir hasta el 50% del valor del vehículo. Podés dar un anticipo y el saldo lo pagás en cuotas, ya sea con financiación propia de la agencia o mediante prenda, según tu perfil. Los gastos de la operación incluyen transferencia, gestoría y seguro del vehículo durante la prenda, y el asesor te armara la simulación con el monto exacto de las cuotas."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te prepare una simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 2308,
+        "response": {
+          "session_id": "8a16eb72-4d3c-4b25-8c89-af0d9084bab9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, 24 cuotas está perfecto para evaluar. Ahora para que el asesor arme la simulación exacta con el monto de las cuotas, de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 1480,
+        "response": {
+          "session_id": "8a16eb72-4d3c-4b25-8c89-af0d9084bab9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "0b8a9caa-595c-4c22-aed1-d61e92064b4a",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 5292,
+        "response": {
+          "session_id": "0b8a9caa-595c-4c22-aed1-d61e92064b4a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que viste es un hatchback gris con 45.000 km, equipado con motor 1.5L de 103 HP naftero y transmisión manual. Es el modelo que menos combustible consume en su categoría, con un promedio aproximado de 6.3 L/100km, lo que lo hace muy eficiente. Además tiene aire acondicionado para tu comodidad. El precio es $12.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 3333,
+        "response": {
+          "session_id": "0b8a9caa-595c-4c22-aed1-d61e92064b4a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del Etios. Para eso se toma una entrega inicial (anticipo) y el saldo se puede pagar en cuotas que se acuerdan según el monto y tu perfil. Para financiar por prenda, necesitás DNI vigente, CUIT o CUIL, y demostrar ingresos con recibo de sueldo o equivalente. Además, hay gastos de transferencia, seguro y gestoría, que el asesor te detallará. Para avanzar, de cuánto pensás poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 2109,
+        "response": {
+          "session_id": "0b8a9caa-595c-4c22-aed1-d61e92064b4a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, 24 cuotas está bien para planificar. Ahora solo me falta que me cuentes de cuánto sería el anticipo para que el asesor te arme la simulación exacta con los montos finales y condiciones."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 1643,
+        "response": {
+          "session_id": "0b8a9caa-595c-4c22-aed1-d61e92064b4a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos? Así le dejo anotado al asesor para que prepare todo."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null
+  }
+]

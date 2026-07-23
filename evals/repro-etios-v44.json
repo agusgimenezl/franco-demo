@@ -1,0 +1,171 @@
+[
+  {
+    "id": "auto-puntual-no-abanico",
+    "bug": "captura: cliente interesada en el ETIOS puntual ofrece su usado (Ford Ka 2015) como parte de pago PARA ese auto. Franco le tiró un abanico de otros modelos más caros y de otra categoría (Cronos, Duster, Amarok, ¡una Hilux!) que NO pidió. Cuando el cliente ya eligió un auto puntual y ofrece su usado, el abanico NO va: reconocer la permuta sobre ESE auto y ofrecer (a) un asesor para la tasación, o (b) modelos parecidos si quiere ver más. Fix v45 (scope del abanico).",
+    "sessionId": "bdc5852b-7012-4bc2-913c-9b7648568dcd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, estoy interesada en el etios que vi en la página",
+        "ms": 7745,
+        "response": {
+          "session_id": "bdc5852b-7012-4bc2-913c-9b7648568dcd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es un hatchback chico de color gris con 45.000 km. Tiene motor 1.5L naftero de 103 HP y transmisión manual, ideal para quien busca economía: consume aproximadamente 6.3 L/100 km. Equipado con aire acondicionado para mayor confort.\n\nTe va a gustar saber que es uno de los que menos combustible consume dentro de su segmento y tiene buena reventa por su mecánica Toyota. Precio: $12.500.000.\n\nTe aviso que no trae pantalla multimedia, si eso es algo importante para vos, me decís y te muestro otras opciones que la tengan."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare una cotización, o preferís que te muestre otras opciones parecidas?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, me gustaría entregar mi usado como parte de pago",
+        "ms": 2429,
+        "response": {
+          "session_id": "bdc5852b-7012-4bc2-913c-9b7648568dcd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, entregando un usado como parte de pago es una gran ventaja para facilitar la compra."
+            },
+            {
+              "type": "text",
+              "content": "Para poder ayudarte mejor y mostrarte las opciones que más te convengan con tu usado, contame qué auto entregás: la marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un ford ka 2015",
+        "ms": 3067,
+        "response": {
+          "session_id": "bdc5852b-7012-4bc2-913c-9b7648568dcd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Ford Ka 2015 es un auto muy reconocido y buscado para permuta."
+            },
+            {
+              "type": "text",
+              "content": "Ahora, para hacerte una estimación más precisa de las opciones que podrías considerar, necesito saber cuántos kilómetros tiene tu Ford Ka. Me lo podés decir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "85 mil km",
+        "ms": 16357,
+        "response": {
+          "session_id": "bdc5852b-7012-4bc2-913c-9b7648568dcd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo, una estimación preliminar de tu Ford Ka 2015 con 85.000 km, y que no mencionaste financiar, mirá estas opciones que te pueden interesar dentro de lo que entraría con tu permuta:"
+            },
+            {
+              "type": "text",
+              "content": "- Ford EcoSport 2020, SUV mediano, 55.000 km, $19.800.000\n- Peugeot 208 2025, hatchback chico, 8.000 km, $21.000.000\n- Toyota Etios 2019, hatchback chico, 45.000 km, $12.500.000\n- Volkswagen Gol Trend 2018, hatchback chico, 110.000 km, $9.200.000\n\nY si querés algo de más categoría también podrías considerar estas opciones, dependiendo de cuánto te tomen el usado:"
+            },
+            {
+              "type": "text",
+              "content": "- Jeep Renegade 2021, SUV mediano, 42.000 km, $25.500.000\n- Toyota Corolla 2022, sedán mediano, 35.000 km, $24.800.000"
+            },
+            {
+              "type": "text",
+              "content": "Si querés te paso todo el stock que tenemos para ver más alternativas. Querés que te arme una cotización o te contacto con un asesor para coordinar la tasación del usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_not_matches: matcheó /(?i)hilux|amarok|\\bs10\\b|ranger|duster|ecosport|renegade|t-cross|kangoo/ y no debería: \"EcoSport\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · text_not_matches: matcheó /(?i)hilux|amarok|\\bs10\\b|ranger|duster|ecosport|renegade|t-cross|kangoo/ y no debería: \"EcoSport\""
+    ],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "Cliente eligió el Etios puntual + ofrece su usado. NO debe tirar un abanico de modelos más caros/de otra categoría (pickups/SUVs como Hilux/Amarok/Duster). Debe reconocer la permuta sobre el Etios y ofrecer un asesor para la tasación, o modelos PARECIDOS (hatchbacks) si quiere ver más."
+      }
+    ],
+    "error": null
+  }
+]

@@ -1,0 +1,158 @@
+[
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "f5d1cdcb-00b6-41b8-96a2-f912dbdf442b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2605,
+        "response": {
+          "session_id": "f5d1cdcb-00b6-41b8-96a2-f912dbdf442b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para orientarte mejor con las opciones que te pueden entrar, necesito saber qué auto entregás como usado. Contame qué marca, modelo y año tiene tu usado."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "462e2ff3-02aa-44f6-86f8-c202a1c52150",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 1921,
+        "response": {
+          "session_id": "462e2ff3-02aa-44f6-86f8-c202a1c52150",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, recibo que contás con 10 millones de presupuesto y además tenés un usado para entregar como parte de pago. Para recomendarte opciones, necesito saber qué auto entregás como usado: marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)recibo que|entonces ten[eé]s|10 millones|diez millones|tu presupuesto de/ y no debería: \"recibo que\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)recibo que|entonces ten[eé]s|10 millones|diez millones|tu presupuesto de/ y no debería: \"recibo que\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "31e1e2e9-5a37-4c4d-b2fd-f0f3805de3ab",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2456,
+        "response": {
+          "session_id": "31e1e2e9-5a37-4c4d-b2fd-f0f3805de3ab",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, te sé que tenés un presupuesto de 10 millones y un usado como parte de pago. Para darte opciones que te entren bien, necesito saber qué auto es el que entregás: la marca, el modelo y el año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)recibo que|entonces ten[eé]s|10 millones|diez millones|tu presupuesto de/ y no debería: \"10 millones\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)recibo que|entonces ten[eé]s|10 millones|diez millones|tu presupuesto de/ y no debería: \"10 millones\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-sin-eco-primer-turno",
+    "bug": "captura: cliente dice 'tengo 10 millones de presupuesto y un usado, qué opciones?'. Franco abre el PRIMER turno con 'Perfecto, recibo que tenés 10 millones de presupuesto y un auto usado para entregar como parte de pago. Para avanzar necesito que me digas qué auto...' — le devuelve su propio mensaje (eco). La regla global 'No repitas los datos que el cliente acaba de darte' no cubre el preámbulo de confirmación. Fix v51: reforzar la regla global (# Tono) prohibiendo el 'recibo que tenés X' / 'entonces tenés X' con ejemplo concreto (trampa 6), preservando el 'perfecto Nombre' de la derivación.",
+    "sessionId": "50c3bcce-1476-498d-84f7-6af6996e8e13",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola que tal, tengo 10 millones de presupuesto y un usado como forma de pago. qué opciones tenés?",
+        "ms": 2066,
+        "response": {
+          "session_id": "50c3bcce-1476-498d-84f7-6af6996e8e13",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para ofrecerte opciones que se adapten a tu presupuesto y tomando en cuenta que entregás un usado necesito saber qué auto entregás como parte de pago. Me podés decir marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Primer turno: Franco debe ir DERECHO a pedir qué auto entrega (marca/modelo/año), sin abrir con 'recibo que tenés 10 millones y un usado' ni resumir lo que el cliente dijo. Un 'perfecto/genial' y a la pregunta. En v50 hace el eco → falla."
+      }
+    ],
+    "error": null
+  }
+]

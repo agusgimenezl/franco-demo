@@ -1,0 +1,348 @@
+[
+  {
+    "id": "capacidad-km-alto-achica",
+    "bug": "el 2 (v46): el km del usado tiene que ajustar el valor de mercado (Valuar usado) y por lo tanto la capacidad de compra. En v45 el km NO entra al cálculo (valor = base * 0.93^edad), así que un Ka 2015 con 250.000 km da la MISMA capacidad que con 30.000 km y el abanico llega igual a Corolla/Renegade (techo ~26M). Fix v46: km por encima del promedio esperado para la edad (15k/año) baja el valor (clamp 0.65..1.0). Ka 2015 250k km + 7M → valor ~7.1M, techo ~24M → Corolla (24.8M) y Renegade (25.5M) quedan FUERA. El valor sigue INTERNO (no se lo dice al cliente). ESTE CASO FALLA EN v45 (muestra Corolla/Renegade) Y PASA EN v46.",
+    "sessionId": "c3738357-7c60-4155-87c1-9fa1291a3eb4",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 9705,
+        "response": {
+          "session_id": "c3738357-7c60-4155-87c1-9fa1291a3eb4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 como parte de pago y un anticipo de 7 millones, además de poder financiar hasta el 50% del valor, tenés un abanico interesante de opciones para elegir."
+            },
+            {
+              "type": "text",
+              "content": "Para arrancar, te dejo algunas opciones que entran o están cerca de tu capacidad: \n- Ford Fiesta 2017, 105.000 km, $8.200.000 (entrada)\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000 (intermedio)\nY si querés estirar un poco más, considerá el Toyota Etios 2019, 45.000 km, $12.500.000 (alto) aunque está un poco fuera de tu rango actual."
+            },
+            {
+              "type": "text",
+              "content": "Recuerda que el valor final de tu usado lo define la tasación de un asesor que debe verlo en persona. Con esa tasación y los detalles de financiación, un asesor te puede hacer una simulación personalizada para ajustar cuotas, anticipo y plazos. \n\nQuerés que te pase el contacto de un asesor para que prepare esa simulación y coordine la tasación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 250.000 km",
+        "ms": 9351,
+        "response": {
+          "session_id": "c3738357-7c60-4155-87c1-9fa1291a3eb4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 con 250.000 km y un anticipo de 7 millones, más la posibilidad de financiar hasta el 50%, estas son algunas opciones para considerar:\n\n- Toyota Etios 2019, 45.000 km, $12.500.000 (entrada)\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000 (económica)\n- Ford Fiesta 2017, 105.000 km, $8.200.000 (económica)\n\nSi querés algo más arriba, tenemos automóviles que están fuera de tu presupuesto actual, pero podrían considerarse financiando o con un poco más de anticipo, como el Chevrolet Onix 2024 o el Peugeot 208 2025.\n\nLa tasación final del Ford Ka la hace un asesor en persona, para ajustar la simulación de financiación y cuotas. Querés que te pase el contacto de un asesor para que te prepare un cálculo personalizado y coordine la tasación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Turno 1: debe PEDIR el km (gate), auto_ids vacío, sin mostrar abanico todavía. Igual que capacidad-de-compra-financiada."
+      },
+      {
+        "turn": 2,
+        "note": "Ka 2015 con 250.000 km (muy rodado): el km baja el valor → techo ~24M → Corolla (24.8M) y Renegade (25.5M) quedan FUERA (NO deben aparecer); sí entran Duster/Onix/208/EcoSport. En v45 (km ignorado, valor 8.83M, techo 26.4M) el abanico SÍ llega a Corolla/Renegade → text_not_matches falla. Valor del usado INTERNO (ningún monto)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-km-alto-achica",
+    "bug": "el 2 (v46): el km del usado tiene que ajustar el valor de mercado (Valuar usado) y por lo tanto la capacidad de compra. En v45 el km NO entra al cálculo (valor = base * 0.93^edad), así que un Ka 2015 con 250.000 km da la MISMA capacidad que con 30.000 km y el abanico llega igual a Corolla/Renegade (techo ~26M). Fix v46: km por encima del promedio esperado para la edad (15k/año) baja el valor (clamp 0.65..1.0). Ka 2015 250k km + 7M → valor ~7.1M, techo ~24M → Corolla (24.8M) y Renegade (25.5M) quedan FUERA. El valor sigue INTERNO (no se lo dice al cliente). ESTE CASO FALLA EN v45 (muestra Corolla/Renegade) Y PASA EN v46.",
+    "sessionId": "d206a94f-f122-4554-a4c2-2e05a18906d1",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 9633,
+        "response": {
+          "session_id": "d206a94f-f122-4554-a4c2-2e05a18906d1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo de $7.000.000 y estimando tu Ford Ka 2015 para entregar, y sumando la posibilidad de financiar hasta el 50%, tenés estas opciones dentro de tu capacidad de compra:"
+            },
+            {
+              "type": "text",
+              "content": "- Fiat Cronos 2023 — 28.000 km — $16.800.000, sedán mediano, ideal para algo cómodo y moderno\n- Toyota Etios 2019 — 45.000 km — $12.500.000, hatchback chico, consumos bajos\n\nSi querés algo más económico en hatchbacks chicos, podés mirar estas alternativas:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si pensás estirar un poco con la financiación y entrega, estas opciones medianas/compactas podés llegar a considerar:\n- Renault Duster 2023 — 31.000 km — $22.500.000\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000\n\nSi querés te paso todo el stock que tenemos o te preparo una simulación con cuotas y entrega para que lo veas más claro, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 6"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 250.000 km",
+        "ms": 8187,
+        "response": {
+          "session_id": "d206a94f-f122-4554-a4c2-2e05a18906d1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu anticipo de $7.000.000 y el Ford Ka 2015 con 250.000 km para entregar, más la financiación hasta el 50%, estas son las opciones dentro de tu capacidad de compra:"
+            },
+            {
+              "type": "text",
+              "content": "- Toyota Etios 2019 — 45.000 km — $12.500.000, hatchback chico, consumo 6.3 L/100km\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, hatchback chico\n\nSi querés estirar un poco más entregando tu usado, podrías llegar a estas opciones:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Renault Kangoo 2021 — 82.000 km — $18.500.000, utilitario mediano\n\nTe recuerdo que la tasación exacta del usado la hace un asesor viendo el auto en persona. Queres que te pase estos datos a un asesor para que te prepare una simulación con cuotas y entrega?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)duster|onix|208|ecosport/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 6",
+      "turno 2 · text_matches: no matcheó /(?i)duster|onix|208|ecosport/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Turno 1: debe PEDIR el km (gate), auto_ids vacío, sin mostrar abanico todavía. Igual que capacidad-de-compra-financiada."
+      },
+      {
+        "turn": 2,
+        "note": "Ka 2015 con 250.000 km (muy rodado): el km baja el valor → techo ~24M → Corolla (24.8M) y Renegade (25.5M) quedan FUERA (NO deben aparecer); sí entran Duster/Onix/208/EcoSport. En v45 (km ignorado, valor 8.83M, techo 26.4M) el abanico SÍ llega a Corolla/Renegade → text_not_matches falla. Valor del usado INTERNO (ningún monto)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-km-alto-achica",
+    "bug": "el 2 (v46): el km del usado tiene que ajustar el valor de mercado (Valuar usado) y por lo tanto la capacidad de compra. En v45 el km NO entra al cálculo (valor = base * 0.93^edad), así que un Ka 2015 con 250.000 km da la MISMA capacidad que con 30.000 km y el abanico llega igual a Corolla/Renegade (techo ~26M). Fix v46: km por encima del promedio esperado para la edad (15k/año) baja el valor (clamp 0.65..1.0). Ka 2015 250k km + 7M → valor ~7.1M, techo ~24M → Corolla (24.8M) y Renegade (25.5M) quedan FUERA. El valor sigue INTERNO (no se lo dice al cliente). ESTE CASO FALLA EN v45 (muestra Corolla/Renegade) Y PASA EN v46.",
+    "sessionId": "d30a774a-9635-4b37-92d4-569c01da295e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 8384,
+        "response": {
+          "session_id": "d30a774a-9635-4b37-92d4-569c01da295e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con un Ford Ka 2015 para entregar y $7 millones de anticipo, tenés una buena base para financiar tu próximo auto. La tasación exacta de tu usado la hace un asesor cuando lo pueda ver en persona, pero con esos datos, estas serían algunas opciones que podrías cubrir con financiación, incluyendo hasta el 50% del valor total en cuotas."
+            },
+            {
+              "type": "text",
+              "content": "Entre las que entrarían en tu capacidad de compra ahora está este Ford Fiesta 2017, que es un hatchback chico, con 105.000 km y cuesta $8.200.000. Es un modelo más pequeño pero con buena relación precio/km."
+            },
+            {
+              "type": "text",
+              "content": "Si querés, puedo coordinar para que un asesor te prepare una simulación con números más precisos y te explique las formas de pago. Me dejás tu nombre y apellido para avanzar?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 250.000 km",
+        "ms": 6867,
+        "response": {
+          "session_id": "d30a774a-9635-4b37-92d4-569c01da295e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con tu Ford Ka 2015 con 250.000 km y $7 millones de anticipo, teniendo en cuenta que la tasación será definitiva cuando un asesor inspeccione el auto, podés apuntar a autos como este Toyota Etios 2019: hatchback chico, 45.000 km y $12.500.000. Podés financiar hasta el 50% del valor y combinar con tu anticipo y el usado como parte de pago.\n\nSi querés, te paso tu contacto a un asesor para que arme una simulación personalizada y te explique las cuotas y requisitos. Me dejás tu nombre y apellido para avanzar?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)duster|onix|208|ecosport/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)duster|onix|208|ecosport/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Turno 1: debe PEDIR el km (gate), auto_ids vacío, sin mostrar abanico todavía. Igual que capacidad-de-compra-financiada."
+      },
+      {
+        "turn": 2,
+        "note": "Ka 2015 con 250.000 km (muy rodado): el km baja el valor → techo ~24M → Corolla (24.8M) y Renegade (25.5M) quedan FUERA (NO deben aparecer); sí entran Duster/Onix/208/EcoSport. En v45 (km ignorado, valor 8.83M, techo 26.4M) el abanico SÍ llega a Corolla/Renegade → text_not_matches falla. Valor del usado INTERNO (ningún monto)."
+      }
+    ],
+    "error": null
+  }
+]

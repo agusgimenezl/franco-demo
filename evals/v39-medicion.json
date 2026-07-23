@@ -1,0 +1,2211 @@
+[
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "d04d25ee-635f-4d38-ae95-a3ce6e6baefa",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 2913,
+        "response": {
+          "session_id": "d04d25ee-635f-4d38-ae95-a3ce6e6baefa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para avanzar, qué auto entregás como parte de pago? Contame marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 17346,
+        "response": {
+          "session_id": "d04d25ee-635f-4d38-ae95-a3ce6e6baefa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu presupuesto de $8.000.000 y entregando un Gol Trend 2017, estas opciones de un poco más de valor podrían interesarte, dependiendo de la tasación de tu usado:\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n\nY si querés puedo mostrarte también las opciones que directamente cubre tu presupuesto sin estirar, o el stock completo. Qué preferís?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 6097,
+        "response": {
+          "session_id": "d04d25ee-635f-4d38-ae95-a3ce6e6baefa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con un Gol Trend 2017 con 90.000 km ya tengo todo para que un asesor pueda hacer la tasación y ayudarte mejor.\n\nPara que un asesor te contacte y coordine la tasación, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "c280e2f0-21b6-488e-8d0c-d73be0e90371",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 4696,
+        "response": {
+          "session_id": "c280e2f0-21b6-488e-8d0c-d73be0e90371",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para empezar con la cotización, me podés decir qué auto entregás como usado? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 11617,
+        "response": {
+          "session_id": "c280e2f0-21b6-488e-8d0c-d73be0e90371",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu presupuesto de $8.000.000 y entregando tu Gol Trend 2017, hay dos opciones justo un poco por encima de tu monto pero a las que podés llegar con la financiación o con la permuta:\n- Volkswagen Gol Trend 2019, hatchback, 82.000 km, $9.800.000\n- Ford Fiesta 2018, hatchback, 95.000 km, $8.500.000\n\nSi querés algo más económico podría mostrarte otras opciones, o si querés puedo pasarte todo el stock que tenemos. Qué preferís?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2025",
+              "precio": "$59.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2024",
+              "precio": "$45.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2019",
+              "precio": "$42.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$33.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2024",
+              "precio": "$29.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2019",
+              "precio": "$24.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2019",
+              "precio": "$22.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2019",
+              "precio": "$20.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2020",
+              "precio": "$19.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2020",
+              "precio": "$18.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 7572,
+        "response": {
+          "session_id": "c280e2f0-21b6-488e-8d0c-d73be0e90371",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con un Gol Trend 2017 de 90.000 km para entregar, un asesor te podrá hacer una tasación precisa y cercana al valor real del mercado local. \n\nMientras tanto, te muestro algunas opciones que entran dentro de tu presupuesto, y otras a las que podrías llegar entregando tu usado y financiando un poco:\n\n- Chevrolet Onix 2018 — 75.000 km — $7.800.000\n- Renault Sandero 2019 — 80.000 km — $7.500.000\n\nY si querés algo un poco más actualizado y cómodo, con la permuta y financiación podrías estirar a:\n\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n\nQuerés que te pase el contacto de un asesor para que te arme una simulación o preferís seguir viendo opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)nombre/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)nombre/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "bad1959a-9570-4680-b660-a9dfb2554d1f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 2275,
+        "response": {
+          "session_id": "bad1959a-9570-4680-b660-a9dfb2554d1f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con tu usado más esos 8 millones seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para poder ayudarte mejor y mostrarte las opciones que más te cierren, me podés decir qué auto entregás? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 3345,
+        "response": {
+          "session_id": "bad1959a-9570-4680-b660-a9dfb2554d1f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Gol Trend 2017 es de los más buscados para permuta. El valor exacto de tu usado lo cotiza un asesor cuando lo pueda ver en persona, así te dan la mejor tasación según su estado.\n\nAhora con eso te puedo mostrar algunas opciones que podrían entrar con tu efectivo, y también otras un poco más arriba que podrías alcanzar entregando tu usado, dependiendo de cuánto te lo tomen."
+            },
+            {
+              "type": "text",
+              "content": "Y cuántos kilómetros tiene ese Gol Trend 2017 que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 4706,
+        "response": {
+          "session_id": "bad1959a-9570-4680-b660-a9dfb2554d1f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu presupuesto y la permuta de tu Gol Trend 2017 con 90.000 km, estas serían buenas opciones para empezar:\n\n- Volkswagen Gol Trend 2019, 82.000 km — $9.800.000, un hatchback un poco más nuevo que podría interesarte.\n\nEsta opción está un poco por encima de tu presupuesto pero con la financiación y la permuta puede ser viable.\n\nSi querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te ayude a coordinar una financiación o te gustaría ver otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)nombre/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)nombre/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "0c49619a-cb08-422c-b6d3-a5efaa3186af",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 3427,
+        "response": {
+          "session_id": "0c49619a-cb08-422c-b6d3-a5efaa3186af",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con tu usado y esos 8 millones seguramente entren varias opciones, e incluso algunas mejores si la tasación acompaña. Para avanzar, qué auto entregás como parte de pago? Necesito marca, modelo y año para orientarte bien."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 10108,
+        "response": {
+          "session_id": "0c49619a-cb08-422c-b6d3-a5efaa3186af",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu Gol Trend 2017 para permuta y los 8 millones que contás, mirá estas opciones que podés cubrir con tu efectivo y el valor de tu usado te queda a favor:\n- Ford Fiesta 2018 — 95.000 km — $8.500.000\n\nY si querés algo un poco más arriba, entregando tu usado podrías llegar a estas otras opciones:\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n\nQuerés que te pase más detalles de alguno o preferís que te muestre todas las opciones que tenemos?\""
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 2829,
+        "response": {
+          "session_id": "0c49619a-cb08-422c-b6d3-a5efaa3186af",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con el Gol Trend 2017 y 90.000 km ya le puedo pasar todo a un asesor para que coordine la tasación y te ayude con la mejor propuesta."
+            },
+            {
+              "type": "text",
+              "content": "Me dejás tu nombre y apellido para que un asesor te contacte por WhatsApp? Así avanzamos con todo."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "a9128443-13a9-44d2-a8fa-690af3c08ce0",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 2828,
+        "response": {
+          "session_id": "a9128443-13a9-44d2-a8fa-690af3c08ce0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con tu usado seguramente entren varias opciones y también podrían surgir algunas de mayor valor si la tasación acompaña. Para avanzar, contame qué auto entregás como parte de pago, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2317,
+        "response": {
+          "session_id": "a9128443-13a9-44d2-a8fa-690af3c08ce0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Gol Trend 2017 es uno de los usados más buscados y puede ser una muy buena base para la permuta. Ahora para seguir, me podés contar cuántos kilómetros tiene el auto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 5135,
+        "response": {
+          "session_id": "a9128443-13a9-44d2-a8fa-690af3c08ce0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Gol Trend 2017 y el presupuesto que tenés, tu efectivo alcanza para autos interesantes y entregando tu usado podrías llegar a algunos modelos de un poco más valor. Mira dos que podrían gustarte, un poco arriba del presupuesto, que podrías considerar si la tasación acompaña:\n- Volkswagen Gol Trend 2019, 82.000 km — $9.800.000\n- Ford Fiesta 2018, 95.000 km — $8.500.000\nCon tu efectivo cubrís autos dentro o cerca de los $8 millones, más el valor de tu usado a favor. Querés que te muestre algunas opciones que entren justo en ese límite, o preferís que te pase estas de gama un poco más alta?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)nombre/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)nombre/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "9fbf9454-b305-4f6e-976c-fef629d92f0b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 5226,
+        "response": {
+          "session_id": "9fbf9454-b305-4f6e-976c-fef629d92f0b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que tenemos es un hatchback chico, color gris, con 88.000 km. Es el que menos combustible consume de los hatchbacks, con mecánica Toyota, lo que lo hace muy valorado por su buena reventa. Tiene motor 1.5L de 103 HP, naftero, transmisión manual y su consumo promedio es de 6.3 L/100km. Además cuenta con aire acondicionado y está a $10.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 1784,
+        "response": {
+          "session_id": "9fbf9454-b305-4f6e-976c-fef629d92f0b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, sí recibimos usados como parte de pago. Para pasarle todo a un asesor y que coordine la tasación, me podés decir qué auto entregás, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 2530,
+        "response": {
+          "session_id": "9fbf9454-b305-4f6e-976c-fef629d92f0b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Julieta, con el Gol 2015 con 90.000 km ya le paso todo a un asesor para que coordine la tasación. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "9fbf9454-b305-4f6e-976c-fef629d92f0b",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-4142",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, entrega Gol 2015 con 90.000 km y solicita contacto de un asesor.",
+      "fecha_contacto": "23/07/2026 12:47",
+      "ultima_actualizacion": "23/07/2026 12:47",
+      "is_saved": false
+    },
+    "leadWaitMs": 3303,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "8dd1bd59-aabb-4263-86e4-e5e061da6c37",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 4598,
+        "response": {
+          "session_id": "8dd1bd59-aabb-4263-86e4-e5e061da6c37",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es un hatchback chico de color gris con 88.000 km. Tiene motor 1.5L de 103 HP naftero con transmisión manual y un consumo aproximado de 6.3 L/100 km. Viene con aire acondicionado y su bajo consumo es uno de sus fuertes. El precio es $10.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 2279,
+        "response": {
+          "session_id": "8dd1bd59-aabb-4263-86e4-e5e061da6c37",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, sí recibimos usados como parte de pago, siempre sujeto a tasación por un asesor. Para avanzar, contame qué auto entregás: la marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 1826,
+        "response": {
+          "session_id": "8dd1bd59-aabb-4263-86e4-e5e061da6c37",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, con el Gol 2015 con 90.000 km ya le paso todo a un asesor para que coordine la tasación. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "8dd1bd59-aabb-4263-86e4-e5e061da6c37",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-6784",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Quiere Toyota Etios, entrega Gol 2015 con 90.000 km, y pide contacto de un asesor.",
+      "fecha_contacto": "23/07/2026 12:48",
+      "ultima_actualizacion": "23/07/2026 12:48",
+      "is_saved": false
+    },
+    "leadWaitMs": 2764,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "9f174bf8-c70d-472a-bc3a-ca05edceaaf1",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 5324,
+        "response": {
+          "session_id": "9f174bf8-c70d-472a-bc3a-ca05edceaaf1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es un hatchback gris con 88.000 km, motor 1.5L naftero de 103 HP y transmisión manual. Destaca por ser el que menos combustible consume en los hatchbacks, con un promedio de 6.3 L/100km, y su mecánica Toyota asegura buena reventa. Está equipado con aire acondicionado y tiene un precio de $10.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 1631,
+        "response": {
+          "session_id": "9f174bf8-c70d-472a-bc3a-ca05edceaaf1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, recibimos usados como parte de pago. Para que el asesor pueda cotizarlo bien, me podés contar qué auto entregás? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 2571,
+        "response": {
+          "session_id": "9f174bf8-c70d-472a-bc3a-ca05edceaaf1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial Julieta, con tu Gol 2015 y 90.000 km ya le paso todo a un asesor para que coordine la tasación y la mejor propuesta para vos."
+            },
+            {
+              "type": "text",
+              "content": "Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "9f174bf8-c70d-472a-bc3a-ca05edceaaf1",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-2020",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Interesada en Toyota Etios, entrega Gol 2015 con 90.000 km, solicita contacto de asesor.",
+      "fecha_contacto": "23/07/2026 12:48",
+      "ultima_actualizacion": "23/07/2026 12:48",
+      "is_saved": false
+    },
+    "leadWaitMs": 5962,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "e45a3b25-693b-440b-945f-7f694413ea1b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 5205,
+        "response": {
+          "session_id": "e45a3b25-693b-440b-945f-7f694413ea1b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es un hatchback chico que consume en promedio 6.3 L/100km, con motor naftero 1.5L y 103 HP, y transmisión manual. Está en color gris, tiene 88.000 km y viene con aire acondicionado. Es uno de los que menos combustible consume en su categoría y su mecánica Toyota ayuda a que su valor de reventa se mantenga mejor. El precio es $10.500.000.\n\nQuerés saber cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 1783,
+        "response": {
+          "session_id": "e45a3b25-693b-440b-945f-7f694413ea1b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, sí recibimos usados como parte de pago. Para que un asesor pueda ayudarte con la tasación y la mejor oferta, contame qué auto vas a entregar: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 2142,
+        "response": {
+          "session_id": "e45a3b25-693b-440b-945f-7f694413ea1b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Julieta, con el Gol 2015 con 90.000 km ya le paso todo a un asesor para que coordine la tasación. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "e45a3b25-693b-440b-945f-7f694413ea1b",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-9000",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, entrega Gol 2015 con 90.000 km, solicita que la contacte un asesor.",
+      "fecha_contacto": "23/07/2026 12:48",
+      "ultima_actualizacion": "23/07/2026 12:48",
+      "is_saved": false
+    },
+    "leadWaitMs": 14329,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-pide-datos-del-usado",
+    "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
+    "sessionId": "e359c0ce-e00b-47fa-bfff-8cb81eb982f9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 4921,
+        "response": {
+          "session_id": "e359c0ce-e00b-47fa-bfff-8cb81eb982f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que tenemos es un hatchback gris con 88.000 km, motor 1.5L naftero de 103 HP y transmisión manual. Es el que menos combustible consume de los hatchbacks, con un promedio aproximado de 6.3 L/100km y aire acondicionado. El precio es $10.500.000.\n\nTe adjunto las fotos para que lo veas bien."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un auto para entregar y quiero que me contacte un asesor",
+        "ms": 1737,
+        "response": {
+          "session_id": "e359c0ce-e00b-47fa-bfff-8cb81eb982f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para que un asesor te contacte y te ayude con la tasación y detalles, me dejás por favor la marca, modelo y año del auto que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez, tengo un gol 2015 con 90.000 km",
+        "ms": 2231,
+        "response": {
+          "session_id": "e359c0ce-e00b-47fa-bfff-8cb81eb982f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, con el Gol 2015 y 90.000 km ya le paso todo a un asesor para que coordine la tasación y te contacte. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Acá el cliente SÍ pidió asesor, así que derivar es correcto. Pero sigue valiendo una pregunta a la vez: pide primero el auto que entrega. El nombre puede venir después — lo que importa es que los dos datos lleguen al lead (ver lead_checks). El check de 'apellido en este turno' se sacó el 2026-07-21: exigía el formulario de seis campos que Agustina marcó como error"
+      },
+      {
+        "turn": 3,
+        "note": "Ya pidió asesor y ya dio TODOS los datos (nombre + usado): confirma nombrando el Gol 2015 y CIERRA. No debe relanzar la permuta con cards, ni re-pedir el nombre que le acaba de dar (Julieta Miguez)."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "e359c0ce-e00b-47fa-bfff-8cb81eb982f9",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-5238",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "Sí",
+      "descripcion_usado": "Volkswagen Gol 2015 - 90.000 km",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, entrega Gol 2015 con 90.000 km y solicita contacto de un asesor.",
+      "fecha_contacto": "23/07/2026 12:49",
+      "ultima_actualizacion": "23/07/2026 12:49",
+      "is_saved": false
+    },
+    "leadWaitMs": 6020,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "40754a70-3008-4b4b-8a82-6cb09b662ab0",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 5568,
+        "response": {
+          "session_id": "40754a70-3008-4b4b-8a82-6cb09b662ab0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, con tu Yaris 2021 y 85.000 km como parte de pago, tenés varias opciones interesantes. Un Volkswagen Gol Trend 2019 a $9.800.000 o un Toyota Etios 2019 a $10.500.000 son autos chicos, similares en tamaño al tuyo y están dentro de tu presupuesto con tu efectivo y usado. También podrías estirar un poco y mirar un Fiat Cronos 2020 a $12.500.000 o un Peugeot 208 2018 a $12.800.000, si te interesa algo un poco más moderno o distinto, y con financiación podés cubrir esa diferencia."
+            },
+            {
+              "type": "text",
+              "content": "Contame, te interesa que te prepare una cotización con financiación o querés que coordine que un asesor te consulte por la tasación de tu Yaris?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "40754a70-3008-4b4b-8a82-6cb09b662ab0",
+      "nombre": "+54 381 555-0726",
+      "telefono": "+54 381 555-0726",
+      "vehiculo_interes": "Volkswagen Gol Trend 2019 / Toyota Etios 2019",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entrega Yaris 2021 con 85.000 km y $12M, busca Gol Trend o Etios 2019.",
+      "fecha_contacto": "23/07/2026 12:49",
+      "ultima_actualizacion": "23/07/2026 12:49",
+      "is_saved": false
+    },
+    "leadWaitMs": 5641,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "9143b4c6-10f1-4545-93f1-0e7b8b39b9a8",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 6404,
+        "response": {
+          "session_id": "9143b4c6-10f1-4545-93f1-0e7b8b39b9a8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con el Yaris 2021 que entregás, que es un auto muy buscado, tenés varias opciones para elegir y la ventaja de que tu usado suma a favor en la operación. No puedo darte el valor exacto de tu usado en esta charla porque un asesor necesita verlo en persona, pero seguro te ayudará que lo entregues.\n\nCon tus 12 millones en efectivo, estas opciones te entran directas y tu usado te quedaría a favor:\n- Toyota Etios 2019, hatchback, 88.000 km, $10.500.000\n- Volkswagen Gol Trend 2019, hatchback, 82.000 km, $9.800.000\n- Ford Fiesta 2018, hatchback, 95.000 km, $8.500.000\n\nY si querés algo un poco más arriba y de más categoría, entregando tu usado podrías llegar a estas opciones, dependiendo de cuánto te lo tomen:\n- Peugeot 208 2018, hatchback, 92.000 km, $12.800.000 (estirar)\n- Fiat Cronos 2020, sedán, 58.000 km, $12.500.000 (estirar)\n\nSi querés te paso todas las opciones que tenemos para que las veas, o me contás qué uso le querés dar y te ayudo a elegir mejor."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "9143b4c6-10f1-4545-93f1-0e7b8b39b9a8",
+      "nombre": "+54 381 555-6839",
+      "telefono": "+54 381 555-6839",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entrega Yaris 2021 con 85.000 km y tiene $12M en efectivo para comprar otro auto.",
+      "fecha_contacto": "23/07/2026 12:49",
+      "ultima_actualizacion": "23/07/2026 12:49",
+      "is_saved": false
+    },
+    "leadWaitMs": 2763,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "cc5b45bc-2987-4c53-bd27-2329d8e37875",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 5386,
+        "response": {
+          "session_id": "cc5b45bc-2987-4c53-bd27-2329d8e37875",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2021, que es bastante buscado, tenés la ventaja de poder llegar a autos muy interesantes con tu efectivo y entrega. La tasación exacta del usado la hace un asesor viendo el auto en persona, pero seguro que esto suma a tu favor.\n\nCon tu presupuesto y el usado entran estas opciones:\n- Toyota Etios 2019, hatchback, 88.000 km, $10.500.000\n- Volkswagen Gol Trend 2019, hatchback, 82.000 km, $9.800.000\n- Ford Fiesta 2018, hatchback, 95.000 km, $8.500.000\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras:\n- Peugeot 208 2018, hatchback, 92.000 km, $12.800.000\n- Fiat Cronos 2020, sedán mediano, 58.000 km, $12.500.000\n\nSi te interesa, también te puedo pasar todo el stock que tenemos, avisame. Qué auto te llama la atención o querés que te ayude a decidir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "cc5b45bc-2987-4c53-bd27-2329d8e37875",
+      "nombre": "+54 381 555-3800",
+      "telefono": "+54 381 555-3800",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entrega Yaris 2021 con 85.000 km y $12M en efectivo para la compra de un auto. Sin modelo de interés mencionado.",
+      "fecha_contacto": "23/07/2026 12:49",
+      "ultima_actualizacion": "23/07/2026 12:49",
+      "is_saved": false
+    },
+    "leadWaitMs": 2878,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "bffb2d23-e446-43de-9cf9-6f51f6390f97",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 14227,
+        "response": {
+          "session_id": "bffb2d23-e446-43de-9cf9-6f51f6390f97",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2021 con 85 mil km como parte de pago, un auto así es muy buscado y suma mucho para que puedas llegar a una buena opción. No puedo darte un valor fijo de tu usado porque un asesor tiene que verlo en persona, pero con eso más tu efectivo de 12 millones, seguramente podés cubrir un buen rango.\n\nMirá estas opciones que entran en tu presupuesto con lo que tenés:\n- Toyota Etios 2019 — 88.000 km — $10.500.000, hatchback chico, consumo aproximado 6.3 L/100km\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000, hatchback chico, consumo aproximado 7.0 L/100km\n\nY si querés algo de un poco más categoría, entregando tu usado podrías estirar un poco hasta estas opciones:\n- Fiat Cronos 2020 — 58.000 km — $12.500.000, sedán mediano, consumo aproximado 6.5 L/100km\n- Peugeot 208 2018 — 92.000 km — $12.800.000, hatchback chico, consumo aproximado 6.6 L/100km\n\nSi querés te paso todo el stock que tenemos, avisame. Qué te parece? Querés que te ayude con alguna de estas opciones o te paso más?\""
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · ends_with_question: la última burbuja no cierra con pregunta: \"rece? Querés que te ayude con alguna de estas opciones o te paso más?\\\"\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · ends_with_question: la última burbuja no cierra con pregunta: \"rece? Querés que te ayude con alguna de estas opciones o te paso más?\\\"\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "bffb2d23-e446-43de-9cf9-6f51f6390f97",
+      "nombre": "+54 381 555-7481",
+      "telefono": "+54 381 555-7481",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Cuenta con $12M y entrega Yaris 2021 con 85.000 km como parte de pago.",
+      "fecha_contacto": "23/07/2026 12:50",
+      "ultima_actualizacion": "23/07/2026 12:50",
+      "is_saved": false
+    },
+    "leadWaitMs": 2769,
+    "leadTimedOut": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta",
+    "sessionId": "224a8710-eb6c-4e62-a1dd-ca5df165ac0f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 13612,
+        "response": {
+          "session_id": "224a8710-eb6c-4e62-a1dd-ca5df165ac0f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Yaris 2021 y $12 millones en efectivo, la permuta es una gran ventaja. No puedo darte el valor exacto de tu Yaris porque un asesor tiene que verlo en persona, pero con ese presupuesto seguro entran varias opciones y hasta alguna mejor, dependiendo de la tasación. Te recomiendo algunas que están dentro o un poco arriba de tu presupuesto, para que veas cómo podés aprovecharlo:\n\n- Toyota Etios 2019 — 88.000 km — $10.500.000, hatchback, similar porte al tuyo\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000, hatchback, consumo un poco más alto\n\nY si querés un auto un poco más nuevo o diferente, estas otras opciones que están \"estirar\":\n\n- Peugeot 208 2018 — 92.000 km — $12.800.000, hatchback, más moderno\n- Fiat Cronos 2020 — 58.000 km — $12.500.000, sedán, más espacio y consumo moderado\n\nCon esto ya podés tener una idea de lo que te conviene. Cuéntame, con cuánto más contás además de tu usado para encontrar la mejor opción?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "224a8710-eb6c-4e62-a1dd-ca5df165ac0f",
+      "nombre": "+54 381 555-5875",
+      "telefono": "+54 381 555-5875",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entrega Yaris 2021 con 85.000 km y $12M en efectivo. Consulta por opciones.",
+      "fecha_contacto": "23/07/2026 12:50",
+      "ultima_actualizacion": "23/07/2026 12:50",
+      "is_saved": false
+    },
+    "leadWaitMs": 2766,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-no-repite-asesor",
+    "bug": "captura 1 — ya había aceptado el asesor y dado su nombre, y Franco volvió a ofrecerle un asesor. Además pide solo el nombre, no el apellido",
+    "sessionId": "dba1d1a0-cdc6-459c-9856-a3493f665988",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 11737,
+        "response": {
+          "session_id": "dba1d1a0-cdc6-459c-9856-a3493f665988",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 en gris es un hatchback chico con 88.000 km, motor 1.5L de 103 HP naftero y transmisión manual. Tiene aire acondicionado y un consumo promedio aproximado de 6.3 L/100km. Es conocido por ser el que menos consume entre los hatchbacks y tener mecánica Toyota, lo que lo hace atractivo para reventa. Está a $10.500.000.\n\nTe paso las fotos con el auto para que lo explores."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "dale quiero un asesor",
+        "ms": 1807,
+        "response": {
+          "session_id": "dba1d1a0-cdc6-459c-9856-a3493f665988",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para que un asesor te contacte, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez",
+        "ms": 2871,
+        "response": {
+          "session_id": "dba1d1a0-cdc6-459c-9856-a3493f665988",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, un asesor te contacta por acá para coordinar y ayudarte con el Toyota Etios. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Al pedir los datos debe pedir nombre Y apellido, no solo el nombre"
+      },
+      {
+        "turn": 3,
+        "note": "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"
+      },
+      {
+        "turn": 3,
+        "note": "TRATO: debe dirigirse por el nombre de pila ('Listo Julieta'), no por nombre y apellido. El apellido se PIDE y se GUARDA (ver lead_checks), pero no se le dice en la cara"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "dba1d1a0-cdc6-459c-9856-a3493f665988",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-6796",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Interesada en Toyota Etios, solicita contacto de un asesor.",
+      "fecha_contacto": "23/07/2026 12:50",
+      "ultima_actualizacion": "23/07/2026 12:50",
+      "is_saved": false
+    },
+    "leadWaitMs": 3938,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-no-repite-asesor",
+    "bug": "captura 1 — ya había aceptado el asesor y dado su nombre, y Franco volvió a ofrecerle un asesor. Además pide solo el nombre, no el apellido",
+    "sessionId": "5acf2251-9da1-482a-93e5-9cee1bbc2708",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 6513,
+        "response": {
+          "session_id": "5acf2251-9da1-482a-93e5-9cee1bbc2708",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es hatchback compacto con mecánica Toyota reconocida por bajo consumo, ideal para ciudad y buena reventa. Está en color gris, tiene 88.000 km y motor 1.5L de 103 HP con transmisión manual. El consumo promedio aproximado es 6.3 L/100km. Viene con aire acondicionado y está a $10.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarlo o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "dale quiero un asesor",
+        "ms": 1640,
+        "response": {
+          "session_id": "5acf2251-9da1-482a-93e5-9cee1bbc2708",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para que un asesor te contacte, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez",
+        "ms": 2402,
+        "response": {
+          "session_id": "5acf2251-9da1-482a-93e5-9cee1bbc2708",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, un asesor te va a contactar pronto para coordinar y ayudarte con todo. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Al pedir los datos debe pedir nombre Y apellido, no solo el nombre"
+      },
+      {
+        "turn": 3,
+        "note": "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"
+      },
+      {
+        "turn": 3,
+        "note": "TRATO: debe dirigirse por el nombre de pila ('Listo Julieta'), no por nombre y apellido. El apellido se PIDE y se GUARDA (ver lead_checks), pero no se le dice en la cara"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "5acf2251-9da1-482a-93e5-9cee1bbc2708",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-5792",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, solicita contacto de asesor.",
+      "fecha_contacto": "23/07/2026 12:51",
+      "ultima_actualizacion": "23/07/2026 12:51",
+      "is_saved": false
+    },
+    "leadWaitMs": 3203,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-no-repite-asesor",
+    "bug": "captura 1 — ya había aceptado el asesor y dado su nombre, y Franco volvió a ofrecerle un asesor. Además pide solo el nombre, no el apellido",
+    "sessionId": "219e55d9-f589-49e7-bb58-99636a344654",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 5310,
+        "response": {
+          "session_id": "219e55d9-f589-49e7-bb58-99636a344654",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que tenemos es un hatchback gris con 88.000 km. Es uno de los que menos combustible consume en su categoría y tiene mecánica Toyota, lo que lo hace muy valorado en reventa. Tiene motor 1.5L con 103 HP, nafta y transmisión manual. El consumo promedio es de 6.3 L/100 km y viene con aire acondicionado."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $10.500.000. Quedás en conocer algo más, cómo sería la financiación o te interesa verlo en persona?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "dale quiero un asesor",
+        "ms": 1959,
+        "response": {
+          "session_id": "219e55d9-f589-49e7-bb58-99636a344654",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para que un asesor te contacte, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez",
+        "ms": 3695,
+        "response": {
+          "session_id": "219e55d9-f589-49e7-bb58-99636a344654",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, un asesor te contacta para ayudarte con el Toyota Etios. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Al pedir los datos debe pedir nombre Y apellido, no solo el nombre"
+      },
+      {
+        "turn": 3,
+        "note": "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"
+      },
+      {
+        "turn": 3,
+        "note": "TRATO: debe dirigirse por el nombre de pila ('Listo Julieta'), no por nombre y apellido. El apellido se PIDE y se GUARDA (ver lead_checks), pero no se le dice en la cara"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "219e55d9-f589-49e7-bb58-99636a344654",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-1679",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios, solicita contacto de un asesor.",
+      "fecha_contacto": "23/07/2026 12:51",
+      "ultima_actualizacion": "23/07/2026 12:51",
+      "is_saved": false
+    },
+    "leadWaitMs": 3204,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-no-repite-asesor",
+    "bug": "captura 1 — ya había aceptado el asesor y dado su nombre, y Franco volvió a ofrecerle un asesor. Además pide solo el nombre, no el apellido",
+    "sessionId": "75813a4b-7fe0-4079-a770-7f2883b7cc90",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 5767,
+        "response": {
+          "session_id": "75813a4b-7fe0-4079-a770-7f2883b7cc90",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es un hatchback compacto que sobresale por ser el que menos combustible consume de su categoría, con un promedio aproximado de 6.3 L/100km. Tiene motor 1.5L de 103 HP, naftero y transmisión manual. Está gris, con 88.000 km, y cuesta $10.500.000. Viene con aire acondicionado y es reconocido por su mecánica Toyota, que mejora la reventa.\n\n"
+            },
+            {
+              "type": "text",
+              "content": "Te cuento que no trae pantalla multimedia, pero si eso para vos es prioritario, puedo mostrarte otras opciones como el Peugeot 208 o el Fiat Cronos que sí la tienen.\n\nQuerés que te prepare una cotización o prefieres ver otros modelos parecidos para comparar?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "dale quiero un asesor",
+        "ms": 2001,
+        "response": {
+          "session_id": "75813a4b-7fe0-4079-a770-7f2883b7cc90",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para que un asesor te contacte, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez",
+        "ms": 2215,
+        "response": {
+          "session_id": "75813a4b-7fe0-4079-a770-7f2883b7cc90",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, con eso ya le paso tu consulta a un asesor para que te contacte y te ayude con todo lo del Toyota Etios. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Al pedir los datos debe pedir nombre Y apellido, no solo el nombre"
+      },
+      {
+        "turn": 3,
+        "note": "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"
+      },
+      {
+        "turn": 3,
+        "note": "TRATO: debe dirigirse por el nombre de pila ('Listo Julieta'), no por nombre y apellido. El apellido se PIDE y se GUARDA (ver lead_checks), pero no se le dice en la cara"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "75813a4b-7fe0-4079-a770-7f2883b7cc90",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-7220",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Interesada en Toyota Etios, solicita contacto de un asesor.",
+      "fecha_contacto": "23/07/2026 12:51",
+      "ultima_actualizacion": "23/07/2026 12:51",
+      "is_saved": false
+    },
+    "leadWaitMs": 3167,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-no-repite-asesor",
+    "bug": "captura 1 — ya había aceptado el asesor y dado su nombre, y Franco volvió a ofrecerle un asesor. Además pide solo el nombre, no el apellido",
+    "sessionId": "eb10abca-0300-49b7-86c5-0032231e8845",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios",
+        "ms": 4651,
+        "response": {
+          "session_id": "eb10abca-0300-49b7-86c5-0032231e8845",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es un hatchback chico que menos combustible consume en su segmento, con mecánica Toyota lo que ayuda a que se deprecie menos que sus competidores. Tiene motor 1.5L de 103 HP, nafta y transmisión manual. Su consumo aproximado es de 6.3 L/100km y el precio es $10.500.000. Viene con aire acondicionado."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare una cotización o que te cuente sobre las opciones de financiación que tenemos para este Etios?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "dale quiero un asesor",
+        "ms": 1470,
+        "response": {
+          "session_id": "eb10abca-0300-49b7-86c5-0032231e8845",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para que un asesor te contacte, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Julieta Miguez",
+        "ms": 2345,
+        "response": {
+          "session_id": "eb10abca-0300-49b7-86c5-0032231e8845",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Julieta, un asesor te contacta por acá para seguir con el Toyota Etios. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Al pedir los datos debe pedir nombre Y apellido, no solo el nombre"
+      },
+      {
+        "turn": 3,
+        "note": "Ya aceptó el asesor y dio nombre y apellido: debe confirmar y NO volver a ofrecer un asesor"
+      },
+      {
+        "turn": 3,
+        "note": "TRATO: debe dirigirse por el nombre de pila ('Listo Julieta'), no por nombre y apellido. El apellido se PIDE y se GUARDA (ver lead_checks), pero no se le dice en la cara"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "eb10abca-0300-49b7-86c5-0032231e8845",
+      "nombre": "Julieta Miguez",
+      "telefono": "+54 381 555-4795",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Interesada en Toyota Etios, solicita contacto con asesor.",
+      "fecha_contacto": "23/07/2026 12:51",
+      "ultima_actualizacion": "23/07/2026 12:51",
+      "is_saved": false
+    },
+    "leadWaitMs": 3186,
+    "leadTimedOut": false
+  }
+]

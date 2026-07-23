@@ -1,0 +1,407 @@
+[
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco debe mostrar un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70%; techo x2 por financiar hasta 50%). v42 exige los 4 datos del usado (marca/modelo/año/KM) ANTES de calcular: si falta el km, lo pide; con los 4, estima el valor del usado, arma el Capital Base y muestra 2 por tramo (entrada/intermedio/alto), carrocerías distintas, hablando de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "2ceedfd7-f2cb-431e-9cd3-1935675f59da",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 10764,
+        "response": {
+          "session_id": "2ceedfd7-f2cb-431e-9cd3-1935675f59da",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo de $7.000.000 y una estimación preliminar de tu Ford Ka 2015 para entregar, y considerando que querés financiar, tenés este abanico de opciones disponibles. Recordá que la tasación final de tu usado la hace un asesor cuando vea el auto en persona para definir el valor exacto y que el crédito puede llegar hasta el 50% del valor del vehículo.\n\nTe recomiendo algunas opciones dentro de ese rango:\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, consumo 6.3 L/100km)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, un auto económico)\n\nY si querés estirar un poco entregando tu usado, podrías considerar estas:\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, consumo 6.0 L/100km)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, consumo 6.6 L/100km)\n\nSi querés te paso todo el stock que tenemos, avisame. Querés que te arme una simulación con estos datos, o preferís que un asesor te contacte para coordinar la tasación y la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 4",
+          "turno 1 · text_not_matches: matcheó /(?i)corolla|renegade|ecosport|onix|duster/ y no debería: \"Onix\""
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 10899,
+        "response": {
+          "session_id": "2ceedfd7-f2cb-431e-9cd3-1935675f59da",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con un Ford Ka 2015 y 100.000 km para entregar, y $7.000.000 de anticipo, estas son algunas opciones que entran dentro de ese rango y financiación, considerando que la financiación puede ser de hasta el 50% del valor del vehículo:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, consumo 6.3 L/100 km)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, consumo 7.0 L/100 km)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, consumo 6.0 L/100 km)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, consumo 6.6 L/100 km)\n\nLa tasación final de tu usado se hace en persona con un asesor.\n\nQuerés que te contacte un asesor para coordinar la tasación y la financiación y te arme una simulación personalizada?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 4",
+      "turno 1 · text_not_matches: matcheó /(?i)corolla|renegade|ecosport|onix|duster/ y no debería: \"Onix\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Falta el KM del usado (dio marca/modelo/año). v42 debe PEDIR el km antes de mostrar o calcular nada (gate de 4 datos), auto_ids vacío. NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos ya calcula: estima el valor del Ka, arma el Capital Base (anticipo + usado al 70%) y muestra el abanico por tramos (entrada/intermedio/alto), ~2 por tramo (o los que haya), carrocerías distintas, hablando de 'anticipo' no 'efectivo', con el deslinde (estimación preliminar, tasación final del asesor)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco debe mostrar un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70%; techo x2 por financiar hasta 50%). v42 exige los 4 datos del usado (marca/modelo/año/KM) ANTES de calcular: si falta el km, lo pide; con los 4, estima el valor del usado, arma el Capital Base y muestra 2 por tramo (entrada/intermedio/alto), carrocerías distintas, hablando de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "5ee689bd-85ee-4b9c-adf0-1260f014a330",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 11283,
+        "response": {
+          "session_id": "5ee689bd-85ee-4b9c-adf0-1260f014a330",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $7.000.000, una estimación preliminar de tu Ford Ka 2015 y la posibilidad de financiar hasta el 50%, tenés este abanico de opciones para financiar:"
+            },
+            {
+              "type": "text",
+              "content": "- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, porte chico, ideal para financiar)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, porte chico, opción económica si querés algo más accesible)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, porte chico, otra opción económica)"
+            },
+            {
+              "type": "text",
+              "content": "Y si querés algo de más categoría, entregando tu usado podrías llegar a estas otras opciones, dependiendo de cuánto te tomen:\n\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, más nuevo y con bajo consumo)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, más reciente y con bajo consumo)"
+            },
+            {
+              "type": "text",
+              "content": "Esta tasación preliminar es sólo de referencia; la definitiva la hace un asesor viendo tu auto en persona. Me dejás tu nombre y apellido para que un asesor pueda coordinar la tasación y te prepare una simulación personalizada?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 5",
+          "turno 1 · text_not_matches: matcheó /(?i)corolla|renegade|ecosport|onix|duster/ y no debería: \"Onix\""
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 17276,
+        "response": {
+          "session_id": "5ee689bd-85ee-4b9c-adf0-1260f014a330",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con tu Ford Ka 2015 con 100.000 km y $7.000.000 de anticipo más la financiación de hasta el 50% del valor, te puedo mostrar estas opciones que entran dentro de esta capacidad de compra:"
+            },
+            {
+              "type": "text",
+              "content": "- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, porte chico)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, porte chico)\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, porte chico)"
+            },
+            {
+              "type": "text",
+              "content": "Y si querés algo de más gama, también podés estirar a opciones como:\n\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, mucho más nuevo)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, más moderno y espacioso)"
+            },
+            {
+              "type": "text",
+              "content": "Esta estimación de tu usado es preliminar, la tasación final la hace un asesor en la inspección en persona. Me dejás tu nombre y apellido para que un asesor te contacte y coordine la tasación y te prepare la simulación de cuotas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 5",
+      "turno 1 · text_not_matches: matcheó /(?i)corolla|renegade|ecosport|onix|duster/ y no debería: \"Onix\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Falta el KM del usado (dio marca/modelo/año). v42 debe PEDIR el km antes de mostrar o calcular nada (gate de 4 datos), auto_ids vacío. NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos ya calcula: estima el valor del Ka, arma el Capital Base (anticipo + usado al 70%) y muestra el abanico por tramos (entrada/intermedio/alto), ~2 por tramo (o los que haya), carrocerías distintas, hablando de 'anticipo' no 'efectivo', con el deslinde (estimación preliminar, tasación final del asesor)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco debe mostrar un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70%; techo x2 por financiar hasta 50%). v42 exige los 4 datos del usado (marca/modelo/año/KM) ANTES de calcular: si falta el km, lo pide; con los 4, estima el valor del usado, arma el Capital Base y muestra 2 por tramo (entrada/intermedio/alto), carrocerías distintas, hablando de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "cafdfaa1-cbb9-4dbf-ab0d-41667601c610",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 7490,
+        "response": {
+          "session_id": "cafdfaa1-cbb9-4dbf-ab0d-41667601c610",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 7 millones, una estimación preliminar de tu Ford Ka 2015 y la posibilidad de financiar hasta el 50% del vehículo, te puedo mostrar estas opciones para financiar:"
+            },
+            {
+              "type": "text",
+              "content": "- Toyota Etios 2019 — 45.000 km — $12.500.000 (entrada)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (económica, entrada)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (económica, entrada)\n\nY si querés estirar, entregando tu usado podrías llegar a estas otras opciones:\n\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000\n- Peugeot 208 2025 — 8.000 km — $21.000.000"
+            },
+            {
+              "type": "text",
+              "content": "Para darte una cifra exacta y coordinar la tasación de tu usado, necesitaremos que un asesor te vea por el local. Me dejás tu nombre y apellido para que te contacten? Mientras tanto, si querés que te muestre otras opciones o tenés otra duda, decime."
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 5",
+          "turno 1 · text_not_matches: matcheó /(?i)corolla|renegade|ecosport|onix|duster/ y no debería: \"Onix\""
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 7486,
+        "response": {
+          "session_id": "cafdfaa1-cbb9-4dbf-ab0d-41667601c610",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con 100.000 km en tu Ford Ka 2015 ya puedo ajustar mejor las opciones para financiar. Considerando tu anticipo de 7 millones y una estimación preliminar del valor de tu auto, te comparto opciones para empezar:"
+            },
+            {
+              "type": "text",
+              "content": "- Toyota Etios 2019 — 45.000 km — $12.500.000 (tramo entrada)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (tramo entrada)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (tramo entrada)\n\nY si querés estirar un poco más entregando tu usado, estas opciones pueden interesarte:\n\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000\n- Peugeot 208 2025 — 8.000 km — $21.000.000\n\nLa tasación final de tu Ford se hace en persona con un asesor, pero con esto ya tenés una idea de las posibilidades. Me dejás tu nombre y apellido para que un asesor se contacte a coordinar la tasación y avanzar con la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 5",
+      "turno 1 · text_not_matches: matcheó /(?i)corolla|renegade|ecosport|onix|duster/ y no debería: \"Onix\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Falta el KM del usado (dio marca/modelo/año). v42 debe PEDIR el km antes de mostrar o calcular nada (gate de 4 datos), auto_ids vacío. NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos ya calcula: estima el valor del Ka, arma el Capital Base (anticipo + usado al 70%) y muestra el abanico por tramos (entrada/intermedio/alto), ~2 por tramo (o los que haya), carrocerías distintas, hablando de 'anticipo' no 'efectivo', con el deslinde (estimación preliminar, tasación final del asesor)."
+      }
+    ],
+    "error": null
+  }
+]

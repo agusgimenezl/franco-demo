@@ -1,0 +1,301 @@
+[
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "f0c2af86-6262-4819-a8a9-706b2e3143ea",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 3271,
+        "response": {
+          "session_id": "f0c2af86-6262-4819-a8a9-706b2e3143ea",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para seguir, contame qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2552,
+        "response": {
+          "session_id": "f0c2af86-6262-4819-a8a9-706b2e3143ea",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Gol Trend 2017 es de los más buscados y puede ayudarte a llegar a mejores opciones. Ahora, para estimar bien qué autos te pueden entrar y cómo te ayuda la permuta, me decís cuántos kilómetros tiene el auto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 2436,
+        "response": {
+          "session_id": "f0c2af86-6262-4819-a8a9-706b2e3143ea",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Martín, con el Gol Trend 2017 y 90.000 km ya le paso todo a un asesor para que coordine la tasación. Un asesor te va a contactar en horario de atención para ayudarte con los pasos. Mientras tanto, necesitás que te ayude con algo más?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)nombre|entrada|intermedio|\\balto\\b|opcion|opción|abanico|financ|capacidad/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)nombre|entrada|intermedio|\\balto\\b|opcion|opción|abanico|financ|capacidad/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, mostrar el ABANICO de capacidad es una respuesta válida (el nombre puede venir después) — antes se exigía el name-ask acá. Se acepta el abanico O el pedido del nombre. Lo que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "ef51d0cd-ea34-46dc-8cbd-aab80dfa057b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 2453,
+        "response": {
+          "session_id": "ef51d0cd-ea34-46dc-8cbd-aab80dfa057b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con un presupuesto de 8 millones más tu usado, seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para avanzar, contame marca, modelo y año de tu auto usado."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2789,
+        "response": {
+          "session_id": "ef51d0cd-ea34-46dc-8cbd-aab80dfa057b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Gol Trend 2017 es de los usados más buscados y una buena base para la permuta. Ahora, para estimar mejor tu capacidad de compra, cuántos kilómetros tiene tu Gol Trend?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 9371,
+        "response": {
+          "session_id": "ef51d0cd-ea34-46dc-8cbd-aab80dfa057b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo, una estimación preliminar de tu Gol Trend 2017 con 90.000 km, y la posibilidad de financiar hasta el 50%, tenés este abanico de autos que podrían interesarte:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, un poco más nuevo que el tuyo)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, similar en año y km)\n\nY si querés una opción intermedia para considerar:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, menos kilometraje)\n\nPor ahora, estas opciones están un poco más arriba de tu presupuesto base, pero la tasación de tu usado y la financiación pueden ayudarte a llegar. Me decís cuál te llama la atención o querés que te muestre todo el stock que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, mostrar el ABANICO de capacidad es una respuesta válida (el nombre puede venir después) — antes se exigía el name-ask acá. Se acepta el abanico O el pedido del nombre. Lo que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige.",
+    "sessionId": "2b37e3f0-edaa-418b-a6f7-13c46bedf49d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 4679,
+        "response": {
+          "session_id": "2b37e3f0-edaa-418b-a6f7-13c46bedf49d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Con tu usado y los 8 millones que decís, seguramente entren varias opciones interesantes y podrías hasta llegar a algún auto de mayor valor si la tasación acompaña. Para avanzar, me podés contar qué auto entregás como usado? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 3896,
+        "response": {
+          "session_id": "2b37e3f0-edaa-418b-a6f7-13c46bedf49d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, Gol Trend 2017 es de los más buscados como usado. Ahora, para poder armarte las opciones basándonos en tu entrega y el anticipo que decís que tenés, necesito el dato de los kilómetros que tiene tu Gol Trend. Me lo podés decir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 7097,
+        "response": {
+          "session_id": "2b37e3f0-edaa-418b-a6f7-13c46bedf49d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tus 8 millones de anticipo, la entrega preliminar de tu Gol Trend 2017 con 90.000 km, y la posibilidad de financiar hasta el 50% del valor del vehículo, te paso algunas opciones que podrían interesarte:"
+            },
+            {
+              "type": "text",
+              "content": "- Ford Fiesta 2017, hatchback chico, 105.000 km, $8.200.000 (entrada).\n- Volkswagen Gol Trend 2018, hatchback chico, 110.000 km, $9.200.000 (entrada).\n\nY un paso arriba si querés estirar un poco con financiación:\n- Toyota Etios 2019, hatchback chico, 45.000 km, $12.500.000 (intermedio).\n- Fiat Cronos 2023, sedán mediano, 28.000 km, $16.800.000 (intermedio)."
+            },
+            {
+              "type": "text",
+              "content": "La tasación final del usado la hace un asesor personalmente cuando venís a vernos, para ajustar bien el valor. \n\nMe decís si te interesa alguna de estas opciones o si querés que te pase todo el stock disponible para que le des un vistazo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, mostrar el ABANICO de capacidad es una respuesta válida (el nombre puede venir después) — antes se exigía el name-ask acá. Se acepta el abanico O el pedido del nombre. Lo que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null
+  }
+]

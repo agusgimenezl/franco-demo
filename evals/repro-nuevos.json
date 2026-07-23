@@ -1,0 +1,604 @@
+[
+  {
+    "id": "asesor-ve-estado-no-km",
+    "bug": "#2 (captura 2): al recibir un usado con km, Franco dice 'un asesor necesita ver el estado Y LOS KILÓMETROS'. Los km los DIO el cliente; el asesor revisa el ESTADO/condición en persona, no los km. Fuente: punto 4 de ## Permuta ('Explicá por qué no cotizás el usado en vivo'). Reproducido offline en outputs de v33 y v34 (la frase se recita casi textual).",
+    "sessionId": "33b0ccc0-8edb-4214-83f4-ac0971ba5d1c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un Ford Ka 2013 con 100.000 km para entregar. qué opciones tengo?",
+        "ms": 10144,
+        "response": {
+          "session_id": "33b0ccc0-8edb-4214-83f4-ac0971ba5d1c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2013 y un presupuesto de 10 millones, entregando tu usado como parte de pago, estas son algunas opciones que podrías considerar:\n\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000 (entra)\n- Ford Fiesta 2018 — 95.000 km — $8.500.000 (entra)\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras, dependiendo de cuánto te lo tomen:\n\n- Peugeot 208 2018 — 92.000 km — $12.800.000 (estirar)\n- Fiat Cronos 2020 — 58.000 km — $12.500.000 (estirar)\n- Toyota Etios 2019 — 88.000 km — $10.500.000 (estirar)\n\nEl Gol Trend y el Fiesta son dos opciones dentro de tu presupuesto, y el valor de tu usado te queda a favor ahí. La tasación la hace un asesor luego de ver tu auto en persona para definir cuánto vale exactamente.\n\nY si querés, te puedo pasar todo el stock que tenemos, avisame.\n"
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2018",
+              "precio": "$12.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "El asesor revisa el ESTADO/condición del usado en persona, no los km (esos ya los dio el cliente). No debe decir que un asesor 've el estado Y los kilómetros': solo el estado en persona."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "asesor-ve-estado-no-km",
+    "bug": "#2 (captura 2): al recibir un usado con km, Franco dice 'un asesor necesita ver el estado Y LOS KILÓMETROS'. Los km los DIO el cliente; el asesor revisa el ESTADO/condición en persona, no los km. Fuente: punto 4 de ## Permuta ('Explicá por qué no cotizás el usado en vivo'). Reproducido offline en outputs de v33 y v34 (la frase se recita casi textual).",
+    "sessionId": "dc53a3a8-17ad-4782-a389-9fe7c7a9d3fd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un Ford Ka 2013 con 100.000 km para entregar. qué opciones tengo?",
+        "ms": 7966,
+        "response": {
+          "session_id": "dc53a3a8-17ad-4782-a389-9fe7c7a9d3fd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Recibí la información, con tu Ford Ka 2013 y $10 millones podés acceder a varias opciones. El Volkswagen Gol Trend 2019 tiene 82.000 km y está a $9.800.000. También está el Ford Fiesta 2018, con 95.000 km a $8.500.000. Estas opciones entran en tu presupuesto y suman el valor de tu usado a favor.\n\nSi querés algo un poco más nuevo y de gama superior, podrías estirar a un Toyota Etios 2019 a $10.500.000 o un Fiat Cronos 2020 a $12.500.000, dependiendo de cuánto te tomen tu auto.\n\nNo puedo darte el valor exacto de tu usado automáticamente, pero un asesor lo tasará en persona para que tengas la mejor opción.\n\nCuál de estos te interesa conocer más o querés que te pase todo el stock completo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "El asesor revisa el ESTADO/condición del usado en persona, no los km (esos ya los dio el cliente). No debe decir que un asesor 've el estado Y los kilómetros': solo el estado en persona."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "asesor-ve-estado-no-km",
+    "bug": "#2 (captura 2): al recibir un usado con km, Franco dice 'un asesor necesita ver el estado Y LOS KILÓMETROS'. Los km los DIO el cliente; el asesor revisa el ESTADO/condición en persona, no los km. Fuente: punto 4 de ## Permuta ('Explicá por qué no cotizás el usado en vivo'). Reproducido offline en outputs de v33 y v34 (la frase se recita casi textual).",
+    "sessionId": "31412f6a-455e-414d-a03e-a1afcc291f5e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un Ford Ka 2013 con 100.000 km para entregar. qué opciones tengo?",
+        "ms": 6646,
+        "response": {
+          "session_id": "31412f6a-455e-414d-a03e-a1afcc291f5e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2013 con 100.000 km para entregar y $10 millones, tienes buenas opciones:\n- Volkswagen Gol Trend 2019 — 82.000 km — $9.800.000, hatchback ideal para ciudad\n- Ford Fiesta 2018 — 95.000 km — $8.500.000, hatchback ágil y económico\nY si querés algo un poco más nuevo y de categoría superior, podrías estirar a estas opciones financiando o con la permuta:\n- Toyota Etios 2019 — 88.000 km — $10.500.000\n- Fiat Cronos 2020 — 58.000 km — $12.500.000\n\nTodas son buenas opciones para tu presupuesto y usado. No puedo dar el valor exacto de tu Ka porque un asesor necesita verlo para tasar, pero con eso más tu usado se pueden ajustar bien varias alternativas.\n\nCuánto querés poner de entrada, contás con financiación o preferís algún modelo en especial?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2019",
+              "precio": "$9.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2018",
+              "precio": "$8.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$10.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2020",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "El asesor revisa el ESTADO/condición del usado en persona, no los km (esos ya los dio el cliente). No debe decir que un asesor 've el estado Y los kilómetros': solo el estado en persona."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "derivacion-completada-nueva-pregunta",
+    "bug": "#1 MEGA (captura 1, de v33, NO cerrado): el cliente aceptó el asesor, dio 'Natalia Giménez Lascano', Franco confirmó y cerró. Después preguntó otra cosa (financiación) y Franco (a) volvió a OFRECER el asesor y (b) al aceptar, volvió a PEDIR 'me dejás tu nombre y apellido?' teniéndolo ya en el lead. estado_cliente va un turno atrasado, pero acá el nombre está hace varios turnos y Franco igual re-pregunta -> también es adherencia de prompt.",
+    "sessionId": "2a92110b-70cd-43d7-8bc9-b22e7d7cfc67",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios. quiero que me contacte un asesor",
+        "ms": 6175,
+        "response": {
+          "session_id": "2a92110b-70cd-43d7-8bc9-b22e7d7cfc67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 es el que menos combustible consume dentro de los hatchbacks y cuenta con mecánica Toyota, lo que lo hace muy valorado en reventa porque se deprecia menos.\nEs un auto hatchback de 5 puertas y 5 asientos, color gris, con 88.000 km. Motor 1.5L de 103 HP naftero, transmisión manual. Consumo aproximado de 6.3 L/100km. Equipado con aire acondicionado.\n\nTe contacto con un asesor para que puedas avanzar con la compra."
+            },
+            {
+              "type": "text",
+              "content": "Me dejás tu nombre y apellido para pasarle la consulta al asesor?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Natalia Giménez Lascano",
+        "ms": 1955,
+        "response": {
+          "session_id": "2a92110b-70cd-43d7-8bc9-b22e7d7cfc67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Natalia, ya le paso tus datos a un asesor y te va a contactar por acá. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "buenísimo. una consulta: financian? cuánto?",
+        "ms": 3932,
+        "response": {
+          "session_id": "2a92110b-70cd-43d7-8bc9-b22e7d7cfc67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, financiamos hasta el 50% del valor del vehículo. Podés hacer una entrega inicial y pagar el saldo en cuotas, que dependen del monto financiado y las condiciones que elijas.\n\nQuerés que te prepare una simulación junto con el asesor para que veas números concretos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, perfecto. sí, que me contacte el asesor entonces",
+        "ms": 2268,
+        "response": {
+          "session_id": "2a92110b-70cd-43d7-8bc9-b22e7d7cfc67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial Natalia, ya está todo listo para que un asesor se ponga en contacto contigo y te arme esa simulación financiera. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor la contacta y la trata por el nombre de pila ('Natalia'). No re-ofrece asesor ni re-pide datos."
+      },
+      {
+        "turn": 3,
+        "note": "Ya está en derivación (aceptó y dio nombre). Responde la FAQ (financian hasta 50%). NO debe re-ofrecer el asesor: ya está aceptado."
+      },
+      {
+        "turn": 4,
+        "note": "EL BUG: ya dio el nombre (Natalia Giménez Lascano) hace 2 turnos y está en el lead. NO debe re-pedirlo. Debe confirmar que ya la va a contactar un asesor, tratándola por el nombre de pila."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "2a92110b-70cd-43d7-8bc9-b22e7d7cfc67",
+      "nombre": "Natalia Giménez Lascano",
+      "telefono": "+54 381 555-7709",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "Sí",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Interesada en Toyota Etios, solicita contacto y simulación de financiación.",
+      "fecha_contacto": "23/07/2026 00:05",
+      "ultima_actualizacion": "23/07/2026 00:05",
+      "is_saved": false
+    },
+    "leadWaitMs": 2764,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-completada-nueva-pregunta",
+    "bug": "#1 MEGA (captura 1, de v33, NO cerrado): el cliente aceptó el asesor, dio 'Natalia Giménez Lascano', Franco confirmó y cerró. Después preguntó otra cosa (financiación) y Franco (a) volvió a OFRECER el asesor y (b) al aceptar, volvió a PEDIR 'me dejás tu nombre y apellido?' teniéndolo ya en el lead. estado_cliente va un turno atrasado, pero acá el nombre está hace varios turnos y Franco igual re-pregunta -> también es adherencia de prompt.",
+    "sessionId": "1ff83bd5-6113-46c5-a06b-c885c0c688d8",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios. quiero que me contacte un asesor",
+        "ms": 5920,
+        "response": {
+          "session_id": "1ff83bd5-6113-46c5-a06b-c885c0c688d8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que tenemos es un hatchback chico, de color gris, con 88.000 km y mecánica Toyota que garantiza bajo consumo y buena reventa. Motor 1.5L naftero de 103 HP, transmisión manual, y un consumo aproximado de 6,3 L/100km. Está equipado con aire acondicionado y tiene un precio de $10.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, le paso tu interés a un asesor para que te contacte por acá y te ayude con todo lo que necesites. Para eso, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Natalia Giménez Lascano",
+        "ms": 1875,
+        "response": {
+          "session_id": "1ff83bd5-6113-46c5-a06b-c885c0c688d8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Natalia, un asesor te contacta por acá para coordinar todo lo que necesites sobre el Toyota Etios. Mientras esperás, querés que te muestre algunas otras opciones similares para ampliar un poco las posibilidades?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "buenísimo. una consulta: financian? cuánto?",
+        "ms": 2520,
+        "response": {
+          "session_id": "1ff83bd5-6113-46c5-a06b-c885c0c688d8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, financiamos hasta el 50% del valor del vehículo. Puede ser con financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Para avanzar te piden una entrega inicial y después podés pagar el saldo en cuotas. Si querés, te puedo ayudar con una simulación más personalizada o te contacto con un asesor para que te explique todo."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, perfecto. sí, que me contacte el asesor entonces",
+        "ms": 2096,
+        "response": {
+          "session_id": "1ff83bd5-6113-46c5-a06b-c885c0c688d8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Natalia, un asesor te va a contactar en breve por acá para ayudarte con la financiación y todo lo que necesites. Mientras tanto, querés que te pase info de algún otro modelo o querés esperar a que te llamen?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor la contacta y la trata por el nombre de pila ('Natalia'). No re-ofrece asesor ni re-pide datos."
+      },
+      {
+        "turn": 3,
+        "note": "Ya está en derivación (aceptó y dio nombre). Responde la FAQ (financian hasta 50%). NO debe re-ofrecer el asesor: ya está aceptado."
+      },
+      {
+        "turn": 4,
+        "note": "EL BUG: ya dio el nombre (Natalia Giménez Lascano) hace 2 turnos y está en el lead. NO debe re-pedirlo. Debe confirmar que ya la va a contactar un asesor, tratándola por el nombre de pila."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "1ff83bd5-6113-46c5-a06b-c885c0c688d8",
+      "nombre": "Natalia Giménez Lascano",
+      "telefono": "+54 381 555-7305",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "Sí",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Interesada en Toyota Etios, quiere financiación y ser contactada por un asesor.",
+      "fecha_contacto": "23/07/2026 00:06",
+      "ultima_actualizacion": "23/07/2026 00:06",
+      "is_saved": false
+    },
+    "leadWaitMs": 2764,
+    "leadTimedOut": false
+  },
+  {
+    "id": "derivacion-completada-nueva-pregunta",
+    "bug": "#1 MEGA (captura 1, de v33, NO cerrado): el cliente aceptó el asesor, dio 'Natalia Giménez Lascano', Franco confirmó y cerró. Después preguntó otra cosa (financiación) y Franco (a) volvió a OFRECER el asesor y (b) al aceptar, volvió a PEDIR 'me dejás tu nombre y apellido?' teniéndolo ya en el lead. estado_cliente va un turno atrasado, pero acá el nombre está hace varios turnos y Franco igual re-pregunta -> también es adherencia de prompt.",
+    "sessionId": "2ab78fd7-cef3-40c0-bec1-caecad5e35d3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el toyota etios. quiero que me contacte un asesor",
+        "ms": 5359,
+        "response": {
+          "session_id": "2ab78fd7-cef3-40c0-bec1-caecad5e35d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que tenemos es hatchback, de color gris y con 88.000 km. Tiene motor 1.5L de 103 HP, nafta y transmisión manual. Además, su consumo promedio es de unos 6.3 L/100km. Viene con aire acondicionado y es conocido por ser uno de los hatchbacks que menos combustible consume, con mecánica Toyota que asegura una buena reventa.\n\nTe paso la información a un asesor para que se contacte contigo."
+            },
+            {
+              "type": "text",
+              "content": "Me dejás tu nombre y apellido para que un asesor te contacte?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Natalia Giménez Lascano",
+        "ms": 1972,
+        "response": {
+          "session_id": "2ab78fd7-cef3-40c0-bec1-caecad5e35d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Natalia, un asesor te contacta por acá en breve. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "buenísimo. una consulta: financian? cuánto?",
+        "ms": 2958,
+        "response": {
+          "session_id": "2ab78fd7-cef3-40c0-bec1-caecad5e35d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, financian hasta el 50% del valor del vehículo. Puede ser con financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Para avanzar con una simulación personalizada, el asesor que ya te va a contactar te puede armar los detalles con la entrega y las cuotas. Querés que te pase más info sobre las condiciones o cómo sería el paso a paso?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, perfecto. sí, que me contacte el asesor entonces",
+        "ms": 2640,
+        "response": {
+          "session_id": "2ab78fd7-cef3-40c0-bec1-caecad5e35d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, ya confirmo que un asesor te contacta para que te arme la simulación y te ayude con todo. Mientras tanto, si te surge alguna otra pregunta o querés que te muestre algún otro auto, avisame."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_matches: no matcheó /(?i)natalia/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · text_matches: no matcheó /(?i)natalia/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor la contacta y la trata por el nombre de pila ('Natalia'). No re-ofrece asesor ni re-pide datos."
+      },
+      {
+        "turn": 3,
+        "note": "Ya está en derivación (aceptó y dio nombre). Responde la FAQ (financian hasta 50%). NO debe re-ofrecer el asesor: ya está aceptado."
+      },
+      {
+        "turn": 4,
+        "note": "EL BUG: ya dio el nombre (Natalia Giménez Lascano) hace 2 turnos y está en el lead. NO debe re-pedirlo. Debe confirmar que ya la va a contactar un asesor, tratándola por el nombre de pila."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "2ab78fd7-cef3-40c0-bec1-caecad5e35d3",
+      "nombre": "Natalia Giménez Lascano",
+      "telefono": "+54 381 555-5962",
+      "vehiculo_interes": "Toyota Etios",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "Sí",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Etios y solicita contacto de asesor, consulta por financiación.",
+      "fecha_contacto": "23/07/2026 00:06",
+      "ultima_actualizacion": "23/07/2026 00:06",
+      "is_saved": false
+    },
+    "leadWaitMs": 2751,
+    "leadTimedOut": false
+  }
+]

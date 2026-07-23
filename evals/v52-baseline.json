@@ -1,0 +1,553 @@
+[
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "01ba4e9e-1014-41ff-8cc5-fdcc07ff570b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 10247,
+        "response": {
+          "session_id": "01ba4e9e-1014-41ff-8cc5-fdcc07ff570b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y de pocos kilómetros, con despeje alto y baúl grande. Es ideal para ripio y caminos rotos, soportando bien el uso rudo por lo que cuesta. Tiene motor 1.6L de 106 HP naftero, transmisión manual y un consumo aproximado de 8.5 L/100km. Está gris, tiene 31.000 km y cuesta $22.500.000. Cuenta con aire acondicionado, pantalla multimedia y cámara de retroceso."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2933,
+        "response": {
+          "session_id": "01ba4e9e-1014-41ff-8cc5-fdcc07ff570b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con nuestra financiación propia o mediante prenda según el auto y perfil. Para avanzar se toma una entrega inicial y el saldo se puede pagar en cuotas. El valor de la cuota depende del monto financiado, el plazo elegido y las condiciones específicas."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme la simulación exacta con los montos finales, de cuánto pensás poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2141,
+        "response": {
+          "session_id": "01ba4e9e-1014-41ff-8cc5-fdcc07ff570b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, con ese anticipo ya se puede abrir un abanico interesante de opciones. Contame, tenés un auto usado para entregar como parte de pago?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 1984,
+        "response": {
+          "session_id": "01ba4e9e-1014-41ff-8cc5-fdcc07ff570b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podrías aclararme si ese número 36 se refiere al plazo en cuotas que tenés pensado para la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 4149,
+        "response": {
+          "session_id": "01ba4e9e-1014-41ff-8cc5-fdcc07ff570b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV mediana, color gris, con 31.000 km. Tiene motor 1.6L de 106 HP naftero, transmisión manual y un consumo promedio aproximado de 8.5 L/100km. El equipamiento incluye aire acondicionado, pantalla multimedia y cámara de retroceso. Sale $22.500.000.\n\nAdemás es ideal para ripio y caminos rotos, con despeje alto y baúl grande, pensada para aguantar el uso rudo por lo que cuesta.\n\nTe paso unas fotos para que la veas bien en detalle."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización o te ayude con la financiación entregando un usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "53323ba3-9e82-4608-b784-f929048ca425",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 5687,
+        "response": {
+          "session_id": "53323ba3-9e82-4608-b784-f929048ca425",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Esta Renault Duster 2023 es una SUV mediana, moderna y de pocos kilómetros. Tiene despeje alto y un baúl grande, ideal para ripio y caminos rotos, y está pensada para aguantar uso rudo por lo que cuesta.\n\nCuenta con motor naftero 1.6L de 106 HP, transmisión manual y un consumo aproximado de 8.5 L/100km. Está equipada con aire acondicionado, pantalla multimedia y cámara de retroceso.\n\nEl precio es de $22.500.000 y es de color gris, con 31.000 km."
+            },
+            {
+              "type": "text",
+              "content": "Querés saber cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 3639,
+        "response": {
+          "session_id": "53323ba3-9e82-4608-b784-f929048ca425",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con financiación propia o mediante prenda, dependiendo del auto y tu perfil. Para avanzar se toma un anticipo y el saldo se puede pagar en cuotas; el monto exacto de las cuotas lo arma un asesor con una simulación personalizada."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme la simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 3072,
+        "response": {
+          "session_id": "53323ba3-9e82-4608-b784-f929048ca425",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $10 millones de anticipo podemos avanzar para ver opciones. Estás pensando en entregar algún auto usado como parte de pago o la compra sería solo con ese anticipo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 2955,
+        "response": {
+          "session_id": "53323ba3-9e82-4608-b784-f929048ca425",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Gracias por la info, pero antes necesito saber si vas a entregar algún auto usado como parte de pago o si la compra es solo con ese anticipo de $10 millones."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_matches: no matcheó /(?i)asesor|simulaci|anotad|36|perfecto|dale/"
+        ]
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 3614,
+        "response": {
+          "session_id": "53323ba3-9e82-4608-b784-f929048ca425",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que tenemos es una SUV mediana, gris, con 31.000 km. Motor 1.6L naftero de 106 HP con transmisión manual y consumo aproximado de 8.5 L/100km.\n\nViene equipada con aire acondicionado, pantalla multimedia y cámara de retroceso. El precio es $22.500.000.\n\nQuerés que te ayude con la financiación o te interesa coordinar para verla y probarla en persona?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/",
+      "turno 4 · text_matches: no matcheó /(?i)asesor|simulaci|anotad|36|perfecto|dale/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "aab47883-8ad6-426b-a74c-ac86585d8404",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 5935,
+        "response": {
+          "session_id": "aab47883-8ad6-426b-a74c-ac86585d8404",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna, con poco uso y buena capacidad para caminos difíciles gracias a su despeje alto y baúl grande. Tiene motor 1.6L naftero con 106 HP, transmisión manual, y un consumo promedio aproximado de 8.5 L/100km. Viene equipada con aire acondicionado, pantalla multimedia y cámara de retroceso. Está en color gris y tiene 31.000 km.\nEl precio es $22.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarla o entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2459,
+        "response": {
+          "session_id": "aab47883-8ad6-426b-a74c-ac86585d8404",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, que puede ser con financiación propia o mediante prenda, según el auto y tu perfil. Se toma una entrega inicial y el saldo se puede pagar en cuotas, que varían según el monto financiado y el plazo.\nPara darte números exactos, un asesor arma una simulación personalizada con entrega, cuotas y requisitos."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar, me decís de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2755,
+        "response": {
+          "session_id": "aab47883-8ad6-426b-a74c-ac86585d8404",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, anotado el anticipo de $10.000.000. Estás pensando en entregar un usado como parte de pago o solo ese monto para financiar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 2010,
+        "response": {
+          "session_id": "aab47883-8ad6-426b-a74c-ac86585d8404",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, gracias por el dato de las 36 cuotas. Ahora para que un asesor te arme la simulación exacta, pensás entregar un usado como parte de pago?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 4063,
+        "response": {
+          "session_id": "aab47883-8ad6-426b-a74c-ac86585d8404",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y de pocos kilómetros, con despeje alto y baúl grande, ideal para ripio y caminos difíciles. Tiene motor 1.6L naftero con 106 HP y transmisión manual. El consumo promedio aproximado es de 8.5 L/100km. Viene equipada con aire acondicionado, pantalla multimedia y cámara de retroceso. Está de color gris y tiene 31.000 km. El precio es $22.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te arme la simulación de financiación con el anticipo y las cuotas que me contaste, o preferís ver otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "9cf116c4-6326-4c61-b044-2b6bd5741467",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 6055,
+        "response": {
+          "session_id": "9cf116c4-6326-4c61-b044-2b6bd5741467",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna de pocos kilómetros y color gris, con 31.000 km. Tiene despeje alto y baúl grande, ideal para ripio y camino roto, y es la que mejor aguanta el uso rudo por lo que cuesta.\n\nMotor 1.6L de 106 HP, naftero, con transmisión manual. El consumo promedio es de 8.5 L/100km. Viene con aire acondicionado, pantalla multimedia y cámara de retroceso. El precio es $22.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés saber cómo sería financiarla o tal vez entregando tu usado?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2438,
+        "response": {
+          "session_id": "9cf116c4-6326-4c61-b044-2b6bd5741467",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del vehículo, ya sea con nuestra financiación propia o mediante un crédito prendario, según tu perfil y el auto que elijas. Para avanzar, necesitás un anticipo y el saldo se puede pagar en cuotas. Los montos exactos de las cuotas los hace un asesor con una simulación personalizada."
+            },
+            {
+              "type": "text",
+              "content": "Para ir viendo esa simulación, de cuánto pensarías poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2562,
+        "response": {
+          "session_id": "9cf116c4-6326-4c61-b044-2b6bd5741467",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $10 millones de anticipo ya te podés acercar a una financiación para la Duster 2023. Ahora te consulto, vas a entregar un usado como parte de pago o solo contás con ese anticipo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 2641,
+        "response": {
+          "session_id": "9cf116c4-6326-4c61-b044-2b6bd5741467",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, pero antes de charlar las cuotas te confirmo que primero necesito saber si vas a entregar un usado o si vas a usar solo el anticipo para la financiación."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 3892,
+        "response": {
+          "session_id": "9cf116c4-6326-4c61-b044-2b6bd5741467",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV con motor 1.6L de 106 HP, naftera, y transmisión manual. El consumo promedio es de 8.5 L/100km. Tiene aire acondicionado, pantalla multimedia y cámara de retroceso, y está de color gris con 31.000 km. El precio es $22.500.000.\n\nTe dejo algunas fotos para que la veas bien."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una simulación de financiación o de qué otra manera preferís avanzar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null
+  }
+]

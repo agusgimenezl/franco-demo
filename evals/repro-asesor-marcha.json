@@ -1,0 +1,304 @@
+[
+  {
+    "id": "asesor-en-marcha-no-reofrece",
+    "bug": "captura (Pato Garcia): pidió asesor (T1), dio el nombre (T2), Franco confirmó y cerró. En T3 pregunta financiación + una Hilux puntual; Franco muestra la Hilux y CIERRA con 'querés que te conecte con un asesor para que te arme una simulación?' — RE-OFRECE conectar con el asesor cuando YA está en marcha. Debe reflejar que el asesor ya se va a contactar: 'como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?'. Dispara por el cierre del Paso 3 (línea 163) sobre un auto puntual, con la derivación ya aceptada.",
+    "sessionId": "18b0366b-ccf9-446d-9ac5-8f4c6d37bf59",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me gustaria que me pases con un asesor",
+        "ms": 3202,
+        "response": {
+          "session_id": "18b0366b-ccf9-446d-9ac5-8f4c6d37bf59",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "listo, le paso la info a un asesor para que te contacte. Me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Pato Garcia",
+        "ms": 2358,
+        "response": {
+          "session_id": "18b0366b-ccf9-446d-9ac5-8f4c6d37bf59",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Pato, un asesor te contacta por acá en breve dentro del horario de atención. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "me gustaria saber como es el tema de la financiación y si tienen alguna hilux",
+        "ms": 3770,
+        "response": {
+          "session_id": "18b0366b-ccf9-446d-9ac5-8f4c6d37bf59",
+          "messages": [
+            {
+              "type": "text",
+              "content": "te cuento que financiamos hasta el 50% del valor del vehículo, puede ser con financiación propia o mediante prenda. Se toma una entrega inicial y el saldo puede pagarse en cuotas, el valor depende del monto financiado, plazo y condiciones. Te hago una lista con las Hilux que tenemos para que las veas."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor lo contacta, trato por nombre de pila (Pato)."
+      },
+      {
+        "turn": 3,
+        "note": "EL BUG: el asesor YA está en marcha (Pato lo pidió y dio el nombre). Al cerrar el detalle de la Hilux NO debe re-ofrecer 'conectarte con un asesor' como acción nueva; debe reflejar que el asesor ya se va a contactar ('como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?')."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "18b0366b-ccf9-446d-9ac5-8f4c6d37bf59",
+      "nombre": "Pato Garcia",
+      "telefono": "+54 381 555-4731",
+      "vehiculo_interes": "Hilux",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "Sí",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Solicita contacto de asesor, consulta financiación y disponibilidad de Hilux.",
+      "fecha_contacto": "23/07/2026 12:26",
+      "ultima_actualizacion": "23/07/2026 12:26",
+      "is_saved": false
+    },
+    "leadWaitMs": 2796,
+    "leadTimedOut": false
+  },
+  {
+    "id": "asesor-en-marcha-no-reofrece",
+    "bug": "captura (Pato Garcia): pidió asesor (T1), dio el nombre (T2), Franco confirmó y cerró. En T3 pregunta financiación + una Hilux puntual; Franco muestra la Hilux y CIERRA con 'querés que te conecte con un asesor para que te arme una simulación?' — RE-OFRECE conectar con el asesor cuando YA está en marcha. Debe reflejar que el asesor ya se va a contactar: 'como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?'. Dispara por el cierre del Paso 3 (línea 163) sobre un auto puntual, con la derivación ya aceptada.",
+    "sessionId": "37434a68-3918-4524-ab53-e3fc49cb5dcf",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me gustaria que me pases con un asesor",
+        "ms": 1802,
+        "response": {
+          "session_id": "37434a68-3918-4524-ab53-e3fc49cb5dcf",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, le paso tu pedido a un asesor para que te ayude. Me podés dejar tu nombre y apellido para avisarle?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Pato Garcia",
+        "ms": 2372,
+        "response": {
+          "session_id": "37434a68-3918-4524-ab53-e3fc49cb5dcf",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Pato, un asesor te contacta por acá para ayudarte con lo que necesites. Querés que te muestre algunos autos mientras tanto o preferís esperar el contacto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "me gustaria saber como es el tema de la financiación y si tienen alguna hilux",
+        "ms": 2780,
+        "response": {
+          "session_id": "37434a68-3918-4524-ab53-e3fc49cb5dcf",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tenemos varias opciones para financiar y también algunos Toyota Hilux disponibles. Financiamos hasta el 50% del valor del vehículo, con entrega inicial y el saldo en cuotas. El valor de la cuota depende de cuánto financies y el plazo elegido; un asesor te puede armar una simulación personalizada cuando quieras."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor lo contacta, trato por nombre de pila (Pato)."
+      },
+      {
+        "turn": 3,
+        "note": "EL BUG: el asesor YA está en marcha (Pato lo pidió y dio el nombre). Al cerrar el detalle de la Hilux NO debe re-ofrecer 'conectarte con un asesor' como acción nueva; debe reflejar que el asesor ya se va a contactar ('como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?')."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "37434a68-3918-4524-ab53-e3fc49cb5dcf",
+      "nombre": "Pato Garcia",
+      "telefono": "+54 381 555-0249",
+      "vehiculo_interes": "Toyota Hilux",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "Sí",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Busca Toyota Hilux y consulta por financiación. Quiere hablar con un asesor.",
+      "fecha_contacto": "23/07/2026 12:26",
+      "ultima_actualizacion": "23/07/2026 12:26",
+      "is_saved": false
+    },
+    "leadWaitMs": 2755,
+    "leadTimedOut": false
+  },
+  {
+    "id": "asesor-en-marcha-no-reofrece",
+    "bug": "captura (Pato Garcia): pidió asesor (T1), dio el nombre (T2), Franco confirmó y cerró. En T3 pregunta financiación + una Hilux puntual; Franco muestra la Hilux y CIERRA con 'querés que te conecte con un asesor para que te arme una simulación?' — RE-OFRECE conectar con el asesor cuando YA está en marcha. Debe reflejar que el asesor ya se va a contactar: 'como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?'. Dispara por el cierre del Paso 3 (línea 163) sobre un auto puntual, con la derivación ya aceptada.",
+    "sessionId": "e294c82c-7c9f-4ab8-894c-0a1d11fd82f9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me gustaria que me pases con un asesor",
+        "ms": 1608,
+        "response": {
+          "session_id": "e294c82c-7c9f-4ab8-894c-0a1d11fd82f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para que un asesor te contacte, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Pato Garcia",
+        "ms": 2752,
+        "response": {
+          "session_id": "e294c82c-7c9f-4ab8-894c-0a1d11fd82f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto Pato, un asesor te contacta por acá en el horario de lunes a viernes de 9:00 a 21:00, sábados de 8:00 a 13:00. Si querés, podés pasar por Av. Aconquija 1557, Yerba Buena, Tucumán. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "me gustaria saber como es el tema de la financiación y si tienen alguna hilux",
+        "ms": 7683,
+        "response": {
+          "session_id": "e294c82c-7c9f-4ab8-894c-0a1d11fd82f9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sobre la financiación: financiamos hasta el 50% del valor del vehículo. Puede ser con financiación propia de la agencia o mediante prenda, dependiendo del auto y tu perfil. Se toma una entrega inicial y el saldo se puede pagar en cuotas, el valor y plazo se ajustan según cada operación y un asesor puede armarte una simulación personalizada.\n\nEn cuanto a la Hilux que tenemos, es una Toyota Hilux 2019 blanca, pickup 4x4 diésel con motor 2.8L de 177 HP y transmisión manual. Tiene 105.000 km y un consumo aproximado de 9.5 L/100km. Está equipada con aire acondicionado, pantalla multimedia, cámara de retroceso y sensores de estacionamiento. Su precio es $42.000.000.\n\nTe la puedo mostrar con fotos para que la veas mejor."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa que te pase más detalles o te muestro otras pickups o autos similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Confirma que un asesor lo contacta, trato por nombre de pila (Pato)."
+      },
+      {
+        "turn": 3,
+        "note": "EL BUG: el asesor YA está en marcha (Pato lo pidió y dio el nombre). Al cerrar el detalle de la Hilux NO debe re-ofrecer 'conectarte con un asesor' como acción nueva; debe reflejar que el asesor ya se va a contactar ('como el asesor ya se va a contactar, querés que le deje anotado que te prepare la simulación de esta Hilux?')."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "e294c82c-7c9f-4ab8-894c-0a1d11fd82f9",
+      "nombre": "Pato Garcia",
+      "telefono": "+54 381 555-0858",
+      "vehiculo_interes": "Hilux",
+      "entrega": "No mencionado",
+      "descripcion_usado": "No mencionado",
+      "presupuesto": "No mencionado",
+      "financia": "Sí",
+      "temperatura": "Caliente",
+      "estado": "Requiere asesor",
+      "resumen": "Quiere info sobre Hilux y financiación, pide asesor.",
+      "fecha_contacto": "23/07/2026 12:26",
+      "ultima_actualizacion": "23/07/2026 12:26",
+      "is_saved": false
+    },
+    "leadWaitMs": 2760,
+    "leadTimedOut": false
+  }
+]

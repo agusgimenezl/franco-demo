@@ -1,0 +1,404 @@
+[
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "5818dfcd-731d-4ae9-a8e5-6513a8f53f01",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 9975,
+        "response": {
+          "session_id": "5818dfcd-731d-4ae9-a8e5-6513a8f53f01",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 para entregar y un anticipo de 7 millones, además de poder financiar hasta el 50%, tenés este abanico de opciones que podrían ajustarse a tu capacidad de compra. Es importante aclarar que el valor que te doy por tu usado es estimativo; la tasación final la hace un asesor cuando vea el auto en persona.\n\nOpciones de entrada:\n- Jeep Renegade 2021, SUV, 42.000 km — $25.500.000\n- Toyota Corolla 2022, sedán, 35.000 km — $24.800.000\n\nOpciones intermedias:\n- Volkswagen Amarok 2018, pickup, 135.000 km — $32.000.000\n- Volkswagen Vento 2023, sedán, 24.000 km — $31.000.000\n\nOpciones más altas:\n- Chevrolet S10 2022, pickup, 68.000 km — $39.500.000\n- Toyota Hilux 2021, pickup, 95.000 km — $38.000.000\n\nSi querés, te puedo pasar todo el stock completo que tenemos para que lo veas, avisame. Qué opción te llamó la atención o querés que te explique mejor alguna?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 6",
+          "turno 1 · text_not_matches: matcheó /(?i)onix|208|ecosport|corolla|renegade/ y no debería: \"Renegade\""
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 17887,
+        "response": {
+          "session_id": "5818dfcd-731d-4ae9-a8e5-6513a8f53f01",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con los 100.000 km de tu Ford Ka 2015 tomado en cuenta, y sumando tu anticipo de 7 millones más la posibilidad de financiar hasta el 50%, las opciones que mejor se ajustan a tu capacidad de compra están un poco por encima de ese presupuesto. Por ejemplo:\n\n- Ford Fiesta 2017, hatchback, 105.000 km — $8.200.000 (entrada)\n- Volkswagen Gol Trend 2018, hatchback, 110.000 km — $9.200.000 (entrada)\n\nLas que entrarían en un rango más alto están por encima de tu anticipo y financiamiento, como el Toyota Etios 2019 en $12.500.000.\n\nEstas opciones son preliminares, la tasación final de tu usado y condiciones específicas las define un asesor cuando lo ve en persona.\n\nQué te parece? Querés que te pase más detalles de algún modelo o que te organice contacto con un asesor para avanzar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 6",
+      "turno 1 · text_not_matches: matcheó /(?i)onix|208|ecosport|corolla|renegade/ y no debería: \"Renegade\"",
+      "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) llegando al techo (~26M → alcanza Corolla/Renegade), carrocerías distintas, 'anticipo' con financiación 50% y deslinde. CLAVE: NO dice NINGÚN monto por el usado (es interno). Si recita 'vale $X' o 'según el mercado', mal."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "8ab7794d-55ed-463b-adf9-436882b0591d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 13606,
+        "response": {
+          "session_id": "8ab7794d-55ed-463b-adf9-436882b0591d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $7.000.000, tu Ford Ka 2015 para entregar y que querés financiar, tenés un abanico interesante para elegir. La tasación final la hace un asesor viendo el estado del auto en persona, pero mientras tanto estas opciones te pueden dar una idea de lo que alcanzás:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada (podes con estas opciones):\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, chico)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, chico)\n\nIntermedio:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, mediano)\n\nAlto (máximo a tu capacidad):\n- Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV, mediano)\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán, mediano)\n\nSi querés te puedo pasar todo el stock que tenemos para que veas más opciones. Qué te interesa de estas opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 6",
+          "turno 1 · text_not_matches: matcheó /(?i)onix|208|ecosport|corolla|renegade/ y no debería: \"Renegade\""
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 17879,
+        "response": {
+          "session_id": "8ab7794d-55ed-463b-adf9-436882b0591d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con 100.000 km en tu Ford Ka 2015 y un anticipo de $7.000.000, te estimamos un valor preliminar para tu usado y así armamos estas opciones considerando financiación y entrega de usado:"
+            },
+            {
+              "type": "text",
+              "content": "Entrada (tu capacidad cubre estas):\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, mediano)\n- Toyota Etios 2019 — 45.000 km — $12.500.000 (hatchback, chico)\n\nSi querés un modelo un poco más alto, están estas opciones, que podrías alcanzar con la financiación y la entrega de tu usado:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, mediano)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, chico)\n\nSi querés te paso todo el stock para que veas más opciones, o querés que te detalle alguno de estos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 6",
+      "turno 1 · text_not_matches: matcheó /(?i)onix|208|ecosport|corolla|renegade/ y no debería: \"Renegade\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) llegando al techo (~26M → alcanza Corolla/Renegade), carrocerías distintas, 'anticipo' con financiación 50% y deslinde. CLAVE: NO dice NINGÚN monto por el usado (es interno). Si recita 'vale $X' o 'según el mercado', mal."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "42de624b-3c88-4d14-b46f-6e2e9e3ece99",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 11396,
+        "response": {
+          "session_id": "42de624b-3c88-4d14-b46f-6e2e9e3ece99",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 7 millones, el Ford Ka 2015 que entregás y la posibilidad de financiar hasta el 50%, este es el abanico de opciones que podés considerar:\n\nEntrada (los que están más accesibles para vos):\n- Renault Duster 2023, SUV, 31.000 km, $22.500.000\n- Toyota Etios 2019, hatchback, 45.000 km, $12.500.000\n\nIntermedio (mayor valor y gama):\n- Volkswagen Amarok 2018, pickup, 135.000 km, $32.000.000\n- Volkswagen Vento 2023, sedán, 24.000 km, $31.000.000\n\nAlto (el tope máximo que alcanzás con financiación):\n- Chevrolet S10 2022, pickup, 68.000 km, $39.500.000\n- Toyota Hilux 2021, pickup, 95.000 km, $38.000.000\n\nTené en cuenta que esta estimación del usado es aproximada y la tasación oficial la hace un asesor en persona. Podés elegir alguna opción que te guste y coordinamos la tasación para avanzar con la financiación.\n\nCuál de estas opciones te interesa o querés que te pase más detalles?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 6"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 8526,
+        "response": {
+          "session_id": "42de624b-3c88-4d14-b46f-6e2e9e3ece99",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Gracias por la info del kilometraje. Con un Ford Ka 2015 con 100.000 km y tu anticipo de 7 millones, te armé opciones considerando que querés financiar hasta el 50% del valor.\n\nEn la gama que entra tu capacidad de compra tenés:\n- Ford EcoSport 2020, SUV, 55.000 km, $19.800.000\n- Renault Kangoo 2021, utilitario, 82.000 km, $18.500.000\n- Fiat Cronos 2023, sedán, 28.000 km, $16.800.000\n- Toyota Etios 2019, hatchback, 45.000 km, $12.500.000\n\nComo paso arriba, estas opciones están un poco por encima de tu presupuesto efectivo pero dentro de lo que podés manejar financiando y entregando tu usado. También hay autos más económicos como el Volkswagen Gol Trend 2018 y Ford Fiesta 2017 si querés mirar algo más barato.\n\nLa tasación exacta de tu usado la hace un asesor cuando lo vea en persona, esta es solo una referencia.\n\nCuál de estas opciones te interesa para avanzar o querés que te pase más detalles de alguna?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 6"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) llegando al techo (~26M → alcanza Corolla/Renegade), carrocerías distintas, 'anticipo' con financiación 50% y deslinde. CLAVE: NO dice NINGÚN monto por el usado (es interno). Si recita 'vale $X' o 'según el mercado', mal."
+      }
+    ],
+    "error": null
+  }
+]
