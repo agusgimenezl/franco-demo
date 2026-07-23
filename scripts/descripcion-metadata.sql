@@ -1,12 +1,12 @@
 -- Agrega `descripcion`, `condicionantes` y `tamano` al metadata de autos_disponibles.
--- Generado por scripts/gen-descripcion-sql.mjs desde stock.csv (2026-07-21). No editar a mano.
+-- Generado por scripts/gen-descripcion-sql.mjs desde stock.csv (2026-07-23). No editar a mano.
 --
 -- Idempotente: se puede correr las veces que haga falta.
 -- Aditivo: sólo suma tres claves al jsonb. NO toca `content` ni `embedding`, así que no
 -- hay que revectorizar ni regenerar embeddings.
 --
 -- BACKUP ANTES DE CORRER (por las dudas, aunque sea aditivo):
---   CREATE TABLE autos_disponibles_backup_20260721 AS SELECT * FROM autos_disponibles;
+--   CREATE TABLE autos_disponibles_backup_20260723 AS SELECT * FROM autos_disponibles;
 
 UPDATE autos_disponibles a
 SET metadata = a.metadata || jsonb_build_object(
@@ -22,7 +22,7 @@ FROM (VALUES
   (5, 'Sedán mediano con caja automática y equipamiento completo, cámara y sensores incluidos. Toyota con caja CVT es de las combinaciones que mejor sostienen valor de reventa en el mercado local.', 'La caja CVT tiene su service específico. No es la transmisión indicada si vas a remolcar o cargar peso seguido.', 'mediano'),
   (6, 'Motor turbo de 150 HP, la mayor potencia entre los autos no pickup del stock, y con pocos kilómetros encima. Andar de gama alta sin el costo de patentamiento de una unidad nueva.', 'Es turbo: pide nafta de buena calidad y service al día para rendir como corresponde.', 'mediano'),
   (7, 'El que menos consume de todo el stock, gracias al 1.2 turbo, y con muy pocos kilómetros. Rinde como un auto chico y anda como uno mediano.', 'Es caja manual: si buscás automático, el Vento es el equivalente del stock.', 'mediano'),
-  (8, 'El más equipado de los hatchbacks del stock y el que mejor va en ruta del grupo: la suspensión europea se nota en viaje largo.', 'Los repuestos son de marca europea: se consiguen, pero a veces son de pedido. Si priorizás repuesto en el día, el Gol o el Cronos.', 'chico'),
+  (8, 'Prácticamente 0 km y el hatchback más nuevo del stock, con los kilómetros más bajos del grupo. Es además el que mejor va en ruta de los chicos: la suspensión europea se nota en viaje largo.', 'Los repuestos son de marca europea: se consiguen, pero a veces son de pedido. Si priorizás repuesto en el día, el Gol o el Cronos.', 'chico'),
   (9, 'La SUV más equipada por debajo de su rango: cámara, sensores y pantalla. Da altura para calle rota y cordón alto sin el costo ni el tamaño de una SUV grande.', 'Es caja manual: si buscás una SUV automática, el T-Cross o el Renegade.', 'mediano'),
   (10, 'Prácticamente sin uso, con los kilómetros más bajos de todo el stock. SUV automática con equipamiento completo: es la opción de quien quiere 0 km sin esperar.', 'El 1.6 aspirado prioriza suavidad antes que empuje: si buscás respuesta fuerte en ruta, el Vento turbo va mejor.', 'mediano'),
   (11, 'SUV moderna y de pocos kilómetros. Despeje alto y baúl grande, pensada para ripio y camino roto: es la que mejor aguanta el uso rudo por lo que cuesta.', 'La potencia es justa para el tamaño: si la vas a llevar cargada y en subida seguido, conviene una SUV de más motor.', 'mediano'),

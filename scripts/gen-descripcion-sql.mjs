@@ -97,7 +97,7 @@ const AUTOS = {
   },
   8: {
     descripcion:
-      'El más equipado de los hatchbacks del stock y el que mejor va en ruta del grupo: la suspensión europea se nota en viaje largo.',
+      'Prácticamente 0 km y el hatchback más nuevo del stock, con los kilómetros más bajos del grupo. Es además el que mejor va en ruta de los chicos: la suspensión europea se nota en viaje largo.',
     condicionantes:
       'Los repuestos son de marca europea: se consiguen, pero a veces son de pedido. Si priorizás repuesto en el día, el Gol o el Cronos.',
   },
@@ -208,6 +208,8 @@ const CLAIMS = [
   ['3 es el más barato del stock', minPor('precio').id === 3],
   ['3 es el hatchback más potente', maxPor('hp', hatch).id === 3],
   ['4 es el hatchback de menor consumo', minPor('consumo', hatch).id === 4],
+  ['8 es el hatchback más nuevo', maxPor('anio', hatch).id === 8],
+  ['8 tiene los km más bajos de los hatchbacks', minPor('km', hatch).id === 8],
   ['7 es el de menor consumo de todo el stock', minPor('consumo').id === 7],
   ['6 es el más potente entre los no-pickup', maxPor('hp', noPickup).id === 6],
   ['10 tiene los km más bajos de todo el stock', minPor('km').id === 10],
@@ -281,14 +283,14 @@ const values = stock
   .join(',\n')
 
 const sql = `-- Agrega \`descripcion\`, \`condicionantes\` y \`tamano\` al metadata de autos_disponibles.
--- Generado por scripts/gen-descripcion-sql.mjs desde stock.csv (2026-07-21). No editar a mano.
+-- Generado por scripts/gen-descripcion-sql.mjs desde stock.csv (2026-07-23). No editar a mano.
 --
 -- Idempotente: se puede correr las veces que haga falta.
 -- Aditivo: sólo suma tres claves al jsonb. NO toca \`content\` ni \`embedding\`, así que no
 -- hay que revectorizar ni regenerar embeddings.
 --
 -- BACKUP ANTES DE CORRER (por las dudas, aunque sea aditivo):
---   CREATE TABLE autos_disponibles_backup_20260721 AS SELECT * FROM autos_disponibles;
+--   CREATE TABLE autos_disponibles_backup_20260723 AS SELECT * FROM autos_disponibles;
 
 UPDATE autos_disponibles a
 SET metadata = a.metadata || jsonb_build_object(
