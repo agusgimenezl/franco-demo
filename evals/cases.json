@@ -323,9 +323,9 @@
         {
           "say": "90.000 km",
           "checks": [
-            ["text_matches", "(?i)nombre"],
+            ["text_matches", "(?i)nombre|entrada|intermedio|\\balto\\b|opcion|opción|abanico|financ|capacidad|asesor|tasaci"],
             ["max_preguntas", 2],
-            ["manual", "Recién acá, con el usado ya identificado, pide nombre y apellido para coordinar la tasación"]
+            ["manual", "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."]
           ]
         }
       ]
@@ -601,6 +601,91 @@
         ["field_equals", "entrega", "Sí"],
         ["field_matches", "descripcion_usado", "(?i)yaris.*2021"],
         ["field_matches", "presupuesto", "12"]
+      ]
+    },
+
+    {
+      "id": "capacidad-de-compra-financiada",
+      "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+      "turns": [
+        {
+          "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+          "checks": [
+            ["text_matches", "(?i)kil[oó]metr|\\bkm\\b"],
+            ["cards_empty"],
+            ["text_not_matches", "(?i)onix|208|ecosport|corolla|renegade"],
+            ["manual", "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."]
+          ]
+        },
+        {
+          "say": "tiene 100.000 km",
+          "checks": [
+            ["text_matches", "(?i)onix|208|ecosport|duster|corolla|renegade"],
+            ["text_matches", "(?i)financ|50\\s?%|anticipo"],
+            ["text_not_matches", "(?i)hilux|\\bs10\\b|amarok|ranger"],
+            ["text_not_matches", "(?i)(vale|valor de mercado|tasamos|estimamos|te lo tomo).{0,20}\\$"],
+            ["text_not_matches", "(?i)seg[uú]n el mercado"],
+            ["manual", "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) hasta el techo (~26M → alcanza Corolla/Renegade). HARDENING v45: NO deben aparecer pickups de $38M+ (Hilux/S10/Amarok/Ranger son 'fuera', el SQL los filtra). NO dice NINGÚN monto por el usado (interno). 'anticipo' con financiación 50% y deslinde."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "financiacion-pide-usado-primero",
+      "bug": "captura (prueba en vivo de v41): 'tengo un usado para entregar, 7M de anticipo, financiar en 1-2 años, qué opciones?' SIN decir qué auto entrega. Franco mostró el abanico de tramos igual. Debe pedir PRIMERO qué usado entrega (marca/modelo/año) antes de mostrar opciones — es la regla del punto 2 de ## Permuta ('si no sabés qué auto entrega, FRENÁ, auto_ids vacío, una sola pregunta'), que el guion nuevo de tramos (v40) pisa. Fix v42: el abanico va recién cuando ya sabe qué entrega.",
+      "turns": [
+        {
+          "say": "hola, tengo un usado para entregar y unos 7 millones de anticipo, me gustaría financiar en 1 o 2 años. qué opciones tengo?",
+          "checks": [
+            ["text_matches", "(?i)qu[eé] auto|marca|modelo"],
+            ["cards_empty"],
+            ["images_empty"],
+            ["text_not_matches", "(?i)corolla|renegade|cronos|ecosport|t-cross|onix"],
+            ["manual", "Sin saber qué auto entrega, NO debe mostrar el abanico: primero pregunta qué usado entrega (marca, modelo y año), una sola pregunta, auto_ids vacío. El abanico de tramos va recién cuando sabe qué entrega (regla del punto 2 de ## Permuta)."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "no-ofrece-whatsapp",
+      "bug": "captura: tras derivar (aceptó asesor + dio nombre 'Milagros Gomez'), el cliente preguntó 'donde estan?'. Franco dio dirección y horario, y ENCIMA ofreció 'querés que te pase el WhatsApp para coordinar con un asesor?'. NUNCA debe ofrecer el número — el asesor lo contacta él. Debía dar la dirección y cerrar. Fix v45: el teléfono/WhatsApp solo si el cliente lo pide explícito.",
+      "turns": [
+        {
+          "say": "hola, quiero que me contacte un asesor por favor",
+          "checks": [["text_matches", "(?i)nombre"]]
+        },
+        {
+          "say": "Milagros Gomez",
+          "checks": [["text_matches", "(?i)asesor|milagros"]]
+        },
+        {
+          "say": "dónde están?",
+          "checks": [
+            ["text_matches", "(?i)aconquija|direcci|yerba buena|tucum|horario"],
+            ["text_not_matches", "(?i)whatsapp|te pase (el|un) n[uú]mero|pasarte (el|un) n[uú]mero"],
+            ["manual", "Da la dirección/horario y CIERRA. NO ofrece pasar el WhatsApp ni un número (el cliente no lo pidió y ya está derivado)."]
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "auto-puntual-no-abanico",
+      "bug": "captura: cliente interesada en el ETIOS puntual ofrece su usado (Ford Ka 2015) como parte de pago PARA ese auto. Franco le tiró un abanico de otros modelos más caros y de otra categoría (Cronos, Duster, Amarok, ¡una Hilux!) que NO pidió. Cuando el cliente ya eligió un auto puntual y ofrece su usado, el abanico NO va: reconocer la permuta sobre ESE auto y ofrecer (a) un asesor para la tasación, o (b) modelos parecidos si quiere ver más. Fix v45 (scope del abanico).",
+      "turns": [
+        { "say": "hola, estoy interesada en el etios que vi en la página", "checks": [["text_matches", "(?i)etios"]] },
+        { "say": "sí, me gustaría entregar mi usado como parte de pago", "checks": [["text_matches", "(?i)qu[eé] auto|marca|modelo"]] },
+        { "say": "un ford ka 2015", "checks": [["text_matches", "(?i)kil[oó]metr|\\bkm\\b"]] },
+        {
+          "say": "85 mil km",
+          "checks": [
+            ["text_not_matches", "(?i)hilux|amarok|\\bs10\\b|ranger|duster|ecosport|renegade|t-cross|kangoo"],
+            ["text_matches", "(?i)asesor|tasaci|parecid|similar|etios|gol|fiesta|208"],
+            ["manual", "Cliente eligió el Etios puntual + ofrece su usado. NO debe tirar un abanico de modelos más caros/de otra categoría (pickups/SUVs como Hilux/Amarok/Duster). Debe reconocer la permuta sobre el Etios y ofrecer un asesor para la tasación, o modelos PARECIDOS (hatchbacks) si quiere ver más."]
+          ]
+        }
       ]
     },
 

@@ -20,6 +20,132 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **Sesión 2026-07-23. v41: fix de la regresión del name-ask. PEGADO Y MEDIDO — OK.** v40 regresó
+> `permuta-una-pregunta-por-vez` a 0/5 (el guion de tramos se metía en el turno del name-ask).
+> `scripts/capacidad-nameask-guard.mjs`: guard al inicio del pto 5 (si venís en la progresión con auto+km,
+> NO abanico, andá al name-ask) + refuerzo en el cierre + calidad (mejores por tramo, no los más baratos).
+> Verificado byte a byte vs vivo. Medido: `permuta-una-pregunta-por-vez` **0/5 → 3/5** (volvió al flaky
+> histórico ~50%, regresión cerrada); `capacidad-de-compra-financiada` **5/5** (`--repeat 5`); controles
+> verdes. La entrada ahora arranca con Cronos/Etios, no Fiesta/Gol.
+>
+> **Sesión 2026-07-23. v44 + v45: pulido del abanico. PEGADO Y MEDIDO. Demo-crítico RESUELTO; queda el gate del km.**
+> **v44** (`scripts/valor-usado-interno.mjs`): (1) el valor del usado es INTERNO — Franco no recita el monto
+> ("$13.339.898"); (2) km obligatorio antes de mostrar (reforzado, NO aguantó); (3) abanico en 3 bloques.
+> Medido: valor interno OK, presentación 3 bloques OK, PERO apareció bug del $38M (ver v45).
+> **v45** (`scripts/hardening-tramos-whatsapp.mjs`), tres fixes de raíz:
+> - **(A) HARDENING $38M:** v44 mostraba S10 $39.5M / Hilux $38M a un cliente con 7M (mi frase "no te quedes
+>   corto" + los `fuera` le llegaban). Fix: `Listar stock` FILTRA `tramo='fuera'` cuando con_financiacion=1
+>   (`WHERE NOT (con_financiacion=1 AND tramo='fuera')`). Determinístico, no depende del LLM. Medido: **el
+>   abanico ya no muestra pickups de $38M** (turno 2 verde).
+> - **(B) WhatsApp:** ofrecía el número sin que lo pidan. Fix: nunca lo ofrece, solo si lo piden explícito.
+>   `no-ofrece-whatsapp` **VERDE**.
+> - **(C) SCOPE del abanico:** cliente interesada en el Etios + ofrece usado → Franco le tiraba SUVs/pickups
+>   (¡Hilux a quien mira un Etios!). Fix: el abanico SOLO va si pide ver opciones EN GENERAL; con auto puntual
+>   elegido, deriva a asesor o muestra parecidos. `auto-puntual-no-abanico` **0/1 (v44) → VERDE (v45)**.
+> Controles permuta×2 + derivación **3/3**, sin recitar el valor. Verificado byte a byte (37546 chars, filtro
+> en Listar stock 5272). **ÚNICO ABIERTO: el gate del km** (Franco muestra el abanico correcto sin pedir el km
+> primero; no lo necesita para calcular, lo saltea aunque el prompt lo pida). Bajo impacto (el abanico ya es el
+> bueno). **Backlog:** km en el gate; que el km ajuste el valor; contado proporcional; purga global "efectivo".
+> **NADA COMMITEADO de v40-v45** — pendiente.
+>
+> **Sesión 2026-07-23. TABLA DE REFERENCIA + v43: tool `Valuar usado`. PEGADO Y MEDIDO. Valuación anda; 3 arrugas.**
+> Decisión de Agustina: los valores los investiga Claude (mercado AR); fallback por categoría si el modelo no
+> está. Investigación (Infobae 07/2026, LA NACION 03/2026) → `valores_usados.csv` (30 modelos, ancla 2020) →
+> `scripts/gen-valores-usados.mjs` → `scripts/valores-usados.sql` (tabla `valores_usados_referencia`, corrida en
+> Supabase). **v43** (`scripts/valuar-usado-tool.mjs`, 35→36 nodos): tool `Valuar usado` (aislada, NO toca Listar
+> stock/Buscar auto) — match exacto marca+modelo → fallback promedio de categoría → ajuste por año ~7%. Franco
+> clasifica y la tool valúa; el prompt (ptos 5/6) lo manda a consultarla en vez de adivinar. Verificado byte a byte
+> (36 nodos, systemMessage 36249, Valuar usado 1495, Listar stock intacto). **Medido:**
+> - **Valuación ANDA:** Ka 2015 → $8.83M (tabla), Yaris 2021 → $13.3M (fallback categoría). El abanico mejoró
+>   (llega a Onix/208 $21M, vs el todo-barato de v42). El mecanismo determinístico funciona.
+> - 🔴 **Franco RECITA el valor exacto** ("tu Yaris vale $13.339.898"): precisión falsa, malo en demo. Fix: redondear
+>   la salida de Valuar usado (a $500k) + reforzar pto 6 (no afirmarlo).
+> - 🟡 **Gate del km no aguanta:** Franco muestra el abanico sin km (la valuación no usa km). Decidir: que el km
+>   ajuste el valor, o sacarlo del gate.
+> - 🟡 **Presentación floja:** mezcla dos-caminos viejo con tramos, no llega al techo (~26M).
+> - Controles: `permuta-una-pregunta-por-vez` y `derivacion-pide-datos-del-usado` OK; `permuta-mas-efectivo` cayó
+>   (perdió el "asesor/tasación" en el contado + recita el valor). `capacidad-de-compra-financiada` 0/3 (el check
+>   de gate de km falla porque Franco no gatea; el abanico en sí mejoró).
+> **PENDIENTE:** decidir el km + el redondeo/recitación (v44 chico), y commit de v40-v43 (nada commiteado aún).
+>
+> **Sesión 2026-07-23. v42: capacidad con TOMA DEL USADO AL 70% + gate. PEGADO Y MEDIDO. Objetivo anda; 3 temas ABIERTOS.**
+> **Medido `evals/v42-medicion.json` + repeats (vivo == v42 byte a byte):**
+> - `capacidad-de-compra-financiada` (2 turnos): **VERDE mecánicamente** — el gate de km anda (t1 pide el km),
+>   el abanico se arma (t2). PERO **calidad floja**: con el Ka a 100k km Franco lo SUBTASÓ → Capital Base bajo →
+>   abanico todo barato (entrada Gol 110k / Fiesta 105k, "alto" = Cronos 16.8M; nada de EcoSport/208/Corolla).
+>   Pasó el check de casualidad (matcheó "Cronos"). **Es el problema del valor del usado, en vivo → la tabla de
+>   referencia es la solución.**
+> - `financiacion-pide-usado-primero`: **lógica OK** (cuando el parser no falla, pide el usado bien), pero **2/3 +
+>   1/1 cayeron en el fallback del parser (TIPO A)**. Tasa de parser alta en estos turnos complejos — la complejidad
+>   de v42 puede estar estresándolo.
+> - Controles `permuta-mas-efectivo`, `derivacion-pide-datos-del-usado`: **verdes**.
+> - **`permuta-una-pregunta-por-vez`: 0/3 — REGRESIÓN DEL NAME-ASK OTRA VEZ** (v41 lo tenía 3/5). El guion más rico
+>   de v42 (capital base, estimación, deslinde) se mete en el turno del nombre, pasando por encima del guard de v41.
+>   **Tercera vez con este patrón: enriquecer el abanico le gana al name-ask. Ya no se arregla con otro guard
+>   (whack-a-mole). Tensión de fondo: el abanico y la progresión hacia el nombre compiten por el mismo momento.**
+> **DECISIÓN PENDIENTE (estratégica, de Agustina):** (a) name-ask — relajar el eval y aceptar el abanico en ese turno
+> (evolución de producto) vs pelear por preservar el nombre vs revertir a v41; (b) valor del usado — arrancar la tabla
+> de referencia; (c) parser — investigar si v42 lo estresa. v42 está en el vivo. Comparación honesta: v41 (objetivo
+> 5/5 con math ×4, name-ask 3/5) vs v42 (objetivo verde pero flojo, name-ask 0/3, + gate/deslinde/anticipo/pide-usado).
+>
+> **[nota original de v42, criterio y build:]**
+> Criterio comercial de Agustina. `scripts/capacidad-toma-70.mjs` (v41→v42, aserciones OK). **(A)** SQL:
+> param `usado_valor` (estimación de Franco); el tramo se calcula sobre `Capital Base = anticipo +
+> usado_valor*0.70`, techo = CB*2 (financiando 50%); bandas entrada ≤CB*1.2, intermedio ≤CB*1.5, alto
+> ≤techo, fuera >techo. Reemplaza el capacidad=anticipo*(4/2) de v40. **(B)** pto 5 rama financiación:
+> gate DURO de 4 datos del usado (marca/modelo/año/**km**) antes de calcular; Franco estima el valor;
+> 2 por tramo, carrocerías distintas; lenguaje "anticipo"/"capital inicial" (no "efectivo") en el texto
+> nuevo; deslinde legal. **(C)** pto 6: deja de prohibir estimar el usado (lo necesita), aclara que es
+> preliminar. **Decisión (Agustina):** Franco estima el valor del usado (única forma sin base de tasación;
+> cubierto por el deslinde). **Sim offline (`sim-toma70.mjs`):** 7M+Ka(7.5M) → CB 12.25M, techo 24.5M →
+> entrada Fiesta/Gol/Etios, **intermedio SOLO Cronos**, alto Kangoo/EcoSport/208/Onix/Duster, Corolla/Renegade
+> quedan fuera (24.8/25.5 > 24.5). Bandas disparejas con este stock: **Agustina eligió pegar y medir así**,
+> ajustar toma/bandas después con datos reales.
+> **NO tocado (deuda v43):** rama contado (dos caminos), gate de v16, ~6 menciones de "efectivo" fuera del
+> pto 5. **Backlog:** tabla de referencia de valores de usado (Agustina la quiere explorar) para no depender
+> del guess del LLM. Subagentes n8n: evaluados — no arreglan la precisión del valor (problema de datos), sí
+> descongestionarían el prompt (36k chars); cuidar trampa 5 (TPM). Eval `capacidad-de-compra-financiada`
+> reestructurado a 2 turnos (pide km, después abanico); `financiacion-pide-usado-primero` nuevo.
+
+> **Sesión 2026-07-23. v40: CAPACIDAD DE COMPRA con financiación. PEGADO Y MEDIDO. Objetivo VERDE; 1 regresión ABIERTA.**
+> Captura (Sofía): con 7M de anticipo + un Ford Ka 2015 + ganas de financiar, Franco mostró SOLO la
+> Fiesta 8.2M y el Gol 9.2M (lo más barato), trató los 7M como techo total y **ni factoró el 50%**.
+> Reproducido en el eval nuevo `capacidad-de-compra-financiada` → **0/1 en v39** (no nombra ningún auto
+> de tramo medio/alto). RAÍZ: `## Permuta` pto 5 arma "dos caminos" anclados al **efectivo crudo** que
+> Franco pasa como precio_objetivo; la financiación vive en otro bloque y nunca entra al cálculo del stock.
+>
+> **Fix (`scripts/capacidad-de-compra.mjs`, v39→v40, aserciones OK):** dos partes, regla del proyecto.
+> **(A) determinístico** — parámetro `con_financiacion` en `Listar stock` (NO `financia`: ese nombre ya
+> lo usa Guardar lead con firma string 'Si/No/No mencionado' — trampa 3 lo cazó). Con
+> `con_financiacion=1` la query calcula la capacidad real (anticipo × 4 con permuta / × 2 sin: el 50%
+> financiado duplica, el usado ≈ otro anticipo duplica de nuevo) y devuelve un `tramo` por auto:
+> entrada ≤60% de la capacidad, intermedio ≤80%, techo ≤100%, fuera >100%. **(B) lenguaje (trampa 6:
+> se REEMPLAZA el guion)** — el pto 5 pasa a dos ramas: financia → explica la capacidad y muestra 2 por
+> tramo (segmentos distintos); contado → los "dos caminos" de siempre (por eso `permuta-mas-efectivo`,
+> que es contado/financia=0, NO se toca).
+> **Los multiplicadores 4/2 y 0.60/0.80 son el número a ajustar** (agresividad comercial); hoy reproducen
+> el ejemplo de Agustina: 7M+permuta → cap 28M → entrada Etios/Cronos, intermedio EcoSport/208, techo
+> Corolla/Renegade, Ranger 57M queda fuera. Validado offline (`scratchpad/sim-tramos.mjs`).
+>
+> **PEGADO por Agustina y VERIFICADO byte a byte vs el vivo** (systemMessage 34941, query y toolDescription
+> de Listar stock IDÉNTICOS; workflow activo, 35 nodos) — la deuda de verificación v39==vivo queda saldada
+> de paso. Medido `evals/v40-medicion.json` + `evals/v40-permuta-repeat.json`:
+> - **`capacidad-de-compra-financiada` 0/1 (v39) → VERDE (v40)**, respuesta ideal: 3 tramos × 2 autos, 6
+>   cards (entrada Fiesta/Gol, intermedio Onix/208, techo Renegade/Corolla). El feature anda.
+> - Controles `permuta-mas-efectivo` y `derivacion-pide-datos-del-usado` **verdes**.
+> - **REGRESIÓN ABIERTA:** `permuta-una-pregunta-por-vez` cayó a **0/5** (era ~45-50% en v39). El name-ask
+>   del turno 3 se pierde SIEMPRE: la narrativa nueva de tramos/capacidad se mete en ese turno (evidencia
+>   directa en los t3: "Teniendo en cuenta tu anticipo... financiar hasta el 50%... Para entrada..."). v40
+>   amplificó de ~50% a 0 la deuda del name-ask que Agustina había decidido NO tocar. Fix candidato (v41):
+>   guard para que el guion de tramos NO dispare cuando Franco ya viene en la progresión de permuta con
+>   auto+km (ahí el turno es el name-ask). **PENDIENTE DECIDIR con Agustina** antes de tocar (área marcada
+>   "no re-abrir sin preguntar").
+> - Nota de calidad: dentro de cada tramo Franco elige los más baratos, no los mejores (entrada arrancó con
+>   Fiesta 105k / Gol 110k en vez de Etios 45k / Cronos 28k). Afinable con una línea de prompt.
+>
+> **PENDIENTES por la regresión:** puntero de producción (state-sync.mjs L18 → v40) y commit quedan EN
+> ESPERA hasta decidir el v41 (o aceptar la regresión). El código de v40 ya está en el vivo igual.
+
 > **Sesión 2026-07-23. REDISEÑO DE STOCK (datos, no workflow). APLICADO EN SUPABASE Y VALIDADO.**
 > Pedido de Agustina: redistribuir año/km/precio de los 17 autos para reflejar un mercado más real,
 > **manteniendo marca y modelo** (atados a las fotos, `foto-{id}-N.webp`). Cambio de DATOS, no de
