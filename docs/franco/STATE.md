@@ -4,17 +4,17 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v39.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v45.json` · 36 nodos
 
 | | |
 |---|---|
 | Webhooks | 6 (auth: ninguna) |
-| Nodos Postgres | 15 |
-| Tools de Franco | Listar stock, Buscar auto, Guardar lead, Detalle auto |
+| Nodos Postgres | 16 |
+| Tools de Franco | Listar stock, Buscar auto, Guardar lead, Detalle auto, Valuar usado |
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 42 casos · baseline-v33.json → 30/35 |
+| Evals | 46 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
