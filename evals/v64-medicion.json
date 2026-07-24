@@ -1,0 +1,196 @@
+[
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "a42b60a1-af80-463c-a9a1-75837a0b7549",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 8627,
+        "response": {
+          "session_id": "a42b60a1-af80-463c-a9a1-75837a0b7549",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos una Amarok Highline 4x2 del 2022 a 2024, pero sí una Amarok 2018 que es 4x4 diésel y a buen precio. También hay otras pickups similares: una Ford Ranger 2024, una Chevrolet S10 2022 4x2 y una Toyota Hilux 2021 4x4, todas con diferentes características y precios.\n\nTe interesa que te cuente más detalles de alguna o preferís que te muestre todo el stock de pickups que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "ce07bbde-e982-411e-a69f-b5e5d623b67e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 6932,
+        "response": {
+          "session_id": "ce07bbde-e982-411e-a69f-b5e5d623b67e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tengo una Volkswagen Amarok Highline 4x2 del 2022 a 2024 en stock, pero sí una Amarok 2018 4x4 diésel completa, ideal para quien necesita tracción real, a $32.000.000.\n\nTambién puedo mostrarte algunas pickups grandes similares como la Ford Ranger 2024 automática 4x4 a $57.000.000 que es muy potente, la Chevrolet S10 2022 4x2 a $39.500.000, y la Toyota Hilux 2021 4x4 a $38.000.000.\n\nCuéntame, te interesa el detalle de alguna o querés que te pase otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "ec96bcbb-b8e6-42e0-965c-93c852e18462",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 9982,
+        "response": {
+          "session_id": "ec96bcbb-b8e6-42e0-965c-93c852e18462",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tengo una Amarok Highline 4x2 del 2022 a 2024, pero sí puedo mostrarte una Amarok 2018 4x4 diésel completa, ideal para quien necesita tracción real y potencia. También hay varias pickups similares en el stock, como la Ford Ranger 2024, la Chevrolet S10 2022 y la Toyota Hilux 2021, todas pickups grandes pero con diferentes detalles de equipamiento y tracción."
+            },
+            {
+              "type": "text",
+              "content": "Te paso las opciones que encontré:\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000\n- Ford Ranger 2024 — 18.000 km — $57.000.000\n- Chevrolet S10 2022 — 68.000 km — $39.500.000\n- Toyota Hilux 2021 — 95.000 km — $38.000.000"
+            },
+            {
+              "type": "text",
+              "content": "Cuál de estas te interesa para que te cuente más detalles, o preferís que te muestre todo el stock que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  }
+]
