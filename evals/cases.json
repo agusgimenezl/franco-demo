@@ -1063,6 +1063,17 @@
           ["manual", "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."]
         ] }
       ]
+    },
+    {
+      "id": "modelo-no-stock-alternativas-carroceria",
+      "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+      "turns": [
+        { "say": "busco una amarok highline 4x2 2022 a 2024", "checks": [
+          ["text_matches", "(?i)amarok"],
+          ["text_not_matches", "(?i)t-?cross|vento|cronos|onix|corolla|etios|gol|fiesta"],
+          ["manual", "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."]
+        ] }
+      ]
     }
   ]
 }

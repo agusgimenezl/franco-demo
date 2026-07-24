@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v60.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v61.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,25 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 57 casos · baseline-v33.json → 30/35 |
+| Evals | 58 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **Sesión 2026-07-24. BUG-A (alternativas por carrocería) — HECHO Y MEDIDO. v61.**
+> `scripts/buscar-alternativas-por-carroceria.mjs`. BUG (captura): pidió "Amarok 4x2 2022-24"; Franco pasó
+> `anio_min=2022` a Buscar auto (5 veces, log 7661) → la Amarok 2018 filtrada por el año → 0 filas → cayó a
+> buscar "Volkswagen" (marca) → mostró T-Cross/Vento, ocultando la Amarok y sin ofrecer pickups. FIX
+> (determinístico): Buscar auto **ya no filtra por año** (rangos año/precio son de Listar stock) y devuelve el
+> modelo/tipo pedido (`match_tipo='exacto'`, cualquier año) + alternativas de la MISMA CARROCERÍA
+> (`match_tipo='alternativa'`), vía CTE `carr_pedida`. Se cae el param `anio_min` de Buscar auto. Prompt
+> ## Buscar auto reescrito (no ocultar el modelo, alternativas por carrocería, ofrecer stock/detalle).
+> **OJO — bug propio corregido:** la 1ra versión de v61 referenciaba el alias `match_tipo` en el ORDER BY →
+> Postgres error "column match_tipo does not exist" (log 7664, la query erroraba). Fix: ORDER BY con la condición
+> cruda, no el alias. **Medido (v61 corregido):** repro `modelo-no-stock-alternativas-carroceria` 3/3 — menciona
+> la Amarok 2018 en stock + ofrece pickups (Ranger/S10). Verificado byte a byte. **Puntero: v61.**
+> **Sigue:** BUG-B (descriptivo en comparación de 2+ vehículos, tarea #7) y TB-3 (eco del encabezado).
 
 > **Sesión 2026-07-24. BUG-EMBUDO (paréntesis, captura Agustina). v59 arregla el dump; v60 arregla una regresión.**
 > BUG: cliente con interés PUNTUAL (T-Cross/Amarok) + permuta + SIN presupuesto → Franco llama Listar stock con

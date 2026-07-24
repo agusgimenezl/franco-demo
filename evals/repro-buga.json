@@ -1,0 +1,200 @@
+[
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "a381079d-7d9b-4bc2-8e0f-e8c126ed7cd9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 8151,
+        "response": {
+          "session_id": "a381079d-7d9b-4bc2-8e0f-e8c126ed7cd9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos Volkswagen Amarok Highline 4x2 del 2022 a 2024 en stock, pero te puedo mostrar otras pickups similares que hay disponibles:\n- Ford Ranger 2024 — 18.000 km — $57.000.000\n- Chevrolet S10 2022 — 68.000 km — $39.500.000\n\nLa Ranger es 4x4 diésel automática, lista para trabajo pesado y bastante nueva. La Chevrolet S10 es 4x2, ideal si no necesitás tracción integral, y tiene buena potencia aunque con más km.\n\nQuerés que te muestre otras opciones, o buscás algo más puntual?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "27262a60-ff97-4053-9840-7aba66cb0da3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 8687,
+        "response": {
+          "session_id": "27262a60-ff97-4053-9840-7aba66cb0da3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos Amarok Highline 4x2 del 2022 a 2024 en stock por ahora. Pero te puedo mostrar estas Volkswagen que tenemos disponibles para esas fechas o similares:\n- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000\n- Volkswagen Vento 2023 — 24.000 km — $31.000.000"
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase más opciones similares o te interesa alguna de estas dos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)t-?cross|vento|cronos|onix|corolla|etios|gol|fiesta/ y no debería: \"T-Cross\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)t-?cross|vento|cronos|onix|corolla|etios|gol|fiesta/ y no debería: \"T-Cross\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "173039a6-375d-4875-a366-8b9c0a5126c7",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 6384,
+        "response": {
+          "session_id": "173039a6-375d-4875-a366-8b9c0a5126c7",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos una Amarok Highline 4x2 2022 a 2024 en stock en este momento. Lo que podemos ofrecerte son estas opciones de Volkswagen que están dentro de ese rango de años:\n- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000\n- Volkswagen Vento 2023 — 24.000 km — $31.000.000\n\nAlguna te interesa o preferís que te muestre otras opciones o de otra marca?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)t-?cross|vento|cronos|onix|corolla|etios|gol|fiesta/ y no debería: \"T-Cross\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)t-?cross|vento|cronos|onix|corolla|etios|gol|fiesta/ y no debería: \"T-Cross\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  }
+]
