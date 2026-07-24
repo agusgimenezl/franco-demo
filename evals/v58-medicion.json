@@ -1,0 +1,1025 @@
+[
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "37179d61-851c-4123-9184-d5f8e739b30d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 7001,
+        "response": {
+          "session_id": "37179d61-851c-4123-9184-d5f8e739b30d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Tenés unas buenas opciones entregando tu usado Ford Ka 2015, con 7 millones de anticipo y financiando hasta el 50%. Mirá estas que te entran en la capacidad de compra preliminar:"
+            },
+            {
+              "type": "text",
+              "content": "- Toyota Etios 2019, hatchback chico, 45.000 km, $12.500.000\n- Volkswagen Gol Trend 2018, hatchback chico, 110.000 km, $9.200.000\n- Ford Fiesta 2017, hatchback chico, 105.000 km, $8.200.000"
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para coordinar la tasación de tu vehículo y avanzar con la financiación, o preferís ver más opciones en stock?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 1832,
+        "response": {
+          "session_id": "37179d61-851c-4123-9184-d5f8e739b30d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con 100.000 km ya le paso todo a un asesor para que coordine la tasación. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/",
+          "turno 2 · text_matches: no matcheó /(?i)financ|50\\s?%|anticipo/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 3",
+      "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/",
+      "turno 2 · text_matches: no matcheó /(?i)financ|50\\s?%|anticipo/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) hasta el techo (~26M → alcanza Corolla/Renegade). HARDENING v45: NO deben aparecer pickups de $38M+ (Hilux/S10/Amarok/Ranger son 'fuera', el SQL los filtra). NO dice NINGÚN monto por el usado (interno). 'anticipo' con financiación 50% y deslinde."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "12991207-e6a0-4b36-95f5-85ce71ea724e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 5916,
+        "response": {
+          "session_id": "12991207-e6a0-4b36-95f5-85ce71ea724e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 7 millones y que entregás el Ford Ka 2015, con la posibilidad de financiar hasta el 50%, tenés estas opciones en el rango de entrada:\n- Ford Fiesta 2017, 105.000 km, $8.200.000\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000\n- Toyota Etios 2019, 45.000 km, $12.500.000, un paso arriba con menos km y más nuevo.\n\nTe recuerdo que la tasación final de tu auto la hace un asesor en persona y afecta la financiación. Querés que te conecte con un asesor para coordinar la tasación y más detalles de financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 4767,
+        "response": {
+          "session_id": "12991207-e6a0-4b36-95f5-85ce71ea724e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con esos datos para tu Ford Ka 2015 y los 7 millones de anticipo, tenés estas opciones entrando en el rango de entrada:\n- Ford Fiesta 2017, 105.000 km, $8.200.000\n- Volkswagen Gol Trend 2018, 110.000 km, $9.200.000\n- Toyota Etios 2019, 45.000 km, $12.500.000, un paso arriba con menos km y más nuevo.\n\nLa tasación final de tu auto la hace un asesor en persona. Me dejás tu nombre y apellido para que un asesor te contacte y coordine la tasación y la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+          "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · cards_empty: esperaba 0 cards, hay 3",
+      "turno 2 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+      "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) hasta el techo (~26M → alcanza Corolla/Renegade). HARDENING v45: NO deben aparecer pickups de $38M+ (Hilux/S10/Amarok/Ranger son 'fuera', el SQL los filtra). NO dice NINGÚN monto por el usado (interno). 'anticipo' con financiación 50% y deslinde."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo.",
+    "sessionId": "e7c8244e-8a27-4a51-ac18-61d340608771",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 4484,
+        "response": {
+          "session_id": "e7c8244e-8a27-4a51-ac18-61d340608771",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo y que entregás tu Ford Ka 2015, tenés estas opciones para financiar: Toyota Etios 2019, Volkswagen Gol Trend 2018 y Ford Fiesta 2017, todos hatchback y con consumo entre 6.3 y 7 L/100km, y con precios que pueden entrar pagando con financiación y tu capital inicial. \n\nSi te interesa alguna de estas opciones, puedo darte más detalles o coordinar que un asesor te haga una propuesta de financiación."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/",
+          "turno 1 · cards_empty: esperaba 0 cards, hay 3"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 4914,
+        "response": {
+          "session_id": "e7c8244e-8a27-4a51-ac18-61d340608771",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con el Ford Ka 2015 con 100.000 km y $7 millones de anticipo, tenés un abanico de opciones para financiar hasta el 50% del valor del vehículo. Ahora mismo, estas opciones de autos chicos están dentro de tu capacidad para la entrada y financiación:\n\n- Toyota Etios 2019, Gris, 45.000 km — $12.500.000\n- Volkswagen Gol Trend 2018, Blanco, 110.000 km — $9.200.000\n- Ford Fiesta 2017, Azul, 105.000 km — $8.200.000\n\nSi querés que un asesor te arme la simulación con cuotas y financiación ajustada a tu perfil, me dejás tu nombre y apellido y se pone en contacto."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+          "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/",
+      "turno 1 · cards_empty: esperaba 0 cards, hay 3",
+      "turno 2 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+      "turno 2 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía."
+      },
+      {
+        "turn": 2,
+        "note": "Con los 4 datos: abanico en 3 bloques (entrada/intermedio/alto) hasta el techo (~26M → alcanza Corolla/Renegade). HARDENING v45: NO deben aparecer pickups de $38M+ (Hilux/S10/Amarok/Ranger son 'fuera', el SQL los filtra). NO dice NINGÚN monto por el usado (interno). 'anticipo' con financiación 50% y deslinde."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "9ff16c95-7ce9-4e25-ab24-85be3f44bc5c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 1960,
+        "response": {
+          "session_id": "9ff16c95-7ce9-4e25-ab24-85be3f44bc5c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, para orientarte mejor necesito que me digas qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 12005,
+        "response": {
+          "session_id": "9ff16c95-7ce9-4e25-ab24-85be3f44bc5c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 6868,
+        "response": {
+          "session_id": "9ff16c95-7ce9-4e25-ab24-85be3f44bc5c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, pero antes de seguir necesito que me digas la marca y modelo del auto que entregás para poder ayudarte con las opciones dentro de tu presupuesto."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 2 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 2 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "552b276c-a3c3-4a60-bfdb-e87a7564ad64",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 2446,
+        "response": {
+          "session_id": "552b276c-a3c3-4a60-bfdb-e87a7564ad64",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, antes de mostrarte opciones, necesito saber qué auto entregás como usado: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 2148,
+        "response": {
+          "session_id": "552b276c-a3c3-4a60-bfdb-e87a7564ad64",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene el Yaris 2020 que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 7116,
+        "response": {
+          "session_id": "552b276c-a3c3-4a60-bfdb-e87a7564ad64",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo, tu usado y que querés pagar de contado, estas son algunas opciones que te podrían servir:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (entra en tu efectivo, tu usado te queda a favor).\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (entra en tu efectivo, tu usado te queda a favor).\n\nY si querés algo un poco más nuevo o distinto, entregando tu usado podrías llegar a estas opciones:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000.\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (están por arriba de tu presupuesto, pero con el usado puede que te ayude).\n\nTambién tenés el Renault Kangoo 2021, pero está más arriba en precio.\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-contado-factoriza-usado",
+    "bug": "el B (v49): contado + permuta subtasaba. Con 10M efectivo + Yaris 2020, Franco ofrecía Gol 2018/Fiesta 2017/Etios 2019 (techo estirar = efectivo×1.40 = 14M), autos más viejos que el propio usado del cliente. RAÍZ: la categoría 'estirar' no factorizaba el usado. Fix v49: techo estirar = GREATEST(efectivo×1.40, efectivo + usado_valor×0.70) → con el Yaris (~12M fallback) sube a ~18.7M y el 'estirar' llega a Cronos/Kangoo. VERIFICACIÓN VINCULANTE: sim scripts/sim-contado.mjs + log de Listar stock (categoria 'estirar' llega a Cronos/Kangoo con usado_valor). El chat NO discrimina limpio (ruteo contado/financiación + cadena usado_valor flaky + presentación floja), por eso el abanico va MANUAL. Real: que Franco NO hable de financiación (el cliente dijo contado). Requiere el Yaris en la tabla para números buenos (fallback lo subvalúa).",
+    "sessionId": "904adfcf-6d50-40dd-a639-fb67a71dca32",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones en efectivo y un usado para entregar, sin financiar. qué opciones tengo?",
+        "ms": 1730,
+        "response": {
+          "session_id": "904adfcf-6d50-40dd-a639-fb67a71dca32",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, qué auto vas a entregar? Contame la marca, modelo y año para poder mostrarte las opciones que entran con tu efectivo y entregando tu usado."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1887,
+        "response": {
+          "session_id": "904adfcf-6d50-40dd-a639-fb67a71dca32",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, cuántos kilómetros tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 6026,
+        "response": {
+          "session_id": "904adfcf-6d50-40dd-a639-fb67a71dca32",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tenés estas opciones dentro de tu presupuesto con tu efectivo y entregando tu usado:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras, dependiendo de cuánto te lo tomen:\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n\nY si querés te paso todo el stock que tenemos, avisame."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · media_si_lista_autos: TIPO B: nombró 4 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · media_si_lista_autos: TIPO B: nombró 4 autos del catálogo y no mandó ninguna card ni imagen"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente dijo 'en efectivo sin financiar' → Franco NO debe ROUTEAR a financiación (ofrecer cuotas). OJO: 'sin financiación'/'no vas a financiar' son correctos (afirman contado); el regex simple no los distingue, por eso va manual. Verificar el ruteo leyendo el texto."
+      },
+      {
+        "turn": 3,
+        "note": "Contado + Yaris 2020: con v49 el 'estirar' factoriza el usado (efectivo + usado×0.70 ≈ 18.7M) y debe llegar a Cronos (16.8M)/Kangoo (18.5M), no cortar en Etios (12.5M). En v48 corta en 14M. VERIFICAR en el LOG (output de Listar stock): categoria 'estirar' alcanza Cronos/Kangoo cuando usado_valor>0. El chat es flaky (ruteo/cadena/presentación). El cliente dijo 'en efectivo sin financiar' → Franco NO debe hablar de financiación/cuotas/anticipo."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-interes-puntual-sin-presupuesto",
+    "bug": "BUG comunicacional (captura Agustina): cliente interesado en autos PUNTUALES (T-Cross/Amarok) + ofrece permuta + NO dio presupuesto. Franco INVENTA un efectivo/contado y tira un abanico de OTROS autos (pickups $32-57M). Correcto: NO inventar presupuesto, NO abanico; ofrecer 'asesor para la tasacion O ver mas opciones'. Si ve mas -> preguntar presupuesto o full stock. Diagnostico vinculante en el LOG: Franco NO debe llamar Listar stock con precio_objetivo inventado. Extrapolable a los distintos pedidos.",
+    "sessionId": "c07725c5-6ca9-49c8-a182-d648335d5c33",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un volkswagen. me interesan la t-cross y la amarok",
+        "ms": 7531,
+        "response": {
+          "session_id": "c07725c5-6ca9-49c8-a182-d648335d5c33",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Te cuento sobre los Volkswagen que tenemos disponibles ahora:\n\n- Volkswagen T-Cross 2025, 5.200 km, $34.000.000. SUV automática, motor 1.6L de 110 HP naftero, consumo aproximado de 7.3 L/100km. Viene con aire acondicionado, pantalla multimedia, cámara de retroceso y sensores de estacionamiento. Es prácticamente 0 km, ideal para quien no quiere esperar.\n\n- Volkswagen Amarok 2018, 135.000 km, $32.000.000. Pickup 4x4 diésel, motor 2.0L de 180 HP, transmisión manual. Consumo aproximado 9.8 L/100km. Equipamiento completo similar al T-Cross. Es la opción para quien necesita tracción real.\n\nQuerés que te pase fotos o detalles de alguno, o preferís saber qué opciones de financiación o entrega con usado tenemos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar como parte de pago",
+        "ms": 1912,
+        "response": {
+          "session_id": "c07725c5-6ca9-49c8-a182-d648335d5c33",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso y tu efectivo o anticipo seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña."
+            },
+            {
+              "type": "text",
+              "content": "Qué auto entregás? Marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un gol trend 2020",
+        "ms": 2690,
+        "response": {
+          "session_id": "c07725c5-6ca9-49c8-a182-d648335d5c33",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, y cuántos kilómetros tiene ese Gol Trend 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "87 mil km",
+        "ms": 6462,
+        "response": {
+          "session_id": "c07725c5-6ca9-49c8-a182-d648335d5c33",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tenés estas opciones de autos que entran bien con tu usado para entrega al contado:\n\n- Volkswagen T-Cross 2025, 5.200 km, $34.000.000, SUV mediana.\n- Volkswagen Amarok 2018, 135.000 km, $32.000.000, Pickup grande.\n- Volkswagen Vento 2023, 24.000 km, $31.000.000, Sedán mediano.\n- Ford Ranger 2024, 18.000 km, $57.000.000, Pickup grande.\n\nY si querés algo de más categoría entregando tu usado podrías considerar:\n\n- Chevrolet S10 2022, 68.000 km, $39.500.000, Pickup grande.\n- Toyota Hilux 2021, 95.000 km, $38.000.000, Pickup grande.\n\nSi querés, te paso todo el stock que tenemos o puedo derivarte para tasar formalmente tu usado. Qué preferís?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_not_matches: matcheó /(?i)contado|efectivo|anticipo|tu presupuesto/ y no debería: \"contado\"",
+          "turno 4 · text_matches: no matcheó /(?i)asesor|tasaci/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · text_not_matches: matcheó /(?i)contado|efectivo|anticipo|tu presupuesto/ y no debería: \"contado\"",
+      "turno 4 · text_matches: no matcheó /(?i)asesor|tasaci/"
+    ],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-interes-puntual-sin-presupuesto",
+    "bug": "BUG comunicacional (captura Agustina): cliente interesado en autos PUNTUALES (T-Cross/Amarok) + ofrece permuta + NO dio presupuesto. Franco INVENTA un efectivo/contado y tira un abanico de OTROS autos (pickups $32-57M). Correcto: NO inventar presupuesto, NO abanico; ofrecer 'asesor para la tasacion O ver mas opciones'. Si ve mas -> preguntar presupuesto o full stock. Diagnostico vinculante en el LOG: Franco NO debe llamar Listar stock con precio_objetivo inventado. Extrapolable a los distintos pedidos.",
+    "sessionId": "4b5c8080-4e50-4efa-882b-0b74e3bd917a",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un volkswagen. me interesan la t-cross y la amarok",
+        "ms": 5592,
+        "response": {
+          "session_id": "4b5c8080-4e50-4efa-882b-0b74e3bd917a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, para Volkswagen tenés estas dos opciones:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000"
+            },
+            {
+              "type": "text",
+              "content": "La T-Cross es una SUV automática casi 0 km, ideal si querés algo más nuevo y con equipamiento completo. La Amarok es una pickup 4x4 diésel, potente y accesible para trabajo o caminos difíciles, aunque tiene más kilómetros y necesita revisar la cadena de distribución antes de comprarla (eso lo coordina un asesor)."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa alguna para que te cuente más detalles o querés que te muestre otras opciones de Volkswagen?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar como parte de pago",
+        "ms": 1625,
+        "response": {
+          "session_id": "4b5c8080-4e50-4efa-882b-0b74e3bd917a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. Para avanzar necesito que me digas qué auto es el que entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un gol trend 2020",
+        "ms": 1733,
+        "response": {
+          "session_id": "4b5c8080-4e50-4efa-882b-0b74e3bd917a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "genial, y cuántos km tiene tu Gol Trend 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "87 mil km",
+        "ms": 6056,
+        "response": {
+          "session_id": "4b5c8080-4e50-4efa-882b-0b74e3bd917a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado para entregar, estas opciones entran dentro de tu capacidad sin financiación:"
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000\n- Volkswagen Vento 2023 — 24.000 km — $31.000.000\n- Ford Ranger 2024 — 18.000 km — $57.000.000\n- Chevrolet S10 2022 — 68.000 km — $39.500.000"
+            },
+            {
+              "type": "text",
+              "content": "Si querés algo un poco más accesible, también hay otras opciones como el Toyota Hilux 2021 o el Jeep Renegade 2021."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase todo el stock que tenemos, o preferís que te conecte con un asesor para valorar y terminar de coordinar la tasación de tu Gol Trend 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-interes-puntual-sin-presupuesto",
+    "bug": "BUG comunicacional (captura Agustina): cliente interesado en autos PUNTUALES (T-Cross/Amarok) + ofrece permuta + NO dio presupuesto. Franco INVENTA un efectivo/contado y tira un abanico de OTROS autos (pickups $32-57M). Correcto: NO inventar presupuesto, NO abanico; ofrecer 'asesor para la tasacion O ver mas opciones'. Si ve mas -> preguntar presupuesto o full stock. Diagnostico vinculante en el LOG: Franco NO debe llamar Listar stock con precio_objetivo inventado. Extrapolable a los distintos pedidos.",
+    "sessionId": "25bf2d4f-977e-4168-a44f-447e4a799719",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un volkswagen. me interesan la t-cross y la amarok",
+        "ms": 5148,
+        "response": {
+          "session_id": "25bf2d4f-977e-4168-a44f-447e4a799719",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Tenemos dos Volkswagen para mostrarte que quizá encajen con lo que buscás:\n- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000. Es una SUV automática casi 0 km con equipamiento completo.\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000. Es una pickup 4x4 diésel con buena potencia y completa en equipamiento, ideal para quienes necesitan tracción real.\n\nCuál de los dos te interesa para que te dé más detalles?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar como parte de pago",
+        "ms": 1596,
+        "response": {
+          "session_id": "25bf2d4f-977e-4168-a44f-447e4a799719",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Claro, recibimos usados como parte de pago. Contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un gol trend 2020",
+        "ms": 1922,
+        "response": {
+          "session_id": "25bf2d4f-977e-4168-a44f-447e4a799719",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, y cuántos km tiene tu Gol Trend 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "87 mil km",
+        "ms": 4743,
+        "response": {
+          "session_id": "25bf2d4f-977e-4168-a44f-447e4a799719",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado para entregar, estas son las Volkswagen que seguramente te pueden interesar para avanzar en la compra:\n- Volkswagen T-Cross 2025, SUV mediana, 5.200 km, $34.000.000\n- Volkswagen Amarok 2018, pickup grande, 135.000 km, $32.000.000\n\nAdemás, con la entrega de tu Gol Trend, podés financiar y llegar a otras opciones si querés, o quedarte en estas que te cubre tu usado más el efectivo.\n\nQuerés que te conecte con un asesor para que coordine la tasación de tu vehículo y te guíe en la financiación, o preferís ver más opciones que tenemos en stock?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+          "turno 4 · text_not_matches: matcheó /(?i)contado|efectivo|anticipo|tu presupuesto/ y no debería: \"efectivo\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+      "turno 4 · text_not_matches: matcheó /(?i)contado|efectivo|anticipo|tu presupuesto/ y no debería: \"efectivo\""
+    ],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."
+      }
+    ],
+    "error": null
+  }
+]

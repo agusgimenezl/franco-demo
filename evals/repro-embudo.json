@@ -1,0 +1,479 @@
+[
+  {
+    "id": "permuta-interes-puntual-sin-presupuesto",
+    "bug": "BUG comunicacional (captura Agustina): cliente interesado en autos PUNTUALES (T-Cross/Amarok) + ofrece permuta + NO dio presupuesto. Franco INVENTA un efectivo/contado y tira un abanico de OTROS autos (pickups $32-57M). Correcto: NO inventar presupuesto, NO abanico; ofrecer 'asesor para la tasacion O ver mas opciones'. Si ve mas -> preguntar presupuesto o full stock. Diagnostico vinculante en el LOG: Franco NO debe llamar Listar stock con precio_objetivo inventado. Extrapolable a los distintos pedidos.",
+    "sessionId": "3f0cf0d4-1e69-452f-ac05-77bf37f54dba",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un volkswagen. me interesan la t-cross y la amarok",
+        "ms": 11833,
+        "response": {
+          "session_id": "3f0cf0d4-1e69-452f-ac05-77bf37f54dba",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV automática prácticamente sin uso, con equipamiento completo para quien busca 0 km sin esperar. Tiene motor naftero 1.6L de 110 HP, transmisión automática y consume aproximadamente 7.3 L/100km. Está blanco, con 5.200 km y cuesta $34.000.000."
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 es una pickup 4x4 diésel, con buena potencia y equipamiento completo. Motor 2.0L de 180 HP, transmisión manual, consume cerca de 9.8 L/100km. Está negra, con 135.000 km y cuesta $32.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiar alguno de estos autos o entregando un usado?"
+            },
+            {
+              "type": "text",
+              "content": "\"Fotos Volkswagen T-Cross 2025: https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp, https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp, https://qfmsdgjtldurvtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp\nFotos Volkswagen Amarok 2018: https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp, https://qfmsdgjtldurvtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp, https://qfmsdgjtldurvtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp\""
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar como parte de pago",
+        "ms": 2120,
+        "response": {
+          "session_id": "3f0cf0d4-1e69-452f-ac05-77bf37f54dba",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entran varias opciones, e incluso alguna de más valor si la tasación acompaña."
+            },
+            {
+              "type": "text",
+              "content": "Qué auto entregarías, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un gol trend 2020",
+        "ms": 3435,
+        "response": {
+          "session_id": "3f0cf0d4-1e69-452f-ac05-77bf37f54dba",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "87 mil km",
+        "ms": 9188,
+        "response": {
+          "session_id": "3f0cf0d4-1e69-452f-ac05-77bf37f54dba",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado Volkswagen Gol Trend 2020 con 87.000 km como parte de pago, te muestro algunas opciones que podrían entrar sin financiamiento."
+            },
+            {
+              "type": "text",
+              "content": "- Ford Ranger 2024 — 18.000 km — $57.000.000 (pickup, grande)\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (pickup, grande)\n- Toyota Hilux 2021 — 95.000 km — $38.000.000 (pickup, grande)\n- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000 (SUV mediano)\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000 (pickup, grande)\n- Volkswagen Vento 2023 — 24.000 km — $31.000.000 (sedán mediano)\n- Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV mediano)\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán mediano)\n\nY si querés algo más económico o más opciones, también te puedo mostrar todo el stock."
+            },
+            {
+              "type": "text",
+              "content": "Me dejás tu nombre y apellido para que un asesor te contacte y coordine la tasación de tu usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-interes-puntual-sin-presupuesto",
+    "bug": "BUG comunicacional (captura Agustina): cliente interesado en autos PUNTUALES (T-Cross/Amarok) + ofrece permuta + NO dio presupuesto. Franco INVENTA un efectivo/contado y tira un abanico de OTROS autos (pickups $32-57M). Correcto: NO inventar presupuesto, NO abanico; ofrecer 'asesor para la tasacion O ver mas opciones'. Si ve mas -> preguntar presupuesto o full stock. Diagnostico vinculante en el LOG: Franco NO debe llamar Listar stock con precio_objetivo inventado. Extrapolable a los distintos pedidos.",
+    "sessionId": "025baa0c-3982-4b01-ac1a-76dcf16861a3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un volkswagen. me interesan la t-cross y la amarok",
+        "ms": 7200,
+        "response": {
+          "session_id": "025baa0c-3982-4b01-ac1a-76dcf16861a3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen T-Cross 2025 es una SUV automática con apenas 5.200 km y equipamiento completo: aire acondicionado, pantalla multimedia, cámara y sensores de estacionamiento. Motor 1.6L naftero de 110 HP y consumo aproximado de 7.3 L/100km. Está a $34.000.000."
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 es una pickup 4x4 diésel, con 135.000 km, motor 2.0L de 180 HP y transmisión manual. Consumo aproximado de 9.8 L/100km. Tiene aire acondicionado, pantalla multimedia, cámara y sensores y cuesta $32.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiar alguna de estas o entregando tu usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar como parte de pago",
+        "ms": 2343,
+        "response": {
+          "session_id": "025baa0c-3982-4b01-ac1a-76dcf16861a3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para poder mostrarte autos que te entren mejor con tu usado, me tenés que contar qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un gol trend 2020",
+        "ms": 1803,
+        "response": {
+          "session_id": "025baa0c-3982-4b01-ac1a-76dcf16861a3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene el Gol Trend 2020 que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "87 mil km",
+        "ms": 4049,
+        "response": {
+          "session_id": "025baa0c-3982-4b01-ac1a-76dcf16861a3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta que entregás tu Gol Trend 2020 con 87.000 km, estas son algunas opciones que podrían interesarte: \n\n- Volkswagen T-Cross 2025, SUV, 5.200 km, $34.000.000\n- Volkswagen Amarok 2018, pickup, 135.000 km, $32.000.000\n\nTambién tenemos otras opciones como la Toyota Hilux 2021 y la Ford Ranger 2024, que son pickups más grandes y recientes.\n\nSi querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_matches: no matcheó /(?i)asesor|tasaci/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · text_matches: no matcheó /(?i)asesor|tasaci/"
+    ],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "permuta-interes-puntual-sin-presupuesto",
+    "bug": "BUG comunicacional (captura Agustina): cliente interesado en autos PUNTUALES (T-Cross/Amarok) + ofrece permuta + NO dio presupuesto. Franco INVENTA un efectivo/contado y tira un abanico de OTROS autos (pickups $32-57M). Correcto: NO inventar presupuesto, NO abanico; ofrecer 'asesor para la tasacion O ver mas opciones'. Si ve mas -> preguntar presupuesto o full stock. Diagnostico vinculante en el LOG: Franco NO debe llamar Listar stock con precio_objetivo inventado. Extrapolable a los distintos pedidos.",
+    "sessionId": "726d93be-8645-4b32-bcaa-91d2d87e0e18",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un volkswagen. me interesan la t-cross y la amarok",
+        "ms": 7811,
+        "response": {
+          "session_id": "726d93be-8645-4b32-bcaa-91d2d87e0e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV automática prácticamente sin uso, con solo 5.200 km. Tiene motor 1.6L de 110 HP a nafta, transmisión automática y un consumo aproximado de 7.3 L/100km. Está bien equipado con aire acondicionado, pantalla multimedia, cámara de retroceso y sensores de estacionamiento. Su precio es $34.000.000."
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 es una pickup 4x4 diésel con motor 2.0L de 180 HP y transmisión manual. Tiene 135.000 km y un consumo aproximado de 9.8 L/100km. También equipada con aire acondicionado, pantalla multimedia, cámara de retroceso y sensores de estacionamiento. Su precio es $32.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería la financiación o tal vez te puedo ayudar a coordinar un asesor para que te prepare una cotización? O preferís que te muestre opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar como parte de pago",
+        "ms": 1921,
+        "response": {
+          "session_id": "726d93be-8645-4b32-bcaa-91d2d87e0e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Eso ayuda mucho para acercarte a la compra. Para poder mostrarte las opciones que te entrarían mejor, me confirmás qué auto entregás, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un gol trend 2020",
+        "ms": 1891,
+        "response": {
+          "session_id": "726d93be-8645-4b32-bcaa-91d2d87e0e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Gol Trend 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "87 mil km",
+        "ms": 5992,
+        "response": {
+          "session_id": "726d93be-8645-4b32-bcaa-91d2d87e0e18",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta que entregás tu Gol Trend 2020 con 87.000 km, aquí tenés algunas opciones que podrían entrar en la operación al contado:"
+            },
+            {
+              "type": "text",
+              "content": "- Ford Ranger 2024, pickup, $57.000.000\n- Chevrolet S10 2022, pickup, $39.500.000"
+            },
+            {
+              "type": "text",
+              "content": "Y estas otras opciones un poco más accesibles dentro de tu alcance:"
+            },
+            {
+              "type": "text",
+              "content": "- Toyota Hilux 2021, pickup, $38.000.000\n- Volkswagen T-Cross 2025, SUV, $34.000.000"
+            },
+            {
+              "type": "text",
+              "content": "Además, si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Por ahora, cuál de estas opciones te llama más la atención?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_not_matches: matcheó /(?i)contado|efectivo|anticipo|tu presupuesto/ y no debería: \"contado\"",
+          "turno 4 · text_matches: no matcheó /(?i)asesor|tasaci/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · text_not_matches: matcheó /(?i)contado|efectivo|anticipo|tu presupuesto/ y no debería: \"contado\"",
+      "turno 4 · text_matches: no matcheó /(?i)asesor|tasaci/"
+    ],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."
+      }
+    ],
+    "error": null
+  }
+]

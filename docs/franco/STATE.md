@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v57.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v60.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,35 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 56 casos · baseline-v33.json → 30/35 |
+| Evals | 57 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **Sesión 2026-07-24. BUG-EMBUDO (paréntesis, captura Agustina). v59 arregla el dump; v60 arregla una regresión.**
+> BUG: cliente con interés PUNTUAL (T-Cross/Amarok) + permuta + SIN presupuesto → Franco llama Listar stock con
+> `precio_objetivo=0, tiene_permuta=1` → la query etiqueta TODO 'entra' → dumpea 17 autos (Ranger $57M…). Debe
+> ofrecer el embudo: asesor-tasación O ver-más (→ presupuesto o full stock). Repro `permuta-interes-puntual-sin-
+> presupuesto` (3/3 falla, log 7548).
+> - **v58 — `scripts/embudo-interes-puntual-sin-presupuesto.mjs` (prompt). PEGADO, PARCIAL.** Gate del abanico +
+>   guion del embudo + anti-dump. Medido: leakea (1/3 dumpea entero, 1/3 mezcla) — el prompt solo NO aguanta (trampa 6).
+> - **v59 — `scripts/embudo-guard-sql-sin-presupuesto.mjs` (SQL + prompt). PEGADO Y MEDIDO.** DETERMINÍSTICO:
+>   `Listar stock` devuelve 0 filas si `precio_objetivo=0 AND (tiene_permuta=1 OR con_financiacion=1)` → sin
+>   munición, no hay dump. toolDescription aclara que 0 filas = señal del embudo; línea 135 deja de decir "mostrás
+>   stock". **Medido: repro 0/3 dump, 3/3 embudo.** Verificado byte a byte.
+> - **REGRESIÓN de v58 detectada en v59 (log 7612):** el gate condicionaba en "(a) pidió ver opciones EN GENERAL",
+>   demasiado estricto → suprimía el abanico de capacidad cuando el cliente da anticipo pero no dice "mostrame el
+>   catálogo" → `capacidad-de-compra-financiada` cayó a name-ask 3/3 (Franco ni llama Listar stock).
+> - **v60 — `scripts/embudo-gate-no-puntual.mjs` (prompt). PEGADO Y MEDIDO.** Condición (a) pasa a "NO vino por
+>   autos PUNTUALES" (dar anticipo YA es pedir opciones). **Medido:** repro embudo 3/3 sin dump (el fix aguanta),
+>   `capacidad-de-compra-financiada` abanico 2/3 (era 0/3 en v59 → regresión cerrada), `permuta-contado` abanico
+>   2/3. El 1/3 restante de name-ask es la flakiness histórica name-ask-vs-abanico (decisión abierta), no de esto.
+>   Verificado byte a byte. **BUG-EMBUDO RESUELTO. Puntero: v60 vivo.**
+> **NUEVOS BUGS (captura Agustina, para v60+):** (A) pedido puntual sin stock → alternativas por CARROCERÍA (pidió
+> pickup → S10/Hilux/Ranger/Amarok), y no ocultar el modelo que SÍ está (Amarok 2018); siempre ofrecer todo el
+> stock o más detalle. (B) comparación de 2+ vehículos → incluir la info DESCRIPTIVA de la base, no solo la ficha
+> técnica. Tareas #6, #7. Pusheado hasta v57; v58-v60 sin pushear aún.
 
 > **Sesión 2026-07-24. TARGET-B (abanico y cards por código) — EN CURSO. TB-1 (dedup de cards) HECHO Y MEDIDO.**
 > Arquitectura de la respuesta: Franco emite `{messages, auto_ids}` → `Hidratar autos` (DB) → `Autos ya

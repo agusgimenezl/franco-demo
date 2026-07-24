@@ -1048,6 +1048,21 @@
         { "say": "65 mil km", "checks": [["manual", "1ra vez: el abanico puede traer product_cards si Franco emite auto_ids."]] },
         { "say": "mostramelas de nuevo asi las veo bien", "checks": [["manual", "REPETICION: si Franco re-emite los mismos auto_ids ya mostrados, product_cards debe salir []. Verificar en el log: cards_recientes poblado, auto_ids del turno subset de cards_recientes."]] }
       ]
+    },
+    {
+      "id": "permuta-interes-puntual-sin-presupuesto",
+      "bug": "BUG comunicacional (captura Agustina): cliente interesado en autos PUNTUALES (T-Cross/Amarok) + ofrece permuta + NO dio presupuesto. Franco INVENTA un efectivo/contado y tira un abanico de OTROS autos (pickups $32-57M). Correcto: NO inventar presupuesto, NO abanico; ofrecer 'asesor para la tasacion O ver mas opciones'. Si ve mas -> preguntar presupuesto o full stock. Diagnostico vinculante en el LOG: Franco NO debe llamar Listar stock con precio_objetivo inventado. Extrapolable a los distintos pedidos.",
+      "turns": [
+        { "say": "hola, busco un volkswagen. me interesan la t-cross y la amarok", "checks": [] },
+        { "say": "tengo un usado para entregar como parte de pago", "checks": [] },
+        { "say": "un gol trend 2020", "checks": [["text_matches", "(?i)kil[oó]metr|\\bkm\\b"]] },
+        { "say": "87 mil km", "checks": [
+          ["text_not_matches", "(?i)contado|efectivo|anticipo|tu presupuesto"],
+          ["text_not_matches", "(?i)tramo|entrada[^.]*intermedio"],
+          ["text_matches", "(?i)asesor|tasaci"],
+          ["manual", "EMBUDO: interes puntual (T-Cross/Amarok) + permuta + SIN presupuesto -> Franco NO inventa efectivo/contado, NO tira abanico de otros autos; ofrece 'asesor para tasacion O ver mas opciones'. En el LOG: NO debe llamar Listar stock con precio_objetivo inventado / con_financiacion."]
+        ] }
+      ]
     }
   ]
 }
