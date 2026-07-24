@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const argFile = process.argv.indexOf('--file')
 // --file permite auditar un workflow ANTES de importarlo a n8n (ej. el v7 en progreso).
-const WORKFLOW = argFile !== -1 ? join(ROOT, process.argv[argFile + 1]) : join(ROOT, 'franco-n8n-v61.json')
+const WORKFLOW = argFile !== -1 ? join(ROOT, process.argv[argFile + 1]) : join(ROOT, 'franco-n8n-v62.json')
 const STATE = join(ROOT, 'docs/franco/STATE.md')
 const checkOnly = process.argv.includes('--check') || argFile !== -1
 

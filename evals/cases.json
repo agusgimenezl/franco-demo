@@ -1074,6 +1074,17 @@
           ["manual", "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."]
         ] }
       ]
+    },
+    {
+      "id": "comparacion-incluye-descriptivo",
+      "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+      "turns": [
+        { "say": "me interesan la t-cross y la vento, contame de las dos", "checks": [
+          ["text_matches", "(?i)t-?cross"],
+          ["text_matches", "(?i)vento"],
+          ["manual", "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."]
+        ] }
+      ]
     }
   ]
 }

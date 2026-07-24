@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v61.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v62.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,20 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 58 casos · baseline-v33.json → 30/35 |
+| Evals | 59 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **Sesión 2026-07-24. BUG-B (descriptivo en comparaciones) — HECHO Y MEDIDO. v62.**
+> `scripts/comparacion-incluye-descriptivo.mjs`. BUG (captura): al comparar 2+ vehículos Franco daba solo ficha
+> técnica; falta el ángulo de `descripcion` ("la opción de quien quiere 0 km sin esperar"). Data disponible
+> (Detalle auto ya devuelve descripcion). FIX (prompt, Paso 3): regla de COMPARACIÓN — por cada auto el porqué de
+> `descripcion` va sí o sí, técnica breve. **Medido:** `comparacion-incluye-descriptivo` descriptivo 3/4 (era
+> ~1/3). Residual 1/4 se va a lo técnico (prompt, sin lever determinístico limpio). Verificado byte a byte.
+> **Puntero: v62. Sigue TB-3** (eco del encabezado del abanico) — decisión de Agustina: encabezado por código vs
+> limpiar el eco.
 
 > **Sesión 2026-07-24. BUG-A (alternativas por carrocería) — HECHO Y MEDIDO. v61.**
 > `scripts/buscar-alternativas-por-carroceria.mjs`. BUG (captura): pidió "Amarok 4x2 2022-24"; Franco pasó

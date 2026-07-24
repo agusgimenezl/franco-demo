@@ -1,0 +1,216 @@
+[
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "b0e80e91-1233-4373-b129-545fd65f55cd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 8628,
+        "response": {
+          "session_id": "b0e80e91-1233-4373-b129-545fd65f55cd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV mediana prácticamente sin uso, con sólo 5.200 km. Es automática y tiene un motor 1.6 litros de 110 HP naftero, con consumo promedio aproximado de 7.3 L/100km. Viene con aire acondicionado, pantalla multimedia, cámara de retroceso y sensores de estacionamiento. Está a $34.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Por otro lado, el Volkswagen Vento 2023 es un sedán mediano con 24.000 km, motor naftero 1.4 turbo de 150 HP y transmisión automática. Consume aproximadamente 7.5 L/100km. Además tiene aire acondicionado, pantalla multimedia, cámara de retroceso y sensores de estacionamiento. Está a $31.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Te aclaro que el T-Cross tiene un motor aspirado que prioriza suavidad, mientras que el Vento turbo brinda una respuesta más fuerte en ruta. En qué te gustaría que te ayude ahora? Querés ver más fotos, saber financiamiento, o te interesa coordinar para verlos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "7013f197-4bfc-4ce1-8b8d-056126911554",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 8101,
+        "response": {
+          "session_id": "7013f197-4bfc-4ce1-8b8d-056126911554",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen T-Cross 2025 está prácticamente sin uso, con solo 5.200 km. Es una SUV automática con motor 1.6L de 110 HP a nafta y consumo promedio de 7.3 L/100km. Tiene aire acondicionado, pantalla multimedia, cámara y sensores de estacionamiento. Es ideal si querés un 0 km sin esperar."
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Vento 2023 es un sedán con motor turbo 1.4L de 150 HP y transmisión automática. Tiene 24.000 km y un consumo aproximado de 7.5 L/100km. También cuenta con aire acondicionado, pantalla multimedia, cámara y sensores. Es la opción con más potencia del stock entre autos no pickup."
+            },
+            {
+              "type": "text",
+              "content": "Ambos están de color blanco y vienen con equipamiento completo. La T-Cross prioriza suavidad, mientras que si buscás más potencia en ruta, el Vento turbo va mejor."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiar alguno de estos modelos o si preferís que te pase opciones similares que haya disponibles?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "1c713197-9328-467e-850b-4f884da80eee",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 8171,
+        "response": {
+          "session_id": "1c713197-9328-467e-850b-4f884da80eee",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV mediana prácticamente sin uso, con solo 5.200 km y automática. Viene con equipamiento completo: aire acondicionado, pantalla multimedia, cámara y sensores de estacionamiento. Motor 1.6L de 110 HP naftero, con consumo aproximado de 7.3 L/100km. Precio $34.000.000."
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán naftero de 5 plazas, con motor turbo 1.4L de 150 HP y transmisión automática. Tiene 24.000 km y consumo aproximado de 7.5 L/100km. Incluye aire acondicionado, pantalla multimedia, cámara y sensores de estacionamiento. Precio $31.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Ambos tienen equipamiento moderno y son del segmento mediano. El T-Cross es SUV, ideal para quien quiere un 0 km sin esperar y prioriza suavidad. El Vento tiene más potencia por su motor turbo: para quienes buscan más rendimiento en ruta. Querés que te prepare información sobre financiación o entregando tu usado para alguna de estas opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null
+  }
+]
