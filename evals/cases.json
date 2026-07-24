@@ -1038,6 +1038,16 @@
           ]
         }
       ]
+    },
+    {
+      "id": "dedup-cards-repite",
+      "bug": "TB-1: tras mostrar el abanico de permuta, si el cliente pide ver esos mismos autos de nuevo, Franco NO debe reenviar el mismo mazo de product_cards. Verificacion vinculante en el LOG: 'Autos ya mostrados' puebla cards_recientes y en el turno de repeticion 'Armar respuesta' manda product_cards=[]. El chat/eval es best-effort (depende de que Franco re-emita los auto_ids).",
+      "turns": [
+        { "say": "hola, tengo 10 millones y un usado para entregar, sin financiar. que opciones tengo?", "checks": [] },
+        { "say": "un yaris 2020", "checks": [] },
+        { "say": "65 mil km", "checks": [["manual", "1ra vez: el abanico puede traer product_cards si Franco emite auto_ids."]] },
+        { "say": "mostramelas de nuevo asi las veo bien", "checks": [["manual", "REPETICION: si Franco re-emite los mismos auto_ids ya mostrados, product_cards debe salir []. Verificar en el log: cards_recientes poblado, auto_ids del turno subset de cards_recientes."]] }
+      ]
     }
   ]
 }

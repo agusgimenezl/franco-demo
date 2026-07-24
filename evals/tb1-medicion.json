@@ -1,0 +1,559 @@
+[
+  {
+    "id": "dedup-cards-repite",
+    "bug": "TB-1: tras mostrar el abanico de permuta, si el cliente pide ver esos mismos autos de nuevo, Franco NO debe reenviar el mismo mazo de product_cards. Verificacion vinculante en el LOG: 'Autos ya mostrados' puebla cards_recientes y en el turno de repeticion 'Armar respuesta' manda product_cards=[]. El chat/eval es best-effort (depende de que Franco re-emita los auto_ids).",
+    "sessionId": "e5dbb413-e4ba-46e9-b885-c0fae740ae67",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar, sin financiar. que opciones tengo?",
+        "ms": 9308,
+        "response": {
+          "session_id": "e5dbb413-e4ba-46e9-b885-c0fae740ae67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con tu efectivo más la entrega de tu usado y sin financiación, estas opciones te pueden servir:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo un poco más arriba, entregando tu usado podrías llegar al Toyota Etios 2019, 45.000 km, $12.500.000.\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 13698,
+        "response": {
+          "session_id": "e5dbb413-e4ba-46e9-b885-c0fae740ae67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "No tenemos Toyota Yaris 2020 en stock actualmente. Pero si querés, puedo mostrarte algunas opciones parecidas para que veas qué tenemos."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 5969,
+        "response": {
+          "session_id": "e5dbb413-e4ba-46e9-b885-c0fae740ae67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu Yaris 2020 con 65.000 km y que no querés financiar, te puedo mostrar estas opciones que se ajustan a tu presupuesto y entrega:\n\n- Volkswagen Gol Trend 2018, hatchback, 110.000 km — $9.200.000\n- Ford Fiesta 2017, hatchback, 105.000 km — $8.200.000\n\nY si te interesa, también hay opciones un poco más caras entregando tu usado:\n\n- Toyota Etios 2019, hatchback, 45.000 km — $12.500.000\n- Fiat Cronos 2023, sedán, 28.000 km — $16.800.000\n\nQuerés que te pase fotos y detalles de alguno o preferís ver otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "mostramelas de nuevo asi las veo bien",
+        "ms": 6132,
+        "response": {
+          "session_id": "e5dbb413-e4ba-46e9-b885-c0fae740ae67",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Acá te las vuelvo a mostrar para que las veas bien:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo un poco más caro entregando tu usado:\n\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n\nQuerés que te cuente más de alguno en detalle o preferís ver otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · media_si_lista_autos: TIPO B: nombró 4 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 4 · media_si_lista_autos: TIPO B: nombró 4 autos del catálogo y no mandó ninguna card ni imagen"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "1ra vez: el abanico puede traer product_cards si Franco emite auto_ids."
+      },
+      {
+        "turn": 4,
+        "note": "REPETICION: si Franco re-emite los mismos auto_ids ya mostrados, product_cards debe salir []. Verificar en el log: cards_recientes poblado, auto_ids del turno subset de cards_recientes."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "dedup-cards-repite",
+    "bug": "TB-1: tras mostrar el abanico de permuta, si el cliente pide ver esos mismos autos de nuevo, Franco NO debe reenviar el mismo mazo de product_cards. Verificacion vinculante en el LOG: 'Autos ya mostrados' puebla cards_recientes y en el turno de repeticion 'Armar respuesta' manda product_cards=[]. El chat/eval es best-effort (depende de que Franco re-emita los auto_ids).",
+    "sessionId": "01c21ad2-01b4-419a-9e4b-867c55aae23f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar, sin financiar. que opciones tengo?",
+        "ms": 7325,
+        "response": {
+          "session_id": "01c21ad2-01b4-419a-9e4b-867c55aae23f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu efectivo de 10 millones y considerando que no querés financiar, estas opciones te pueden servir:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, totalmente dentro de tu presupuesto.\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, otra opción que entra bien en ese rango.\n\nY si querés algo un poco más arriba, entregando tu usado podrías llegar a este Toyota Etios 2019 — 45.000 km — $12.500.000, que está un poco estirado pero puede ser factible según la tasación.\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Con cuál de estos te gustaría que sigamos? Querés que te cuente más detalles o preferís ver otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 9888,
+        "response": {
+          "session_id": "01c21ad2-01b4-419a-9e4b-867c55aae23f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con el usado que entregás, te sirve ver estas opciones sin financiar:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, hatchback chico que entra en tu presupuesto.\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, otra alternativa dentro del rango.\n\nY si querés algo un poco más equipado y grande, tenés el Toyota Etios 2019 — 45.000 km — $12.500.000, que está un poco arriba del techo pero puede ser con tu usado.\n\nTe dejo un detalle del Etios: es el hatchback que menos combustible consume en su categoría, motor 1.5L naftero con transmisión manual, aire acondicionado y color gris.\n\nMe dejás tu nombre y apellido para que un asesor te coordine la tasación de tu usado y te ayude a avanzar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 5338,
+        "response": {
+          "session_id": "01c21ad2-01b4-419a-9e4b-867c55aae23f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con un Yaris 2020 y 65 mil km para entrega, y un presupuesto de 10 millones al contado, estas serían las opciones más ajustadas a tu capacidad:\n\n1. Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, hatchback chico que entra en tu presupuesto.\n2. Ford Fiesta 2017 — 105.000 km — $8.200.000, otra opción económica y similar en tamaño.\n\nY si querés estirar un poco entregando tu usado, podrías acceder al Toyota Etios 2019 — 45.000 km — $12.500.000, que es un hatchback chico, un poco más nuevo y con menor consumo.\n\nTe interesa que comparemos alguno de estos o querés que te muestre otras opciones del stock?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "mostramelas de nuevo asi las veo bien",
+        "ms": 4715,
+        "response": {
+          "session_id": "01c21ad2-01b4-419a-9e4b-867c55aae23f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Acá tenés para ver mejor:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés estirar un poco entregando tu usado:\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n\nTe interesa que te cuente más de alguno o querés que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+      "turno 3 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+      "turno 4 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "1ra vez: el abanico puede traer product_cards si Franco emite auto_ids."
+      },
+      {
+        "turn": 4,
+        "note": "REPETICION: si Franco re-emite los mismos auto_ids ya mostrados, product_cards debe salir []. Verificar en el log: cards_recientes poblado, auto_ids del turno subset de cards_recientes."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "dedup-cards-repite",
+    "bug": "TB-1: tras mostrar el abanico de permuta, si el cliente pide ver esos mismos autos de nuevo, Franco NO debe reenviar el mismo mazo de product_cards. Verificacion vinculante en el LOG: 'Autos ya mostrados' puebla cards_recientes y en el turno de repeticion 'Armar respuesta' manda product_cards=[]. El chat/eval es best-effort (depende de que Franco re-emita los auto_ids).",
+    "sessionId": "63f38c68-41c6-416c-83c9-aa638995c45d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar, sin financiar. que opciones tengo?",
+        "ms": 4864,
+        "response": {
+          "session_id": "63f38c68-41c6-416c-83c9-aa638995c45d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "sí, claro, recibimos usados como parte de pago. con tu usado más 10 millones en efectivo, sin financiamiento, estas opciones te pueden servir:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, tu efectivo cubre el total de estas y el valor de tu usado te queda a favor\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, hatchback, porte chico y bajo consumo\n\nY si querés algo de un poco más de categoría, entregando tu usado podrías llegar al Toyota Etios 2019 — 45.000 km — $12.500.000. Para definir bien cuánto te lo podemos llegar a tomar, un asesor tiene que ver tu usado en persona para tasarlo.\n\nSi querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 4472,
+        "response": {
+          "session_id": "63f38c68-41c6-416c-83c9-aa638995c45d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "En este momento no tenemos Toyota Yaris en stock. Querés que te muestre autos parecidos al Yaris o preferís ver otras opciones de Toyota o autos similares para ciudad?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 3735,
+        "response": {
+          "session_id": "63f38c68-41c6-416c-83c9-aa638995c45d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con eso y los 10 millones que tenés en efectivo, sin financiamiento, teniendo en cuenta tu usado y el anticipo, estas opciones te pueden servir:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000, tu efectivo cubre el total de estas y el valor de tu usado te queda a favor\n- Ford Fiesta 2017 — 105.000 km — $8.200.000, hatchback, porte chico y bajo consumo\n\nY si querés algo de un poco más de categoría, entregando tu usado podrías llegar al Toyota Etios 2019 — 45.000 km — $12.500.000. La tasación final la hace un asesor cuando vea tu usado en persona.\n\nSi querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "mostramelas de nuevo asi las veo bien",
+        "ms": 4699,
+        "response": {
+          "session_id": "63f38c68-41c6-416c-83c9-aa638995c45d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado y tu efectivo, estas son las opciones que más se ajustan:\n\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si quisieras algo un poco más arriba en la gama, podría estar el Toyota Etios 2019 — 45.000 km — $12.500.000. La tasación final de tu usado la hace un asesor cuando lo vea en persona.\n\nQuerés que te muestre algo más o te interesa alguna de estas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen",
+      "turno 4 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "1ra vez: el abanico puede traer product_cards si Franco emite auto_ids."
+      },
+      {
+        "turn": 4,
+        "note": "REPETICION: si Franco re-emite los mismos auto_ids ya mostrados, product_cards debe salir []. Verificar en el log: cards_recientes poblado, auto_ids del turno subset de cards_recientes."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "dedup-cards-repite",
+    "bug": "TB-1: tras mostrar el abanico de permuta, si el cliente pide ver esos mismos autos de nuevo, Franco NO debe reenviar el mismo mazo de product_cards. Verificacion vinculante en el LOG: 'Autos ya mostrados' puebla cards_recientes y en el turno de repeticion 'Armar respuesta' manda product_cards=[]. El chat/eval es best-effort (depende de que Franco re-emita los auto_ids).",
+    "sessionId": "18e91fbd-ea7c-4ee4-9ae5-d35a00d2cfad",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 10 millones y un usado para entregar, sin financiar. que opciones tengo?",
+        "ms": 4136,
+        "response": {
+          "session_id": "18e91fbd-ea7c-4ee4-9ae5-d35a00d2cfad",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con tu usado y sin financiar, estas opciones podrían ajustarse a tu presupuesto:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\nY si querés un auto un poco mejor, entregando tu usado podrías llegar a este Toyota Etios 2019, 45.000 km, $12.500.000.\n\nPara hacerte una propuesta más ajustada, contame qué auto entregás como parte de pago (marca, modelo y año)."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "un yaris 2020",
+        "ms": 1460,
+        "response": {
+          "session_id": "18e91fbd-ea7c-4ee4-9ae5-d35a00d2cfad",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Yaris 2020?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "65 mil km",
+        "ms": 5459,
+        "response": {
+          "session_id": "18e91fbd-ea7c-4ee4-9ae5-d35a00d2cfad",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de $10.000.000 y tu Yaris 2020 con 65.000 km, estas opciones entran en tu presupuesto sin financiar:\n- Volkswagen Gol Trend 2018, hatchback, 110.000 km, $9.200.000\n- Ford Fiesta 2017, hatchback, 105.000 km, $8.200.000\n\nSi querés algo un poco más nuevo o distinto, hay opciones en un tramo un poco más alto, pero ya superan tu presupuesto, como el Toyota Etios 2019, hatchback, 45.000 km, $12.500.000.\n\nY si querés, también te puedo pasar todo el stock que tenemos para que lo veas completo. Me decís qué te interesa de estas opciones o si querés ampliar la búsqueda?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "mostramelas de nuevo asi las veo bien",
+        "ms": 7092,
+        "response": {
+          "session_id": "18e91fbd-ea7c-4ee4-9ae5-d35a00d2cfad",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Estas son las opciones que te entran en presupuesto sin financiar, entregando tu Yaris 2020 con 65.000 km:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY estas opciones un poco más arriba, que estarían fuera del presupuesto pero podrías evaluar con la entrega de tu usado:\n- Toyota Etios 2019 — 45.000 km — $12.500.000\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n- Renault Kangoo 2021 — 82.000 km — $18.500.000\n\nSi querés, te puedo ayudar a coordinar la tasación de tu usado o mostrarte más detalles de algún modelo. Qué te interesa?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2019",
+              "precio": "$12.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · media_si_lista_autos: TIPO B: nombró 3 autos del catálogo y no mandó ninguna card ni imagen"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "1ra vez: el abanico puede traer product_cards si Franco emite auto_ids."
+      },
+      {
+        "turn": 4,
+        "note": "REPETICION: si Franco re-emite los mismos auto_ids ya mostrados, product_cards debe salir []. Verificar en el log: cards_recientes poblado, auto_ids del turno subset de cards_recientes."
+      }
+    ],
+    "error": null
+  }
+]

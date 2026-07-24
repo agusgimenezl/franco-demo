@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v56.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v57.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,31 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 55 casos · baseline-v33.json → 30/35 |
+| Evals | 56 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **Sesión 2026-07-24. TARGET-B (abanico y cards por código) — EN CURSO. TB-1 (dedup de cards) HECHO Y MEDIDO.**
+> Arquitectura de la respuesta: Franco emite `{messages, auto_ids}` → `Hidratar autos` (DB) → `Autos ya
+> mostrados` → `Armar respuesta` (code, arma product_cards/images + guard de cierre) → `Responder a Render`.
+> Las cards YA se hidratan por código; la data es determinística. Falla A4: Franco a veces deja `auto_ids`
+> vacío (cards flaky) → TB-2. Y el abanico (3+ autos) se mandaba SIN dedup → TB-1.
+> - **TB-1 — `scripts/dedup-cards-abanico.mjs` (v56→v57). PEGADO Y MEDIDO.** Pedido de Agustina: no repetir
+>   el mismo mazo de cards si ya se mandó y la charla sigue sobre esos autos. (A) `Autos ya mostrados` ahora
+>   devuelve `cards_recientes` (ids con product_cards en los últimos 8 msgs; el `ids_recientes` de fotos sigue).
+>   (B) `Armar respuesta` rama autos>=3: si TODOS ya están en cards_recientes → product_cards=[] (no repite);
+>   si hay al menos uno nuevo → lista completa (sin huecos). Test offline + sintaxis JS válida. Verificado byte
+>   a byte (Armar respuesta 7768, Autos ya mostrados 806). **PRUEBA VINCULANTE (log 7470):** Franco re-emitió
+>   `auto_ids=[2,3,4,1]` ("acá te las vuelvo a mostrar"), `cards_recientes="1,2,3,4"`, `Armar respuesta` sacó
+>   `product_cards=[]`. El dedup funciona end-to-end. Caso nuevo `dedup-cards-repite`.
+> - **Caveat de instrumento:** el check `media_si_lista_autos` (TIPO B, en ALWAYS) ahora da FALSO POSITIVO en
+>   turnos de dedup (Franco lista autos en texto, cards=[] a propósito). Solo ve un turno, no la sesión. Volverlo
+>   consciente del dedup (trackear cards ya mostradas en la sesión) va con TB-2, que es donde toca el tema cards.
+> **Puntero: v57 vivo.** **Sigue:** TB-2 (cards flaky: que el abanico emita auto_ids siempre) y TB-3 (eco del
+> encabezado). Interpretación de dedup usada: suprimir solo cuando el set ENTERO ya se mostró (repeticiones/
+> subsets), no cuando hay algo nuevo. Pusheado.
 
 > **Sesión 2026-07-23. SESIÓN C (confiabilidad/arquitectura) — EN CURSO. Target (a): colapso determinístico.**
 > Baseline limpio medido (`evals/c-baseline-cadena-eco.json`, `c-baseline-estado.json`): parser fallback spikea
