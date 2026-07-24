@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v64.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v66.json` · 35 nodos
 
 | | |
 |---|---|
@@ -25,12 +25,17 @@
 > mostrar TODAS las de la carrocería (match_tipo='alternativa'), cerrar con detalle/stock completo. `scripts/
 > buga-mostrar-todas-las-alternativas.mjs`. **Medido:** repro 3/3 con las 4 pickups (Amarok/S10/Hilux/Ranger)
 > nombradas + como cards [15,14,16,13]. Verificado byte a byte. **Puntero: v64.**
-> **TB-3 (encabezado por código) — PEGADO v63 pero NO-OP (no rompe nada).** `scripts/tb3-encabezado-abanico-por-
-> codigo.mjs`. Dos causas medidas: (1) el output del tool viene `{response:[...]}` → el acceso `$('Listar stock').
-> first().json.eco_permuta` daba undefined (fix: `.response[0]`); (2) el abanico casi no dispara porque Franco
-> pasa `precio_objetivo=0` flaky → guard v59 → embudo (log 7697). Falta: corregir el acceso (v65) y confirmar que
-> `$('Listar stock')` es accesible desde Armar respuesta (tool sub-nodo). Anti-eco por prompt (v50/v51) sigue
-> cubriendo ~50-80% mientras tanto.
+> **TB-3 (encabezado del abanico por código) — HECHO Y MEDIDO. v63→v65→v66.**
+> `scripts/tb3-encabezado-abanico-por-codigo.mjs` (v63: SQL echo + composición), `tb3-fix-acceso-listar-stock.mjs`
+> (v65: acceso `.response[0]` — el tool envuelve en `{response:[...]}` — + fallback a Leer lead estado),
+> `tb3-encabezado-burbujas.mjs` (v66: robusto a header en burbuja separada). Listar stock echoa eco_permuta/
+> financia/presu; Armar respuesta compone el encabezado SOLO con lo que hay (no inventa usado/anticipo/efectivo).
+> **PRUEBA VINCULANTE (log 7759):** eco flags echoados; msg[0] reemplazado por "Con tu usado como parte de pago y
+> tu efectivo, estas opciones te pueden servir:" (caso burbuja separada). **Medido v66:** eco 1/9 (era ~50%);
+> code header fira siempre que el abanico emite auto_ids (autos>=3). **Residual:** cuando Franco NO emite auto_ids
+> (cards flaky, TB-2) el header no se compone → el eco de Franco queda. El gate autos>=3 es a propósito (no
+> disparar en fichas). **Puntero: v66.** Queda TB-2 (que el abanico emita auto_ids siempre) como lo único abierto
+> de target-b.
 
 > **Sesión 2026-07-24. BUG-B (descriptivo en comparaciones) — HECHO Y MEDIDO. v62.**
 > `scripts/comparacion-incluye-descriptivo.mjs`. BUG (captura): al comparar 2+ vehículos Franco daba solo ficha
