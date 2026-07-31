@@ -332,6 +332,24 @@
     },
 
     {
+      "id": "permuta-todo-junto",
+      "bug": "PERMUTA - repregunta un dato ya dado cuando NO hay presupuesto declarado (medido 2026-07-30, ~1/3): el cliente da señal de permuta + marca/modelo/año + km TODO JUNTO en un solo mensaje ('quiero entregar mi auto como parte de pago, tengo un gol trend 2015, tiene 87 mil km') y Franco contesta 'me faltaría saber cuántos kilómetros tiene tu Gol Trend 2015' — el km ya se lo dieron. El bloque condicional de '## Permuta' ('Cierre de este caso': no sabés el auto -> preguntás eso; sabés el auto pero no los km -> preguntás los km; YA TENÉS AUTO Y KM -> pedís nombre) funciona cuando el cliente declaró presupuesto/anticipo; sin presupuesto compite con la rama 'SIN PRESUPUESTO DECLARADO' y a veces pierde. CHECK RECALIBRADO 2026-07-30: mide EL BUG REAL (no repreguntar marca/modelo/año/km ya dados), NO exige un dato puntual — con el usado ya identificado cualquier próximo paso razonable vale (DECISIÓN 2026-07-23, ver permuta-una-pregunta-por-vez): pedir el nombre, ofrecer el abanico, preguntar qué auto busca, o derivar.",
+      "turns": [
+        {
+          "say": "Quiero entregar mi auto como parte de pago, tengo un gol trend 2015, tiene 87 mil km",
+          "checks": [
+            ["text_not_matches", "(?i)(qu[eé] (modelo|marca|a[ñn]o)|modelo y a[ñn]o|qu[eé] auto (entreg|ten[eé]s|ser[ií]a)|cu[aá]l es (el|tu) (modelo|marca|a[ñn]o))"],
+            ["text_not_matches", "(?i)(cu[aá]ntos kil[oó]metros|cu[aá]nto kilometraje|kil[oó]metros tiene|km tiene|saber (los |el )?(kil[oó]metros|kilometraje)|falta(r[ií]a)? (saber )?(los |el )?(kil[oó]metros|kilometraje))"],
+            ["cards_empty"],
+            ["images_empty"],
+            ["max_preguntas", 2],
+            ["manual", "Auto (Gol Trend 2015) + km (87.000) TODO JUNTO en el primer mensaje, con señal de permuta explícita y SIN presupuesto/anticipo declarado. LO ÚNICO QUE SE MIDE: que NO repregunte marca/modelo/año/km — ya se los dieron. El próximo paso puede ser cualquiera razonable (pedir nombre, preguntar qué auto busca, ofrecer el abanico o derivar): todos PASAN. Solo falla si repite un dato que el cliente ya dio."]
+          ]
+        }
+      ]
+    },
+
+    {
       "id": "derivacion-pide-datos-del-usado",
       "bug": "Si el cliente entrega un usado y llega a la derivación, Franco pide sólo nombre y apellido: el asesor recibe el lead sin saber qué auto entrega, y tiene que volver a preguntar todo. La sección ## Permuta SÍ lo pedía ('pedile el NOMBRE Y APELLIDO y los datos del usado'), pero sólo aplica cuando se disparó esa narrativa; por la derivación general el dato se perdía. Franco tiene con qué saberlo: `Leer lead (estado)` le pasa lead_entrega y lead_usado.",
       "turns": [
@@ -1083,6 +1101,160 @@
           ["text_matches", "(?i)t-?cross"],
           ["text_matches", "(?i)vento"],
           ["manual", "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."]
+        ] }
+      ]
+    },
+    {
+      "id": "consignacion-vende-su-auto",
+      "bug": "CONSIGNACION (Fase 1, feature nueva): el cliente no viene a comprar sino a VENDER su auto (quiere que la agencia se lo venda). En v66 Franco no conoce la consignacion: o lo confunde con permuta/compra (pregunta presupuesto, tira stock) o lo manda a tasacion generica. Debe reconocer que es consignacion, explicar como funciona con datos del FAQ (comision 5%, sigue siendo titular, el asesor arma el contrato) y derivar de a una pregunta por turno (auto -> km -> nombre), sin mostrar stock ni pedir presupuesto.",
+      "turns": [
+        { "say": "hola, quiero vender mi auto. ustedes me lo venden por mí?", "checks": [
+          ["text_matches", "(?i)consigna|comisi[oó]n"],
+          ["text_not_matches", "(?i)presupuesto|anticipo|cu[aá]nto pens[aá]s|qu[eé] auto (busc|est[aá]s buscando)"],
+          ["cards_empty"],
+          ["images_empty"],
+          ["max_preguntas", 2],
+          ["manual", "Cliente quiere VENDER su auto (consignacion), NO comprar. Franco explica como funciona (lo vende por el, comision 5%, sigue siendo titular hasta la venta, asesor coordina la inspeccion y arma el contrato) y arranca a derivar pidiendo que auto es. NO abre permuta/compra (nada de presupuesto/anticipo) ni tira stock/cards."]
+        ] },
+        { "say": "es un corolla 2018", "checks": [
+          ["text_matches", "(?i)kil[oó]metr|\\bkm\\b"],
+          ["cards_empty"],
+          ["max_preguntas", 2],
+          ["manual", "Sabe el auto (Corolla 2018) pero no los km: pide los km, de a UNA pregunta. Sigue en consignacion/derivacion, sin stock ni cards."]
+        ] },
+        { "say": "80 mil km", "checks": [
+          ["text_matches", "(?i)nombre"],
+          ["cards_empty"],
+          ["max_preguntas", 2],
+          ["manual", "Ya tiene auto + km. Ahora pide el NOMBRE Y APELLIDO (una sola pregunta) para derivar. No re-pregunta datos del auto ni tira stock."]
+        ] },
+        { "say": "Rodrigo Paz", "checks": [
+          ["text_not_matches", "(?i)(tu nombre|nombre y apellido)[^.!?]{0,20}\\?"],
+          ["text_matches", "(?i)rodrigo"],
+          ["cards_empty"],
+          ["manual", "Ya tiene auto + km + nombre. Confirma que un asesor lo contacta para coordinar la inspeccion y el contrato de consignacion, y cierra. Trata por nombre de pila (Rodrigo), NO repite el apellido, NO re-pide el nombre, NO tira stock."]
+        ] }
+      ]
+    },
+    {
+      "id": "consignacion-todo-junto",
+      "bug": "CONSIGNACION - mensaje inicial con TODO JUNTO (captura real de Agustina, sesion 2026-07-30): 'Buenas, quiero vender mi auto. Es un ford ka 2017' da marca+modelo+anio en el MISMO mensaje que la senial de consignacion. A diferencia de '## Permuta' (que tiene un bloque condicional de 3 estados con su propio ejemplo concreto), '# Consignacion' (v67) solo cubre el primer turno cuando NO se sabe nada del auto: nunca copio el bloque condicional. Franco repregunta 'que modelo y anio es?' o 'que anio tiene y cuantos km?' en vez de ir directo a lo unico que falta (los km). Confirmado con log real de ejecucion n8n (8548): el texto sale del modelo (Franco), no del guard de 'Armar respuesta' (trampa 7 descartada).",
+      "turns": [
+        { "say": "Buenas, quiero vender mi auto. Es un ford ka 2017", "checks": [
+          ["text_matches", "(?i)consigna|comisi[oó]n"],
+          ["text_not_matches", "(?i)(qu[eé] (modelo|marca|a[ñn]o)|modelo y a[ñn]o)"],
+          ["text_matches", "(?i)kil[oó]metr|\\bkm\\b"],
+          ["cards_empty"],
+          ["images_empty"],
+          ["max_preguntas", 2],
+          ["manual", "Cliente dio marca+modelo+anio TODO JUNTO en el primer mensaje (Ford Ka 2017), junto con la senial de consignacion. Franco debe explicar brevemente la consignacion (comision 5%, sigue siendo titular) e ir DIRECTO a pedir los km -- el unico dato que falta. NO debe volver a preguntar marca, modelo ni anio: ya se los dieron."]
+        ] },
+        { "say": "tiene 95 mil km", "checks": [
+          ["text_matches", "(?i)nombre"],
+          ["text_not_matches", "(?i)(qu[eé] (modelo|marca|a[ñn]o)|cu[aá]ntos kil[oó]metros)"],
+          ["cards_empty"],
+          ["max_preguntas", 2],
+          ["manual", "Ya tiene auto (Ford Ka 2017) y km (95.000). Debe pedir NOMBRE Y APELLIDO para derivar, sin volver a preguntar por el auto ni por los km."]
+        ] }
+      ]
+    },
+    {
+      "id": "primer-auto-no-pregunta-usado",
+      "bug": "BUG A (captura real Agustina, sesion Pedro Atenor 2b363055-1dc3-41eb-839e-0414f1d78e45, 2026-07-31): el cliente dice 'Estoy buscando comprar mi primer auto' en el turno 2, y en el turno 7 Franco cierra el detalle del Etios con 'Te interesa saber como seria financiarlo o entregando tu usado?'. Es incoherente: si es su PRIMER auto no tiene usado para entregar. Root cause (leido del prompt v71, ## Paso 3, cierre comercial obligatorio): el guion de ejemplo dice literalmente 'te interesa saber como seria financiarlo o entregando tu usado?' y Franco lo recita sin filtrar por el contexto de primer auto (trampa 6: el ejemplo concreto le gana a la regla). Debe cerrar con una pregunta comercial que NO ofrezca permuta/entrega de usado (la financiacion si es valida).",
+      "turns": [
+        { "say": "Hola, estoy buscando comprar mi primer auto, quiza un usado? nose que me recomendarias", "checks": [
+          ["text_not_matches", "(?i)(entregando|entregar|entreg[aá]s|entregas)\\s+(un|tu|el|su|alg[uú]n)?\\s*usado|usado[^.?!]{0,25}parte de pago|permut"],
+          ["manual", "Cliente dice explicitamente que es su PRIMER auto. Franco orienta y pregunta preferencias. NO debe ofrecer entregar/permutar un usado en ningun momento de esta conversacion: no tiene auto."]
+        ] },
+        { "say": "Me gusta el Toyota Etios, cuantos km tiene?", "checks": [
+          ["text_not_matches", "(?i)(entregando|entregar|entreg[aá]s|entregas)\\s+(un|tu|el|su|alg[uú]n)?\\s*usado|usado[^.?!]{0,25}parte de pago|permut"],
+          ["manual", "TURNO DEL BUG: Franco da la ficha del Etios y cierra con la pregunta comercial obligatoria de ## Paso 3. El guion de ejemplo del prompt ('te interesa saber como seria financiarlo o entregando tu usado?') es lo que produce el bug. Debe cerrar SIN ofrecer permuta/usado (puede ofrecer financiacion, verlo en persona, o algo parecido). Es PRIMER auto: no tiene usado que entregar."]
+        ] }
+      ]
+    },
+    {
+      "id": "derivacion-completada-no-reofrece-visita",
+      "bug": "BUG B (captura real Agustina, sesion Pedro Atenor 2b363055-1dc3-41eb-839e-0414f1d78e45, 2026-07-31): la derivacion YA se completo (Franco pidio nombre para la simulacion, el cliente dio 'Pedro Atenor', Franco confirmo 'ya le paso tu anticipo y datos al asesor'; lead quedo en estado='Requiere asesor'). Varios turnos despues el cliente pregunta 'donde estan ubicados? puedo ir a verlo con un mecanico de confianza y probarlo?' y Franco da la direccion, dice que puede traer el mecanico y coordinar un test drive, PERO cierra con una burbuja aparte: 'Querés que te conecte con un asesor para coordinar la visita y el test drive?' — re-ofrece conectar a alguien que YA esta derivado. TRAMPA 7 DESCARTADA con evidencia: ese turno salio con 0 product_cards y el guard de 'Armar respuesta' solo agrega cierre si autos.length>=1, ademas de que sus 3 strings fijos no incluyen esa frase; la escribe Franco. v68 ataco la variante 'dar la direccion' pero no cubre la variante VISITA/TEST DRIVE. Deseado (Agustina, textual): decir que cuando el asesor lo contacte puede coordinar la visita y el test drive, en vez de re-ofrecer conectarlo.",
+      "turns": [
+        { "say": "hola, me interesa el toyota etios", "checks": [] },
+        { "say": "antes me gustaria saber como se podria financiar, tengo 5 millones para poner", "checks": [] },
+        { "say": "Pedro Atenor", "checks": [] },
+        { "say": "que es un hatchback?", "checks": [] },
+        { "say": "donde estan ubicados? puedo ir a verlo con un mecanico de confianza y probarlo?", "checks": [
+          ["text_matches", "(?i)aconquija|yerba buena"],
+          ["text_not_matches", "(?i)(quer[eé]s|te gustar[ií]a|prefer[ií]s|te conecto|puedo conectarte|te pongo en contacto)[^.?!]{0,80}(un asesor|con un asesor|que te contacte)"],
+          ["manual", "Cliente YA derivado (dio el nombre y Franco confirmo que le pasa los datos al asesor). Pregunta por ubicacion + ir con su mecanico + probarlo. Franco debe: dar direccion y horario, confirmar que puede traer su mecanico, y enmarcar la visita/test drive como algo que coordina el asesor CUANDO LO CONTACTE ('cuando el asesor te contacte, coordinas con el la visita y el test drive'). NO debe re-ofrecer 'querés que te conecte con un asesor?' — ya esta derivado."]
+        ] }
+      ],
+      "lead_checks": [
+        ["field_equals", "estado", "Requiere asesor"],
+        ["field_matches", "nombre", "(?i)pedro\\s+atenor"]
+      ]
+    },
+    {
+      "id": "derivacion-turno-siguiente-no-reofrece",
+      "bug": "DESFASE DEL ESTADO DEL LEAD (root cause estructural, sesion 2026-07-31): `Leer lead (estado)` corre en el paso 3 de la cadena y el CRM escribe el lead DESPUES de `Responder a Render`, asi que el estado que ve Franco llega >=1 turno tarde. Este caso ataca el peor momento: el turno INMEDIATAMENTE siguiente a la confirmacion de la derivacion, donde la lectura compite con la escritura async del turno anterior. En el log 9327 se midio `lead_estado: 'En conversación'` y `lead_nombre: ''` con la derivacion ya hecha, y el `estado_cliente` de Franco sin ninguna marca de derivacion. v73 lo mitiga por LENGUAJE (le dice a Franco que mire la conversacion reciente); este caso existe para ver si esa mitigacion alcanza cuando el estado todavia no llego.",
+      "turns": [
+        { "say": "hola, me interesa el toyota etios", "checks": [] },
+        { "say": "como se podria financiar? tengo 5 millones para poner", "checks": [] },
+        { "say": "Pedro Atenor", "checks": [] },
+        { "say": "puedo ir a verlo con un mecanico de confianza y probarlo?", "checks": [
+          ["text_not_matches", "(?i)(quer[eé]s|te gustar[ií]a|prefer[ií]s|te conecto|puedo conectarte|te pongo en contacto)[^.?!]{0,80}(un asesor|con un asesor|que te contacte)"],
+          ["manual", "TURNO INMEDIATAMENTE SIGUIENTE a la confirmacion de derivacion (el peor caso del desfase: la lectura del estado compite con la escritura async del turno anterior). Franco debe confirmar que puede venir con su mecanico y enmarcar la coordinacion en el asesor QUE YA LO VA A CONTACTAR, sin re-ofrecer conectarlo."]
+        ] }
+      ]
+    },
+    {
+      "id": "control-sin-derivar-si-ofrece-asesor",
+      "bug": "CONTROL INVERSO del flag determinístico `ya_derivado` (v74). El riesgo real de derivar 'ya derivado' por SQL desde los mensajes recientes es el FALSO POSITIVO: que el flag se prenda cuando la derivacion NO ocurrio y Franco deje de ofrecer el asesor cuando SI corresponde. Esta conversacion NO tiene ninguna derivacion (el cliente nunca dio el nombre ni acepto que lo contacten) y pide algo que Franco no puede resolver solo (cotizacion formal con todos los gastos): ahi ofrecer/derivar a un asesor es EL comportamiento correcto. Debe pasar ANTES y DESPUES del cambio.",
+      "turns": [
+        { "say": "hola, me interesa la toyota hilux", "checks": [] },
+        { "say": "me pueden hacer una cotizacion formal con todos los gastos incluidos?", "checks": [
+          ["text_matches", "(?i)asesor"],
+          ["manual", "SIN derivacion previa (no dio nombre, no acepto contacto). Pide una cotizacion formal con gastos, que Franco no puede armar solo. Debe seguir ofreciendo//derivando a un asesor. Si despues del flag `ya_derivado` este caso deja de mencionar al asesor, el flag esta dando falso positivo y hay que revertir."]
+        ] }
+      ]
+    },
+    {
+      "id": "derivacion-cierre-no-reofrece-ni-inventa",
+      "bug": "POST-DERIVACION (capturas Agustina): interes en 2 autos -> pregunta financiacion -> pregunta transferencia/papeles -> da el nombre (deriva por el flujo de financiacion, estado='Requiere asesor'). Despues pregunta la direccion para ir a verlos. Franco da la direccion PERO re-ofrece el asesor ('querés que un asesor te contacte para coordinar la visita?') y/o inventa acciones que no puede hacer ('te reservo la S10', 'querés que te prepare algun auto?'). Medido (repro): estado YA estaba en 'Requiere asesor', o sea NO es lag; es la regla de cierre comercial (## Paso 4 'ofreces que un asesor lo contacte' + cierre obligatorio) pisando a 'la derivacion manda'. El bug sale cuando la derivacion fue IMPLICITA (via financiacion+nombre), no con un 'quiero asesor' explicito. Debe: dar la direccion y cerrar con 'quedo a disposicion', sin re-ofrecer asesor (ya aceptado) ni prometer reservar/preparar/agendar (lo coordina el asesor).",
+      "turns": [
+        { "say": "hola, me interesan la chevrolet s10 y la volkswagen vento", "checks": [] },
+        { "say": "cómo es el tema de la financiación?", "checks": [] },
+        { "say": "dale, y también cómo es la transferencia y los papeles?", "checks": [] },
+        { "say": "Agustina Lizarraga", "checks": [] },
+        { "say": "donde están? para ir a verlos en persona", "checks": [
+          ["text_matches", "(?i)aconquija|yerba buena"],
+          ["text_not_matches", "(?i)(quer[eé]s|te gustar[ií]a|prefer[ií]s|te conecto|puedo conectarte)[^.?!]{0,70}(un asesor|que te contacte|una cotizaci)"],
+          ["text_not_matches", "(?i)te reservo|te la reservo|te lo reservo|reservar(te| alguno| alguna| esos| estos)|te prepar[oae]|prepar[ae] alg[uú]n auto|te lo preparo|te la preparo"],
+          ["manual", "Cliente YA derivado (acepto asesor + dio nombre en turnos previos). Pregunta la direccion. Franco da direccion+horario y CIERRA con 'quedo a disposicion', SIN re-ofrecer el asesor (ya aceptado) y SIN inventar acciones que no puede hacer (reservar/preparar/agendar la visita). Coordinar la visita es del asesor, no de Franco."]
+        ] }
+      ],
+      "lead_checks": [
+        ["field_equals", "estado", "Requiere asesor"],
+        ["field_matches", "nombre", "(?i)agustina\\s+lizarraga"]
+      ]
+    },
+    {
+      "id": "stock-automaticos-todos",
+      "bug": "CURACION en consulta por filtro (captura Agustina): '¿qué autos automáticos tenés?'. Franco CURA 3 'por ejemplo' (imagen 1: solo Ranger/T-Cross/Corolla) o lista de MEMORIA e incluye MANUALES como automaticos (imagen 2: listo Hilux y S10, que son MANUAL). Root MEDIDO en stock.csv: la transmision NO es filtrable (no esta en metadata, solo en el texto content), asi que Franco adivina. Automaticos reales (incluye CVT) = 5: Vento, T-Cross, Renegade, Ranger, Corolla. Fix v69: filtro determinístico de transmision en Buscar auto (sobre content) + prompt (mostrar TODOS los que matchean, sin curar, ofrecer mas info o stock completo). Debe listar los 5, sin manuales.",
+      "turns": [
+        { "say": "hola, estoy buscando autos automáticos, tenés algo?", "checks": [
+          ["text_contains_all", ["vento", "t-cross", "renegade", "ranger", "corolla"]],
+          ["text_not_contains", ["hilux", "amarok", "s10"]],
+          ["text_matches", "(?i)m[aá]s (detalle|info|opciones)|stock completo|todo el stock|cu[aá]l te|alguno de"],
+          ["manual", "Automaticos reales (incluye CVT) = Vento, T-Cross, Renegade, Ranger, Corolla. Debe listar los 5 (TODOS), sin curar, SIN meter manuales (Hilux/S10/Amarok son MANUAL), y cerrar ofreciendo mas detalle de alguno o el stock completo. En el LOG: debe llamar Buscar auto con transmision=automatica, no Listar stock ni adivinar."]
+        ] }
+      ]
+    },
+    {
+      "id": "buscar-marca-solo-esa-marca",
+      "bug": "CARDS de otra marca en consulta por MARCA (captura Agustina): '¿algo de Volkswagen?'. El texto lista bien las 4 VW, pero las CARDS traen Ranger/S10/Hilux/Renegade (Ford/Chevrolet/Toyota/Jeep), y Franco hasta los llama 'pickups Volkswagen'. Root: Buscar auto trae exacto + alternativas de la MISMA carroceria; VW abarca 4 carrocerias (SUV/pickup/sedan/hatchback), asi que las alternativas se vuelven casi todo el stock de otras marcas. Fix v70: las alternativas por carroceria salen SOLO cuando la consulta apunta a UNA carroceria (un modelo/tipo); una marca que abarca varias carrocerias devuelve SOLO esa marca. Debe: cards solo Volkswagen, y ofrecer el stock completo.",
+      "turns": [
+        { "say": "hola, ando buscando algo de Volkswagen, qué tenés?", "checks": [
+          ["cards_titles_not_contains", ["ford", "chevrolet", "toyota", "jeep", "renault", "peugeot", "fiat"]],
+          ["text_matches", "(?i)volkswagen|t-?cross|vento|amarok|gol"],
+          ["manual", "Las CARDS tienen que ser SOLO Volkswagen (T-Cross, Amarok, Vento, Gol Trend). NO deben aparecer cards de Ford/Chevrolet/Toyota/Jeep/etc. En el texto puede ofrecer el stock completo, pero no debe llamar 'pickups Volkswagen' a una Ranger/S10/Hilux (son de otras marcas)."]
         ] }
       ]
     }

@@ -209,6 +209,15 @@ const CHECKS = {
 
   cards_empty: (r) =>
     (r.product_cards || []).length === 0 ? null : `esperaba 0 cards, hay ${r.product_cards.length}`,
+
+  // Ninguna card debe ser de una marca/modelo que no corresponde al filtro pedido: "Volkswagen"
+  // no debe traer cards Ford/Chevrolet. Los checks de texto no ven las cards; este mira el titulo
+  // de cada product_card. Cazó el bug de alternativas-por-carroceria explotando en una consulta por marca.
+  cards_titles_not_contains: (r, needles) => {
+    const titles = (r.product_cards || []).map((c) => String(c?.titulo || '').toLowerCase())
+    const bad = needles.filter((n) => titles.some((t) => t.includes(String(n).toLowerCase())))
+    return bad.length === 0 ? null : `cards con marca/modelo que no debería aparecer: ${bad.join(', ')}`
+  },
   images_min: (r, n) =>
     (r.images || []).length >= n ? null : `${(r.images || []).length} imágenes, mínimo ${n}`,
   images_empty: (r) =>

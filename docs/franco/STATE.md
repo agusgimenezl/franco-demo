@@ -1,10 +1,10 @@
 # Estado de Franco
 
-Última actualización manual: **2026-07-22**
+Última actualización manual: **2026-07-30**
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v66.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v74.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,420 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 59 casos · baseline-v33.json → 30/35 |
+| Evals | 69 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **Sesión 2026-07-31. `ya_derivado` — flag determinístico por SQL. HECHO, DESPLEGADO (v74) Y MEDIDO.
+> NO hay que revertir. Puntero: v74 vivo.**
+> **HUMO (lo primero, era el riesgo grave: un error de sintaxis en `Leer lead (estado)` corta la cadena y el
+> cliente no recibe NADA):** mensaje simple por el webhook → **HTTP 200, 3,6s, respuesta normal, sin burbuja de
+> fallback**. Y encima sobre una sesión nueva sin mensajes previos, que es justo el camino del
+> `COALESCE(..., false)`. **La cadena principal no se cortó.**
+> **DEPLOY VERIFICADO byte a byte** (`get_workflow_details` vs `franco-n8n-v74.json`): 35/35 nodos; la query de
+> `Leer lead (estado)` **idéntica** (1571 chars, con `AS ya_derivado` y conservando `FROM (SELECT 1) d`);
+> `queryReplacement` **sin cambios** y en forma array (trampa 2); `Config.estado_cliente` **idéntico** (1154
+> chars, arranca con `={{`, 3 menciones de `l.ya_derivado`); **ningún otro campo de Config** cambiado; el
+> **`systemMessage` de Franco idéntico a v73 y v74** (no se tocaba); **ningún otro nodo** con parameters
+> distintos.
+> **PRUEBA VINCULANTE EN VIVO — el mecanismo funciona end-to-end. Evidencia, ejecución `9591`:**
+> `Leer lead (estado)` devolvió **1 fila** (trampa 4 ✓) con **`ya_derivado: true`**, y el `Config.estado_cliente`
+> que recibió Franco fue: *"- No entrega ningún usado.\n- **YA ACEPTO que lo contacte un asesor: la derivacion
+> esta en curso, no se la vuelvas a ofrecer.**"* — la línea que en el log 9327 (el bug original) NO se generaba.
+> **EL CASO TRAMPA, VALIDADO EN PRODUCCIÓN (no sólo offline) — ejecución `9586`:** en ese turno el historial ya
+> contenía *"con esos datos **ya le puedo pasar** todo a un asesor..."* (un OFRECIMIENTO) y el flag devolvió
+> **`ya_derivado: false`**. El falso positivo que era el riesgo del cambio **no ocurre**, medido sobre datos
+> vivos. En la misma conversación, tras la confirmación real (*"listo Pedro, **un asesor te contacta**..."*), el
+> turno siguiente dio `true` (9587). Flag NO pegado: da `false` en sesiones nuevas (9583, 9586) y `true` sólo
+> tras confirmación (9587, 9591).
+> **HONESTIDAD SOBRE EL ALCANCE DE LA PRUEBA:** en las corridas de hoy el CRM llegó a tiempo, así que **no
+> conseguí exhibir un turno con `lead_estado='En conversación'` Y `ya_derivado=true` a la vez** (la combinación
+> exacta del bug 9327, que allá se dio porque el CRM estaba rate-limited). Lo que quedó probado es que el flag
+> se calcula bien, no da falso positivo, y llega a `estado_cliente`; el aporte es **estructural** (elimina la
+> dependencia del timing del CRM), no algo que hoy se pudiera exhibir. Sí hay evidencia parcial del desfase en
+> 9591: `lead_nombre` llegó vacío aunque el cliente ya había dado "Pedro Atenor".
+> **CONTROLES (`--repeat 3 --delay 3000`, sólo los 4 necesarios). Leídos separando check objetivo de ruido:**
+> - **`control-sin-derivar-si-ofrece-asesor` (el control inverso, la puerta de revert): NO hay falso positivo.**
+>   El runner marca 0/3 y **eso asusta, pero el detalle lo desarma**: en las 2 corridas que produjeron respuesta
+>   real, Franco **sigue ofreciendo el asesor** (*"...luego te conecto con un asesor para que te prepare esa
+>   cotización"* / *"Querés que te pase con un asesor...?"*) → **0 fallas de check objetivo**. La 3ra corrida
+>   "falló" el `text_matches asesor` porque la respuesta FUE la burbuja de fallback del parser. El turno 1 de
+>   este caso ya venía cayendo en fallback en v73 (2/3): es preexistente, no de v74.
+> - `derivacion-turno-siguiente-no-reofrece`: 2/3. **La falla NO es atribuible a v74**, y es demostrable: en esa
+>   corrida Franco nunca confirmó derivación en T3 (preguntó por el usado), así que `ya_derivado` fue `false` →
+>   `estado_cliente` idéntico al de v73. **v74 es un superset estricto**: sólo puede AGREGAR la línea cuando hay
+>   confirmación; sin confirmación el comportamiento es exactamente el de v73. Es varianza conversacional.
+> - `derivacion-completada-no-reofrece-visita`: **3/3 en los checks de texto**; la única falla es un
+>   `lead TIMEOUT` (el CRM no escribió en 31s) — que es, irónicamente, el desfase que este cambio evita.
+> - `derivacion-cierre-no-reofrece-ni-inventa`: 2/3; la falla es `media_si_lista_autos`, el falso positivo de
+>   instrumento ya documentado en este archivo (TIPO B en turnos de dedup), no la conducta de derivación.
+> **SQL YA EJECUTADO — revisión de comportamiento:** `Leer lead (estado)` tarda **18-19 ms** (en v73, log 9327,
+> tardaba 17 ms) → **+1-2 ms, despreciable**; siempre **1 fila**; **cero errores** en las ejecuciones
+> 9580-9591; y en esta tanda **no hubo rate limits del CRM** (a diferencia de 9324-9327). El riesgo que quedaba
+> abierto de la sesión anterior (SQL nunca ejecutado) **queda cerrado**.
+> **Puntero: v74 vivo.** `state-sync.mjs` L18 → v74. Sesiones de prueba borradas por `/webhook/session-delete`
+> para no ensuciar el CRM de la demo. Sin pushear a git.
+
+> **(entrada previa de esta misma tarea, antes de desplegar) `ya_derivado` — PREPARADO (v74) sobre v73.**
+> Agustina aprobó la recomendación de la sesión anterior: sacar el hecho "ya derivé" del CRM async y calcularlo
+> por SQL. **Regla del proyecto aplicada:** el dato es determinístico → va a SQL, no a más reglas de prompt.
+> **(1) VALIDACIÓN OFFLINE DEL PATRÓN, ANTES de tocar el workflow (era el riesgo que yo mismo marqué).**
+> Bajé las burbujas reales de Franco de `mensajes_demo` de **11 sesiones**: **37 burbujas que mencionan
+> "asesor"**, etiquetadas a mano (**11 confirmaciones de derivación / 26 ofrecimientos o menciones**).
+> Resultado del patrón: **11/11 verdaderos positivos, 26/26 verdaderos negativos, 0 falsos positivos, 0 falsos
+> negativos (37/37)**. El caso trampa discrimina: *"Con eso ya le **puedo pasar** todo a un asesor... me dejás
+> tu nombre?"* (ofrecimiento) **NO** activa, *"ya le **paso** todo a un asesor"* (hecho) **SÍ**. Tampoco activa
+> con *"para que un asesor te contact**e**, me dejás tu nombre?"* (subjuntivo = pedido, no confirmación).
+> **(2) INSTRUMENTO DE MEDICIÓN — el eval NO falló, lo digo explícito y cambié de instrumento.**
+> Escribí `derivacion-turno-siguiente-no-reofrece` apuntando al peor momento del desfase (el turno
+> INMEDIATAMENTE siguiente a la confirmación, donde la lectura compite con la escritura async del turno
+> anterior). **Baseline v73: 3/3 OK — NO falla.** La mitigación por lenguaje de v73 aguanta también ahí. **No
+> inventé una falla para justificar el cambio.** Instrumento usado en su lugar: **PRUEBA VINCULANTE** (patrón
+> ya usado en TB-3 y a2). La mitad que se puede probar sin desplegar ya está hecha:
+> `scratchpad/sim-estado-cliente.mjs` evalúa la expresión NUEVA de `Config.estado_cliente` con los datos
+> **exactos** que devolvió `Leer lead (estado)` en el log real **9327** (`lead_estado: "En conversación"`,
+> `lead_nombre: ""`): **antes** el `estado_cliente` sale sin la línea de derivación (reproduce el bug exacto),
+> **con `ya_derivado=true` sale con la línea** *"- YA ACEPTO que lo contacte un asesor..."*. Controles de la
+> simulación: `ya_derivado=false` NO la enciende; `lead_estado='Requiere asesor'` la sigue encendiendo (el
+> camino viejo no se rompe); y `'t'`/`'true'` (por si n8n entrega el bool de Postgres como string) también.
+> **(3) CONTROL INVERSO** (el riesgo del cambio es apagar el ofrecimiento de más): eval nuevo
+> `control-sin-derivar-si-ofrece-asesor` — conversación SIN ninguna derivación que pide una cotización formal,
+> donde ofrecer el asesor es lo correcto. **Baseline v73: 3/3 mencionan al asesor** (el runner marca 1/3 sólo
+> por la burbuja de fallback del parser en el turno 1, trampa 5 — cero fallas de check objetivo). Tiene que
+> seguir en 3/3 después de pegar v74; si baja, el flag está dando falso positivo y se revierte.
+> **(4) EL CAMBIO — `scripts/ya-derivado-flag-deterministico.mjs` (v73→v74), 2 nodos:**
+> (A) `Leer lead (estado)`: columna nueva `ya_derivado` como **subconsulta ESCALAR** (no puede cambiar la
+> cantidad de filas — **trampa 4**; se mantiene `FROM (SELECT 1) d LEFT JOIN` y `COALESCE(..., false)` cubre la
+> sesión sin mensajes) con `bool_or(b->>'content' ~* '<patrón>')` sobre las últimas 12 burbujas de Franco de
+> `mensajes_demo`, con el mismo `jsonb_typeof(...)='array'` defensivo que ya usa `Autos ya mostrados`.
+> (B) `Config.estado_cliente`: la línea de derivación ahora se empuja con
+> `lead_estado === 'Requiere asesor' || ya_derivado`.
+> **Trampas:** trampa 2 — **no se agregaron parámetros**, se reusa `$1` y el `queryReplacement` sigue en forma
+> array (verificado por aserción); trampa 1 — `estado_cliente` sigue arrancando con `={{`; trampa 5 — **cero
+> llamadas nuevas a LLM**, es SQL puro (importante porque el CRM en `gpt-4.1` ya viene dando rate limits).
+> **Verificado byte a byte (v73→v74):** 35→35 nodos, **únicos nodos con diferencias `Config` y `Leer lead
+> (estado)`**; dentro de `Config` **sólo** `estado_cliente`; dentro de `Leer lead` **sólo** `query`; el
+> **`systemMessage` de Franco IDÉNTICO** (no se tocó); top-level (`connections`, `settings`) idéntico.
+> `state-sync.mjs --file franco-n8n-v74.json` → **los 5 invariantes pasan**.
+> **RIESGO ABIERTO Y HONESTO — el SQL NO se ejecutó nunca.** No tengo acceso directo a Postgres (sólo los
+> webhooks, que son queries fijas), así que validé el SQL de forma estructural (paréntesis y comillas
+> balanceados, termina en `;`, `$1` dos veces) y por analogía con `Autos ya mostrados`, que ya usa en
+> producción los mismos constructos (`CROSS JOIN LATERAL jsonb_array_elements`, `jsonb_typeof`, `contenido`
+> jsonb) sobre la misma tabla. **Pero un error de sintaxis acá corta la cadena principal y el cliente no
+> recibe respuesta.** Al pegar, lo primero es mandar UN mensaje de prueba y confirmar en el log que
+> `Leer lead (estado)` devuelve 1 fila con `ya_derivado`; si erra, revertir a v73 en el acto.
+> **PREPARADO, NO DESPLEGADO (v74).** Lo pega Agustina por UI (**2 nodos**: la query de `Leer lead (estado)` y
+> el campo `estado_cliente` de `Config` — esta vez NO es el systemMessage de Franco).
+> **Al pegar, completar la PRUEBA VINCULANTE:** en el log de una conversación con derivación ya confirmada,
+> verificar que `Leer lead (estado)` devuelve `ya_derivado: true` y que `Config.estado_cliente` contiene la
+> línea "- YA ACEPTO que lo contacte un asesor..." **en el mismo turno**, aun con `lead_estado: "En
+> conversación"`. Más: `control-sin-derivar-si-ofrece-asesor` (debe seguir 3/3) y
+> `derivacion-completada-no-reofrece-visita` + `derivacion-turno-siguiente-no-reofrece` (deben seguir OK).
+
+> **Sesión 2026-07-31. BUG A (primer auto / usado) + BUG B (re-ofrece asesor en visita/test drive) —
+> HECHOS, DESPLEGADOS (v73, acumula v72) Y MEDIDOS.**
+> **VERIFICACIÓN DE DEPLOY (antes de medir, no se asumió):** `get_workflow_details` del MCP contra
+> `franco-n8n-v73.json` → 35/35 nodos, mismos nombres, `systemMessage` **idéntico byte a byte** (50.714 chars),
+> los 3 marcadores de los dos fixes presentes en el vivo (`OJO CON EL USADO`, `VISITA, TEST DRIVE O TRAER UN
+> MECÁNICO`, `OJO CON CÓMO SABÉS QUE YA DERIVASTE`), y **ningún otro nodo con `parameters` distintos**.
+> **MEDIDO en vivo (`--repeat 3 --delay 3000`, solo los 4 casos necesarios): 0 fallas de check objetivo en las
+> 12 corridas.**
+> - **`primer-auto-no-pregunta-usado` (BUG A): 3/3 falla → 3/3 OK.** Ninguna de las 3 ofrece usado/permuta.
+>   Cierres reales: *"Te interesa saber cómo sería financiarlo, o preferís que te muestre otras opciones
+>   similares para comparar?"* / *"...otras opciones similares **para tu primer auto**?"* / *"Lo querés ver en
+>   persona o preferís que te muestre algunas opciones similares **para tu primer auto**?"* — incluso engancha
+>   el contexto de primer auto.
+> - **`derivacion-completada-no-reofrece-visita` (BUG B): 3/3 falla → 3/3 OK en el check objetivo.** Las 3 usan
+>   la formulación que pidió Agustina: *"Cuando el asesor te contacte, coordinás con él la visita y el test
+>   drive."* El runner marca 2/3 sólo porque una corrida tuvo la burbuja de fallback del parser en el TURNO 1
+>   (trampa 5), que no tiene nada que ver con el bug.
+> - **Controles, sin regresión:** `permuta-una-pregunta-por-vez` **3/3 OK**;
+>   `derivacion-cierre-no-reofrece-ni-inventa` **3/3 OK en el check objetivo** (marca 2/3 por el mismo fallback
+>   de parser en el turno 1). Importante porque el fix de BUG A toca el cierre comercial que ambos usan.
+> - Las **2 únicas fallas** de las 12 corridas son `no_fallback_bubble` en el turno 1 — el parser fallback
+>   intermitente ya documentado, no los bugs. Verificado separando fallas de check objetivo vs fallback.
+> **Puntero: v73 vivo** (Agustina pegó por UI). `state-sync.mjs` L18 → v73. Sin pushear a git.
+> Dos bugs con captura real de Agustina, misma conversación (lead **Pedro Atenor**, sesión
+> `2b363055-1dc3-41eb-839e-0414f1d78e45`). Se traía la conversación entera de la DB (`/webhook/session-messages`)
+> y ahí están los dos, textuales. **Un cambio por vez: BUG A → v72, BUG B → v73 (encadenado sobre v72).**
+>
+> **BUG B — TRAMPA 7 RESUELTA PRIMERO, CON LOG (era la pregunta que definía dónde iba el fix).**
+> La frase sale en burbuja separada al final, que es la forma del guard de `Armar respuesta`. **NO es el guard.**
+> Evidencia, ejecución n8n **9327** (turno real "donde estan ubicados? puedo ir a verlo con un mecanico..."):
+> el texto **ya viene en el output crudo de `Franco (AI Agent)`** (2 burbujas, `auto_ids: []`), y `Armar
+> respuesta` lo pasa tal cual (2 entran, 2 salen, `product_cards: []`). Además el guard solo agrega algo si
+> `autos.length >= 1` (acá 0) y sus 3 cierres son literales fijos que no incluyen la frase; y la frase **varía
+> corrida a corrida**, que es generación del LLM, no inyección de código. **Lo escribe Franco → fix al prompt.**
+> **De las tres causas posibles que se plantearon, la evidencia dice (a) — y es más grave de lo que parecía:**
+> en esa misma ejecución 9327, `Leer lead (estado)` devolvió `lead_estado: "En conversación"` y
+> `lead_nombre: ""`, y el `estado_cliente` que se le arma a Franco **no tenía ninguna marca de derivación**
+> (solo presupuesto / vehículo / financiación). O sea: la regla de v68 y la de `# Derivación` ("si figura que ya
+> aceptó, está aceptado") **no tenían sobre qué disparar**, porque el CRM escribe async y el estado llega un
+> turno tarde (deuda ya conocida). Y se suma (b): la variante VISITA/TEST DRIVE no estaba cubierta — v68 ancla
+> en "pregunta la dirección, el horario, o te agradece", y coordinar una visita sí involucra al asesor, así que
+> Franco reagarra el guion de "querés que te conecte con un asesor?". El lead final SÍ quedó en
+> `estado: "Requiere asesor"` con nombre "Pedro Atenor" en las 3 corridas (los `lead_checks` pasaron): el
+> problema es *cuándo* se entera Franco, no si se guarda.
+>
+> **Evals nuevos (`evals/cases.json`, 65→67 casos), ambos fallan primero:**
+> - **`primer-auto-no-pregunta-usado`** — baseline v71: **falla 3/3** (determinístico). Las 3 corridas cierran el
+>   detalle del Etios con el guion del bug (2 con "entregando **un** usado", 1 con "entregando **tu** usado").
+>   **OJO — el primer check estaba mal y lo corregí:** solo miraba "entregando tu usado", así que reportó 1/3
+>   cuando en realidad el bug estaba en las 3. Se amplió el regex (cubre entregando/entregar/entregás +
+>   un/tu/el/su, "parte de pago" y "permut"), se validó contra 9 casos (6 que deben detectar, 3 controles que
+>   deben pasar) y se **re-scoreó offline** las 3 respuestas ya capturadas: **3/3**. El número bueno es 3/3.
+> - **`derivacion-completada-no-reofrece-visita`** — baseline v71: **falla 3/3**. Las 3 re-ofrecen conectar con
+>   un asesor ("Si querés, un asesor puede ayudarte a organizar eso" / "Querés que te conecte con un asesor para
+>   agendar esa visita..." / "...para que te prepare todo para la visita y la prueba?").
+>
+> **BUG A — fix `scripts/primer-auto-no-ofrece-usado.mjs` (v71→v72).** Root cause: el cierre comercial de
+> `## Paso 3` trae como PRIMER ejemplo, literal, el guion que produce el bug ("te interesa saber cómo sería
+> financiarlo o entregando tu usado?"). Trampa 6 pura: se **reemplaza el guion**, no se le pone una prohibición
+> arriba. La lista de ejemplos queda sin la permuta, y se agrega la regla condicional (ofrecer el usado SOLO si
+> tiene un auto para entregar) + el **anti-ejemplo concreto** del primer auto con el guion correcto de reemplazo.
+> Las otras 3 menciones de "entregando tu usado" viven en `## Permuta`, donde SÍ corresponden, y **no se tocan**.
+> **BUG B — fix `scripts/derivado-visita-test-drive.mjs` (v72→v73).** Extiende la regla post-derivación de
+> `# Derivación` (la de v68, que queda intacta) con: (1) la variante visita/test drive/mecánico y su ejemplo
+> concreto —contestar que sí y enmarcar la coordinación en el asesor *que ya lo va a contactar*, con el guion
+> textual que pidió Agustina—, y (2) que para saber si ya derivó mire la **conversación reciente** y no solo el
+> estado, porque el estado llega un turno tarde. El (2) sale directo del log 9327 y es lo único que puede
+> funcionar hoy sin tocar arquitectura.
+> **Verificado byte a byte:** v71→v72, v72→v73 y v71→v73: 35→35 nodos, mismos nombres, **único nodo con
+> diferencias `Franco (AI Agent)`**, y dentro de él **solo** `systemMessage` (v71 48.878 → v72 49.565 → v73
+> 50.714 chars); resto del nodo y todos los campos top-level (`connections`, `settings`) idénticos.
+> `state-sync.mjs --file` sobre v72 y sobre v73 → **los 5 invariantes pasan** en ambos.
+> **Desplegado por Agustina vía UI** (yo no pego nada: memoria del proyecto, nunca vía MCP `update_workflow`).
+> **DEUDA VIVA — el desfase del estado del lead (root cause estructural de BUG B, NO resuelto).**
+> Cadena real confirmada leyendo `connections` de v73 + el log 9327:
+> `Webhook → Contar mensajes previos → Leer lead (estado) → Config → Franco → Hidratar autos → Autos ya
+> mostrados → Armar respuesta → Responder a Render →` *(recién acá)* `→ Leer conversación (CRM) → CRM (AI Agent)
+> → [tool] Guardar lead`. O sea: **Franco lee el lead en el paso 3, y el CRM lo escribe después de que el
+> usuario ya recibió la respuesta** → lo que Franco ve en el turno N lo escribió el CRM en el turno N-1.
+> El mecanismo del prompt existe y está bien hecho (`Config.estado_cliente` empuja *"- YA ACEPTO que lo contacte
+> un asesor..."* cuando `lead_estado === 'Requiere asesor'`), pero en el log 9327 llegó `lead_estado: "En
+> conversación"` y `lead_nombre: ""`, así que esa línea nunca se generó. **v73 lo mitiga por lenguaje** (le dice
+> a Franco que mire la conversación reciente y no espere el estado) y **eso quedó medido 3/3**, pero el dato
+> sigue llegando tarde y va a volver a morder en otras variantes.
+> **RECOMENDACIÓN (analizada esta sesión, NO implementada, decisión de Agustina):** derivar el hecho por
+> **código/SQL** (regla del proyecto), extendiendo la query de `Leer lead (estado)` con un flag `ya_derivado`
+> calculado sobre los últimos mensajes de la sesión, y que `Config.estado_cliente` empuje la línea de derivación
+> con `lead_estado='Requiere asesor' OR ya_derivado`. Hay precedente exacto y funcionando en el mismo workflow:
+> `Autos ya mostrados` ya extrae hechos determinísticos de los últimos 8 mensajes de `mensajes_demo` por SQL
+> puro, con `alwaysOutputData: true` (trampa 4). Costo: 2 nodos tocados, **sin columna nueva, sin nodo nuevo,
+> cero tokens de LLM** (importante: el CRM en `gpt-4.1` ya viene dando `Rate limit ... TPM: Limit 30000`,
+> ejecuciones 9324-9327 de hoy — trampa 5). **Descartadas:** hacer el CRM síncrono antes de Franco (metería una
+> llamada `gpt-4.1` en el camino crítico: duplica la latencia y convierte un rate-limit de fondo en que el
+> cliente no reciba NINGUNA respuesta — inaceptable en la demo; y ni siquiera arregla el caso, porque el CRM del
+> turno N no puede ver la derivación que Franco hace *en* el turno N) y mover/duplicar la lectura del estado
+> (no sirve: para que ayude, la escritura tiene que pasar antes de que Franco lea). **Riesgo principal del fix
+> recomendado:** falsos positivos si el patrón matchea un *ofrecimiento* ("un asesor te puede orientar") en vez
+> de una *confirmación* — hay que matchear confirmación, y validarlo offline contra filas reales de
+> `mensajes_demo` antes de tocar nada, con su propio eval y un control de que Franco SIGA ofreciendo el asesor
+> cuando todavía no derivó. **No es urgente:** con v73 medido 3/3, esto va como próximo cambio planificado, no
+> como hotfix.
+
+> **Sesión 2026-07-30. PERMUTA "todo junto" sin presupuesto — CHECK RECALIBRADO Y MEDIDO. NO SE HIZO FIX: EL BUG
+> NO REPRODUCE (0/8). No generó versión nueva; producción seguía en v71.**
+> (Nota 2026-07-31: el `v72` que existe hoy en el repo es de la sesión de arriba, BUG A "primer auto", no de esto.)
+> Pedido de Agustina: atacar el hallazgo abierto (Franco repregunta el km cuando el cliente da auto+km todo junto
+> y NO declara presupuesto; medido 1/3 contra v70 la sesión anterior).
+> **(1) Primero se arregló el CHECK, antes de medir nada.** El caso `permuta-todo-junto` estaba mal calibrado por
+> mí: exigía `text_matches "nombre"`, o sea que Franco pidiera el nombre específicamente. Eso contradice la
+> DECISIÓN 2026-07-23 de Agustina (ver `permuta-una-pregunta-por-vez`): con el usado ya identificado, cualquier
+> próximo paso razonable vale (abanico, nombre, asesor, o preguntar qué busca). Con ese check, 2 de las 3 corridas
+> "fallaban" haciendo algo correcto. **Recalibrado:** se sacó el `text_matches "nombre"` y quedan dos
+> `text_not_matches` que miden EL BUG REAL y nada más — que no repregunte marca/modelo/año, y que no repregunte
+> km/kilometraje (incluye la forma exacta observada, "me faltaría saber cuántos kilómetros"). Validado contra las
+> 3 respuestas reales ya capturadas: las 2 razonables PASAN, la repregunta del km FALLA. El check ahora discrimina.
+> **(2) BASELINE con señal suficiente (`--repeat 8 --delay 3000`, el `--delay` para aislar contención, trampa 5):**
+> **repregunta 0/8.** Leí las 8 respuestas completas una por una, no solo el veredicto del regex: **ninguna**
+> repregunta marca/modelo/año/km. Las 8 reconocen el Gol Trend 2015 / 87.000 km y avanzan al embudo correcto
+> ("con cuánto más contás", anticipo/presupuesto) o piden el nombre — que es exactamente lo que manda la rama "SIN
+> PRESUPUESTO DECLARADO" del prompt. **El bug no reproduce → NO se tocó el prompt** (regla del proyecto: nunca
+> "arreglar" algo sin haber reproducido el fallo). **No hay v72.**
+> **Honestidad estadística (no redondear a "está arreglado"):** 0/8 NO prueba que el bug no exista. Por la regla
+> de tres, 0 eventos en 8 corridas es compatible con una tasa real de hasta ~37%. Sumando la observación previa:
+> **1/11 en total (~9%)** — es un flake de baja frecuencia, no el ~33% que sugería el 1/3 inicial (n=3 era muy
+> chico). Tampoco lo arregló v71: v71 está verificado byte a byte como que NO toca ni una línea de `## Permuta`.
+> **HIPÓTESIS para quien lo retome (no confirmada, es lo que sugiere el dato):** la única corrida que falló fue la
+> 3ra de 3 consecutivas **sin `--delay`**, y estas 8 corrieron **con `--delay 3000`. Puede ser contención (trampa
+> 5), el mismo patrón que ya mordió con el parser fallback. **Control barato para confirmarlo o descartarlo:**
+> correr `--case permuta-todo-junto --repeat 8` SIN `--delay` y comparar contra este 0/8. No lo corrí yo para no
+> gastar créditos de más sin que Agustina lo pida (y por el incidente de créditos de esta misma sesión).
+> **Efecto colateral medido (hallazgo menor, distinto del bug objetivo):** 1/8 (corrida 5) falló por
+> `max_preguntas: 3 preguntas en el turno` — "Qué más podés contarme sobre el auto que entregás? Por ejemplo,
+> querés contarme si vas a financiar o si tenés un monto para dar de anticipo?". No repregunta un dato ya dado,
+> pero apila 3 preguntas (tendencia a formulario, lo que `max_preguntas` justamente vigila). Queda anotado, sin
+> fix — es otro tema y sería otro cambio.
+> **Estado:** `evals/cases.json` con el check de `permuta-todo-junto` recalibrado (65 casos, sin casos nuevos).
+> Ningún workflow tocado, ningún archivo `franco-n8n-*.json` nuevo. Invariantes ✅. **Producción sigue en v71.**
+
+> **Sesión 2026-07-30. CONSIGNACIÓN "todo junto" — HECHO, DESPLEGADO (v71) Y MEDIDO.**
+> **Bug (continuación de sesión previa):** cuando el cliente da marca+modelo+año (o también los km) TODO JUNTO en
+> un solo mensaje, en CONSIGNACIÓN Franco repregunta un dato que ya le dieron ("qué modelo y año es?" / "qué año
+> tiene y cuántos km?"), confirmado con log real de n8n (ejecución 8548, texto sale de Franco, no del guard de
+> "Armar respuesta" — trampa 7 descartada).
+> **Root cause (releído del prompt v70 esta sesión):** `## Permuta` tiene un bloque condicional de 3 estados con
+> su propio ejemplo concreto ("Cierre de este caso": no sabés el auto → preguntás eso; sabés el auto pero no los
+> km → preguntás los km; YA TENÉS AUTO Y KM → pedís el nombre, con guion literal). `# Consignación` (v67) NUNCA
+> copió ese bloque: solo tenía el ejemplo del PRIMER turno cuando no se sabe nada del auto. Sin bloque condicional
+> propio con su propio ejemplo (trampa 6: el ejemplo concreto le gana a la regla abstracta), el modelo no tenía
+> guion para "ya me lo diste todo junto" y volvía a preguntar marca/modelo/año.
+> **Evals nuevos (`evals/cases.json`, 63→65 casos):** `consignacion-todo-junto` (2 turnos: auto+año todo junto →
+> debe ir directo a km; después da los km → debe pedir nombre) y `permuta-todo-junto` (1 turno control: auto+km
+> todo junto, SIN presupuesto declarado → se esperaba que fuera directo a pedir nombre).
+> **INCIDENTE (ya resuelto):** la primera corrida de este baseline (antes de este párrafo) coincidió con que la
+> cuenta de OpenAI se quedó sin crédito a mitad de sesión — confirmado con el log real de n8n (ejecuciones 8554 y
+> 8951: "You have no credits remaining"), con el corte exacto en 2026-07-30T21:54:46Z. La causa más probable fue
+> una corrida de la suite completa (63 casos, sin `--delay`) que yo mismo lancé en background, contra la norma del
+> proyecto de correr solo lo necesario — error propio, anotado para no repetirlo. Agustina recargó créditos y este
+> párrafo reemplaza esa medición descartada por la real de abajo.
+> **BASELINE REAL (créditos restaurados, `--repeat 3`, sin errores de OpenAI, log limpio):**
+> - **`consignacion-todo-junto`: 0/3 (falla las 3 veces), reproducción LIMPIA y determinística del bug objetivo.**
+>   Turno 1, las 3 corridas devuelven el mismo texto EXACTO, carácter por carácter: *"dale, tu auto lo podemos
+>   vender en consignación: lo publicamos y lo vendemos por vos, y cobramos una comisión del 5% cuando se
+>   concreta. Vos seguís siendo el titular hasta la venta. Qué auto es, marca, modelo y año?"* — es literalmente
+>   el ejemplo del PRIMER turno del prompt viejo, recitado tal cual, ignorando que el cliente ya dijo "Es un ford
+>   ka 2017" en el mismo mensaje. Confirmación textual de trampa 6. Turno 2 (dar los km) funciona bien las 3
+>   veces — pide nombre correctamente, sin repreguntar nada — así que el bug está acotado exactamente a donde se
+>   pensaba: el primer turno cuando todo llega junto.
+> - **`permuta-todo-junto`: 0/3 contra mi check, pero NO es la misma clase de hallazgo — matizado abajo, no se
+>   reporta como "pasa" sin más.** Ninguna de las 3 corridas pidió el nombre explícitamente, pero el detalle
+>   turno a turno importa: 2/3 (runs 1 y 2) pasan a una pregunta de calificación distinta ("qué consumo buscás
+>   para el próximo auto" / "qué tipo de auto buscás") para armar el abanico — no repiten ningún dato ya dado, y
+>   encajan con la DECISIÓN YA TOMADA por el proyecto el 2026-07-23 ("con el usado ya identificado, cualquier
+>   próximo paso razonable vale: abanico, nombre, o asesor" — ver `permuta-una-pregunta-por-vez` en
+>   `evals/cases.json`). Mi check exigía únicamente "nombre", más estricto que esa decisión, así que estos 2
+>   fallos son en parte un defecto de mi check, no necesariamente del prompt. La corrida 3 sí repite un dato ya
+>   dado: *"me faltaría saber cuántos kilómetros tiene tu Gol Trend 2015"* pese a que el mensaje inicial ya traía
+>   "87 mil km" — la MISMA clase de bug que consignación, pero en un escenario distinto al "0/6" de la sesión
+>   previa: acá el cliente NO declaró presupuesto/anticipo, y el prompt tiene una rama "SIN PRESUPUESTO
+>   DECLARADO" que compite con el bloque "Cierre de este caso" (que manda ir directo al nombre cuando ya hay
+>   auto+km) — parece que sin presupuesto esa rama alternativa gana a veces. (Nota aparte: el run 2 también repite
+>   "tu Gol Trend 2015 con 87.000 km" en el encabezado — es el eco ya documentado como flaky, `permuta-sin-eco-
+>   datos`, no algo nuevo.) **Conclusión:** mi caso de control estaba calibrado para un escenario ("sin
+>   presupuesto") distinto al que se probó en la sesión anterior; es un hallazgo real y separado, pero NO es el
+>   bug que este fix toca ni algo que v71 pueda empeorar o arreglar (v71 no modifica ni una línea de `## Permuta`,
+>   verificado byte a byte en la sesión previa). Queda anotado como pendiente/deuda nueva, sin tocar ahora — una
+>   cosa por vez, y decidir si ese matiz de "sin presupuesto" necesita su propio fix es de Agustina, no algo que
+>   se resuelva de rebote acá.
+> **Fix (no depende de evals en vivo, ya escrito antes del baseline):** `scripts/consignacion-todo-junto.mjs`
+> (v70→v71), UN cambio, solo dentro de `# Consignación`, solo lenguaje (NLU de texto libre → prompt, no SQL/
+> código). Reemplaza el párrafo único "Después derivás, con la MISMA progresión..." por un bloque condicional de
+> 3 estados —mismo patrón estructural que `## Permuta`, con el guion y tono propios de consignación (comisión 5%,
+> sigue siendo titular, "asesor coordina la inspección y arma el contrato" — nunca "tasación", que es lenguaje de
+> permuta)—, con ejemplo concreto explícito para el caso "todo junto" (Ford Ka 2017 dado de una, salta directo a
+> pedir km). NO toca `## Permuta` (ya andaba, "un cambio por vez"), ni el FAQ, ni CRM, ni ningún nodo Postgres.
+> **Verificado byte a byte (estático):** 35→35 nodos, mismos nombres; el único nodo con diferencias es `Franco
+> (AI Agent)`, y dentro de ese nodo el único campo que cambió es `systemMessage` (47.574 → 48.878 chars, +1.304);
+> todo lo demás del nodo y todos los campos de nivel de workflow son idénticos byte a byte. `node
+> scripts/state-sync.mjs --file franco-n8n-v71.json` → los 5 invariantes pasan (trampa 1: sigue arrancando con `=`).
+> **PREPARADO (v71) sobre v70**, verificado byte a byte como arriba. **Yo NO lo desplegué** (regla del proyecto /
+> memoria: nunca vía MCP `update_workflow`/`create_workflow_from_code` sobre producción) — lo pegó **Agustina por
+> UI** en el nodo `Franco (AI Agent)` → campo `systemMessage`.
+> **VERIFICACIÓN DE DEPLOY (antes de medir, no se asumió):** comparé el `systemMessage` vivo en n8n (vía MCP
+> `get_workflow_details`, no por UI) contra `franco-n8n-v71.json` — **idénticos byte a byte** (48.878 caracteres
+> los dos). El paste salió bien.
+> **MEDIDO en vivo post-deploy (`--repeat 3`, solo los 3 casos necesarios — no la suite completa):**
+> - **`consignacion-todo-junto`: 3/3 — el fix funciona.** Turno 1 ("Es un ford ka 2017" todo junto): las 3 corridas
+>   explican la consignación y van DIRECTO a pedir los km, sin repreguntar marca/modelo/año (antes recitaba el
+>   guion del primer turno igual, 0/3). Turno 2 (dar los km): pide nombre y apellido, sin repreguntar nada.
+> - **`consignacion-vende-su-auto`: 3/3 — sin regresión** en el flujo de consignación de 4 turnos ya existente
+>   (auto → km → nombre → cierre), mismo comportamiento que antes del fix.
+> - **`permuta-una-pregunta-por-vez`: 2/3.** El 1/3 que falló es una burbuja de fallback aislada del parser
+>   ("Uy, se me trabó el sistema...") en el turno 2 de una corrida (16,8s de respuesta, contra 2-8s del resto) —
+>   NO un cambio de lógica: las corridas 2 y 3 completan los 3 turnos correctamente (piden km, arman el abanico,
+>   piden nombre — conforme a la DECISIÓN 2026-07-23 ya vigente). Como v71 está verificado byte a byte para no
+>   tocar ni una línea de `## Permuta`, esta falla no puede venir del fix desplegado; encaja con el patrón de
+>   parser-fallback intermitente ya documentado varias veces en este archivo (trampa 5, TPM/carga) — no se cuenta
+>   como regresión, siguiendo la misma convención que sesiones anteriores (ej. v47: "0/5 — NO es regresión, el
+>   1/4 es ruido del parser").
+> **Puntero de producción: v71 vivo** (Agustina pegó por UI). `scripts/state-sync.mjs` línea 18 (default sin
+> `--file`) bumpeada de v70 → v71 y corrido sin flags para regenerar el header (no a mano); los 5 invariantes
+> pasan. **Sin pushear a git** (branch `fixes/historial-color-fotos`).
+> **Sigue abierto, sin fix, fuera de alcance de este cambio:** el hallazgo de `permuta-todo-junto` (repregunta de
+> km 1/3 cuando el cliente da auto+km todo junto SIN presupuesto/anticipo declarado) — decisión de Agustina si se
+> aborda y cuándo; no se tocó `## Permuta` para no romper "un cambio por vez".
+
+> **Sesión 2026-07-29. CARDS de otra marca en consulta por MARCA — HECHO, DESPLEGADO (v70) Y MEDIDO.**
+> Captura Agustina: "algo de Volkswagen?" → el texto lista bien las 4 VW pero las CARDS traían Ranger/S10/Hilux/
+> Renegade (Ford/Chevrolet/Toyota/Jeep), y Franco los llamaba "pickups Volkswagen". Root: Buscar auto devuelve el
+> match exacto + alternativas de la MISMA carrocería; VW abarca 4 carrocerías (SUV/pickup/sedán/hatchback), así que
+> las alternativas se vuelven casi todo el stock de otras marcas. Bug FLAKY (Franco a veces mete esas alternativas en
+> auto_ids → cards): baseline ~2/6. `scripts/buscar-auto-alternativas-una-carroceria.mjs` (v69→v70): las alternativas
+> por carrocería salen SOLO cuando `carr_pedida` tiene 1 fila (la consulta apunta a UNA carrocería = un modelo/tipo);
+> una marca que abarca varias carrocerías devuelve SOLO esa marca. SQL puro en Buscar auto (`(SELECT count(*) FROM
+> carr_pedida) = 1`); Franco systemMessage y todo lo demás byte-idéntico. Invariantes ✅. Check nuevo en run.mjs:
+> `cards_titles_not_contains` (mira las marcas de las product_cards; los checks de texto no ven las cards). **Eval
+> `buscar-marca-solo-esa-marca`**: baseline v69 ~2/6 (cards Ford/Toyota/Jeep). **Medido v70: 5/5** (cards solo VW,
+> determinístico). **Control `modelo-no-stock-alternativas-carroceria` 5/5** (Amarok → Ranger/S10/Hilux sigue saliendo:
+> es 1 carrocería). **Puntero: v70 vivo** (Agustina pegó por UI). state-sync L18 → v70. Sin pushear a git.
+
+> **Sesión 2026-07-29. FILTRO DE TRANSMISIÓN (automáticos determinístico) — HECHO, DESPLEGADO (v69) Y MEDIDO.**
+> Captura Agustina: "qué automáticos tenés?" → Franco listaba de MEMORIA e incluía MANUALES como automáticos (S10 y
+> Hilux son Manual en stock.csv) o curaba 3 "por ejemplo". Root MEDIDO (stock.csv + stock-update-metadata.sql): la
+> transmisión NO está en metadata (solo se cargan año/km/precio/condicion), solo vive en el texto `content`
+> ("transmisión manual/automática/cvt"), así que no había filtro determinístico y Franco adivinaba. Automáticos reales
+> (incluye CVT) = 5: Vento, T-Cross, Renegade, Ranger, Corolla. `scripts/buscar-auto-filtro-transmision.mjs` (v68→v69):
+> (A) Buscar auto — param `transmision` + filtro determinístico sobre `content` (automatica matchea "transmisión
+> autom%" OR "cvt"; manual matchea "transmisión manual"); (B) prompt ## Buscar auto — routing: para consultas por
+> transmisión usar esta tool con transmision=..., y mostrar TODOS sin curar (la data sale de la ficha, no de la
+> memoria). Toca 2 nodos (Buscar auto query + Franco systemMessage); Config/Listar stock/Detalle/CRM/Armar respuesta/
+> Leer lead byte-idénticos. Invariantes ✅ (trampa 3: `$fromAI('transmision')` 2x byte-idénticas). **Eval
+> `stock-automaticos-todos`**: baseline v68 **0/3** (metía S10/Hilux manuales, o curaba). **Medido v69: 3/3** (los 5
+> automáticos reales, sin manuales, ofrece más detalle/stock completo). **Control `modelo-no-stock-alternativas-
+> carroceria` 3/3** (la lógica de carrocería/alternativas de Buscar auto no regresó). **Puntero: v69 vivo** (Agustina
+> pegó por UI). state-sync L18 → v69. Sin pushear a git. NOTA: la transmisión sigue solo en `content`; si a futuro se
+> quiere como campo estructurado (mostrarla, o filtrar en Listar stock), sumar 'transmision' a metadata (una SQL como
+> stock-update-metadata.sql). Combustible tiene el mismo estado (está en metadata pero ninguna tool lo filtra aún).
+
+> **Sesión 2026-07-29. BUG post-derivación (cierre que re-ofrece / inventa acciones) — HECHO, DESPLEGADO (v68) Y MEDIDO.**
+> Captura Agustina: tras derivar (implícito vía financiación + nombre, estado='Requiere asesor'), el cliente pregunta
+> la dirección; Franco da la dirección PERO re-ofrece el asesor y/o inventa acciones que no puede hacer ("te reservo la
+> S10", "te preparo un turno", ofrece el teléfono). MEDIDO (`scratchpad/repro-postderivacion.mjs` + eval): estado YA
+> estaba en 'Requiere asesor' → NO es lag, y la frase la genera FRANCO, no el guard de Armar respuesta (trampa 7
+> descartada por medición). Root cause: la regla de cierre comercial (## Paso 4 "ofrecés que un asesor lo contacte" +
+> cierre obligatorio) le gana a "LA DERIVACIÓN MANDA". Es lenguaje → prompt. `scripts/derivacion-cierre-windown.mjs`
+> (v67→v68), 2 ediciones (trampa 6, reemplazan los guiones que enseñan el bug + ejemplo concreto): (A) ## Paso 4: si
+> ya está derivado, cierre SECO (dirección + "quedo a disposición"), sin re-ofrecer; (B) # Derivación: dos reglas nuevas
+> — wind-down tras derivar + NO simular acciones (reservar/preparar/agendar/pasar teléfono), con los mismos
+> anti-ejemplos que Franco produjo. Solo toca el systemMessage (+1681). Verificado byte a byte (35 nodos, solo Franco;
+> Config/tools/CRM/Armar respuesta/Leer lead idénticos). Invariantes ✅ sobre v68. **Eval
+> `derivacion-cierre-no-reofrece-ni-inventa`** (5 turnos, deriva por financiación): baseline **0/4** (re-ofrece/inventa
+> las 4 veces, incluso "pasar el teléfono" y "preparar un turno"). **Medido v68: texto limpio 4/4** (el 1/4 "FAIL" es
+> lead_check timeout del CRM async, no el bug — el fix ancla al hecho conversacional, no solo al estado). **Controles
+> 4/4** (derivacion-completada-nueva-pregunta, no-repite-asesor, pide-datos-del-usado, comparacion-incluye-descriptivo)
+> — sin regresión, y comparacion confirma que el cierre comercial legítimo SIGUE disparando cuando NO hay derivación.
+> **Puntero: v68 vivo** (Agustina pegó por UI). state-sync.mjs L18 → v68. Sin pushear a git.
+
+> **Sesión 2026-07-24. CONSIGNACIÓN Fase 1 (FAQ + prompt) — HECHA, DESPLEGADA (v67) Y MEDIDA.**
+> Pedido de Agustina: sumar el mecanismo de venta por CONSIGNACIÓN (el cliente quiere que la agencia le VENDA
+> su auto — distinto de permuta, donde compra y entrega el usado como parte de pago). Decisiones: comisión 5%
+> FIJA (Franco la dice), SOLO consignación (sin compra directa), captura en CRM = **Fase 2 aparte**.
+> `scripts/consignacion-faq-y-prompt.mjs` (v66→v67), 2 cambios determinísticos (regla del proyecto: dato→FAQ,
+> lenguaje→prompt): (A) `Config.empresa_faq` += bloque consignación (comisión 5%, sigue siendo titular,
+> requisitos, plazos/cobro); (B) systemMessage: sección nueva `# Consignación (vender tu auto)` entre Cotización
+> y Alcance — separa consignación de permuta con señales explícitas ("quiero vender mi auto", "me lo venden?"),
+> prohíbe abrir presupuesto/anticipo y mostrar stock (auto_ids VACÍO), reusa la derivación existente
+> (auto→km→nombre, de a uno) + ejemplo concreto de la 1ra respuesta (trampa 6). NO toca CRM ni ningún nodo
+> Postgres. **Verificado byte a byte:** 35→35 nodos, solo cambian Config (solo `empresa_faq`) y Franco
+> systemMessage (+1707, sigue con `=` → trampa 1); prefijo/sufijo idénticos; Listar stock / Guardar lead / CRM /
+> Armar respuesta / Leer lead byte-idénticos. Invariantes ✅ los 5 (verificados sobre v67 con `--file`).
+> **Eval nuevo `consignacion-vende-su-auto`** (4 turnos): baseline v66 FALLA (turno 1 no matchea
+> consigna|comisión → v66 lo mandaba a "tasación" genérica; el resto del flujo de derivación ya andaba).
+> **Medido v67 vivo: 3/3 estable + 1 = 4/4.** Transcript limpio: T1 explica consignación+5%+titular y pide el
+> auto (sin stock/presupuesto), T2 km, T3 nombre "para inspección y contrato", T4 confirma + nombre de pila +
+> cierra. **Controles:** `permuta-una-pregunta-por-vez` OK; `permuta-mas-efectivo` **3/5** con --delay 6000
+> (dentro de su banda flaky histórica 2/4–4/4; el 1/4 previo fue contención de correr evals en ráfaga, trampa 5)
+> — sin regresión atribuible (path byte-idéntico, sin mecanismo; consignación solo dispara con señal de vender).
+> **Puntero: v67 vivo.** Agustina lo pegó por la UI de n8n sobre "Franco Master - Demo Render (Fase 2)"
+> (`Khct6BjiMNXZK5Oi`). **NO por MCP:** `update_workflow` solo acepta código SDK = regenerar los 35 nodos, riesgo
+> de romper las trampas → se descartó a conciencia. state-sync.mjs L18 → v67. **Sin pushear a git** (branch
+> `fixes/historial-color-fotos`). **SIGUE: Fase 2** — captura de consignación en el CRM: columna nueva
+> `quiere_vender` + toques en Guardar lead / prompt CRM (gpt-4.1, trampa 5) / Leer lead (estado) / estado_cliente
+> (6 lugares + la DB). Su propio eval que falla primero y medición del parser-fallback del CRM.
 
 > **Sesión 2026-07-24. BUG-A.1 (mostrar TODAS las alternativas) — HECHO Y MEDIDO. v64. + TB-3 PENDIENTE (no-op).**
 > BUG-A.1 (captura): Franco mostraba 3 pickups y ofrecía "más", omitiendo la Ranger. FIX (prompt ## Buscar auto):
