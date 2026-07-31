@@ -4,8 +4,9 @@ Agente vendedor de autos para concesionarias, en fase demo. Se vende e implement
 concesionarias, así que **la configurabilidad es requisito de negocio, no nice-to-have**. Un
 bug en vivo tiene costo comercial: la demo se muestra en reuniones con dueños.
 
-- **Backend:** n8n. Producción en `franco-n8n-v6.json` (35 nodos). Dos agentes: `Franco` en
-  `gpt-4.1-mini` y `CRM` en `gpt-4.1`.
+- **Backend:** n8n. Los workflows versionados viven en `workflows/`; el puntero de producción
+  lo dice `docs/franco/STATE.md` (hoy `workflows/franco-n8n-v74.json`, 35 nodos). Dos agentes:
+  `Franco` en `gpt-4.1-mini` y `CRM` en `gpt-4.1`.
 - **Frontend:** `frontend/` — React + Vite servido por Express, en Render. Proxy server-side a
   n8n (el navegador nunca ve la URL de n8n ni ninguna key).
 - **Datos:** Supabase/Postgres — `autos_disponibles` (stock vectorizado, datos en `metadata`
@@ -118,6 +119,7 @@ Opciones: `--case a,b` · `--repeat N` (mide flakiness) · `--delay N` (aísla c
 - No editar el prompt para arreglar algo mecánico (ver la regla del proyecto).
 - No activar el header auth de los webhooks sin coordinar: rompe la demo si el frontend no
   manda el header primero. Está desactivado a conciencia — ver `STATE.md`.
-- No pisar `franco-n8n-v6.json` (producción) sin avisar. Trabajar sobre una copia versionada.
+- No pisar el workflow de producción sin avisar (el que marca `STATE.md`). Trabajar siempre
+  sobre una copia versionada nueva en `workflows/`.
 - No dar algo por resuelto sin haberlo medido.
 - No "arreglar" la deuda listada en `STATE.md` sin preguntar: es intencional.

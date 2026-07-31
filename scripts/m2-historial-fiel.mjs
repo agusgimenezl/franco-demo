@@ -25,8 +25,8 @@ import { fileURLToPath } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(HERE, '..')
-const SRC = join(ROOT, 'franco-n8n-v8.json')
-const OUT = join(ROOT, 'franco-n8n-v9.json')
+const SRC = join(ROOT, 'workflows', 'franco-n8n-v8.json')
+const OUT = join(ROOT, 'workflows', 'franco-n8n-v9.json')
 const checkOnly = process.argv.includes('--check')
 
 const assert = (cond, msg) => {

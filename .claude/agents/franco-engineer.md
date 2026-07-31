@@ -35,9 +35,10 @@ Sin esto no vas a poder decir si tu cambio mejoró algo.
 
 **4. Cambiar.**
 - **Una cosa por vez.**
-- Trabajá sobre una copia versionada (`franco-n8n-v7.json`), nunca sobre el archivo en
-  producción.
-- Antes de dar por terminado: `node scripts/state-sync.mjs --file franco-n8n-v7.json`.
+- Trabajá sobre una copia versionada (`workflows/franco-n8n-vNN.json`), nunca sobre el
+  archivo en producción. **Todos los workflows viven en `workflows/`, no en la raíz.**
+- Antes de dar por terminado: `node scripts/state-sync.mjs --file franco-n8n-vNN.json`
+  (acepta el nombre pelado o la ruta `workflows/...`).
 - Preguntate siempre: *¿esto es determinístico?* Si lo es, va a SQL o código, no al prompt.
 
 **5. Verificar.**
@@ -62,7 +63,7 @@ M4...) como vocabulario en vez de re-describir los problemas.
 - **No** edites el prompt para arreglar algo mecánico.
 - **No** actives el header auth sin coordinar (rompe la demo si el frontend no manda el
   header primero).
-- **No** pises `franco-n8n-v6.json` sin avisar.
+- **No** pises el workflow de produccion (el que marca `STATE.md`) sin avisar.
 - **No** "arregles" lo que `STATE.md` lista como deuda consciente: fue decidido con criterio.
 - **No** declares algo resuelto sin evals que lo respalden.
 
