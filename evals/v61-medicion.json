@@ -1,0 +1,238 @@
+[
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "ba6f5c2e-c200-4779-b5c7-7c8eee991168",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 17593,
+        "response": {
+          "session_id": "ba6f5c2e-c200-4779-b5c7-7c8eee991168",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos Amarok Highline 4x2 del 2022 a 2024, pero sí otras pickups y opciones similares en ese rango de años:"
+            },
+            {
+              "type": "text",
+              "content": "- Ford Ranger 2024 — 18.000 km — $57.000.000\n- Chevrolet S10 2022 — 68.000 km — $39.500.000\n\nY también algunas opciones SUV, sedán y hatchback para considerar:\n- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000\n- Volkswagen Vento 2023 — 24.000 km — $31.000.000\n- Toyota Corolla 2022 — 35.000 km — $24.800.000\n- Renault Duster 2023 — 31.000 km — $22.500.000\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000\n- Peugeot 208 2025 — 8.000 km — $21.000.000\n- Fiat Cronos 2023 — 28.000 km — $16.800.000"
+            },
+            {
+              "type": "text",
+              "content": "Querés que te ayude a ver alguna de estas pickups o preferís que te muestre otras opciones del mismo rango de años?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)t-?cross|vento|cronos|onix|corolla|etios|gol|fiesta/ y no debería: \"T-Cross\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)t-?cross|vento|cronos|onix|corolla|etios|gol|fiesta/ y no debería: \"T-Cross\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "ed8ab1a3-f802-4a16-b248-d3404b799271",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 7069,
+        "response": {
+          "session_id": "ed8ab1a3-f802-4a16-b248-d3404b799271",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos Volkswagen Amarok Highline 4x2 del 2022 a 2024 en stock, pero puedo mostrarte otros vehículos similares en pickup que tenemos disponibles ahora:"
+            },
+            {
+              "type": "text",
+              "content": "- Ford Ranger 2024 — 18.000 km — $57.000.000\n- Chevrolet S10 2022 — 68.000 km — $39.500.000\n\nY si querés ver otras opciones, también tenemos pickups como la Volkswagen Amarok pero de otros años o versiones."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase más detalles o te muestro otras opciones que te puedan interesar?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-3.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "5e2ca450-6713-4fcf-9895-fd35b40acafa",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 15123,
+        "response": {
+          "session_id": "5e2ca450-6713-4fcf-9895-fd35b40acafa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos en stock una Amarok Highline 4x2 del 2022 a 2024. Sin embargo, te puedo ofrecer otras pickups similares y recientes que tenemos disponibles:\n- Ford Ranger 2024 — 18.000 km — $57.000.000\n- Chevrolet S10 2022 — 68.000 km — $39.500.000\n\nSi te interesa algo diferente, también contamos con SUV, sedanes y hatchbacks que quizás te sirvan.\n\nQuerés que te muestre más opciones, o buscás algo puntual?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null
+  }
+]
