@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v132.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v133.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,36 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 93 casos · baseline-v131.json → 7/12 |
+| Evals | 93 casos · baseline-v132.json → 6/12 |
 
 **Invariantes:** ✅ los 6 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v133 DESPLEGADO Y MEDIDO: `derivacion-aceptada-igual-pide-nombre` CERRADO EN 3/3 después de
+> estar rojo desde v128. 9/12. Sesión 2026-08-11.**
+>
+> **MEDICIÓN (`evals/baseline-v133.json`), contra v132:**
+> · `derivacion-aceptada-igual-pide-nombre` **1/3 → 3/3** ← el objetivo. Venía 0/3 (v128), 1/3
+>   (v129), 0/3 (v130), 2/8 (v131), 1/3 (v132).
+> · `derivacion-completada-no-reofrece-visita` **2/3 → 3/3** ← arrastrado por el mismo fix
+> · `cuotas-el-plazo-se-contesta-y-se-deriva` **3/3** · `no-repreguntar-asesor` **0/3** (sin cambio)
+>
+> **LA SEÑAL DECLARADA ANTES DE MEDIR, Y ES LA QUE VALE — no el score:**
+> el check de re-ofrecer el asesor pasó de **3 → 3 → 0** (v131 → v132 → v133), y las fallas totales
+> de los 4 casos de **10 → 9 → 5**. Las cuatro predicciones que se escribieron antes de correr
+> (subir / 3-3 / quedarse / no esperar nada) se cumplieron.
+>
+> **⚠️ SE CUMPLIÓ TAMBIÉN LA RESERVA QUE SE HABÍA ANOTADO: el re-ofrecimiento sale por más de un
+> lado.** A `no-repreguntar-asesor` le queda un check DISTINTO en el turno 2
+> (`(querés|te interesa|te gustaría|preferís) … asesor … ?`) que v133 no toca, más sus dos causas
+> propias ya documentadas: el consumo (`6,8 L/100km`) en el turno 2 y el nombre en el turno 3. Su
+> raíz sigue siendo la de siempre — `Leer lead (estado)` no trae la columna `estado`— y va aparte.
+>
+> **QUEDA COMO PRÓXIMO EN LA LISTA: la ETAPA 2 de la migración (la copy).** Es la única pendiente
+> bloqueada esperando criterio comercial: 12 de las 34 frases de `descripcion`/`condicionantes`
+> contradicen la ficha (el Kangoo dice "sólo dos asientos" y son 5; Onix y EcoSport dicen "caja
+> manual" y son automáticas), y una de esas palabras la chequea `descripcion-que-aporta`.
 
 > **🟢 v132 DESPLEGADO Y MEDIDO: CERO NOMBRES INVENTADOS EN 12 CORRIDAS — cumplió el criterio que se
 > había declarado ANTES de medir. 🟡 v133 ARMADO Y APROBADO, NO DESPLEGADO
