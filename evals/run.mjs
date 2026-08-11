@@ -47,8 +47,112 @@ const CATALOGO = ['Ranger', 'S10', 'Hilux', 'Amarok', 'T-Cross', 'Vento', 'Reneg
   'Corolla', 'Onix', 'EcoSport', 'Duster', 'Kangoo', '208', 'Cronos', 'Etios',
   'Gol Trend', 'Fiesta']
 
+// ── ESPEJO DEL DEDUP DE CARDS (para `media_si_lista_autos`) ────────────────────────────────
+// `Armar respuesta` NO reenvía cards ni fotos de autos ya mostrados hace poco. No es un bug:
+// el comentario del nodo dice "Pedido de Agustina: no repetir el mismo mazo cuando el cliente
+// sigue hablando de esos autos". Exigir media por esos autos es exigir que se rompa esa regla,
+// y por eso el check daba rojo sobre una conducta correcta (medido con v118: el turno 2 nombra
+// justo los 3 chicos que el turno 1 ya mostró, y las cards se suprimen bien).
+//
+// LA VENTANA SALE DEL NODO `Autos ya mostrados`, NO DE UNA ESTIMACIÓN: mira `LIMIT 8` filas de
+// `mensajes_demo`, y cada turno escribe DOS (la del usuario y la de Franco), así que son los
+// últimos 4 turnos.
+const VENTANA_DEDUP_TURNOS = 4
+const mediaPorTurno = []        // modelos que salieron con card O con foto, por turno
+const imagenesPorTurno = []     // modelos que salieron con FOTO, por turno
+const modeloPorId = new Map()   // id -> modelo, aprendido de las cards de la propia sesión
+
+// SON DOS DEDUP DISTINTOS Y HAY QUE RESPETAR LA DIFERENCIA. En `Armar respuesta`:
+//   · las CARDS se suprimen si ese auto ya salió como card hace poco (`cards_recientes`);
+//   · las FOTOS se suprimen sólo si ya salieron FOTOS de ese auto (`ids_recientes`) — y el propio
+//     nodo aclara que "haber aparecido como card NO cuenta, porque ver la ficha con fotos después
+//     de la miniatura es un flujo válido".
+// Si `images_min` usara el rastreo combinado, perdonaría un turno sin fotos cuando lo único previo
+// fue una card, y eso SÍ es un bug. Por eso van separados.
+
+const modeloDe = (txt) =>
+  CATALOGO.find((m) => String(txt || '').toLowerCase().includes(m.toLowerCase())) || null
+
+// Se llama DESPUÉS de correr los checks del turno: lo que importa es lo que el cliente ya vio
+// en los turnos ANTERIORES, no lo que le llega en este.
+function registrarMedia(r) {
+  const modelos = new Set()
+  const conFoto = new Set()
+  for (const c of (r.product_cards || [])) {
+    const m = modeloDe(c?.titulo)
+    if (m) {
+      modelos.add(m)
+      if (c?.id != null) modeloPorId.set(Number(c.id), m)
+    }
+  }
+  // Las fotos sólo traen el id en la URL (`foto-4-1.webp`). Se resuelve con el mapa que
+  // construyeron las cards de esta sesión; si un auto llegó SÓLO como foto y nunca como card,
+  // queda sin resolver y el check sigue exigiendo media. El sesgo es deliberado: falso ROJO,
+  // nunca falso verde.
+  for (const i of (r.images || [])) {
+    const hit = String(i?.url || '').match(/foto-(\d+)-/)
+    const m = hit ? modeloPorId.get(Number(hit[1])) : null
+    if (m) { modelos.add(m); conFoto.add(m) }
+  }
+  mediaPorTurno.push(modelos)
+  imagenesPorTurno.push(conFoto)
+}
+
+const acumular = (porTurno) => {
+  const vistos = new Set()
+  for (const t of porTurno.slice(-VENTANA_DEDUP_TURNOS)) for (const m of t) vistos.add(m)
+  return vistos
+}
+const yaTienenMedia = () => acumular(mediaPorTurno)
+const yaTienenFotos = () => acumular(imagenesPorTurno)
+
+// Precio real de cada modelo, para cazar autos INVENTADOS (ver `no_inventa_autos`).
+// No alcanza con validar el nombre: Franco inventó "Ford Ranger 2017 — $9.200.000",
+// y "Ranger" SÍ está en el catálogo — lo inventado era el año y el precio.
+// ⚠️ SI CAMBIA EL STOCK, ESTO SE ACTUALIZA. Verificado contra el stock vivo el 2026-08-05.
+// 2026-08-10: el Etios pasó de 2019 a 2021 (ficha técnica V2 del depósito) y con eso su precio
+// pasó de $12.500.000 a $14.500.000. ESTE MAPA VA SIEMPRE JUNTO CON LA BASE: `no_inventa_autos`
+// corre en TODOS los turnos, así que si quedan desincronizados el eval marca como "precio
+// inventado" el precio correcto, y la suite entera se pone roja por una causa propia.
+// Lo verifica un assert en `scripts/stock-etapa1-specs-del-documento.mjs`.
+const PRECIOS = {
+  Ranger: 57000000, S10: 39500000, Hilux: 38000000, 'T-Cross': 34000000,
+  Amarok: 32000000, Vento: 31000000, Renegade: 25500000, Corolla: 24800000,
+  Duster: 22500000, Onix: 21500000, 208: 21000000, EcoSport: 19800000,
+  Kangoo: 18500000, Cronos: 16800000, Etios: 14500000, 'Gol Trend': 9200000,
+  Fiesta: 8200000,
+}
+
+// Carrocería real de cada modelo. Verificada contra `autos_disponibles` (Supabase por MCP)
+// el 2026-08-06, no transcripta a ojo. Sirve para cazar la OTRA invención, la de CATEGORÍA:
+// Franco dijo "tenés este abanico de opciones de pickup 4x2" y listó Gol Trend, Etios,
+// EcoSport y Kangoo (ejecución 12047). Modelo y precio correctos —`no_inventa_autos` no se
+// dispara, y hace bien— pero ninguno es pickup. ⚠️ SI CAMBIA EL STOCK, ESTO SE ACTUALIZA.
+const CARROCERIA = {
+  Ranger: 'pickup', S10: 'pickup', Hilux: 'pickup', Amarok: 'pickup',
+  'T-Cross': 'suv', EcoSport: 'suv', Duster: 'suv', Renegade: 'suv',
+  Vento: 'sedan', Cronos: 'sedan', Onix: 'sedan', Corolla: 'sedan',
+  Fiesta: 'hatchback', 'Gol Trend': 'hatchback', Etios: 'hatchback', 208: 'hatchback',
+  Kangoo: 'utilitario',
+}
+
 const PHOTO_RE =
   /^https:\/\/qfmsdgjtlduravrtqrif\.supabase\.co\/storage\/v1\/object\/public\/fotos-vehiculos-stock\/foto-\d+-\d+\.webp$/
+
+// UN RENGLÓN DE LISTA: la forma en la que Franco OFRECE un auto. Tres checks razonan sobre esto
+// (`cars_in_list_format`, `no_inventa_autos`, `carroceria_solo_si_hay`) y lo tenían copiado cada
+// uno por su lado; acá está una sola vez para que no vuelvan a divergir.
+// EL ENCABEZADO DE BLOQUE PUEDE VENIR PEGADO ADELANTE, y ese es el agujero que tapa v114:
+//   "Alto: - Volkswagen Polo 2021 — 25.000 km — $15.000.000 (hatchback)"
+// MEDIDO, no supuesto: `mensajes_demo` 11684, salido a producción. No hay ningún Polo en el stock
+// —es una invención, el peor error del proyecto— y NINGUNO de los dos lados lo vio: ni este check
+// ni el borrado de v109 en `Armar respuesta`, porque los dos exigían la viñeta al PRINCIPIO del
+// renglón. El mismo texto con la viñeta en su propia línea sí se caza por los dos lados.
+// ⚠️ ESTE PATRÓN ESTÁ TAMBIÉN EN `Armar respuesta` (v114, `_ITEM`) y tiene que quedar IDÉNTICO:
+// si sólo se arregla de un lado, el formato sigue pasando entero. Lo verifica el assert de
+// `scripts/el-encabezado-pegado-al-item.mjs`.
+const ES_ITEM = /^\s*(?:[^\n:]{1,25}:\s*)?(?:[-•*]|\d+[.)])\s+\S/
+const esItem = (l) => ES_ITEM.test(l)
 
 // ---------------------------------------------------------------- helpers
 
@@ -191,7 +295,7 @@ const CHECKS = {
     const t = allText(r)
     const nombrados = CATALOGO.filter((m) => t.toLowerCase().includes(m.toLowerCase())).length
     if (nombrados < 3) return null
-    const items = t.split('\n').filter((l) => /^\s*(?:[-•*]|\d+[.)])\s+\S/.test(l)).length
+    const items = t.split('\n').filter(esItem).length
     return items >= 3
       ? null
       : `nombró ${nombrados} autos pero solo ${items} en formato lista — van uno por renglón, no en párrafo corrido`
@@ -218,8 +322,19 @@ const CHECKS = {
     const bad = needles.filter((n) => titles.some((t) => t.includes(String(n).toLowerCase())))
     return bad.length === 0 ? null : `cards con marca/modelo que no debería aparecer: ${bad.join(', ')}`
   },
-  images_min: (r, n) =>
-    (r.images || []).length >= n ? null : `${(r.images || []).length} imágenes, mínimo ${n}`,
+  images_min: (r, n) => {
+    const tengo = (r.images || []).length
+    if (tengo >= n) return null
+    // Mismo choque que en `media_si_lista_autos`, ahora del lado de las fotos: `Armar respuesta`
+    // no reenvía las FOTOS de un auto cuyas fotos ya mandó hace poco, así que exigirlas es exigir
+    // que se rompa esa regla. MEDIDO el 2026-08-10, sesión f0c23a2f: el turno 1 mandó las fotos de
+    // los ids 17 y 9, el turno 2 preguntaba justo por el 9, y el dedup las suprimió BIEN.
+    // Sólo perdona si TODOS los autos que nombra ya tienen foto dada: si nombra uno nuevo, va rojo.
+    const vistos = yaTienenFotos()
+    const nombrados = CATALOGO.filter((m) => allText(r).toLowerCase().includes(m.toLowerCase()))
+    if (nombrados.length && nombrados.every((m) => vistos.has(m))) return null
+    return `${tengo} imágenes, mínimo ${n}`
+  },
   images_empty: (r) =>
     (r.images || []).length === 0 ? null : `esperaba 0 imágenes, hay ${r.images.length}`,
 
@@ -319,21 +434,118 @@ const CHECKS = {
   // El umbral de 3 modelos es para no dar rojos falsos: Franco nombra un auto suelto en
   // despedidas y derivaciones ("el Etios que viste") sin tener que mostrarlo, pero nadie
   // enumera 3 autos del catálogo sin estar mostrando stock.
-  media_si_lista_autos: (r) => {
+  // FRANCO INVENTA STOCK. El peor error posible: viola `# Regla base: no inventar` y delante
+  // de un dueño es fatal. Visto el 2026-08-05 midiendo v92: listó "Nissan Frontier 2016 —
+  // 110.000 km — $9.800.000" y "Ford Ranger 2017 — 120.000 km — $9.200.000". No hay ningún
+  // Nissan en el stock, y la única Ranger es una 2024 de $57.000.000.
+  // Causa (ejecución 11923): `Listar stock` le devolvió CERO FILAS once veces seguidas por el
+  // gate de v89, y el modelo llenó el vacío.
+  //
+  // POR QUÉ NO ALCANZA CON VALIDAR EL NOMBRE: "Ford Ranger 2017" nombra un modelo que SÍ existe;
+  // lo inventado es el año y el precio. Por eso se valida MODELO **Y** PRECIO contra `PRECIOS`.
+  //
+  // Sólo mira líneas que OFRECEN un auto (item de lista con precio), que es donde aparece la
+  // invención; una mención suelta en prosa ("el Etios que viste") no dispara.
+  // Corre en TODOS los turnos a propósito: cualquier turno de cualquier caso es superficie útil.
+  no_inventa_autos: (r) => {
+    const ofertas = allText(r)
+      .split('\n')
+      .filter((l) => esItem(l) && /\$\s?\d{1,3}(?:\.\d{3})+/.test(l))
+    const malas = []
+    for (const linea of ofertas) {
+      const modelos = Object.keys(PRECIOS).filter((m) => linea.toLowerCase().includes(m.toLowerCase()))
+      if (modelos.length === 0) {
+        malas.push(`${linea.trim().slice(0, 70)} → no es ningún auto del catálogo`)
+        continue
+      }
+      const precios = [...linea.matchAll(/\$\s?(\d{1,3}(?:\.\d{3})+)/g)].map((m) => Number(m[1].replace(/\./g, '')))
+      if (precios.length && !precios.some((p) => modelos.some((m) => PRECIOS[m] === p))) {
+        malas.push(`${linea.trim().slice(0, 70)} → precio inventado (el real de ${modelos[0]} es $${PRECIOS[modelos[0]].toLocaleString('es-AR')})`)
+      }
+    }
+    return malas.length === 0 ? null : `INVENTÓ STOCK: ${malas.join(' | ')}`
+  },
+
+  // La fila centinela de `Listar stock` (v93) es una INSTRUCCIÓN para el modelo, nunca contenido
+  // para el cliente. Este check es el precio de haberla introducido: si alguna vez Franco la copia,
+  // se ve acá y no en una demo. Corre en TODOS los turnos.
+  no_filtra_centinela: (r) => {
     const t = allText(r)
-    const nombrados = CATALOGO.filter((m) => t.toLowerCase().includes(m.toLowerCase())).length
-    if (nombrados < 3) return null
+    const hit = /ESTE TURNO NO ES PARA MOSTRAR AUTOS|no_mostrar/i.exec(t)
+    return hit ? `se filtró la fila centinela de Listar stock al cliente: ${JSON.stringify(hit[0])}` : null
+  },
+
+  // NO OFRECER LO QUE NO EXISTE. Rojo si Franco AFIRMA que lo que ofrece o va a mostrar es de
+  // una carrocería y no hay NI UNO de esa carrocería en lo que efectivamente ofrece.
+  // Cubre los dos síntomas medidos del mismo bug:
+  //   · el ofrecimiento vacío — "Querés que te muestre las pickups 4x2 que te entran con ese
+  //     presupuesto?" con techo $10.000.000, donde hay CERO pickups (la más accesible es la
+  //     Amarok a $32.000.000);
+  //   · la etiqueta falsa — "tenés este abanico de opciones de pickup 4x2" seguido de Gol Trend,
+  //     Etios, EcoSport y Kangoo (ejecución 12047, leída del log, no del volcado).
+  //
+  // NO corre en ALWAYS a propósito: "querés que te muestre las pickups?" es legítimo cuando el
+  // cliente no puso techo. Sólo se declara en los turnos donde está medido que no entra ninguna.
+  //
+  // Cómo distingue afirmar de negar, que es la parte delicada: la palabra de carrocería tiene que
+  // venir precedida (45 chars) de una frase de OFRECER, y la burbuja no puede tener una negación.
+  // Así "estas pickups 4x2 dentro de tu capacidad no hay" —la conducta que SÍ queremos— no
+  // dispara, y "tenés este abanico de opciones de pickup" sí.
+  carroceria_solo_si_hay: (r, tipo) => {
+    const PALABRA = {
+      pickup: /pickups?|camionetas?/i, suv: /\bsuvs?\b/i, sedan: /sed[aá]n(es)?\b/i,
+      hatchback: /hatchbacks?/i, utilitario: /utilitarios?/i,
+    }[tipo]
+    if (!PALABRA) return `carroceria_solo_si_hay: tipo desconocido ${JSON.stringify(tipo)}`
+    const OFRECE = /(ten[eé]s|te (muestro|paso|muestre|puedo mostrar)|mostrarte|mostrar(te)? (algunas?|opciones)|estas|estos|ac[aá] (van|te)|opciones de|abanico de|que te entran|entran)/i
+    const NIEGA = /\bno\b|ning[uú]n|ninguna|cero |sin stock/i
+
+    const afirmaciones = (r.messages || [])
+      .map((m) => String(m?.content ?? ''))
+      .filter((b) => {
+        const hit = PALABRA.exec(b)
+        if (!hit || NIEGA.test(b)) return false
+        return OFRECE.test(b.slice(Math.max(0, hit.index - 45), hit.index))
+      })
+    if (afirmaciones.length === 0) return null
+
+    // Lo que EFECTIVAMENTE ofrece: los títulos de las cards y los modelos nombrados en líneas
+    // de lista. Si no ofrece nada concreto, tampoco hay ni uno de la carrocería afirmada.
+    const ofrecido = [
+      ...(r.product_cards || []).map((c) => String(c?.titulo ?? '')),
+      ...allText(r).split('\n').filter(esItem),
+    ].join('\n').toLowerCase()
+    const hay = Object.keys(CARROCERIA)
+      .filter((m) => CARROCERIA[m] === tipo && ofrecido.includes(m.toLowerCase()))
+    if (hay.length > 0) return null
+
+    const otros = Object.keys(CARROCERIA).filter((m) => ofrecido.includes(m.toLowerCase()))
+    return `OFRECIÓ ${tipo} Y NO HAY NI UNA: ${JSON.stringify(afirmaciones[0].slice(0, 90))}` +
+      (otros.length ? ` → lo que ofrece es ${otros.map((m) => `${m} (${CARROCERIA[m]})`).join(', ')}` : ' → no ofrece ningún auto concreto')
+  },
+
+  media_si_lista_autos: (r) => {
+    const t = allText(r).toLowerCase()
+    const nombrados = CATALOGO.filter((m) => t.includes(m.toLowerCase()))
+    if (nombrados.length < 3) return null
     const media = (r.product_cards || []).length + (r.images || []).length
-    return media > 0
-      ? null
-      : `TIPO B: nombró ${nombrados} autos del catálogo y no mandó ninguna card ni imagen`
+    if (media > 0) return null
+    // El dedup de `Armar respuesta` no reenvía media de autos ya mostrados en los últimos
+    // turnos, así que sólo cuentan los que el cliente TODAVÍA no vio. Sin esto, el check
+    // pide justo lo que el nodo tiene prohibido hacer. Ver el bloque del espejo, arriba.
+    const vistos = yaTienenMedia()
+    const nuevos = nombrados.filter((m) => !vistos.has(m))
+    if (nuevos.length < 3) return null
+    return `TIPO B: nombró ${nuevos.length} autos que el cliente todavía no vio ` +
+      `(${nuevos.join(', ')}) y no mandó ninguna card ni imagen`
   },
 
   manual: (_r, note) => ({ manual: note }),
 }
 
 // Checks que corren en cada turno de cada caso, sin declararlos.
-const ALWAYS = ['no_template_leak', 'no_fallback_bubble', 'media_si_lista_autos']
+const ALWAYS = ['no_template_leak', 'no_fallback_bubble', 'media_si_lista_autos',
+  'no_inventa_autos', 'no_filtra_centinela']
 
 // Checks sobre el historial guardado. Corren contra `mensajes_demo`, no contra la
 // respuesta del webhook.
@@ -385,6 +597,10 @@ const LEAD_CHECKS = {
 async function runCase(c) {
   const sessionId = randomUUID()
   const result = { id: c.id, bug: c.bug, sessionId, turns: [], failures: [], manuals: [], error: null }
+  // Cada corrida es una sesión nueva: lo que el cliente vio en la anterior no cuenta.
+  mediaPorTurno.length = 0
+  imagenesPorTurno.length = 0
+  modeloPorId.clear()
 
   try {
     for (const [i, turn] of c.turns.entries()) {
@@ -410,6 +626,8 @@ async function runCase(c) {
           result.failures.push(f)
         }
       }
+      // Después de los checks, no antes: la media de ESTE turno no cuenta como "ya vista".
+      registrarMedia(res)
       result.turns.push(turnRec)
     }
 
@@ -495,8 +713,106 @@ if (selected.length === 0) {
   process.exit(2)
 }
 
+// ── GUARDIA DE DEPLOY ────────────────────────────────────────────────────────────────────────
+// El 2026-08-10 entraron TRES deploys en mitad de una tanda y cada vez costó lo mismo: la corrida
+// de "antes" deja de valer y hay que reconstruirla a mano cruzando `updatedAt` del workflow contra
+// los timestamps de cada sesión. Esto lo hace solo: pregunta la versión antes y después de CADA
+// corrida y marca las que quedaron a caballo de un deploy.
+//
+// ES OPT-IN: la API de n8n pide su propia key, que el eval no necesita para nada más. Sin
+// N8N_API_KEY el guardia no corre, y lo AVISA — no falla en silencio, que sería peor que no tenerlo.
+const N8N_KEY = process.env.N8N_API_KEY || ''
+const WF_ID = process.env.N8N_WORKFLOW_ID || 'Khct6BjiMNXZK5Oi'
+
+// ── ¿LA CORRIDA MURIÓ POR RED, O POR UN BUG? ────────────────────────────────────────────────
+// El 2026-08-11 n8n se cayó ~4 horas en mitad de una tanda y el eval reportó `FAIL` y `ERROR`
+// mezclados: una falla de red se leía IGUAL que un rojo de contenido, y esa tanda se estuvo
+// interpretando como si midiera algo. No medía nada.
+// Función pura y separada para poder probarla sin tirar abajo n8n. Prueba:
+// `scripts/el-guardia-de-deploy-avisa.mjs`.
+function esFallaDeRed(msg) {
+  if (!msg) return false
+  return /fetch failed|aborted due to timeout|ECONNREFUSED|ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket hang up|network|Timeout|HTTP 5\d\d|HTTP 408|HTTP 429/i.test(String(msg))
+}
+
+// Igual que el veredicto de deploy: va DESPUÉS de los resultados, porque cambia cómo se lee todo
+// lo de arriba. Una tanda con corridas caídas por red no es una medición a medias: es un dato menos.
+function veredictoRed(results) {
+  const caidas = results.filter((r) => esFallaDeRed(r.error))
+  if (!caidas.length) return []
+  const out = [
+    `\n${C.red}── ⚠ ${caidas.length} CORRIDA(S) MURIERON POR RED, NO POR UN BUG ──${C.off}`,
+    `  ${C.dim}No midieron nada. Los checks de esas corridas no dicen nada de Franco.${C.off}`,
+  ]
+  for (const r of caidas) out.push(`    · ${r.id}: ${String(r.error).slice(0, 90)}`)
+  const total = results.length
+  const sanas = total - caidas.length
+  out.push(`  ${C.yel}la tanda midió de verdad ${sanas} de ${total} corridas${C.off}`)
+  if (sanas === 0) out.push(`  ${C.red}NINGUNA corrida llegó al servidor: esta tanda no vale. Repetirla.${C.off}`)
+  else out.push(`  ${C.dim}Si el backend estuvo inestable, repetir antes de sacar conclusiones.${C.off}`)
+  return out
+}
+
+// Función PURA a propósito: es la parte que sólo se ejecuta cuando alguien despliega en el medio,
+// o sea casi nunca, y un guardia que falla justo el día que hace falta no sirve de nada. Separada
+// se puede probar sin desplegar. La prueba vive en `scripts/el-guardia-de-deploy-avisa.mjs`.
+function veredictoDeploy(inicial, final, results) {
+  if (!inicial || !final) return []
+  const aCaballo = results.filter((r) => r.aCaballo)
+  const versiones = [...new Set(results.map((r) => r.deploy?.antes).filter(Boolean))]
+  if (inicial === final && !aCaballo.length) {
+    return [`\n${C.dim}guardia de deploy: OK — una sola versión en toda la tanda (${final})${C.off}`]
+  }
+  const out = [
+    `\n${C.red}── ⚠ EL WORKFLOW CAMBIÓ DURANTE LA TANDA — ESTA MEDICIÓN NO VALE COMO UNA SOLA ──${C.off}`,
+    `  al arrancar: ${inicial}`,
+    `  al terminar: ${final}`,
+  ]
+  if (aCaballo.length) {
+    out.push(`  ${C.red}${aCaballo.length} corrida(s) a caballo del deploy, y esas no valen para ningún lado:${C.off}`)
+    for (const r of aCaballo) out.push(`    · ${r.id} (${r.sessionId})`)
+  }
+  if (versiones.length > 1) {
+    out.push(`  ${C.yel}corridas por versión — el "antes" y el "después" hay que leerlos separados:${C.off}`)
+    for (const v of versiones) {
+      const suyas = results.filter((r) => r.deploy?.antes === v && !r.aCaballo)
+      const okv = suyas.filter((r) => !r.failures.length && !r.error).length
+      out.push(`    · ${v}  ->  ${okv}/${suyas.length} ok`)
+      for (const r of suyas) out.push(`        ${r.failures.length || r.error ? 'FAIL' : 'ok  '}  ${r.id}`)
+    }
+  }
+  out.push(`  ${C.dim}Repetir la tanda entera sobre una sola versión antes de sacar conclusiones.${C.off}`)
+  return out
+}
+
+async function deployActual() {
+  if (!N8N_KEY) return null
+  try {
+    // CON TIMEOUT, como todos los demás fetch del archivo. Sin esto, el guardia —que existe para
+    // proteger la medición— podía COLGAR la tanda entera si n8n no responde. Corto más agresivo
+    // que TIMEOUT_MS a propósito: esto es telemetría, no la medición; si tarda, no vale la espera.
+    const res = await fetch(`${BASE}/api/v1/workflows/${WF_ID}`, {
+      headers: { 'X-N8N-API-KEY': N8N_KEY },
+      signal: AbortSignal.timeout(10_000),
+    })
+    if (!res.ok) return null
+    return (await res.json())?.updatedAt || null
+  } catch (e) {
+    return null // la red del eval ya se mide sola; el guardia nunca puede tumbar la tanda
+  }
+}
+
 console.log(`\nFranco evals · ${selected.length} caso(s) · ${BASE}`)
-console.log(`${C.dim}cleanup=${cleanup} · token=${TOKEN ? 'sí' : 'NO (si n8n ya exige auth, esto va a dar 403)'}${C.off}\n`)
+console.log(`${C.dim}cleanup=${cleanup} · token=${TOKEN ? 'sí' : 'NO (si n8n ya exige auth, esto va a dar 403)'}${C.off}`)
+
+const deployInicial = await deployActual()
+if (!N8N_KEY) {
+  console.log(`${C.dim}guardia de deploy: APAGADA (falta N8N_API_KEY) — si alguien despliega en el medio, esta medición no te lo va a avisar${C.off}\n`)
+} else if (!deployInicial) {
+  console.log(`${C.yel}guardia de deploy: no pude leer la versión del workflow (¿key o id mal?) — la tanda sigue, pero sin protección${C.off}\n`)
+} else {
+  console.log(`${C.dim}guardia de deploy: activa · workflow ${WF_ID} @ ${deployInicial}${C.off}\n`)
+}
 
 const results = []
 let first = true
@@ -506,12 +822,18 @@ for (const c of selected) {
     if (delay && !first) await new Promise((r) => setTimeout(r, delay))
     first = false
     process.stdout.write(`  ${(repeat > 1 ? `${c.id} [${i + 1}/${repeat}]` : c.id).padEnd(38)} `)
+    const deployAntes = await deployActual()
     const r = await runCase(c)
+    const deployDespues = await deployActual()
+    // Una corrida sólo vale si el workflow no se movió mientras corría.
+    r.deploy = { antes: deployAntes, despues: deployDespues }
+    r.aCaballo = !!(deployAntes && deployDespues && deployAntes !== deployDespues)
     runs.push(r)
     results.push(r)
     if (r.error) console.log(`${C.red}ERROR${C.off}  ${r.error}`)
     else if (r.failures.length) console.log(`${C.red}FAIL${C.off}   ${r.failures.length} check(s)`)
     else console.log(`${C.grn}ok${C.off}     ${r.turns.reduce((a, t) => a + t.ms, 0)}ms`)
+    if (r.aCaballo) console.log(`  ${C.red}⚠ esta corrida quedó A CABALLO de un deploy — no vale${C.off}`)
   }
   if (repeat > 1) {
     const ok = runs.filter((r) => !r.failures.length && !r.error).length
@@ -553,6 +875,14 @@ if (jsonOut) {
   writeFileSync(jsonOut, JSON.stringify(results, null, 2))
   console.log(`\n${C.dim}detalle completo -> ${jsonOut}${C.off}`)
 }
+
+// ── Veredicto del guardia de deploy ──────────────────────────────────────────────────────────
+// Va DESPUÉS de los resultados y antes del total, porque cambia cómo hay que leer todo lo de
+// arriba: una tanda partida por un deploy no es una medición, son dos a medias.
+for (const l of veredictoRed(results)) console.log(l)
+
+const deployFinal = await deployActual()
+for (const l of veredictoDeploy(deployInicial, deployFinal, results)) console.log(l)
 
 const ok = results.length - failed.length
 console.log(`\n${failed.length ? C.red : C.grn}${ok}/${results.length} casos ok${C.off}\n`)
