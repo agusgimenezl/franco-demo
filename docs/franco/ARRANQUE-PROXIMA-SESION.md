@@ -143,11 +143,22 @@ Queda **una** cosa anotada, y es a conciencia: la guarda aritmética de v127 no 
 inventado que caiga **exactamente** en la mitad del precio real. Es el sesgo elegido (igual que
 v116), **no tiene caso de eval** y no vale la pena abrirlo salvo que aparezca en producción.
 
-### 1. La fuga de vocabulario interno al cliente
-Franco escribió *«el Toyota Etios 2021 … pero es categoría "económica"»* en una corrida **correcta**
-(sesión `89f55764`). Las etiquetas son internas. **No tiene caso de eval todavía** — ése es el primer
-paso. Ojo: v118 agregó `otro_tamano`, así que la superficie de fuga creció; hay un check que ya
-prohíbe ese token puntual en el turno 2 de `chico-no-es-utilitario`, pero no uno general.
+### 1. 🟡 La fuga de vocabulario interno — CENTINELA ARMADO, BUG SIN REPRODUCIR
+**Ya tiene check general y caso**, así que el primer paso está hecho: `no_vocabulario_interno` en
+`ALWAYS` (corre en los 92 casos), probado 32/32 en
+`scripts/el-vocabulario-interno-no-sale-al-cliente.mjs`, más el caso `no-fugar-vocabulario-interno`.
+El check de `otro_tamano` que estaba suelto en el turno 2 de `chico-no-es-utilitario` queda cubierto.
+
+**PERO NO SE REPRODUJO: 0 de 18 sobre v127, así que NO se intentó ningún fix** (la regla: si no falla
+primero, no se entendió). Caracterizada contra 2701 sesiones: 19 fugas, 3 firmas, la última del
+2026-08-10. Hipótesis de por qué se apagó: **la fuga necesita el bloque `entra` VACÍO**, y v118 —al
+dejar de silenciar el Etios— sacó al guion original de ese estado.
+
+**No arranques por acá salvo que el centinela se ponga rojo en alguna tanda.** Cuando lo haga vas a
+tener el texto exacto y el estado, que es justo lo que faltaba. **0 de 18 no prueba ausencia:** a la
+tasa histórica del guion (~12%) ver cero en 12 pasa 1 de cada 5 veces.
+⚠️ **Los otros 90 casos no se corrieron con el check nuevo.** El respaldo es offline (2701 sesiones,
+0 falsos positivos), que es más grande que una pasada de la suite pero no es lo mismo.
 
 ### 2. "Cómo sería con 24 cuotas" no lo entiende
 Quedó afuera de v126 a propósito: el anticipo era aritmética y fue a SQL, pero esto es guion

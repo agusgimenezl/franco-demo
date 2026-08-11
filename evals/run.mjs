@@ -475,6 +475,49 @@ const CHECKS = {
     return hit ? `se filtró la fila centinela de Listar stock al cliente: ${JSON.stringify(hit[0])}` : null
   },
 
+  // EL VOCABULARIO INTERNO NO SE LE DICE AL CLIENTE. `Listar stock` devuelve `categoria`
+  // (entra/estirar/economica) y `tamano` (chico/mediano/grande) como valores crudos, y el prompt
+  // los repite: son términos de trabajo nuestros, no cosas que se le dicen a alguien que vino a
+  // comprar un auto. Hermano de `no_filtra_centinela`, y por el mismo motivo: es el precio de
+  // haber metido etiquetas en la cadena. Corre en TODOS los turnos.
+  //
+  // NO PROHÍBE LAS PALABRAS, y ahí está toda la gracia: "económica" y "estirar" son español
+  // normal y aparecen 91 y 404 veces de forma legítima en el historial ("una opción económica",
+  // "podés estirar un poco", "algo de más categoría", "equipada para su categoría"). Prohibir el
+  // token habría pintado de rojo medio corpus. Lo que se caza es la etiqueta USADA COMO ETIQUETA.
+  //
+  // LAS TRES FIRMAS SALIERON DE LEER LAS 19 FUGAS, NO DE IMAGINARLAS (medido contra
+  // `mensajes_demo` el 2026-08-11: 19 sesiones sobre 2701, y 3 de las 26 corridas del guion de
+  // `chico-no-es-utilitario`, o sea ~12% ahí):
+  //   · entre comillas — 15 casos. 'opciones "estirar"', 'categoría "económica"', 'segmento de
+  //     precio "entra"'. El modelo cita el término porque sabe que es un término, no una palabra.
+  //   · "categoría <token>" sin comillas — 2 casos.
+  //   · el valor de `tamano` como sustantivo y sin concordancia — 5 casos: "la opción chico",
+  //     "las otras opciones chico", "opciones mediano/grande". Nadie escribe así en español: es
+  //     el valor crudo pegado en la oración. Por eso pide la forma masculina exacta, que después
+  //     de "opción/opciones" sólo aparece si la pegó una máquina — "opciones chicas" no matchea.
+  //   · nombres de campo — 0 casos hoy, pero v118 sumó `otro_tamano` y v126 `anticipo_minimo`:
+  //     la superficie crece con cada campo nuevo y este es el lugar donde se ve.
+  //
+  // VERIFICADO CONTRA LAS 2701 SESIONES DEL HISTORIAL: 19 rojos, todos fugas reales, 0 falsos
+  // positivos. Es la lección de v122 aplicada a una regex — no alcanza con que el patrón parezca
+  // bien, hay que correrlo contra los datos antes de confiarle 91 casos.
+  no_vocabulario_interno: (r) => {
+    const t = allText(r)
+    const hits = []
+    for (const [re, que] of [
+      [/["“”]\s*(?:econ[oó]mica|estirar|entra|otro_tamano)\s*["“”]/gi, 'etiqueta entre comillas'],
+      [/categor[ií]a\s+(?:econ[oó]mica|estirar|entra)\b/gi, 'etiqueta nombrada como categoría'],
+      [/opci[oó]n(?:es)?\s+(?:chico|mediano|grande)\b/gi, 'el valor crudo de tamano como sustantivo'],
+      [/\b(?:otro_tamano|auto_ids|entrega_plata|carroceria_pedida|monto_financiar_hist|estado_ficha|ficha_completa|anticipo_minimo|pisos_carroceria|tiene_permuta)\b/gi, 'nombre de campo interno'],
+    ]) {
+      for (const m of t.matchAll(re)) hits.push(`${que} ${JSON.stringify(m[0])}`)
+    }
+    return hits.length === 0
+      ? null
+      : `se le filtró vocabulario interno al cliente — ${[...new Set(hits)].slice(0, 3).join(' · ')}`
+  },
+
   // NO OFRECER LO QUE NO EXISTE. Rojo si Franco AFIRMA que lo que ofrece o va a mostrar es de
   // una carrocería y no hay NI UNO de esa carrocería en lo que efectivamente ofrece.
   // Cubre los dos síntomas medidos del mismo bug:
@@ -545,7 +588,7 @@ const CHECKS = {
 
 // Checks que corren en cada turno de cada caso, sin declararlos.
 const ALWAYS = ['no_template_leak', 'no_fallback_bubble', 'media_si_lista_autos',
-  'no_inventa_autos', 'no_filtra_centinela']
+  'no_inventa_autos', 'no_filtra_centinela', 'no_vocabulario_interno']
 
 // Checks sobre el historial guardado. Corren contra `mensajes_demo`, no contra la
 // respuesta del webhook.

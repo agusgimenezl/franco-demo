@@ -20,6 +20,51 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🟡 FUGA DE VOCABULARIO INTERNO: CENTINELA ARMADO, BUG NO REPRODUCIDO. NO SE TOCÓ NADA DE
+> FRANCO. Sesión 2026-08-11.**
+>
+> **LO QUE SÍ QUEDÓ, Y ESTÁ PROBADO:** el check `no_vocabulario_interno` en `evals/run.mjs`, dentro
+> de `ALWAYS` — corre en los **92** casos, en todos los turnos. Prueba:
+> `scripts/el-vocabulario-interno-no-sale-al-cliente.mjs`, **32/32**, extrayendo la función REAL del
+> runner (no una copia). Caso nuevo `no-fugar-vocabulario-interno` con el estado que la provoca.
+>
+> **LO QUE NO QUEDÓ: LA REPRODUCCIÓN. 0 fugas en 18 corridas sobre v127** (12 de
+> `chico-no-es-utilitario` + 6 del caso nuevo). **La regla dice que si no falla primero no se
+> entendió el bug, así que NO se intentó ningún fix.**
+>
+> **LA CARACTERIZACIÓN (medida contra `mensajes_demo`, 2701 sesiones): 19 fugas, 3 firmas.**
+> · token entre comillas — 15: `opciones "estirar"`, `categoría "económica"`, `precio "entra"`
+> · `categoría <token>` sin comillas — 2
+> · el valor crudo de `tamano` como sustantivo — 5: *"la opción chico"*, *"opciones mediano/grande"*
+> `estirar` es el que más fuga (11 de 15) y **siempre en el mismo momento: cuando el modelo tiene
+> que NOMBRAR el bloque de arriba.** La última fuga registrada es del **2026-08-10**.
+>
+> **🔴 EL CHECK NO PROHÍBE LAS PALABRAS, Y ESO ES EL DISEÑO, NO UN DETALLE.** "económica" y
+> "estirar" son español normal y aparecen **91 y 404 veces legítimamente** en el historial ("algo de
+> más categoría", "podés estirar un poco", "equipada para su categoría"). Prohibir el token habría
+> pintado de rojo medio corpus **en los 92 casos a la vez**. Se caza la etiqueta *usada como
+> etiqueta*. **Verificado contra las 2701 sesiones: 19 rojos, todos reales, 0 falsos positivos** — la
+> lección de v122 aplicada a una regex. Y el borde peligroso quedó ejercitado EN VIVO: una corrida
+> contestó *"Si podés estirar un poco y llegar hasta $15 millones"* y el check se quedó verde.
+>
+> **POR QUÉ PROBABLEMENTE NO FUGÓ, Y ES UNA HIPÓTESIS, NO UN HECHO:** la fuga necesita que el bloque
+> `entra` quede **vacío**, porque ahí el modelo tiene que nombrar los otros bloques para explicarse.
+> Las dos fugas del 08-10 salieron del guion de `chico-no-es-utilitario` cuando **v118 todavía
+> silenciaba el Etios** por la etiqueta `economica`: sin Etios, `entra` quedaba vacío. Con v118
+> arreglado, ese guion **ya no llega al estado**: las 12 corridas contestaron *"el auto chico que
+> entra bien es: Etios"*. El caso nuevo fuerza el estado por presupuesto (con 12M la ventana
+> `entra` 10,8–12M está vacía de verdad, Fiesta 8,2M y Gol Trend 9,2M caen en `economica` y el Etios
+> 14,5M en `estirar` — verificado contra `autos_disponibles`) y tampoco fugó en 6.
+>
+> **LO QUE ESTO NO PRUEBA, Y HAY QUE DECIRLO:** 0 de 18 **no prueba ausencia**. A la tasa histórica
+> del guion (3 de 26, ~12%) ver cero en 12 pasa 1 de cada 5 veces; a la tasa global (0,73%) ver cero
+> en las 92 sesiones del 08-11 pasa la mitad de las veces. **El bug no está cerrado: está sin
+> reproducir.** El centinela es lo que lo va a cazar cuando aparezca, con el texto exacto y el
+> estado, en cualquiera de los 92 casos.
+>
+> **SIN MEDIR:** los otros 90 casos no se corrieron con el check nuevo. El respaldo es offline y es
+> más grande que una pasada de la suite (2701 sesiones), pero no es lo mismo.
+
 > **🟢 v127 DESPLEGADO Y MEDIDO — EL ANTICIPO MÍNIMO LLEGA ENTERO AL CLIENTE: 0/3 → 3/3.
 > Puntero: v127 vivo, encabezado verificado (35 nodos, 5 invariantes). Sesión 2026-08-11.**
 >
