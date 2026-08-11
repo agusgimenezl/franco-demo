@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v128.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v129.json` · 35 nodos
 
 | | |
 |---|---|
@@ -19,6 +19,53 @@
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v129 DESPLEGADO Y MEDIDO: LA REGRESIÓN DE v128 ESTÁ CERRADA. 🔴 PERO APARECIÓ UNA SEGUNDA,
+> TAMBIÉN MÍA. v130 ARMADO Y NO DESPLEGADO
+> (`scripts/el-nombre-de-ejemplo-no-se-le-dice-al-cliente.mjs`). 1 nodo. Sesión 2026-08-11.**
+>
+> **MEDICIÓN DE v129 (15:04–15:23Z), con el "antes" completo por primera vez en esta cadena:**
+> · `financiacion-pide-anticipo` **0/3 → 3/3** — la regresión de v128 está cerrada
+> · `cuotas-el-plazo-se-contesta-y-se-deriva` **3/3** — lo que ganó v128 se mantuvo
+> · `financiacion-cuanto-falta` **3/3** — control sano
+> · 🔴 `derivacion-aceptada-igual-pide-nombre` **0/3 → 1/3** — mejoró, pero ver abajo
+>
+> **🔴 FRANCO LE DICE UN NOMBRE PROPIO A CLIENTES QUE NUNCA SE LO DIERON, Y LO INTRODUJE YO.**
+> Corridas del guion de `derivacion-aceptada-igual-pide-nombre`, donde el cliente **no da nombre en
+> ningún turno**:
+> · 2026-08-01: **24 corridas, 0** con nombre inventado · 2026-08-05: **4, 0**
+> · 2026-08-11 (v128+v129): **6 corridas, 3** — *"Perfecto Martín, el plan y el valor de la cuota…"*
+> **Cero en 28 antes, 3 de 6 después.** No es la flakiness histórica del caso.
+>
+> **🔴 LA LECCIÓN, Y ES UNA VUELTA DE TUERCA DE LA TRAMPA 6 QUE NO ESTABA ESCRITA:** el guion con el
+> nombre de ejemplo **ya existía y nunca se copiaba**. v128 le agregó EL PORQUÉ —justo lo que el
+> modelo quiere decir cuando el tema son las cuotas— y con eso **volvió más atractiva la rama
+> equivocada**: el modelo pasó a elegir ese guion (el de "ya tenés el nombre") en vez del anónimo, y
+> se trajo el nombre de ejemplo puesto.
+> → v129 dejó dicho *"preguntate a qué REGLA le gana un ejemplo nuevo"*. **Falta la otra mitad:
+> preguntate también A QUÉ OTRO EJEMPLO se lo hacés parecer.** El modelo copia lo que más se parece
+> a lo que está por escribir, y mejorar un guion es hacerlo más elegible.
+>
+> **v130: saca el nombre literal del guion** y deja `<su nombre de pila>` más la condición de cuándo
+> no corre. **El texto nuevo NO vuelve a escribir el nombre de ejemplo** (dárselo otra vez, aunque
+> sea dentro de una prohibición, es cómo se propaga — assert incluido). Las otras 5 apariciones del
+> nombre en el prompt NO se tocan: enseñan a acortar nombre+apellido y están enmarcadas con "si te
+> dice X". Apariciones **6 → 5**, con assert de que baja exactamente 1.
+> **Nota de proceso:** el primer assert de este script era demasiado ancho (`/perfecto Martín/i`) y
+> **frenó el build** por la aparición legítima. Quedó acotado a la forma de guion. El assert hizo
+> justo lo que tenía que hacer.
+>
+> **AL PEGAR v130:** `workflows/franco-n8n-v130.json`, 35 nodos, 5 invariantes.
+> **MEDIR — el "antes" es la medición de v129 de arriba:**
+> `--case derivacion-aceptada-igual-pide-nombre,cuotas-el-plazo-se-contesta-y-se-deriva,financiacion-pide-anticipo,financiacion-cuanto-falta --repeat 3 --delay 45000`
+> `derivacion-aceptada…` tiene que subir de **1/3** y, sobre todo, **no puede aparecer ningún nombre
+> propio inventado**; los otros tres tienen que quedarse en **3/3**.
+>
+> **⚠️ SIN MEDIR:** `derivacion-aceptada-igual-pide-nombre` tiene **una segunda falla, distinta**, que
+> v130 no ataca: una corrida se fue a calcular capacidad y re-ofreció el asesor
+> (*"preferís, puedo ponerte en contacto con un asesor"*), que el caso prohíbe. Su histórico es 3/4 y
+> 7/8, así que aun sin nombres inventados puede no llegar a 3/3. **Es un caso con bug propio y va
+> aparte** — STATE ya dice que su fix va en `Config`, no en el prompt.
 
 > **🔴 v128 DESPLEGADO: ARREGLÓ SU CASO Y ROMPIÓ OTRO. v129 ARMADO Y NO DESPLEGADO
 > (`scripts/el-porque-no-se-come-el-anticipo.mjs`). 1 nodo. Sesión 2026-08-11.**
