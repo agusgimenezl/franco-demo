@@ -20,6 +20,35 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🔴 LÍNEA DE BASE DEL BUG DE LAS CUOTAS: `cuantas-cuotas-da-el-monto-a-financiar` **0/3** sobre
+> v127, falla 1 check por corrida (el del monto). SIN FIX TODAVÍA. Sesión 2026-08-11.**
+>
+> **EL BUG, de la charla real de Valentina Uria (sesión `340c6109`, 2026-08-09):** Franco ofrece el
+> menú *"en cuántas cuotas, 12, 24, 36 o 48?"*, el cliente contesta *"cómo sería con 24?"* y Franco
+> devuelve **cero números** — repite la frase del asesor y pide el nombre. Reproducido 3 de 3.
+>
+> **ESTÁ PARTIDO EN DOS Y NO HAY QUE CONFUNDIRLOS:**
+> · **el VALOR de la cuota no es calculable y no debe serlo.** No hay tasa en `Config` a propósito, y
+>   la FAQ ya dice que la simulación la arma un asesor. **Que Franco no invente una cuota es
+>   CORRECTO y tiene que seguir así** — está escrito en el caso para que nadie lo "arregle".
+> · **el MONTO A FINANCIAR sí es aritmética:** precio − anticipo = 21.000.000 − 13.000.000 =
+>   **8.000.000**, y entra en el tope del 50%. Ese número no lo da nunca.
+>
+> **⚠️ CORRIJO LA CLASIFICACIÓN QUE ESTABA EN STATE:** este pendiente estaba anotado como *"esto es
+> guion (trampa 6)"*. **El número que falta es DETERMINÍSTICO** y por la regla del proyecto va a
+> código. Lo único que es guion es el encuadre ("la cuota exacta la arma un asesor"), que ya funciona.
+>
+> **🔴 Y LA LECCIÓN DE v126 SE CUMPLE OTRA VEZ, MEDIDA ANTES DE ESCRIBIR EL FIX: el corrector de
+> precios SE COME EL NÚMERO NUEVO. 2 de 7 redacciones**, ejecutando el corrector REAL de v127:
+> *"…quedarían $8.000.000 a financiar"* → sale **$21.000.000**. Mueren justo las naturales, las que
+> ponen "a financiar" DESPUÉS del monto: el guard semántico sólo mira los 40 caracteres ANTERIORES,
+> y el aritmético no aplica porque 8.000.000 no es la mitad de 21.000.000.
+> **Y OJO: una de las que sobrevive lo hace POR ACCIDENTE** —el regex se consume el $21.000.000 del
+> renglón y ya no vuelve a matchear—, no porque un guard la salve. No confiar en ésa.
+>
+> **POR ESO EL FIX SON DOS COSAS:** (1) `Detalle auto` devuelve el monto a financiar; (2) ampliar el
+> guard semántico para que mire también lo que viene DESPUÉS del monto. Sin (2), (1) llega pisado.
+
 > **🟡 FUGA DE VOCABULARIO INTERNO: CENTINELA ARMADO, BUG NO REPRODUCIDO. NO SE TOCÓ NADA DE
 > FRANCO. Sesión 2026-08-11.**
 >

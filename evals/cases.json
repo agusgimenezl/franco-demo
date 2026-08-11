@@ -3817,6 +3817,47 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cuantas-cuotas-da-el-monto-a-financiar",
+      "bug": "CHARLA REAL DE VALENTINA URIA, sesion 340c6109 (2026-08-09). Franco OFRECE el menu de cuotas y despues no puede contestar nada sobre el. Literal: -Puedo dar un anticipo de 13M- / Franco: -...anotado al asesor la simulacion con $13.000.000 de anticipo. Ahora, en cuantas cuotas pensas financiarlo, 12, 24, 36 o 48?- / -Como seria si hacemos 24 cuotas??- / Franco: -...anotado al asesor la simulacion con $13.000.000 de anticipo en 24 cuotas. Me dejas tu nombre y apellido...?-. CERO INFORMACION: pregunta por las cuotas, el cliente contesta, y devuelve la misma frase mas un pedido de nombre. EL BUG ESTA PARTIDO EN DOS Y HAY QUE NO CONFUNDIRLOS: (1) el VALOR DE LA CUOTA no es calculable y no debe serlo — no hay tasa en Config a proposito, y la FAQ ya dice que -el valor de la cuota depende del monto financiado, el plazo elegido y las condiciones de la operacion- y que la simulacion la arma un asesor. Que Franco no invente un numero de cuota es CORRECTO y tiene que seguir asi. (2) el MONTO A FINANCIAR si es aritmetica: precio - anticipo = 21.000.000 - 13.000.000 = 8.000.000, y ademas entra en el tope del 50% (10.500.000). Ese numero Franco no lo da nunca. OJO CON LA CLASIFICACION: STATE lo tenia anotado como -esto es guion (trampa 6)-, y el numero que falta es DETERMINISTICO. La regla del proyecto manda que vaya a codigo; lo unico que es guion es el encuadre. NO CONFUNDIR CON EL CUIL: eso es funcion nueva y no existe en crm_leads, no es este bug.",
+      "turns": [
+        {
+          "say": "me interesa el peugeot 208. hacen financiación?",
+          "checks": [
+            [
+              "manual",
+              "Contexto. Tiene que quedar claro que el 208 sale $21.000.000 y que se financia hasta el 50%."
+            ]
+          ]
+        },
+        {
+          "say": "puedo dar un anticipo de 13 millones",
+          "checks": [
+            [
+              "manual",
+              "13M esta por ENCIMA del anticipo minimo (10.5M), asi que la operacion es viable. Aca Franco suele ofrecer el menu 12/24/36/48."
+            ]
+          ]
+        },
+        {
+          "say": "cómo sería si hacemos 24 cuotas??",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)8\\.000\\.000"
+            ],
+            [
+              "text_matches",
+              "(?i)\\b24\\b"
+            ],
+            [
+              "manual",
+              "EL TURNO DEL BUG. Tiene que decir el MONTO A FINANCIAR: $8.000.000 (21.000.000 - 13.000.000). Puede y DEBE seguir diciendo que el valor exacto de la cuota lo arma un asesor — eso no es el bug, es lo correcto. El bug es contestar sin NINGUN numero. Lo que tampoco puede hacer es inventar un valor de cuota: no hay tasa configurada."
+            ]
+          ]
+        }
+      ]
     }
   ]
 }
