@@ -948,7 +948,7 @@
           "checks": [
             [
               "text_matches",
-              "(?i)\\bjusta\\b|potencia|sensores|consumo"
+              "(?i)\\bcvt\\b|service|remolcar|transmisi[oó]n"
             ],
             [
               "manual",

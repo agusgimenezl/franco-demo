@@ -1,0 +1,1574 @@
+[
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "ddb6142a-74ce-42c9-9103-301f79bf253d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 8814,
+        "response": {
+          "session_id": "ddb6142a-74ce-42c9-9103-301f79bf253d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna y con pocos kilómetros, ideal para caminos ripio y rotos por su despeje alto y baúl grande de 475 litros. Esta versión Iconic 1.3 Turbo TCe tiene motor 1.3 turbo de 155 CV naftero y transmisión automática CVT. El consumo promedio es de 7.8 L/100km y está en color gris.\n\nCuenta con climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone. El precio es de $22.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Renault Duster son las que están publicadas, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 5170,
+        "response": {
+          "session_id": "ddb6142a-74ce-42c9-9103-301f79bf253d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano con motor turbo de 230 CV, la mayor potencia entre los autos no pickup del stock, y con pocos kilómetros (24.000 km). Es ideal para quien busca andar de gama alta sin el costo de patentamiento de una unidad nueva. Es de color blanco y el consumo promedio es de 8.2 L/100km. El precio es $31.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo mostrar además opciones similares como el Toyota Corolla 2022 y el Chevrolet Onix 2024, ambos sedanes con buen equipamiento y distintos niveles de consumo y potencia."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase más detalles o fotos del Vento, o preferís ver opciones similares?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 6,
+              "titulo": "Volkswagen Vento 2023",
+              "precio": "$31.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "2644884e-2a6d-4c6f-a170-ee8be90a23ae",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 6669,
+        "response": {
+          "session_id": "2644884e-2a6d-4c6f-a170-ee8be90a23ae",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna y con pocos kilómetros, ideal para caminos de ripio o rotos gracias a su despeje alto y baúl grande de 475 litros. Es la opción más resistente para un uso rudo dentro de su rango. Está en color gris, tiene motor 1.3 Turbo de 155 CV naftero, caja automática CVT, y un consumo promedio aproximado de 7.8 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y requiere un anticipo mínimo de $11.250.000 para financiación. Viene con equipamiento completo como climatizador automático, detector de punto ciego, cámaras 360 grados, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos oficiales de este Renault Duster son las que te puedo mostrar para que veas el estado general."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase más detalles, o te interesa saber cómo sería financiarlo en cuotas?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 7672,
+        "response": {
+          "session_id": "2644884e-2a6d-4c6f-a170-ee8be90a23ae",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 color blanco es un sedán mediano con motor 2.0 turbo de 230 CV y caja automática DSG de 7 marchas. Tiene una potencia destacada para su segmento y apenas 24.000 km, ideal para quien busca andar con prestaciones de gama alta sin el costo de patentamiento de una unidad 0 km."
+            },
+            {
+              "type": "text",
+              "content": "El consumo promedio aproximado es de 8.2 L/100km y viene con equipamiento completo como diferencial autoblocante electrónico XDS, suspensión trasera multilink independiente, techo solar panorámico, asientos deportivos de cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $31.000.000 y la financiación requiere un anticipo mínimo de $15.500.000. Las fotos que tengo son estas, para que veas el exterior y detalles del auto."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarlo o preferís saber de otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "e080f7b6-29c3-4936-83b1-b9bb06e56c49",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 7745,
+        "response": {
+          "session_id": "e080f7b6-29c3-4936-83b1-b9bb06e56c49",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna y con pocos kilómetros. Tiene despeje alto y baúl grande, ideal para ripio y camino roto, aguantando bien el uso rudo por su precio."
+            },
+            {
+              "type": "text",
+              "content": "Este auto es gris, tiene 31.000 km, motor 1.3 Turbo de 155 CV naftero, y caja automática CVT. El consumo promedio aproximado es de 7.8 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Viene con climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas, cargador inductivo para smartphone y baúl de 475 litros."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000. La caja CVT anda muy suave, pero no es ideal si vas a remolcar peso seguido."
+            },
+            {
+              "type": "text",
+              "content": "Te paso las fotos para que lo veas: están las vistas generales y de la carrocería."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización o te muestro otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 6
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 6671,
+        "response": {
+          "session_id": "e080f7b6-29c3-4936-83b1-b9bb06e56c49",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 blanco tiene motor 2.0 Turbo de 230 CV, que es la mayor potencia entre los autos no pickup del stock. Está casi nuevo, con 24.000 km, y tiene transmisión automática DSG de 7 marchas."
+            },
+            {
+              "type": "text",
+              "content": "Consumo promedio aproximado es 8.2 L/100 km. Viene con diferencial autoblocante electrónico XDS, suspensión trasera independiente multilink, techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $31.000.000 y requiere un anticipo mínimo de $15.500.000 para financiar."
+            },
+            {
+              "type": "text",
+              "content": "Además de estas fotos generales del auto, un asesor puede enviarte más detalles si querés."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase una cotización o te muestro otras opciones de sedán similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "condicionante-si-preguntan",
+    "bug": "GUARDARRAÍL de descripcion-que-aporta. Franco tiene perfil comercial y no debe volcar los contras solo, pero si el cliente PREGUNTA por ellos, ocultarlos es peor: lo deja sin respuesta y le hace perder la confianza. Este caso existe para que el fix de 'no cantar los condicionantes' no se pase de freno y termine en un vendedor que esquiva preguntas.",
+    "sessionId": "4a389f4e-8da1-41fa-909c-0439f298ac58",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 7833,
+        "response": {
+          "session_id": "4a389f4e-8da1-41fa-909c-0439f298ac58",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y de pocos kilómetros, ideal para ripio y caminos rotos gracias a su despeje alto y baúl grande de 475 litros. Esta versión Iconic 1.3 Turbo TCe tiene motor 1.3 Turbo de 155 CV, nafta y transmisión automática CVT. Su consumo promedio es de aproximadamente 7,8 L/100km. El precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000. Tiene equipamiento como climatizador automático, detector de punto ciego, cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone."
+            },
+            {
+              "type": "text",
+              "content": "Te paso las fotos y te pregunto: querés que te conecte con un asesor para que te ayude con la financiación o coordines una visita, o preferís que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algún punto flojo que tenga? qué tendría que tener en cuenta?",
+        "ms": 4248,
+        "response": {
+          "session_id": "4a389f4e-8da1-41fa-909c-0439f298ac58",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sobre posibles puntos flojos o cosas a tener en cuenta, ese dato lo confirma un asesor porque no lo tenemos en la ficha técnica. De todos modos, la Duster es una SUV que le cae bien el uso mixto, con buen espacio y confort."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te dé toda la info o te ayudo a ver otras opciones de SUV similares?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)\\bjusta\\b|potencia|sensores|consumo/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)\\bjusta\\b|potencia|sensores|consumo/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Le preguntaron DIRECTO por los contras: acá SÍ tiene que responder con el condicionante real, sin esquivar. Pero sin dramatizarlo ni encadenar una lista de defectos"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "condicionante-si-preguntan",
+    "bug": "GUARDARRAÍL de descripcion-que-aporta. Franco tiene perfil comercial y no debe volcar los contras solo, pero si el cliente PREGUNTA por ellos, ocultarlos es peor: lo deja sin respuesta y le hace perder la confianza. Este caso existe para que el fix de 'no cantar los condicionantes' no se pase de freno y termine en un vendedor que esquiva preguntas.",
+    "sessionId": "44394447-87cd-47d9-9876-2f224c327912",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 7930,
+        "response": {
+          "session_id": "44394447-87cd-47d9-9876-2f224c327912",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y de pocos kilómetros. Tiene despeje alto y baúl grande de 475 litros, ideal para ripio y caminos rotos, una de las que mejor aguanta el uso rudo para el precio que tiene."
+            },
+            {
+              "type": "text",
+              "content": "Vale $22.500.000, es color gris, 31.000 km, con motor 1.3 turbo de 155 CV, nafta y transmisión automática CVT. Su consumo promedio es de aproximadamente 7.8 L/100km. El equipamiento incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo de smartphone."
+            },
+            {
+              "type": "text",
+              "content": "La caja CVT anda muy suave, pero tiene un service específico y no es la transmisión recomendada si pensás remolcar peso seguido."
+            },
+            {
+              "type": "text",
+              "content": "Te paso algunas fotos del auto para que lo veas."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para coordinar una visita o te muestro otras opciones similares para que compares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algún punto flojo que tenga? qué tendría que tener en cuenta?",
+        "ms": 3178,
+        "response": {
+          "session_id": "44394447-87cd-47d9-9876-2f224c327912",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Un punto a tener en cuenta de esta Renault Duster es la caja CVT: anda muy suave, pero tiene un service específico y no es la transmisión indicada si pensás remolcar peso seguido."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para coordinar una visita o preferís que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)\\bjusta\\b|potencia|sensores|consumo/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)\\bjusta\\b|potencia|sensores|consumo/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Le preguntaron DIRECTO por los contras: acá SÍ tiene que responder con el condicionante real, sin esquivar. Pero sin dramatizarlo ni encadenar una lista de defectos"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "condicionante-si-preguntan",
+    "bug": "GUARDARRAÍL de descripcion-que-aporta. Franco tiene perfil comercial y no debe volcar los contras solo, pero si el cliente PREGUNTA por ellos, ocultarlos es peor: lo deja sin respuesta y le hace perder la confianza. Este caso existe para que el fix de 'no cantar los condicionantes' no se pase de freno y termine en un vendedor que esquiva preguntas.",
+    "sessionId": "af38525e-6564-44fd-b9ba-40ddcdfb233b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 7240,
+        "response": {
+          "session_id": "af38525e-6564-44fd-b9ba-40ddcdfb233b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y de pocos kilómetros, con despeje alto y baúl grande de 475 litros, ideal para ripio y caminos rotos. Viene con motor 1.3 Turbo de 155 CV con transmisión automática CVT y consumo aproximado de 7.8 L/100km, funcionando con nafta."
+            },
+            {
+              "type": "text",
+              "content": "El equipamiento incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone. Está en color gris y tiene 31.000 km."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo mostrar las fotos que tenemos publicadas o te cuento cómo es financiarla. Qué preferís?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algún punto flojo que tenga? qué tendría que tener en cuenta?",
+        "ms": 2267,
+        "response": {
+          "session_id": "af38525e-6564-44fd-b9ba-40ddcdfb233b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sobre puntos flojos o detalles para tener en cuenta, eso te lo confirma un asesor directamente. Querés que te conecte con uno para que te dé toda la info y te ayude con la financiación o preferís que te muestre otra opción?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)\\bjusta\\b|potencia|sensores|consumo/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)\\bjusta\\b|potencia|sensores|consumo/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Le preguntaron DIRECTO por los contras: acá SÍ tiene que responder con el condicionante real, sin esquivar. Pero sin dramatizarlo ni encadenar una lista de defectos"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "92124bb7-c46a-4a70-a674-34a2cbffd61b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 9852,
+        "response": {
+          "session_id": "92124bb7-c46a-4a70-a674-34a2cbffd61b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV mediana, prácticamente sin uso y con apenas 5.200 km. Tiene motor 1.0 turbo de 116 CV y transmisión automática tiptronic. Su consumo promedio aproximado es de 7.2 L/100km y viene con equipamiento completo: ópticas full LED, instrumental digital de 10\", pantalla central VW Play de 10\", cargador inalámbrico, techo solar panorámico, detector de punto ciego, climatizador Touch y 5 estrellas Latin NCAP. Es una opción para quien quiere un 0 km sin esperar."
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano con motor 2.0 turbo de 230 CV, la mayor potencia entre los autos no pickups del stock, con 24.000 km y caja automática DSG de 7 marchas. Su consumo promedio aproximado es de 8.2 L/100km. Está equipado con techo solar panorámico, asientos deportivos de cuero calefaccionados y ventilados, sistema de sonido premium, tablero digital configurable y diferencial autoblocante electrónico XDS."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase fotos de alguno de los dos o te interesa saber cómo sería financiar alguno de estos Volkswagen?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "25126760-cd5b-4c8f-a498-8de93a57ce73",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 11365,
+        "response": {
+          "session_id": "25126760-cd5b-4c8f-a498-8de93a57ce73",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV mediana prácticamente sin uso, con solo 5.200 km. Viene automática y con equipamiento completo: ópticas full LED, instrumental digital de 10\", pantalla VW Play, cargador inalámbrico, techo solar panorámico, detector de punto ciego y climatizador touch. El motor es un 1.0 turbo de 116 CV, consume aproximadamente 7.2 L/100km. Es la opción ideal para quien quiere un 0 km sin esperar.\n\nPor otro lado, el Volkswagen Vento 2023 es un sedán mediano con 24.000 km, motor turbo 2.0 de 230 CV con transmisión automática DSG de 7 marchas. Tiene techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable. Su consumo es de aproximadamente 8.2 L/100km. Es la opción para quien busca la mayor potencia y un andar de gama alta sin el costo de un 0 km."
+            },
+            {
+              "type": "text",
+              "content": "La T-Cross rinde bien con su motor 1.0 turbo para mover una SUV, pero si buscás mayor potencia y respuesta en ruta, el Vento con su motor 2.0 de 230 CV va mejor. En cuanto al equipamiento y comodidad, ambos ofrecen detalles premium, pero el Vento tiene un enfoque más deportivo y de mayor potencia.\n\nQuerés que te pase las fotos de alguno o te preparo más detalles de alguno de los dos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "de9549e3-da3e-4f21-85f2-17e649007c6f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 8801,
+        "response": {
+          "session_id": "de9549e3-da3e-4f21-85f2-17e649007c6f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025, color blanco y con solo 5.200 km, es una SUV mediana automática con equipamiento completo, ideal para quien quiere un 0 km sin esperar. Tiene motor 1.0 Turbo de 116 CV, naftero, transmisión automática tiptronic y un consumo aproximado de 7.2 L/100km. Su precio es $34.000.000, y el anticipo mínimo para financiarlo es $17.000.000."
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023, también blanco, tiene 24.000 km y es un sedán mediano con motor turbo de 230 CV, mucho más potente para una respuesta fuerte en ruta. Viene con transmisión automática DSG de 7 marchas y un consumo aproximado de 8.2 L/100km. Su precio es $31.000.000, y el anticipo mínimo es $15.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Ambos vehículos tienen techo solar panorámico y un diseño moderno. El T-Cross es más económico en consumo y ideal para quien busca algo ágil y compacto SUV, mientras que el Vento ofrece más potencia y confort de gama alta en sedán."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo mostrar las fotos de cualquiera o los dos, o contarte más detalles de equipamiento si querés. Qué te interesa primero?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-repite-la-ficha",
+    "bug": "Reporte de Agustina 2026-08-06, sesion REAL b6b3ed0c-484e-444d-92e2-83657d697f16 leida de mensajes_demo (no de la captura, que corta). Turno 1 \"Estoy buscando una Amarok 2023.\": Franco da la ficha completa de la Amarok 2018 (135.000 km, motor 2.0L de 180 HP, transmision manual, consumo 9.8 L/100km, aire acondicionado, pantalla multimedia, camara de retroceso, sensores de estacionamiento, $32.000.000). Eso esta BIEN, es el detalle que corresponde. Turno 2 \"2023 no tienen?\": Franco REPITE LOS MISMOS 7 DATOS casi palabra por palabra, un turno despues, con todo eso todavia en pantalla. La respuesta correcta a esa pregunta es una linea: no hay 2023, la mas nueva es la 2018. CAUSA (leida del prompt, no supuesta): ## Paso 3 manda armar el detalle completo CADA VEZ que el cliente se interesa por un auto, y # No repitas lo que ya hiciste SOLO cubre fotos y stock completo, no la ficha. DATO QUE YA EXISTE EN EL WORKFLOW Y NO SE USA PARA ESTO: el nodo Autos ya mostrados calcula ids_recientes y cards_recientes, pero corre DESPUES de Franco (alimenta a Armar respuesta), asi que el prompt nunca se entera. Para que Franco lo sepa hay que calcularlo ANTES, en Leer lead (estado). Los checks del turno 2 miran datos que son EXCLUSIVOS de la Amarok (135.000 km, 180 HP, 9.8) y el equipamiento: ninguno tiene motivo legitimo para reaparecer, y no se pisan con la lista de alternativas mas nuevas (Ranger/S10/Hilux), que si es una respuesta razonable a la pregunta.",
+    "sessionId": "34f311ff-2c04-4179-a903-384873fc5242",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 5764,
+        "response": {
+          "session_id": "34f311ff-2c04-4179-a903-384873fc5242",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, la Amarok 2018 que tenemos es 4x4 diésel, con buena potencia y equipamiento completo. Es una opción sólida para quien necesita tracción real y no quiere pagar una unidad muy reciente, aunque tiene 135.000 km y conviene una revisión mecánica previa que el asesor coordina sin cargo."
+            },
+            {
+              "type": "text",
+              "content": "También tenemos otras pickups similares como la Ford Ranger 2024 4x4 automática, la Chevrolet S10 2022 4x2, y la Toyota Hilux 2021 4x4, que podrías considerar."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber más del detalle de alguna Amarok, o querés que te muestre otras opciones de pickups o autos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "2023 no tienen?",
+        "ms": 2227,
+        "response": {
+          "session_id": "34f311ff-2c04-4179-a903-384873fc5242",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Para Amarok 2023 no hay unidades en stock. Si querés puedo mostrarte pickups similares del 2023 o más recientes, o ayudarte con otra cosa."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase las pickups 2023 que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)2018/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)2018/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-repite-la-ficha",
+    "bug": "Reporte de Agustina 2026-08-06, sesion REAL b6b3ed0c-484e-444d-92e2-83657d697f16 leida de mensajes_demo (no de la captura, que corta). Turno 1 \"Estoy buscando una Amarok 2023.\": Franco da la ficha completa de la Amarok 2018 (135.000 km, motor 2.0L de 180 HP, transmision manual, consumo 9.8 L/100km, aire acondicionado, pantalla multimedia, camara de retroceso, sensores de estacionamiento, $32.000.000). Eso esta BIEN, es el detalle que corresponde. Turno 2 \"2023 no tienen?\": Franco REPITE LOS MISMOS 7 DATOS casi palabra por palabra, un turno despues, con todo eso todavia en pantalla. La respuesta correcta a esa pregunta es una linea: no hay 2023, la mas nueva es la 2018. CAUSA (leida del prompt, no supuesta): ## Paso 3 manda armar el detalle completo CADA VEZ que el cliente se interesa por un auto, y # No repitas lo que ya hiciste SOLO cubre fotos y stock completo, no la ficha. DATO QUE YA EXISTE EN EL WORKFLOW Y NO SE USA PARA ESTO: el nodo Autos ya mostrados calcula ids_recientes y cards_recientes, pero corre DESPUES de Franco (alimenta a Armar respuesta), asi que el prompt nunca se entera. Para que Franco lo sepa hay que calcularlo ANTES, en Leer lead (estado). Los checks del turno 2 miran datos que son EXCLUSIVOS de la Amarok (135.000 km, 180 HP, 9.8) y el equipamiento: ninguno tiene motivo legitimo para reaparecer, y no se pisan con la lista de alternativas mas nuevas (Ranger/S10/Hilux), que si es una respuesta razonable a la pregunta.",
+    "sessionId": "96bf82f1-e1a3-4887-9909-6163ad4374e1",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 5055,
+        "response": {
+          "session_id": "96bf82f1-e1a3-4887-9909-6163ad4374e1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, sobre Amarok 2023 no tenemos en stock, pero tengo una Amarok 2018, que es la 4x4 diésel más accesible, con buena potencia y equipamiento completo."
+            },
+            {
+              "type": "text",
+              "content": "Además, si querés una pickup 4x4 pero más moderna, puedo mostrarte las siguientes opciones alternativas en nuestro stock:\n- Ford Ranger 2024, 18.000 km, $57.000.000\n- Chevrolet S10 2022, 68.000 km, $39.500.000\n- Toyota Hilux 2021, 95.000 km, $38.000.000\n\nTe interesa alguna o querés que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "2023 no tienen?",
+        "ms": 2297,
+        "response": {
+          "session_id": "96bf82f1-e1a3-4887-9909-6163ad4374e1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "No tenemos Amarok 2023 en stock. Tengo solo algunas pickups 4x4 de años anteriores o distintas marcas, si te interesa alguna te puedo detallar."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre pickups 4x4 de los últimos años o preferís otra marca o tipo de auto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)2018/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)2018/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-repite-la-ficha",
+    "bug": "Reporte de Agustina 2026-08-06, sesion REAL b6b3ed0c-484e-444d-92e2-83657d697f16 leida de mensajes_demo (no de la captura, que corta). Turno 1 \"Estoy buscando una Amarok 2023.\": Franco da la ficha completa de la Amarok 2018 (135.000 km, motor 2.0L de 180 HP, transmision manual, consumo 9.8 L/100km, aire acondicionado, pantalla multimedia, camara de retroceso, sensores de estacionamiento, $32.000.000). Eso esta BIEN, es el detalle que corresponde. Turno 2 \"2023 no tienen?\": Franco REPITE LOS MISMOS 7 DATOS casi palabra por palabra, un turno despues, con todo eso todavia en pantalla. La respuesta correcta a esa pregunta es una linea: no hay 2023, la mas nueva es la 2018. CAUSA (leida del prompt, no supuesta): ## Paso 3 manda armar el detalle completo CADA VEZ que el cliente se interesa por un auto, y # No repitas lo que ya hiciste SOLO cubre fotos y stock completo, no la ficha. DATO QUE YA EXISTE EN EL WORKFLOW Y NO SE USA PARA ESTO: el nodo Autos ya mostrados calcula ids_recientes y cards_recientes, pero corre DESPUES de Franco (alimenta a Armar respuesta), asi que el prompt nunca se entera. Para que Franco lo sepa hay que calcularlo ANTES, en Leer lead (estado). Los checks del turno 2 miran datos que son EXCLUSIVOS de la Amarok (135.000 km, 180 HP, 9.8) y el equipamiento: ninguno tiene motivo legitimo para reaparecer, y no se pisan con la lista de alternativas mas nuevas (Ranger/S10/Hilux), que si es una respuesta razonable a la pregunta.",
+    "sessionId": "03d3d4fd-83f2-4785-8220-89bc64f500a2",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 6367,
+        "response": {
+          "session_id": "03d3d4fd-83f2-4785-8220-89bc64f500a2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tenemos una Volkswagen Amarok 2018, pero sí estas opciones relacionadas en pickup del stock:\n\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000 (4x4)\n- Toyota Hilux 2021 — 95.000 km — $38.000.000 (4x4)\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2)\n- Ford Ranger 2024 — 18.000 km — $57.000.000 (4x4)\n\nQuerés que te cuente más sobre alguna, o te muestro otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "2023 no tienen?",
+        "ms": 2433,
+        "response": {
+          "session_id": "03d3d4fd-83f2-4785-8220-89bc64f500a2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "No hay Amarok 2023 en nuestro stock actual. Si buscás esa antigüedad en pickup, solo tenemos una Ford Ranger 2024 que es más nueva, y algunos modelos anteriores que te mencioné.\n\nQuerés que te muestre detalles de la Ranger 2024 o preferís ver otras pickups o tipos de autos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)2018/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)2018/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "la-ficha-que-no-se-dio-no-esta-dada",
+    "bug": "Charla real reportada por Agustina (2026-08-10, sesión de las 19:25–19:30Z, 2 capturas). Pide la ficha del Onix y de la T-Cross y las recibe completas; pide 'perfecto y el corolla?' y le llega UNA SOLA LÍNEA: 'El Toyota Corolla 2022 tiene 35.000 km y cuesta $24.800.000.'. Cuando insiste ('es el full?', 'que version tiene el auto?') Franco deriva al asesor y dice 'Ya viste la info que te pasé antes', que es FALSO: nunca dio la ficha del Corolla. NO ES EL PROMPT NI ES ALUCINACIÓN, LO DICE EL LOG (ejecución 14788): 'Detalle auto' con auto_id=5 devolvió descripcion='' y ficha_completa='YA LE DISTE LA FICHA COMPLETA DE ESTE AUTO...'. El código le pasó una premisa falsa y Franco la obedeció (trampa 7). CAUSA: el detector de v103 usa 'metadata.consumo' como firma de 'la ficha ya se dio' y ESA FIRMA NO ES ÚNICA. Busca el consumo exacto del auto en las últimas 12 burbujas de Franco, y el Corolla y la T-Cross comparten '7.2 L/100km': la ficha de la T-Cross imprimió ese string y el detector del Corolla lo tomó como propio. HAY TRES GRUPOS EN COLISIÓN, 7 de los 17 autos: 7.8 (Gol Trend, EcoSport, Duster), 7.2 (Corolla, T-Cross), 9.5 (Renegade, Ranger). Lo introdujo la migración a la ficha V2, que reescribió 16 consumos: se cuidó el FORMATO de la firma y nunca se verificó su UNICIDAD entre autos. SEGUNDA CAPA, y es la que explica por qué no puede decir la versión aunque el dato exista: 'Detalle auto' NO devuelve 'version' como campo; el dato (metadata.version = 'XEI 2.0 Dynamic Force') sólo le llega embebido dentro de content -> ficha_completa, así que cualquier supresión de ese campo se lleva la versión puesta, INCLUSO una supresión legítima. EL CONTROL DE ESTE CASO ES 'no-repite-la-ficha' (y el turno 11 de 'charla-real-reapertura-con-usado'): la supresión legítima tiene que seguir funcionando.",
+    "sessionId": "d1732f47-1348-42b4-ab14-98f6fb1f8935",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me darias mas info del onix y de la t cross?",
+        "ms": 11408,
+        "response": {
+          "session_id": "d1732f47-1348-42b4-ab14-98f6fb1f8935",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Chevrolet Onix 2024 es un sedán rojo, con 12.000 km, versión Premier 1.0 Turbo. Es ideal para quien busca un auto chico que rinde como uno mediano, con un motor 1.0 turbo de 116 CV y transmisión automática. Destaca por su bajo consumo de 6,5 L/100km y equipamiento: 6 airbags, sistema Easy Park de estacionamiento semi-autónomo, cargador inalámbrico, Wi-Fi a bordo con OnStar, y alerta de punto ciego. El precio es $21.500.000 y el anticipo mínimo para financiar es $10.750.000. Las fotos que tenemos de este auto son las generales y exteriores, si necesitás fotos específicas interior o detalles, puedo conectarte con un asesor."
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen T-Cross 2025 es una SUV blanca con muy poco uso (5.200 km), versión Highline 200 TSI. Cuenta con motor 1.0 turbo de 116 CV y transmisión automática tiptronic, consumo aproximado de 7,2 L/100km. Es la opción para quien quiere algo casi 0 km sin esperar, con equipamiento completo: ópticas full LED, pantalla digital de 10\", cargador inalámbrico, techo solar panorámico, detector de punto ciego, climatizador Touch y 5 estrellas Latin NCAP. Su precio es $34.000.000, y el anticipo mínimo es $17.000.000. También tengo fotos generales y exteriores disponibles."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa que un asesor te arme una cotización o querés ver alguna otra opción que tenemos en stock?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-3.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "perfecto y el corolla?",
+        "ms": 6215,
+        "response": {
+          "session_id": "d1732f47-1348-42b4-ab14-98f6fb1f8935",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Toyota Corolla 2022 XEI 2.0 Dynamic Force es un sedán mediano gris, con 35.000 km. Tiene motor 2.0 de 170 CV, nafta y transmisión automática CVT. El consumo promedio es de 7,2 L/100km. Su equipamiento incluye 7 airbags, climatizador automático bizona, pantalla multimedia de 8 pulgadas con conectividad inalámbrica, faros antiniebla LED, llantas de aleación de 17 pulgadas y acceso inteligente con botón. El precio es $24.800.000 y el anticipo mínimo para financiar es $12.400.000."
+            },
+            {
+              "type": "text",
+              "content": "Una cosa para tener en cuenta: la caja CVT tiene un service específico y no es la recomendada si vas a remolcar o cargar mucho peso seguido."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos son las que te puedo mostrar, con vistas generales del auto. Querés que un asesor te prepare una cotización o que te muestre otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "que version tiene el auto?",
+        "ms": 3316,
+        "response": {
+          "session_id": "d1732f47-1348-42b4-ab14-98f6fb1f8935",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Toyota Corolla 2022 que te conté es la versión XEI 2.0 Dynamic Force."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare un presupuesto o preferís seguir viendo otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Las dos fichas completas. La de la T-Cross imprime '7.2 L/100km', que es la firma que en el turno siguiente se le va a confundir con la del Corolla."
+      },
+      {
+        "turn": 2,
+        "note": "TIENE QUE DAR LA FICHA DEL COROLLA: es la primera vez que se la piden. Motor 2.0 de 170 CV, transmisión CVT, versión XEI. Lo que no puede pasar es la línea sola con km y precio, ni decir que ya se la había dado."
+      },
+      {
+        "turn": 3,
+        "note": "SEGUNDA CAPA: el dato existe (metadata.version = 'XEI 2.0 Dynamic Force'). Tiene que poder decir la versión SIN recitar la ficha entera de nuevo. Derivar al asesor para 'confirmar la versión exacta' cuando el dato está en la base es el bug."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "la-ficha-que-no-se-dio-no-esta-dada",
+    "bug": "Charla real reportada por Agustina (2026-08-10, sesión de las 19:25–19:30Z, 2 capturas). Pide la ficha del Onix y de la T-Cross y las recibe completas; pide 'perfecto y el corolla?' y le llega UNA SOLA LÍNEA: 'El Toyota Corolla 2022 tiene 35.000 km y cuesta $24.800.000.'. Cuando insiste ('es el full?', 'que version tiene el auto?') Franco deriva al asesor y dice 'Ya viste la info que te pasé antes', que es FALSO: nunca dio la ficha del Corolla. NO ES EL PROMPT NI ES ALUCINACIÓN, LO DICE EL LOG (ejecución 14788): 'Detalle auto' con auto_id=5 devolvió descripcion='' y ficha_completa='YA LE DISTE LA FICHA COMPLETA DE ESTE AUTO...'. El código le pasó una premisa falsa y Franco la obedeció (trampa 7). CAUSA: el detector de v103 usa 'metadata.consumo' como firma de 'la ficha ya se dio' y ESA FIRMA NO ES ÚNICA. Busca el consumo exacto del auto en las últimas 12 burbujas de Franco, y el Corolla y la T-Cross comparten '7.2 L/100km': la ficha de la T-Cross imprimió ese string y el detector del Corolla lo tomó como propio. HAY TRES GRUPOS EN COLISIÓN, 7 de los 17 autos: 7.8 (Gol Trend, EcoSport, Duster), 7.2 (Corolla, T-Cross), 9.5 (Renegade, Ranger). Lo introdujo la migración a la ficha V2, que reescribió 16 consumos: se cuidó el FORMATO de la firma y nunca se verificó su UNICIDAD entre autos. SEGUNDA CAPA, y es la que explica por qué no puede decir la versión aunque el dato exista: 'Detalle auto' NO devuelve 'version' como campo; el dato (metadata.version = 'XEI 2.0 Dynamic Force') sólo le llega embebido dentro de content -> ficha_completa, así que cualquier supresión de ese campo se lleva la versión puesta, INCLUSO una supresión legítima. EL CONTROL DE ESTE CASO ES 'no-repite-la-ficha' (y el turno 11 de 'charla-real-reapertura-con-usado'): la supresión legítima tiene que seguir funcionando.",
+    "sessionId": "11206b6d-8c8c-4156-ba6b-adf92c12b3f0",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me darias mas info del onix y de la t cross?",
+        "ms": 7968,
+        "response": {
+          "session_id": "11206b6d-8c8c-4156-ba6b-adf92c12b3f0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Chevrolet Onix 2024 es el que menos consume entre los nafteros, con un motor 1.0 turbo que rinde 6,5 L/100km, y tiene muy pocos kilómetros (12.000 km). Es un auto chico que se comporta como uno mediano.\n\nEl Volkswagen T-Cross 2025 es una SUV mediana prácticamente sin uso, con sólo 5.200 km. Es automático, con equipamiento completo y consumo de 7,2 L/100km. Ideal para quien quiere 0 km sin esperar."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te dé más detalles de alguno de estos dos o te muestro algunas alternativas similares en cada caso?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-3.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)116/"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "perfecto y el corolla?",
+        "ms": 7329,
+        "response": {
+          "session_id": "11206b6d-8c8c-4156-ba6b-adf92c12b3f0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Toyota Corolla 2022 que tenemos es un sedán mediano en color gris, con 35.000 km. Tiene motor 2.0 de 170 CV naftero, caja automática CVT y un consumo promedio de 7,2 L/100km. Cuenta con equipamiento completo como 7 airbags, climatizador automático bizona, pantalla multimedia de 8 pulgadas con conectividad inalámbrica y faros antiniebla LED. El precio es $24.800.000."
+            },
+            {
+              "type": "text",
+              "content": "Respecto a la Volkswagen T-Cross 2025, es una SUV mediana blanca con muy pocos kilómetros (5.200 km), motor 1.0 turbo de 116 CV, transmisión automática tiptronic y consumo similar de 7,2 L/100km. Está muy equipada y es una buena opción para quien quiere un cero km sin esperar, a $34.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare cotización de alguno o te muestro otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "que version tiene el auto?",
+        "ms": 6191,
+        "response": {
+          "session_id": "11206b6d-8c8c-4156-ba6b-adf92c12b3f0",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Toyota Corolla 2022 es la versión XEI 2.0 Dynamic Force. Es un sedán mediano con motor 2.0 de 170 CV naftero y transmisión automática CVT. Cuenta con 7 airbags, climatizador automático bizona, pantalla multimedia de 8 pulgadas con conectividad inalámbrica, faros antiniebla LED y llantas de aleación de 17 pulgadas. Está en color gris y tiene 35.000 km. El consumo promedio es de 7,2 L/100km y el precio es $24.800.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare una cotización o que te muestre más autos similares?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)116/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Las dos fichas completas. La de la T-Cross imprime '7.2 L/100km', que es la firma que en el turno siguiente se le va a confundir con la del Corolla."
+      },
+      {
+        "turn": 2,
+        "note": "TIENE QUE DAR LA FICHA DEL COROLLA: es la primera vez que se la piden. Motor 2.0 de 170 CV, transmisión CVT, versión XEI. Lo que no puede pasar es la línea sola con km y precio, ni decir que ya se la había dado."
+      },
+      {
+        "turn": 3,
+        "note": "SEGUNDA CAPA: el dato existe (metadata.version = 'XEI 2.0 Dynamic Force'). Tiene que poder decir la versión SIN recitar la ficha entera de nuevo. Derivar al asesor para 'confirmar la versión exacta' cuando el dato está en la base es el bug."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "la-ficha-que-no-se-dio-no-esta-dada",
+    "bug": "Charla real reportada por Agustina (2026-08-10, sesión de las 19:25–19:30Z, 2 capturas). Pide la ficha del Onix y de la T-Cross y las recibe completas; pide 'perfecto y el corolla?' y le llega UNA SOLA LÍNEA: 'El Toyota Corolla 2022 tiene 35.000 km y cuesta $24.800.000.'. Cuando insiste ('es el full?', 'que version tiene el auto?') Franco deriva al asesor y dice 'Ya viste la info que te pasé antes', que es FALSO: nunca dio la ficha del Corolla. NO ES EL PROMPT NI ES ALUCINACIÓN, LO DICE EL LOG (ejecución 14788): 'Detalle auto' con auto_id=5 devolvió descripcion='' y ficha_completa='YA LE DISTE LA FICHA COMPLETA DE ESTE AUTO...'. El código le pasó una premisa falsa y Franco la obedeció (trampa 7). CAUSA: el detector de v103 usa 'metadata.consumo' como firma de 'la ficha ya se dio' y ESA FIRMA NO ES ÚNICA. Busca el consumo exacto del auto en las últimas 12 burbujas de Franco, y el Corolla y la T-Cross comparten '7.2 L/100km': la ficha de la T-Cross imprimió ese string y el detector del Corolla lo tomó como propio. HAY TRES GRUPOS EN COLISIÓN, 7 de los 17 autos: 7.8 (Gol Trend, EcoSport, Duster), 7.2 (Corolla, T-Cross), 9.5 (Renegade, Ranger). Lo introdujo la migración a la ficha V2, que reescribió 16 consumos: se cuidó el FORMATO de la firma y nunca se verificó su UNICIDAD entre autos. SEGUNDA CAPA, y es la que explica por qué no puede decir la versión aunque el dato exista: 'Detalle auto' NO devuelve 'version' como campo; el dato (metadata.version = 'XEI 2.0 Dynamic Force') sólo le llega embebido dentro de content -> ficha_completa, así que cualquier supresión de ese campo se lleva la versión puesta, INCLUSO una supresión legítima. EL CONTROL DE ESTE CASO ES 'no-repite-la-ficha' (y el turno 11 de 'charla-real-reapertura-con-usado'): la supresión legítima tiene que seguir funcionando.",
+    "sessionId": "dc17cfbd-66ab-43a9-9859-08e45e7ede49",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me darias mas info del onix y de la t cross?",
+        "ms": 8954,
+        "response": {
+          "session_id": "dc17cfbd-66ab-43a9-9859-08e45e7ede49",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, te paso info de dos autos que tenemos en stock, el Chevrolet Onix y la Volkswagen T-Cross, para que los puedas comparar bien:"
+            },
+            {
+              "type": "text",
+              "content": "- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (Sedán chico, nafta)\nEs el que menos consume entre los nafteros (6,5 L/100km), gracias al motor 1.0 turbo, rinde como un auto chico pero anda como uno mediano."
+            },
+            {
+              "type": "text",
+              "content": "- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000 (SUV mediana, nafta)\nCon muy pocos kilómetros, automática y con equipamiento completo, ideal para quien quiere 0 km sin esperar."
+            },
+            {
+              "type": "text",
+              "content": "Cada uno tiene lo suyo: el Onix es más económico y eficiente, mientras que la T-Cross es una SUV moderna con un precio más alto y más equipamiento. Quedó claro lo que buscás? Querés que te cuente del motor, transmisión y equipamiento de alguno de los dos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-3.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)116/"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "perfecto y el corolla?",
+        "ms": 5507,
+        "response": {
+          "session_id": "dc17cfbd-66ab-43a9-9859-08e45e7ede49",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Toyota Corolla 2022 XEI 2.0 Dynamic Force es un sedán mediano con caja automática CVT y equipamiento completo. Tiene cámara y sensores incluidos, 7 airbags de serie, climatizador automático bizona, pantalla multimedia de 8 pulgadas con conectividad inalámbrica, faros antiniebla LED y llantas de aleación de 17 pulgadas.\n\nEs de color gris, tiene 35.000 km y el motor 2.0 naftero de 170 CV. El consumo promedio es de 7.2 L/100 km. Lo bueno es que el Corolla con caja CVT mantiene muy bien el valor de reventa.\n\nEl precio es $24.800.000 y el anticipo mínimo para financiarlo es $12.400.000.\n\nTe puedo mostrar fotos o contarte cómo sería financiarlo. Querés?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "que version tiene el auto?",
+        "ms": 4411,
+        "response": {
+          "session_id": "dc17cfbd-66ab-43a9-9859-08e45e7ede49",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La versión del Toyota Corolla 2022 que tenemos es XEI 2.0 Dynamic Force, con motor 2.0 naftero de 170 CV y transmisión automática CVT. Es un sedán mediano con muy buen equipamiento, incluyendo 7 airbags, climatizador automático bizona y pantalla multimedia de 8 pulgadas con conectividad inalámbrica.\n\nQuerés que te pase fotos o que te cuente cómo sería financiarlo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)116/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Las dos fichas completas. La de la T-Cross imprime '7.2 L/100km', que es la firma que en el turno siguiente se le va a confundir con la del Corolla."
+      },
+      {
+        "turn": 2,
+        "note": "TIENE QUE DAR LA FICHA DEL COROLLA: es la primera vez que se la piden. Motor 2.0 de 170 CV, transmisión CVT, versión XEI. Lo que no puede pasar es la línea sola con km y precio, ni decir que ya se la había dado."
+      },
+      {
+        "turn": 3,
+        "note": "SEGUNDA CAPA: el dato existe (metadata.version = 'XEI 2.0 Dynamic Force'). Tiene que poder decir la versión SIN recitar la ficha entera de nuevo. Derivar al asesor para 'confirmar la versión exacta' cuando el dato está en la base es el bug."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  }
+]

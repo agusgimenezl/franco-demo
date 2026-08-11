@@ -20,6 +20,45 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🟡 EVALS DESPUÉS DE LA COPY: 7/15. UNA FALLA ES DE LA COPY Y ESTÁ ARREGLADA; LAS OTRAS DOS NO SE
+> PUEDEN ATRIBUIR. Y APARECIÓ UN BUG NUEVO. Sesión 2026-08-11.**
+>
+> **RESULTADO (`evals/copy-postcambio.json`, 5 casos × 3):**
+> · `descripcion-que-aporta` **3/3** · `comparacion-incluye-descriptivo` **3/3**
+> · `condicionante-si-preguntan` **0/3** ← predicho, causado por la copy
+> · `no-repite-la-ficha` **0/3** · `la-ficha-que-no-se-dio-no-esta-dada` **1/3** ← NO predichos
+>
+> **⚠️ SE CORRIGE ALGO QUE SE AFIRMÓ ANTES DE APLICAR LA COPY:** se dijo que la palabra `justa`
+> aparecía en los evals *"siempre como prohibición"*. **Era falso**: en `condicionante-si-preguntan`
+> es un `text_matches`, o sea un REQUISITO. Ese caso se rompió con el cambio de datos y estaba
+> anunciado como riesgo cero. **Antes de tocar un dato, mirar si los checks lo EXIGEN, no sólo si lo
+> mencionan.**
+>
+> **EL CHECK SE ADAPTÓ, NO SE AFLOJÓ:** `\bjusta\b|potencia|sensores|consumo` →
+> `\bcvt\b|service|remolcar|transmisi[oó]n`, que son las palabras del condicionante nuevo. Probado
+> antes de guardar: verde con el condicionante nuevo, rojo con dos respuestas que esquivan.
+> **Tras el cambio el caso subió 0/3 → 1/3, y las dos rojas son bugs REALES, no el check.**
+>
+> **🔴 BUG NUEVO, Y ES DE LOS FEOS: FRANCO INVENTA "LA POTENCIA ES JUSTA" DEL DUSTER.** Esa frase
+> **ya no existe en la base** —se borró hace una hora— y Franco la dijo igual, contradiciendo la
+> ficha (155 CV, la SUV MÁS potente del stock). **No la está leyendo: la está generando**, con
+> conocimiento propio del modelo sobre un 1.3 en una SUV. **Es un primo de la trampa 6 que no estaba
+> documentado: sacar la frase del dato NO alcanza cuando el modelo tiene su propia opinión.** La otra
+> roja es el opuesto: **esquiva** la pregunta (*"eso te lo puede confirmar mejor un asesor"*), que es
+> justo lo que este caso existe para impedir.
+>
+> **🟡 `no-repite-la-ficha` 0/3 y `la-ficha-que-no-se-dio-no-esta-dada` 1/3: NO ATRIBUIBLES.** Los dos
+> estaban **3/3 esta mañana sobre v126**, pero entre medio pasaron v127→v133 (siete versiones de
+> prompt) **y** la copy. Leídas las respuestas, **Franco contesta bien en las dos**: en
+> `la-ficha…` la corrida que pasó dice "116 CV" para Onix y T-Cross, y en `no-repite-la-ficha`
+> contesta *"Para Amarok 2023 no hay unidades en stock"* —correcto— pero sin nombrar el 2018 que el
+> check pide. **El Amarok es el único auto de ese caso que NO se tocó.** Son checks que exigen un
+> token puntual, no datos rotos.
+>
+> **⚠️ EL HUECO QUE DEJÓ ESTE EPISODIO: la compuerta de pre-deploy cubre VERSIONES DEL WORKFLOW, no
+> CAMBIOS DE DATOS.** La copy se aplicó sin línea de base previa y por eso dos casos quedaron sin
+> atribuir. Mismo error de método que con v128 y v131, en una superficie que la compuerta no mira.
+
 > **🟢 ETAPA 2 DE LA MIGRACIÓN — LA COPY: APLICADA. 12 frases reescritas contra la ficha.
 > Decisión de Agustina (2026-08-11): la ficha manda, las frases se amoldan. Sesión 2026-08-11.**
 >
