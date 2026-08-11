@@ -3819,8 +3819,8 @@
       ]
     },
     {
-      "id": "cuantas-cuotas-da-el-monto-a-financiar",
-      "bug": "CHARLA REAL DE VALENTINA URIA, sesion 340c6109 (2026-08-09). Franco OFRECE el menu de cuotas y despues no puede contestar nada sobre el. Literal: -Puedo dar un anticipo de 13M- / Franco: -...anotado al asesor la simulacion con $13.000.000 de anticipo. Ahora, en cuantas cuotas pensas financiarlo, 12, 24, 36 o 48?- / -Como seria si hacemos 24 cuotas??- / Franco: -...anotado al asesor la simulacion con $13.000.000 de anticipo en 24 cuotas. Me dejas tu nombre y apellido...?-. CERO INFORMACION: pregunta por las cuotas, el cliente contesta, y devuelve la misma frase mas un pedido de nombre. EL BUG ESTA PARTIDO EN DOS Y HAY QUE NO CONFUNDIRLOS: (1) el VALOR DE LA CUOTA no es calculable y no debe serlo — no hay tasa en Config a proposito, y la FAQ ya dice que -el valor de la cuota depende del monto financiado, el plazo elegido y las condiciones de la operacion- y que la simulacion la arma un asesor. Que Franco no invente un numero de cuota es CORRECTO y tiene que seguir asi. (2) el MONTO A FINANCIAR si es aritmetica: precio - anticipo = 21.000.000 - 13.000.000 = 8.000.000, y ademas entra en el tope del 50% (10.500.000). Ese numero Franco no lo da nunca. OJO CON LA CLASIFICACION: STATE lo tenia anotado como -esto es guion (trampa 6)-, y el numero que falta es DETERMINISTICO. La regla del proyecto manda que vaya a codigo; lo unico que es guion es el encuadre. NO CONFUNDIR CON EL CUIL: eso es funcion nueva y no existe en crm_leads, no es este bug.",
+      "id": "cuotas-el-plazo-se-contesta-y-se-deriva",
+      "bug": "CHARLA REAL DE VALENTINA URIA, sesion 340c6109 (2026-08-09). Franco ofrece el menu \"en cuantas cuotas, 12, 24, 36 o 48?\", el cliente contesta \"como seria con 24?\" y Franco devuelve la frase del asesor y pide el nombre, sin explicar por que no puede dar el numero. Se lee como evasiva. DECISION DE AGUSTINA (2026-08-11), y define el caso: Franco NO tiene que decir el monto a financiar. La respuesta correcta es reconocer el plazo, decir que el plan y el valor de la cuota los confirma un asesor PORQUE DEPENDE DE LAS CONDICIONES DE FINANCIACION, y ofrecer derivar. Frase de referencia, textual: \"Con 24 cuotas, el plan y el valor de la cuota te los confirma un asesor, porque depende de las condiciones de financiacion. Si queres, te derivo para que te pase el detalle.\" NO ES UN BUG DE NUMEROS, ES DE CONSISTENCIA. Medido el 2026-08-11 sobre v127, 6 respuestas reales del turno 3: 3 cumplen (dan el motivo), 2 van directo a pedir el nombre sin decir de que depende, y 1 se va a pedir \"cuantos anos y kilometros tiene un usado\" que NADIE menciono. O sea que la conducta correcta ya existe pero sale la mitad de las veces: lo que falta es fijar el guion (trampa 6). LO QUE NO HAY QUE ARREGLAR: que Franco no invente un valor de cuota es CORRECTO y tiene que seguir asi. No hay tasa en Config a proposito y la FAQ ya dice que la simulacion la arma un asesor. DESCARTADO A CONCIENCIA: que devuelva el monto a financiar (precio - anticipo). Se evaluo, era determinístico y hubiera ido a SQL, pero Agustina decidio que no hace falta decirlo. De paso evita el problema medido de que el corrector de precios de v105 se lo comia en 2 de 7 redacciones.",
       "turns": [
         {
           "say": "me interesa el peugeot 208. hacen financiación?",
@@ -3845,15 +3845,23 @@
           "checks": [
             [
               "text_matches",
-              "(?i)8\\.000\\.000"
-            ],
-            [
-              "text_matches",
               "(?i)\\b24\\b"
             ],
             [
+              "text_matches",
+              "(?i)asesor"
+            ],
+            [
+              "text_matches",
+              "(?i)(depende|seg[uú]n)"
+            ],
+            [
+              "text_not_matches",
+              "(?i)(cu[aá]ntos\\s+a[nñ]os|a[nñ]os\\s+y\\s+kil[oó]metros|kil[oó]metros\\s+tiene|km\\s+tiene)"
+            ],
+            [
               "manual",
-              "EL TURNO DEL BUG. Tiene que decir el MONTO A FINANCIAR: $8.000.000 (21.000.000 - 13.000.000). Puede y DEBE seguir diciendo que el valor exacto de la cuota lo arma un asesor — eso no es el bug, es lo correcto. El bug es contestar sin NINGUN numero. Lo que tampoco puede hacer es inventar un valor de cuota: no hay tasa configurada."
+              "EL TURNO DEL CASO. Tiene que: (1) reconocer las 24 cuotas, (2) decir que el plan y el valor de la cuota los confirma un asesor, (3) DECIR POR QUE — que depende de las condiciones de financiacion, que es lo que mas se saltea, y (4) ofrecer derivar. Lo que NO puede: inventar un valor de cuota (no hay tasa configurada) ni pedir datos de un usado que el cliente nunca menciono, que es la falla medida en la sesion 78becd31."
             ]
           ]
         }

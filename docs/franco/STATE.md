@@ -20,8 +20,45 @@
 
 <!-- FIN AUTOGENERADO -->
 
-> **🔴 LÍNEA DE BASE DEL BUG DE LAS CUOTAS: `cuantas-cuotas-da-el-monto-a-financiar` **0/3** sobre
-> v127, falla 1 check por corrida (el del monto). SIN FIX TODAVÍA. Sesión 2026-08-11.**
+> **🟡 v128 ARMADO Y NO DESPLEGADO — LAS CUOTAS SE CONTESTAN CON EL PORQUÉ
+> (`scripts/las-cuotas-se-contestan-con-el-porque.mjs`). 1 nodo. Sesión 2026-08-11.**
+>
+> **LÍNEA DE BASE: `cuotas-el-plazo-se-contesta-y-se-deriva` 0/5 sobre v127**, y siempre falla el
+> MISMO único check: el del porqué (`depende|según`). Los otros tres (reconocer las 24, nombrar al
+> asesor, no pedir datos de un usado inexistente) pasan. El caso aísla una sola cosa.
+>
+> **🔴 TRAMPA 6 EN ESTADO PURO, Y LA PRUEBA ES QUE LA FRASE ESTÁ ESCRITA EN EL PROMPT.** Franco
+> contesta *"Perfecto, le dejo anotado al asesor la simulación con $13.000.000 de anticipo en 24
+> cuotas. Me dejás tu nombre y apellido"* — **la frase literal de la charla de Valentina**. Y está en
+> la **línea 320** del systemMessage: `Guion: "perfecto, le dejo anotado al asesor la simulación con
+> $15.000.000 de anticipo en 36 cuotas. Me dejás tu nombre y apellido así te contacta?"`.
+> **Franco no está fallando: está OBEDECIENDO.** Por eso el fix NO agrega una regla que diga
+> "explicá el porqué" —eso ya falló tres veces en este proyecto— sino que **reemplaza los guiones**.
+>
+> **EL FIX: 3 guiones reemplazados, 1 nodo (`Franco (AI Agent)`), systemMessage 78.763 → 79.370.**
+> El porqué queda con UNA sola redacción en los tres lugares (si cada guion lo dice distinto, el
+> modelo elige): *"el plan y el valor de la cuota te los confirma un asesor, porque depende de las
+> condiciones de financiación"*. **Conserva el name-ask** (sin nombre el lead queda anónimo) y la
+> prohibición de dar un monto de cuota — las dos con assert.
+>
+> **DECISIÓN DE AGUSTINA (2026-08-11), Y NO HAY QUE REVERTIRLA: Franco NO dice el monto a financiar
+> (precio − anticipo).** Se había evaluado y era determinístico, así que por la regla del proyecto
+> habría ido a SQL. **Agustina decidió que no hace falta decirlo.** De paso evita un problema ya
+> medido: el corrector de precios de v105 se comía ese número en **2 de 7 redacciones**.
+> **⚠️ CORRIJO UNA CORRECCIÓN MÍA:** más abajo escribí que la clasificación de este pendiente como
+> *"guion (trampa 6)"* estaba mal y que el bug era determinístico. **Con la decisión de Agustina, la
+> clasificación original era la correcta y la mía sobraba.** El fix es 100% de guion.
+>
+> **AL PEGAR:** `workflows/franco-n8n-v128.json`, 35 nodos, 5 invariantes.
+> **MEDIR:** `--case cuotas-el-plazo-se-contesta-y-se-deriva --repeat 5 --delay 45000`
+> (sobre v127: **0/5**) · **controles obligatorios, porque el guion tocado es el del name-ask:**
+> `financiacion-cierra-pidiendo-nombre`, `no-repedir-el-nombre`, `derivacion-aceptada-igual-pide-nombre`.
+>
+> **⚠️ LO QUE v128 NO CUBRE, Y ESTÁ SIN MEDIR:** la **línea 9** del prompt (la que corre cuando el
+> cliente YA dio el nombre) tiene su propio guion —*"le paso todo a un asesor así te contacta y te
+> arma la simulación"*— y dice que manda sobre CUALQUIER guion de más abajo. **Ése no se tocó**: si
+> el cliente ya dio el nombre y pregunta por un plazo, sigue sin el porqué. Es el mismo bug en otra
+> rama, no tiene caso de eval, y tocarlo mete mano en el flujo del nombre — va aparte.
 >
 > **EL BUG, de la charla real de Valentina Uria (sesión `340c6109`, 2026-08-09):** Franco ofrece el
 > menú *"en cuántas cuotas, 12, 24, 36 o 48?"*, el cliente contesta *"cómo sería con 24?"* y Franco
