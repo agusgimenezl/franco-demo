@@ -20,6 +20,43 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🟢 v131 DESPLEGADO Y MEDIDO: `derivacion-aceptada-igual-pide-nombre` **0/3 → 2/5**, el mejor
+> resultado de las últimas cuatro versiones. El fix restaurado ANDA. Sesión 2026-08-11.**
+>
+> **MEDICIÓN (caso a 5 repeats, controles a 3):**
+> · `derivacion-aceptada-igual-pide-nombre` **2/5** (v128 0/3 · v129 1/3 · v130 0/3)
+> · `cuotas-el-plazo-se-contesta-y-se-deriva` **3/3** (v130: 2/3) · `derivacion-completada-no-reofrece-visita` **3/3**
+> · 🟡 `no-repreguntar-asesor` **1/3 — NO ATRIBUIBLE**, ver abajo
+>
+> **LO QUE QUEDA ROJO NO ES EL NAME-ASK: SON DOS COSAS DISTINTAS.** Ninguna de las 3 fallas es que
+> la inyección restaurada no dispare:
+> · **2 corridas** — turno 4: Franco se va a **calcular capacidad** (*"Con un anticipo de
+>   $15.000.000 y sin un usado para entregar, podríamos buscar vehículos de hasta…"*) y de paso
+>   **re-ofrece el asesor**. Es el otro check del caso, el que ya estaba anunciado como no cubierto.
+> · **1 corrida** — turno 3: **`no_nombre_inventado` DISPARÓ.** Ver abajo, es lo importante.
+>
+> **🔴 EL CHECK NUEVO CAZÓ UN BUG REAL EN PRODUCCIÓN, UNA HORA DESPUÉS DE ESCRIBIRLO.** Franco
+> volvió a decir *"Martín"* a un cliente anónimo, en el turno 3. **v130 NO cerró el problema, sólo
+> una de sus fuentes:** sacó el nombre literal de UN guion, pero en el prompt quedan **5
+> apariciones más**, y una es directamente copiable —
+> `Si te dice "Martín D'Angelo", le contestás "Perfecto Martín"`—: le está mostrando la plantilla
+> `"Perfecto <nombre>"` lista para usar. **Ésa es la próxima fuente a tapar, y ya no hace falta
+> encontrarla leyendo la base a mano: ahora la caza el eval.**
+>
+> **🟡 `no-repreguntar-asesor` 1/3: NO SE PUEDE ATRIBUIR, Y ES LA ÚLTIMA VEZ QUE PASA.** No hay
+> corrida sobre v130 porque **v131 se armó y se pegó sin medir los controles antes** — el mismo
+> error de v128, cometido de nuevo. Falla `text_matches /nombre/` en el turno 3: Franco pide el
+> anticipo en vez del nombre. **Contexto, que NO es atribución:** STATE ya lo tiene anotado como
+> *"la cola #1 conocida-abierta"*, con raíz propia verificada (`Leer lead (estado)` no trae la
+> columna `estado`). Por mecanismo, la rama que agregó v131 sólo puede EMPUJAR a pedir el nombre,
+> no a evitarlo — pero eso es un argumento, no una medición.
+> **A partir de ahora lo impide la compuerta de pre-deploy** (ver la entrada correspondiente).
+>
+> **PRÓXIMO PASO, EN ORDEN:** (1) tapar la plantilla `"Perfecto Martín"` de la regla de nombre de
+> pila; (2) recién después, el re-ofrecimiento del asesor y el desvío a calcular capacidad, que es
+> el resto del caso. **Antes de armar el candidato hay que producir
+> `evals/baseline-v131.json`** con el caso y sus controles — la compuerta no aprueba sin eso.
+
 > **🛠 COMPUERTA DE PRE-DEPLOY: SIN LÍNEA DE BASE CON CONTROLES, UN CANDIDATO NO SE APRUEBA.
 > Sesión 2026-08-11.**
 >
