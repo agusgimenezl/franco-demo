@@ -1,0 +1,5 @@
+Vendedor,Usuario CRM,Rol,Teléfono,Email,Sucursal,Activo
+Lucas Ferreyra,Vendedor1,Vendedor senior,+54 381 444-1201,lucas.ferreyra@automotorestucuman.com.ar,Casa central,true
+Mariana Quiroga,Vendedor2,Vendedora,+54 381 444-1202,mariana.quiroga@automotorestucuman.com.ar,Casa central,true
+Gabriel Sandoval,Vendedor3,Jefe de ventas,+54 381 444-1203,gabriel.sandoval@automotorestucuman.com.ar,Casa central,true
+Franco (agente IA),ChatBot,Asistente virtual 24/7,,franco@automotorestucuman.com.ar,Canal digital,true

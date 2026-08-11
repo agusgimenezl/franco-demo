@@ -1,0 +1,4 @@
+ID venta,Cliente,Vehículo vendido,Vendedor,Fecha de venta,Precio de lista (ARS),Precio final (ARS),Forma de pago,Entrega usado,Usado recibido,Notas
+V-2026-001,Julio Rodriguez,Chevrolet S10 - 2022,Lucas Ferreyra,2026-07-26,39500000,38200000,Permuta + financiación,Sí,Fiat Cronos 2022 - 75.000 km,"Tomamos el Cronos a $15.500.000; el saldo se financió a 48 cuotas."
+V-2026-002,Lucia Gomez,Ford Fiesta - 2017,Mariana Quiroga,2026-07-27,8200000,8200000,Anticipo + financiación,No,,"Anticipo de $6.000.000 y 12 cuotas. Llegó por el chatbot."
+V-2026-003,Diego Sosa,Peugeot 208 - 2025,Lucas Ferreyra,2026-07-28,21000000,20500000,Anticipo + financiación,No,,"Cerró el mismo día de la visita."

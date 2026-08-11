@@ -3,7 +3,8 @@
     "allow": [
       "PowerShell(node -v)",
       "PowerShell(npm -v)",
-      "PowerShell($env:FRANCO_URL = \"https://n8n.utopiaflow.tech\"; node evals/run.mjs --case permuta-mas-efectivo --repeat 4 --no-cleanup 2>&1 | Tee-Object -FilePath \"C:\\\\Users\\\\agusg\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-agusg-OneDrive-Documentos-Agustina-UtopIA-Lab-Concesionarias-Demo-v2\\\\023eb4a5-7957-495b-95e8-55f9d1958976\\\\scratchpad\\\\tipoB-run1.txt\")"
+      "PowerShell($env:FRANCO_URL = \"https://n8n.utopiaflow.tech\"; node evals/run.mjs --case permuta-mas-efectivo --repeat 4 --no-cleanup 2>&1 | Tee-Object -FilePath \"C:\\\\Users\\\\agusg\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-agusg-OneDrive-Documentos-Agustina-UtopIA-Lab-Concesionarias-Demo-v2\\\\023eb4a5-7957-495b-95e8-55f9d1958976\\\\scratchpad\\\\tipoB-run1.txt\")",
+      "mcp__c63de69a-3606-45e2-a46f-8f460ca3f516__search_workflows"
     ]
   }
 }

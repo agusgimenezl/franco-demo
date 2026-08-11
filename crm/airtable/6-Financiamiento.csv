@@ -1,0 +1,11 @@
+ID solicitud,Lead,Vehículo,Anticipo declarado,Anticipo (ARS),Monto a financiar (ARS),Cuotas,Valor de cuota (ARS),Entidad,Estado de la solicitud,Fecha de solicitud
+F-2026-001,Matías Martínez,Toyota Corolla - 2022,USD 10.000,12000000,12800000,36,545000,Banco Nación,En análisis,2026-08-02
+F-2026-002,Julio Faena,Fiat Cronos - 2023,$10.000.000,10000000,6800000,24,385000,Santander,En análisis,2026-08-01
+F-2026-003,Sin nombre (555-9193),Toyota Corolla - 2022,$15.000.000,15000000,9800000,36,415000,Banco Macro,Pendiente de datos del cliente,2026-08-01
+F-2026-004,Pedro Atenor,Renault Kangoo - 2021,$5.000.000,5000000,13500000,48,465000,Banco Nación,Pendiente de documentación,2026-07-31
+F-2026-005,Lucia Gomez,Ford Fiesta - 2017,$6.000.000,6000000,2200000,12,210000,Santander,Aprobada,2026-07-25
+F-2026-006,Victoria Melhen,Volkswagen T-Cross - 2025,No mencionado,4000000,30000000,48,1120000,Banco Macro,En análisis,2026-07-23
+F-2026-007,Juliana Vera,Toyota Etios - 2019,No mencionado,3500000,9000000,36,385000,Credicoop,En análisis,2026-07-23
+F-2026-008,Julio Rodriguez,Chevrolet S10 - 2022,$10.000.000,10000000,22700000,48,780000,Banco Nación,Aprobada,2026-07-24
+F-2026-009,Carla Ibarra,Ford Fiesta - 2017,$2.000.000,2000000,6200000,24,350000,Credicoop,Rechazada,2026-07-27
+F-2026-010,Diego Sosa,Peugeot 208 - 2025,$8.000.000,8000000,12500000,36,530000,Santander,Aprobada,2026-07-28

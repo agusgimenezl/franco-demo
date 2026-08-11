@@ -1,0 +1,7 @@
+ID visita,Lead,Vehículo,Fecha y hora,Vendedor asignado,Test drive,Estado,Notas
+VIS-001,Julio Faena,Fiat Cronos - 2023,2026-08-04 10:30,Lucas Ferreyra,true,Confirmada,Viene con un mecánico de confianza a revisar la unidad.
+VIS-002,Martín Alcaraz,Jeep Renegade - 2021,2026-08-05 18:00,Lucas Ferreyra,true,Confirmada,Trae su EcoSport 2016 para tasación en parte de pago.
+VIS-003,Diego Sosa,Peugeot 208 - 2025,2026-07-28 15:00,Lucas Ferreyra,true,Realizada,Cerró la compra el mismo día.
+VIS-004,Carla Ibarra,Ford Fiesta - 2017,2026-07-27 16:30,Mariana Quiroga,true,Cancelada,Se canceló: la unidad ya estaba vendida. Se le ofrecieron alternativas.
+VIS-005,Lucia Gomez,Ford Fiesta - 2017,2026-07-26 11:00,Mariana Quiroga,true,Realizada,Coordinada por el chatbot. Cerró la compra al día siguiente.
+VIS-006,Sin nombre (555-3749),Toyota Corolla - 2022,2026-07-30 17:00,Mariana Quiroga,,Realizada,Coordinada por el chatbot. Pasó a verlo y quedó en volver a llamar.
