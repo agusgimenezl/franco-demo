@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v131.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v132.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,49 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 93 casos · baseline-v33.json → 30/35 |
+| Evals | 93 casos · baseline-v131.json → 7/12 |
 
 **Invariantes:** ✅ los 6 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v132 DESPLEGADO Y MEDIDO: CERO NOMBRES INVENTADOS EN 12 CORRIDAS — cumplió el criterio que se
+> había declarado ANTES de medir. 🟡 v133 ARMADO Y APROBADO, NO DESPLEGADO
+> (`scripts/el-techo-no-reofrece-el-asesor-ya-aceptado.mjs`). 1 nodo. Sesión 2026-08-11.**
+>
+> **v132 (`evals/baseline-v132.json`) contra la línea de base de v131 — 6/12 vs 7/12:**
+> · `cuotas-el-plazo-se-contesta-y-se-deriva` **3/3 → 3/3** · `derivacion-aceptada-igual-pide-nombre`
+>   **0/3 → 1/3** · `derivacion-completada-no-reofrece-visita` **3/3 → 2/3** ·
+>   `no-repreguntar-asesor` **1/3 → 0/3**
+> · **`no_nombre_inventado` NO disparó ni una vez.** Era el único criterio declarado de antemano.
+>
+> **LOS DOS QUE BAJARON NO SON REGRESIÓN, Y ESTA VEZ SE PUDO ATRIBUIR PORQUE HABÍA "ANTES":**
+> · `derivacion-completada-no-reofrece-visita`: su única falla es el turno 5 con **el mismo check de
+>   re-ofrecer el asesor** que rompe el otro caso. **Es el bug que ataca v133 asomando en otro
+>   lado**, no algo que rompió v132.
+> · `no-repreguntar-asesor`: **4 fallas en v131 y 4 en v132** — el score cambió sólo porque se
+>   repartieron distinto entre corridas. No está peor. Una de sus fallas es sobre el consumo
+>   (`6,8 L/100km`), que no tiene nada que ver con este cambio.
+> **Sin la línea de base esto se habría leído como "v132 rompió dos casos".**
+>
+> **🔴 v133 — TRAMPA 7 POR TERCERA VEZ EN EL DÍA, Y ES LA CAUSA RAÍZ DE UN CASO ROJO DESDE v128.**
+> La respuesta que falla está escrita **TEXTUAL** en la inyección de v100, que ordena *"Decí TEXTUAL
+> esta frase"* y termina con *"…o, si preferís, puedo ponerte en contacto con un asesor para revisar
+> alternativas de financiación."* — **que es exactamente el string que el `text_not_matches` marca en
+> rojo**. Franco no desobedece: obedece. Y como esa inyección se declara *"la regla que manda sobre
+> cualquier otra"*, **le gana al name-ask que restauró v131** — por eso restaurar el fix no alcanzó.
+>
+> **EL FIX (determinístico, los dos datos ya están en el lead):** el cierre de esa frase pasa a
+> depender del estado de derivación. no derivado → el cierre de hoy intacto · ya derivado sin nombre
+> → **pide el nombre** · ya derivado con nombre → ofrece opciones **sin re-ofrecer el asesor**.
+> Los números, el techo y la prohibición de nombrar autos más caros **no se tocan** (assert cada uno).
+> **Las 3 ramas se evalúan EJECUTANDO el bloque**, con el techo de $30.000.000 verificado en las tres.
+>
+> **AL PEGAR v133:** `workflows/franco-n8n-v133.json`, 35 nodos, 6 invariantes. Aprobado por la
+> compuerta contra `evals/baseline-v132.json`.
+> **MEDIR** los mismos 4 casos, `--repeat 3 --delay 45000 --json evals/baseline-v133.json`.
+> **Puede cerrar DOS casos a la vez:** `derivacion-aceptada-igual-pide-nombre` y la falla de turno 5
+> de `derivacion-completada-no-reofrece-visita`, que son el mismo check.
 
 > **🟡 v132 ARMADO Y APROBADO POR LA COMPUERTA, NO DESPLEGADO
 > (`scripts/ningun-ejemplo-de-salida-lleva-nombre-propio.mjs`). 1 nodo. Sesión 2026-08-11.**
