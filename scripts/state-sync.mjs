@@ -85,6 +85,28 @@ if (nodes['Franco (AI Agent)']?.onError !== 'continueRegularOutput') {
   fail('ONERR', 'Franco (AI Agent): sin onError — si el parser falla, el chat queda colgado')
 }
 
+// ─── Invariante 6: las inyecciones determinísticas que ya se midieron siguen ahí
+// Los 5 de arriba son trampas de n8n. Éste es de otra clase y nace de un hallazgo del 2026-08-11:
+// el fix determinístico del name-ask —medido de 1/7 a 7/8 en v75— DESAPARECIÓ del workflow en v77
+// y estuvo perdido 53 versiones sin que nada lo notara. El caso de eval no lo cazó porque pasó a
+// fallar de a poco y se lo trató como flaky.
+// Un fix que se puede perder en silencio va a perderse. Acá se listan las inyecciones que ya
+// costaron una medición: si alguna se cae, la próxima corrida de `--check` lo dice.
+const INYECCIONES = [
+  ['Config', 'estado_cliente', 'l.lead_nombre ?',
+    'el name-ask determinístico (v75): sin esta rama, un cliente que acepta la derivación sin dar el nombre queda anónimo en el CRM'],
+  ['Config', 'estado_cliente', 'me dejas tu nombre y apellido?',
+    'el GUION concreto del name-ask (trampa 6): sin el ejemplo, la regla sola pierde'],
+]
+for (const [nodo, campo, aguja, porque] of INYECCIONES) {
+  const asigns = nodes[nodo]?.parameters?.assignments?.assignments ?? []
+  const valor = String(asigns.find((a) => a.name === campo)?.value ?? '')
+  if (!valor) { fail('INYECT', `${nodo}.${campo}: no existe`); continue }
+  if (!valor.includes(aguja)) {
+    fail('INYECT', `${nodo}.${campo}: se perdió ${JSON.stringify(aguja)} — ${porque}`)
+  }
+}
+
 // ─── Datos para el bloque de estado
 const tipo = (t) => wf.nodes.filter((n) => n.type === t).length
 const tools = Object.entries(wf.connections).filter(([, v]) => v.ai_tool).map(([k]) => k)
@@ -130,7 +152,7 @@ const bloque = `<!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts
 | Empresa configurada | ${cfg.empresa_nombre} |
 | Evals | ${casos} casos · ${baselineTxt} |
 
-**Invariantes:** ${problems.length === 0 ? '✅ los 5 pasan' : `❌ ${problems.length} rotos — ver \`node scripts/state-sync.mjs --check\``}
+**Invariantes:** ${problems.length === 0 ? '✅ los 6 pasan' : `❌ ${problems.length} rotos — ver \`node scripts/state-sync.mjs --check\``}
 
 <!-- FIN AUTOGENERADO -->`
 
@@ -139,7 +161,7 @@ if (problems.length) {
   console.log(`${C.red}Invariantes rotos:${C.off}`)
   for (const p of problems) console.log(`  ${C.red}✗${C.off} ${p}`)
 } else {
-  console.log(`${C.grn}✓ los 5 invariantes pasan${C.off}`)
+  console.log(`${C.grn}✓ los 6 invariantes pasan${C.off}`)
 }
 
 if (!checkOnly) {

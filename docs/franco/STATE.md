@@ -16,9 +16,55 @@
 | Empresa configurada | Automotores Tucumán |
 | Evals | 93 casos · baseline-v33.json → 30/35 |
 
-**Invariantes:** ✅ los 5 pasan
+**Invariantes:** ❌ 2 rotos — ver `node scripts/state-sync.mjs --check`
 
 <!-- FIN AUTOGENERADO -->
+
+> **🔴 EL CASO NO ERA FLAKY: EL FIX SE HABÍA PERDIDO. `derivacion-aceptada-igual-pide-nombre` viene
+> rojo porque el fix determinístico de v75 DESAPARECIÓ DEL WORKFLOW EN v77 y estuvo perdido 53
+> versiones. v131 ARMADO Y NO DESPLEGADO (`scripts/restaurar-el-name-ask-perdido-en-v77.mjs`).
+> 1 nodo. Sesión 2026-08-11.**
+>
+> **⚠️ EL ENCABEZADO DE ARRIBA DICE "❌ 2 rotos" A PROPÓSITO Y NO ES UN ERROR: producción (v130)
+> efectivamente NO tiene el fix.** Vuelve a verde al pegar v131.
+>
+> **LA TRAZA, VERSIÓN POR VERSIÓN** (contando las apariciones de `YA ACEPT` en `Config`):
+> `v75` **2** (la línea partida según el nombre — el fix) · `v76` **2** · **`v77` 1 ← se perdió acá**
+> · y **1** en todas hasta `v130`.
+> **Se perdió SÓLO ese campo, no un nodo entero:** entre v76 y v77 el único cambio en todo el
+> workflow es `Config.estado_cliente`, de 1404 a 1154 chars. Alguien editó esa expresión partiendo
+> de una copia vieja. **Verificado nodo por nodo: no hay otros fixes perdidos por ese camino.**
+>
+> **POR QUÉ NADIE LO VIO EN 53 VERSIONES:** el caso no se cayó de golpe, empezó a fallar de a poco
+> y se lo trató como flaky. Su histórico "3/4 y 7/8" es de v78 — o sea que **ya estaba roto cuando
+> se anotó ese número**. En esta sesión dio 0/3, 1/3 y 0/3, y hasta hoy se lo estuvo explicando
+> como ruido.
+>
+> **v131 = EL TEXTO DE v75, IDÉNTICO.** No es un fix nuevo y no se "mejora" de paso: es el que se
+> midió 1/7 → 7/8. `Config.estado_cliente` parte la línea según `lead_nombre`, que ya viene
+> normalizado a `''` (su CASE trata el teléfono ficticio `+54%` como vacío). **Es la regla del
+> proyecto y la trampa 7:** la frase la inyecta el CÓDIGO, así que el fix va donde está la frase, no
+> en el prompt. **El systemMessage no se toca** (hay assert).
+> **Las 4 ramas se evalúan EJECUTANDO la expresión**, no chequeando strings: derivado sin nombre
+> pide el nombre, derivado con nombre no lo repide y conserva el nombre, y sin derivar no dice que
+> aceptó. **4/4.**
+>
+> **🛠 INVARIANTE 6 NUEVO EN `state-sync.mjs`, Y ES LA LECCIÓN QUE VALE MÁS QUE EL FIX:**
+> **un fix que se puede perder en silencio se va a perder.** Los 5 invariantes viejos son trampas de
+> n8n; éste es de otra clase: verifica que las inyecciones determinísticas **que ya costaron una
+> medición** sigan estando. **Probado en las dos direcciones: falla contra v130 (producción, sin el
+> fix) y pasa contra v131.** Si hubiera existido en v77, la pérdida se cazaba ese mismo día.
+>
+> **AL PEGAR v131:** `workflows/franco-n8n-v131.json`, 35 nodos, **6** invariantes. 1 nodo (`Config`,
+> sólo `estado_cliente`).
+> **MEDIR:** `--case derivacion-aceptada-igual-pide-nombre --repeat 5 --delay 45000`
+> (sobre v130: **0/3**; v129 1/3; v128 0/3) · controles: `no-repreguntar-asesor`,
+> `derivacion-completada-no-reofrece-visita`, `cuotas-el-plazo-se-contesta-y-se-deriva`.
+>
+> **⚠️ NO VA A ARREGLAR TODO EL CASO, Y CONVIENE SABERLO ANTES:** en v130 el caso también falla por
+> **re-ofrecer el asesor** (*"preferís, puedo ponerte en contacto con un asesor"*), que es un check
+> distinto del name-ask. v131 ataca el name-ask. Si el caso sube pero no llega a 5/5, eso es lo que
+> queda, y va aparte.
 
 > **🟢 v130 DESPLEGADO Y MEDIDO: CERO NOMBRES INVENTADOS. 🛠 Y EL CHECK `no_nombre_inventado` YA
 > ESTÁ EN `ALWAYS` — corre en los 93 casos. Sesión 2026-08-11.**
