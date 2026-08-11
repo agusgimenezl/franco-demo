@@ -20,6 +20,41 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🟢 ETAPA 2 DE LA MIGRACIÓN — LA COPY: APLICADA. 12 frases reescritas contra la ficha.
+> Decisión de Agustina (2026-08-11): la ficha manda, las frases se amoldan. Sesión 2026-08-11.**
+>
+> **BACKUP: `autos_disponibles_backup_20260811`** (17 filas, previo al cambio).
+> **Cambio verificado contra el backup clave por clave: exactamente 12 diferencias, todas en
+> `descripcion`/`condicionantes`, en 10 autos. `content` intacto en las 17 filas. Ningún otro campo.**
+>
+> **🔴 ERAN 12 FRASES PERO 14 CONTRADICCIONES: verificando aparecieron DOS que no estaban en el
+> conteo original.** La Fiesta decía *"ya viene con pantalla multimedia"* y su equipamiento es SYNC
+> con Bluetooth, **sin pantalla**; y el Gol Trend mandaba al Cronos *"si pesa tener pantalla y
+> cámara"* y el Cronos **tiene cámara pero no pantalla**.
+>
+> **🔴 CORRIJO ALGO QUE SE DIJO EN ESTA MISMA SESIÓN: "la ficha no tiene asientos ni equipamiento"
+> ERA FALSO.** Sí los tiene — **en la columna `content`, no en las claves de `metadata`**. El Kangoo
+> dice *"5 asientos, configuración de 5 pasajeros"* y el Etios *"central multimedia con pantalla
+> táctil y Bluetooth"*. Por eso las 3 que se habían clasificado como "necesitan un dato que no
+> existe" se resolvieron contra la ficha igual que las otras. **Antes de decir que un dato no está,
+> mirar `content`, no sólo `metadata`.**
+>
+> **ACOPLAMIENTO VERIFICADO ANTES DE TOCAR:** `content` **NO** contiene `descripcion` ni
+> `condicionantes` (viven sólo en `metadata`), así que el texto vectorizado no quedó desincronizado.
+> Y de los evals, la única palabra tocada que aparece en `cases.json` es `justa` (5 veces), **siempre
+> como prohibición** — no se rompe ningún check.
+>
+> **⚠️ PENDIENTE QUE DEJA ESTE CAMBIO: `descripcion-que-aporta` PIERDE EL FILO.** Su check
+> `text_not_matches \bjusta\b` se diseñó alrededor de la frase del Duster, que ya no existe: ahora
+> pasa trivialmente. **El caso sigue siendo válido por sus otros checks, pero ese en particular ya no
+> mide nada** — hay que darle un objetivo nuevo o sacarlo.
+>
+> **🛠 TRAMPA DE SQL QUE COSTÓ UNA CORRIDA Y CONVIENE ANOTAR: `UPDATE ... FROM` aplica UNA SOLA fila
+> de origen cuando varias matchean el mismo destino.** El Onix y el Etios tenían dos cambios cada uno
+> y se aplicó sólo el condicionante: 12 intentos → 10 filas. Se detectó **porque el script comparaba
+> el conteo esperado contra el real**; sin ese conteo pasaba silencioso. Las 2 restantes se aplicaron
+> aparte.
+
 > **🟢 v133 DESPLEGADO Y MEDIDO: `derivacion-aceptada-igual-pide-nombre` CERRADO EN 3/3 después de
 > estar rojo desde v128. 9/12. Sesión 2026-08-11.**
 >
