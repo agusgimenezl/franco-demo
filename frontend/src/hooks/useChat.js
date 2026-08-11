@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { sendMessageToWebhook, transcribeAudio, WebhookError } from '../lib/webhook'
 import { buildFrancoItems, makeId } from '../lib/francoItems'
 import { addVisibleSessionId } from '../lib/visibleSessions'
+import { saveSession } from '../lib/crm'
 
 // Pausa entre burbujas consecutivas de Franco, para que se sienta como una
 // persona mandando varios mensajes seguidos en vez de un bloque de golpe.
@@ -32,6 +33,13 @@ export function useChat() {
   // al webhook hasta que pasen BURST_DEBOUNCE_MS sin actividad.
   const burstRef = useRef([])
   const flushTimerRef = useRef(null)
+
+  // Toda conversación queda registrada sola: ya no hay botón "Guardar". Se marca
+  // UNA sola vez por sesión y recién después del primer intercambio real, que es
+  // cuando la conversación existe del lado del backend.
+  // Fire-and-forget a propósito: si falla no rompe el chat, y en el siguiente
+  // mensaje se reintenta (por eso el id se saca del set cuando hay error).
+  const savedSessionsRef = useRef(new Set())
 
   // Vacía la ráfaga acumulada en una única llamada al webhook y revela las
   // burbujas de Franco de a una.
@@ -95,6 +103,12 @@ export function useChat() {
 
       if (response?.session_id && response.session_id !== sessionIdRef.current) {
         setSessionId(response.session_id)
+      }
+
+      const savedId = response?.session_id || sessionIdRef.current
+      if (savedId && !savedSessionsRef.current.has(savedId)) {
+        savedSessionsRef.current.add(savedId)
+        saveSession(savedId).catch(() => savedSessionsRef.current.delete(savedId))
       }
 
       const francoItems = buildFrancoItems(response)
