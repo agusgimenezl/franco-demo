@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v129.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v130.json` · 35 nodos
 
 | | |
 |---|---|
@@ -20,6 +20,47 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🟢 v130 DESPLEGADO Y MEDIDO: CERO NOMBRES INVENTADOS. 🛠 Y EL CHECK `no_nombre_inventado` YA
+> ESTÁ EN `ALWAYS` — corre en los 93 casos. Sesión 2026-08-11.**
+>
+> **MEDICIÓN DE v130 (15:31–15:5xZ), contra la de v129:**
+> · **0 nombres inventados en toda la tanda** (12 corridas) — consultado directo contra
+>   `mensajes_demo`, no hay un solo vocativo con nombre. Antes: **3 de 6**.
+>   **OJO CON EL TAMAÑO:** son 3 corridas del guion que fallaba; a la tasa anterior (50%) ver cero
+>   en 3 pasa 1 de cada 8 veces. **Buena señal, no prueba.**
+> · `financiacion-pide-anticipo` **3/3** · `financiacion-cuanto-falta` **3/3** — los dos se mantienen
+> · `cuotas-el-plazo-se-contesta-y-se-deriva` **2/3** (v128 5/5, v129 3/3 → acumulado **10/11**).
+>   La corrida que falló perdió el porqué. Con n=3 está dentro del ruido; **no se toca**.
+> · 🔴 `derivacion-aceptada-igual-pide-nombre` **0/3** (v128 0/3, v129 1/3) — ver abajo
+>
+> **🛠 EL CHECK NUEVO, Y ES LA LECCIÓN DE PROCESO MÁS IMPORTANTE DE LA SESIÓN: una regresión
+> visible y vergonzosa pasó por debajo de los 93 casos sin que ninguno la cazara.** Se encontró
+> leyendo la base a mano. `no_nombre_inventado` vive ahora en `ALWAYS`.
+> · **La señal es el VOCATIVO, no el nombre:** Franco sólo nombra al cliente para dirigirse a él.
+>   La prueba de que es inventado es que el cliente **nunca lo escribió**, y para eso `run.mjs`
+>   acumula sus turnos en `dichoPorCliente` (igual que ya acumulaba la media vista).
+> · **Verificado contra las 2701 sesiones: 380 vocativos, 358 legítimos, 22 inventados,
+>   0 falsos positivos.** Compara **sin tildes** a propósito: el cliente escribe "Martin" y Franco
+>   contesta "Martín" — eso es correcto.
+> · Prueba: `scripts/no-le-pongas-nombre-al-que-no-se-presento.mjs`, **15/15** (5 inventados +
+>   10 legítimos, con los bordes que romperían un detector mal hecho: *"Perfecto. Con un
+>   anticipo…"*, una marca detrás del vocativo, y el mismo nombre con y sin tilde).
+> · **NO ES UN BUG NUEVO:** 22 casos repartidos en 20–25/07, 06/08, 10/08 y 11/08. Vive hace meses;
+>   lo que lo hacía invisible es que ningún check miraba esto.
+>
+> **🔴 `derivacion-aceptada-igual-pide-nombre`: 3 VERSIONES SEGUIDAS EN ROJO (0/3, 1/3, 0/3) Y YA NO
+> ALCANZA CON LLAMARLO FLAKY.** Sus fallas de v130 **ya no son el nombre inventado**: son el
+> name-ask ausente y el re-ofrecimiento del asesor (*"preferís, puedo ponerte en contacto con un
+> asesor"*), que es **el bug original del caso**. STATE ya dice que su fix va en `Config` —que falte
+> el nombre es determinístico (`lead_nombre === ''`)— **y no en el prompt**. Su histórico de 3/4 y
+> 7/8 es de v78, muchas versiones atrás. **Es el próximo pendiente y va solo, sin mezclarlo con
+> nada.** No se puede descartar que v128–v130 hayan contribuido: no hay corrida sobre v127.
+>
+> **🛠 DATO OPERATIVO QUE CORRIGE ALGO ESCRITO MÁS ABAJO:** *"el eval no imprime nada mientras
+> corre"* vale para el **pipe** (`| head`), no para el **redirect**. Con `> archivo.log` la salida
+> se va escribiendo y se puede leer el avance a mitad de tanda. Verificado hoy. Sirve justo para lo
+> que STATE señala como problema: distinguir una tanda colgada de una lenta.
+
 > **🟢 v129 DESPLEGADO Y MEDIDO: LA REGRESIÓN DE v128 ESTÁ CERRADA. 🔴 PERO APARECIÓ UNA SEGUNDA,
 > TAMBIÉN MÍA. v130 ARMADO Y NO DESPLEGADO
 > (`scripts/el-nombre-de-ejemplo-no-se-le-dice-al-cliente.mjs`). 1 nodo. Sesión 2026-08-11.**
@@ -30,7 +71,14 @@
 > · `financiacion-cuanto-falta` **3/3** — control sano
 > · 🔴 `derivacion-aceptada-igual-pide-nombre` **0/3 → 1/3** — mejoró, pero ver abajo
 >
-> **🔴 FRANCO LE DICE UN NOMBRE PROPIO A CLIENTES QUE NUNCA SE LO DIERON, Y LO INTRODUJE YO.**
+> **⚠️ CORRECCIÓN (misma sesión, medido después): "LO INTRODUJE YO" ES DEMASIADO FUERTE Y ESTÁ MAL.**
+> El bug de los nombres inventados **existe desde julio**: 20–25/07 hubo 16 casos (Martín, Agustín,
+> Lucía), más 1 el 06/08 y 1 el 10/08. Lo que sí está medido es más acotado: **en el guion de
+> `derivacion-aceptada-igual-pide-nombre` pasó de 0 en 28 corridas a 3 de 6**, o sea que v128/v129 lo
+> **amplificaron en ese camino**. Eso sigue siendo mío; haberlo creado, no. El párrafo de abajo se
+> deja como quedó escrito, con esta corrección arriba.
+>
+> **🔴 FRANCO LE DICE UN NOMBRE PROPIO A CLIENTES QUE NUNCA SE LO DIERON.**
 > Corridas del guion de `derivacion-aceptada-igual-pide-nombre`, donde el cliente **no da nombre en
 > ningún turno**:
 > · 2026-08-01: **24 corridas, 0** con nombre inventado · 2026-08-05: **4, 0**

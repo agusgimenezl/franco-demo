@@ -61,6 +61,10 @@ const VENTANA_DEDUP_TURNOS = 4
 const mediaPorTurno = []        // modelos que salieron con card O con foto, por turno
 const imagenesPorTurno = []     // modelos que salieron con FOTO, por turno
 const modeloPorId = new Map()   // id -> modelo, aprendido de las cards de la propia sesión
+// Lo que el CLIENTE dijo en esta corrida. Un check normal ve sólo la respuesta de Franco, y para
+// saber si un nombre es inventado hay que saber si el cliente lo dio alguna vez: sin esto,
+// `no_nombre_inventado` no puede distinguir "Perfecto Martín" legítimo de uno sacado del prompt.
+const dichoPorCliente = []
 
 // SON DOS DEDUP DISTINTOS Y HAY QUE RESPETAR LA DIFERENCIA. En `Armar respuesta`:
 //   · las CARDS se suprimen si ese auto ya salió como card hace poco (`cards_recientes`);
@@ -502,6 +506,50 @@ const CHECKS = {
   // VERIFICADO CONTRA LAS 2701 SESIONES DEL HISTORIAL: 19 rojos, todos fugas reales, 0 falsos
   // positivos. Es la lección de v122 aplicada a una regex — no alcanza con que el patrón parezca
   // bien, hay que correrlo contra los datos antes de confiarle 91 casos.
+  // NO LE PONGAS NOMBRE AL QUE NO SE PRESENTÓ. Franco saluda por su nombre a clientes que nunca se
+  // lo dieron —"Perfecto Martín" a un desconocido—, porque copia el nombre de ejemplo de un guion
+  // del prompt. Delante del dueño de una concesionaria es de las cosas más caras que pueden pasar,
+  // y NINGUNO de los 93 casos lo cazaba: se encontró leyendo `mensajes_demo` a mano el 2026-08-11,
+  // después de que la cadena v128→v130 lo amplificara. Corre en TODOS los turnos.
+  //
+  // NO ES UN BUG NUEVO, y por eso va en ALWAYS y no en un caso: medido contra las 2701 sesiones hay
+  // 22 nombres inventados (Martín 19, Lucía 2, Agustín 1) repartidos en 20–25/07, 06/08, 10/08 y
+  // 11/08. Vive hace meses. Lo que lo hacía invisible es que ningún check mira esto.
+  //
+  // LA SEÑAL ES EL VOCATIVO, no el nombre: Franco sólo nombra al cliente para dirigirse a él
+  // ("Perfecto X", "Gracias X", "Hola X"). Y la prueba de que es inventado es que el cliente NUNCA
+  // lo escribió — de ahí `dichoPorCliente`, que acumula sus turnos.
+  //
+  // VERIFICADO CONTRA LAS 2701 SESIONES: 380 vocativos con nombre, 358 legítimos (Agustina 152,
+  // Julieta 78, Pedro 42, Martin 14, Natalia 11...) y 22 inventados. **0 falsos positivos.**
+  // Compara sin tildes a propósito: el cliente escribe "Martin" y Franco contesta "Martín", y eso
+  // es correcto — es la lección 6 de la migración, aplicada acá.
+  no_nombre_inventado: (r) => {
+    const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    const dicho = norm(dichoPorCliente.join(' '))
+    // Palabras que pueden caer detrás de un vocativo y NO son nombres: conectivas que arrancan
+    // oración y marcas/modelos del catálogo ("Dale Ford tiene la Ranger").
+    const NO_SON_NOMBRES = new Set([
+      'con', 'para', 'ahora', 'entonces', 'igual', 'ese', 'esta', 'este', 'esto', 'mira', 'dale',
+      'listo', 'bueno', 'genial', 'hola', 'perfecto', 'gracias', 'como', 'cuando', 'tengo',
+      'tenemos', 'buenisimo', 'excelente', 'anotado', 'quedamos', 'aca', 'ahi',
+      'ford', 'chevrolet', 'toyota', 'volkswagen', 'renault', 'peugeot', 'fiat', 'jeep', 'nissan',
+      'ranger', 'hilux', 'amarok', 'corolla', 'etios', 'onix', 'cronos', 'kangoo', 'duster',
+      'renegade', 'ecosport', 'fiesta', 'vento', 'sandero', 'partner', 'franco',
+    ])
+    const hits = []
+    const re = /(?:Perfecto|Gracias|Dale|Listo|Bueno|Genial|Hola|Buen[ií]simo|Excelente)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})(?![a-záéíóúñ])/g
+    for (const m of allText(r).matchAll(re)) {
+      const nombre = m[1]
+      if (NO_SON_NOMBRES.has(norm(nombre))) continue
+      if (dicho.includes(norm(nombre))) continue
+      hits.push(nombre)
+    }
+    return hits.length === 0
+      ? null
+      : `le dijo "${hits[0]}" a un cliente que NUNCA dio su nombre — sale de un ejemplo del prompt`
+  },
+
   no_vocabulario_interno: (r) => {
     const t = allText(r)
     const hits = []
@@ -588,7 +636,7 @@ const CHECKS = {
 
 // Checks que corren en cada turno de cada caso, sin declararlos.
 const ALWAYS = ['no_template_leak', 'no_fallback_bubble', 'media_si_lista_autos',
-  'no_inventa_autos', 'no_filtra_centinela', 'no_vocabulario_interno']
+  'no_inventa_autos', 'no_filtra_centinela', 'no_vocabulario_interno', 'no_nombre_inventado']
 
 // Checks sobre el historial guardado. Corren contra `mensajes_demo`, no contra la
 // respuesta del webhook.
@@ -644,6 +692,7 @@ async function runCase(c) {
   mediaPorTurno.length = 0
   imagenesPorTurno.length = 0
   modeloPorId.clear()
+  dichoPorCliente.length = 0
 
   try {
     for (const [i, turn] of c.turns.entries()) {
@@ -656,6 +705,10 @@ async function runCase(c) {
       })
       const ms = Date.now() - t0
       const turnRec = { n: i + 1, say: turn.say, ms, response: res, failures: [] }
+
+      // ANTES de los checks, al revés que `registrarMedia`: lo que el cliente acaba de decir SÍ
+      // cuenta para este turno. Si dio su nombre recién ahora, usarlo en la respuesta es correcto.
+      dichoPorCliente.push(String(turn.say || ''))
 
       for (const [name, ...args] of [...ALWAYS.map((n) => [n]), ...(turn.checks || [])]) {
         const fn = CHECKS[name]
