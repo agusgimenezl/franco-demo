@@ -20,8 +20,53 @@
 
 <!-- FIN AUTOGENERADO -->
 
-> **🟢 v131 DESPLEGADO Y MEDIDO: `derivacion-aceptada-igual-pide-nombre` **0/3 → 2/5**, el mejor
-> resultado de las últimas cuatro versiones. El fix restaurado ANDA. Sesión 2026-08-11.**
+> **🟡 v132 ARMADO Y APROBADO POR LA COMPUERTA, NO DESPLEGADO
+> (`scripts/ningun-ejemplo-de-salida-lleva-nombre-propio.mjs`). 1 nodo. Sesión 2026-08-11.**
+>
+> **QUÉ ATACA:** `no_nombre_inventado` disparó sobre v131 en producción — Franco volvió a decir un
+> nombre propio a un cliente anónimo. **v130 tapó UNA fuente y quedaban dos plantillas más**, las dos
+> de SALIDA, o sea el formato exacto de lo que Franco escribe, listo para copiar:
+> · línea 32: `Esto NO aplica a nombrarlo por su nombre de pila ("perfecto Martín"), que sí va.`
+> · línea 246: `Si te dice "...", le contestás "Perfecto Martín", nunca "Perfecto Martín D'Angelo"`
+>
+> **LA DISTINCIÓN QUE GENERALIZA LO DE v130, Y ES LA LECCIÓN:**
+> · un ejemplo de **ENTRADA** (*"si te dice X"*) describe lo que llega — es **información**;
+> · un ejemplo de **SALIDA** (*"le contestás X"*) es una **PLANTILLA**, y el modelo copia plantillas.
+> v132 borra las de salida y **conserva las de entrada**. Misma forma que v124: quitar el insumo,
+> no agregar una prohibición. Nombres propios en el prompt **5 → 2**, plantillas de salida **0**.
+> La advertencia agregada **no nombra a nadie** (assert propio): escribirlo dentro de una
+> prohibición es volver a darle el ejemplo — es el error que cometió v130.
+>
+> **🛠 LA COMPUERTA DE PRE-DEPLOY SE ESTRENÓ EN EL FLUJO REAL Y BLOQUEÓ ESTE MISMO CANDIDATO:** con
+> v132 ya armado y sin la línea de base escrita, `--file` salió en rojo. Recién con
+> `evals/baseline-v131.json` (4 casos) lo aprobó. **Tres horas antes, en esa situación exacta, se
+> habría desplegado.**
+>
+> **LÍNEA DE BASE DE v131 (`evals/baseline-v131.json`, 4 casos × 3):**
+> `derivacion-aceptada-igual-pide-nombre` **0/3** · `no-repreguntar-asesor` **1/3** (ahora SÍ tiene
+> "antes", que era lo que faltó toda la tarde) · `derivacion-completada-no-reofrece-visita` **3/3** ·
+> `cuotas-el-plazo-se-contesta-y-se-deriva` **3/3**.
+>
+> **AL PEGAR v132:** `workflows/franco-n8n-v132.json`, 35 nodos, 6 invariantes.
+> **MEDIR** con los mismos 4 casos del baseline, `--repeat 3 --delay 45000`.
+> **La señal de v132 NO es el score del caso:** es que **`no_nombre_inventado` no dispare** en
+> ninguna corrida. El caso puede seguir rojo por lo de abajo.
+>
+> **🔎 PASO 3, DIAGNÓSTICO EN CURSO — DOS INYECCIONES COMPITEN EN EL TURNO 4.** Las 3 fallas de la
+> línea de base son idénticas y NO son "faltó el name-ask": Franco contesta
+> *"Con un anticipo de $15.000.000 … podríamos buscar vehículos de hasta aproximadamente
+> $30.000.000"*. **15 × 2 = 30: esa cuenta la hace una inyección determinística, no el modelo.**
+> O sea que en ese turno pelean el guion del techo de capacidad y el del name-ask, y gana el
+> primero. **Se diagnostica con el log de n8n, no razonando sobre el prompt.**
+
+> **⚠️ CORRECCIÓN CON MÁS MUESTRA (misma sesión): "EL MEJOR RESULTADO DE LAS ÚLTIMAS CUATRO
+> VERSIONES" FUE UNA CONCLUSIÓN APURADA.** La línea de base de v131 (3 corridas más, misma versión)
+> dio **0/3**, así que sobre v131 el acumulado es **2 de 8 = 25%**, contra **1/3 = 33%** de v129.
+> **No es claramente mejor.** El 2/5 era una muestra favorable y se leyó como tendencia.
+> Lo que sí queda en pie, porque es mecánico y no estadístico: **el fix restaurado ESTÁ y la
+> inyección dispara** — ninguna de las 8 fallas es "no apareció la línea del name-ask".
+>
+> **🟡 v131 DESPLEGADO Y MEDIDO: `derivacion-aceptada-igual-pide-nombre` 2/8. Sesión 2026-08-11.**
 >
 > **MEDICIÓN (caso a 5 repeats, controles a 3):**
 > · `derivacion-aceptada-igual-pide-nombre` **2/5** (v128 0/3 · v129 1/3 · v130 0/3)
