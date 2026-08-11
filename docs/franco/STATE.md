@@ -52,7 +52,10 @@
 > **AL PEGAR:** `workflows/franco-n8n-v128.json`, 35 nodos, 5 invariantes.
 > **MEDIR:** `--case cuotas-el-plazo-se-contesta-y-se-deriva --repeat 5 --delay 45000`
 > (sobre v127: **0/5**) · **controles obligatorios, porque el guion tocado es el del name-ask:**
-> `financiacion-cierra-pidiendo-nombre`, `no-repedir-el-nombre`, `derivacion-aceptada-igual-pide-nombre`.
+> `derivacion-aceptada-igual-pide-nombre`, `financiacion-pide-anticipo`, `financiacion-cuanto-falta`.
+> (Los tres verificados contra `cases.json`: **existen**. En una versión anterior de esta entrada
+> puse `financiacion-cierra-pidiendo-nombre` y `no-repedir-el-nombre`, que **no son ids de caso**
+> sino nombres de archivo de `scripts/` — corregido.)
 >
 > **⚠️ LO QUE v128 NO CUBRE, Y ESTÁ SIN MEDIR:** la **línea 9** del prompt (la que corre cuando el
 > cliente YA dio el nombre) tiene su propio guion —*"le paso todo a un asesor así te contacta y te
