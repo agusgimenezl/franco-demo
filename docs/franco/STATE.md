@@ -20,6 +20,37 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🔎 DIAGNÓSTICO DEL "LA POTENCIA ES JUSTA" INVENTADO: ES ADHERENCIA, NO DISPONIBILIDAD.
+> Sesión 2026-08-11.**
+>
+> **DESCARTADA LA HIPÓTESIS DE LA SUPRESIÓN.** Se sospechó del bloque de v119 (la ficha ya dada),
+> que es lo que obligó a v126 a sacar el `anticipo_minimo` de ahí. **No es eso:** en la query de
+> `Detalle auto`, `descripcion` SÍ está adentro de la supresión (`THEN '' ELSE ... END AS
+> descripcion`) pero **`condicionantes` está AFUERA** y siempre llega.
+>
+> **PRUEBA POSITIVA, que es más fuerte que el razonamiento:** en la corrida `a8214ea7` Franco
+> contestó *"tiene caja CVT, que funciona muy suave, pero requiere un service específico…"* — el
+> condicionante NUEVO, casi textual. **El dato le llega y a veces lo usa.** De 3 corridas: 1 usó el
+> real, 1 inventó *"la potencia es justa"* (que ya NO existe en la base) y 1 esquivó
+> (*"eso te lo puede confirmar mejor un asesor"*).
+>
+> **LA LECCIÓN, Y NO ESTABA DOCUMENTADA: BORRAR LA FRASE DEL DATO NO ALCANZA CUANDO EL MODELO TIENE
+> SU PROPIA OPINIÓN.** La trampa 6 dice que el ejemplo concreto le gana a la regla abstracta; esto es
+> el escalón siguiente: **el prior del modelo le gana al dato**, cuando el dato es un campo suelto y
+> el prior es "un 1.3 en una SUV anda justo". Sacar el insumo (v124) funciona contra un guion del
+> prompt; **no funciona contra lo que el modelo ya cree.**
+>
+> **🛠 CORREGIDO UN PROBLEMA QUE INTRODUJO LA COPY: el condicionante del Duster era casi un CALCO del
+> Corolla** (los dos CVT, casi la misma oración). Es la lección de v119 —una firma que no es única no
+> es una firma— aplicada al texto comercial. Reescrito y diferenciado, atado al fuerte propio del
+> Duster: *"El fuerte es el camino roto, no el remolque: la caja CVT pide su service específico y no
+> es la indicada para arrastrar peso seguido."*
+>
+> **PENDIENTE, NO RESUELTO:** `condicionante-si-preguntan` queda en **1/3**. El fix natural, si se
+> decide hacerlo, es una inyección determinística que ponga el condicionante real como texto a decir
+> cuando preguntan por los contras — el mismo patrón que resolvió el techo en v133. **No se armó:
+> requiere otra versión del workflow y la decisión es de Agustina.**
+
 > **🟡 EVALS DESPUÉS DE LA COPY: 7/15. UNA FALLA ES DE LA COPY Y ESTÁ ARREGLADA; LAS OTRAS DOS NO SE
 > PUEDEN ATRIBUIR. Y APARECIÓ UN BUG NUEVO. Sesión 2026-08-11.**
 >
