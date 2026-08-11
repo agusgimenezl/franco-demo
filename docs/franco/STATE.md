@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v130.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v131.json` · 35 nodos
 
 | | |
 |---|---|
@@ -16,9 +16,35 @@
 | Empresa configurada | Automotores Tucumán |
 | Evals | 93 casos · baseline-v33.json → 30/35 |
 
-**Invariantes:** ❌ 2 rotos — ver `node scripts/state-sync.mjs --check`
+**Invariantes:** ✅ los 6 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🛠 COMPUERTA DE PRE-DEPLOY: SIN LÍNEA DE BASE CON CONTROLES, UN CANDIDATO NO SE APRUEBA.
+> Sesión 2026-08-11.**
+>
+> **POR QUÉ ES UNA COMPUERTA Y NO UNA NOTA: la nota ya existía y falló.** Se anotó como regla el
+> 2026-08-11, se guardó en la memoria del proyecto, y **dos horas después se repitió el mismo
+> error** al armar v131. Antes había pasado con v128: se midió el caso antes de desplegar y los
+> controles no, se rompió `financiacion-pide-anticipo` y la regresión apareció con la versión ya en
+> producción. **Una regla que depende de acordarse no es una regla.**
+>
+> **CÓMO FUNCIONA:** corre en `scripts/state-sync.mjs`, sólo con `--file` y sólo si el archivo
+> auditado es una versión MAYOR que la de producción — o sea, justo cuando se está por aprobar un
+> candidato. Exige que exista `evals/baseline-<produccion>.json` y que cubra **al menos DOS casos
+> distintos**. Dos es el punto: con uno solo se mide el caso que se está arreglando y se comete el
+> error de nuevo. **Los controles son la parte que se saltea.**
+>
+> **PROBADA EN TRES DIRECCIONES:** sin baseline → bloquea · con baseline de UN caso → bloquea igual
+> · con caso + 2 controles → pasa. Los archivos de prueba se borraron, **incluida la baseline falsa**
+> (si quedaba, dejaba pasar un deploy real).
+>
+> **Producir la línea de base:**
+> `node evals/run.mjs --case <caso>,<control1>,<control2> --repeat 3 --delay 45000 --json evals/baseline-<produccion>.json`
+>
+> **De paso:** el puntero de producción ahora es la constante `PRODUCCION` en una línea propia de
+> `state-sync.mjs`. Antes vivía dentro de un ternario y se editaba a ciegas.
+> **También quedó escrito en `CLAUDE.md`**, en las reglas no negociables de validación.
 
 > **🔴 EL CASO NO ERA FLAKY: EL FIX SE HABÍA PERDIDO. `derivacion-aceptada-igual-pide-nombre` viene
 > rojo porque el fix determinístico de v75 DESAPARECIÓ DEL WORKFLOW EN v77 y estuvo perdido 53

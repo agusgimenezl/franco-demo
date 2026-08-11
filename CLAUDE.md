@@ -106,6 +106,16 @@ Opciones: `--case a,b` · `--repeat N` (mide flakiness) · `--delay N` (aísla c
 
 **Reglas, no negociables:**
 - Correr antes y después de cada cambio. Sin la corrida previa no hay línea de base.
+- **La corrida previa incluye los CONTROLES, no sólo el caso que estás arreglando.** Es la parte
+  que se saltea y la que más cara sale: el 2026-08-11 se midió el caso antes de desplegar y los
+  controles no, v128 rompió `financiacion-pide-anticipo` y la regresión se descubrió con la
+  versión ya en producción. **Está mecanizado, no depende de acordarse:** aprobar un candidato con
+  `state-sync.mjs --file` exige que exista `evals/baseline-<produccion>.json` **con al menos dos
+  casos**, y si no está, no aprueba.
+
+  ```bash
+  FRANCO_URL=... node evals/run.mjs --case <caso>,<control1>,<control2> --repeat 3 --delay 45000 --json evals/baseline-<produccion>.json
+  ```
 - **Un cambio por vez.** Si tocás dos cosas y algo se rompe, no sabés cuál fue.
 - Un bug nuevo se convierte en caso de eval **antes** de arreglarlo, y **tiene que fallar
   primero**. Si no falla, no entendiste el bug.

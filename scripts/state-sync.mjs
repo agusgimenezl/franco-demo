@@ -21,7 +21,10 @@ const resolveWf = (p) => {
   const asGiven = join(ROOT, p)
   return existsSync(asGiven) ? asGiven : join(ROOT, 'workflows', p)
 }
-const WORKFLOW = argFile !== -1 ? resolveWf(process.argv[argFile + 1]) : join(ROOT, 'workflows', 'franco-n8n-v130.json')
+// EL PUNTERO DE PRODUCCIÓN. Se edita acá, en una línea sola y con nombre propio: antes vivía
+// dentro del ternario de abajo y se editaba a ciegas.
+const PRODUCCION = 'franco-n8n-v131.json'
+const WORKFLOW = argFile !== -1 ? resolveWf(process.argv[argFile + 1]) : join(ROOT, 'workflows', PRODUCCION)
 const STATE = join(ROOT, 'docs/franco/STATE.md')
 const checkOnly = process.argv.includes('--check') || argFile !== -1
 
@@ -104,6 +107,46 @@ for (const [nodo, campo, aguja, porque] of INYECCIONES) {
   if (!valor) { fail('INYECT', `${nodo}.${campo}: no existe`); continue }
   if (!valor.includes(aguja)) {
     fail('INYECT', `${nodo}.${campo}: se perdió ${JSON.stringify(aguja)} — ${porque}`)
+  }
+}
+
+// ─── Compuerta de pre-deploy: sin línea de base CON CONTROLES, un candidato no se aprueba
+// POR QUÉ ES UNA COMPUERTA Y NO UNA NOTA: el 2026-08-11 esto se anotó como preferencia, se
+// escribió en la memoria del proyecto, y DOS HORAS DESPUÉS se repitió igual. v128 se desplegó sin
+// medir los controles, rompió `financiacion-pide-anticipo` y la regresión se descubrió con la
+// versión ya en producción. Después volvió a pasar con v131. Una regla que depende de acordarse
+// no es una regla.
+//
+// CUÁNDO CORRE: sólo con `--file`, y sólo si el archivo auditado es una versión MAYOR que la de
+// producción — o sea, exactamente cuando se está por aprobar un candidato para pegar.
+//
+// QUÉ EXIGE: que exista `evals/baseline-<produccion>.json` y que cubra AL MENOS DOS casos
+// distintos. Dos es el punto: con uno solo se mide el caso que se está arreglando y se vuelve a
+// cometer el error. Los controles son la parte que se saltea.
+const verNum = (s) => parseInt(String(s).match(/v(\d+)\.json$/)?.[1] ?? '0', 10)
+const vCand = verNum(WORKFLOW)
+const vProd = verNum(PRODUCCION)
+if (argFile !== -1 && vCand > vProd && vProd > 0) {
+  const baseName = PRODUCCION.replace(/\.json$/, '').replace('franco-n8n-', 'baseline-')
+  const basePath = join(ROOT, 'evals', `${baseName}.json`)
+  const comando = `FRANCO_URL=... node evals/run.mjs --case <caso>,<control1>,<control2> --repeat 3 --delay 45000 --json evals/${baseName}.json`
+  if (!existsSync(basePath)) {
+    fail('BASE', `falta la línea de base de producción (${PRODUCCION}) para aprobar v${vCand}.\n`
+      + `        No hay "antes": si algo se rompe, no se va a poder atribuir. Corré:\n`
+      + `        ${comando}`)
+  } else {
+    let ids = []
+    try {
+      ids = [...new Set(JSON.parse(readFileSync(basePath, 'utf8')).map((r) => r.id))]
+    } catch { /* archivo ilegible: cae en el chequeo de abajo */ }
+    if (ids.length < 2) {
+      fail('BASE', `la línea de base ${baseName}.json cubre ${ids.length} caso(s) (${ids.join(', ') || 'ninguno'}).\n`
+        + `        Hacen falta AL MENOS 2: el caso y sus controles. Medir sólo el caso objetivo es\n`
+        + `        el error exacto que rompió v128. Corré:\n`
+        + `        ${comando}`)
+    } else {
+      console.log(`${C.dim}línea de base de ${PRODUCCION}: ${ids.length} casos (${ids.join(', ')})${C.off}`)
+    }
   }
 }
 
