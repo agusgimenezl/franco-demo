@@ -21,7 +21,7 @@ const resolveWf = (p) => {
   const asGiven = join(ROOT, p)
   return existsSync(asGiven) ? asGiven : join(ROOT, 'workflows', p)
 }
-const WORKFLOW = argFile !== -1 ? resolveWf(process.argv[argFile + 1]) : join(ROOT, 'workflows', 'franco-n8n-v127.json')
+const WORKFLOW = argFile !== -1 ? resolveWf(process.argv[argFile + 1]) : join(ROOT, 'workflows', 'franco-n8n-v128.json')
 const STATE = join(ROOT, 'docs/franco/STATE.md')
 const checkOnly = process.argv.includes('--check') || argFile !== -1
 

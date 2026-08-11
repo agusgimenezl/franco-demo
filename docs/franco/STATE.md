@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v127.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v128.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,58 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 91 casos · baseline-v33.json → 30/35 |
+| Evals | 93 casos · baseline-v33.json → 30/35 |
 
 **Invariantes:** ✅ los 5 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🔴 v128 DESPLEGADO: ARREGLÓ SU CASO Y ROMPIÓ OTRO. v129 ARMADO Y NO DESPLEGADO
+> (`scripts/el-porque-no-se-come-el-anticipo.mjs`). 1 nodo. Sesión 2026-08-11.**
+>
+> **MEDICIÓN DE v128 (14:31–14:45Z):**
+> · `cuotas-el-plazo-se-contesta-y-se-deriva` **0/5 → 5/5** — el fix anda
+> · `financiacion-cuanto-falta` **3/3** — control sano
+> · 🔴 `financiacion-pide-anticipo` **0/3 — REGRESIÓN, ATRIBUIDA**
+> · 🟡 `derivacion-aceptada-igual-pide-nombre` **0/3 — NO ATRIBUIBLE** (ver abajo)
+>
+> **LA REGRESIÓN, Y LA ATRIBUCIÓN NO ES UNA SOSPECHA:** los TRES turnos 3 contestaron con el guion
+> NUEVO de v128 palabra por palabra (sesiones `2276e660`, `4fe58204`, `92c245a9`):
+> · Franco: *"…de cuánto pensás poner de anticipo más o menos?"*
+> · Cliente: *"24 creo que sería mejor"* ← **son CUOTAS, no un anticipo**
+> · Franco: *"Perfecto, con 24 cuotas el plan y el valor de la cuota te los confirma un asesor…
+>   Me dejás tu nombre y apellido?"* — **saltea el anticipo y va al nombre.**
+>
+> **🔴 TRAMPA 6 EN CONTRA DEL QUE ESCRIBE EL FIX, Y ES LA LECCIÓN NUEVA.** v128 metió *"si el cliente
+> preguntó por un plazo, eso es una PREGUNTA y se contesta antes de pedirle nada"* **dentro del guion
+> del name-ask**, y esa frase le ganó a la regla de DATO INCOMPLETO que está justo abajo (*"si te da
+> las cuotas pero no el anticipo, volvé a pedir el que falta ANTES de seguir"*). **El ejemplo nuevo
+> se comió la regla vieja.** La trampa 6 se conocía como algo que le pasa al prompt viejo; **acá la
+> provocó un fix**. Corolario: cuando agregues un ejemplo, preguntate a qué regla de abajo le gana.
+>
+> **v129: acota el disparador con la condición que faltaba (que el anticipo YA esté) y sobre todo
+> pone el CONTRA-EJEMPLO textual** con el diálogo medido y el guion del re-pedido — que es el MISMO
+> que ya usa la regla de DATO INCOMPLETO (hay un assert de que aparece 2 veces: dos redacciones para
+> lo mismo es pedirle al modelo que elija). Una condición sola sería otra regla abstracta, y contra
+> un ejemplo las reglas pierden.
+>
+> **🟡 `derivacion-aceptada-igual-pide-nombre` 0/3: NO SE PUEDE ATRIBUIR Y NO SE VA A FINGIR QUE SÍ.**
+> 1 de las 3 corridas usó el guion nuevo, las otras 2 el texto viejo, y el caso ya venía flaky
+> (3/4 y 7/8 en tandas anteriores). **No hay corrida sobre v127**, así que no se sabe si v128 lo
+> empeoró. Queda como incógnita explícita, ni regresión ni sano.
+>
+> **⚠️ EL ERROR DE MÉTODO, ANOTADO PORQUE ES LA CAUSA RAÍZ DE TODO ESTO: se midió el caso antes de
+> desplegar, pero los controles NO.** Por eso la regresión se descubrió con v128 ya en producción, y
+> por eso el segundo control quedó sin línea de base. `CLAUDE.md` ya pedía la corrida previa; lo que
+> faltaba era entender que **incluye los controles**. Decisión de Agustina (2026-08-11): de ahora en
+> más, línea de base del caso **Y** de los controles, siempre.
+>
+> **AL PEGAR v129:** `workflows/franco-n8n-v129.json`, 35 nodos, 5 invariantes.
+> **MEDIR — y acá el "antes" ya existe, es la medición de v128 de arriba:**
+> `--case cuotas-el-plazo-se-contesta-y-se-deriva,financiacion-pide-anticipo,derivacion-aceptada-igual-pide-nombre,financiacion-cuanto-falta --repeat 3 --delay 45000`
+> Tiene que: `financiacion-pide-anticipo` **0/3 → 3/3**, `cuotas-el-plazo…` **quedarse en 5/5**,
+> `financiacion-cuanto-falta` **quedarse en 3/3**, y `derivacion-aceptada…` da la primera lectura
+> comparable que vamos a tener.
 
 > **🟡 v128 ARMADO Y NO DESPLEGADO — LAS CUOTAS SE CONTESTAN CON EL PORQUÉ
 > (`scripts/las-cuotas-se-contestan-con-el-porque.mjs`). 1 nodo. Sesión 2026-08-11.**
