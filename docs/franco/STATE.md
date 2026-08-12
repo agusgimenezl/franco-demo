@@ -14,7 +14,7 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 102 casos · baseline-v138.json → 8/15 |
+| Evals | 102 casos · baseline-v137.json → 17/24 |
 
 **Invariantes:** ✅ los 6 pasan
 
