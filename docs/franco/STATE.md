@@ -20,6 +20,50 @@
 
 <!-- FIN AUTOGENERADO -->
 
+> **🔴 v139 TAMBIÉN SE REVIRTIÓ. PRODUCCIÓN SIGUE EN v137. Y LA LECCIÓN ES MÁS IMPORTANTE QUE EL
+> FIX: "AGREGAR ES SEGURO, SACAR ES PELIGROSO" ES FALSO. Sesión 2026-08-12.**
+>
+> **QUÉ HACÍA v139:** terminar lo de v135, poniendo `defaultValue` a los 8 `$fromAI` que quedaban
+> obligatorios en `Listar stock` y `Buscar auto`.
+>
+> **MEDIDO SOBRE `capacidad-de-compra-financiada`, 9 corridas: 2/9 verdes (22%) contra 2/3 (67%) en
+> v137**, y con fallas mucho más severas (4-5 checks por corrida contra 1-2). En 2 de 9 Franco
+> **volvió a pedir los datos del usado que el cliente ya había dado** — el mismo síntoma que hizo
+> revertir v138, por otra causa.
+>
+> **🔎 LA CAUSA, Y ES CONTRAINTUITIVA: LOS `required` DE `usado_*` NO ERAN UN DESCUIDO, ERAN UNA
+> VALIDACIÓN QUE FUNCIONABA.** Obligaban al modelo a completar marca/modelo/año del usado antes de
+> poder llamar a la herramienta. Al ponerles un default, el modelo dejó de mandarlos, la tool corrió
+> con vacíos y la conversación se degradó. **El error ruidoso estaba tapando un error silencioso
+> peor:** la llamada rechazada era fea pero visible; la llamada con vacíos parece que funciona.
+>
+> **❌ SE CORRIGE UNA CONCLUSIÓN ESCRITA HOY MISMO, DESPUÉS DE v138.** Ahí se dijo que v138 rompió
+> **porque sacaba** un insumo y que v135 salió limpio **porque agregaba** un default, y de ahí salió
+> la regla "agregar es seguro". **Es falsa.** Agregar un default también cambia el comportamiento,
+> sólo que más callado: cambia lo que el modelo decide mandar.
+>
+> **LA DISTINCIÓN QUE SÍ SIRVE, Y QUE NINGÚN ASSERT PODÍA CAZAR: ¿EXISTE UN VALOR NEUTRO?**
+> · `tiene_permuta`, `con_financiacion`, `marca_o_modelo` → **sí**: "no hay permuta", "no financia",
+>   "no filtrar por marca" son estados reales y su propia descripción los documenta.
+> · `usado_marca`, `usado_modelo`, `usado_anio`, `usado_km`, `usado_categoria` → **no**. Un usado sin
+>   marca no es "un usado neutro": es **un dato que falta y hay que pedírselo al cliente**.
+> Los 8 se metieron en la misma bolsa por venir de la misma tool. **Los asserts verificaban la
+> mecánica (conteos, trampa 3, SQL intacto) pero no si el neutro EXISTE conceptualmente.**
+>
+> **SI SE REINTENTA (v140):** sólo los 3 que tienen neutro real, y **midiendo
+> `capacidad-de-compra-financiada` desde el arranque**, no al final. Los 5 de `usado_*` **no se
+> tocan**: su obligatoriedad es lo que sostiene el flujo de permuta.
+>
+> **⚠️ Y QUEDA ABIERTA LA PREGUNTA QUE ESTO DEJA: si los `required` de `usado_*` son una validación
+> útil, entonces el fallback que producen NO se arregla con defaults.** Habría que atacar el otro
+> lado: que Franco pida los datos que le faltan ANTES de llamar a la tool. Eso es prompt o guarda, y
+> no tiene caso de eval todavía.
+>
+> **HALLAZGO COLATERAL DE LA LÍNEA DE BASE (`evals/antes-defaults-v137.json`): TRES CASOS ESTÁN EN
+> 0/3 SOBRE v137 Y NADIE LOS MIRABA** — `km-con-presupuesto`, `permuta-mas-efectivo` y
+> `financiacion-no-re-ofrece`. **No es daño de hoy: es el estado de v137.** Aparecieron sólo porque
+> se enumeró a quién podía tocar el fix en vez de estimarlo.
+
 > **🔴 v138 SE DESPLEGÓ, ROMPIÓ UN FLUJO DE VENTA Y SE REVIRTIÓ A v137 EL MISMO DÍA. PRODUCCIÓN
 > ESTÁ EN v137. NO REINTENTAR EL FIX POR LA VÍA DE SUPRIMIR LOS PISOS. Sesión 2026-08-12.**
 >

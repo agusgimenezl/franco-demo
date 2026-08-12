@@ -1,0 +1,396 @@
+[
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "5f5687f5-13a4-442f-869a-41ee6f24101f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 15660,
+        "response": {
+          "session_id": "5f5687f5-13a4-442f-869a-41ee6f24101f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Ford Ka 2015 y un anticipo de 7 millones, y teniendo en cuenta que querés financiar, necesito que me confirmes cuántos kilómetros tiene tu Ka para poder mostrarte opciones acordes a tu capacidad de compra. Cuántos kilómetros tiene?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 6555,
+        "response": {
+          "session_id": "5f5687f5-13a4-442f-869a-41ee6f24101f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya lo tengo anotado. Querés que te contacte un asesor para avanzar, o preferís que te muestre opciones que te podrían servir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 8466,
+        "response": {
+          "session_id": "5f5687f5-13a4-442f-869a-41ee6f24101f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:\n\n- Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV mediano)\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (Sedán mediano)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV mediano)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (Sedán chico)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (Hatchback chico)\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (Utilitario mediano)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (Sedán mediano)\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (Hatchback chico)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (Hatchback chico)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (Hatchback chico)\n\nQuerés que te dé más detalles de algún auto o preferís que te pase opciones de otra gama?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "90358323-730b-4d93-8860-9949a236a89d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 25521,
+        "response": {
+          "session_id": "90358323-730b-4d93-8860-9949a236a89d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 5283,
+        "response": {
+          "session_id": "90358323-730b-4d93-8860-9949a236a89d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con un anticipo de 7 millones y tu Ford Ka 2015 con 100.000 km como parte de pago, y considerando la financiación hasta el 50% del valor del vehículo, tenés una buena capacidad para acceder a distintas opciones. Para avanzar, necesito que me dejes tu nombre y apellido para que un asesor pueda contactarte y te pase una simulación personalizada con las cuotas y detalle."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 7291,
+        "response": {
+          "session_id": "90358323-730b-4d93-8860-9949a236a89d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, teniendo en cuenta tu anticipo, tu Ford Ka 2015 con 100.000 km y la posibilidad de financiar hasta el 50%, tenés este abanico de opciones:"
+            },
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback, chico)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, chico)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, chico)\n\nIntermedio:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, mediano)\n\nAlto:\n- Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV, mediano)\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán, mediano)\n\nQuerés que te pase más detalles de algún auto, o preferís que un asesor te arme una simulación de cuotas con tu anticipo y usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "68a9bcf7-4e6e-426d-b7a8-6171c33d429d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 14122,
+        "response": {
+          "session_id": "68a9bcf7-4e6e-426d-b7a8-6171c33d429d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 3473,
+        "response": {
+          "session_id": "68a9bcf7-4e6e-426d-b7a8-6171c33d429d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Genial, para ayudarte mejor necesito que me digas qué auto entregás como parte de pago. Marca, modelo y año, por favor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)asesor|mostrar|opciones/"
+        ]
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 2130,
+        "response": {
+          "session_id": "68a9bcf7-4e6e-426d-b7a8-6171c33d429d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Para mostrarte opciones que te entren, necesito saber qué auto entregás: marca, modelo y año, y también el anticipo que pensás poner, más o menos. Con eso te armo un abanico de opciones."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/",
+      "turno 2 · text_matches: no matcheó /(?i)asesor|mostrar|opciones/",
+      "turno 3 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  }
+]
