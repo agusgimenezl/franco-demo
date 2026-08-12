@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v134.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v137.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,85 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 96 casos · baseline-v134.json → 16/18 |
+| Evals | 102 casos · baseline-v135.json → 11/15 |
 
 **Invariantes:** ✅ los 6 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v135 DESPLEGADO · 🟡 v136 y v137 ARMADOS Y APROBADOS, SIN DESPLEGAR. SEIS BUGS NUEVOS
+> REPORTADOS POR AGUSTINA, TODOS CON CASO. Sesión 2026-08-12.**
+>
+> **v135 — LOS FILTROS OPCIONALES DEJAN DE SER OBLIGATORIOS**
+> (`scripts/los-filtros-opcionales-dejan-de-ser-obligatorios.mjs`), 2 nodos.
+> **CAUSA RAÍZ LEÍDA DEL LOG (ejecución 15996), no inferida:** `Franco (AI Agent)` devolvió
+> *"Received tool input did not match expected schema — Required at precio_min / precio_max /
+> km_max"*. El modelo llamó a la tool sin esos filtros, n8n **rechazó la llamada entera**, el agente
+> terminó con `error` en vez de `output` y `Armar respuesta` cayó al fallback. **Ninguno de los 31
+> `$fromAI` del workflow tenía `defaultValue`, así que TODOS eran REQUIRED.** Los 8 filtros
+> opcionales de `Listar stock` y `Buscar auto` ahora llevan el valor neutro que **su propia
+> descripción ya declaraba** (*"Poner 0 si no mencionó ninguno"*). Trampa 3 verificada recorriendo
+> las 31 llamadas: ninguna key quedó con dos textos distintos.
+> **MEDIDO DESPUÉS:** `anticipo-no-cubre-el-auto-de-interes` **3/3** y `no-se-rompe-al-pedir-un-auto`
+> **3/3** — v135 no rompió nada de v134.
+>
+> **v136 — EL ANTICIPO SE ENTIENDE AUNQUE EL CLIENTE USE LA PALABRA "ANTICIPO"**
+> (`scripts/el-anticipo-se-entiende-aunque-lo-nombre.mjs`), 1 campo (`Config.entrega_plata`).
+> **VERIFICADO EJECUTANDO EL PARSER:** *"Puedo dar un anticipo de 10M"* daba **0** y *"doy 10M de
+> anticipo"* daba 10.000.000. **No es "10M": es la palabra "anticipo" entre el verbo y el número**,
+> que el grupo de relleno no sabía saltar. Sin monto, `dioPlata` queda false y **el bloque de
+> v113/v134 no dispara**. Se agregan `anticipo|seña|inicial|una` al relleno. 14 frases ejecutadas:
+> 4 que arregla, 4 que no se mueven, 6 que siguen en 0.
+> **LÍNEA DE BASE:** `preperfilado-cuotas-aunque-diga-la-palabra-anticipo` **0/3 (v134) → 1/3 (v135)**.
+>
+> **v137 — LAS URLs NO VAN EN EL TEXTO** (`scripts/las-urls-no-van-en-el-texto.mjs`), 1 nodo.
+> El centinela nuevo disparó en **3 de 5 casos** de una misma tanda: es el bug más reproducible de
+> todos los de hoy. `sinUrls` devuelve el texto **intacto byte por byte cuando no hay links** (cero
+> efecto sobre el resto) y sólo limpia cuando los hay, incluidos los restos que deja el borrado.
+>
+> **⚠️ v137 SE ARMÓ SOBRE v136: pegarlo lleva los dos.** La atribución igual queda limpia porque las
+> superficies y los casos son **disjuntos** (`Config.entrega_plata` vs el texto de `Armar respuesta`).
+>
+> **LOS SEIS BUGS Y SU ESTADO REAL:**
+>
+> | bug | caso | estado |
+> |---|---|---|
+> | URLs crudas en el texto | `fotos-sin-urls-en-el-texto` + centinela en ALWAYS | **0/3, reproducido** → v137 |
+> | No pregunta cuotas con "un anticipo de 10M" | `preperfilado-cuotas-aunque-diga-…` | **1/3, reproducido** → v136 |
+> | No avisa que el año pedido no está | `modelo-inexistente-se-avisa-y-se-ofrece` | **1/3, reproducido** |
+> | Niega stock que existe (Corolla) | `no-niega-stock-sin-consultarlo` | **3/3 — SIN REPRODUCIR** |
+> | Usado inventado (CRM copia el interés) | `usado-sin-detalles-no-se-completa-…` | **SIN REPRODUCIR en 2 intentos** |
+> | Guardas mudas con "no tengo" | — | diagnosticado, **sin caso** |
+>
+> **🔎 EL HALLAZGO QUE VALE MÁS QUE LOS SEIS BUGS: LA CAPA DETERMINÍSTICA TIENE COBERTURA DE
+> LENGUAJE FRÁGIL, Y LA SUITE NO LO VE PORQUE LOS CASOS ESTÁN ESCRITOS CON LAS FRASES QUE LOS REGEX
+> RECONOCEN.** Verificado ejecutando las tres guardas de plata con el turno real de la captura:
+> con *"no tengo"* **ninguna dispara**; con *"no tengo usado"* —que es como lo escribe el caso
+> `financiacion-techo-por-anticipo`— **v100 sí dispara**. Por eso ese caso está verde mientras en
+> producción Franco improvisó un **"$70.000.000"** que contradice el $60.000.000 que él mismo había
+> dicho dos turnos antes. **Cuando escribas un caso, usá la frase del cliente, no la que el parser
+> entiende.**
+>
+> **❌ CORRIJO UNA PRIORIZACIÓN MÍA DE ESTA MISMA SESIÓN.** Dije que el fallback afectaba a *"casi 1
+> de cada 10 conversaciones"* y pedí saltear el orden por eso. **El 2,96% es del histórico completo**
+> (incluye versiones viejas); en lo reciente son 3 en las últimas 1.500 burbujas, **y 2 de esas 3 las
+> generaron mis propios evals**. Además el patrón mezclaba dos bugs distintos: el fallback técnico
+> (*"se me trabó el sistema"*, de `Armar respuesta`) y *"No entendí bien, podés reformular"*, que
+> **lo escribe el modelo** y sigue sin diagnosticar. v135 igual valía la pena, pero no por la
+> urgencia que argumenté.
+>
+> **⚠️ LIMITACIÓN CONOCIDA QUE DEJA v136, DEJADA A PROPÓSITO:** *"un anticipo de 10 millones"*, **sin
+> verbo**, sigue sin capturarse. Soportarlo obligaría a disparar con la sola palabra "anticipo" cerca
+> de un número, y eso capturaría al cliente que **repite** un número que le dijo Franco (*"el anticipo
+> mínimo es 7.250.000?"*) como si fuera su anticipo. **Se prefiere no capturar a capturar mal:** sin
+> monto Franco lo vuelve a pedir; con el monto mal, calcula toda la operación mal.
+>
+> **⚠️ EL CASO DEL USADO SE CORRIGIÓ Y AUN ASÍ NO REPRODUCE.** Su primera versión daba 1/3 pero la
+> falla era del fallback, no del bug. Se le agregó un turno intermedio (el CRM escribe
+> `vehiculo_interes` con un turno de retraso) y se le sacaron los checks del turno 1. Sigue sin
+> reproducir. **No está arreglado: está sin reproducir**, y el fix determinístico propuesto
+> —`descripcion_usado == vehiculo_interes` es un error de copia— **no se aplicó** porque la regla es
+> que el caso falle primero.
 
 > **🟢 v134 DESPLEGADO Y MEDIDO: EL BUG DE LA CAPTURA CERRADO EN 3/3, Y LAS CUOTAS TAMBIÉN. 16/18.
 > Sesión 2026-08-12.**
