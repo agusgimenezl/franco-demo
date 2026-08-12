@@ -23,7 +23,7 @@ const resolveWf = (p) => {
 }
 // EL PUNTERO DE PRODUCCIÓN. Se edita acá, en una línea sola y con nombre propio: antes vivía
 // dentro del ternario de abajo y se editaba a ciegas.
-const PRODUCCION = 'franco-n8n-v133.json'
+const PRODUCCION = 'franco-n8n-v134.json'
 const WORKFLOW = argFile !== -1 ? resolveWf(process.argv[argFile + 1]) : join(ROOT, 'workflows', PRODUCCION)
 const STATE = join(ROOT, 'docs/franco/STATE.md')
 const checkOnly = process.argv.includes('--check') || argFile !== -1

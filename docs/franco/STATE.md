@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v133.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v134.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,194 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 93 casos · baseline-v132.json → 6/12 |
+| Evals | 96 casos · baseline-v134.json → 16/18 |
 
 **Invariantes:** ✅ los 6 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v134 DESPLEGADO Y MEDIDO: EL BUG DE LA CAPTURA CERRADO EN 3/3, Y LAS CUOTAS TAMBIÉN. 16/18.
+> Sesión 2026-08-12.**
+>
+> **MEDICIÓN (`evals/baseline-v134.json`), contra `baseline-v133.json`:**
+> · `anticipo-no-cubre-el-auto-de-interes` **0/3 → 3/3** ← el objetivo
+> · `preperfilado-pregunta-las-cuotas-tras-el-anticipo` **1/3 → 3/3** ← la otra mitad del bug
+> · `anticipo-varios-autos-recuerda-el-50` **1/3 → 2/3** ← predicho 3/3, **NO se cumplió**
+> · controles: `cuotas-el-plazo-se-contesta-y-se-deriva` **3/3 → 3/3** · `financiacion-pide-anticipo`
+>   **3/3** · `derivacion-aceptada-igual-pide-nombre` **3/3 → 2/3**
+>
+> **LA RESPUESTA QUE AHORA DA EL TURNO DE LA CAPTURA:** *"Perfecto. Te comento que el Toyota Etios
+> sale $14.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es
+> $7.250.000: con $6.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta
+> $12.000.000. Querés que te muestre lo que entra en ese rango?"*
+>
+> **❌ LA PREDICCIÓN QUE FALLÉ, Y LA CAUSA ES LA RESERVA QUE HABÍA DECLARADO.** `anticipo-varios…`
+> quedó 2/3. La corrida roja contestó por la rama **"alcanza"** (*"En cuántas cuotas lo pensabas…"*).
+> Para caer ahí con $6.000.000, `_hall.length` tiene que ser **0**: con el Onix ($21.500.000)
+> encontrado habría entrado a la rama de los números, y con el anticipo en 0 habría salido el texto
+> viejo. **Por eliminación entre ramas ya verificadas ejecutando, el CRM no había escrito
+> `vehiculo_interes` en ese turno.** Es la reserva escrita ANTES de medir, cumplida. **NO está
+> confirmado con el lead a la vista**: `run.mjs` no guarda `lead` en estos casos y la sesión se
+> borró por el cleanup. **Para cerrarlo: repetir con `--no-cleanup` y mirar el lead.**
+>
+> **EL CONTROL QUE BAJÓ NO ES DE v134, Y ESTA VEZ SE PUDO PROBAR:** la respuesta que falla en
+> `derivacion-aceptada-igual-pide-nombre` es la inyección de **v100** (*"Con un anticipo de
+> $15.000.000 y sin un usado para entregar…"*), y **el bloque de v100 es BYTE-IDÉNTICO entre v133 y
+> v134** (verificado comparando los 6 bloques `{{ }}` del prompt: v134 cambió exactamente 1, y no es
+> ése). Es la flakiness propia del caso —0/3, 1/3, 0/3, 2/8, 1/3, 3/3 en las últimas seis
+> versiones— con la misma raíz de siempre: depende de que el CRM haya escrito el estado a tiempo.
+>
+> **LO QUE ESTE EPISODIO DEJA COMO DEUDA VISIBLE: LAS TRES RAMAS NUEVAS DEPENDEN DE UN DATO QUE
+> ESCRIBE EL CRM CON UN TURNO DE RETRASO.** `vehiculo_interes` no está garantizado en el turno en que
+> el cliente da su anticipo. Cuando falta, la guarda no acusa de más —cae en la rama de las cuotas,
+> que es benigna— pero **tampoco protege**. Si se quiere determinismo real, el auto de interés
+> tendría que salir de los mensajes del cliente (como `carroceria_pedida_hist`) y no del CRM.
+
+> **⬛ ENTRADA ANTERIOR (v134 antes de desplegarse), se deja por el detalle del diseño:**
+
+> **🟡 v134 ARMADO, APROBADO POR LA COMPUERTA Y NO DESPLEGADO
+> (`scripts/el-guion-del-anticipo-mira-el-auto-de-interes.mjs`). 1 nodo, 35 nodos, 6 invariantes.
+> Sesión 2026-08-11.**
+>
+> **QUÉ ATACA:** el guion de v113 contestaba SIEMPRE *"Perfecto, ya lo tengo anotado…"* en el turno
+> en que el cliente da su anticipo, y en el mismo bloque le prohíbe dar precios. De ahí salen **las
+> dos mitades** del bug de la captura: no puede decir que el anticipo no alcanza, y no pregunta las
+> cuotas. **El fix es el patrón de v133** —ramificar un guion con datos que ya están en el lead—,
+> no una guarda nueva.
+>
+> | rama | condición | qué dice |
+> |---|---|---|
+> | usado con datos | `tieneUsado && conUsado` | el guion de tasación, **intacto** |
+> | no entra | 1 auto de interés y `ant*2 < precio` | precio, mínimo, cuánto falta y su techo |
+> | varios | más de 1 auto de interés | le recuerda el 50%, **sin comparar contra ninguno** |
+> | alcanza | le entra, o no hay auto claro | **pregunta las cuotas** (12, 24, 36 o 48) |
+> | sin anticipo | llegó por el usado | el guion de hoy, **intacto** |
+>
+> **CÓMO SE CUENTAN LOS AUTOS — NO POR LAS BARRAS.** `"Toyota Etios 2021 / Algo chico, primer auto"`
+> tiene una barra y es UN auto más una descripción. Se cuenta cuántos títulos de `catalogo_precios`
+> aparecen de verdad en el texto, con el catálogo ordenado por largo DESC y sacando lo ya matcheado
+> (así *"Gol Trend"* no cuenta además como *"Gol"*).
+>
+> **VERIFICADO EJECUTANDO, NO LEYENDO — 4 ramas + 3 cesiones + 2 no-disparos**, y además
+> **re-ejecutado desde el JSON ya escrito en disco** para descartar que el guardado rompiera un
+> escape. La rama del caso de Julieta devuelve: *"…el Toyota Etios sale $14.500.000 y, como
+> financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $7.250.000: con $6.000.000
+> te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $12.000.000."*
+>
+> **EL CONTROL QUE MÁS IMPORTA, Y ES EL RIESGO PROPIO DE ESTE FIX:** en el turno 3 de
+> `cuotas-el-plazo-se-contesta-y-se-deriva` el cliente ACABA de decir "24 cuotas" y su anticipo está
+> en `entrega_plata_hist`. Si el bloque disparara ahí, le repreguntaría las cuotas a quien acaba de
+> darlas —un bug nuevo hecho por el fix—. **No dispara: el bloque exige plata en ESTE turno
+> (`dioPlata`), no en el historial.** Verificado con un assert propio.
+>
+> **🛠 LÍNEA DE BASE FUSIONADA (`scripts/fusionar-linea-de-base-v133.mjs`), y tapa un agujero de la
+> compuerta:** `baseline-v133.json` tenía los 4 casos de derivación y **habría aprobado v134 sin
+> contener ninguno de los 3 casos que v134 arregla** — la compuerta verifica que la línea de base
+> exista y tenga ≥2 casos, pero no puede saber si son los casos que el candidato toca. Ahora tiene
+> 21 entradas y 7 casos, todo medido sobre v133. Reversible: el archivo estaba commiteado en
+> `d251c11`.
+>
+> **⚠️ ASIMETRÍA PREEXISTENTE ANOTADA Y NO TOCADA (un cambio por vez):** la guarda de v97 mira
+> `Number(cfg.entrega_plata || 0)` **a secas**, sin la cadena `|| entrega_plata_resp ||
+> entrega_plata_hist` que usan las otras. O sea que no dispara cuando el anticipo llegó como número
+> pelado. **No es de v134** —está así desde antes— pero se descubrió acá y conviene mirarla.
+>
+> **AL PEGAR v134:** `workflows/franco-n8n-v134.json`, 35 nodos, 6 invariantes.
+> **MEDIR** con `--repeat 3 --delay 45000 --json evals/baseline-v134.json`:
+> los 3 casos del anticipo + los controles `cuotas-el-plazo-se-contesta-y-se-deriva`,
+> `derivacion-aceptada-igual-pide-nombre` y `financiacion-pide-anticipo`.
+>
+> **LA SEÑAL, DECLARADA ANTES DE MEDIR:**
+> · `anticipo-no-cubre-el-auto-de-interes` **0/3 → 3/3** · `preperfilado-pregunta-las-cuotas…`
+> **1/3 → 3/3** · `anticipo-varios-autos-recuerda-el-50` **1/3 → 3/3** · los 3 controles **sin
+> cambio**. **LA RESERVA:** las tres ramas dependen de que el CRM ya haya escrito
+> `vehiculo_interes`, y el CRM escribe DESPUÉS de responder (≥1 turno tarde). Si el dato no llegó,
+> el caso cae en la rama de las cuotas y da rojo. **Si el caso 1 queda flaky, la primera sospecha es
+> esa y no el guion** — se comprueba mirando `lead` en el JSON de la corrida.
+
+> **🔴 BUG NUEVO REPRODUCIDO (captura de Agustina, sesión REAL `edc12363`): FRANCO NO COMPARA EL
+> ANTICIPO CONTRA EL PRECIO DEL AUTO DE INTERÉS. 3 casos de eval escritos y LOS 3 FALLAN sobre v133.
+> El fix (v134) NO está armado. Sesión 2026-08-11.**
+>
+> **EL BUG, EN DOS MITADES, LAS DOS EN EL MISMO TURNO.** Julieta Vega vino por el Toyota Etios
+> ($14.500.000 → anticipo mínimo $7.250.000), preguntó por financiación y contestó *"tengo 6
+> millones"*. **Le faltan $1.250.000 y Franco no lo detectó:** contestó *"Perfecto, ya lo tengo
+> anotado"* y derivó. Además **no preguntó las cuotas**, que la línea 330 del prompt manda textual
+> (*"Recién con el anticipo preguntás las cuotas (12, 24, 36 o 48) si no las dio"*) y cuyos dos
+> cierres prohibidos —*"se lo dejo anotado"* y *"querés ver otras opciones?"*— usó los dos.
+>
+> **POR QUÉ NO LO CAZÓ NADA, Y ES ESTRUCTURAL: HAY TRES GUARDAS DE PLATA Y LAS TRES PIDEN UN CAMINO
+> QUE ESTA CLIENTA NO TOMÓ.** v98/v99 exige `monto_financiar` (nunca dijo cuánto quería financiar) ·
+> v100 exige que el mensaje del turno diga *"no tengo usado"* (dijo *"tengo 6 millones"*) ·
+> v97/v113/v120 exigen `carroceria_pedida` y comparan contra el **piso de una CARROCERÍA**, no
+> contra el precio de un auto puntual. **El camino "vengo por UN auto concreto + declaro mi
+> anticipo" no tiene guarda, y es el más común de la demo.** `lead_vehiculo` no se usa en NINGUNA
+> parte del systemMessage; `catalogo_precios` ya viaja al lado. Los dos datos están y nada los cruza.
+>
+> **❌ ME EQUIVOQUÉ ACÁ Y LO CORRIJO EN LA MISMA SESIÓN. Decía: "TRAMPA 7 DESCARTADA — la escribió
+> Franco". ES FALSO. LA ESCRIBE EL CÓDIGO: TRAMPA 7 POR CUARTA VEZ.** Verifiqué el guard de cierre
+> de `Armar respuesta` —que efectivamente NO disparó, porque exige `autos.length >= 1` y ese turno no
+> mostró autos— y **di el asunto por cerrado sin buscar la frase en el prompt**. Está en el
+> systemMessage, en la inyección de **v113**, como el `guion` del `else`:
+>
+> ```js
+> : 'Perfecto, ya lo tengo anotado. Querés que te contacte un asesor para avanzar, o preferís que te muestre opciones que te podrían servir?';
+> ```
+>
+> …y el bloque termina con *"Decí TEXTUAL esta frase, que YA ESTÁ ARMADA"*. **Franco no desobedece:
+> obedece.** Verificado EJECUTANDO el bloque con los datos exactos del caso (`pidio_ver=0`,
+> `entrega_plata_resp=6000000`, sin usado, sin carrocería): dispara y devuelve esa frase textual.
+>
+> **ESTO EXPLICA LAS DOS MITADES DEL BUG DE UNA SOLA VEZ, y cambia el fix:** el mismo bloque le
+> **prohíbe dar precios** en ese turno (*"PROHIBIDO … nombrar un auto, escribir una lista de autos,
+> dar precios o kilómetros"*), así que Franco **no puede** decir el anticipo mínimo aunque lo supiera;
+> y le ordena decir esa frase **y nada más**, así que tampoco pregunta las cuotas. **No falta una
+> guarda: sobra un guion que ordena la respuesta mala.** El fix es el mismo patrón de v133 —
+> ramificar el `guion` según datos que ya están— y no una guarda nueva al lado.
+>
+> **LA LECCIÓN, Y ES SOBRE EL MÉTODO, NO SOBRE n8n: "VERIFIQUÉ UNA FUENTE DE INYECCIÓN" NO ES
+> "VERIFIQUÉ LA TRAMPA 7".** Hay dos superficies que escriben texto —`Armar respuesta` y los bloques
+> `{{ }}` del systemMessage— y yo miré una sola y escribí "descartada". La forma correcta de
+> descartarla es **grepear la frase del cliente contra el workflow entero**, que es lo que la
+> encontró cuando por fin lo hice.
+>
+> **MEDICIÓN (`evals/antes-guarda-anticipo.json`, 3 casos × 3 sobre v133), con las 3 predicciones
+> declaradas ANTES de correr y las 3 cumplidas:**
+> · `anticipo-no-cubre-el-auto-de-interes` **0/3** (predicho 0/3)
+> · `preperfilado-pregunta-las-cuotas-tras-el-anticipo` **1/3** (predicho 0/3 o 1/3)
+> · `anticipo-varios-autos-recuerda-el-50` **1/3** (predicho 0/3 o 1/3)
+>
+> **EL CASO 3 REPRODUJO LA CAPTURA TEXTUAL** en 2 de 3 corridas: *"Perfecto, ya lo tengo anotado.
+> Querés que te contacte un asesor para avanzar, o preferís que te muestre opciones..."*.
+>
+> **🔎 LA CONFIRMACIÓN DE QUE ESTO NO ES PROMPT:** en una corrida Franco dijo *"con un anticipo de
+> $6.000.000 y la posibilidad de financiar hasta el 50% del auto, **tenés varias opciones**"*.
+> **Enunció la regla y acto seguido afirmó algo falso sobre un auto de $14.500.000.** Tiene la regla;
+> lo que no hace es la cuenta. Es la regla del proyecto en su forma más limpia.
+>
+> **DECISIÓN DE AGUSTINA PARA LA RAMA DE VARIOS AUTOS:** cuando el cliente mostró interés en más de
+> un auto, la guarda **NO compara contra ninguno** (decir "no te alcanza" a quien quizás le entra uno
+> de los tres es el falso positivo más caro en una venta) **pero le RECUERDA que el anticipo tiene
+> que ser como mínimo el 50% del valor del vehículo**. Por eso el caso 3 no exige ningún número:
+> exige la regla.
+>
+> **⚠️ HALLAZGO QUE CONDICIONA EL DISEÑO DE v134, Y SALIÓ DEL DATO REAL:** el `vehiculo_interes` de
+> Julieta es `"Toyota Etios 2021 / Algo chico, primer auto"` — **tiene una barra pero NO son dos
+> autos**: el segundo pedazo es una descripción. Si la guarda cuenta *partes separadas por `/`*, el
+> caso de la captura cae en la rama de "varios" y nunca dice el número. **Tiene que contar cuántas
+> partes matchean un auto REAL del catálogo**, no cuántas barras hay.
+>
+> **⚠️ PENDIENTE DE MÉTODO ANTES DE APROBAR v134:** esta corrida está en
+> `evals/antes-guarda-anticipo.json`, no en `evals/baseline-v133.json`. La compuerta mira ese
+> segundo archivo, que hoy tiene los 4 casos de derivación: **aprobaría v134 con una línea de base
+> que no contiene los casos que v134 arregla**, que es justo lo que la compuerta existe para
+> impedir. Antes de aprobar hay que fusionar esta corrida adentro de `baseline-v133.json` (son casos
+> distintos medidos sobre la misma versión viva, así que es legítimo).
+>
+> **⚠️ CORRIJO UNA ENTRADA VIEJA DE ESTE MISMO DOCUMENTO (pendiente 3, `no-repreguntar-asesor`):**
+> dice que `Leer lead (estado)` *"no trae la columna `estado`"*. **En v133 SÍ la trae**
+> (`COALESCE(l.estado, 'Nuevo') AS lead_estado`) y `Armar respuesta` la usa en su guard de cierre.
+> O la entrada quedó vieja o la raíz de ese caso es otra. **No se investigó — va aparte.**
 
 > **🔎 DIAGNÓSTICO DEL "LA POTENCIA ES JUSTA" INVENTADO: ES ADHERENCIA, NO DISPONIBILIDAD.
 > Sesión 2026-08-11.**
