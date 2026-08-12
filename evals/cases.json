@@ -4165,6 +4165,45 @@
           ]
         }
       ]
+    },
+    {
+      "id": "presupuesto-sin-usado-no-se-traba",
+      "bug": "REPORTADO POR AGUSTINA 2026-08-12 sobre v140/v137 (pasa en las dos: se aisló revirtiendo). Franco contesta \"Uy, se me trabo el sistema un segundo. Me repetis lo ultimo?\" a un pedido de autos por presupuesto. REPRODUCIDO 3/3 contra produccion, deterministico. CAUSA leida del log (ejecuciones 16613 y 16614): \"Received tool input did not match expected schema - Required at con_financiacion / usado_anio / usado_marca / usado_modelo / usado_categoria / usado_km\". El cliente no nombra ningun usado, el modelo omite los cinco usado_*, n8n rechaza la llamada entera y Armar respuesta cae al fallback. OJO: tiene_permuta NO esta entre los rechazados, el modelo lo mando en 0 - se le exigen los datos de un usado que el propio modelo declaro que no existe. AGUJERO QUE LO DEJO PASAR: no_fallback_bubble ya corre en ALWAYS, pero NINGUN caso de la suite pedia autos por plata SIN mencionar un usado; los que tienen presupuesto lo dan junto a un usado (km-con-presupuesto: \"mi fiat mobi 2018, tengo 13 millones\") y ahi la llamada pasa.",
+      "turns": [
+        {
+          "say": "Hola! busco un auto de 20M aprox, que tenes disonible?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)(etios|cronos|kangoo|ecosport|duster|onix|renegade|corolla|208)"
+            ],
+            [
+              "cards_min",
+              1
+            ],
+            [
+              "ends_with_question"
+            ],
+            [
+              "manual",
+              "EL TURNO DEL BUG. Con $20.000.000 el cliente tiene que ver opciones reales (el Onix $21.500.000 esta apenas arriba; entran Duster $22.500.000 no, Renegade no; si entran Etios $14.500.000, Cronos $16.800.000, Kangoo $18.500.000, EcoSport $19.800.000). Lo que NO puede pasar, y es el bug, es la burbuja \"se me trabo el sistema\". Tampoco puede pedirle datos de un usado que el cliente no nombro."
+            ]
+          ]
+        },
+        {
+          "say": "y algo un poco más nuevo?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)20(2[0-9])"
+            ],
+            [
+              "manual",
+              "Sigue sin usado. No puede caer al fallback ni pedir marca/modelo/anio de un usado inexistente. Tiene que ofrecer los mas nuevos que entren o decir con el numero por que no."
+            ]
+          ]
+        }
+      ]
     }
   ]
 }

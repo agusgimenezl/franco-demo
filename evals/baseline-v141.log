@@ -1,0 +1,285 @@
+
+Franco evals · 10 caso(s) · https://n8n.utopiaflow.tech
+[2mcleanup=true · token=NO (si n8n ya exige auth, esto va a dar 403)[0m
+[2mguardia de deploy: activa · workflow Khct6BjiMNXZK5Oi @ 2026-08-12T20:56:50.993Z[0m
+
+  km-con-presupuesto [1/3]               [31mFAIL[0m   2 check(s)
+  km-con-presupuesto [2/3]               [31mFAIL[0m   2 check(s)
+  km-con-presupuesto [3/3]               [31mFAIL[0m   1 check(s)
+  [2m└─[0m [31m0/3 estable[0m
+  detalle-un-auto-fotos [1/3]            [32mok[0m     7716ms
+  detalle-un-auto-fotos [2/3]            [32mok[0m     8809ms
+  detalle-un-auto-fotos [3/3]            [32mok[0m     14199ms
+  [2m└─[0m [32m3/3 estable[0m
+  permuta-una-pregunta-por-vez [1/3]     [32mok[0m     12415ms
+  permuta-una-pregunta-por-vez [2/3]     [32mok[0m     6560ms
+  permuta-una-pregunta-por-vez [3/3]     [32mok[0m     7808ms
+  [2m└─[0m [32m3/3 estable[0m
+  permuta-mas-efectivo [1/3]             [31mFAIL[0m   1 check(s)
+  permuta-mas-efectivo [2/3]             [31mFAIL[0m   2 check(s)
+  permuta-mas-efectivo [3/3]             [31mFAIL[0m   1 check(s)
+  [2m└─[0m [31m0/3 estable[0m
+  capacidad-de-compra-financiada [1/3]   [31mFAIL[0m   2 check(s)
+  capacidad-de-compra-financiada [2/3]   [31mFAIL[0m   2 check(s)
+  capacidad-de-compra-financiada [3/3]   [31mFAIL[0m   2 check(s)
+  [2m└─[0m [31m0/3 estable[0m
+  no-repite-la-ficha [1/3]               [31mFAIL[0m   1 check(s)
+  no-repite-la-ficha [2/3]               [32mok[0m     8370ms
+  no-repite-la-ficha [3/3]               [32mok[0m     6172ms
+  [2m└─[0m [33m2/3 estable[0m
+  hatchback-que-entra-no-se-silencia [1/3] [32mok[0m     3981ms
+  hatchback-que-entra-no-se-silencia [2/3] [32mok[0m     2891ms
+  hatchback-que-entra-no-se-silencia [3/3] [32mok[0m     3997ms
+  [2m└─[0m [32m3/3 estable[0m
+  no-fugar-vocabulario-interno [1/3]     [32mok[0m     6594ms
+  no-fugar-vocabulario-interno [2/3]     [32mok[0m     6893ms
+  no-fugar-vocabulario-interno [3/3]     [32mok[0m     7899ms
+  [2m└─[0m [32m3/3 estable[0m
+  modelo-inexistente-se-avisa-y-se-ofrece [1/3] [32mok[0m     4407ms
+  modelo-inexistente-se-avisa-y-se-ofrece [2/3] [32mok[0m     3439ms
+  modelo-inexistente-se-avisa-y-se-ofrece [3/3] [32mok[0m     3765ms
+  [2m└─[0m [32m3/3 estable[0m
+  presupuesto-sin-usado-no-se-traba [1/3] [32mok[0m     10171ms
+  presupuesto-sin-usado-no-se-traba [2/3] [32mok[0m     8833ms
+  presupuesto-sin-usado-no-se-traba [3/3] [32mok[0m     8248ms
+  [2m└─[0m [32m3/3 estable[0m
+
+[31m── Fallas ──[0m
+
+[31m✗ km-con-presupuesto[0m [2m(captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto)[0m
+    · turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1
+    · turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/
+    [2múltima respuesta:[0m
+      [2m| Gracias por aclarar eso. Para ofrecerte opciones que te entren con tu auto y los 13 millones de presupuesto, n[0m
+
+[31m✗ km-con-presupuesto[0m [2m(captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto)[0m
+    · turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1
+    · turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/
+    [2múltima respuesta:[0m
+      [2m| Con tu Fiat Mobi 2018 para entregar y un presupuesto de 13 millones, contame cuántos kilómetros tiene el auto [0m
+
+[31m✗ km-con-presupuesto[0m [2m(captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto)[0m
+    · turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/
+    [2múltima respuesta:[0m
+      [2m| Para poder ofrecerte opciones de autos con menos de 50.000 km que te entren con el cambio de tu Fiat Mobi 2018[0m
+
+[31m✗ permuta-mas-efectivo[0m [2m(#4 no ofrecía opciones de gama superior con permuta [CHECK CORREGIDO 2026-08-05] cards_min 1 -> media_min 1, por lo mismo. OJO: el check text_matches "asesor|tasa" NO se toco y NO esta desactualizado — se reviso el 2026-08-05 y fallo solo en la corrida que tuvo burbuja de fallback del parser; el prompt SI exige explicar ahi que la tasacion la hace un asesor (## Permuta punto 4).)[0m
+    · turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1
+    [2múltima respuesta:[0m
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Con tu efectivo y entregando tu Yaris 2021 con 85.000 km, seguramente hay varias opciones que te pueden intere[0m
+
+[31m✗ permuta-mas-efectivo[0m [2m(#4 no ofrecía opciones de gama superior con permuta [CHECK CORREGIDO 2026-08-05] cards_min 1 -> media_min 1, por lo mismo. OJO: el check text_matches "asesor|tasa" NO se toco y NO esta desactualizado — se reviso el 2026-08-05 y fallo solo en la corrida que tuvo burbuja de fallback del parser; el prompt SI exige explicar ahi que la tasacion la hace un asesor (## Permuta punto 4).)[0m
+    · turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1
+    · turno 1 · ends_with_question: la última burbuja no cierra con pregunta: "dinar la tasación y mostrarte autos que te entren? Así te ayudo mejor."
+    [2múltima respuesta:[0m
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Perfecto, con tu efectivo de $12.000.000 y entregando el Yaris 2021 con 85.000 km, seguramente entren varias o[0m
+
+[31m✗ permuta-mas-efectivo[0m [2m(#4 no ofrecía opciones de gama superior con permuta [CHECK CORREGIDO 2026-08-05] cards_min 1 -> media_min 1, por lo mismo. OJO: el check text_matches "asesor|tasa" NO se toco y NO esta desactualizado — se reviso el 2026-08-05 y fallo solo en la corrida que tuvo burbuja de fallback del parser; el prompt SI exige explicar ahi que la tasacion la hace un asesor (## Permuta punto 4).)[0m
+    · turno 1 · text_matches: no matcheó /(?i)asesor|tasa/
+    [2múltima respuesta:[0m
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Perfecto, con $12 millones de efectivo y entregando tu Yaris 2021, 85.000 km, estas son algunas opciones que e[0m
+      [2m| - Volkswagen Gol Trend 2018 — 30.000 km — $9.200.000
+- Toyota Etios 2021 — 45.000 km — $14.500.000
+- Ford EcoS[0m
+      [2m| Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?[0m
+
+[31m✗ capacidad-de-compra-financiada[0m [2m(captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.)[0m
+    · turno 1 · cards_empty: esperaba 0 cards, hay 6
+    · turno 1 · text_not_matches: matcheó /(?i)onix|208|ecosport|corolla|renegade/ y no debería: "Renegade"
+    [2múltima respuesta:[0m
+      [2m| Mirá, estas opciones podés financiar entregando tu Ford Ka y poniendo $7.000.000 de anticipo:[0m
+      [2m| Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:
+-[0m
+      [2m| Querés que te detalle algún auto en particular o preferís que te muestre todo el stock que tenemos?[0m
+
+[31m✗ capacidad-de-compra-financiada[0m [2m(captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.)[0m
+    · turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\bkm\b/
+    · turno 3 · text_not_matches: matcheó /(?i)hilux|\bs10\b|amarok|ranger/ y no debería: "S10"
+    [2múltima respuesta:[0m
+      [2m| Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:
+-[0m
+      [2m| Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?[0m
+
+[31m✗ capacidad-de-compra-financiada[0m [2m(captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.)[0m
+    · turno 1 · cards_empty: esperaba 0 cards, hay 5
+    · turno 1 · text_not_matches: matcheó /(?i)onix|208|ecosport|corolla|renegade/ y no debería: "Renegade"
+    [2múltima respuesta:[0m
+      [2m| Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:
+-[0m
+      [2m| Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?[0m
+
+[31m✗ no-repite-la-ficha[0m [2m(Reporte de Agustina 2026-08-06, sesion REAL b6b3ed0c-484e-444d-92e2-83657d697f16 leida de mensajes_demo (no de la captura, que corta). Turno 1 "Estoy buscando una Amarok 2023.": Franco da la ficha completa de la Amarok 2018 (135.000 km, motor 2.0L de 180 HP, transmision manual, consumo 9.8 L/100km, aire acondicionado, pantalla multimedia, camara de retroceso, sensores de estacionamiento, $32.000.000). Eso esta BIEN, es el detalle que corresponde. Turno 2 "2023 no tienen?": Franco REPITE LOS MISMOS 7 DATOS casi palabra por palabra, un turno despues, con todo eso todavia en pantalla. La respuesta correcta a esa pregunta es una linea: no hay 2023, la mas nueva es la 2018. CAUSA (leida del prompt, no supuesta): ## Paso 3 manda armar el detalle completo CADA VEZ que el cliente se interesa por un auto, y # No repitas lo que ya hiciste SOLO cubre fotos y stock completo, no la ficha. DATO QUE YA EXISTE EN EL WORKFLOW Y NO SE USA PARA ESTO: el nodo Autos ya mostrados calcula ids_recientes y cards_recientes, pero corre DESPUES de Franco (alimenta a Armar respuesta), asi que el prompt nunca se entera. Para que Franco lo sepa hay que calcularlo ANTES, en Leer lead (estado). Los checks del turno 2 miran datos que son EXCLUSIVOS de la Amarok (135.000 km, 180 HP, 9.8) y el equipamiento: ninguno tiene motivo legitimo para reaparecer, y no se pisan con la lista de alternativas mas nuevas (Ranger/S10/Hilux), que si es una respuesta razonable a la pregunta.)[0m
+    · turno 2 · text_matches: no matcheó /(?i)2018/
+    [2múltima respuesta:[0m
+      [2m| No, la Amarok 2023 no está en nuestro stock. Si querés, te puedo ayudar a ver qué otras pickups o vehículos te[0m
+      [2m| Querés que te pase opciones de pickups 4x4 similares o preferís considerar otro tipo de vehículo?[0m
+
+[33m── Revisión manual (no cuentan como falla) ──[0m
+
+[33m? km-con-presupuesto[0m
+    turno 2: Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido.
+      [2m| Gracias por aclarar eso. Para ofrecerte opciones que te entren con tu auto y los 13 millones de presupuesto, n[0m
+
+[33m? km-con-presupuesto[0m
+    turno 2: Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido.
+      [2m| Con tu Fiat Mobi 2018 para entregar y un presupuesto de 13 millones, contame cuántos kilómetros tiene el auto [0m
+
+[33m? km-con-presupuesto[0m
+    turno 2: Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido.
+      [2m| Para poder ofrecerte opciones de autos con menos de 50.000 km que te entren con el cambio de tu Fiat Mobi 2018[0m
+
+[33m? permuta-una-pregunta-por-vez[0m
+    turno 1: Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar
+    turno 2: Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales
+    turno 3: DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario).
+      [2m| La tasación final de tu usado la hace un asesor viéndolo en persona. Querés que te muestre alternativas que te[0m
+
+[33m? permuta-una-pregunta-por-vez[0m
+    turno 1: Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar
+    turno 2: Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales
+    turno 3: DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario).
+      [2m| La tasación final de tu usado la hace un asesor viéndolo en persona. Querés que te muestre alternativas que te[0m
+
+[33m? permuta-una-pregunta-por-vez[0m
+    turno 1: Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar
+    turno 2: Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales
+    turno 3: DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario).
+      [2m| La tasación final de tu usado la hace un asesor viéndolo en persona. Querés que te muestre alternativas que te[0m
+
+[33m? permuta-mas-efectivo[0m
+    turno 1: Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Con tu efectivo y entregando tu Yaris 2021 con 85.000 km, seguramente hay varias opciones que te pueden intere[0m
+
+[33m? permuta-mas-efectivo[0m
+    turno 1: Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Perfecto, con tu efectivo de $12.000.000 y entregando el Yaris 2021 con 85.000 km, seguramente entren varias o[0m
+
+[33m? permuta-mas-efectivo[0m
+    turno 1: Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Perfecto, con $12 millones de efectivo y entregando tu Yaris 2021, 85.000 km, estas son algunas opciones que e[0m
+      [2m| - Volkswagen Gol Trend 2018 — 30.000 km — $9.200.000
+- Toyota Etios 2021 — 45.000 km — $14.500.000
+- Ford EcoS[0m
+      [2m| Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?[0m
+
+[33m? capacidad-de-compra-financiada[0m
+    turno 1: v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo.
+    turno 2: v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías.
+    turno 3: ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup.
+      [2m| Mirá, estas opciones podés financiar entregando tu Ford Ka y poniendo $7.000.000 de anticipo:[0m
+      [2m| Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:
+-[0m
+      [2m| Querés que te detalle algún auto en particular o preferís que te muestre todo el stock que tenemos?[0m
+
+[33m? capacidad-de-compra-financiada[0m
+    turno 1: v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo.
+    turno 2: v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías.
+    turno 3: ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup.
+      [2m| Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:
+-[0m
+      [2m| Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?[0m
+
+[33m? capacidad-de-compra-financiada[0m
+    turno 1: v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo.
+    turno 2: v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías.
+    turno 3: ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup.
+      [2m| Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:
+-[0m
+      [2m| Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?[0m
+
+[33m? no-repite-la-ficha[0m
+    turno 2: La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen.
+      [2m| No, la Amarok 2023 no está en nuestro stock. Si querés, te puedo ayudar a ver qué otras pickups o vehículos te[0m
+      [2m| Querés que te pase opciones de pickups 4x4 similares o preferís considerar otro tipo de vehículo?[0m
+
+[33m? no-repite-la-ficha[0m
+    turno 2: La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen.
+      [2m| No, de Amarok 2023 no hay en nuestro stock. La más nueva es la 2018 que te mencioné. Queres que te pase opcion[0m
+
+[33m? no-repite-la-ficha[0m
+    turno 2: La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen.
+      [2m| Correcto, no hay Amarok 2023 en stock actualmente. Apenas las Amarok disponibles son del año 2018. Podemos ver[0m
+
+[33m? hatchback-que-entra-no-se-silencia[0m
+    turno 1: CON $24.000.000 Y PIDIENDO HATCHBACK: el Peugeot 208 2025 sale $21.000.000 y le entra con holgura — tiene que estar. Los otros tres hatchbacks son de gama bastante más baja y NO hace falta que los liste (esa es justamente la protección que la etiqueta 'economica' tiene que seguir dando). Lo que no puede pasar es decirle que no tiene hatchbacks, o saltar a otra carrocería, cuando hay uno que le entra.
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Mirá, estas hatchbacks te pueden servir dentro del presupuesto de 24 millones:
+- Peugeot 208 2025 — 8.000 km —[0m
+
+[33m? hatchback-que-entra-no-se-silencia[0m
+    turno 1: CON $24.000.000 Y PIDIENDO HATCHBACK: el Peugeot 208 2025 sale $21.000.000 y le entra con holgura — tiene que estar. Los otros tres hatchbacks son de gama bastante más baja y NO hace falta que los liste (esa es justamente la protección que la etiqueta 'economica' tiene que seguir dando). Lo que no puede pasar es decirle que no tiene hatchbacks, o saltar a otra carrocería, cuando hay uno que le entra.
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Mirá, para hatchbacks con tu presupuesto, estas opciones entran bien:
+- Peugeot 208 2025 — 8.000 km — $21.000.[0m
+      [2m| Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?[0m
+
+[33m? hatchback-que-entra-no-se-silencia[0m
+    turno 1: CON $24.000.000 Y PIDIENDO HATCHBACK: el Peugeot 208 2025 sale $21.000.000 y le entra con holgura — tiene que estar. Los otros tres hatchbacks son de gama bastante más baja y NO hace falta que los liste (esa es justamente la protección que la etiqueta 'economica' tiene que seguir dando). Lo que no puede pasar es decirle que no tiene hatchbacks, o saltar a otra carrocería, cuando hay uno que le entra.
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| Mirá, estas hatchbacks están dentro de tu presupuesto y pueden servirte:
+- Peugeot 208 2025 — 8.000 km — $21.0[0m
+
+[33m? no-fugar-vocabulario-interno[0m
+    turno 1: ENTRA ESTA VACIO A PROPOSITO. Lo correcto es describir la situacion en castellano: que por 12 millones lo que hay son opciones mas economicas (Fiesta 8.2M, Gol Trend 9.2M) y que el Etios 14.5M queda un poco por encima. Lo que NO puede hacer es nombrar los bloques por su etiqueta: "entra", "estirar", "economica" son terminos nuestros. El rojo lo pone no_vocabulario_interno, que corre solo.
+    turno 2: EL TURNO DONDE MAS FUGA (11 de las 15 medidas). Tiene que presentar el Etios 2021 4.500.000 como el paso siguiente, descrito con palabras: "un poco por encima", "estirando un poco". Lo que no puede es llamarlo por la etiqueta: opciones "estirar", categoria "estirar", gama "estirar".
+      [2m| Con algo más de plata, por un poco más que $12 millones podrías estirar hasta el Toyota Etios 2021, que es un [0m
+      [2m| Querés que te pase más detalles del Etios o preferís que te muestre otras opciones?[0m
+
+[33m? no-fugar-vocabulario-interno[0m
+    turno 1: ENTRA ESTA VACIO A PROPOSITO. Lo correcto es describir la situacion en castellano: que por 12 millones lo que hay son opciones mas economicas (Fiesta 8.2M, Gol Trend 9.2M) y que el Etios 14.5M queda un poco por encima. Lo que NO puede hacer es nombrar los bloques por su etiqueta: "entra", "estirar", "economica" son terminos nuestros. El rojo lo pone no_vocabulario_interno, que corre solo.
+    turno 2: EL TURNO DONDE MAS FUGA (11 de las 15 medidas). Tiene que presentar el Etios 2021 4.500.000 como el paso siguiente, descrito con palabras: "un poco por encima", "estirando un poco". Lo que no puede es llamarlo por la etiqueta: opciones "estirar", categoria "estirar", gama "estirar".
+      [2m| Con un poco más de plata, hasta 15 millones, te conviene algo como el Toyota Etios 2021, hatchback chico, con [0m
+
+[33m? no-fugar-vocabulario-interno[0m
+    turno 1: ENTRA ESTA VACIO A PROPOSITO. Lo correcto es describir la situacion en castellano: que por 12 millones lo que hay son opciones mas economicas (Fiesta 8.2M, Gol Trend 9.2M) y que el Etios 14.5M queda un poco por encima. Lo que NO puede hacer es nombrar los bloques por su etiqueta: "entra", "estirar", "economica" son terminos nuestros. El rojo lo pone no_vocabulario_interno, que corre solo.
+    turno 2: EL TURNO DONDE MAS FUGA (11 de las 15 medidas). Tiene que presentar el Etios 2021 4.500.000 como el paso siguiente, descrito con palabras: "un poco por encima", "estirando un poco". Lo que no puede es llamarlo por la etiqueta: opciones "estirar", categoria "estirar", gama "estirar".
+      [2m| Con un poco más de presupuesto, hasta $15.000.000, te convienen estas opciones de autos chicos que tenemos en [0m
+
+[33m? modelo-inexistente-se-avisa-y-se-ofrece[0m
+    turno 1: EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió.
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es una pickup 4x4 diésel con 135.000 km, bue[0m
+      [2m| Las fotos que tenemos son las publicadas, con vistas generales de la carrocería. Fotos específicas del interio[0m
+
+[33m? modelo-inexistente-se-avisa-y-se-ofrece[0m
+    turno 1: EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió.
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es una pickup 4x4 diésel con buena potencia [0m
+      [2m| Te interesa saber más detalles de la Amarok 2018 o querés que te muestre alguna de esas otras pickups más nuev[0m
+
+[33m? modelo-inexistente-se-avisa-y-se-ofrece[0m
+    turno 1: EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió.
+      [2m| Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?[0m
+      [2m| La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es una pickup 4x4 diésel con buena potencia [0m
+      [2m| Si buscás una pickup más nueva, también tengo una Ford Ranger 2024 4x4 diésel automática por $57.000.000, una [0m
+      [2m| Te interesa saber más detalles de alguna o querés que te muestre otras opciones?[0m
+
+[33m? presupuesto-sin-usado-no-se-traba[0m
+    turno 1: EL TURNO DEL BUG. Con $20.000.000 el cliente tiene que ver opciones reales (el Onix $21.500.000 esta apenas arriba; entran Duster $22.500.000 no, Renegade no; si entran Etios $14.500.000, Cronos $16.800.000, Kangoo $18.500.000, EcoSport $19.800.000). Lo que NO puede pasar, y es el bug, es la burbuja "se me trabo el sistema". Tampoco puede pedirle datos de un usado que el cliente no nombro.
+    turno 2: Sigue sin usado. No puede caer al fallback ni pedir marca/modelo/anio de un usado inexistente. Tiene que ofrecer los mas nuevos que entren o decir con el numero por que no.
+      [2m| Para autos un poco más nuevos, dentro del presupuesto que fijaste no hay opciones recientes, pero estas opcion[0m
+      [2m| Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?[0m
+
+[33m? presupuesto-sin-usado-no-se-traba[0m
+    turno 1: EL TURNO DEL BUG. Con $20.000.000 el cliente tiene que ver opciones reales (el Onix $21.500.000 esta apenas arriba; entran Duster $22.500.000 no, Renegade no; si entran Etios $14.500.000, Cronos $16.800.000, Kangoo $18.500.000, EcoSport $19.800.000). Lo que NO puede pasar, y es el bug, es la burbuja "se me trabo el sistema". Tampoco puede pedirle datos de un usado que el cliente no nombro.
+    turno 2: Sigue sin usado. No puede caer al fallback ni pedir marca/modelo/anio de un usado inexistente. Tiene que ofrecer los mas nuevos que entren o decir con el numero por que no.
+      [2m| Las opciones más nuevas que tengo, todas del 2023 en adelante, se te van un poco del presupuesto hasta $22.500[0m
+
+[33m? presupuesto-sin-usado-no-se-traba[0m
+    turno 1: EL TURNO DEL BUG. Con $20.000.000 el cliente tiene que ver opciones reales (el Onix $21.500.000 esta apenas arriba; entran Duster $22.500.000 no, Renegade no; si entran Etios $14.500.000, Cronos $16.800.000, Kangoo $18.500.000, EcoSport $19.800.000). Lo que NO puede pasar, y es el bug, es la burbuja "se me trabo el sistema". Tampoco puede pedirle datos de un usado que el cliente no nombro.
+    turno 2: Sigue sin usado. No puede caer al fallback ni pedir marca/modelo/anio de un usado inexistente. Tiene que ofrecer los mas nuevos que entren o decir con el numero por que no.
+      [2m| Para autos un poco más nuevos, estas opciones están un poco por encima de tu presupuesto de $20.000.000:
+- Peu[0m
+
+[2mdetalle completo -> evals/baseline-v141.json[0m
+
+[2mguardia de deploy: OK — una sola versión en toda la tanda (2026-08-12T20:56:50.993Z)[0m
+
+[31m20/30 casos ok[0m
+
