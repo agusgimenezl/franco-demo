@@ -1,0 +1,2275 @@
+[
+  {
+    "id": "km-con-presupuesto",
+    "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+    "sessionId": "725bbbca-637e-467f-a8cf-abefd4eb7e9f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
+        "ms": 9929,
+        "response": {
+          "session_id": "725bbbca-637e-467f-a8cf-abefd4eb7e9f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Fiat Mobi 2018 y un presupuesto de 13 millones, estas opciones podrían interesarte:\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback, tamaño chico)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, tamaño mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, tamaño mediano)\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, tamaño mediano)\n\nEstas opciones un poco más caras podrían entrar dependiendo de cuánto te tasen el usado y si querés financiar.\n\nQuerés que te cuente más de alguno o preferís que un asesor te ayude con la tasación de tu auto usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "prefiero algo con menos de 50.000 km",
+        "ms": 13974,
+        "response": {
+          "session_id": "725bbbca-637e-467f-a8cf-abefd4eb7e9f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Fiat Mobi 2018 y un presupuesto de 13 millones, lamentablemente no hay autos con menos de 50.000 km dentro de ese rango que te entren entregando tu usado solo al contado.\n\nQuerés que te conecte con un asesor para que te ayude con la tasación de tu auto y así poder ver opciones con financiamiento, o preferís que te muestre otros autos sin límite de km?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "km-con-presupuesto",
+    "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+    "sessionId": "472203cc-ceb4-44ab-9b5f-e3280d0df204",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
+        "ms": 9966,
+        "response": {
+          "session_id": "472203cc-ceb4-44ab-9b5f-e3280d0df204",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con el Fiat Mobi 2018 que entregás y tu efectivo de 13 millones, podés acceder a estas opciones que se pasan un poco del monto pero son completamente viables entregando tu usado:\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback, tamaño chico)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, mediano)\n\nEstas opciones son un paso arriba en modelo y características respecto a tu Mobi.\n\nQuerés que te cuente detalles de alguno en particular, o preferís que te muestre opciones que entran justo en 13 millones sin estirar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "prefiero algo con menos de 50.000 km",
+        "ms": 10600,
+        "response": {
+          "session_id": "472203cc-ceb4-44ab-9b5f-e3280d0df204",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Fiat Mobi 2018 y más 13 millones en efectivo, no hay opciones con menos de 50.000 km dentro de tu presupuesto entregando usado. Sin embargo, podrías considerar modelos que se pasan un poco, si querés estirar un poco el presupuesto o financiar. Querés que te muestre algunas de esas opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "km-con-presupuesto",
+    "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+    "sessionId": "3443e211-0d30-4329-be56-0a9692ca5092",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
+        "ms": 8396,
+        "response": {
+          "session_id": "3443e211-0d30-4329-be56-0a9692ca5092",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Fiat Mobi 2018 y 13 millones para completar, estas opciones te pueden servir entregando tu usado:\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback, tamaño chico similar al tuyo)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán mediano, un poco más grande que el Mobi)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, ideal si querés mucho espacio de carga)\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV mediano, para más confort y espacio)\n\nEstas opciones requieren que entregues tu usado y completes con el efectivo que tenés. Si querés, te puedo pasar más opciones o, si preferís, te conecto con un asesor para que te ayude con la tasación del usado y detalles de la compra."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "prefiero algo con menos de 50.000 km",
+        "ms": 9032,
+        "response": {
+          "session_id": "3443e211-0d30-4329-be56-0a9692ca5092",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu Fiat Mobi 2018 como parte de pago y buscando autos con menos de 50.000 km hasta $13.000.000, parece que no hay opciones que cumplan ese filtro exacto. Sin embargo, con financiación o extendiendo el presupuesto un poco podrías acceder a más opciones.\n\nQuerés que te conecte con un asesor para que te ayude con la tasación del auto y te muestre las opciones que más te convienen, o preferís que te muestre todas las que tenemos sin ese límite de km para que puedas elegir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta [CHECK CORREGIDO 2026-08-05] cards_min 1 -> media_min 1, por lo mismo. OJO: el check text_matches \"asesor|tasa\" NO se toco y NO esta desactualizado — se reviso el 2026-08-05 y fallo solo en la corrida que tuvo burbuja de fallback del parser; el prompt SI exige explicar ahi que la tasacion la hace un asesor (## Permuta punto 4).",
+    "sessionId": "e5c98b83-f4c2-4d43-bcb1-79102162a594",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 5025,
+        "response": {
+          "session_id": "e5c98b83-f4c2-4d43-bcb1-79102162a594",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para ofrecerte opciones con ese efectivo y el Yaris 2021 como parte de pago, necesito saber cuántos kilómetros tiene el Yaris. Me confirmás ese dato?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1",
+          "turno 1 · text_matches: no matcheó /(?i)asesor|tasa/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1",
+      "turno 1 · text_matches: no matcheó /(?i)asesor|tasa/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "e5c98b83-f4c2-4d43-bcb1-79102162a594",
+      "nombre": "+54 381 555-9644",
+      "telefono": "+54 381 555-9644",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entrega Yaris 2021 - 85.000 km, presupuesto $12M en efectivo.",
+      "fecha_contacto": "12/08/2026 16:34",
+      "ultima_actualizacion": "12/08/2026 16:34",
+      "is_saved": false
+    },
+    "leadWaitMs": 8473,
+    "leadTimedOut": false,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta [CHECK CORREGIDO 2026-08-05] cards_min 1 -> media_min 1, por lo mismo. OJO: el check text_matches \"asesor|tasa\" NO se toco y NO esta desactualizado — se reviso el 2026-08-05 y fallo solo en la corrida que tuvo burbuja de fallback del parser; el prompt SI exige explicar ahi que la tasacion la hace un asesor (## Permuta punto 4).",
+    "sessionId": "35828713-750c-451c-bec2-1cc6c6de0da9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 8870,
+        "response": {
+          "session_id": "35828713-750c-451c-bec2-1cc6c6de0da9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, con tu efectivo y entregando un Yaris 2021 con 85.000 km, te puedo mostrar opciones de autos dentro y un poco arriba de esos 12 millones, para que veas lo que entra al contado y qué podrías alcanzar entregando el usado."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1",
+          "turno 1 · text_matches: no matcheó /(?i)asesor|tasa/",
+          "turno 1 · ends_with_question: la última burbuja no cierra con pregunta: \"as lo que entra al contado y qué podrías alcanzar entregando el usado.\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1",
+      "turno 1 · text_matches: no matcheó /(?i)asesor|tasa/",
+      "turno 1 · ends_with_question: la última burbuja no cierra con pregunta: \"as lo que entra al contado y qué podrías alcanzar entregando el usado.\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "35828713-750c-451c-bec2-1cc6c6de0da9",
+      "nombre": "+54 381 555-1690",
+      "telefono": "+54 381 555-1690",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Tiene $12M y entrega un Yaris 2021 con 85.000 km de usado.",
+      "fecha_contacto": "12/08/2026 16:35",
+      "ultima_actualizacion": "12/08/2026 16:35",
+      "is_saved": false
+    },
+    "leadWaitMs": 5687,
+    "leadTimedOut": false,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-mas-efectivo",
+    "bug": "#4 no ofrecía opciones de gama superior con permuta [CHECK CORREGIDO 2026-08-05] cards_min 1 -> media_min 1, por lo mismo. OJO: el check text_matches \"asesor|tasa\" NO se toco y NO esta desactualizado — se reviso el 2026-08-05 y fallo solo en la corrida que tuvo burbuja de fallback del parser; el prompt SI exige explicar ahi que la tasacion la hace un asesor (## Permuta punto 4).",
+    "sessionId": "e366ee4f-0649-4c1a-abce-63ea93da0128",
+    "turns": [
+      {
+        "n": 1,
+        "say": "tengo 12 millones en efectivo y entrego un yaris 2021 con 85mil km",
+        "ms": 5602,
+        "response": {
+          "session_id": "e366ee4f-0649-4c1a-abce-63ea93da0128",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu usado y $12 millones en efectivo, la tasación final de tu Yaris la hace un asesor viéndolo en persona. Por lo pronto, con ese capital y sin financiar, podrías cubrir varios modelos que tenemos. Querés que te muestre opciones que podrían interesarte o preferís que un asesor te contacte para avanzar con la tasación de tu vehículo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: valorar el usado, explicar la tasación como servicio, y ofrecer DOS caminos (lo que cubre el efectivo + gama superior con la permuta)"
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "e366ee4f-0649-4c1a-abce-63ea93da0128",
+      "nombre": "+54 381 555-2152",
+      "telefono": "+54 381 555-2152",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Toyota Yaris 2021 - 85.000 km",
+      "presupuesto": "$12.000.000",
+      "financia": "No",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Entregaría Yaris 2021 (85.000 km) y tiene $12 millones en efectivo.",
+      "fecha_contacto": "12/08/2026 16:36",
+      "ultima_actualizacion": "12/08/2026 16:36",
+      "is_saved": false
+    },
+    "leadWaitMs": 2838,
+    "leadTimedOut": false,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "5fd50152-8364-40f3-b3ee-e04755a825c3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 8507,
+        "response": {
+          "session_id": "5fd50152-8364-40f3-b3ee-e04755a825c3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y de pocos kilómetros, con despeje alto y un baúl grande de 475 litros. Está pensada para ripio y camino roto, siendo la que mejor aguanta el uso rudo por lo que cuesta. Es gris, tiene 31.000 km y su versión es Iconic 1.3 Turbo TCe."
+            },
+            {
+              "type": "text",
+              "content": "El motor es un 1.3 Turbo de 155 CV naftero, con transmisión automática CVT. El consumo promedio aproximado es de 7,8 litros cada 100 km. Entre su equipamiento destacamos el climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone."
+            },
+            {
+              "type": "text",
+              "content": "El precio es de $22.500.000 y el anticipo mínimo para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase el contacto de un asesor para que te ayude con una cotización o te muestre el auto en persona?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 3091,
+        "response": {
+          "session_id": "5fd50152-8364-40f3-b3ee-e04755a825c3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Se puede financiar hasta el 50% del valor del vehículo, con financiación propia de la agencia o mediante prenda según tu perfil y el auto. Para avanzar, se toma una entrega inicial y el saldo se puede pagar en cuotas. El plan exacto y el valor de las cuotas te los confirma un asesor, porque dependen de las condiciones de financiación."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme la simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 3721,
+        "response": {
+          "session_id": "5fd50152-8364-40f3-b3ee-e04755a825c3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Renault Duster sale $22.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $11.250.000: con $10.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $20.000.000. Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 4080,
+        "response": {
+          "session_id": "5fd50152-8364-40f3-b3ee-e04755a825c3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, 36 cuotas está perfecto. El plan y el valor de las cuotas te los confirma un asesor, porque depende de las condiciones de financiación. Me dejás tu nombre y apellido para que te contacte y te pase el detalle?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 7084,
+        "response": {
+          "session_id": "5fd50152-8364-40f3-b3ee-e04755a825c3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que te interesa es una SUV mediana, moderna y de pocos kilómetros (31.000 km). Tiene despeje alto y un baúl grande de 475 litros, ideal para ripio y caminos rotos. Esta versión es Iconic 1.3 Turbo TCe, con motor 1.3 Turbo de 155 CV naftero y transmisión automática CVT."
+            },
+            {
+              "type": "text",
+              "content": "El consumo promedio es de 7,8 L cada 100 km. Entre su equipamiento están el climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone."
+            },
+            {
+              "type": "text",
+              "content": "Un detalle a tener en cuenta es que la caja CVT requiere un service específico y no es la más recomendada para remolcar peso seguido."
+            },
+            {
+              "type": "text",
+              "content": "Te paso las fotos oficiales del auto para que lo veas mejor."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización o te ayude con la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "7ca8ec01-929c-442c-a510-971aabbfe362",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 9892,
+        "response": {
+          "session_id": "7ca8ec01-929c-442c-a510-971aabbfe362",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y con pocos kilómetros, ideal para ripio y camino roto gracias a su despeje alto y baúl grande de 475 litros. Es la que mejor aguanta el uso rudo por lo que cuesta."
+            },
+            {
+              "type": "text",
+              "content": "El auto es gris, tiene 31.000 km, motor 1.3 Turbo de 155 CV, nafta, con transmisión automática CVT y un consumo promedio aproximado de 7.8 L/100km. Viene con climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase las fotos que tenemos publicadas del auto o preferís que te conecte con un asesor para saber más o coordinar una visita?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2338,
+        "response": {
+          "session_id": "7ca8ec01-929c-442c-a510-971aabbfe362",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del vehículo. Para avanzar, se toma un anticipo inicial y el saldo se puede pagar en cuotas. El plan y el valor de la cuota te los confirma un asesor porque dependen de las condiciones de financiación y tu perfil."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme la simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 3004,
+        "response": {
+          "session_id": "7ca8ec01-929c-442c-a510-971aabbfe362",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Renault Duster sale $22.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $11.250.000: con $10.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $20.000.000. Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 7756,
+        "response": {
+          "session_id": "7ca8ec01-929c-442c-a510-971aabbfe362",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta el anticipo que me dijiste y que querés financiar, te armé este abanico de opciones que entran:"
+            },
+            {
+              "type": "text",
+              "content": "Con la posibilidad de financiar, estas opciones te pueden servir:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, opción accesible para ciudad)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, opción económica y práctica)"
+            },
+            {
+              "type": "text",
+              "content": "Intermedio:\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback con buen balance de consumo y equipamiento)"
+            },
+            {
+              "type": "text",
+              "content": "Alto:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, buen tamaño y despeje alto)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, ideal para quienes necesitan baúl amplio y resistencia)"
+            },
+            {
+              "type": "text",
+              "content": "Te interesa alguna de estas opciones o preferís que te pase todo el stock que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 4 · text_matches: no matcheó /(?i)asesor|simulaci|anotad|36|perfecto|dale/"
+        ]
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 6191,
+        "response": {
+          "session_id": "7ca8ec01-929c-442c-a510-971aabbfe362",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 en versión Iconic 1.3 Turbo TCe es una SUV mediana, color gris, con 31.000 km. Tiene un motor 1.3 Turbo de 155 CV, nafta y transmisión automática CVT. El consumo promedio aproximado es de 7.8 L/100 km."
+            },
+            {
+              "type": "text",
+              "content": "El baúl es grande, de 475 litros, y el equipamiento incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Tené en cuenta que la caja CVT requiere un service específico y no es la indicada para arrastrar peso seguido."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos publicadas del auto incluyen vistas generales y de la carrocería. Si querés fotos específicas del interior, un asesor puede facilitarlas. Querés que te conecte con un asesor para eso o para coordinar una visita?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/",
+      "turno 4 · text_matches: no matcheó /(?i)asesor|simulaci|anotad|36|perfecto|dale/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "acaf7da8-22f1-465f-ba19-476e0cef7699",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 7793,
+        "response": {
+          "session_id": "acaf7da8-22f1-465f-ba19-476e0cef7699",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna, con pocos kilómetros, ideal para ripio y caminos rotos por su despeje alto y baúl grande de 475 litros. Viene con motor 1.3 turbo de 155 CV, naftero, y transmisión automática CVT. Tiene climatizador automático, detector de punto ciego, cámara 360 grados y pantalla táctil de 8 pulgadas con cargador inductivo para celular. Está gris y tiene 31.000 km, el precio es $22.500.000."
+            },
+            {
+              "type": "text",
+              "content": "La caja CVT pide un service específico y no es recomendada para arrastrar peso seguido, pero su punto fuerte es la resistencia para caminos rotos."
+            },
+            {
+              "type": "text",
+              "content": "El anticipo mínimo para financiar este auto es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare una cotización o que te conecte con un asesor para avanzar con esta SUV?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2697,
+        "response": {
+          "session_id": "acaf7da8-22f1-465f-ba19-476e0cef7699",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo. Para avanzar, se toma una entrega inicial y el saldo se puede pagar en cuotas. El valor de la cuota depende del monto financiado, el plazo elegido y las condiciones de la operación, así que el plan y el valor exacto te los confirma un asesor."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme la simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 4157,
+        "response": {
+          "session_id": "acaf7da8-22f1-465f-ba19-476e0cef7699",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Renault Duster sale $22.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $11.250.000: con $10.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $20.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 4625,
+        "response": {
+          "session_id": "acaf7da8-22f1-465f-ba19-476e0cef7699",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, con 36 cuotas el plan y el valor de la cuota te los confirma un asesor porque depende de las condiciones de financiación."
+            },
+            {
+              "type": "text",
+              "content": "Me dejás tu nombre y apellido para que un asesor te contacte y te pase el detalle?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 15772,
+        "response": {
+          "session_id": "acaf7da8-22f1-465f-ba19-476e0cef7699",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 Iconic 1.3 Turbo TCe, color gris y con 31.000 km, es una SUV mediana con 5 puertas y 5 asientos. Tiene motor 1.3 Turbo de 155 CV, nafta, y transmisión automática CVT. Su consumo aproximado es de 7.8 L/100km.\nEl equipamiento incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo de smartphone. El baúl es grande, con 475 litros.\nAcá tenés las fotos oficiales del auto:  |  |"
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te arme la simulación completa de financiación, o preferís que te cuente otras opciones que puedan ajustarse a tu presupuesto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "auto-puntual-no-abanico",
+    "bug": "captura: cliente interesada en el ETIOS puntual ofrece su usado (Ford Ka 2015) como parte de pago PARA ese auto. Franco le tiró un abanico de otros modelos más caros y de otra categoría (Cronos, Duster, Amarok, ¡una Hilux!) que NO pidió. Cuando el cliente ya eligió un auto puntual y ofrece su usado, el abanico NO va: reconocer la permuta sobre ESE auto y ofrecer (a) un asesor para la tasación, o (b) modelos parecidos si quiere ver más. Fix v45 (scope del abanico).",
+    "sessionId": "a5f5e692-ee56-4ca2-95b5-8d21325088a9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, estoy interesada en el etios que vi en la página",
+        "ms": 9605,
+        "response": {
+          "session_id": "a5f5e692-ee56-4ca2-95b5-8d21325088a9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tenés en vista es un hatchback chico, con mecánica Toyota que usa cadena de distribución en vez de correa, lo que ayuda a una mejor reventa y menos costos de service. Está en versión XLS 1.5 Dual VVT-i, con motor 1.5 de 103 CV y transmisión manual de 6ta.\n\nEl auto es gris, tiene 45.000 km y un consumo aproximado de 7.0 L/100km. Viene equipado con control electrónico de estabilidad y tracción, volante multifunción en cuero, central multimedia táctil con Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas. El precio es $14.500.000.\n\nHace falta un anticipo mínimo de $7.250.000 para financiar este auto.\n\nLas fotos están publicadas, incluyendo vistas generales del auto. Fotos específicas del interior o detalles pueden facilitártelas un asesor. Querés que te conecte con uno para que te brinde más info o te ayude con la financiación?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, me gustaría entregar mi usado como parte de pago",
+        "ms": 2295,
+        "response": {
+          "session_id": "a5f5e692-ee56-4ca2-95b5-8d21325088a9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para avanzar con la permuta necesito que me digas qué auto entregás como parte de pago: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un ford ka 2015",
+        "ms": 3042,
+        "response": {
+          "session_id": "a5f5e692-ee56-4ca2-95b5-8d21325088a9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos kilómetros tiene ese Ford Ka 2015 que entregás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "85 mil km",
+        "ms": 2777,
+        "response": {
+          "session_id": "a5f5e692-ee56-4ca2-95b5-8d21325088a9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya lo tengo anotado. Querés que te contacte un asesor para avanzar, o preferís que te muestre opciones que te podrían servir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "Cliente eligió el Etios puntual + ofrece su usado. NO debe tirar un abanico de modelos más caros/de otra categoría (pickups/SUVs como Hilux/Amarok/Duster). Debe reconocer la permuta sobre el Etios y ofrecer un asesor para la tasación, o modelos PARECIDOS (hatchbacks) si quiere ver más."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "auto-puntual-no-abanico",
+    "bug": "captura: cliente interesada en el ETIOS puntual ofrece su usado (Ford Ka 2015) como parte de pago PARA ese auto. Franco le tiró un abanico de otros modelos más caros y de otra categoría (Cronos, Duster, Amarok, ¡una Hilux!) que NO pidió. Cuando el cliente ya eligió un auto puntual y ofrece su usado, el abanico NO va: reconocer la permuta sobre ESE auto y ofrecer (a) un asesor para la tasación, o (b) modelos parecidos si quiere ver más. Fix v45 (scope del abanico).",
+    "sessionId": "9c61bafe-554c-4885-91ff-2f3bb0890069",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, estoy interesada en el etios que vi en la página",
+        "ms": 8887,
+        "response": {
+          "session_id": "9c61bafe-554c-4885-91ff-2f3bb0890069",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 es un hatchback chico muy valorado por su mecánica con cadena de distribución, lo que lo hace menos costoso en mantenimiento y mejor en reventa. Esta unidad es gris, tiene 45.000 km, motor 1.5 de 103 CV naftero con caja manual de 6ta marcha, y un consumo promedio aproximado de 7.0 L/100km. Viene con control de estabilidad y tracción, volante multifunción en cuero, pantalla táctil con Bluetooth, faros antiniebla y llantas de aleación de 15 pulgadas. El precio es de $14.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Toyota Etios son las que están publicadas en el stock, con vistas generales y la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, me gustaría entregar mi usado como parte de pago",
+        "ms": 2431,
+        "response": {
+          "session_id": "9c61bafe-554c-4885-91ff-2f3bb0890069",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entran varias opciones, incluso de más valor si la tasación acompaña. Para avanzar necesito saber qué auto entregarías, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un ford ka 2015",
+        "ms": 2172,
+        "response": {
+          "session_id": "9c61bafe-554c-4885-91ff-2f3bb0890069",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Ford Ka 2015?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "85 mil km",
+        "ms": 3689,
+        "response": {
+          "session_id": "9c61bafe-554c-4885-91ff-2f3bb0890069",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La tasación final de tu usado la hace un asesor viéndolo en persona. Querés que te muestre alternativas a tu presupuesto y con la posibilidad de entregar tu usado, o preferís que un asesor te contacte directo para la tasación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "Cliente eligió el Etios puntual + ofrece su usado. NO debe tirar un abanico de modelos más caros/de otra categoría (pickups/SUVs como Hilux/Amarok/Duster). Debe reconocer la permuta sobre el Etios y ofrecer un asesor para la tasación, o modelos PARECIDOS (hatchbacks) si quiere ver más."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "auto-puntual-no-abanico",
+    "bug": "captura: cliente interesada en el ETIOS puntual ofrece su usado (Ford Ka 2015) como parte de pago PARA ese auto. Franco le tiró un abanico de otros modelos más caros y de otra categoría (Cronos, Duster, Amarok, ¡una Hilux!) que NO pidió. Cuando el cliente ya eligió un auto puntual y ofrece su usado, el abanico NO va: reconocer la permuta sobre ESE auto y ofrecer (a) un asesor para la tasación, o (b) modelos parecidos si quiere ver más. Fix v45 (scope del abanico).",
+    "sessionId": "9453b65f-ab30-4fe6-a710-0c3f897d3418",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, estoy interesada en el etios que vi en la página",
+        "ms": 8001,
+        "response": {
+          "session_id": "9453b65f-ab30-4fe6-a710-0c3f897d3418",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 es un hatchback chico con mecánica Toyota que usa cadena de distribución en lugar de correa, lo que mejora la reventa y reduce costos de mantenimiento. Tiene 45.000 km, es gris y cuesta $14.500.000. Lleva motor 1.5 naftero de 103 CV con caja manual de 6 velocidades, y su consumo promedio es de 7.0 L/100km. Está equipado con control electrónico de estabilidad (ESP) y tracción (TRC), volante multifunción en cuero, central multimedia táctil con Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Toyota Etios son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, me gustaría entregar mi usado como parte de pago",
+        "ms": 2232,
+        "response": {
+          "session_id": "9453b65f-ab30-4fe6-a710-0c3f897d3418",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, recibimos usados como parte de pago y eso puede ayudarte a acceder a más opciones o a un auto de gama superior."
+            },
+            {
+              "type": "text",
+              "content": "Para empezar a ayudarte mejor, me decís qué auto entregás? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "un ford ka 2015",
+        "ms": 2042,
+        "response": {
+          "session_id": "9453b65f-ab30-4fe6-a710-0c3f897d3418",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Gracias, y cuántos kilómetros tiene tu Ford Ka 2015?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "85 mil km",
+        "ms": 12903,
+        "response": {
+          "session_id": "9453b65f-ab30-4fe6-a710-0c3f897d3418",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya lo tengo anotado. Querés que te contacte un asesor para avanzar, o preferís que te muestre opciones que te podrían servir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "Cliente eligió el Etios puntual + ofrece su usado. NO debe tirar un abanico de modelos más caros/de otra categoría (pickups/SUVs como Hilux/Amarok/Duster). Debe reconocer la permuta sobre el Etios y ofrecer un asesor para la tasación, o modelos PARECIDOS (hatchbacks) si quiere ver más."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-no-dumpea-abanico-sin-pedirlo",
+    "bug": "captura Agustina 2026-08-05: en la progresion de permuta, apenas el cliente contesta los km del usado ('110000 km') Franco le dumpea el abanico completo de capacidad de compra (tramos entrada/Intermedio/Alto con Amarok, Vento, S10, Hilux, T-Cross) + 4 cards, SIN que el cliente haya pedido ver opciones. Agustina: el agente NO debe mandar recomendaciones ni alternativas porque si; puede PREGUNTAR si le gustaria ver alternativas. OJO — LA REGLA YA EXISTE, Y CUATRO VECES: (A) '## Permuta' punto 5: 'si ya venis en la progresion de permuta y tenes el auto y los kilometros del usado, NO corras este punto ni muestres opciones (ni tramos ni dos caminos) — ese turno es el name-ask'; (B) el guion de ofrecer una de dos: 'querés que te conecte con un asesor para la tasación de tu vehículo, o preferís ver más opciones en stock?'; (C) 'Nunca saltees directo al abanico'; (D) 'ni le muestres autos que no pidió'. Las cuatro se violaron en la misma respuesta. NO es un hueco de reglas: es adherencia, y la causa probable es trampa 6 — el 'abanico de capacidad de compra' es el guion mas largo y concreto de la seccion, y le gana a cuatro condiciones abstractas. Por eso agregar una quinta regla no va a servir. DECISION DE AGUSTINA (2026-08-05): tras tomar los datos del usado Franco OFRECE y espera el si; si el cliente acepta ver alternativas y no hay presupuesto conocido, primero pide el presupuesto. Y si el cliente YA mostro interes en un auto puntual, NO se le ofrecen alternativas: se toman los datos y se pregunta si quiere ver mas alternativas o derivacion directa a un asesor. Alcance: la regla es que el cliente tiene que PEDIR ver opciones (por requerimiento/filtro, o porque tiene presupuesto y no sabe que comprar). No aplica a 'quiero un auto de 20 millones', que SI es pedir opciones.",
+    "sessionId": "24d0ff68-d4c6-42e8-86ba-876f4df64562",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, reciben usados como parte de pago? tengo 25 millones ahorrados",
+        "ms": 5142,
+        "response": {
+          "session_id": "24d0ff68-d4c6-42e8-86ba-876f4df64562",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con 25 millones ahorrados, tenés en mente algún modelo o tipo de auto que te interese para que te acerque opciones que se ajusten a ese presupuesto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Toyota etios 2020",
+        "ms": 6304,
+        "response": {
+          "session_id": "24d0ff68-d4c6-42e8-86ba-876f4df64562",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, para el Toyota Etios 2021 te puedo mostrar este que tenemos, que es un hatchback chico, con motor naftero, caja manual y consumo aproximado de 7.0 L/100km. Es modelo 2021, con 45.000 km y está a $14.500.000. Tiene la ventaja de la cadena de distribución, que baja el costo de mantenimiento.\n\nAdemás, te paso un par de opciones alternativas hatchback chicos: el Peugeot 208 2025, casi 0 km, a $21.000.000, y el Volkswagen Gol Trend 2018, algo más económico, a $9.200.000.\n\nQuerés que te dé más detalles de alguno o te ayudo con cómo sería financiarlo o entregar tu usado?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "110000 km",
+        "ms": 5425,
+        "response": {
+          "session_id": "24d0ff68-d4c6-42e8-86ba-876f4df64562",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya tengo anotado que entregás un Toyota Etios 2021 con 110.000 km y que contás con 25 millones para la compra al contado. Querés que te contacte un asesor para avanzar con la tasación de tu usado y explorar las mejores opciones que te entren, o preferís que te muestre opciones que podrían servirte?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, mostrame alternativas",
+        "ms": 7670,
+        "response": {
+          "session_id": "24d0ff68-d4c6-42e8-86ba-876f4df64562",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago y tu efectivo, estas opciones te pueden servir:\n\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán, mediano)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, mediano)\n\nY si querés algo más de gama, entregando tu usado podrías llegar a estas:\n\n- Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV, mediano)\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000 (pickup 4x4)\n\nQuerés que te cuente más de alguna o preferís que te pase todo el stock disponible para que veas más opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Ese turno NO puede traer autos ni cards ni fotos. Tiene que ser el OFRECIMIENTO: \"un asesor tasa tu usado en persona. Querés que te muestre alternativas que te entren, o preferís que te contacte un asesor?\". Nada mas."
+      },
+      {
+        "turn": 4,
+        "note": "Aca SI corresponde mostrar: el cliente lo pidio. Como ya dio los 25 millones en el turno 1, NO se lo vuelve a preguntar (repreguntar un dato ya dado es bug aparte)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-no-dumpea-abanico-sin-pedirlo",
+    "bug": "captura Agustina 2026-08-05: en la progresion de permuta, apenas el cliente contesta los km del usado ('110000 km') Franco le dumpea el abanico completo de capacidad de compra (tramos entrada/Intermedio/Alto con Amarok, Vento, S10, Hilux, T-Cross) + 4 cards, SIN que el cliente haya pedido ver opciones. Agustina: el agente NO debe mandar recomendaciones ni alternativas porque si; puede PREGUNTAR si le gustaria ver alternativas. OJO — LA REGLA YA EXISTE, Y CUATRO VECES: (A) '## Permuta' punto 5: 'si ya venis en la progresion de permuta y tenes el auto y los kilometros del usado, NO corras este punto ni muestres opciones (ni tramos ni dos caminos) — ese turno es el name-ask'; (B) el guion de ofrecer una de dos: 'querés que te conecte con un asesor para la tasación de tu vehículo, o preferís ver más opciones en stock?'; (C) 'Nunca saltees directo al abanico'; (D) 'ni le muestres autos que no pidió'. Las cuatro se violaron en la misma respuesta. NO es un hueco de reglas: es adherencia, y la causa probable es trampa 6 — el 'abanico de capacidad de compra' es el guion mas largo y concreto de la seccion, y le gana a cuatro condiciones abstractas. Por eso agregar una quinta regla no va a servir. DECISION DE AGUSTINA (2026-08-05): tras tomar los datos del usado Franco OFRECE y espera el si; si el cliente acepta ver alternativas y no hay presupuesto conocido, primero pide el presupuesto. Y si el cliente YA mostro interes en un auto puntual, NO se le ofrecen alternativas: se toman los datos y se pregunta si quiere ver mas alternativas o derivacion directa a un asesor. Alcance: la regla es que el cliente tiene que PEDIR ver opciones (por requerimiento/filtro, o porque tiene presupuesto y no sabe que comprar). No aplica a 'quiero un auto de 20 millones', que SI es pedir opciones.",
+    "sessionId": "a2a33610-ed88-4b56-aea7-52584403ce27",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, reciben usados como parte de pago? tengo 25 millones ahorrados",
+        "ms": 12083,
+        "response": {
+          "session_id": "a2a33610-ed88-4b56-aea7-52584403ce27",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago, sujeto a tasación por un asesor que verá tu auto en persona.\nCon 25 millones para poner, mirá algunas opciones que te pueden servir:\n- Toyota Corolla 2022 — 56.000 km — $24.800.000\n- Jeep Renegade 2021 — 38.000 km — $25.500.000\n\nEstas opciones están dentro de ese rango de precio. Querés que te muestre algunas más o tenés en mente algún modelo o uso específico?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Toyota etios 2020",
+        "ms": 6042,
+        "response": {
+          "session_id": "a2a33610-ed88-4b56-aea7-52584403ce27",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 es un hatchback de tamaño chico, con mecánica Toyota que usa cadena de distribución, lo que ayuda a que se deprecie menos y evite servicios caros. Tiene 45.000 km, es gris y su precio es $14.500.000. Cuenta con motor 1.5 de 103 CV, transmisión manual de 6ta, control electrónico de estabilidad, volante multifunción en cuero y central multimedia con pantalla táctil y Bluetooth.\n\nLas fotos que tenemos son las publicadas del auto, que muestran vistas generales y la carrocería.\n\nQuerés que te prepare la info de financiación o preferís ver otra opción o color del Etios?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "110000 km",
+        "ms": 6402,
+        "response": {
+          "session_id": "a2a33610-ed88-4b56-aea7-52584403ce27",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya lo tengo anotado. Querés que te contacte un asesor para avanzar, o preferís que te muestre opciones que te podrían servir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, mostrame alternativas",
+        "ms": 7515,
+        "response": {
+          "session_id": "a2a33610-ed88-4b56-aea7-52584403ce27",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago y tu efectivo, estas opciones te pueden servir:\n- Chevrolet S10 2022 — pickup grande — $39.500.000\n- Toyota Hilux 2021 — pickup grande — $38.000.000\n\nIntermedio:\n- Volkswagen T-Cross 2025 — SUV mediano — $34.000.000\n- Volkswagen Amarok 2018 — pickup grande — $32.000.000\n\nAlto:\n- Ford Ranger 2024 — pickup grande 4x4 — $57.000.000\n\nTodas estas versiones están dentro de lo que podés considerar pagando con tu usado y financiando el resto. La tasación definitiva de tu vehículo la hace un asesor en persona.\n\nQuerés que te conecte con un asesor para que coordine la tasación y te dé más detalles, o preferís seguir viendo otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Ese turno NO puede traer autos ni cards ni fotos. Tiene que ser el OFRECIMIENTO: \"un asesor tasa tu usado en persona. Querés que te muestre alternativas que te entren, o preferís que te contacte un asesor?\". Nada mas."
+      },
+      {
+        "turn": 4,
+        "note": "Aca SI corresponde mostrar: el cliente lo pidio. Como ya dio los 25 millones en el turno 1, NO se lo vuelve a preguntar (repreguntar un dato ya dado es bug aparte)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-no-dumpea-abanico-sin-pedirlo",
+    "bug": "captura Agustina 2026-08-05: en la progresion de permuta, apenas el cliente contesta los km del usado ('110000 km') Franco le dumpea el abanico completo de capacidad de compra (tramos entrada/Intermedio/Alto con Amarok, Vento, S10, Hilux, T-Cross) + 4 cards, SIN que el cliente haya pedido ver opciones. Agustina: el agente NO debe mandar recomendaciones ni alternativas porque si; puede PREGUNTAR si le gustaria ver alternativas. OJO — LA REGLA YA EXISTE, Y CUATRO VECES: (A) '## Permuta' punto 5: 'si ya venis en la progresion de permuta y tenes el auto y los kilometros del usado, NO corras este punto ni muestres opciones (ni tramos ni dos caminos) — ese turno es el name-ask'; (B) el guion de ofrecer una de dos: 'querés que te conecte con un asesor para la tasación de tu vehículo, o preferís ver más opciones en stock?'; (C) 'Nunca saltees directo al abanico'; (D) 'ni le muestres autos que no pidió'. Las cuatro se violaron en la misma respuesta. NO es un hueco de reglas: es adherencia, y la causa probable es trampa 6 — el 'abanico de capacidad de compra' es el guion mas largo y concreto de la seccion, y le gana a cuatro condiciones abstractas. Por eso agregar una quinta regla no va a servir. DECISION DE AGUSTINA (2026-08-05): tras tomar los datos del usado Franco OFRECE y espera el si; si el cliente acepta ver alternativas y no hay presupuesto conocido, primero pide el presupuesto. Y si el cliente YA mostro interes en un auto puntual, NO se le ofrecen alternativas: se toman los datos y se pregunta si quiere ver mas alternativas o derivacion directa a un asesor. Alcance: la regla es que el cliente tiene que PEDIR ver opciones (por requerimiento/filtro, o porque tiene presupuesto y no sabe que comprar). No aplica a 'quiero un auto de 20 millones', que SI es pedir opciones.",
+    "sessionId": "4e74434c-ce80-465b-9823-1d1a54bdd9e3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, reciben usados como parte de pago? tengo 25 millones ahorrados",
+        "ms": 9714,
+        "response": {
+          "session_id": "4e74434c-ce80-465b-9823-1d1a54bdd9e3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\""
+        ]
+      },
+      {
+        "n": 2,
+        "say": "Toyota etios 2020",
+        "ms": 9749,
+        "response": {
+          "session_id": "4e74434c-ce80-465b-9823-1d1a54bdd9e3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 es un hatchback chico con una mecánica Toyota que incluye cadena de distribución en vez de correa, lo que ayuda a tener mejor reventa y evitar un service caro. Está en color gris y tiene 45.000 km. Viene con motor 1.5 de 103 CV naftero y caja manual de 6ta, con un consumo aproximado de 7.0 L/100km.\n\nEquipamiento destacado: control electrónico de estabilidad (ESP) y tracción (TRC), volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas.\n\nEl precio es $14.500.000 y el anticipo mínimo para financiar es $7.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Te paso las fotos que tenemos publicadas del Toyota Etios, que muestran vistas generales y la carrocería."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización o te muestre otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "110000 km",
+        "ms": 9403,
+        "response": {
+          "session_id": "4e74434c-ce80-465b-9823-1d1a54bdd9e3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, me pasás tu nombre y apellido para que un asesor pueda contactarte y coordinar todo lo relacionado con el Toyota Etios y la potencial financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)quer[eé]s|prefer[ií]s|te gustar[ií]a/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "dale, mostrame alternativas",
+        "ms": 7015,
+        "response": {
+          "session_id": "4e74434c-ce80-465b-9823-1d1a54bdd9e3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir:\n- Toyota Etios 2021 — hatchback chico, 45.000 km, $14.500.000\n\nSi no te molesta algo un poco más grande y más caro, podrías ver otras como:\n- Fiat Cronos 2023 — sedán mediano, 28.000 km, $16.800.000\n- Volkswagen Gol Trend 2018 — hatchback chico, 110.000 km, $9.200.000, un poco más económico que el Etios\n\nQuieres que te muestre más opciones o prefieres que te conecte con un asesor para que te ayude a elegir mejor según tu presupuesto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 3 · text_matches: no matcheó /(?i)quer[eé]s|prefer[ií]s|te gustar[ií]a/"
+    ],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "Ese turno NO puede traer autos ni cards ni fotos. Tiene que ser el OFRECIMIENTO: \"un asesor tasa tu usado en persona. Querés que te muestre alternativas que te entren, o preferís que te contacte un asesor?\". Nada mas."
+      },
+      {
+        "turn": 4,
+        "note": "Aca SI corresponde mostrar: el cliente lo pidio. Como ya dio los 25 millones en el turno 1, NO se lo vuelve a preguntar (repreguntar un dato ya dado es bug aparte)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-dumpea-abanico-sin-pedirlo",
+    "bug": "v88, ejecuciones 11593/11601 (v87) y 3 de 4 corridas de v88: en el embudo de FINANCIACION PURA (sin permuta), cuando el cliente da un dato de plata Franco le dumpea el abanico de autos sin que se lo pidan. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe tiene_permuta=0, con_financiacion=1, precio_objetivo=30000000 y devuelve las 17 filas del catalogo. El gate de v85 es NOT (tiene_permuta = 1 AND pidio_ver = 0): con tiene_permuta=0 NI SE ACTIVA. Es el mismo bug que v85 arreglo para permuta, por la rama que el gate no cubre. BARRIDO EXHAUSTIVO SOBRE LOS 177 TURNOS: extender el gate a con_financiacion=1 NO SIRVE — dejaria sin autos a 8 turnos que si tienen que mostrarlos (\"tenes algo entre 14 y 20 millones?\", \"Quiero un auto de 20 millones o menos\"), porque pidio_ver tiene falsos negativos en los mensajes de presupuesto (inocuos en v85, graves aca). Por eso el gate se condiciona a monto_financiar>0 O entrega_plata>0, que son campos calculados y precisos: sobre los 177 turnos bloquea 3 y ninguno de los que exigen material grafico. EL TURNO 4 ES PARTE DEL CASO A PROPOSITO: mide el riesgo opuesto (que el gate se pase de estricto y no muestre nunca). \"dale, mostrame que autos me entran\" da pidio_ver=1, verificado offline con la expresion desplegada, asi que si ese turno queda sin autos es del gate, no del instrumento. DEBILIDAD CONOCIDA Y MEDIDA, no la redescubras: \"entrego 5 millones, cuales me entran?\" da pidio_ver=0 (falso negativo del patron de v85) y quedaria bloqueado aunque el cliente pidio. El sintoma seria que Franco PREGUNTA en vez de mostrar, no que diga \"no hay stock\" (el toolDescription ya explica la senal de 0 filas). No se toca pidio_ver: su corpus de validacion son 152 mensajes que no estan guardados en el repo.",
+    "sessionId": "99b85469-622f-416e-a954-caa57be6dbd6",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco una pickup 4x2",
+        "ms": 5471,
+        "response": {
+          "session_id": "99b85469-622f-416e-a954-caa57be6dbd6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá estas pickups 4x2 que tenemos ahora:\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2)\n\nTambién, si te interesa, puedo mostrarte pickups de otras tracciones o características. Querés que te detalle alguna de estas o te paso más opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Quiero financiar 30.000.000",
+        "ms": 7289,
+        "response": {
+          "session_id": "99b85469-622f-416e-a954-caa57be6dbd6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $30.000.000 el auto tiene que valer al menos $60.000.000, y la otra mitad la cubrís vos entre anticipo y usado."
+            },
+            {
+              "type": "text",
+              "content": "Dale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Puedo entregar 5.000.000?",
+        "ms": 4774,
+        "response": {
+          "session_id": "99b85469-622f-416e-a954-caa57be6dbd6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $5.000.000 de anticipo seguimos. La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a financiar es el 50% del valor del vehículo."
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo sí te entran autos de otras carrocerías, como hatchbacks, sedanes, utilitarios y SUVs. Querés que te muestre esas opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, mostrame qué autos me entran",
+        "ms": 10485,
+        "response": {
+          "session_id": "99b85469-622f-416e-a954-caa57be6dbd6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir:\n- Volkswagen Gol Trend 2018 — hatchback chico, 110.000 km, $9.200.000\n- Ford Fiesta 2017 — hatchback chico, 105.000 km, $8.200.000\n\nSi querés te paso todo el stock que tenemos, avisame. Qué auto te llama la atención?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente esta DANDO un dato de plata, no pidiendo opciones. Ese turno no puede traer autos ni cards ni fotos: sigue el embudo de financiacion (le falta el anticipo o las cuotas)."
+      },
+      {
+        "turn": 4,
+        "note": "RIESGO OPUESTO: aca el cliente SI pide, y tiene que ver autos. Si este turno queda vacio, el gate se paso de estricto."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-dumpea-abanico-sin-pedirlo",
+    "bug": "v88, ejecuciones 11593/11601 (v87) y 3 de 4 corridas de v88: en el embudo de FINANCIACION PURA (sin permuta), cuando el cliente da un dato de plata Franco le dumpea el abanico de autos sin que se lo pidan. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe tiene_permuta=0, con_financiacion=1, precio_objetivo=30000000 y devuelve las 17 filas del catalogo. El gate de v85 es NOT (tiene_permuta = 1 AND pidio_ver = 0): con tiene_permuta=0 NI SE ACTIVA. Es el mismo bug que v85 arreglo para permuta, por la rama que el gate no cubre. BARRIDO EXHAUSTIVO SOBRE LOS 177 TURNOS: extender el gate a con_financiacion=1 NO SIRVE — dejaria sin autos a 8 turnos que si tienen que mostrarlos (\"tenes algo entre 14 y 20 millones?\", \"Quiero un auto de 20 millones o menos\"), porque pidio_ver tiene falsos negativos en los mensajes de presupuesto (inocuos en v85, graves aca). Por eso el gate se condiciona a monto_financiar>0 O entrega_plata>0, que son campos calculados y precisos: sobre los 177 turnos bloquea 3 y ninguno de los que exigen material grafico. EL TURNO 4 ES PARTE DEL CASO A PROPOSITO: mide el riesgo opuesto (que el gate se pase de estricto y no muestre nunca). \"dale, mostrame que autos me entran\" da pidio_ver=1, verificado offline con la expresion desplegada, asi que si ese turno queda sin autos es del gate, no del instrumento. DEBILIDAD CONOCIDA Y MEDIDA, no la redescubras: \"entrego 5 millones, cuales me entran?\" da pidio_ver=0 (falso negativo del patron de v85) y quedaria bloqueado aunque el cliente pidio. El sintoma seria que Franco PREGUNTA en vez de mostrar, no que diga \"no hay stock\" (el toolDescription ya explica la senal de 0 filas). No se toca pidio_ver: su corpus de validacion son 152 mensajes que no estan guardados en el repo.",
+    "sessionId": "8569f4cc-985b-4077-a11e-bfe0b59d713d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco una pickup 4x2",
+        "ms": 13624,
+        "response": {
+          "session_id": "8569f4cc-985b-4077-a11e-bfe0b59d713d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas pickups 4x2 tenemos ahora en stock:\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2)\n\nSi querés, te puedo mostrar más opciones o contame para qué las querés, así te ayudo a elegir."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Quiero financiar 30.000.000",
+        "ms": 4986,
+        "response": {
+          "session_id": "8569f4cc-985b-4077-a11e-bfe0b59d713d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $30.000.000 el auto tiene que valer al menos $60.000.000, y la otra mitad la cubrís vos entre anticipo y usado."
+            },
+            {
+              "type": "text",
+              "content": "dale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Puedo entregar 5.000.000?",
+        "ms": 4079,
+        "response": {
+          "session_id": "8569f4cc-985b-4077-a11e-bfe0b59d713d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $5.000.000 de anticipo seguimos. Con ese anticipo el techo es un auto de $10.000.000."
+            },
+            {
+              "type": "text",
+              "content": "La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a financiar es el 50% del valor del vehículo."
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo sí te entran hatchbacks, sedanes y SUVs. Querés que te los muestre?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, mostrame qué autos me entran",
+        "ms": 5049,
+        "response": {
+          "session_id": "8569f4cc-985b-4077-a11e-bfe0b59d713d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir:\n- Volkswagen Gol Trend 2018 — hatchback chico, 110.000 km\n- Ford Fiesta 2017 — hatchback chico, 105.000 km\n\nTe interesa alguna o preferís que te muestre más opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente esta DANDO un dato de plata, no pidiendo opciones. Ese turno no puede traer autos ni cards ni fotos: sigue el embudo de financiacion (le falta el anticipo o las cuotas)."
+      },
+      {
+        "turn": 4,
+        "note": "RIESGO OPUESTO: aca el cliente SI pide, y tiene que ver autos. Si este turno queda vacio, el gate se paso de estricto."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-dumpea-abanico-sin-pedirlo",
+    "bug": "v88, ejecuciones 11593/11601 (v87) y 3 de 4 corridas de v88: en el embudo de FINANCIACION PURA (sin permuta), cuando el cliente da un dato de plata Franco le dumpea el abanico de autos sin que se lo pidan. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe tiene_permuta=0, con_financiacion=1, precio_objetivo=30000000 y devuelve las 17 filas del catalogo. El gate de v85 es NOT (tiene_permuta = 1 AND pidio_ver = 0): con tiene_permuta=0 NI SE ACTIVA. Es el mismo bug que v85 arreglo para permuta, por la rama que el gate no cubre. BARRIDO EXHAUSTIVO SOBRE LOS 177 TURNOS: extender el gate a con_financiacion=1 NO SIRVE — dejaria sin autos a 8 turnos que si tienen que mostrarlos (\"tenes algo entre 14 y 20 millones?\", \"Quiero un auto de 20 millones o menos\"), porque pidio_ver tiene falsos negativos en los mensajes de presupuesto (inocuos en v85, graves aca). Por eso el gate se condiciona a monto_financiar>0 O entrega_plata>0, que son campos calculados y precisos: sobre los 177 turnos bloquea 3 y ninguno de los que exigen material grafico. EL TURNO 4 ES PARTE DEL CASO A PROPOSITO: mide el riesgo opuesto (que el gate se pase de estricto y no muestre nunca). \"dale, mostrame que autos me entran\" da pidio_ver=1, verificado offline con la expresion desplegada, asi que si ese turno queda sin autos es del gate, no del instrumento. DEBILIDAD CONOCIDA Y MEDIDA, no la redescubras: \"entrego 5 millones, cuales me entran?\" da pidio_ver=0 (falso negativo del patron de v85) y quedaria bloqueado aunque el cliente pidio. El sintoma seria que Franco PREGUNTA en vez de mostrar, no que diga \"no hay stock\" (el toolDescription ya explica la senal de 0 filas). No se toca pidio_ver: su corpus de validacion son 152 mensajes que no estan guardados en el repo.",
+    "sessionId": "a55ecb27-6f5d-45f4-ac1c-87a85e3b7f7e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco una pickup 4x2",
+        "ms": 12187,
+        "response": {
+          "session_id": "a55ecb27-6f5d-45f4-ac1c-87a85e3b7f7e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para pickups 4x2, tengo estas opciones dentro del stock:\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2)\n\nSi querés, puedo darte más detalles de alguna o te muestro otras opciones que te puedan interesar."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Quiero financiar 30.000.000",
+        "ms": 3164,
+        "response": {
+          "session_id": "a55ecb27-6f5d-45f4-ac1c-87a85e3b7f7e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $30.000.000 el auto tiene que valer al menos $60.000.000, y la otra mitad la cubrís vos entre anticipo y usado."
+            },
+            {
+              "type": "text",
+              "content": "Dale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Puedo entregar 5.000.000?",
+        "ms": 4897,
+        "response": {
+          "session_id": "a55ecb27-6f5d-45f4-ac1c-87a85e3b7f7e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $5.000.000 de anticipo seguimos. Con ese anticipo se puede financiar hasta otro tanto, así que el techo es un auto de $10.000.000."
+            },
+            {
+              "type": "text",
+              "content": "La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a financiar es el 50% del valor del vehículo."
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo sí te entran otras carrocerías, como hatchbacks, sedanes y SUVs. Querés que te los muestre?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "dale, mostrame qué autos me entran",
+        "ms": 5698,
+        "response": {
+          "session_id": "a55ecb27-6f5d-45f4-ac1c-87a85e3b7f7e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, estas opciones te pueden servir dentro de tu capacidad de compra:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, chico)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, chico)\n\nSi te interesa alguna o querés que te muestre más opciones, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-3.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "El cliente esta DANDO un dato de plata, no pidiendo opciones. Ese turno no puede traer autos ni cards ni fotos: sigue el embudo de financiacion (le falta el anticipo o las cuotas)."
+      },
+      {
+        "turn": 4,
+        "note": "RIESGO OPUESTO: aca el cliente SI pide, y tiene que ver autos. Si este turno queda vacio, el gate se paso de estricto."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  }
+]
