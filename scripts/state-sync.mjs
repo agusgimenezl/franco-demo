@@ -23,7 +23,7 @@ const resolveWf = (p) => {
 }
 // EL PUNTERO DE PRODUCCIÓN. Se edita acá, en una línea sola y con nombre propio: antes vivía
 // dentro del ternario de abajo y se editaba a ciegas.
-const PRODUCCION = 'franco-n8n-v137.json'
+const PRODUCCION = 'franco-n8n-v141.json'
 const WORKFLOW = argFile !== -1 ? resolveWf(process.argv[argFile + 1]) : join(ROOT, 'workflows', PRODUCCION)
 const STATE = join(ROOT, 'docs/franco/STATE.md')
 const checkOnly = process.argv.includes('--check') || argFile !== -1
@@ -110,6 +110,45 @@ for (const [nodo, campo, aguja, porque] of INYECCIONES) {
   }
 }
 
+// ─── Invariante 7: si la descripción de un $fromAI declara un valor neutro, el schema TIENE que
+// aceptarlo (defaultValue). La contradicción "te digo que pongas 0 si no hay, pero es obligatorio"
+// es el bug más caro del proyecto y ya se pagó tres veces.
+//
+// POR QUÉ EXISTE, Y ES DE HOY (2026-08-12): Franco contestaba *"Uy, se me trabó el sistema"* a
+// TODO. Causa leída del log (ejecuciones 16613/16614): el modelo llamó a `Listar stock` sin
+// `con_financiacion` ni los cinco `usado_*` —el cliente no había nombrado ningún usado, no tenía
+// qué poner— y n8n **rechazó la llamada entera**. Un parámetro obligatorio que el modelo no puede
+// completar no da un error parcial: mata el turno.
+//
+// LO QUE NO DICE, A PROPÓSITO: que todo parámetro tenga default. v139 le puso `defaultValue` a los
+// `usado_*` sin más y rompió el flujo de permuta (`capacidad-de-compra-financiada` 2/9), porque esos
+// `required` funcionaban como validación. La regla es más fina y sale de esa lección: **el schema
+// tiene que aceptar exactamente lo que la descripción promete.** Si la descripción dice "Poner 0 si
+// no menciona ninguno", el 0 tiene que ser aceptable. Si un dato NO tiene neutro, la descripción no
+// debería prometer uno — y si igual se lo quiere dejar obligatorio, va acá abajo, con el motivo
+// escrito.
+const DECLARA_NEUTRO = /Poner\s+(0|vac[ií]o)|(^|[.;]\s*)0\s+si\s+|Poner\s+1\s+si[^.]*\.?\s*0\s+si/i
+// Excepciones: obligatorios A CONCIENCIA, con el motivo. No es una lista para tapar: es para que la
+// próxima persona vea la decisión y la discuta, en vez de descubrirla en producción.
+const REQUIRED_A_CONCIENCIA = {
+  tiene_permuta:
+    'es el discriminador del que cuelga toda la rama del usado. Un default de 0 podría tragarse una '
+    + 'permuta real EN SILENCIO, que es el modo de falla peor (v139). Se deja obligatorio hasta tener '
+    + 'una guarda que detecte "el lead tiene usado pero el modelo mandó 0".',
+}
+for (const n of wf.nodes) {
+  const blob = JSON.stringify(n.parameters ?? {})
+  // Con 4º argumento => tiene default. Sin él => required.
+  for (const [, key, desc] of blob.matchAll(/fromAI\('([a-z_]+)',\s*'((?:[^'\\]|\\.)*)',\s*'\w+'\)/g)) {
+    if (!DECLARA_NEUTRO.test(desc)) continue
+    if (key in REQUIRED_A_CONCIENCIA) continue
+    fail('NEUTRO', `${n.name}: $fromAI '${key}' promete un neutro en su descripción pero es REQUIRED.\n`
+      + `        Si el modelo no lo manda, n8n rechaza la llamada ENTERA y el turno cae al fallback\n`
+      + `        ("Uy, se me trabó el sistema"). Ponerle el defaultValue que la descripción declara,\n`
+      + `        o —si el dato no tiene neutro real— sacar esa promesa de la descripción.`)
+  }
+}
+
 // ─── Compuerta de pre-deploy: sin línea de base CON CONTROLES, un candidato no se aprueba
 // POR QUÉ ES UNA COMPUERTA Y NO UNA NOTA: el 2026-08-11 esto se anotó como preferencia, se
 // escribió en la memoria del proyecto, y DOS HORAS DESPUÉS se repitió igual. v128 se desplegó sin
@@ -168,7 +207,9 @@ const casos = existsSync(join(ROOT, 'evals/cases.json'))
 // arriba termina citando una baseline vieja como si fuera la última.
 const baselines = existsSync(join(ROOT, 'evals'))
   ? readdirSync(join(ROOT, 'evals'))
-      .filter((f) => f.startsWith('baseline'))
+      // .json y NADA MÁS: con `startsWith('baseline')` a secas entraba también el .log de la
+      // corrida (evals/baseline-v140.log) y JSON.parse reventaba con "Unexpected token 'F'".
+      .filter((f) => f.startsWith('baseline') && f.endsWith('.json'))
       .sort((a, b) => {
         const n = (s) => parseInt(s.match(/v(\d+)/)?.[1] ?? '0', 10)
         return n(a) - n(b)
@@ -195,7 +236,7 @@ const bloque = `<!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts
 | Empresa configurada | ${cfg.empresa_nombre} |
 | Evals | ${casos} casos · ${baselineTxt} |
 
-**Invariantes:** ${problems.length === 0 ? '✅ los 6 pasan' : `❌ ${problems.length} rotos — ver \`node scripts/state-sync.mjs --check\``}
+**Invariantes:** ${problems.length === 0 ? '✅ los 7 pasan' : `❌ ${problems.length} rotos — ver \`node scripts/state-sync.mjs --check\``}
 
 <!-- FIN AUTOGENERADO -->`
 
@@ -204,7 +245,7 @@ if (problems.length) {
   console.log(`${C.red}Invariantes rotos:${C.off}`)
   for (const p of problems) console.log(`  ${C.red}✗${C.off} ${p}`)
 } else {
-  console.log(`${C.grn}✓ los 6 invariantes pasan${C.off}`)
+  console.log(`${C.grn}✓ los 7 invariantes pasan${C.off}`)
 }
 
 if (!checkOnly) {
