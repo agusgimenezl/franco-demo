@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v137.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v141.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,293 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 102 casos · baseline-v137.json → 25/42 |
+| Evals | 103 casos · baseline-v141.json → 20/30 |
 
-**Invariantes:** ✅ los 6 pasan
+**Invariantes:** ✅ los 7 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🔴🟢 EL DÍA QUE PRODUCCIÓN SE CAYÓ ENTERA Y LA CULPA NO ERA DEL ÚLTIMO CAMBIO. v141 DESPLEGADO.
+> Sesión 2026-08-12.**
+> `scripts/el-usado-que-no-existe-no-se-exige.mjs` · `workflows/franco-n8n-v141.json`
+>
+> **EL SÍNTOMA, REPORTADO POR AGUSTINA:** *"Franco me está respondiendo «Uy, se me trabó el sistema
+> un segundo. Me repetís tu último mensaje?» a TODOS los mensajes que le escribo."*
+>
+> **LA CAUSA, LEÍDA DEL LOG DE n8n (ejecuciones 16613 y 16614) ANTES DE TEORIZAR.**
+> `Franco (AI Agent)` devolvía `error` en vez de `output`:
+> `Received tool input did not match expected schema — Required at con_financiacion / usado_anio /
+> usado_marca / usado_modelo / usado_categoria / usado_km`. El mensaje que lo dispara está en el log
+> y no tiene nada de raro: *"Hola! busco un auto de 20M aprox, que tenes disonible?"*. El cliente
+> pide por presupuesto y **no nombra ningún usado**, así que el modelo no tiene qué poner en los
+> cinco `usado_*`, los omite, n8n **rechaza la llamada entera** y `Armar respuesta` cae al fallback.
+>
+> **⚠️ LO PRIMERO QUE HAY QUE APRENDER DE ESTO ES DE MÉTODO: LO ÚLTIMO QUE SE TOCÓ NO ERA LA CAUSA.**
+> v140 se había desplegado media hora antes, así que era el sospechoso obvio. **Se revirtió a v137 y
+> se volvió a medir: el bug seguía, 3/3 idéntico.** Recién ahí quedó aislado. Y es la única forma:
+> `Listar stock`, `Buscar auto`, `Armar respuesta`, `Config` y `Leer lead (estado)` son
+> **byte-idénticos** entre v137 y v140 — lo único que cambiaba era el prompt. **Sin ese control se
+> habría revertido el fix correcto por el bug de otro, y el bug hubiera seguido.**
+>
+> **🔑 EL DATO QUE HIZO EL FIX PRECISO, Y QUE v139 NO VIO: `tiene_permuta` NO ESTÁ ENTRE LOS
+> RECHAZADOS.** El modelo SÍ lo mandó, en 0. O sea: el modelo declara "acá no hay ninguna permuta" y
+> el schema igual le exige marca, modelo, año, km y categoría **de un usado que él mismo dijo que no
+> existe**. Y la SQL ya los ignoraba en ese caso: `usado_val` los usa sólo dentro de
+> `CASE WHEN tiene_permuta = 1 AND usado_anio > 0`.
+>
+> **POR QUÉ ESTO NO ES v139 OTRA VEZ, Y ES LA PARTE QUE IMPORTA.** v139 le puso `defaultValue` a
+> estos mismos parámetros y `capacidad-de-compra-financiada` cayó a 2/9: los `required` **eran una
+> validación real**, obligaban al modelo a juntar los datos del usado antes de llamar a la tool.
+> v139 los aflojó y **no puso nada en su lugar**. Acá la validación no se pierde: **se muda a la
+> SQL**, que es donde la regla del proyecto manda ponerla. Con `tiene_permuta = 1` pero sin marca,
+> modelo o año, la query no devuelve autos: devuelve **una fila centinela** (`categoria='no_mostrar'`,
+> `id NULL`) que le dice a Franco qué preguntar. **El fallo deja de ser fatal y pasa a ser
+> recuperable, sin volverse silencioso** — que era el verdadero problema de v139.
+> · `tiene_permuta` **sigue REQUIRED a propósito**: es el discriminador, y un 0 silencioso se
+>   tragaría una permuta real. Queda anotado como excepción con motivo en el invariante 7.
+>
+> **LA SQL SE EJECUTÓ CONTRA LA BASE ANTES DE DESPLEGAR** (`scripts/render-listar-stock.mjs`, nuevo:
+> renderiza los `{{ }}` igual que n8n y de paso valida que el JS compile):
+> · `bug-presupuesto-sin-usado` → **17 filas, 17 autos, 0 centinelas**
+> · `permuta-completa` (los parámetros exactos de `capacidad-de-compra-financiada`) → **11 autos, 0 centinelas**
+> · `permuta-sin-datos-del-usado` → **1 fila, 0 autos, 1 centinela**
+> · Y una prueba de NO-REGRESIÓN POR CONSTRUCCIÓN: en todo escenario donde la centinela no dispara,
+>   la query de v141 es **la de v137 exacta** una vez quitados los tres bloques nuevos, que son
+>   inertes (un CTE que nadie lee, un `UNION ALL` con `WHERE false`, y un `AND TRUE`).
+>
+> **😳 EL BUG ERA MUCHO MÁS GRANDE DE LO QUE EL SÍNTOMA SUGERÍA: v137 NO PUEDE NI RENDERIZAR 4 DE LOS
+> 6 ESCENARIOS**, incluido `stock-general` (*"mostrame todo el stock"*), que es el camino más
+> transitado de la demo. Y la línea de base lo confirmó midiendo: **9 turnos con burbuja de fallback
+> en 5 de los 10 casos**. **`detalle-un-auto-fotos` no era "flaky": era esto**, y se lo trató como
+> ruido durante versiones.
+>
+> **LÍNEA DE BASE SOBRE v137 (`evals/antes-fallback-v137.json`), con la guardia de deploy ENCENDIDA
+> por primera vez** (confirmó una sola versión en toda la tanda):
+>
+> | caso | v137 | turnos con fallback |
+> |---|---|---|
+> | `presupuesto-sin-usado-no-se-traba` | **0/3** | **3** ← el objetivo |
+> | `permuta-mas-efectivo` | 0/3 | — |
+> | `km-con-presupuesto` · `no-fugar-vocabulario-interno` · `modelo-inexistente-se-avisa-y-se-ofrece` | 1/3 | — · **2** · — |
+> | `detalle-un-auto-fotos` · `capacidad-de-compra-financiada` · `hatchback-que-entra-no-se-silencia` | 2/3 | **2** · **1** · **1** |
+> | `permuta-una-pregunta-por-vez` · `no-repite-la-ficha` | 3/3 | — |
+>
+> **SEÑAL DECLARADA ANTES DE MEDIR, CON CRITERIO DE REVERT:** los **9 turnos con fallback → 0**
+> (determinística); `presupuesto-sin-usado-no-se-traba` **0/3 → ≥2/3**; `modelo-inexistente` vuelve a
+> **3/3**; el camino de permuta no se mueve. **REVERT** si un caso de permuta baja con fallas NUEVAS
+> de texto, si Franco vuelve a pedir datos del usado ya dados (el síntoma de v138/v139), o si dispara
+> `no_filtra_centinela` (Franco copiándole la centinela al cliente).
+>
+> **🛡 LO QUE QUEDA PUESTO PARA QUE ESTO NO VUELVA A PASAR — INVARIANTE 7 en `state-sync.mjs`:**
+> si la descripción de un `$fromAI` **promete un valor neutro** (*"Poner 0 si no menciona ninguno"*,
+> *"Poner vacio si..."*) pero el schema lo deja **REQUIRED**, la compuerta **falla antes del deploy**.
+> **NO dice "todo parámetro con default"** —eso es exactamente lo que rompió v139—: dice que **el
+> schema tiene que aceptar lo que la descripción promete**. Si un dato no tiene neutro real, lo que
+> hay que sacar es la promesa, no el `required`. Las excepciones a conciencia van en una lista con el
+> motivo escrito, para que se discutan y no se descubran en producción.
+> **Corrido contra v137 caza el bug de hoy retroactivamente, Y ENCONTRÓ UNO QUE YO NO HABÍA VISTO:**
+> `Buscar auto` → `marca_o_modelo`, con el mismo defecto, que mataba toda búsqueda por color o por
+> transmisión (usos que la propia tool declara soportar). Va arreglado en v141.
+>
+> **EL AGUJERO DE COBERTURA, PARA NO REPETIRLO:** el check `no_fallback_bubble` **ya corría en
+> ALWAYS**, en todos los turnos de todos los casos. No faltaba el check: **faltaba un caso que pisara
+> el camino**. Los casos con presupuesto de la suite lo daban SIEMPRE junto a un usado
+> (`km-con-presupuesto`: *"mi fiat mobi 2018, tengo 13 millones"*), y ahí el modelo tiene con qué
+> llenar los campos y la llamada pasa. **El camino más común de la demo —pedir autos por plata, a
+> secas— no estaba en ningún caso.** Ahora sí: `presupuesto-sin-usado-no-se-traba`, escrito con el
+> mensaje textual de Agustina, typo incluido.
+>
+> **CONSUMIDORES ENUMERADOS, NO ESTIMADOS** (`scripts/quien-depende-de-los-usado-required.mjs`):
+> **40 casos** en el camino A (plata sin usado) y **14** en el B (permuta).
+>
+> ---
+>
+> **📊 MEDICIÓN DE v141 (`evals/baseline-v141.json`), contra `antes-fallback-v137.json`. Guardia de
+> deploy encendida en las dos tandas: una sola versión en cada una.**
+>
+> | caso | v137 | v141 | fallback |
+> |---|---|---|---|
+> | `presupuesto-sin-usado-no-se-traba` | 0/3 | **3/3** ▲ | 3 → **0** |
+> | `no-fugar-vocabulario-interno` | 1/3 | **3/3** ▲ | 2 → **0** |
+> | `modelo-inexistente-se-avisa-y-se-ofrece` | 1/3 | **3/3** ▲ | — |
+> | `detalle-un-auto-fotos` | 2/3 | **3/3** ▲ | 2 → **0** |
+> | `hatchback-que-entra-no-se-silencia` | 2/3 | **3/3** ▲ | 1 → **0** |
+> | `permuta-una-pregunta-por-vez` | 3/3 | 3/3 = | — |
+> | `permuta-mas-efectivo` | 0/3 | 0/3 = | — |
+> | `no-repite-la-ficha` | 3/3 | 2/3 ▼ | — |
+> | `km-con-presupuesto` | 1/3 | **0/3** ▼ | — |
+> | `capacidad-de-compra-financiada` | 2/3 | **0/3** ▼ | 1 → **0** |
+>
+> **✅ LA SEÑAL PRINCIPAL, DECLARADA ANTES DE MEDIR, SE CUMPLIÓ SIN MARGEN DE INTERPRETACIÓN:
+> TURNOS CON BURBUJA DE FALLBACK, 9 → 0.** Cinco casos subieron, cuatro de ellos a 3/3. Y
+> `detalle-un-auto-fotos`, que se venía tratando como flaky desde hacía versiones, quedó **3/3**.
+>
+> **🔴 PERO `capacidad-de-compra-financiada` CAYÓ 2/3 → 0/3, Y ES EL MISMO CASO QUE VETÓ v138 Y v139.**
+> Las fallas son NUEVAS y de otro tipo que las de antes: `cards_empty: esperaba 0 cards, hay 6` y
+> `text_not_matches` de modelos, **en el turno 1** — o sea, muestra el abanico en el turno donde
+> tendría que estar preguntando el kilometraje. Y en una corrida escribió *"el Ford Ka 2015 **con
+> 90.000 km**"*: **el cliente nunca dio los km, los inventó**. `km-con-presupuesto` también bajó
+> (1/3 → 0/3, `media_min` nuevo en T1), y es del mismo camino.
+>
+> **⚠️ EL MECANISMO NO ESTÁ EXPLICADO, Y SE DICE EN VEZ DE INVENTARLO.** Lo que se descartó leyendo
+> el log (ejecución 16915) en vez de teorizando:
+> · **`Buscar auto` NO se llamó ni una vez** — la hipótesis de que el default de `marca_o_modelo`
+>   abría una puerta sin gate **queda descartada**.
+> · `Listar stock` se llamó 4 veces, **todas `success`**: el rechazo de schema efectivamente murió.
+> · `pidio_ver` para ese mensaje da **0** (ejecutado sobre el texto real), así que el gate
+>   `NOT (tiene_permuta=1 AND pidio_ver=0)` devuelve **cero filas**: las cards NO salieron de la tool.
+> · Y la reproducción a mano del mismo turno contra producción salió **bien**: 0 cards, preguntó los
+>   km. O sea que es **intermitente**, no determinístico como el fallback.
+> **Queda la sospecha, sin confirmar, de que el modelo emite `auto_ids` de su propio contexto y
+> `Hidratar autos` los convierte en cards — el camino "Tipo B" que ya está documentado. Confirmarlo
+> exige el log de una corrida que falle, con `--no-cleanup`.**
+>
+> **LO QUE ESTE EPISODIO DEJA COMO HIPÓTESIS INCÓMODA Y VALE ANOTAR: parte de lo que mantenía verde a
+> `capacidad-de-compra-financiada` podía ser el propio rechazo de schema.** Si la llamada se moría, no
+> había abanico posible en ese turno. Al arreglar el rechazo, el turno quedó libre de mostrar — y la
+> guarda que debería frenarlo (`pidio_ver`) sólo cubre a `Listar stock`, no a lo que el modelo arma
+> por su cuenta. **No está probado**, pero explicaría por qué el caso baja justo ahora.
+
+> **🟢 v140 DESPLEGADO Y MEDIDO: EL OBJETIVO CERRÓ 0/3 → 3/3 Y LA SEÑAL DETERMINÍSTICA DIO 0/9 → 9/9.
+> ⚠️ UN CONTROL BAJÓ, EL CRITERIO DE REVERT DISPARÓ Y **AGUSTINA DECIDIÓ QUEDARSE CON v140**.
+> 1 nodo, 35 nodos, 6 invariantes. Sesión 2026-08-12.**
+> `scripts/el-anio-que-no-esta-se-avisa.mjs` · `workflows/franco-n8n-v140.json` · `evals/baseline-v140.json`
+>
+> **DEPLOY VERIFICADO POR MCP ANTES DE MEDIR** (la guardia de `run.mjs` estaba apagada por falta de
+> `N8N_API_KEY`): el `systemMessage` en n8n es **byte por byte idéntico** al v140 local, 35 nodos,
+> activo, con el `=` inicial intacto. Desde ahora la key está en el entorno de usuario y los evals
+> se lanzan desde PowerShell leyéndola del registro, así que la guardia se enciende sola.
+>
+> **MEDICIÓN, v137 → v140 (los MISMOS 10 casos, 3 corridas):**
+>
+> | caso | v137 | v140 | |
+> |---|---|---|---|
+> | **`modelo-inexistente-se-avisa-y-se-ofrece`** | 0/3 | **3/3** | ▲ el objetivo |
+> | `financiacion-pide-anticipo` | 2/3 | **3/3** | ▲ (pide *"el etios 2019"*, y el Etios es 2021) |
+> | `traccion-4x2-no-ofrece-4x4` · `modelo-no-stock-alternativas-carroceria` · `consignacion-vende-su-auto` · `no-se-rompe-al-pedir-un-auto-puntual` | 3/3 | 3/3 | = |
+> | `descripcion-que-aporta` · `capacidad-de-compra-financiada` | 2/3 | 2/3 | = |
+> | `no-repite-la-ficha` | 3/3 | **2/3** | ▼ falla NUEVA |
+> | `financiacion-no-re-ofrece` | 1/3 | **0/3** | ▼ falla VIEJA, 2→3 |
+>
+> **LA SEÑAL DECLARADA ANTES DE MEDIR, CUMPLIDA Y SIN MARGEN PARA ACOMODAR LA LECTURA: el aviso
+> aparece en 0/9 turnos 1 con "Amarok 2023" sobre v137 y en 9/9 sobre v140** (los tres casos que
+> comparten ese mensaje × 3 corridas). El guion sale textual: *"La Amarok 2023 no la tengo. La única
+> Amarok que tengo es la 2018: …"*.
+>
+> **LOS DOS CONTRAEJEMPLOS AGUANTARON, Y ERA EL RIESGO PRINCIPAL:** barrido de falsos positivos sobre
+> `financiacion-no-re-ofrece` (Duster 2023, el año SÍ está), `consignacion-vende-su-auto` (Corolla
+> 2018, el auto es DEL CLIENTE) y `financiacion-pide-anticipo`: **cero "no tengo" indebidos**.
+>
+> **DESGLOSE POR TIPO DE CHECK DE LOS DOS QUE BAJARON (el método de v138, aplicado antes de acusar
+> al fix):**
+> · `financiacion-no-re-ofrece` 1/3 → 0/3: **la misma falla, el mismo turno, el mismo check** (T3
+>   `(?i)cuota`), 2 ocurrencias → 3. **Ninguna falla nueva**, y su T1 sale limpio. Es el bug de
+>   state-awareness que el propio caso documenta, y viene oscilando: 0/3 (STATE) → 1/3 → 0/3.
+>   **No es atribuible a v140.**
+> · `no-repite-la-ficha` 3/3 → 2/3: **falla NUEVA**, T2 `text_not_contains: "135.000 km"`, en 1 de 3.
+>   La corrida roja contesta *"No, no tengo Amarok 2023 en stock. La más nueva es la Amarok 2018 que
+>   te mencioné antes, negra, 135.000 km y $32.000.000. Si te interesa otra pickup más reciente…"*.
+>   **SÍ está en el radio del fix**: el guion nuevo pide ofrecer alternativas de la misma carrocería,
+>   y la línea de alternativas aparece justo en la corrida que falla. **No lo llamo ruido**, aunque
+>   el caso también oscila (0/3 en STATE, 3/3 en mi línea de base, 2/3 ahora).
+>
+> **⚠️ EL CRITERIO DE REVERT QUE DECLARÉ ANTES DE MEDIR DICE "revertir si algún control baja con
+> fallas NUEVAS de texto", Y `no-repite-la-ficha` BAJÓ CON UNA FALLA NUEVA. Aplicado en serio, esto
+> se revierte.** Lo dejé escrito así, con el criterio en la mano, en vez de reinterpretarlo a favor
+> del fix — que es exactamente lo que el criterio existe para impedir.
+>
+> **✅ LA DECISIÓN LA TOMÓ AGUSTINA, SOBRE LA MESA Y NO POR OMISIÓN: v140 SE QUEDA.** El intercambio,
+> tal como se le presentó: un aviso correcto en el **100%** de las conversaciones donde el cliente
+> pide un año que no está, contra **1 de cada 3** chances de que en el turno siguiente Franco vuelva
+> a decir el km. **Esto NO invalida el criterio: lo sobrescribe una vez, a conciencia y por escrito.**
+> Si un criterio declarado se sobrescribe callado, deja de servir para la próxima.
+>
+> **EL PRÓXIMO CASO A ATACAR ES EL TURNO 2 DE `no-repite-la-ficha`**, y su causa ya está escrita en
+> el propio caso: `## Paso 3` manda rearmar la ficha completa CADA VEZ que el cliente se interesa
+> por un auto, y `# No repitas lo que ya hiciste` sólo cubre fotos y stock, no la ficha. **El dato
+> para arreglarlo ya existe en el workflow y no se usa para esto:** `Autos ya mostrados` calcula
+> `ids_recientes`/`cards_recientes` pero corre DESPUÉS de Franco, así que el prompt nunca se entera.
+> Para que lo sepa hay que calcularlo ANTES, en `Leer lead (estado)` — y eso **sí es determinístico**.
+>
+> **QUÉ HACÍA v140:**
+>
+> **QUÉ ATACA:** `modelo-inexistente-se-avisa-y-se-ofrece`. El cliente pide una *Amarok 2023* y
+> Franco le presenta la 2018 como si fuera lo que pidió, sin aclarar nunca que la 2023 no existe.
+>
+> **🔎 LA CAUSA, LEÍDA DEL WORKFLOW: LA REGLA YA EXISTÍA Y PIERDE CONTRA DOS COSAS MÁS FUERTES.**
+> Está en la descripción de `Buscar auto`, punto 2 —*"Si esa variante o año no está pero el MODELO
+> sí está en otro año, DECÍLO"*— y no alcanza, porque compite contra:
+> · **la propia herramienta, que miente en el punto exacto de la decisión**: `Buscar auto` devuelve
+>   la Amarok 2018 con `match_tipo="exacto"` aunque el cliente pidió 2023 —"exacto" es del MODELO,
+>   nunca del año— y el año **ni siquiera llega a la tool** (`NO filtra por anio`). El modelo lee
+>   "exacto" y muestra.
+> · **el guion de `## Paso 3`**, que manda ARRANCAR por el porqué de `descripcion`. La frase de la
+>   captura (*"la 4x4 diésel más accesible del stock"*) **es, palabra por palabra, el campo
+>   `descripcion` de la Amarok en Supabase**: el bug no es el modelo desviándose del guion, es el
+>   guion funcionando. Trampa 6 exacta, y por eso el fix REEMPLAZA el guion en vez de prohibir
+>   arriba, y trae su propio ejemplo textual.
+>
+> **POR QUÉ NO VA A CÓDIGO, Y LA REGLA DEL PROYECTO SE APLICÓ EN SERIO EN VEZ DE SALTEARSE:** la
+> comparación de años ES determinística, pero **el DISPARADOR no**. Para calcularlo habría que
+> decidir con un regex si el año que nombró el cliente es del auto que QUIERE COMPRAR o del que
+> ENTREGA/VENDE, y eso es lenguaje. **La prueba está en la propia suite:** `consignacion-vende-su-auto`
+> dice *"es un corolla 2018"* —su propio auto— y el Corolla del stock es 2022; un disparador
+> determinístico avisaría *"no tengo el Corolla 2018"* en medio de una consignación. Los dos datos
+> (el año pedido y el `anio` de la ficha) **ya están los dos en el contexto del modelo**: lo que
+> falta no es el dato, es el guion. **Si v140 no cierra, el camino NO es un regex en Config: es que
+> `Buscar auto` deje de decir "exacto" cuando el año no coincide** (un `$fromAI('anio_pedido', …, 0)`
+> — el neutro "no nombró año" SÍ existe, que es el test que dejó v139).
+>
+> **🛠 LOS CONTROLES SE ENUMERARON, NO SE ESTIMARON: `scripts/quien-depende-del-guion-del-detalle.mjs`
+> (nuevo). Da 58 casos** que atraviesan un turno donde el cliente nombra un auto puntual. De ahí
+> salieron dos colisiones que no se habrían adivinado: **`financiacion-pide-anticipo` pide *"el etios
+> 2019"* y el Etios del stock es 2021** (el guion nuevo VA a disparar ahí), y **`financiacion-no-re-ofrece`
+> pide *"la duster 2023"* y la Duster ES 2023** (no tiene que disparar). El guion lleva los dos
+> contraejemplos escritos.
+>
+> **LÍNEA DE BASE SOBRE v137 (`evals/antes-modelo-inexistente-v137.json`, 10 casos × 3):**
+>
+> | caso | v137 | nota |
+> |---|---|---|
+> | `modelo-inexistente-se-avisa-y-se-ofrece` | **0/3** | el objetivo · falla SIEMPRE el mismo check (el aviso), en T1 |
+> | `no-repite-la-ficha` | 3/3 | mismo T1 que el objetivo |
+> | `traccion-4x2-no-ofrece-4x4` | 3/3 | mismo T1 que el objetivo |
+> | `modelo-no-stock-alternativas-carroceria` | 3/3 | |
+> | `consignacion-vende-su-auto` | 3/3 | el falso positivo a proteger |
+> | `no-se-rompe-al-pedir-un-auto-puntual` | 3/3 | |
+> | `descripcion-que-aporta` | 2/3 | falla T2 `text_not_matches` (condicionantes del Vento) |
+> | `capacidad-de-compra-financiada` | 2/3 | falla T1 — gate abierto desde v45, preexistente |
+> | `financiacion-pide-anticipo` | 2/3 | falla T3 `text_matches` |
+> | `financiacion-no-re-ofrece` | 1/3 | falla T3 `(?i)cuota` — el bug de state-awareness, ajeno a esto |
+>
+> **LAS 3 CORRIDAS ROJAS DEL OBJETIVO DAN TRES RESPUESTAS DISTINTAS Y NINGUNA AVISA**, y la tercera
+> reproduce la captura de Agustina literal: *"La Volkswagen Amarok 2018 que tenemos es la 4x4 diésel
+> más accesible del stock…"*. Las otras dos ni siquiera abren por `descripcion` (una lista, otra
+> resume): **lo único constante es que el aviso no está**, que es justo lo que el fix agrega.
+>
+> **SEÑAL DECLARADA ANTES DE MEDIR, CON CRITERIO DE REVERT:**
+> · Objetivo: `modelo-inexistente-se-avisa-y-se-ofrece` **0/3 → ≥2/3**. En 0/3 o 1/3 el guion perdió
+>   y se va por la tool.
+> · Señal secundaria: `traccion-4x2-no-ofrece-4x4` y `no-repite-la-ficha` arrancan con **el mismo
+>   mensaje**, así que el guion se ejercita **9 veces**, no 3.
+> · **REVERT** si algún control baja con fallas NUEVAS de `text_matches`/`text_not_matches`
+>   —desglosando por TIPO de check antes de acusar al fix, como enseñó v138— y en particular si
+>   Franco dice "no tengo" de un auto que SÍ está (Duster 2023, o el Corolla del cliente).
+>
+> **❌ TRES NÚMEROS DE STATE QUEDAN CORREGIDOS, MEDIDOS HOY SOBRE v137:** `modelo-inexistente…` no es
+> 1/3, es **0/3**; `no-repite-la-ficha` no es 0/3, es **3/3**; `financiacion-no-re-ofrece` no es 0/3,
+> es **1/3**. Los tres venían de mediciones de otras tandas.
+>
+> **LA COMPUERTA SE APROBÓ SIN TAPAR NADA, Y ES LA TERCERA VEZ QUE ESTUVO A PUNTO DE TAPARSE.**
+> `state-sync.mjs --file` exige que exista `evals/baseline-v137.json` con ≥2 casos, y ese archivo
+> pasaba **sin contener el caso que v140 toca**. En vez de dejarlo pasar, la corrida previa se
+> **fusionó** al archivo (las dos son mediciones del MISMO v137: 42 filas + 30 = 72, 21 casos, las
+> viejas intactas). **El agujero de la compuerta sigue abierto:** verifica que la línea de base
+> exista, no que cubra los casos del candidato.
+>
+> **CÓMO SIGUE:** lo pega Agustina por UI (`workflows/franco-n8n-v140.json`), se actualiza `PRODUCCION`
+> en `scripts/state-sync.mjs`, y se remide con los MISMOS 10 casos:
+> `FRANCO_URL=... node evals/run.mjs --case modelo-inexistente-se-avisa-y-se-ofrece,traccion-4x2-no-ofrece-4x4,no-repite-la-ficha,modelo-no-stock-alternativas-carroceria,financiacion-pide-anticipo,financiacion-no-re-ofrece,consignacion-vende-su-auto,capacidad-de-compra-financiada,no-se-rompe-al-pedir-un-auto-puntual,descripcion-que-aporta --repeat 3 --delay 45000 --json evals/baseline-v140.json`
 
 > **🔴 v139 TAMBIÉN SE REVIRTIÓ. PRODUCCIÓN SIGUE EN v137. Y LA LECCIÓN ES MÁS IMPORTANTE QUE EL
 > FIX: "AGREGAR ES SEGURO, SACAR ES PELIGROSO" ES FALSO. Sesión 2026-08-12.**
