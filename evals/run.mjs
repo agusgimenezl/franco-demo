@@ -699,7 +699,13 @@ const LEAD_CHECKS = {
 // ---------------------------------------------------------------- runner
 
 async function runCase(c) {
-  const sessionId = randomUUID()
+  // EL PREFIJO NO ES COSMÉTICO: es lo que mantiene las corridas fuera del Historial del cliente.
+  // Desde v142 el guardado es automático (antes hacía falta apretar el botón), y `Guardar lead`
+  // marca `is_saved` sólo si el session_id NO empieza con "eval-". Sin el prefijo, cada corrida de
+  // evals le mete decenas de conversaciones de prueba al historial que se muestra en las reuniones.
+  // `session_id` es `text` en crm_leads, mensajes_demo y n8n_chat_histories: el prefijo no rompe
+  // ningún tipo. Si esto se cambia, hay que cambiar también la condición de `Guardar lead`.
+  const sessionId = `eval-${randomUUID()}`
   const result = { id: c.id, bug: c.bug, sessionId, turns: [], failures: [], manuals: [], error: null }
   // Cada corrida es una sesión nueva: lo que el cliente vio en la anterior no cuenta.
   mediaPorTurno.length = 0

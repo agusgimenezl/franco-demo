@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v141.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v142.json` · 35 nodos
 
 | | |
 |---|---|
@@ -19,6 +19,64 @@
 **Invariantes:** ✅ los 7 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v142 DESPLEGADO Y VERIFICADO EN VIVO: EL HISTORIAL SE GUARDA SOLO, Y LOS EVALS NO ENTRAN.
+> 1 nodo (`Guardar lead`). Sesión 2026-08-12.**
+> `scripts/el-historial-se-guarda-solo.mjs` · `workflows/franco-n8n-v142.json`
+>
+> **PEDIDO DE AGUSTINA:** que las conversaciones queden en el Historial sin apretar el botón, pero
+> que no entren las que se mandan por terminal.
+>
+> **LO QUE CAMBIÓ EL PLANTEO AL LEER EL WORKFLOW: los mensajes YA se guardaban siempre.** Cada turno
+> escribe en `mensajes_demo`. El botón no guardaba nada nuevo: hacía `UPDATE crm_leads SET
+> is_saved = true`, y ese flag es el que filtran el Historial y la pestaña de Leads. Lo único a
+> cambiar era **cuándo `is_saved` nace en true** (el default de la columna es `false`).
+>
+> **QUÉ GUARDA — decisión de Agustina, "las que tengan algo", no todas:** `is_saved` nace en true si
+> la sesión NO empieza con `eval-` **y** (2+ mensajes del cliente en `mensajes_demo`, **o** dio su
+> nombre real, **o** el lead quedó en `Requiere asesor`). Una sesión de un solo "hola" no entra. El
+> botón sigue existiendo para forzar el guardado de una que no llegue al mínimo.
+>
+> **CÓMO SE EXCLUYEN LOS EVALS, SIN HEADERS NI COLUMNAS NUEVAS:** `run.mjs` prefija su session_id con
+> `eval-` y la condición exige `NOT LIKE 'eval-%'`. `session_id` es `text` en las tres tablas.
+> **Si se cambia el prefijo en `run.mjs`, hay que cambiar también la condición de `Guardar lead`.**
+> Se descartó mirar el header `x-franco-auth` del proxy: `CLAUDE.md` lo marca como delicado y
+> acoplarle el guardado es pedir problemas.
+>
+> **EL TIMING SE VERIFICÓ EN EL LOG, NO SE SUPUSO (ejecución 16915):** `Guardar mensajes (historial)`
+> corre en el índice **23** y `Guardar lead` en el **27**, así que cuando se evalúa la condición el
+> mensaje de ESE turno ya está contado. Por eso "2 o más" se cumple desde el 2º mensaje y no desde
+> el 3º.
+>
+> **NUNCA DEGRADA:** en el `ON CONFLICT` va `is_saved = crm_leads.is_saved OR EXCLUDED.is_saved`. Lo
+> que se guardó con el botón no se desmarca nunca.
+>
+> **NO TOCA NADA VIEJO, Y ESTO ERA UNA PREOCUPACIÓN EXPLÍCITA:** el cambio vive dentro de
+> `Guardar lead`, que sólo corre cuando una sesión recibe un turno. **No hay ningún UPDATE masivo.**
+> Las 2.403 sesiones que ya están en `crm_leads` no se re-evalúan nunca y quedan como están (hoy 24
+> en el Historial). La simulación decía que 1.519 *habrían* calificado y 884 quedaban afuera por
+> ruido — era para dimensionar el umbral, no algo que vaya a pasar.
+> **BORDE CONOCIDO, DEJADO A PROPÓSITO:** si alguien reabre la demo con un `session_id` viejo
+> guardado en el navegador, ese turno nuevo sí la evalúa y la puede guardar. Es una conversación que
+> volvió a estar viva. Si se quiere imposible, se acota con una fecha de corte en la condición.
+>
+> **VALIDADO CONTRA LA BASE ANTES DE DESPLEGAR, SIN ESCRIBIR:** `EXPLAIN` del INSERT renderizado
+> completo — sintaxis y tipos OK, `Conflict Resolution: UPDATE`. **Y VERIFICADO EN VIVO DESPUÉS**,
+> con tres sesiones contra producción:
+>
+> | sesión | mensajes del cliente | `is_saved` |
+> |---|---|---|
+> | UUID normal | 1 | **false** ✓ ruido afuera |
+> | UUID normal | 2 | **true** ✓ entra sola, sin botón |
+> | prefijo `eval-` | 2 | **false** ✓ las corridas afuera |
+>
+> Las tres sesiones de prueba se desmarcaron con un `UPDATE` (no se borró nada) para no dejar basura
+> en el Historial.
+>
+> **DEUDA QUE QUEDA A LA VISTA:** `Query delete` (el cleanup del eval) borra de `n8n_chat_histories`
+> y `crm_leads` pero **NO de `mensajes_demo`**, así que los mensajes de todas las corridas se
+> acumulan ahí desde siempre. Con el prefijo ahora al menos son identificables (`session_id LIKE
+> 'eval-%'`). No se tocó: es otro cambio.
 
 > **🔴🟢 EL DÍA QUE PRODUCCIÓN SE CAYÓ ENTERA Y LA CULPA NO ERA DEL ÚLTIMO CAMBIO. v141 DESPLEGADO.
 > Sesión 2026-08-12.**
