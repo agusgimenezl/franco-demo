@@ -3866,6 +3866,129 @@
           ]
         }
       ]
+    },
+    {
+      "id": "anticipo-no-cubre-el-auto-de-interes",
+      "bug": "CAPTURA DE AGUSTINA 2026-08-11, sesión REAL edc12363-45c5-4860-9d5d-aeba606adfb0 (Julieta Vega). La clienta vino por el Toyota Etios ($14.500.000, anticipo mínimo $7.250.000), preguntó por financiación, Franco le pidió el anticipo y ella contestó \"tengo 6 millones\" — le faltan $1.250.000. Franco contestó \"Perfecto, ya lo tengo anotado\" y la derivó: NUNCA comparó el anticipo contra el precio del auto de interés. Ninguna guarda de plata cubre este camino: v98/v99 exige monto_financiar, v100 exige que diga \"no tengo usado\", y v97/v113/v120 comparan contra el piso de una CARROCERÍA, no contra un auto puntual. El dato está en el lead (vehiculo_interes) y el precio en catalogo_precios: los dos ya viajan en \"Leer lead (estado)\" y nada los cruza.",
+      "turns": [
+        {
+          "say": "me interesa el toyota etios",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)etios"
+            ]
+          ]
+        },
+        {
+          "say": "cómo es el tema de la financiación?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)anticipo"
+            ]
+          ]
+        },
+        {
+          "say": "tengo 6 millones",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)7[\\.\\s]?250[\\.\\s]?000|12[\\.\\s]?000[\\.\\s]?000|12 millones"
+            ],
+            [
+              "text_not_matches",
+              "(?i)(ya )?lo tengo anotado|se lo dejo anotado|qued[oó] anotado"
+            ],
+            [
+              "manual",
+              "EL TURNO DEL CASO. El Etios sale $14.500.000 y el anticipo mínimo es $7.250.000: con $6.000.000 NO alcanza, le faltan $1.250.000. Franco tiene que decírselo con el número —el mínimo del Etios o el techo de $12.000.000— sin maquillarlo y sin dar la operación por armada. Puede seguir siendo comercial (ofrecer lo que sí le entra), pero NO puede anotar el anticipo como si cerrara."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preperfilado-pregunta-las-cuotas-tras-el-anticipo",
+      "bug": "MISMA CAPTURA 2026-08-11 (sesión edc12363), la otra mitad del bug. La línea 330 del prompt manda TEXTUAL: \"Recién con el anticipo preguntás las cuotas (12, 24, 36 o 48) si no las dio\", y que el embudo termina en el NOMBRE recién cuando están el anticipo Y las cuotas. Franco tenía el anticipo y saltó directo al cierre con \"Perfecto, ya lo tengo anotado. Querés que te contacte un asesor, o preferís que te muestre opciones?\" — que es lo que esa misma línea prohíbe con todas las letras (\"el embudo NO termina en 'se lo dejo anotado al asesor'\", \"NO cierres con ... 'querés ver otras opciones?'\"). Sospecha a confirmar: la 330 es el párrafo más largo del prompt y encadena ~8 reglas con varios guiones de SALIDA listos para copiar; \"preguntás las cuotas\" es una cláusula suelta en el medio. Es la lección 1 (un ejemplo elegible le gana a una regla que está más abajo). ADEMÁS ES EL CONTROL DE anticipo-no-cubre-el-auto-de-interes: con $8.000.000 el techo es $16.000.000 y el Etios ($14.500.000) SÍ entra, así que la guarda nueva NO tiene que disparar acá.",
+      "turns": [
+        {
+          "say": "me interesa el toyota etios",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)etios"
+            ]
+          ]
+        },
+        {
+          "say": "cómo es el tema de la financiación?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)anticipo"
+            ]
+          ]
+        },
+        {
+          "say": "tengo 8 millones",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)cu[aá]ntas cuotas|qu[eé] plazo|plazo[^.?]{0,30}(pens|prefer|ten[eé]s)|12,? ?24|24,? ?36|36 (o|y) 48"
+            ],
+            [
+              "text_not_matches",
+              "(?i)(ya )?lo tengo anotado|se lo dejo anotado|qued[oó] anotado"
+            ],
+            [
+              "manual",
+              "CONTROL DEL CASO ANTERIOR Y CASO PROPIO. Con $8.000.000 la operación SÍ cierra para el Etios ($14.500.000, mínimo $7.250.000): acá NO tiene que aparecer ningún \"no te alcanza\". Lo que sí tiene que hacer es el paso que falta del pre-perfilado: preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de cerrar o pedir el nombre."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anticipo-varios-autos-recuerda-el-50",
+      "bug": "DECISIÓN DE AGUSTINA 2026-08-11, la tercera rama de la guarda del anticipo. Cuando el cliente mostró interés en VARIOS autos (vehiculo_interes trae \"Chevrolet Onix / Volkswagen T-Cross / Toyota Corolla\" en leads reales de hoy), la guarda NO compara contra ninguno: decir \"no te alcanza\" cuando quizás le entra uno de los tres es el falso positivo más caro en una venta. Pero tampoco se calla el criterio: le RECUERDA que el anticipo tiene que ser como mínimo el 50% del valor del vehículo, y deja que el cliente elija. Hoy Franco no hace ni una cosa ni la otra: anota el anticipo y sigue.",
+      "turns": [
+        {
+          "say": "me interesan el onix y el corolla",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)onix"
+            ]
+          ]
+        },
+        {
+          "say": "cómo es el tema de la financiación?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)anticipo"
+            ]
+          ]
+        },
+        {
+          "say": "tengo 6 millones",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)50\\s?%|cincuenta por ciento|la mitad"
+            ],
+            [
+              "text_not_matches",
+              "(?i)(ya )?lo tengo anotado|se lo dejo anotado|qued[oó] anotado"
+            ],
+            [
+              "manual",
+              "Onix $21.500.000 (mínimo $10.750.000) y Corolla $24.800.000 (mínimo $12.400.000): con $6.000.000 no le alcanza para ninguno de los dos, PERO la decisión es que con varios autos Franco NO acuse \"no te alcanza\". Tiene que recordarle que el anticipo es como mínimo el 50% del valor del vehículo. NO tiene que anotar el anticipo y seguir."
+            ]
+          ]
+        }
+      ]
     }
   ]
 }
