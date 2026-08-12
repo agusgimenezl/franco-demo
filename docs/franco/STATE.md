@@ -14,11 +14,35 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 102 casos · baseline-v135.json → 11/15 |
+| Evals | 102 casos · baseline-v137.json → 12/15 |
 
 **Invariantes:** ✅ los 6 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v137 DESPLEGADO Y MEDIDO: EL BUG DE LAS URLs CERRADO, Y LA SEÑAL ERA DETERMINÍSTICA. 12/15.
+> Sesión 2026-08-12.**
+>
+> **MEDICIÓN (`evals/baseline-v137.json`) contra `baseline-v135.json`:**
+> · `fotos-sin-urls-en-el-texto` **0/3 → 3/3** ← el objetivo de v137
+> · **`no_url_en_texto`: 3 disparos en 3 casos → 0.** Era la señal declarada ANTES de medir, y es la
+>   que vale: determinística, sin margen para leerla como varianza.
+> · `preperfilado-cuotas-aunque-diga-la-palabra-anticipo` **1/3 → 2/3** ← predije 3/3, **no se cumplió**
+> · `anticipo-no-cubre-el-auto-de-interes` **3/3 → 2/3** · `preperfilado-pregunta-las-cuotas` 2/3 →
+>   2/3 · `no-se-rompe-al-pedir-un-auto-puntual` 3/3 → 3/3
+>
+> **v136 MEJORÓ PERO NO CERRÓ, Y EL PARSER SÍ ANDA.** La prueba está en la respuesta que falla:
+> *"Con $10.000.000 de anticipo se puede financiar hasta otro tanto, así que podés buscar un auto de
+> hasta…"*. **Antes de v136 ese monto no existía para el código; ahora lo usa y calcula el techo con
+> él.** Lo que falta no es el parseo: es que en esa corrida salió otra rama en vez de la de las
+> cuotas. **Queda abierto y hay que mirarlo en el log, no teorizar.**
+>
+> **EL CONTROL QUE BAJÓ: LECTURA PROBABLE, NO CONFIRMADA.** `anticipo-no-cubre-el-auto-de-interes`
+> falló contestando *"En cuántas cuotas lo pensabas…"* — la rama "alcanza" en vez de la de "no
+> entra", que es lo que pasa cuando la guarda **no encuentra el auto de interés**. Coincide con la
+> reserva declarada al armar v134 (el CRM escribe `vehiculo_interes` con un turno de retraso) y con
+> lo que ya le pasó a `anticipo-varios-autos`. **NO está confirmado: `run.mjs` no guarda `lead` en
+> este caso.** Para confirmarlo hay que correrlo con `--no-cleanup` y mirar el lead.
 
 > **🟢 v135 DESPLEGADO · 🟡 v136 y v137 ARMADOS Y APROBADOS, SIN DESPLEGAR. SEIS BUGS NUEVOS
 > REPORTADOS POR AGUSTINA, TODOS CON CASO. Sesión 2026-08-12.**
