@@ -1,0 +1,3076 @@
+[
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "f4fb4946-a4c2-422e-89b5-9c37fe0ba603",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 9633,
+        "response": {
+          "session_id": "f4fb4946-a4c2-422e-89b5-9c37fe0ba603",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna con pocos kilómetros (31.000 km). Tiene un despeje alto y un baúl grande de 475 litros, ideal para ripio y caminos rotos, apto para un uso rudo por el precio que tiene."
+            },
+            {
+              "type": "text",
+              "content": "Viene con motor 1.3 Turbo de 155 CV naftero, transmisión automática CVT y un consumo promedio aproximado de 7.8 L/100km. La versión es Iconic 1.3 Turbo TCe, color gris."
+            },
+            {
+              "type": "text",
+              "content": "Equipamiento destacado: climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo de smartphone."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 con un anticipo mínimo de $11.250.000 para financiar. La caja CVT pide un service específico y no es la indicada para remolque frecuente."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos publicadas que tenemos son estas:"
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase la cotización con financiación o preferís ver otras opciones de SUV que tenemos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 7
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 7
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 7
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 8346,
+        "response": {
+          "session_id": "f4fb4946-a4c2-422e-89b5-9c37fe0ba603",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano con motor 2.0 Turbo de 230 CV y transmisión automática DSG de 7 marchas. Es el auto no pickup con mayor potencia del stock y tiene solo 24.000 km, ideal para quienes buscan un andar de gama alta sin el costo de patentamiento de un 0 km."
+            },
+            {
+              "type": "text",
+              "content": "El consumo promedio es de aproximadamente 8.2 L/100km. Viene con equipamiento destacado como diferencial autoblocante electrónico XDS, suspensión trasera independiente multilink, techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $31.000.000 y el anticipo mínimo para financiar es de $15.500.000. El color del auto es blanco."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos publicadas son estas:"
+            },
+            {
+              "type": "text",
+              "content": "Es un turbo, así que pide nafta de buena calidad y tener el service al día para rendir bien."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te prepare una cotización o preferís que te muestre otras opciones de sedán?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 6
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_not_matches: matcheó /(?i)nafta de buena calidad|service al d[ií]a|ten[eé] en cuenta|consumo.{0,25}m[áa]s alto/ y no debería: \"nafta de buena calidad\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_not_matches: matcheó /(?i)nafta de buena calidad|service al d[ií]a|ten[eé] en cuenta|consumo.{0,25}m[áa]s alto/ y no debería: \"nafta de buena calidad\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "e157b759-846f-41ee-874e-e7ef52fc0faa",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 11910,
+        "response": {
+          "session_id": "e157b759-846f-41ee-874e-e7ef52fc0faa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna y de pocos kilómetros, gris, con despeje alto y baúl grande de 475 litros. Es ideal para ripio y camino roto, y es la que mejor aguanta el uso rudo por su precio."
+            },
+            {
+              "type": "text",
+              "content": "Tiene motor 1.3 Turbo TCe de 155 CV, naftero, con transmisión automática CVT. Su consumo promedio aproximado es de 7.8 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "El equipamiento incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone."
+            },
+            {
+              "type": "text",
+              "content": "El precio es de $22.500.000, con un anticipo mínimo de $11.250.000 para financiar."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Renault Duster son estas, con vistas generales y detalles del auto."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase el contacto de un asesor para coordinar una visita o te interesa saber cómo sería financiarlo?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 6
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 5765,
+        "response": {
+          "session_id": "e157b759-846f-41ee-874e-e7ef52fc0faa",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 GLI 2.0 TSI es un sedán mediano, blanco y con poco uso, que ofrece un motor turbo de 230 CV, la mayor potencia entre los autos no pickup del stock. Es ideal para quien busca andar de gama alta sin el costo de patentamiento de una unidad nueva."
+            },
+            {
+              "type": "text",
+              "content": "Tiene transmisión automática DSG, 7 marchas, diferencial autoblocante electrónico XDS y suspensión trasera independiente multilink. El consumo aproximado es de 8.2 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "El equipamiento es completo e incluye techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable."
+            },
+            {
+              "type": "text",
+              "content": "El precio es de $31.000.000, con un anticipo mínimo de $15.500.000 para financiar."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Volkswagen Vento son estas, con vistas generales y detalles del auto."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase el contacto de un asesor para coordinar una visita o te interesa saber cómo sería financiarlo?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "c52f63fa-5bdc-4518-8a27-5ea2b27e7069",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 7731,
+        "response": {
+          "session_id": "c52f63fa-5bdc-4518-8a27-5ea2b27e7069",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna y con pocos kilómetros (31.000 km). Tiene un despeje alto y baúl grande de 475 litros, ideal para caminos ripio o rotos. Viene con motor 1.3 Turbo TCe de 155 CV, nafta y transmisión automática CVT, con un consumo promedio aproximado de 7.8 L/100 km."
+            },
+            {
+              "type": "text",
+              "content": "El equipamiento incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone. El precio es $22.500.000, con un anticipo mínimo de $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos publicadas muestran vistas generales del vehículo. Querés que te conecte con un asesor para coordinar y contarte más, o te interesa saber cómo sería financiarlo en cuotas?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 6323,
+        "response": {
+          "session_id": "c52f63fa-5bdc-4518-8a27-5ea2b27e7069",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano, con motor turbo 2.0 TSI de 230 CV, la mayor potencia entre los autos no pickup del stock, con pocos kilómetros (24.000 km). Perfecto para quien quiere andar de gama alta sin el costo de una unidad nueva."
+            },
+            {
+              "type": "text",
+              "content": "Tiene transmisión automática DSG de 7 marchas, diferencial autoblocante electrónico XDS, techo solar panorámico, asientos deportivos de cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable. El consumo promedio aproximado es 8.2 L/100 km."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $31.000.000, con un anticipo mínimo de $15.500.000. Las fotos publicadas del Vento incluyen vistas generales del vehículo."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para coordinar y contarte más, o te interesa saber cómo sería financiarlo en cuotas?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "d91c16d2-ccae-4274-8b85-47e69aa23947",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 9036,
+        "response": {
+          "session_id": "d91c16d2-ccae-4274-8b85-47e69aa23947",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, teniendo en cuenta tu anticipo de 7 millones y tu Ford Ka 2015 con 100.000 km, podrías financiar hasta el 50% del valor del vehículo. La tasación final del auto que entregás la hace un asesor cuando lo vea en persona.\n\nPara seguir, me dejás tu nombre y apellido para que un asesor pueda contactarte y así coordina la mejor opción de financiación para vos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 2180,
+        "response": {
+          "session_id": "d91c16d2-ccae-4274-8b85-47e69aa23947",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, con esos datos ya puedo pasarle todo a un asesor para que coordine la tasación y te ayude con la financiación. Me dejás tu nombre y apellido para que te contacten?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 5921,
+        "response": {
+          "session_id": "d91c16d2-ccae-4274-8b85-47e69aa23947",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:\n- Toyota Etios 2021, hatchback, 45.000 km — $14.500.000\n- Volkswagen Gol Trend 2018, hatchback, 110.000 km — $9.200.000\n\nIntermedio:\n- Renault Kangoo 2021, utilitario, 82.000 km — $18.500.000\n- Fiat Cronos 2023, sedán, 28.000 km — $16.800.000\n\nAlto:\n- Jeep Renegade 2021, SUV, 42.000 km — $25.500.000\n- Toyota Corolla 2022, sedán, 35.000 km — $24.800.000\n\nLa tasación final de tu Ford la hace un asesor viéndolo en persona. Querés que te conecte con un asesor para que coordine la tasación y te arme una simulación, o preferís ver más opciones del stock?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "b8231d75-3139-4111-a6d2-a1fb8a48bf40",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 16320,
+        "response": {
+          "session_id": "b8231d75-3139-4111-a6d2-a1fb8a48bf40",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para armar el abanico de opciones con tu Ford Ka 2015 y $7 millones de anticipo para financiar, necesito saber cuántos kilómetros tiene tu auto para valuarlo mejor."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 10545,
+        "response": {
+          "session_id": "b8231d75-3139-4111-a6d2-a1fb8a48bf40",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya lo tengo anotado. Querés que te contacte un asesor para avanzar, o preferís que te muestre opciones que te podrían servir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 4751,
+        "response": {
+          "session_id": "b8231d75-3139-4111-a6d2-a1fb8a48bf40",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:"
+            },
+            {
+              "type": "text",
+              "content": "- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback, mismo porte que el tuyo)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, opción accesible dentro del presupuesto)\n- Ford Fiesta 2017 — 105.000 km — $8.200.000 (hatchback, también dentro de tu rango)"
+            },
+            {
+              "type": "text",
+              "content": "Si te interesa alguna o querés ver otras alternativas dentro del abanico, contame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "493bde16-69bd-4a13-95c4-4361e5e0c136",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 11397,
+        "response": {
+          "session_id": "493bde16-69bd-4a13-95c4-4361e5e0c136",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para armarte las opciones con tu Ford Ka 2015, 60.000 km y tu anticipo de 7 millones, necesito que me pases tu nombre y apellido para derivarte con un asesor que coordine todo y te arme la simulación personalizada. Me lo podés dar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 2267,
+        "response": {
+          "session_id": "493bde16-69bd-4a13-95c4-4361e5e0c136",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, ya tengo que el Ford Ka 2015 tiene 100.000 km. Ahora, para pasar todo a un asesor y que te prepare las mejores opciones de financiación, me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 7600,
+        "response": {
+          "session_id": "493bde16-69bd-4a13-95c4-4361e5e0c136",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:\n\n- Entrada:\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback, chico)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, chico)\n\n- Intermedio:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, mediano)\n\n- Alto:\n- Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV, mediano)\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán, mediano)\n\nLa tasación de tu usado la hace un asesor viendo el auto en persona. Querés que te conecte con uno para que coordine la tasación y te arme la simulación, o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "8567e1ad-dc56-4b31-89eb-bb6096eeb377",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 6387,
+        "response": {
+          "session_id": "8567e1ad-dc56-4b31-89eb-bb6096eeb377",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que tenemos es una SUV mediana, gris, con 31.000 km. Es la versión Iconic 1.3 Turbo TCe, con motor 1.3 Turbo de 155 CV, nafta y transmisión automática CVT. Tiene un consumo aproximado de 7.8 L/100km. El precio es $22.500.000 y el anticipo mínimo para financiar es de $11.250.000.\n\nLa Duster es una SUV moderna y de pocos kilómetros, con despeje alto y baúl grande de 475 litros, pensada para ripio y caminos rotos: es la que mejor aguanta el uso rudo por lo que cuesta."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Renault Duster 2023 son las que están publicadas: incluyen vistas generales de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2862,
+        "response": {
+          "session_id": "8567e1ad-dc56-4b31-89eb-bb6096eeb377",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, y podés pagar el resto con entrega inicial y cuotas. El valor exacto de la cuota depende del monto financiado, el plazo que elijas y las condiciones de la operación, por eso un asesor te arma una simulación personalizada con entrega, cuotas y requisitos."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 4495,
+        "response": {
+          "session_id": "8567e1ad-dc56-4b31-89eb-bb6096eeb377",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Renault Duster sale $22.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $11.250.000: con $10.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $20.000.000. Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 2560,
+        "response": {
+          "session_id": "8567e1ad-dc56-4b31-89eb-bb6096eeb377",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, para que un asesor te arme la simulación exacta de 36 cuotas y el valor de la cuota te lo confirme, necesito que me dejés tu nombre y apellido para que te contacten con todos los detalles."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 5299,
+        "response": {
+          "session_id": "8567e1ad-dc56-4b31-89eb-bb6096eeb377",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 que te interesa es la versión Iconic 1.3 Turbo TCe y está a $22.500.000. Tiene un motor naftero 1.3 turbo y transmisión automática CVT. Es una SUV mediana gris con 31.000 km y un consumo aproximado de 7.8 litros cada 100 km.\n\nLa caja CVT necesita un service específico y no es la más indicada para arrastrar peso seguido. El fuerte de esta Duster es su desempeño en caminos rotos y ripio, con despeje alto y baúl grande.\n\nTe pasé las fotos que tenemos publicadas, que muestran vistas generales del exterior. Si querés ver más detalles específicos, un asesor puede facilitártelos.\n\nQuerés que te conecte con un asesor para que te dé más info o te ayude con la financiación?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "a998fd44-da1d-4741-b39e-6b2b68397b94",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 5361,
+        "response": {
+          "session_id": "a998fd44-da1d-4741-b39e-6b2b68397b94",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y de pocos kilómetros, ideal para caminos rotos y uso rudo. Es gris, tiene 31.000 km y viene con motor 1.3 Turbo de 155 CV naftero con transmisión automática CVT. El consumo promedio es de 7.8 L/100km. Entre su equipamiento, tiene climatizador automático, detector de punto ciego, sistema de cámaras 360 grados, pantalla Easy Link de 8 pulgadas, cargador inductivo y un baúl de 475 litros. El precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Te mando las fotos que tenemos publicadas para que le eches un vistazo."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa que un asesor te prepare una cotización o preferís que te muestre otras SUV parecidas que tenemos en stock?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2155,
+        "response": {
+          "session_id": "a998fd44-da1d-4741-b39e-6b2b68397b94",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del vehículo, ya sea con la financiación propia de la agencia o mediante prenda, según el auto y tu perfil. El plan y el valor de la cuota te los confirma un asesor, porque dependen de las condiciones de financiación, el monto financiado y el plazo que elijas."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar con la simulación, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2519,
+        "response": {
+          "session_id": "a998fd44-da1d-4741-b39e-6b2b68397b94",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Renault Duster sale $22.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $11.250.000: con $10.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $20.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 1634,
+        "response": {
+          "session_id": "a998fd44-da1d-4741-b39e-6b2b68397b94",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y para que un asesor te arme la simulación exacta con 36 cuotas y el anticipo que me diste, me dejás tu nombre y apellido para que te contacten?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 3125,
+        "response": {
+          "session_id": "a998fd44-da1d-4741-b39e-6b2b68397b94",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es la Iconic 1.3 Turbo TCe, color gris, con 31.000 km y sale $22.500.000. Querés que te conecte con un asesor para que te pase la simulación personalizada o te muestro otras opciones similares?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-no-re-ofrece",
+    "bug": "captura: Franco recolectó anticipo (10M) + cuotas (36) para la Duster 2023. El cliente pivotea a 'tenés más info de la duster?'. Franco da la ficha y RE-OFRECE la financiación ('Te interesa saber cómo sería financiarla o entregando tu usado? O preferís verla en persona?'), como si no hubiera recolectado nada. Falta de state-awareness. RAÍZ: el cierre comercial de ## Paso 3 tiene el ejemplo 'te interesa saber cómo sería financiarlo o entregando tu usado?' y solo exceptúa la permuta, no la financiación en curso. Fix v52: excepción 2 — si ya dio anticipo/cuotas, NO re-ofrecer, consolidar.",
+    "sessionId": "9cd56fcf-5710-4ef9-b8d0-9400dfa99f43",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa la renault duster 2023",
+        "ms": 5630,
+        "response": {
+          "session_id": "9cd56fcf-5710-4ef9-b8d0-9400dfa99f43",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV mediana moderna y de pocos kilómetros, con despeje alto y un baúl grande de 475 litros, ideal para ripio y caminos rotos. Viene con motor 1.3 Turbo de 155 CV, naftera, transmisión automática CVT y consumo aproximado de 7.8 L/100km. Equipada con climatizador automático, detector de punto ciego, sistema de cámaras 360 grados y pantalla Easy Link de 8 pulgadas.\n\nEl precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000.\n\nLas fotos que tenemos son estas, que incluyen vistas generales y de la carrocería."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarla o preferís que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "sí, contame cómo sería la financiación",
+        "ms": 2265,
+        "response": {
+          "session_id": "9cd56fcf-5710-4ef9-b8d0-9400dfa99f43",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo. Para avanzar, necesitás un anticipo y el saldo se paga en cuotas. El valor exacto y las condiciones de las cuotas te las confirma un asesor, porque dependen del monto financiado, el plazo elegido y el perfil."
+            },
+            {
+              "type": "text",
+              "content": "Para poder darte una simulación personalizada, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "10 millones",
+        "ms": 2582,
+        "response": {
+          "session_id": "9cd56fcf-5710-4ef9-b8d0-9400dfa99f43",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Renault Duster sale $22.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $11.250.000: con $10.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $20.000.000. Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)cuota/"
+        ]
+      },
+      {
+        "n": 4,
+        "say": "36",
+        "ms": 1904,
+        "response": {
+          "session_id": "9cd56fcf-5710-4ef9-b8d0-9400dfa99f43",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y para ir avanzando con la simulación, me dejás tu nombre y apellido así un asesor te contacta y te pasa el detalle con las 36 cuotas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 5,
+        "say": "tenés más info de la duster?",
+        "ms": 3694,
+        "response": {
+          "session_id": "9cd56fcf-5710-4ef9-b8d0-9400dfa99f43",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 que tenemos es la versión Iconic 1.3 Turbo TCe, color gris, con 31.000 km. Sale $22.500.000.\n\nSi querés, un asesor puede contactarte para coordinar los siguientes pasos. Necesito que me dejes tu nombre y apellido para pasarle esa info."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)cuota/"
+    ],
+    "manuals": [
+      {
+        "turn": 5,
+        "note": "El cliente ya dio anticipo (10M) + cuotas (36). Tras pedir más info de la Duster, Franco NO debe RE-OFRECER 'te interesa financiarla / cómo sería financiarla o entregando tu usado?' (ya está en curso): debe consolidar ('te dejo anotado al asesor la simulación con tu anticipo y las 36 cuotas') y ofrecer el siguiente paso (verla en persona / algo más). En v51 re-ofrece → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "b0b6eb38-073e-46e1-8174-284c0fd66e45",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 9271,
+        "response": {
+          "session_id": "b0b6eb38-073e-46e1-8174-284c0fd66e45",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 no está disponible, pero tengo un Etios 2021 gris, con 45.000 km, que comparte la mecánica Toyota con cadena de distribución en lugar de correa, lo que le da buena reventa porque se deprecia menos y evita un service caro."
+            },
+            {
+              "type": "text",
+              "content": "Este Etios XLS 1.5 Dual VVT-i tiene motor 1.5 de 103 CV, nafta con transmisión manual de 6ta, y un consumo aproximado de 7.0 L/100km. Viene con control electrónico de estabilidad (ESP), volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla y llantas de aleación de 15 pulgadas."
+            },
+            {
+              "type": "text",
+              "content": "Está $14.500.000 y el anticipo mínimo para financiar es $7.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Te paso las fotos del auto para que lo veas."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente cómo sería financiarlo, o preferís que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 2096,
+        "response": {
+          "session_id": "b0b6eb38-073e-46e1-8174-284c0fd66e45",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del vehículo, y el plan y el valor de la cuota los define un asesor porque dependen de las condiciones y del monto que pongas de anticipo."
+            },
+            {
+              "type": "text",
+              "content": "Para armar una simulación, lo primero que necesito saber es de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 2144,
+        "response": {
+          "session_id": "b0b6eb38-073e-46e1-8174-284c0fd66e45",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 1844,
+        "response": {
+          "session_id": "b0b6eb38-073e-46e1-8174-284c0fd66e45",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Entiendo, pero para avanzar necesito saber de cuánto sería ese anticipo que tenés en mente, más o menos."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "676e8052-20c3-4b45-9595-e01320ba6866",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 10027,
+        "response": {
+          "session_id": "676e8052-20c3-4b45-9595-e01320ba6866",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que pediste no está, pero tengo un Toyota Etios 2021, color gris, con 45.000 km, por $14.500.000. Es un hatchback chico, con motor 1.5 de 103 CV, caja manual de 6 velocidades, y consumo aproximado de 7.0 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Viene con control electrónico de estabilidad y tracción, volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla y llantas de aleación de 15 pulgadas."
+            },
+            {
+              "type": "text",
+              "content": "Acá te dejo las fotos para que le eches un vistazo:"
+            },
+            {
+              "type": "text",
+              "content": "[Foto 1]  [Foto 2]  [Foto 3]"
+            },
+            {
+              "type": "text",
+              "content": "Es caja manual, si buscás automático dentro de ese rango el Cronos es la opción en stock. El anticipo mínimo para financiar este Etios es de $7.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase el contacto de un asesor para ayudarte a coordinar una visita o te interesa saber cómo sería la financiación?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 6
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 6
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 2123,
+        "response": {
+          "session_id": "676e8052-20c3-4b45-9595-e01320ba6866",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo. Podés poner un anticipo inicial y el saldo pagarlo en cuotas. El monto exacto de la cuota depende del anticipo que pongas, el plazo y tu perfil, por eso un asesor te arma una simulación personalizada para que veas los números con detalle."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar, de cuánto pensarías poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 2430,
+        "response": {
+          "session_id": "676e8052-20c3-4b45-9595-e01320ba6866",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 2003,
+        "response": {
+          "session_id": "676e8052-20c3-4b45-9595-e01320ba6866",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "18084773-7fc9-4a8a-8c93-e1c6eb967d7a",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 5927,
+        "response": {
+          "session_id": "18084773-7fc9-4a8a-8c93-e1c6eb967d7a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2019 que viste no está en stock, pero tenemos un Toyota Etios 2021 gris, 45.000 km, por $14.500.000. Es un hatchback con mecánica Toyota que usa cadena de distribución, lo que implica menor depreciación y menos costos de mantenimiento."
+            },
+            {
+              "type": "text",
+              "content": "Tiene motor 1.5 de 103 CV, naftero, caja manual de 6ta, y consume aproximadamente 7.0 L/100km. Viene con control electrónico de estabilidad y tracción, volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla y llantas de aleación de 15 pulgadas."
+            },
+            {
+              "type": "text",
+              "content": "Te dejo las fotos que tenemos del Etios 2021 para que lo mires."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase más detalles o te conecto con un asesor para que te arme una cotización o coordine una visita?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 2574,
+        "response": {
+          "session_id": "18084773-7fc9-4a8a-8c93-e1c6eb967d7a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Para financiar, podemos ofrecer hasta el 50% del valor del vehículo, ya sea con financiación propia o mediante prenda, dependiendo del perfil y el auto."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar, necesitás dar una entrega inicial y después podés pagar el saldo en cuotas. El valor exacto de la cuota y las condiciones dependen de cuánto pongas de anticipo y el plazo que elijas, eso te lo confirma un asesor con una simulación personalizada."
+            },
+            {
+              "type": "text",
+              "content": "Como es tu primer auto, no tenés un usado para entregar. Para que un asesor te haga la simulación exacta, de cuánto pensás poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 1664,
+        "response": {
+          "session_id": "18084773-7fc9-4a8a-8c93-e1c6eb967d7a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 2443,
+        "response": {
+          "session_id": "18084773-7fc9-4a8a-8c93-e1c6eb967d7a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Para avanzar con la financiación necesito saber cuánto pensás poner de anticipo, más o menos. Sin ese dato no puedo estimar las cuotas ni las opciones para vos. De cuánto sería el anticipo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "a5a5baf8-9277-46aa-8e0b-b087df6b106c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 9204,
+        "response": {
+          "session_id": "a5a5baf8-9277-46aa-8e0b-b087df6b106c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok Highline 4x2 2022 a 2024 no la tengo en stock. La única pickup 4x2 que tengo es esta Chevrolet S10 2022, que te puede interesar:"
+            },
+            {
+              "type": "text",
+              "content": "Chevrolet S10 4x2 2022, color blanco, 68.000 km. Motor 2.8 Duramax de 200 CV, diesel, transmisión automática. Consumo promedio aproximado: 9,0 L/100km. Precio: $39.500.000. Equipamiento destacado: tracción 4x2 trasera, central multimedia MyLink con Wi-Fi nativo, 6 airbags, alerta de colisión frontal, alerta de cambio involuntario de carril, climatizador automático y tapizados de cuero sintético."
+            },
+            {
+              "type": "text",
+              "content": "Tené en cuenta que esta S10 es 4x2, no es 4x4, así que no sustituye una tracción integral para barro o ripio suelto."
+            },
+            {
+              "type": "text",
+              "content": "Te paso las fotos que tenemos publicadas para que la puedas ver mejor."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber más de esta Chevrolet S10 o querés que te ayude con otra cosa?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "ffce6244-459a-4e3e-aa02-a91f45c820bc",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 12558,
+        "response": {
+          "session_id": "ffce6244-459a-4e3e-aa02-a91f45c820bc",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "No tengo la Volkswagen Amarok Highline 4x2 2022 a 2024 en stock. La única pickup 4x2 que tengo disponible es la Chevrolet S10 LTZ 2.8 TD 4x2 del 2022, blanca, con 68.000 km, motor 2.8 Duramax de 200 CV diésel y transmisión automática. Tiene un consumo promedio aproximado de 9.0 L/100km. Entre sus equipamientos están la central multimedia MyLink con Wi-Fi nativo e integración OnStar, 6 airbags, alerta de colisión frontal, alerta de cambio involuntario de carril, climatizador automático y tapizados de cuero sintético. El precio es de $39.500.000 y el anticipo mínimo es de $19.750.000."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa que te cuente más detalles de este auto o querés que te ayude con otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-no-stock-alternativas-carroceria",
+    "bug": "BUG-A (captura Agustina): pidio 'Amarok Highline 4x2 2022 a 2024'. NO esta esa variante, PERO hay una Amarok 2018 4x4 en stock (id 15) y otras pickups (S10 id16, Hilux id13, Ranger id14). Franco dijo 'no tenemos' y mostro T-Cross/Vento (VW al azar), OCULTANDO la Amarok 2018 y sin ofrecer pickups. Correcto: (1) mencionar que SI hay una Amarok (2018, otro anio/variante); (2) alternativas por CARROCERIA (pidio pickup -> pickups), no por marca; (3) ofrecer ver todo el stock o mas detalle. Diagnostico en LOG: no aplicar anio_min a una busqueda de modelo puntual.",
+    "sessionId": "ab3e130a-2895-4017-a581-e4d8b09abbbd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "busco una amarok highline 4x2 2022 a 2024",
+        "ms": 6352,
+        "response": {
+          "session_id": "ab3e130a-2895-4017-a581-e4d8b09abbbd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok Highline 4x2 de 2022 a 2024 no la tengo en stock. La única pickup 4x2 del stock es la Chevrolet S10 2022, versión LTZ 2.8 TD 4x2, color blanco y con 68.000 km."
+            },
+            {
+              "type": "text",
+              "content": "Este modelo tiene un motor diesel 2.8 Duramax de 200 CV, transmisión automática, y un consumo promedio aproximado de 9.0 L/100km. Cuenta con central multimedia MyLink con Wi-Fi, 6 airbags, alerta de colisión, alerta de cambio de carril, climatizador automático y tapizados de cuero sintético. El precio es $39.500.000 y el anticipo mínimo que se pide es $19.750.000."
+            },
+            {
+              "type": "text",
+              "content": "Tené en cuenta que esta S10 es 4x2, no tiene tracción 4x4, así que para barro o ripio suelto no es lo ideal."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te ayude a ver otras pickups o preferís que un asesor te contacte para buscar la Amarok Highline 4x2 que querés?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe mencionar la Amarok 2018 que SI esta en stock y ofrecer PICKUPS (S10/Hilux/Ranger) como alternativa, no SUVs/sedanes VW. Y ofrecer todo el stock o mas detalle. En el LOG de Buscar auto: no filtrar por anio_min a una busqueda de modelo puntual."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "consignacion-vende-su-auto",
+    "bug": "CONSIGNACION (Fase 1, feature nueva): el cliente no viene a comprar sino a VENDER su auto (quiere que la agencia se lo venda). En v66 Franco no conoce la consignacion: o lo confunde con permuta/compra (pregunta presupuesto, tira stock) o lo manda a tasacion generica. Debe reconocer que es consignacion, explicar como funciona con datos del FAQ (comision 5%, sigue siendo titular, el asesor arma el contrato) y derivar de a una pregunta por turno (auto -> km -> nombre), sin mostrar stock ni pedir presupuesto.",
+    "sessionId": "5c148f27-a85e-4dec-8e12-5dfd5e8936f2",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, quiero vender mi auto. ustedes me lo venden por mí?",
+        "ms": 2441,
+        "response": {
+          "session_id": "5c148f27-a85e-4dec-8e12-5dfd5e8936f2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "dale, tu auto lo podemos vender en consignación: lo publicamos y lo vendemos por vos, y cobramos una comisión del 5% cuando se concreta. Vos seguís siendo el titular hasta la venta. Qué auto es, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "es un corolla 2018",
+        "ms": 2137,
+        "response": {
+          "session_id": "5c148f27-a85e-4dec-8e12-5dfd5e8936f2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "genial, un Corolla 2018. Cuántos kilómetros tiene tu auto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "80 mil km",
+        "ms": 1746,
+        "response": {
+          "session_id": "5c148f27-a85e-4dec-8e12-5dfd5e8936f2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "con esos datos ya le puedo pasar todo a un asesor para que coordine la inspección y arme el contrato de consignación. Me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "Rodrigo Paz",
+        "ms": 1852,
+        "response": {
+          "session_id": "5c148f27-a85e-4dec-8e12-5dfd5e8936f2",
+          "messages": [
+            {
+              "type": "text",
+              "content": "listo Rodrigo, ya le paso todo a un asesor para que coordine la inspección y arme el contrato de consignación. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Cliente quiere VENDER su auto (consignacion), NO comprar. Franco explica como funciona (lo vende por el, comision 5%, sigue siendo titular hasta la venta, asesor coordina la inspeccion y arma el contrato) y arranca a derivar pidiendo que auto es. NO abre permuta/compra (nada de presupuesto/anticipo) ni tira stock/cards."
+      },
+      {
+        "turn": 2,
+        "note": "Sabe el auto (Corolla 2018) pero no los km: pide los km, de a UNA pregunta. Sigue en consignacion/derivacion, sin stock ni cards."
+      },
+      {
+        "turn": 3,
+        "note": "Ya tiene auto + km. Ahora pide el NOMBRE Y APELLIDO (una sola pregunta) para derivar. No re-pregunta datos del auto ni tira stock."
+      },
+      {
+        "turn": 4,
+        "note": "Ya tiene auto + km + nombre. Confirma que un asesor lo contacta para coordinar la inspeccion y el contrato de consignacion, y cierra. Trata por nombre de pila (Rodrigo), NO repite el apellido, NO re-pide el nombre, NO tira stock."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "consignacion-vende-su-auto",
+    "bug": "CONSIGNACION (Fase 1, feature nueva): el cliente no viene a comprar sino a VENDER su auto (quiere que la agencia se lo venda). En v66 Franco no conoce la consignacion: o lo confunde con permuta/compra (pregunta presupuesto, tira stock) o lo manda a tasacion generica. Debe reconocer que es consignacion, explicar como funciona con datos del FAQ (comision 5%, sigue siendo titular, el asesor arma el contrato) y derivar de a una pregunta por turno (auto -> km -> nombre), sin mostrar stock ni pedir presupuesto.",
+    "sessionId": "dac3d33b-bf51-4fe9-8364-46fbf3cc1a9c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, quiero vender mi auto. ustedes me lo venden por mí?",
+        "ms": 3053,
+        "response": {
+          "session_id": "dac3d33b-bf51-4fe9-8364-46fbf3cc1a9c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, podemos ayudarte a vender tu auto en consignación. Lo publicamos y vendemos por vos, cobrando una comisión del 5% sobre el precio de venta cuando se concreta la operación. Vos seguís siendo el titular hasta que se venda el auto, y un asesor coordina la inspección y arma el contrato.\n\nQué auto es, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "es un corolla 2018",
+        "ms": 2221,
+        "response": {
+          "session_id": "dac3d33b-bf51-4fe9-8364-46fbf3cc1a9c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Toyota Corolla 2022 lo podemos vender en consignación. Para seguir, cuántos kilómetros tiene?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "80 mil km",
+        "ms": 1993,
+        "response": {
+          "session_id": "dac3d33b-bf51-4fe9-8364-46fbf3cc1a9c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con esos datos ya le puedo pasar todo a un asesor para que coordine la inspección y arme el contrato de consignación. Me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "Rodrigo Paz",
+        "ms": 2581,
+        "response": {
+          "session_id": "dac3d33b-bf51-4fe9-8364-46fbf3cc1a9c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Rodrigo, con tu Toyota Corolla 2018 y 80.000 km ya le paso todo a un asesor para que coordine la inspección y arme el contrato de consignación. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Cliente quiere VENDER su auto (consignacion), NO comprar. Franco explica como funciona (lo vende por el, comision 5%, sigue siendo titular hasta la venta, asesor coordina la inspeccion y arma el contrato) y arranca a derivar pidiendo que auto es. NO abre permuta/compra (nada de presupuesto/anticipo) ni tira stock/cards."
+      },
+      {
+        "turn": 2,
+        "note": "Sabe el auto (Corolla 2018) pero no los km: pide los km, de a UNA pregunta. Sigue en consignacion/derivacion, sin stock ni cards."
+      },
+      {
+        "turn": 3,
+        "note": "Ya tiene auto + km. Ahora pide el NOMBRE Y APELLIDO (una sola pregunta) para derivar. No re-pregunta datos del auto ni tira stock."
+      },
+      {
+        "turn": 4,
+        "note": "Ya tiene auto + km + nombre. Confirma que un asesor lo contacta para coordinar la inspeccion y el contrato de consignacion, y cierra. Trata por nombre de pila (Rodrigo), NO repite el apellido, NO re-pide el nombre, NO tira stock."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "consignacion-vende-su-auto",
+    "bug": "CONSIGNACION (Fase 1, feature nueva): el cliente no viene a comprar sino a VENDER su auto (quiere que la agencia se lo venda). En v66 Franco no conoce la consignacion: o lo confunde con permuta/compra (pregunta presupuesto, tira stock) o lo manda a tasacion generica. Debe reconocer que es consignacion, explicar como funciona con datos del FAQ (comision 5%, sigue siendo titular, el asesor arma el contrato) y derivar de a una pregunta por turno (auto -> km -> nombre), sin mostrar stock ni pedir presupuesto.",
+    "sessionId": "bf3d5f7c-af61-4e7b-a884-9ee4efff3792",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, quiero vender mi auto. ustedes me lo venden por mí?",
+        "ms": 2946,
+        "response": {
+          "session_id": "bf3d5f7c-af61-4e7b-a884-9ee4efff3792",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Claro, podemos vender tu auto en consignación: lo publicamos y lo vendemos por vos, y cobramos una comisión del 5% cuando se concreta la venta. Vos seguís siendo el titular hasta que se venda y un asesor coordina la inspección del vehículo y arma el contrato. Qué auto es, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "es un corolla 2018",
+        "ms": 1977,
+        "response": {
+          "session_id": "bf3d5f7c-af61-4e7b-a884-9ee4efff3792",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, un Toyota Corolla 2022 lo podemos vender en consignación. Cuántos kilómetros tiene?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "80 mil km",
+        "ms": 1609,
+        "response": {
+          "session_id": "bf3d5f7c-af61-4e7b-a884-9ee4efff3792",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con esos datos ya le puedo pasar todo a un asesor para que coordine la inspección y arme el contrato de consignación. Me dejás tu nombre y apellido?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "Rodrigo Paz",
+        "ms": 1817,
+        "response": {
+          "session_id": "bf3d5f7c-af61-4e7b-a884-9ee4efff3792",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Listo Rodrigo, con el Toyota Corolla 2018 con 80.000 km ya le paso todo a un asesor para que coordine la inspección y arme el contrato. Necesitás que te ayude con algo más mientras tanto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Cliente quiere VENDER su auto (consignacion), NO comprar. Franco explica como funciona (lo vende por el, comision 5%, sigue siendo titular hasta la venta, asesor coordina la inspeccion y arma el contrato) y arranca a derivar pidiendo que auto es. NO abre permuta/compra (nada de presupuesto/anticipo) ni tira stock/cards."
+      },
+      {
+        "turn": 2,
+        "note": "Sabe el auto (Corolla 2018) pero no los km: pide los km, de a UNA pregunta. Sigue en consignacion/derivacion, sin stock ni cards."
+      },
+      {
+        "turn": 3,
+        "note": "Ya tiene auto + km. Ahora pide el NOMBRE Y APELLIDO (una sola pregunta) para derivar. No re-pregunta datos del auto ni tira stock."
+      },
+      {
+        "turn": 4,
+        "note": "Ya tiene auto + km + nombre. Confirma que un asesor lo contacta para coordinar la inspeccion y el contrato de consignacion, y cierra. Trata por nombre de pila (Rodrigo), NO repite el apellido, NO re-pide el nombre, NO tira stock."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "traccion-4x2-no-ofrece-4x4",
+    "bug": "captura Agustina 2026-08-05: el cliente pide 'Estoy buscando una Amarok 2023', Franco le describe la Amarok 2018 (unica en stock) SIN aclarar que no tiene la 2023 y SIN el precio; despues el cliente dice 'Estoy buscando una 4x2' y Franco le vuelve a ofrecer LA MISMA Amarok 2018, que es 4x4, justificandolo con 'si no te molesta que una sea 4x4 y la otra 4x2'. ROOT CAUSE del sintoma critico: NINGUNA de las 3 tools tiene parametro de traccion. El dato SI existe en la columna content ('Volkswagen Amarok 4x4 2018, color negro...' — armar_content del .py concatena Version/Edicion) pero NO esta en metadata, asi que hoy el filtro 4x2/4x4 lo tiene que hacer el modelo de cabeza. 'Buscar auto' ya filtra TRANSMISION con ese mismo patron (content ILIKE '%transmision autom%'), asi que el mecanismo ya existe y falta el gemelo para la traccion. Es la otra mitad del BUG-A de v61 (aquella captura era literalmente 'Amarok 4x2 2022-24'): entonces se arreglaron las alternativas por carroceria y el filtro de traccion nunca se implemento. En el stock de 17 la UNICA 4x2 es la Chevrolet S10 2022 (id 16); Amarok, Hilux y Ranger son 4x4.",
+    "sessionId": "725f8cb6-f3cc-45af-ae7d-3a6884777860",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 4653,
+        "response": {
+          "session_id": "725f8cb6-f3cc-45af-ae7d-3a6884777860",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018, una pickup 4x4 diésel con buena potencia y equipamiento completo, ideal para quien necesita tracción real y no quiere pagar una unidad más reciente. Precio $32.000.000, con 135.000 km y un consumo aproximado de 9.2 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Si buscás algo más nuevo dentro de pickups, tengo estas opciones: una Ford Ranger 2024 4x4 automática a $57.000.000, una Chevrolet S10 2022 4x2 a $39.500.000, y una Toyota Hilux 2021 4x4 a $38.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te detalle alguna de estas pickups o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Estoy buscando una 4x2",
+        "ms": 5960,
+        "response": {
+          "session_id": "725f8cb6-f3cc-45af-ae7d-3a6884777860",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Amarok 4x2 no está disponible, pero tengo esta pickup Chevrolet S10 2022 4x2. Es blanca, con 68.000 km, motor 2.8 Duramax diésel automático de 200 CV y un consumo promedio de 9.0 L/100km. Es ideal para trabajo con buena ecuación para carga y ruta, por bastante menos plata que las 4x4 del stock."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $39.500.000 y el anticipo mínimo para financiar sería $19.750.000. Tiene buen equipamiento: tracción trasera 4x2, central multimedia MyLink con Wi-Fi, 6 airbags, alerta de colisión y cambio de carril, climatizador automático y tapizados de cuero sintético."
+            },
+            {
+              "type": "text",
+              "content": "Es importante mencionar que, al ser 4x2 no reemplaza a una tracción integral para barro, ripio suelto o campo. Tenés las fotos publicadas del auto para que veas cómo es."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te brinde más detalles o te ayude con la financiación?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Aparte del bug de traccion, aca deberia (a) aclarar que NO tiene la Amarok 2023 pero si una 2018 —la regla ya existe en ## Buscar auto— y (b) decir el precio, que el ## Paso 3 ya pide primero en la lista de datos. Son adherencia, se miden aparte."
+      },
+      {
+        "turn": 2,
+        "note": "La UNICA 4x2 del stock es la Chevrolet S10 2022. Hilux y Ranger son 4x4 y NUNCA se nombraron en la conversacion: si aparecen es que dumpeo las pickups sin filtrar. La Amarok es el caso ambiguo y por eso NO esta en el check de texto: mencionarla para DESCARTARLA (\"la que te mostre es 4x4, no 4x2\") es correcto; volver a ofrecerla como opcion no. Eso se revisa a mano."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "traccion-4x2-no-ofrece-4x4",
+    "bug": "captura Agustina 2026-08-05: el cliente pide 'Estoy buscando una Amarok 2023', Franco le describe la Amarok 2018 (unica en stock) SIN aclarar que no tiene la 2023 y SIN el precio; despues el cliente dice 'Estoy buscando una 4x2' y Franco le vuelve a ofrecer LA MISMA Amarok 2018, que es 4x4, justificandolo con 'si no te molesta que una sea 4x4 y la otra 4x2'. ROOT CAUSE del sintoma critico: NINGUNA de las 3 tools tiene parametro de traccion. El dato SI existe en la columna content ('Volkswagen Amarok 4x4 2018, color negro...' — armar_content del .py concatena Version/Edicion) pero NO esta en metadata, asi que hoy el filtro 4x2/4x4 lo tiene que hacer el modelo de cabeza. 'Buscar auto' ya filtra TRANSMISION con ese mismo patron (content ILIKE '%transmision autom%'), asi que el mecanismo ya existe y falta el gemelo para la traccion. Es la otra mitad del BUG-A de v61 (aquella captura era literalmente 'Amarok 4x2 2022-24'): entonces se arreglaron las alternativas por carroceria y el filtro de traccion nunca se implemento. En el stock de 17 la UNICA 4x2 es la Chevrolet S10 2022 (id 16); Amarok, Hilux y Ranger son 4x4.",
+    "sessionId": "00779a03-485d-4ace-9014-0e9d2b5c14a8",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 5555,
+        "response": {
+          "session_id": "00779a03-485d-4ace-9014-0e9d2b5c14a8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018 Comfortline 2.0 TDI 180 CV 4Motion, pickup 4x4 diésel en color negro con 135.000 km y automática. Es la opción para quien necesita tracción real sin pagar una unidad reciente, con buena potencia y equipamiento completo."
+            },
+            {
+              "type": "text",
+              "content": "El consumo promedio es de aproximadamente 9.2 L/100km, y el precio es $32.000.000. El anticipo mínimo para financiarla es $16.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo mostrar las fotos que tenemos de esta Amarok, que incluyen varias vistas generales y de la carrocería."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te cuente más detalles o te prepare una cotización?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Estoy buscando una 4x2",
+        "ms": 5453,
+        "response": {
+          "session_id": "00779a03-485d-4ace-9014-0e9d2b5c14a8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, para 4x2 la que tengo es esta Chevrolet S10 2022 LTZ 2.8 TD 4x2, pickup grande en color blanco con 68.000 km y automática. Es una pickup de trabajo con buen motor diesel de 200 CV y 500 Nm, ideal para carga y ruta, y bastante más accesible que las 4x4 del stock."
+            },
+            {
+              "type": "text",
+              "content": "El consumo promedio es de 9.0 L/100km y su precio es $39.500.000, con un anticipo mínimo de $19.750.000 para financiar."
+            },
+            {
+              "type": "text",
+              "content": "Es 4x2, no 4x4: si buscas ir por barro o ripio suelto, esta no reemplaza a una tracción integral."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos de esta S10 son las que están publicadas, que incluyen vistas generales y de la carrocería."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te cuente más detalles o te prepare una cotización?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Aparte del bug de traccion, aca deberia (a) aclarar que NO tiene la Amarok 2023 pero si una 2018 —la regla ya existe en ## Buscar auto— y (b) decir el precio, que el ## Paso 3 ya pide primero en la lista de datos. Son adherencia, se miden aparte."
+      },
+      {
+        "turn": 2,
+        "note": "La UNICA 4x2 del stock es la Chevrolet S10 2022. Hilux y Ranger son 4x4 y NUNCA se nombraron en la conversacion: si aparecen es que dumpeo las pickups sin filtrar. La Amarok es el caso ambiguo y por eso NO esta en el check de texto: mencionarla para DESCARTARLA (\"la que te mostre es 4x4, no 4x2\") es correcto; volver a ofrecerla como opcion no. Eso se revisa a mano."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "traccion-4x2-no-ofrece-4x4",
+    "bug": "captura Agustina 2026-08-05: el cliente pide 'Estoy buscando una Amarok 2023', Franco le describe la Amarok 2018 (unica en stock) SIN aclarar que no tiene la 2023 y SIN el precio; despues el cliente dice 'Estoy buscando una 4x2' y Franco le vuelve a ofrecer LA MISMA Amarok 2018, que es 4x4, justificandolo con 'si no te molesta que una sea 4x4 y la otra 4x2'. ROOT CAUSE del sintoma critico: NINGUNA de las 3 tools tiene parametro de traccion. El dato SI existe en la columna content ('Volkswagen Amarok 4x4 2018, color negro...' — armar_content del .py concatena Version/Edicion) pero NO esta en metadata, asi que hoy el filtro 4x2/4x4 lo tiene que hacer el modelo de cabeza. 'Buscar auto' ya filtra TRANSMISION con ese mismo patron (content ILIKE '%transmision autom%'), asi que el mecanismo ya existe y falta el gemelo para la traccion. Es la otra mitad del BUG-A de v61 (aquella captura era literalmente 'Amarok 4x2 2022-24'): entonces se arreglaron las alternativas por carroceria y el filtro de traccion nunca se implemento. En el stock de 17 la UNICA 4x2 es la Chevrolet S10 2022 (id 16); Amarok, Hilux y Ranger son 4x4.",
+    "sessionId": "0fd05e4e-e557-40e6-8fa4-945c828aaace",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 4303,
+        "response": {
+          "session_id": "0fd05e4e-e557-40e6-8fa4-945c828aaace",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Precio: $32.000.000, 135.000 km, consumo aproximado 9,2 L/100 km. Es una pickup grande, ideal para quien necesita tracción real. Las fotos están publicadas y te las puedo mostrar."
+            },
+            {
+              "type": "text",
+              "content": "Si buscás algo más nuevo, también tengo opciones de pickups grandes como la Ford Ranger 2024, Chevrolet S10 2022 o Toyota Hilux 2021. Querés que te muestre alguna en detalle o te paso todo el stock para que veas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Estoy buscando una 4x2",
+        "ms": 4702,
+        "response": {
+          "session_id": "0fd05e4e-e557-40e6-8fa4-945c828aaace",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Chevrolet S10 2022 es una pickup 4x2 blanca, con 68.000 km y motor 2.8 Duramax diésel de 200 CV con transmisión automática. Tiene un consumo promedio aproximado de 9.0 L/100 km y cuenta con buen equipamiento: central multimedia MyLink con Wi-Fi, 6 airbags, alerta de colisión y climatizador automático. Precio: $39.500.000, anticipo mínimo $19.750.000."
+            },
+            {
+              "type": "text",
+              "content": "Es ideal para trabajo con buena potencia y carga, aunque al ser 4x2 no reemplaza una tracción integral para barro o terreno suelto. Las fotos que tenemos están publicadas con vistas exteriores y generales."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te dé más detalles o te ayude a coordinar la compra?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Aparte del bug de traccion, aca deberia (a) aclarar que NO tiene la Amarok 2023 pero si una 2018 —la regla ya existe en ## Buscar auto— y (b) decir el precio, que el ## Paso 3 ya pide primero en la lista de datos. Son adherencia, se miden aparte."
+      },
+      {
+        "turn": 2,
+        "note": "La UNICA 4x2 del stock es la Chevrolet S10 2022. Hilux y Ranger son 4x4 y NUNCA se nombraron en la conversacion: si aparecen es que dumpeo las pickups sin filtrar. La Amarok es el caso ambiguo y por eso NO esta en el check de texto: mencionarla para DESCARTARLA (\"la que te mostre es 4x4, no 4x2\") es correcto; volver a ofrecerla como opcion no. Eso se revisa a mano."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-repite-la-ficha",
+    "bug": "Reporte de Agustina 2026-08-06, sesion REAL b6b3ed0c-484e-444d-92e2-83657d697f16 leida de mensajes_demo (no de la captura, que corta). Turno 1 \"Estoy buscando una Amarok 2023.\": Franco da la ficha completa de la Amarok 2018 (135.000 km, motor 2.0L de 180 HP, transmision manual, consumo 9.8 L/100km, aire acondicionado, pantalla multimedia, camara de retroceso, sensores de estacionamiento, $32.000.000). Eso esta BIEN, es el detalle que corresponde. Turno 2 \"2023 no tienen?\": Franco REPITE LOS MISMOS 7 DATOS casi palabra por palabra, un turno despues, con todo eso todavia en pantalla. La respuesta correcta a esa pregunta es una linea: no hay 2023, la mas nueva es la 2018. CAUSA (leida del prompt, no supuesta): ## Paso 3 manda armar el detalle completo CADA VEZ que el cliente se interesa por un auto, y # No repitas lo que ya hiciste SOLO cubre fotos y stock completo, no la ficha. DATO QUE YA EXISTE EN EL WORKFLOW Y NO SE USA PARA ESTO: el nodo Autos ya mostrados calcula ids_recientes y cards_recientes, pero corre DESPUES de Franco (alimenta a Armar respuesta), asi que el prompt nunca se entera. Para que Franco lo sepa hay que calcularlo ANTES, en Leer lead (estado). Los checks del turno 2 miran datos que son EXCLUSIVOS de la Amarok (135.000 km, 180 HP, 9.8) y el equipamiento: ninguno tiene motivo legitimo para reaparecer, y no se pisan con la lista de alternativas mas nuevas (Ranger/S10/Hilux), que si es una respuesta razonable a la pregunta.",
+    "sessionId": "18a6edb2-437f-42f2-af6d-f02b4aac13e9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 5144,
+        "response": {
+          "session_id": "18a6edb2-437f-42f2-af6d-f02b4aac13e9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018, una pickup 4x4 diésel con buena potencia y equipamiento completo. Es la versión Comfortline 2.0 TDI de 180 CV con transmisión automática, en color negro y 135.000 km. El consumo promedio es de alrededor de 9,2 L/100km y el precio es $32.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Tiene tracción integral permanente 4x4 4Motion, caja automática de 8 marchas, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase las fotos que tenemos publicadas de esta Amarok o preferís que te ayude con otra cosa?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "2023 no tienen?",
+        "ms": 7293,
+        "response": {
+          "session_id": "18a6edb2-437f-42f2-af6d-f02b4aac13e9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Exacto, no hay Amarok 2023 en nuestro stock actualmente, solo la de 2018 que te conté. Tenés en mente un presupuesto o querés saber qué otras pickups o SUVs tenemos disponibles?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-repite-la-ficha",
+    "bug": "Reporte de Agustina 2026-08-06, sesion REAL b6b3ed0c-484e-444d-92e2-83657d697f16 leida de mensajes_demo (no de la captura, que corta). Turno 1 \"Estoy buscando una Amarok 2023.\": Franco da la ficha completa de la Amarok 2018 (135.000 km, motor 2.0L de 180 HP, transmision manual, consumo 9.8 L/100km, aire acondicionado, pantalla multimedia, camara de retroceso, sensores de estacionamiento, $32.000.000). Eso esta BIEN, es el detalle que corresponde. Turno 2 \"2023 no tienen?\": Franco REPITE LOS MISMOS 7 DATOS casi palabra por palabra, un turno despues, con todo eso todavia en pantalla. La respuesta correcta a esa pregunta es una linea: no hay 2023, la mas nueva es la 2018. CAUSA (leida del prompt, no supuesta): ## Paso 3 manda armar el detalle completo CADA VEZ que el cliente se interesa por un auto, y # No repitas lo que ya hiciste SOLO cubre fotos y stock completo, no la ficha. DATO QUE YA EXISTE EN EL WORKFLOW Y NO SE USA PARA ESTO: el nodo Autos ya mostrados calcula ids_recientes y cards_recientes, pero corre DESPUES de Franco (alimenta a Armar respuesta), asi que el prompt nunca se entera. Para que Franco lo sepa hay que calcularlo ANTES, en Leer lead (estado). Los checks del turno 2 miran datos que son EXCLUSIVOS de la Amarok (135.000 km, 180 HP, 9.8) y el equipamiento: ninguno tiene motivo legitimo para reaparecer, y no se pisan con la lista de alternativas mas nuevas (Ranger/S10/Hilux), que si es una respuesta razonable a la pregunta.",
+    "sessionId": "aa08e8d5-1f6a-498d-8dac-daa02174971f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 4925,
+        "response": {
+          "session_id": "aa08e8d5-1f6a-498d-8dac-daa02174971f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018:\n\nEs la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Es ideal para quien necesita tracción real y no quiere pagar una unidad reciente.\n\nPrecio: $32.000.000\nAño: 2018\nKilómetros: 135.000 km\nMotor: Diésel\nConsumo aproximado: 9.2 L/100km\n\nLas fotos que tenemos de la Volkswagen Amarok 2018 son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "2023 no tienen?",
+        "ms": 5299,
+        "response": {
+          "session_id": "aa08e8d5-1f6a-498d-8dac-daa02174971f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "No tengo ninguna Amarok 2023 en stock actualmente. Solo la Amarok 2018 está disponible."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre otras pickups o te ayude a buscar algún otro modelo o tipo de auto?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-repite-la-ficha",
+    "bug": "Reporte de Agustina 2026-08-06, sesion REAL b6b3ed0c-484e-444d-92e2-83657d697f16 leida de mensajes_demo (no de la captura, que corta). Turno 1 \"Estoy buscando una Amarok 2023.\": Franco da la ficha completa de la Amarok 2018 (135.000 km, motor 2.0L de 180 HP, transmision manual, consumo 9.8 L/100km, aire acondicionado, pantalla multimedia, camara de retroceso, sensores de estacionamiento, $32.000.000). Eso esta BIEN, es el detalle que corresponde. Turno 2 \"2023 no tienen?\": Franco REPITE LOS MISMOS 7 DATOS casi palabra por palabra, un turno despues, con todo eso todavia en pantalla. La respuesta correcta a esa pregunta es una linea: no hay 2023, la mas nueva es la 2018. CAUSA (leida del prompt, no supuesta): ## Paso 3 manda armar el detalle completo CADA VEZ que el cliente se interesa por un auto, y # No repitas lo que ya hiciste SOLO cubre fotos y stock completo, no la ficha. DATO QUE YA EXISTE EN EL WORKFLOW Y NO SE USA PARA ESTO: el nodo Autos ya mostrados calcula ids_recientes y cards_recientes, pero corre DESPUES de Franco (alimenta a Armar respuesta), asi que el prompt nunca se entera. Para que Franco lo sepa hay que calcularlo ANTES, en Leer lead (estado). Los checks del turno 2 miran datos que son EXCLUSIVOS de la Amarok (135.000 km, 180 HP, 9.8) y el equipamiento: ninguno tiene motivo legitimo para reaparecer, y no se pisan con la lista de alternativas mas nuevas (Ranger/S10/Hilux), que si es una respuesta razonable a la pregunta.",
+    "sessionId": "3ba30641-b5f2-4821-8cfc-4e1e1d6ce1e3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 6033,
+        "response": {
+          "session_id": "3ba30641-b5f2-4821-8cfc-4e1e1d6ce1e3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es una pickup 4x4 diésel con buena potencia y equipamiento completo. Es la versión Comfortline 2.0 TDI 180 CV 4Motion, automática. Está negra, tiene 135.000 km y un consumo aproximado de 9,2 L/100km. El precio es $32.000.000, y el anticipo mínimo para financiar es $16.000.000. Te puedo pasar las fotos que tenemos publicadas, que son generales de la carrocería, y un asesor te las facilita si querés imágenes específicas del interior o detalles."
+            },
+            {
+              "type": "text",
+              "content": "Te las paso, y si querés te conecto con un asesor para que te dé más info o te ayude a coordinar la compra. Querés que te lo pase?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "2023 no tienen?",
+        "ms": 7494,
+        "response": {
+          "session_id": "3ba30641-b5f2-4821-8cfc-4e1e1d6ce1e3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "No, no tengo Amarok 2023 en stock. La más nueva es la Amarok 2018 que te mencioné antes, negra, 135.000 km y $32.000.000. Si te interesa otra pickup más reciente, tengo una Ford Ranger 2024 gris 4x4 por $57.000.000, una Chevrolet S10 2022 blanca 4x2 por $39.500.000 y una Toyota Hilux 2021 blanca 4x4 por $38.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase el detalle de alguna de estas pickups, o preferís que te muestre otra cosa?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_not_contains: no debería aparecer: 135.000 km"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_not_contains: no debería aparecer: 135.000 km"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "La pregunta es de UNA linea: no hay 2023, la mas nueva es la 2018. La ficha ya esta arriba en el chat. Puede ofrecer alternativas mas nuevas, eso esta bien; lo que no puede es recitar de nuevo los datos de la Amarok. ⚠️ STRINGS REPARADOS EL 2026-08-10: este check apuntaba a '180 HP', '9.8', 'aire acondicionado', 'pantalla multimedia' y 'camara de retroceso'. La migracion a la ficha V2 los borro a todos (hoy son '180 CV' y '9.2', y el equipamiento es otro), asi que el check estaba VERDE SIN MEDIR NADA. Ahora apunta a los strings que la Amarok tiene de verdad. Es el mismo modo de falla que se anoto en la migracion: cada vez que cambian los datos hay que buscar que checks quedaron apuntando a strings que ya no existen."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "54011537-140b-448f-9ca4-ae515c9b4121",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 5714,
+        "response": {
+          "session_id": "54011537-140b-448f-9ca4-ae515c9b4121",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es la versión Comfortline 2.0 TDI 180 CV 4Motion, color negro, con 135.000 km. Es una pickup 4x4 diésel con buena potencia y equipamiento completo, ideal para quien necesita tracción real sin pagar tanto por una unidad reciente."
+            },
+            {
+              "type": "text",
+              "content": "Precio: $32.000.000. Motor 2.0 Bi-Turbodiésel de 180 CV, caja automática de 8 marchas, consumo promedio aproximado de 9.2 L/100 km."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos del auto son estas: las que están publicadas en el stock, con vistas generales y de la carrocería. Si querés fotos específicas del interior o algún detalle, un asesor te las puede facilitar."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te ayude con el contacto de un asesor para coordinar una visita o cotizarla, o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "5d31f62f-0c37-474e-90ee-307165197d4f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 6019,
+        "response": {
+          "session_id": "5d31f62f-0c37-474e-90ee-307165197d4f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018, versión Comfortline 2.0 TDI 180 CV 4Motion. Es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Es negra, automática, con 135.000 km y un consumo promedio de 9.2 L/100km. El precio es $32.000.000 y el anticipo mínimo para financiar es $16.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Tiene tracción integral permanente 4x4 4Motion, caja automática de 8 marchas, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero. Las fotos que tenemos de la Amarok están publicadas en el stock e incluyen varias vistas generales y de la carrocería."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para coordinar la compra o preferís que te muestre otras opciones de pickups?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "7647244d-e485-4079-b125-68d2931723cb",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 5708,
+        "response": {
+          "session_id": "7647244d-e485-4079-b125-68d2931723cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es una pickup 4x4 diésel con buena potencia y equipamiento completo. Tiene motor 2.0 Bi-Turbodiésel de 180 CV, caja automática de 8 marchas, tracción integral permanente 4x4 4Motion y sensores de estacionamiento delanteros y traseros. Consumo promedio aproximado 9,2 L/100km. Está en color negro, con 135.000 km y cuesta $32.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Volkswagen Amarok 2018 son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "cfbfcdf9-7c1b-4ec3-8174-84b481fe2388",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 7003,
+        "response": {
+          "session_id": "cfbfcdf9-7c1b-4ec3-8174-84b481fe2388",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Está en color negro y tiene 135.000 km.\n\nEs la versión Comfortline 2.0 TDI con 180 CV, motor Bi-Turbodiésel, transmisión automática y tracción integral permanente 4x4 4Motion. El consumo aproximado es de 9.2 L/100km.\n\nEl precio es $32.000.000 y el anticipo mínimo para financiarla es $16.000.000.\n\nTiene sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road y un volante multifunción en cuero.\n\nLas fotos que tenemos de la Volkswagen Amarok son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "9f768e8c-1f4f-4155-87de-3f254ac1c2e4",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 6838,
+        "response": {
+          "session_id": "9f768e8c-1f4f-4155-87de-3f254ac1c2e4",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Es ideal si necesitás tracción real y preferís no pagar una unidad más reciente."
+            },
+            {
+              "type": "text",
+              "content": "Precio: $32.000.000\nAño: 2018\nKilómetros: 135.000 km\nMotor: 2.0 Bi-Turbodiésel de 180 CV\nTransmisión: automática de 8 marchas\nConsumo aproximado: 9.2 L/100km\nEquipamiento destacado: tracción integral permanente 4x4 4Motion, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road, volante multifunción en cuero."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos de la Volkswagen Amarok son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "b19b7379-c486-4a29-a346-7a8c75966994",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 24529,
+        "response": {
+          "session_id": "b19b7379-c486-4a29-a346-7a8c75966994",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 Comfortline 2.0 TDI 180 CV 4Motion es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Está en negro, automática, con 135.000 km y consumo aproximado de 9.2 L/100km. El precio es $32.000.000 y el anticipo mínimo para financiar es $16.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Tiene tracción integral permanente 4x4 4Motion, caja automática de 8 marchas, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Volkswagen Amarok son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  }
+]
