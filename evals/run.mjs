@@ -410,6 +410,18 @@ const CHECKS = {
     return hits.length === 0 ? null : `se filtró una expresión de n8n sin resolver: ${[...new Set(hits)].slice(0, 3).join(' | ')}`
   },
 
+// Una URL cruda pegada en el TEXTO de una burbuja. Las fotos viajan por `images`, que es otro
+  // canal: si además se escriben como texto, el cliente ve tres links kilométricos de Supabase.
+  // Capturado por Agustina el 2026-08-12 pidiendo fotos del Vento, sobre v134.
+  // MEDIDO CONTRA EL CORPUS: 6 burbujas de 13.366 en 2.881 sesiones, y las 6 son este bug —
+  // 0 falsos positivos. Mira allText (sólo el contenido de las burbujas) y NO el JSON entero:
+  // en `images` y `product_cards` las URLs son legítimas y las cubre photo_urls_canonical.
+  // Corre en TODOS los turnos.
+  no_url_en_texto: (r) => {
+    const hits = [...allText(r).matchAll(/https?:\/\/\S+/g)].map((m) => m[0])
+    return hits.length === 0 ? null : `se filtró una URL al texto de la burbuja: ${hits.slice(0, 2).join(' | ')}`
+  },
+
   text_not_matches: (r, pattern) => {
     const flags = pattern.startsWith('(?i)') ? 'i' : ''
     const re = new RegExp(pattern.replace(/^\(\?i\)/, ''), flags)
@@ -636,7 +648,8 @@ const CHECKS = {
 
 // Checks que corren en cada turno de cada caso, sin declararlos.
 const ALWAYS = ['no_template_leak', 'no_fallback_bubble', 'media_si_lista_autos',
-  'no_inventa_autos', 'no_filtra_centinela', 'no_vocabulario_interno', 'no_nombre_inventado']
+  'no_inventa_autos', 'no_filtra_centinela', 'no_vocabulario_interno', 'no_nombre_inventado',
+  'no_url_en_texto']
 
 // Checks sobre el historial guardado. Corren contra `mensajes_demo`, no contra la
 // respuesta del webhook.

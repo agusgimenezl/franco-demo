@@ -3989,6 +3989,182 @@
           ]
         }
       ]
+    },
+    {
+      "id": "no-niega-stock-sin-consultarlo",
+      "bug": "CAPTURA DE AGUSTINA 2026-08-12, sesión REAL 16787147-4cba-4816-9e68-16eb6c8f3faf, ejecución de n8n 15903. El cliente pregunta \"perfecto y el corolla que vi en el instagram?\" y Franco contesta \"No tengo en stock un Toyota Corolla ahora\": el Corolla 2022 ESTÁ en stock a $24.800.000, y dos mensajes después lo lista cuando le piden todo el stock. CAUSA LEÍDA DEL LOG: en esa ejecución NO corrió ninguna herramienta (5,4 s), mientras que el turno anterior de la misma charla corrió Buscar auto x2 y Detalle auto x2 (13,1 s). Franco afirmó que no hay stock SIN CONSULTAR EL STOCK: en su contexto sólo estaban el Onix y la T-Cross del turno previo, no encontró el Corolla ahí y leyó su propio contexto como si fuera el inventario. Negar stock que existe mata la venta en el acto y la demo se muestra a dueños de concesionaria.",
+      "turns": [
+        {
+          "say": "Buenas, me darias mas info del onix y de la t cross?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)onix"
+            ]
+          ]
+        },
+        {
+          "say": "perfecto y el corolla que vi en el instagram?",
+          "checks": [
+            [
+              "text_not_matches",
+              "(?i)(no (lo )?ten(go|emos)|no hay|no contamos con|no dispon\\w+)[^.!?]{0,35}(stock|disponible)|corolla[^.!?]{0,30}no (est[aá]|hay|lo ten)"
+            ],
+            [
+              "text_matches",
+              "(?i)corolla"
+            ],
+            [
+              "manual",
+              "EL TURNO DEL CASO. El Toyota Corolla 2022 ESTÁ en stock: $24.800.000, 35.000 km. Franco tiene que consultar el stock antes de afirmar nada sobre disponibilidad. Puede pedir precisiones o pasar la ficha, pero NO puede decir que no lo tiene. Que la pregunta venga con contexto de afuera (\"que vi en el instagram\") no cambia que el auto está en el stock."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fotos-sin-urls-en-el-texto",
+      "bug": "CAPTURA DE AGUSTINA 2026-08-12 sobre v134. Al pedir fotos del Volkswagen Vento, Franco las manda por el canal `images` —bien— y ADEMÁS pega las tres URLs crudas de Supabase como texto de una burbuja: el cliente ve tres links kilométricos. El check que lo caza es `no_url_en_texto`, que corre en ALWAYS porque esto no tiene que pasar en ninguna respuesta, no sólo en ésta. Medido contra el corpus: 6 burbujas de 13.366 lo tienen y las 6 son este bug. Este caso existe para ejercitarlo a propósito, porque pedir fotos es lo que lo dispara.",
+      "turns": [
+        {
+          "say": "El volkswagen vento tiene algún detalle? Me compartirías fotos por dentro y fuera del mismo?",
+          "checks": [
+            [
+              "media_min",
+              1
+            ],
+            [
+              "manual",
+              "Las fotos van por el canal de imágenes, NUNCA como URLs escritas en el texto. Franco puede decir que le pasa las fotos y aclarar que las del interior las facilita un asesor, pero sin pegar un solo link."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preperfilado-cuotas-aunque-diga-la-palabra-anticipo",
+      "bug": "CAPTURA DE AGUSTINA 2026-08-12 sobre v134, charla del Toyota Etios (01:09-01:11). El cliente dice \"Puedo dar un anticipo de 10M\" y Franco salta directo a \"me dejás tu nombre y apellido?\" SIN preguntar las cuotas, que es el paso que v134 agregó. CAUSA VERIFICADA EJECUTANDO EL PARSER DE Config: no es \"10M\" (eso lo entiende: \"doy 10M de anticipo\" da 10.000.000), es la palabra \"anticipo\" ENTRE EL VERBO Y EL NÚMERO — el regex de entrega_plata sabe saltar relleno (de|un|unos|como|hasta) pero no \"anticipo\", y entrega_plata_resp exige que el mensaje empiece con el número. Los dos dan 0, dioPlata queda false y el bloque de v113/v134 no dispara. LO GRAVE: la guarda del anticipo de v134 depende de ese mismo parser, así que con esta redacción tampoco protege del anticipo insuficiente.",
+      "turns": [
+        {
+          "say": "me interesa el toyota etios",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)etios"
+            ]
+          ]
+        },
+        {
+          "say": "hacen financiación?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)anticipo|50\\s?%"
+            ]
+          ]
+        },
+        {
+          "say": "Puedo dar un anticipo de 10M",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)cu[aá]ntas cuotas|qu[eé] plazo|plazo[^.?]{0,30}(pens|prefer|ten[eé]s)|12,? ?24|24,? ?36|36 (o|y) 48"
+            ],
+            [
+              "text_not_matches",
+              "(?i)nombre y apellido|dej[aá]s tu nombre|dejame tu nombre|pas[aá]s tu nombre|c[oó]mo te llam[aá]s"
+            ],
+            [
+              "manual",
+              "EL TURNO DEL CASO. \"Puedo dar un anticipo de 10M\" son $10.000.000 y el Etios sale $14.500.000, así que la operación entra. Franco tiene que preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de pedir el nombre. Que el cliente use la palabra \"anticipo\" en el medio de la frase no puede cambiar lo que Franco entiende."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usado-sin-detalles-no-se-completa-con-el-auto-de-interes",
+      "bug": "CAPTURA DE AGUSTINA 2026-08-12 sobre v134, sesión REAL d2ac87f0-d835-45d9-8ab0-5f236f4ccd80 (Guillermo Vilte). El cliente dice \"perdon, si tengo un usado para entregar\" sin dar marca, modelo ni año, y Franco contesta \"Perfecto Guillermo, tenés una Volkswagen Amarok 2018 para entregar\": le atribuyó como usado el auto que estaba mirando para COMPRAR. NO lo inventó Franco — lo escribió el CRM: el lead quedó con vehiculo_interes y descripcion_usado IDÉNTICOS (\"Volkswagen Amarok 2018\"), y Franco leyó lead_usado y lo repitió. El prompt del CRM YA tiene la regla correcta (\"Si entrega pero TODAVÍA no dio ningún detalle: Auto usado mencionado, sin detalles\"), así que no falta regla: falta la comparación determinística. Si descripcion_usado == vehiculo_interes, es un error de copia — nadie entrega como usado la misma unidad que está por comprar. EL CASO TIENE UN TURNO INTERMEDIO A PROPÓSITO: el CRM escribe vehiculo_interes con un turno de retraso, así que con sólo dos turnos no hay nada escrito de donde copiar y el bug no se reproduce (medido: 1/3, y esa falla era del fallback, no de este bug). GRAVE porque el lead llega al asesor con un dato FALSO del cliente y la ficha del CRM es la pantalla de la demo.",
+      "turns": [
+        {
+          "say": "me interesa la volkswagen amarok",
+          "checks": []
+        },
+        {
+          "say": "cuánto sale?",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)32[\\.\\s]?000[\\.\\s]?000|amarok"
+            ]
+          ]
+        },
+        {
+          "say": "tengo un usado para entregar",
+          "checks": [
+            [
+              "text_not_matches",
+              "(?i)(ten[eé]s|ten[eé]es) (una |un )?(volkswagen )?amarok|tu (volkswagen )?amarok"
+            ],
+            [
+              "manual",
+              "EL TURNO DEL CASO. El cliente NO dijo qué usado tiene: sólo que tiene uno. Franco tiene que PREGUNTARLE cuál es (marca, modelo, año), nunca darlo por sabido. Atribuirle la Amarok —que es el auto que quiere COMPRAR— es inventarle un patrimonio y cambia toda la cuenta de la operación."
+            ]
+          ]
+        }
+      ],
+      "lead_checks": [
+        [
+          "field_not_matches",
+          "descripcion_usado",
+          "(?i)amarok"
+        ]
+      ]
+    },
+    {
+      "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+      "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+      "turns": [
+        {
+          "say": "Estoy buscando una Amarok 2023.",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)(no (la |lo )?ten(emos|go)|no hay|no contamos con|no dispon\\w+)[^.!?]{0,45}(2023|amarok)|(m[aá]s (nueva|reciente)|[uú]nica)[^.!?]{0,40}2018|2023[^.!?]{0,30}(no la ten|no lo ten|no ten|no hay|no est)"
+            ],
+            [
+              "text_matches",
+              "(?i)2018"
+            ],
+            [
+              "ends_with_question"
+            ],
+            [
+              "manual",
+              "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no-se-rompe-al-pedir-un-auto-puntual",
+      "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+      "turns": [
+        {
+          "say": "me interesa la volkswagen amarok",
+          "checks": [
+            [
+              "text_matches",
+              "(?i)amarok"
+            ],
+            [
+              "manual",
+              "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+            ]
+          ]
+        }
+      ]
     }
   ]
 }

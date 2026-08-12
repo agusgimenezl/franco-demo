@@ -1,0 +1,498 @@
+[
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "19a29a70-4bb6-4056-b3f3-a9125a80c3cb",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 15215,
+        "response": {
+          "session_id": "19a29a70-4bb6-4056-b3f3-a9125a80c3cb",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 Comfortline 2.0 TDI 180 CV 4Motion es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Es ideal para quien necesita tracción real y no quiere pagar una unidad reciente.\n\nPrecio: $32.000.000\nAño: 2018\nKilómetros: 135.000 km\nMotor: 2.0 Bi-Turbodiésel de 180 CV\nTransmisión: automática de 8 marchas\nConsumo aproximado: 9.2 L/100km\nEquipamiento: tracción integral permanente 4x4 4Motion, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero.\n\nLas fotos que tenemos del Volkswagen Amarok 2018 son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería.\n\nQuerés que te conecte con un asesor para más detalles o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "98c52b6d-2cfe-4317-ae58-7f960b0249db",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 11956,
+        "response": {
+          "session_id": "98c52b6d-2cfe-4317-ae58-7f960b0249db",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 Comfortline 2.0 TDI 180 CV 4Motion es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Tiene tracción integral permanente 4x4, caja automática de 8 marchas, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road y volante multifunción en cuero."
+            },
+            {
+              "type": "text",
+              "content": "El auto es negro, tiene 135.000 km, motor 2.0 Bi-Turbodiésel de 180 CV, transmisión automática y un consumo promedio aproximado de 9.2 L/100km. Su precio es $32.000.000 y el anticipo mínimo para financiar es de $16.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos son las publicadas, que muestran vistas generales y de la carrocería."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase el contacto de un asesor para que te prepare una cotización o querés saber cómo sería financiarla?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "7329d539-cea9-4915-a66f-e61f35b4528c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 9783,
+        "response": {
+          "session_id": "7329d539-cea9-4915-a66f-e61f35b4528c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 que tenemos es la versión Comfortline 2.0 TDI 180 CV 4Motion, ideal si buscás tracción real con buena potencia y equipamiento completo. Es automática, diésel, consume unos 9.2 litros cada 100 km y está en color negro con 135.000 km. Precio: $32.000.000 y el anticipo mínimo para financiar es $16.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Luego te puedo ayudar con la financiación, la reserva o coordinar que la veas en persona. Querés que te cuente cómo sería financiarla o preferís más info de otro modelo?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "a86c7454-8497-468b-bc0e-e9b8eaf097ef",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 8573,
+        "response": {
+          "session_id": "a86c7454-8497-468b-bc0e-e9b8eaf097ef",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 Comfortline 2.0 TDI 180 CV 4Motion es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Está en color negro y tiene 135.000 km."
+            },
+            {
+              "type": "text",
+              "content": "Motor 2.0 Bi-Turbodiésel de 180 CV, transmisión automática, consumo promedio aproximado de 9.2 L/100km. Precio $32.000.000 y el anticipo mínimo para financiar es $16.000.000."
+            },
+            {
+              "type": "text",
+              "content": "El equipamiento incluye tracción integral permanente 4x4 4Motion, caja automática de 8 marchas, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te dé más detalles o te prepare una cotización? También te puedo mostrar otras opciones cercanas."
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "2d05be18-ace1-4651-841c-632b099215e6",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 12493,
+        "response": {
+          "session_id": "2d05be18-ace1-4651-841c-632b099215e6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 que tenemos es la versión Comfortline 2.0 TDI 180 CV 4Motion, negra, con 135.000 km y tracción integral 4x4. Tiene motor 2.0 Bi-Turbodiésel de 180 CV, caja automática de 8 marchas y un consumo promedio aproximado de 9,2 L/100km. El equipamiento es completo: sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero. Su precio es $32.000.000 y requiere un anticipo mínimo de $16.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización o te cuente cómo sería financiarla?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "d3783479-b4dc-4d77-aeb1-a439d4a6e214",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 11033,
+        "response": {
+          "session_id": "d3783479-b4dc-4d77-aeb1-a439d4a6e214",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Es ideal para quien necesita tracción real y no quiere pagar una unidad reciente."
+            },
+            {
+              "type": "text",
+              "content": "Precio: $32.000.000, año 2018, 135.000 km. Motor 2.0 Bi-Turbodiésel de 180 CV, transmisión automática, consumo aproximado 9.2 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Tiene tracción integral permanente 4x4 4Motion, caja automática de 8 marchas, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road y frenos ABS Off-Road."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos de la Volkswagen Amarok son las que están publicadas en el stock, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "fe3c7fbf-eff5-49ca-b622-f506dc175e1d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 10957,
+        "response": {
+          "session_id": "fe3c7fbf-eff5-49ca-b622-f506dc175e1d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 es una pickup 4x4 diésel con buena potencia y equipamiento completo, ideal para quien necesita tracción real sin pagar una unidad más reciente. Está automática, con motor 2.0 Bi-Turbodiésel de 180 CV y consumo promedio aproximado de 9.2 L/100km. Con 135.000 km y en color negro, su precio es $32.000.000.\n\nTiene sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero.\n\nLas fotos que tenemos del Volkswagen Amarok son las que están publicadas y muestran la carrocería desde diferentes ángulos. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-se-rompe-al-pedir-un-auto-puntual",
+    "bug": "EL BUG MÁS FRECUENTE DE FRANCO EN PRODUCCIÓN, medido contra el corpus el 2026-08-12: 400 burbujas de 13.486 (2,97%) son la burbuja de fallback \"Uy, se me trabó el sistema un segundo\", en 280 de 2.881 sesiones (9,7%). CAUSA RAÍZ leída del log (ejecución 15996): el agente devolvió \"Received tool input did not match expected schema — Required at precio_min / precio_max / km_max\". El modelo llamó a la herramienta sin esos filtros y n8n rechazó la llamada entera, así que `Armar respuesta` no encontró output.messages y cayó al fallback. RAÍZ ESTRUCTURAL: ninguno de los 31 $fromAI del workflow tiene defaultValue, así que TODOS quedan REQUIRED en el schema, incluidos filtros que sólo aplican a veces. DAÑO SECUNDARIO: el turno se pierde y el siguiente vuelve a saludar, o sea que además se corta el hilo. Lo caza `no_fallback_bubble`, que ya corre en ALWAYS: este caso existe para ejercitar el turno y medir la TASA, por eso se corre con --repeat alto.",
+    "sessionId": "b8dc44a9-c327-4b3f-87d9-03e37d9b4a66",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 15203,
+        "response": {
+          "session_id": "b8dc44a9-c327-4b3f-87d9-03e37d9b4a66",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 Comfortline 2.0 TDI 180 CV 4Motion es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Es ideal para quien necesita tracción real y no quiere pagar una unidad reciente."
+            },
+            {
+              "type": "text",
+              "content": "Precio: $32.000.000, año 2018, 135.000 km, motor 2.0 Bi-Turbodiésel de 180 CV, transmisión automática, consumo aproximado de 9.2 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Tiene tracción integral permanente 4x4, caja automática de 8 marchas, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero."
+            },
+            {
+              "type": "text",
+              "content": "Quedó alguna duda o querés que te conecte con un asesor para que te prepare una cotización o coordine una visita?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Tiene que contestar sobre la Amarok 2018 ($32.000.000, 135.000 km). Cualquier variante de \"se me trabó el sistema\" o \"no entendí bien\" es el bug: el cliente escribió algo trivial y recibió un error."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  }
+]

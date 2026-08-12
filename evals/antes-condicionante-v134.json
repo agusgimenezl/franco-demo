@@ -1,0 +1,1194 @@
+[
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "8e2fc30e-b7a6-4d32-8607-074a82bcb23d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 9521,
+        "response": {
+          "session_id": "8e2fc30e-b7a6-4d32-8607-074a82bcb23d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna, de color gris y con 31.000 km. Tiene buen despeje y un baúl grande de 475 litros, ideal para caminos de ripio y uso rudo sin gastar tanto. Viene con motor 1.3 Turbo de 155 CV, naftero, y caja automática CVT. Su consumo promedio es de 7.8 L/100km. Entre su equipamiento tiene climatizador automático, detector de punto ciego, cámaras 360 grados y pantalla Easy Link de 8 pulgadas con cargador inductivo para celular."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y el anticipo mínimo para financiarlo es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos son las que están publicadas en el stock, que muestran vistas generales y carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 7433,
+        "response": {
+          "session_id": "8e2fc30e-b7a6-4d32-8607-074a82bcb23d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano, color blanco, con 24.000 km y motor 2.0 Turbo de 230 CV, que es la mayor potencia entre los autos no pickup del stock. Viene con caja automática DSG de 7 marchas y consumo aproximado de 8.2 L/100km, ideal para quien busca un andar de gama alta sin el costo de patentamiento de un 0 km."
+            },
+            {
+              "type": "text",
+              "content": "Tiene techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, sistema de sonido premium, tablero digital configurable y diferencial autoblocante electrónico XDS."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $31.000.000 y el anticipo mínimo para financiar es $15.500.000. Es un turbo, por lo que pide nafta de buena calidad y service al día para rendir bien."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos publicadas muestran varias vistas del auto y su interior. Querés que te conecte con un asesor para que te dé más detalles o te ayude con la financiación?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_not_matches: matcheó /(?i)nafta de buena calidad|service al d[ií]a|ten[eé] en cuenta|consumo.{0,25}m[áa]s alto/ y no debería: \"nafta de buena calidad\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_not_matches: matcheó /(?i)nafta de buena calidad|service al d[ií]a|ten[eé] en cuenta|consumo.{0,25}m[áa]s alto/ y no debería: \"nafta de buena calidad\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "c21e072e-36b7-45e3-bf4d-8bbd2abce9da",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 8883,
+        "response": {
+          "session_id": "c21e072e-36b7-45e3-bf4d-8bbd2abce9da",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna y de pocos kilómetros, con despeje alto y baúl grande, ideal para ripio y camino roto. Se destaca por aguantar bien el uso rudo por lo que cuesta."
+            },
+            {
+              "type": "text",
+              "content": "Este Duster es color gris, tiene 31.000 km, motor 1.3 Turbo de 155 CV naftero, transmisión automática CVT, y un consumo promedio aproximado de 7.8 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas, cargador inductivo de smartphone y un baúl de 475 litros."
+            },
+            {
+              "type": "text",
+              "content": "Su precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Renault Duster son estas: las vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 6432,
+        "response": {
+          "session_id": "c21e072e-36b7-45e3-bf4d-8bbd2abce9da",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano, color blanco, con 24.000 km y motor 2.0 Turbo de 230 CV naftero. Es la mayor potencia entre los autos no pickup que tenemos, con transmisión automática DSG de 7 marchas y consumo aproximado de 8.2 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Su andar es de gama alta sin el costo de patentamiento de una unidad nueva. Tiene equipamiento premium que incluye techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, y sistema de sonido premium."
+            },
+            {
+              "type": "text",
+              "content": "El precio es de $31.000.000, con un anticipo mínimo de $15.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Volkswagen Vento son esas que viste, con vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno para más detalles o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "descripcion-que-aporta",
+    "bug": "revectorización — `descripcion` y `condicionantes` YA llegan: verificado en la ejecución 4824, donde Buscar auto devolvió la prosa curada de los 4 hatchbacks. Franco la recibe y la ignora: contesta la ficha técnica (motor, HP, km, precio). El punto de la revectorización es que hable como vendedor, no como planilla, así que sin esto los datos nuevos no valen nada. Las palabras que busca el check salen de la descripción del Duster en scripts/gen-descripcion-sql.mjs — si esa descripción cambia, hay que actualizarlas.",
+    "sessionId": "76eccaec-e76e-4ebc-b229-099d0fd0178b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 8504,
+        "response": {
+          "session_id": "76eccaec-e76e-4ebc-b229-099d0fd0178b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Renault Duster 2023 es una SUV moderna y con pocos kilómetros (31.000 km). Tiene un despeje alto y un baúl grande de 475 litros, ideal para ripio y caminos rotos, siendo la que mejor aguanta el uso rudo dentro de su rango de precio."
+            },
+            {
+              "type": "text",
+              "content": "Está equipada con motor 1.3 Turbo de 155 CV, nafta, transmisión automática CVT y tiene un consumo aproximado de 7,8 L/100km. Cuenta con climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo de smartphone."
+            },
+            {
+              "type": "text",
+              "content": "El precio es de $22.500.000, y el anticipo mínimo que se necesita para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Renault Duster son estas, con diferentes vistas generales y del exterior."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para cotizar o te muestro opciones similares o algo distinto?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y del vento qué me contás?",
+        "ms": 7190,
+        "response": {
+          "session_id": "76eccaec-e76e-4ebc-b229-099d0fd0178b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano blanco con solo 24.000 km. Tiene motor 2.0 Turbo de 230 CV con transmisión automática DSG de 7 marchas, siendo la mayor potencia entre los autos no pickup del stock."
+            },
+            {
+              "type": "text",
+              "content": "Cuenta con diferencial autoblocante electrónico XDS, suspensión trasera independiente multilink, techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable."
+            },
+            {
+              "type": "text",
+              "content": "El consumo promedio es de 8.2 L/100km y pide nafta de buena calidad y service al día para rendir como corresponde."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $31.000.000 y el anticipo mínimo para financiar es $15.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Volkswagen Vento son estas, con vistas generales y detalles del exterior."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para cotizarlo o preferís ver opciones similares o algo distinto?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_not_matches: matcheó /(?i)nafta de buena calidad|service al d[ií]a|ten[eé] en cuenta|consumo.{0,25}m[áa]s alto/ y no debería: \"nafta de buena calidad\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_not_matches: matcheó /(?i)nafta de buena calidad|service al d[ií]a|ten[eé] en cuenta|consumo.{0,25}m[áa]s alto/ y no debería: \"nafta de buena calidad\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe apoyarse en la descripción curada (POR QUÉ le conviene), no sólo repetir la ficha. Y NO debe volcar los condicionantes: es una consulta simple, no una comparación ni una pregunta por los contras"
+      },
+      {
+        "turn": 2,
+        "note": "SEGUNDO AUTO a propósito: el caso solo miraba el Duster y por eso se escapo el Vento en una captura real. Mismo criterio: sin condicionantes no pedidos. Y el color se dice 'es blanco' o 'de color blanco', nunca 'está blanco'"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "condicionante-si-preguntan",
+    "bug": "GUARDARRAÍL de descripcion-que-aporta. Franco tiene perfil comercial y no debe volcar los contras solo, pero si el cliente PREGUNTA por ellos, ocultarlos es peor: lo deja sin respuesta y le hace perder la confianza. Este caso existe para que el fix de 'no cantar los condicionantes' no se pase de freno y termine en un vendedor que esquiva preguntas.",
+    "sessionId": "2a57b242-30d0-4055-bc72-d2015b00818b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 7220,
+        "response": {
+          "session_id": "2a57b242-30d0-4055-bc72-d2015b00818b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 que tenemos es una SUV moderna y de pocos kilómetros, ideal para ripio y camino roto ya que tiene un despeje alto y un baúl grande de 475 litros. Está en color gris, con 31.000 km y versión Iconic 1.3 Turbo TCe con motor 1.3 turbo de 155 CV, nafta y transmisión automática CVT. El consumo promedio es de 7,8 L/100km. Entre su equipamiento destacan el climatizador automático, detector de punto ciego, cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo para smartphone.\n\nEl precio es de $22.500.000, y el anticipo mínimo para financiar es $11.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés saber cómo sería financiarlo en cuotas, o preferís que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algún punto flojo que tenga? qué tendría que tener en cuenta?",
+        "ms": 4383,
+        "response": {
+          "session_id": "2a57b242-30d0-4055-bc72-d2015b00818b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El punto a tener en cuenta es que el Duster está pensado para camino roto y uso rudo, pero no para remolque frecuente. Además, la caja CVT que tiene pide un service específico y no es la más recomendada para arrastrar peso seguido.\n\nLas fotos que tenemos del Renault Duster son las que están publicadas, que incluyen vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Le preguntaron DIRECTO por los contras: acá SÍ tiene que responder con el condicionante real, sin esquivar. Pero sin dramatizarlo ni encadenar una lista de defectos"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "condicionante-si-preguntan",
+    "bug": "GUARDARRAÍL de descripcion-que-aporta. Franco tiene perfil comercial y no debe volcar los contras solo, pero si el cliente PREGUNTA por ellos, ocultarlos es peor: lo deja sin respuesta y le hace perder la confianza. Este caso existe para que el fix de 'no cantar los condicionantes' no se pase de freno y termine en un vendedor que esquiva preguntas.",
+    "sessionId": "5075e94f-bb9f-49ce-b8d9-b3bae2739ea1",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 7642,
+        "response": {
+          "session_id": "5075e94f-bb9f-49ce-b8d9-b3bae2739ea1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV mediana, moderna y con pocos kilómetros. Tiene un despeje alto y un baúl grande de 475 litros, ideal para ripio y caminos rotos. Viene con motor 1.3 Turbo de 155 CV naftero y transmisión automática CVT, con un consumo promedio aproximado de 7.8 L/100 km. Su versión es Iconic 1.3 Turbo TCe y está equipada con climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo de smartphone. Está en color gris y tiene 31.000 km."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y el anticipo mínimo para financiar es $11.250.000. Querés que te pase más info o te muestro otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algún punto flojo que tenga? qué tendría que tener en cuenta?",
+        "ms": 4075,
+        "response": {
+          "session_id": "5075e94f-bb9f-49ce-b8d9-b3bae2739ea1",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El punto a tener en cuenta del Renault Duster es que su fuerte es el camino roto y ripio, no el remolque. La caja automática CVT requiere un service específico y no es la más indicada para arrastrar peso de forma continua. Esto es algo que tenés que considerar según el uso que le vayas a dar."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre opciones similares, o preferís hablar con un asesor para más detalles?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Le preguntaron DIRECTO por los contras: acá SÍ tiene que responder con el condicionante real, sin esquivar. Pero sin dramatizarlo ni encadenar una lista de defectos"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "condicionante-si-preguntan",
+    "bug": "GUARDARRAÍL de descripcion-que-aporta. Franco tiene perfil comercial y no debe volcar los contras solo, pero si el cliente PREGUNTA por ellos, ocultarlos es peor: lo deja sin respuesta y le hace perder la confianza. Este caso existe para que el fix de 'no cantar los condicionantes' no se pase de freno y termine en un vendedor que esquiva preguntas.",
+    "sessionId": "86971e93-b5c3-499a-b3c4-c8d8eaab3ce5",
+    "turns": [
+      {
+        "n": 1,
+        "say": "contame del renault duster",
+        "ms": 8140,
+        "response": {
+          "session_id": "86971e93-b5c3-499a-b3c4-c8d8eaab3ce5",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Renault Duster 2023 es una SUV moderna, con pocos kilómetros (31.000 km), despeje alto y un baúl grande de 475 litros, ideal para ripio y caminos rotos. Viene en color gris y la versión es Iconic 1.3 Turbo TCe."
+            },
+            {
+              "type": "text",
+              "content": "Tiene motor 1.3 Turbo de 155 CV, nafta, con transmisión automática CVT y un consumo aproximado de 7.8 L/100 km. El equipamiento incluye climatizador automático, detector de punto ciego, sistema de cámaras 360 grados Multiview, pantalla Easy Link de 8 pulgadas y cargador inductivo de smartphone."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $22.500.000 y requiere un anticipo mínimo de $11.250.000 para financiación. La caja CVT pide un service específico y no es indicada para remolque frecuente, pero es la que mejor aguanta el uso rudo por lo que cuesta."
+            },
+            {
+              "type": "text",
+              "content": "Te paso fotos del auto para que lo veas."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te prepare una cotización o te muestro otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-2.webp",
+              "after_message_index": 5
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-3.webp",
+              "after_message_index": 5
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algún punto flojo que tenga? qué tendría que tener en cuenta?",
+        "ms": 4627,
+        "response": {
+          "session_id": "86971e93-b5c3-499a-b3c4-c8d8eaab3ce5",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Un punto para tener en cuenta del Renault Duster es que su caja CVT requiere un service específico y no es la más indicada para remolcar peso seguido. Es un auto pensado para caminos rotos y ripio, más que para arrastrar cargas de forma frecuente."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase detalles de financiación o te muestro alguna otra opción similar?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Le preguntaron DIRECTO por los contras: acá SÍ tiene que responder con el condicionante real, sin esquivar. Pero sin dramatizarlo ni encadenar una lista de defectos"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "spec-inexistente-deriva",
+    "bug": "regla anti-invención: specs que no están en la ficha",
+    "sessionId": "71d9d43e-a61d-4a4f-8479-b4cbc6c53d77",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 7559,
+        "response": {
+          "session_id": "71d9d43e-a61d-4a4f-8479-b4cbc6c53d77",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, dentro de tu presupuesto hasta $20 millones, estas opciones entran bien:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000, SUV mediano\n- Renault Kangoo 2021 — 82.000 km — $18.500.000, utilitario mediano\n\nY si querés algo un poco más caro pero con mayor categoría, están estas que se van un poco arriba:\n- Toyota Corolla 2022 — 35.000 km — $24.800.000, sedán mediano\n- Renault Duster 2023 — 31.000 km — $22.500.000, SUV mediano\n\nSi querés, te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cuántos litros de baúl tiene el primero y cuánto hace de 0 a 100?",
+        "ms": 4173,
+        "response": {
+          "session_id": "71d9d43e-a61d-4a4f-8479-b4cbc6c53d77",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Ford EcoSport 2020 es una SUV mediana muy equipada, ideal para la ciudad y terrenos irregulares por su altura. Tiene motor 1.5 Dragon de 123 CV con transmisión automática y consume aproximadamente 7,8 L/100km. El precio es $19.800.000.\n\nSobre lo que preguntaste, en la ficha no figura la capacidad exacta del baúl ni la aceleración de 0 a 100 km/h. Para esos datos, un asesor te puede confirmar.\n\nTe interesa que te conecte con un asesor para que te brinde esos detalles o querés ver alguna otra opción?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Verificar que NO haya inventado litros de baúl ni 0-100"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "spec-inexistente-deriva",
+    "bug": "regla anti-invención: specs que no están en la ficha",
+    "sessionId": "e292a126-5f7c-47e3-a154-a9da8a6ff432",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 7142,
+        "response": {
+          "session_id": "e292a126-5f7c-47e3-a154-a9da8a6ff432",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, hasta 20 millones tenés estas opciones dentro de tu presupuesto:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, tamaño mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (Utilitario, mediano)\n\nSi querés, puedo mostrarte otras opciones que están un poco arriba de los 20 millones y podrías financiar o entregar un usado para llegar a ellas."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre esas opciones, o preferís que te pase todo el stock que tenemos para que elijas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cuántos litros de baúl tiene el primero y cuánto hace de 0 a 100?",
+        "ms": 6234,
+        "response": {
+          "session_id": "e292a126-5f7c-47e3-a154-a9da8a6ff432",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Ford EcoSport 2020 tiene un baúl de 356 litros y no tengo el dato exacto de cuánto hace de 0 a 100 km/h, ese dato te lo confirma un asesor. Para el motor tiene un 1.5 Dragon de 123 CV, y la transmisión es automática."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente más sobre otro auto o te interesa saber cómo sería financiar este en cuotas?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Verificar que NO haya inventado litros de baúl ni 0-100"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "spec-inexistente-deriva",
+    "bug": "regla anti-invención: specs que no están en la ficha",
+    "sessionId": "c7c6e5af-45fd-4658-8e83-5874e75e27b3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 6535,
+        "response": {
+          "session_id": "c7c6e5af-45fd-4658-8e83-5874e75e27b3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, dentro de los $20 millones hay estas opciones que podrías considerar:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, tamaño mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (Utilitario, tamaño mediano)\n\nY si querés algo un poco más arriba de tu presupuesto, están:\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, tamaño mediano)\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (Sedán, tamaño mediano)\n\nSi te interesa alguna de estas opciones o querés que te pase todo el stock completo que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cuántos litros de baúl tiene el primero y cuánto hace de 0 a 100?",
+        "ms": 5641,
+        "response": {
+          "session_id": "c7c6e5af-45fd-4658-8e83-5874e75e27b3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Ford EcoSport 2020 tiene un motor 1.5 Dragon de 123 CV con transmisión automática y consume aproximadamente 7,8 L/100km. Viene bien equipado con 7 airbags, pantalla flotante de 8 pulgadas con GPS, techo solar eléctrico y sistema de audio premium Sony con 9 parlantes.\n\nRespecto al baúl y la aceleración de 0 a 100 km/h, ese dato específico no lo tengo en la ficha, pero un asesor puede confirmártelo si querés.\n\nQuerés que te conecte con un asesor para que te dé ese detalle o te muestro otra opción?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Verificar que NO haya inventado litros de baúl ni 0-100"
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "d2a8f9a2-36fc-4bb3-a2a6-ae6c7b6865a9",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 10570,
+        "response": {
+          "session_id": "d2a8f9a2-36fc-4bb3-a2a6-ae6c7b6865a9",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV mediana prácticamente sin uso, con solo 5.200 km. Es automática, con motor 1.0 turbo de 116 CV y un consumo aproximado de 7.2 L/100 km. Tiene equipamiento completo: ópticas full LED, pantalla central VW Play, cargador inalámbrico, techo solar panorámico y varios sistemas de seguridad. Es ideal para quien quiere 0 km sin esperar."
+            },
+            {
+              "type": "text",
+              "content": "Por otro lado, el Volkswagen Vento 2023 es un sedán mediano con motor turbo de 230 CV, la mayor potencia entre los autos no pickup del stock, y apenas 24.000 km. Transmisión automática DSG, con consumo aproximado de 8.2 L/100 km. Está equipado con techo solar panorámico, asientos deportivos en cuero calefaccionados y ventilados, y sistema de sonido premium."
+            },
+            {
+              "type": "text",
+              "content": "El T-Cross rinde bien con su motor, pero si buscas algo con más potencia para ruta, el Vento es mejor para eso. Ambas unidades son blancas y están bien equipadas para su segmento."
+            },
+            {
+              "type": "text",
+              "content": "Te las puedo mostrar con fotos si querés, o contarte cómo sería financiar alguna. Querés que te pase más detalles de algún modelo o preferís que te prepare una simulación de financiación?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "099e3666-8320-4339-88fa-00238d32392f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 11431,
+        "response": {
+          "session_id": "099e3666-8320-4339-88fa-00238d32392f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV mediana, prácticamente sin uso con solo 5.200 km. Es automática con motor 1.0 turbo de 116 CV, nafta y consumo aproximado de 7.2 L/100km. Viene con equipamiento completo: ópticas full LED, pantalla central VW Play de 10 pulgadas, techo solar panorámico, detector de punto ciego, climatizador Touch y 5 estrellas de seguridad Latin NCAP. El precio es $34.000.000 y el anticipo mínimo es $17.000.000."
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano con 24.000 km, motor 2.0 turbo de 230 CV, nafta y transmisión automática DSG. Su consumo aproximado es de 8.2 L/100km. Tiene equipamiento de gama alta: techo solar panorámico, asientos deportivos de cuero calefaccionados y ventilados, sistema de sonido premium y tablero digital configurable. Su precio es $31.000.000 con un anticipo mínimo de $15.500.000."
+            },
+            {
+              "type": "text",
+              "content": "La T-Cross rinde bien para ciudad y uso mixto, pero si buscás más potencia y mejor respuesta en ruta, el Vento es mejor en ese aspecto. Querés que te pase más fotos o te muestro opciones similares a alguno de los dos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "comparacion-incluye-descriptivo",
+    "bug": "BUG-B (captura Agustina): al comparar/pedir info de 2+ vehiculos especificos, Franco da solo la ficha TECNICA (motor, HP, transmision, consumo). Debe incluir la info DESCRIPTIVA de la base (campo descripcion: 'la opcion de quien quiere 0 km sin esperar', 'gama alta sin el costo de patentamiento'), no solo specs. Detalle auto ya devuelve descripcion; es comportamiento de prompt (Paso 3 no cubre comparaciones).",
+    "sessionId": "f5045f82-60ef-489b-b2df-9ddd2b1e9fbe",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesan la t-cross y la vento, contame de las dos",
+        "ms": 9548,
+        "response": {
+          "session_id": "f5045f82-60ef-489b-b2df-9ddd2b1e9fbe",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen T-Cross 2025 es una SUV mediana, prácticamente sin uso con solo 5.200 km. Es automática con motor 1.0 turbo de 116 CV, consume aproximadamente 7.2 L/100 km y tiene equipamiento completo, ideal para quien quiere un 0 km sin esperar. Su precio es $34.000.000 y la versión es Highline 200 TSI."
+            },
+            {
+              "type": "text",
+              "content": "El Volkswagen Vento 2023 es un sedán mediano con 24.000 km y motor 2.0 turbo de 230 CV, que ofrece la mayor potencia entre los autos no pickup del stock. Transmisión automática DSG, consumo de 8.2 L/100 km y cuenta con techo solar panorámico, asientos deportivos de cuero calefaccionados y ventilados, y sistema de sonido premium. Está a $31.000.000, versión GLI 2.0 TSI."
+            },
+            {
+              "type": "text",
+              "content": "La T-Cross tiene motor más chico, rendidor pero menos potente, mientras que el Vento tiene un motor más robusto y enfocado en rendimiento fuerte en ruta. Ambos son mediano tamaño y nafteros."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase fotos del interior o quieras que te conecte con un asesor para más detalles o coordinar una visita?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-3.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-6-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "COMPARACION: cada vehiculo debe incluir su angulo DESCRIPTIVO de la base (T-Cross: '0 km sin esperar' / 'kilometros mas bajos'; Vento: 'gama alta' / 'sin el costo de patentamiento' / 'mayor potencia entre los no pickup'), no solo la ficha tecnica seca (motor/HP/transmision/consumo). Verificar que aparezca el porque, no solo specs."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  }
+]

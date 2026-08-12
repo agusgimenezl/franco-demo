@@ -1,0 +1,502 @@
+[
+  {
+    "id": "usado-sin-detalles-no-se-completa-con-el-auto-de-interes",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-12 sobre v134, sesión REAL d2ac87f0-d835-45d9-8ab0-5f236f4ccd80 (Guillermo Vilte). El cliente dice \"perdon, si tengo un usado para entregar\" sin dar marca, modelo ni año, y Franco contesta \"Perfecto Guillermo, tenés una Volkswagen Amarok 2018 para entregar\": le atribuyó como usado el auto que estaba mirando para COMPRAR. NO lo inventó Franco — lo escribió el CRM: el lead quedó con vehiculo_interes y descripcion_usado IDÉNTICOS (\"Volkswagen Amarok 2018\"), y Franco leyó lead_usado y lo repitió. El prompt del CRM YA tiene la regla correcta (\"Si entrega pero TODAVÍA no dio ningún detalle: Auto usado mencionado, sin detalles\"), así que no falta regla: falta la comparación determinística. Si descripcion_usado == vehiculo_interes, es un error de copia — nadie entrega como usado la misma unidad que está por comprar. GRAVE porque el lead llega al asesor con un dato FALSO del cliente y la ficha del CRM es la pantalla de la demo.",
+    "sessionId": "bbce0468-9272-4df8-87f4-e0aeb45d5545",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 13504,
+        "response": {
+          "session_id": "bbce0468-9272-4df8-87f4-e0aeb45d5545",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Volkswagen Amarok 2018 Comfortline 2.0 TDI 180 CV 4Motion es la 4x4 diésel más accesible que tenemos, con buena potencia y equipamiento completo. Es una pickup negra con 135.000 km, motor 2.0 Bi-Turbodiésel de 180 caballos y caja automática de 8 marchas. Su consumo aproximado es de 9.2 L/100km.\n\nEl equipamiento incluye tracción integral permanente 4x4 4Motion, sensores de estacionamiento delanteros y traseros, lona marítima, control de estabilidad con función off-road, frenos ABS Off-Road y volante multifunción en cuero.\n\nEl precio es $32.000.000, con un anticipo mínimo de $16.000.000.\n\nLas fotos que tenemos son estas, que muestran la carrocería y vistas generales."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te detalle opciones de financiación, o preferís que te muestre otras Amarok, u otra pickup que te interese?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar",
+        "ms": 2242,
+        "response": {
+          "session_id": "bbce0468-9272-4df8-87f4-e0aeb45d5545",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para ofrecerte las mejores opciones necesito saber qué auto entregás como usado. Contame marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "EL TURNO DEL CASO. El cliente NO dijo qué usado tiene: sólo que tiene uno. Franco tiene que PREGUNTARLE cuál es (marca, modelo, año), nunca darlo por sabido. Atribuirle la Amarok —que es el auto que quiere COMPRAR— es inventarle un patrimonio y cambia toda la cuenta de la operación."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "bbce0468-9272-4df8-87f4-e0aeb45d5545",
+      "nombre": "+54 381 555-5445",
+      "telefono": "+54 381 555-5445",
+      "vehiculo_interes": "Volkswagen Amarok",
+      "entrega": "Sí",
+      "descripcion_usado": "Auto usado mencionado, sin detalles",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Interesado en Volkswagen Amarok, entrega un usado (sin detalles).",
+      "fecha_contacto": "12/08/2026 04:28",
+      "ultima_actualizacion": "12/08/2026 04:28",
+      "is_saved": false
+    },
+    "leadWaitMs": 2780,
+    "leadTimedOut": false,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "usado-sin-detalles-no-se-completa-con-el-auto-de-interes",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-12 sobre v134, sesión REAL d2ac87f0-d835-45d9-8ab0-5f236f4ccd80 (Guillermo Vilte). El cliente dice \"perdon, si tengo un usado para entregar\" sin dar marca, modelo ni año, y Franco contesta \"Perfecto Guillermo, tenés una Volkswagen Amarok 2018 para entregar\": le atribuyó como usado el auto que estaba mirando para COMPRAR. NO lo inventó Franco — lo escribió el CRM: el lead quedó con vehiculo_interes y descripcion_usado IDÉNTICOS (\"Volkswagen Amarok 2018\"), y Franco leyó lead_usado y lo repitió. El prompt del CRM YA tiene la regla correcta (\"Si entrega pero TODAVÍA no dio ningún detalle: Auto usado mencionado, sin detalles\"), así que no falta regla: falta la comparación determinística. Si descripcion_usado == vehiculo_interes, es un error de copia — nadie entrega como usado la misma unidad que está por comprar. GRAVE porque el lead llega al asesor con un dato FALSO del cliente y la ficha del CRM es la pantalla de la demo.",
+    "sessionId": "053b1376-4fcc-4496-af57-bd6fdcd6a871",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 13175,
+        "response": {
+          "session_id": "053b1376-4fcc-4496-af57-bd6fdcd6a871",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)amarok/"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar",
+        "ms": 2798,
+        "response": {
+          "session_id": "053b1376-4fcc-4496-af57-bd6fdcd6a871",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Claro, recibimos usados como parte de pago. Para ayudarte mejor, contame qué auto entregás, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)amarok/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "EL TURNO DEL CASO. El cliente NO dijo qué usado tiene: sólo que tiene uno. Franco tiene que PREGUNTARLE cuál es (marca, modelo, año), nunca darlo por sabido. Atribuirle la Amarok —que es el auto que quiere COMPRAR— es inventarle un patrimonio y cambia toda la cuenta de la operación."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "053b1376-4fcc-4496-af57-bd6fdcd6a871",
+      "nombre": "+54 381 555-1243",
+      "telefono": "+54 381 555-1243",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Auto usado mencionado, sin detalles",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Mencionó que entrega un usado, sin detalles del auto ni búsqueda.",
+      "fecha_contacto": "12/08/2026 04:29",
+      "ultima_actualizacion": "12/08/2026 04:29",
+      "is_saved": false
+    },
+    "leadWaitMs": 3155,
+    "leadTimedOut": false,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "usado-sin-detalles-no-se-completa-con-el-auto-de-interes",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-12 sobre v134, sesión REAL d2ac87f0-d835-45d9-8ab0-5f236f4ccd80 (Guillermo Vilte). El cliente dice \"perdon, si tengo un usado para entregar\" sin dar marca, modelo ni año, y Franco contesta \"Perfecto Guillermo, tenés una Volkswagen Amarok 2018 para entregar\": le atribuyó como usado el auto que estaba mirando para COMPRAR. NO lo inventó Franco — lo escribió el CRM: el lead quedó con vehiculo_interes y descripcion_usado IDÉNTICOS (\"Volkswagen Amarok 2018\"), y Franco leyó lead_usado y lo repitió. El prompt del CRM YA tiene la regla correcta (\"Si entrega pero TODAVÍA no dio ningún detalle: Auto usado mencionado, sin detalles\"), así que no falta regla: falta la comparación determinística. Si descripcion_usado == vehiculo_interes, es un error de copia — nadie entrega como usado la misma unidad que está por comprar. GRAVE porque el lead llega al asesor con un dato FALSO del cliente y la ficha del CRM es la pantalla de la demo.",
+    "sessionId": "944c9746-2e59-4ad9-a869-4c59c9fd0e0d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa la volkswagen amarok",
+        "ms": 9078,
+        "response": {
+          "session_id": "944c9746-2e59-4ad9-a869-4c59c9fd0e0d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)amarok/"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tengo un usado para entregar",
+        "ms": 3660,
+        "response": {
+          "session_id": "944c9746-2e59-4ad9-a869-4c59c9fd0e0d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Qué auto entregás, marca, modelo y año?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)amarok/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "EL TURNO DEL CASO. El cliente NO dijo qué usado tiene: sólo que tiene uno. Franco tiene que PREGUNTARLE cuál es (marca, modelo, año), nunca darlo por sabido. Atribuirle la Amarok —que es el auto que quiere COMPRAR— es inventarle un patrimonio y cambia toda la cuenta de la operación."
+      }
+    ],
+    "error": null,
+    "lead": {
+      "session_id": "944c9746-2e59-4ad9-a869-4c59c9fd0e0d",
+      "nombre": "+54 381 555-9997",
+      "telefono": "+54 381 555-9997",
+      "vehiculo_interes": "No mencionado",
+      "entrega": "Sí",
+      "descripcion_usado": "Auto usado mencionado, sin detalles",
+      "presupuesto": "No mencionado",
+      "financia": "No mencionado",
+      "temperatura": "Intermedio",
+      "estado": "En conversación",
+      "resumen": "Quiere entregar un usado como parte de pago, aún sin detalles.",
+      "fecha_contacto": "12/08/2026 04:30",
+      "ultima_actualizacion": "12/08/2026 04:30",
+      "is_saved": false
+    },
+    "leadWaitMs": 3287,
+    "leadTimedOut": false,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "4d385045-8c3d-4c34-8779-61533e8ea7ce",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 6336,
+        "response": {
+          "session_id": "4d385045-8c3d-4c34-8779-61533e8ea7ce",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no está disponible en nuestro stock actual, pero tengo una Amarok 2018 4x4 diésel con buena potencia y equipamiento a $32.000.000. Es ideal si necesitás tracción real y no querés pagar una unidad reciente."
+            },
+            {
+              "type": "text",
+              "content": "También tengo otras pickups grandes alternativas que podrían interesarte: una Ford Ranger 2024 automática 4x4 a $57.000.000, una Chevrolet S10 2022 4x2 a $39.500.000, y una Toyota Hilux 2021 4x4 a $38.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te dé más detalles de alguna o preferís que te muestre otras opciones de pickup?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "5801b83c-fa1e-40b4-b13c-0a6c4ee8b4de",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 12498,
+        "response": {
+          "session_id": "5801b83c-fa1e-40b4-b13c-0a6c4ee8b4de",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, la Amarok 2018 que tenemos es la opción más accesible 4x4 diésel, con buena potencia y equipamiento completo. Tiene 135.000 km y sale $32.000.000."
+            },
+            {
+              "type": "text",
+              "content": "También hay otras pickups que podrían interesarte: \n- Ford Ranger 2024, 18.000 km, $57.000.000 (4x4)\n- Chevrolet S10 2022, 68.000 km, $39.500.000 (4x2)\n- Toyota Hilux 2021, 95.000 km, $38.000.000 (4x4)\n\nQuerés que te dé más detalles o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)(no (la |lo )?ten(emos|go)|no hay|no contamos con|no dispon\\w+)[^.!?]{0,45}(2023|amarok)|(m[aá]s (nueva|reciente)|[uú]nica)[^.!?]{0,40}2018|2023[^.!?]{0,30}(no la ten|no lo ten|no ten|no hay|no est)/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)(no (la |lo )?ten(emos|go)|no hay|no contamos con|no dispon\\w+)[^.!?]{0,45}(2023|amarok)|(m[aá]s (nueva|reciente)|[uú]nica)[^.!?]{0,40}2018|2023[^.!?]{0,30}(no la ten|no lo ten|no ten|no hay|no est)/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "f546238b-2b2e-4fff-bd3f-12594d70fb95",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 5833,
+        "response": {
+          "session_id": "f546238b-2b2e-4fff-bd3f-12594d70fb95",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, tengo una Volkswagen Amarok 2018, 135.000 km, $32.000.000. Es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo, ideal para quien necesita tracción real sin pagar una unidad más reciente."
+            },
+            {
+              "type": "text",
+              "content": "Además, te puedo mostrar otras pickups como la Ford Ranger 2024, Chevrolet S10 2022 y Toyota Hilux 2021."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te dé más detalles de la Amarok 2018 o querés que te muestre alguna de estas otras pickups?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_matches: no matcheó /(?i)(no (la |lo )?ten(emos|go)|no hay|no contamos con|no dispon\\w+)[^.!?]{0,45}(2023|amarok)|(m[aá]s (nueva|reciente)|[uú]nica)[^.!?]{0,40}2018|2023[^.!?]{0,30}(no la ten|no lo ten|no ten|no hay|no est)/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_matches: no matcheó /(?i)(no (la |lo )?ten(emos|go)|no hay|no contamos con|no dispon\\w+)[^.!?]{0,45}(2023|amarok)|(m[aá]s (nueva|reciente)|[uú]nica)[^.!?]{0,40}2018|2023[^.!?]{0,30}(no la ten|no lo ten|no ten|no hay|no est)/"
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": null,
+      "despues": null
+    },
+    "aCaballo": false
+  }
+]
