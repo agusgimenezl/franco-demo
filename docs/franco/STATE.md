@@ -14,11 +14,53 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 102 casos · baseline-v137.json → 12/15 |
+| Evals | 102 casos · baseline-v138.json → 8/15 |
 
 **Invariantes:** ✅ los 6 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🔴 v138 SE DESPLEGÓ, ROMPIÓ UN FLUJO DE VENTA Y SE REVIRTIÓ A v137 EL MISMO DÍA. PRODUCCIÓN
+> ESTÁ EN v137. NO REINTENTAR EL FIX POR LA VÍA DE SUPRIMIR LOS PISOS. Sesión 2026-08-12.**
+>
+> **QUÉ HACÍA v138:** suprimir el bloque `PISOS DE STOCK` en los turnos donde el cliente da un dato
+> (plata o usado) y no pide ver autos, porque ahí compite con el guion textual de v113/v134.
+>
+> **QUÉ LOGRÓ (medido, `evals/baseline-v138.json`):** `preperfilado-cuotas-aunque-diga-la-palabra-anticipo`
+> **2/3 → 3/3** y `anticipo-no-cubre-el-auto-de-interes` **2/3 → 3/3**. Los dos objetivos, cerrados.
+>
+> **QUÉ ROMPIÓ:** `capacidad-de-compra-financiada` **2/3 → 0/3**, y no por ruido: aparecieron **4
+> fallas nuevas de `text_matches` en el turno 3** que antes no existían. El síntoma, textual:
+> *"Para mostrarte opciones que te entren entregando tu usado, necesito saber qué auto entregás
+> (marca, modelo y año) y cuántos kilómetros tiene"* — **con el Ford Ka 2015 y los 100.000 km ya
+> dados dos turnos antes.** Repreguntar datos que el cliente ya dio es de lo peor que puede pasar en
+> una demo. El rastro arranca en el turno 1, donde dejó de pedir el km (falló ese check 2 de 3).
+>
+> **⚠️ CÓMO SE DISTINGUIÓ EL DAÑO REAL DEL RUIDO, y conviene copiar el método:** los otros dos
+> controles también bajaron, pero comparando **por tipo de check** entre el antes y el después, sus
+> fallas nuevas eran TODAS `no_fallback_bubble` —causa independiente y preexistente— mientras que
+> las de `capacidad-de-compra-financiada` eran de texto. **Sin ese desglose, se habrían revertido
+> tres casos por culpa de uno, o peor, se habría culpado al fallback de todo.**
+>
+> **❌ EL ERROR FUE MÍO Y ES DE MÉTODO, NO MALA SUERTE.** Con `no-ofrecer-lo-que-no-existe` hice lo
+> correcto: leí sus checks, vi que sus números salen de `PISOS DE STOCK` y ajusté el fix. **Con
+> `capacidad-de-compra-financiada` no repetí el ejercicio**, aunque lo tenía en la lista de controles
+> justamente porque sospechaba que dependía del bloque. Verifiqué el fix contra **5 escenarios que
+> inventé yo**, no contra los casos que la suite ya ejercita.
+>
+> **🛠 LA HERRAMIENTA QUE FALTABA, YA EN EL REPO: `scripts/quien-depende-de-los-pisos.mjs`.**
+> Enumera los casos que atraviesan un turno de "dar un dato" y después exigen precios, modelos o
+> cantidades. **Da 16 casos. Yo había medido 3.** Entre los que no miré estaba
+> `financiacion-techo-por-anticipo`, que exige tres números distintos en tres turnos seguidos.
+> **Antes de suprimir un insumo del prompt hay que saber quién lo consume, y eso se enumera, no se
+> adivina.**
+>
+> **LA DECISIÓN, PARA QUE NO SE REINTENTE POR ERROR:** el beneficio medido fue 2/3 → 3/3 en dos
+> casos; la superficie de riesgo son **16 casos** que consumen ese bloque. La relación no cierra.
+> **La vía de bajo riesgo para el mismo objetivo es AGREGAR, no sacar:** que la pregunta de las
+> cuotas salga de `Armar respuesta` por código, como ya hace el guard de cierre comercial. No le
+> quita insumo a nadie y es determinístico. **Sin armar, y antes de armarlo hay que correr el mismo
+> análisis de consumidores sobre el guard de cierre.**
 
 > **🟢 v137 DESPLEGADO Y MEDIDO: EL BUG DE LAS URLs CERRADO, Y LA SEÑAL ERA DETERMINÍSTICA. 12/15.
 > Sesión 2026-08-12.**
