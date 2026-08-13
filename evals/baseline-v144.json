@@ -1,0 +1,2250 @@
+[
+  {
+    "id": "km-con-presupuesto",
+    "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+    "sessionId": "eval-56802c82-8bbf-441c-bf16-e664f752d61e",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
+        "ms": 4780,
+        "response": {
+          "session_id": "eval-56802c82-8bbf-441c-bf16-e664f752d61e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para ayudarte a mostrar todas las opciones que te entren con tu Fiat Mobi 2018 y el presupuesto de 13 millones, necesito saber con precisión la marca, el modelo y el año del auto que entregás. Me podés confirmar esos datos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "prefiero algo con menos de 50.000 km",
+        "ms": 2209,
+        "response": {
+          "session_id": "eval-56802c82-8bbf-441c-bf16-e664f752d61e",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, para poder estimar bien las opciones con menos de 50.000 km que te entrarían entregando tu Fiat Mobi 2018 y con 13 millones, podrías indicarme cuántos kilómetros tiene tu Fiat Mobi?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1",
+      "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "km-con-presupuesto",
+    "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+    "sessionId": "eval-8f3833e9-4323-4874-9ab7-acea33706258",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
+        "ms": 2764,
+        "response": {
+          "session_id": "eval-8f3833e9-4323-4874-9ab7-acea33706258",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para ayudarte mejor, necesito saber qué auto entregás como parte de pago: la marca, el modelo y el año. Me los podés decir?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "prefiero algo con menos de 50.000 km",
+        "ms": 2842,
+        "response": {
+          "session_id": "eval-8f3833e9-4323-4874-9ab7-acea33706258",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, entonces tu auto usado es un Fiat Mobi 2018 y querés cambiarlo por algo más nuevo con menos de 50.000 km, y contás con $13.000.000. Además, querés opciones que cumplan con este kilometraje máximo, correcto?"
+            },
+            {
+              "type": "text",
+              "content": "Para poder mostrarte las opciones que te entras con eso, me falta saber cuántos kilómetros tiene tu Fiat Mobi 2018."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · media_min: 0 piezas gráficas (0 cards + 0 imágenes), mínimo 1",
+      "turno 2 · text_matches: no matcheó /(?i)etios|cronos|onix|208|t-cross|vento|duster|renegade|ranger|corolla/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "km-con-presupuesto",
+    "bug": "captura: con un presupuesto activo, al pedir 'menos de 50.000 km' repitió los autos ya rechazados (alto km: Gol Trend 110k, Fiesta 105k) en vez de mostrar los que sí cumplen aunque excedan el presupuesto",
+    "sessionId": "eval-b279a87e-a494-49af-be9d-7c43e5884915",
+    "turns": [
+      {
+        "n": 1,
+        "say": "quiero cambiar mi fiat mobi 2018 por algo más nuevo, tengo 13 millones",
+        "ms": 4341,
+        "response": {
+          "session_id": "eval-b279a87e-a494-49af-be9d-7c43e5884915",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con tu Fiat Mobi 2018 como parte de pago y $13 millones además, tu efectivo cubre autos como estos:\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000\n- Ford Fiesta 2017 — 105.000 km — $8.200.000\n\nY si querés algo de más categoría, entregando tu usado podrías llegar a estas otras opciones, que están un poco más caras:\n- Fiat Cronos 2023 — 28.000 km — $16.800.000\n- Toyota Etios 2021 — 45.000 km — $14.500.000\n\nQuerés que te conecte con un asesor para tasar tu auto y avanzar en la compra, o preferís ver más opciones en stock?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "prefiero algo con menos de 50.000 km",
+        "ms": 10833,
+        "response": {
+          "session_id": "eval-b279a87e-a494-49af-be9d-7c43e5884915",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dentro de tu presupuesto y con permuta, no hay opciones con menos de 50.000 km que entren al contado. Estas opciones sí cumplen con el criterio de kilometraje, pero están un poco por encima de los 13 millones que pensás poner:\n- Toyota Etios 2021 — 45.000 km — $14.500.000\n- Toyota Hilux 2021 — 38.000 km — $38.000.000 (4x4)\n\nSi te interesan estas opciones, podrías considerar financiar o ajustar un poco el presupuesto. Querés que te conecte con un asesor para que te ayude con la tasación y opciones de financiación o preferís ver todo el stock disponible?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Con el stock nuevo, el ÚNICO con <50.000 km Y dentro de 13 millones es el Etios (12,5M, 45k). El resto con <50k km (Cronos, Corolla, Vento, Onix, 208, T-Cross, Duster, Renegade, Ranger) se van de presupuesto: debe mostrarlos aclarando que exceden 13M (con permuta/financiación), NO repetir el Gol Trend (110k) ni la Fiesta (105k) que ya había ofrecido."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "detalle-un-auto-fotos",
+    "bug": "#6 alucinaba URLs de fotos en el detalle",
+    "sessionId": "eval-b73b92a7-96cd-47a1-aa16-f10033aba21f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 4936,
+        "response": {
+          "session_id": "eval-b73b92a7-96cd-47a1-aa16-f10033aba21f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, hasta 20 millones tenés estas opciones que entran justo en tu presupuesto:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (Utilitario, mediano)\n\nY si querés estirar un poco, podrías mirar estas opciones que superan un poco los 20 millones:\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (Hatchback, chico)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (Sedán, chico)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, mediano)\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (Sedán, mediano)\n\nTe recomiendo estos modelos según tu presupuesto. Querés que te pase todo el stock que tenemos o te muestro el detalle de alguno de estos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "contame más del primero, cuál es el motor y la transmisión?",
+        "ms": 3574,
+        "response": {
+          "session_id": "eval-b73b92a7-96cd-47a1-aa16-f10033aba21f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Ford EcoSport 2020 es una SUV mediana con buena equipación, ideal si querés algo con altura para calle rota sin el costo de una SUV grande. Tiene un motor 1.5 Dragon de 123 CV naftero y transmisión automática. El consumo promedio ronda los 7,8 litros cada 100 km. Además viene con sistema SYNC 3 con pantalla de 8 pulgadas y GPS, techo solar eléctrico y audio premium Sony con 9 parlantes."
+            },
+            {
+              "type": "text",
+              "content": "Te mando las fotos que tenemos publicadas para que te hagas una idea visual. Querés que te pase una cotización o te interese saber cómo sería financiarla?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "detalle-un-auto-fotos",
+    "bug": "#6 alucinaba URLs de fotos en el detalle",
+    "sessionId": "eval-12da19f2-cca1-454a-bc51-04013bbb119c",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 5675,
+        "response": {
+          "session_id": "eval-12da19f2-cca1-454a-bc51-04013bbb119c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, hasta 20 millones tenés estas opciones que entran justo en ese presupuesto:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, tamaño mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, tamaño mediano)\n\nY si estás dispuesto a estirar un poco el presupuesto, estas otras opciones también están disponibles:\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (Sedán, tamaño mediano)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, tamaño mediano)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (Sedán, tamaño chico)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (Hatchback, tamaño chico)\n\nY si querés, te puedo pasar todo el stock que tenemos para que lo mires. Cuál te llama la atención?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "contame más del primero, cuál es el motor y la transmisión?",
+        "ms": 3670,
+        "response": {
+          "session_id": "eval-12da19f2-cca1-454a-bc51-04013bbb119c",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La Ford EcoSport 2020 es una SUV mediana muy equipada, ideal si querés altura para calle rota y cordón alto sin el costo ni tamaño de una SUV grande. Viene con motor 1.5 Dragon de 123 CV, nafta, y transmisión automática. El consumo promedio aproximado es de 7,8 L/100km.\n\nSi querés, te paso las fotos que tenemos publicadas o te cuento más detalles del equipamiento."
+            },
+            {
+              "type": "text",
+              "content": "Te interesa saber cómo sería financiarla o te gustaría pasar a ver otro modelo?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "detalle-un-auto-fotos",
+    "bug": "#6 alucinaba URLs de fotos en el detalle",
+    "sessionId": "eval-f5059952-009d-4630-90b7-c743cda4c3f8",
+    "turns": [
+      {
+        "n": 1,
+        "say": "qué autos tenés hasta 20 millones?",
+        "ms": 4069,
+        "response": {
+          "session_id": "eval-f5059952-009d-4630-90b7-c743cda4c3f8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas opciones tenés hasta 20 millones:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (Utilitario, mediano)\n\nY si estás dispuesto a estirar un poco el presupuesto, podrías ver:\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (Hatchback, chico)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (Sedán, chico)\n\nQuerés que te pase el detalle de alguno o te muestro otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "contame más del primero, cuál es el motor y la transmisión?",
+        "ms": 3299,
+        "response": {
+          "session_id": "eval-f5059952-009d-4630-90b7-c743cda4c3f8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "El Ford EcoSport 2020 Titanium 1.5 Dragon es la SUV más equipada por debajo de su rango, con cámara, sensores y pantalla. Tiene motor 1.5 Dragon naftero de 123 CV y transmisión automática. El consumo promedio es de 7.8 L/100 km. Viene con 7 airbags, sistema SYNC 3 con pantalla flotante de 8 pulgadas y GPS, techo solar eléctrico y audio premium Sony con 9 parlantes.\n\nQuerés que te pase la cotización o te muestro otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-2.webp",
+              "after_message_index": 0
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-3.webp",
+              "after_message_index": 0
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige. [CHECK CORREGIDO 2026-08-05] el check del turno 1 prohibia la PALABRA \"asesor\", pero lo que el caso queria prohibir era DERIVAR antes de tiempo. El prompt (## Permuta punto 4) EXIGE decir que la tasacion la hace un asesor viendolo en persona, asi que la version vieja daba rojo por cumplir el prompt. Ahora prohibe OFRECER/derivar (\"queres que te conecte con un asesor\", \"asi un asesor te contacta\") y permite el guion legitimo (\"un asesor necesita verlo en persona\"). Validado sobre 6 frases reales: 6/6. Es la misma distincion que hubo que hacer en el check de \"efectivo\" (afirmar vs preguntar).",
+    "sessionId": "eval-76a03c16-a844-4743-9fb4-14e3d5723edd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 1994,
+        "response": {
+          "session_id": "eval-76a03c16-a844-4743-9fb4-14e3d5723edd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para ayudarte mejor, qué auto entregás como parte de pago? Marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 5814,
+        "response": {
+          "session_id": "eval-76a03c16-a844-4743-9fb4-14e3d5723edd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Gol Trend 2017?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 3678,
+        "response": {
+          "session_id": "eval-76a03c16-a844-4743-9fb4-14e3d5723edd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La tasación final de tu usado la hace un asesor viéndolo en persona. Querés que te muestre alternativas que te entren con eso, o preferís que un asesor te contacte directo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige. [CHECK CORREGIDO 2026-08-05] el check del turno 1 prohibia la PALABRA \"asesor\", pero lo que el caso queria prohibir era DERIVAR antes de tiempo. El prompt (## Permuta punto 4) EXIGE decir que la tasacion la hace un asesor viendolo en persona, asi que la version vieja daba rojo por cumplir el prompt. Ahora prohibe OFRECER/derivar (\"queres que te conecte con un asesor\", \"asi un asesor te contacta\") y permite el guion legitimo (\"un asesor necesita verlo en persona\"). Validado sobre 6 frases reales: 6/6. Es la misma distincion que hubo que hacer en el check de \"efectivo\" (afirmar vs preguntar).",
+    "sessionId": "eval-6eca8fc0-10d7-4bd6-b1a4-9708b8d7ea42",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 2188,
+        "response": {
+          "session_id": "eval-6eca8fc0-10d7-4bd6-b1a4-9708b8d7ea42",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Con eso más tu usado seguramente entren varias opciones, e incluso alguna de más valor si la tasación acompaña. Para poder darte opciones, necesito que me digas qué auto entregás: marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 1959,
+        "response": {
+          "session_id": "eval-6eca8fc0-10d7-4bd6-b1a4-9708b8d7ea42",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Gol Trend 2017?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 3777,
+        "response": {
+          "session_id": "eval-6eca8fc0-10d7-4bd6-b1a4-9708b8d7ea42",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La tasación final de tu usado la hace un asesor viéndolo en persona. Querés que te muestre alternativas que te entren con eso, o preferís que un asesor te contacte directo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "permuta-una-pregunta-por-vez",
+    "bug": "captura: a '8 millones y un usado, reciben?' Franco arrancó con la frase genérica 'Un usado para entregar siempre es una ventaja...' sin contestar la pregunta, y en el mismo turno pidió nombre, apellido, marca, modelo, año y km, cerrando con 'así un asesor te contacta'. Tres problemas: (1) no responde lo que le preguntaron, (2) seis campos de una es un formulario y ahí el cliente abandona, (3) deriva antes de tiempo — el cliente todavía está hablando con Franco y espera que lo ayude ÉL. La regla de v21 ('todo junto en UNA sola pregunta') fue una decisión equivocada y este caso la corrige. [CHECK CORREGIDO 2026-08-05] el check del turno 1 prohibia la PALABRA \"asesor\", pero lo que el caso queria prohibir era DERIVAR antes de tiempo. El prompt (## Permuta punto 4) EXIGE decir que la tasacion la hace un asesor viendolo en persona, asi que la version vieja daba rojo por cumplir el prompt. Ahora prohibe OFRECER/derivar (\"queres que te conecte con un asesor\", \"asi un asesor te contacta\") y permite el guion legitimo (\"un asesor necesita verlo en persona\"). Validado sobre 6 frases reales: 6/6. Es la misma distincion que hubo que hacer en el check de \"efectivo\" (afirmar vs preguntar).",
+    "sessionId": "eval-80c51074-c0be-4341-9518-adf33fe05095",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Mira tengo 8 millones y un usado, reciben?",
+        "ms": 1968,
+        "response": {
+          "session_id": "eval-80c51074-c0be-4341-9518-adf33fe05095",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Sí, claro, recibimos usados como parte de pago. Para avanzar, contame qué auto entregás como usado, marca, modelo y año."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Tengo un Gol Trend 2017",
+        "ms": 2022,
+        "response": {
+          "session_id": "eval-80c51074-c0be-4341-9518-adf33fe05095",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Genial, y cuántos km tiene tu Gol Trend 2017?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "90.000 km",
+        "ms": 3132,
+        "response": {
+          "session_id": "eval-80c51074-c0be-4341-9518-adf33fe05095",
+          "messages": [
+            {
+              "type": "text",
+              "content": "La tasación final de tu usado la hace un asesor viéndolo en persona. Querés que te muestre alternativas que te entren con eso, o preferís que un asesor te contacte directo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Debe: (1) contestar QUE SÍ de entrada, directo; (2) dar una expectativa positiva de la operación; (3) hacer UNA sola pregunta, por el auto que entrega. NO pedir nombre, NO derivar, y NO mostrar autos todavía: sin saber qué entrega, cualquier precio es adivinar"
+      },
+      {
+        "turn": 2,
+        "note": "Sigue la progresión: ahora pregunta los km. Todavía no pide datos personales"
+      },
+      {
+        "turn": 3,
+        "note": "DECISIÓN 2026-07-23 (Agustina): con el usado ya identificado, cualquier próximo paso razonable vale — mostrar el ABANICO de capacidad, pedir el nombre, O derivar a un asesor. Antes se exigía el name-ask acá; ahora NO. Lo único que NO va: pedir varios datos de una (formulario)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "eval-dbecb358-1462-402e-b38e-6c8f57b6e668",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 12111,
+        "response": {
+          "session_id": "eval-dbecb358-1462-402e-b38e-6c8f57b6e668",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Uy, se me trabó el sistema un segundo. Me repetís lo último?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+          "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/"
+        ]
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 2854,
+        "response": {
+          "session_id": "eval-dbecb358-1462-402e-b38e-6c8f57b6e668",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Qué auto es el que tiene 100.000 km? Necesito marca, modelo y año para poder ayudarte con opciones o la tasación."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 4082,
+        "response": {
+          "session_id": "eval-dbecb358-1462-402e-b38e-6c8f57b6e668",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, estas opciones te pueden servir:\n- Ford Ranger 2024 — 18.000 km — $57.000.000 (4x4) pickup grande\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2) pickup grande\n- Toyota Hilux 2021 — 95.000 km — $38.000.000 (4x4) pickup grande\n- Volkswagen T-Cross 2025 — 5.200 km — $34.000.000 SUV mediano\n- Volkswagen Amarok 2018 — 135.000 km — $32.000.000 (4x4) pickup grande\n\nQuerés que te cuente más de alguna, o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            },
+            {
+              "id": 10,
+              "titulo": "Volkswagen T-Cross 2025",
+              "precio": "$34.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-10-1.webp"
+            },
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/",
+          "turno 3 · text_matches: no matcheó /(?i)financ|50\\s?%|anticipo/",
+          "turno 3 · text_not_matches: matcheó /(?i)hilux|\\bs10\\b|amarok|ranger/ y no debería: \"Ranger\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · no_fallback_bubble: burbuja de fallback (parser falló): \"Uy, se me trabó el sistema un segundo. Me repetís lo último?\"",
+      "turno 1 · text_matches: no matcheó /(?i)kil[oó]metr|\\bkm\\b/",
+      "turno 3 · text_matches: no matcheó /(?i)onix|208|ecosport|duster|corolla|renegade/",
+      "turno 3 · text_matches: no matcheó /(?i)financ|50\\s?%|anticipo/",
+      "turno 3 · text_not_matches: matcheó /(?i)hilux|\\bs10\\b|amarok|ranger/ y no debería: \"Ranger\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "eval-cf15d996-97e9-4115-9321-32b02a3cbe55",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 16358,
+        "response": {
+          "session_id": "eval-cf15d996-97e9-4115-9321-32b02a3cbe55",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar con la financiación y aprovechar tu vehículo Ford Ka 2015 como parte de pago, necesito que me confirmes los kilómetros que tiene tu auto. Esto es clave para que el asesor pueda hacer una tasación precisa y mostrarte las mejores opciones para vos."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 5694,
+        "response": {
+          "session_id": "eval-cf15d996-97e9-4115-9321-32b02a3cbe55",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 7 millones y el Ford Ka 2015 que entregás, con financiación hasta el 50% del valor, tenés un abanico de opciones para elegir. Querés que te muestre algunas opciones de entrada, intermedias y de gama alta que podrían ajustarse a tu capacidad de compra?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 5760,
+        "response": {
+          "session_id": "eval-cf15d996-97e9-4115-9321-32b02a3cbe55",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, estas te pueden servir según tu capacidad de compra:"
+            },
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:\n- Toyota Etios 2021, hatchback chico, 45.000 km, $14.500.000\n- Volkswagen Gol Trend 2018, hatchback chico, 110.000 km, $9.200.000\n- Ford Fiesta 2017, hatchback chico, 105.000 km, $8.200.000"
+            },
+            {
+              "type": "text",
+              "content": "Intermedio:\n- Renault Kangoo 2021, utilitario mediano, 82.000 km, $18.500.000\n- Fiat Cronos 2023, sedán mediano, 28.000 km, $16.800.000"
+            },
+            {
+              "type": "text",
+              "content": "Alto:\n- Jeep Renegade 2021, SUV mediano, 42.000 km, $25.500.000\n- Toyota Corolla 2022, sedán mediano, 35.000 km, $24.800.000\n\nEstas opciones son una estimación preliminar considerando tu anticipo y la permuta. La tasación final de tu auto y los detalles exactos de la financiación los hace un asesor cuando coordine con vos.\n\nCuál te llama la atención o querés que te cuente más de alguna en particular?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 3,
+              "titulo": "Ford Fiesta 2017",
+              "precio": "$8.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-3-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "capacidad-de-compra-financiada",
+    "bug": "captura (Sofía): con anticipo + usado + financiación, Franco muestra un abanico por tramos según la capacidad real (Capital Base = anticipo + usado al 70% desde la tabla Valuar usado; techo x2 por financiar hasta 50%), reaching tramos entrada/intermedio/alto. v44: el valor del usado es INTERNO — Franco NO le dice al cliente ningún monto por su usado (lo define el asesor). Habla de 'anticipo' (no 'efectivo'), con deslinde. RAÍZ v39: pto 5 anclado al efectivo crudo, financiación fuera del cálculo. REESCRITO EL 2026-08-06 (ver STATE, ejecución 13306): el turno del km NO es el turno de mostrar. v102 —pedido de Agustina— manda que si el cliente está DANDO datos y no pidió ver, la tool no devuelve autos; el caso viejo exigía el abanico ahí y era imposible de poner en verde. El abanico se mide ahora en el turno 3, cuando el cliente SÍ lo pide.",
+    "sessionId": "eval-e55b66d6-5483-4f14-98d6-dac1292aca5d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo un ford ka 2015 para entregar y unos 7 millones de anticipo. me interesa financiar, qué opciones tengo?",
+        "ms": 13106,
+        "response": {
+          "session_id": "eval-e55b66d6-5483-4f14-98d6-dac1292aca5d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Perfecto, tenés un Ford Ka 2015 para entregar y 7 millones de anticipo para financiar. No puedo generar un abanico de opciones sin saber cuántos kilómetros tiene tu auto para valorarlo mejor y mostrarte las opciones que te entrarían. Por favor, me podés decir cuántos kilómetros tiene tu Ford Ka?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "tiene 100.000 km",
+        "ms": 15719,
+        "response": {
+          "session_id": "eval-e55b66d6-5483-4f14-98d6-dac1292aca5d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Teniendo en cuenta tu anticipo de 7 millones y tu Ford Ka 2015 con 100.000 km para entregar, estimamos la capacidad de compra con financiación hasta el 50%.\n\nPor ahora no puedo mostrarte opciones concretas porque parece que hubo un error técnico. No te preocupes, un asesor está para ayudarte a armar la mejor propuesta para vos, incluyendo la tasación de tu auto y la financiación.\n\nMe dejás tu nombre y apellido para pasarle estos datos y que te contacte un asesor? Así te atienden rápido y sin vueltas."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "dale, mostrame las opciones que me entran",
+        "ms": 5578,
+        "response": {
+          "session_id": "eval-e55b66d6-5483-4f14-98d6-dac1292aca5d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con tu usado como parte de pago, tu anticipo y la posibilidad de financiar, estas opciones te pueden servir:\n- Toyota Etios 2021 — 45.000 km — $14.500.000 (hatchback, chico)\n- Volkswagen Gol Trend 2018 — 110.000 km — $9.200.000 (hatchback, chico)\n\nIntermedio:\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n- Fiat Cronos 2023 — 28.000 km — $16.800.000 (sedán, mediano)\n\nAlto:\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, chico)\n- Jeep Renegade 2021 — 42.000 km — $25.500.000 (SUV, mediano)\n\nSi te interesa alguna, o querés que te derive con un asesor para conocer detalles o la tasación de tu usado, me decís."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 2,
+              "titulo": "Volkswagen Gol Trend 2018",
+              "precio": "$9.200.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-2-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "v44: el km es OBLIGATORIO antes de mostrar (aunque no se use en el valor). Debe PEDIR el km, auto_ids vacío, NO mostrar el abanico todavía. GATE ABIERTO DESDE v45: este turno leakea, no es regresión de ningún cambio nuevo."
+      },
+      {
+        "turn": 2,
+        "note": "v102: el cliente COMPLETÓ los datos del usado y NO pidió ver. `Listar stock` devuelve el centinela a propósito, así que acá NO se lista ningún auto: se acusa recibo, se aclara que la tasación la hace un asesor en persona y se ofrecen las dos salidas (asesor o ver opciones). Medido el 2026-08-06 sobre v105: 2 de 3 corridas obedecen, 1 de 3 lista 6 autos de memoria con cards vacías."
+      },
+      {
+        "turn": 3,
+        "note": "ACÁ SÍ: pidió ver, el gate de permuta se abre. Abanico en 3 bloques (entrada/intermedio/alto) hasta el techo financiado (7.000.000 + 0,70 x usado 8.832.460 = 13.182.000, x2 = ~26.365.000 → alcanza Corolla 24.8M y Renegade 25.5M). HARDENING v45: NO deben aparecer las pickups de $32M+ (Hilux/S10/Amarok/Ranger, y tampoco T-Cross/Vento, todas 'fuera' por tramo). NO dice NINGÚN monto por el usado (interno). VERIFICADO CONTRA LA BASE el 2026-08-06: con esos parámetros el techo por tramo deja 11 autos y ninguna pickup."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "hatchback-que-entra-no-se-silencia",
+    "bug": "EL GEMELO DEL BUG DEL ETIOS, EN LA DIMENSIÓN CARROCERÍA. Mismo mecanismo que cerró v118 para el tamaño: la etiqueta 'economica' (precio < 90% del capital) más la línea 125 del prompt ('las economica NO se ofrecen') silencian al auto que el cliente pidió Y que le entra al bolsillo. VERIFICADO CONTRA LA BASE (2026-08-11): con $24.000.000 los CUATRO hatchbacks caen en 'economica' — Peugeot 208 $21.000.000, Toyota Etios $14.500.000, Gol Trend $9.200.000, Ford Fiesta $8.200.000 — así que quedan CERO 'entra' y CERO 'estirar'. Franco se queda sin nada ofrecible de la carrocería que le pidieron, cuando el 208 entra con $3.000.000 de sobra. NO ES TEÓRICO NI ES EXCLUSIVO DEL HATCHBACK: barriendo capitales de $10M a $40M el agujero aparece en las cinco carrocerías — Hatchback en 25 de 31 capitales (desde $11M), Utilitario en 20 (desde $21M), Sedán en 13 (desde $19M), SUV en 8 (desde $29M) y Pickup en 2 (desde $36M). SE ELIGIÓ HATCHBACK CON 24M porque es el más reproducible y el más caro de equivocar: hay un auto casi perfecto para ese cliente y no se lo muestra. EL FIX ES LA MITAD DE v118: el mecanismo del CTE 'criterio' ya quedó diseñado genérico por criterio, así que sólo hace falta la parte de PROMOVER (que el más caro que cumple y entra deje de estar silenciado). La parte de REETIQUETAR no va: para la carrocería ya existen 'carroceria_solo_si_hay' y la prosa que prohíbe llamar pickup a un hatchback.",
+    "sessionId": "eval-cfb0b533-a70a-45bc-9605-6a83ec10d2cd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 24 millones y busco un hatchback. qué tenés?",
+        "ms": 3887,
+        "response": {
+          "session_id": "eval-cfb0b533-a70a-45bc-9605-6a83ec10d2cd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, dentro de tu presupuesto estas opciones de hatchback tengo:\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (chico, hatchback)\n\nY si te interesa te puedo mostrar también las otras opciones que tenemos, incluso SUVs y sedanes que son medianos y un poco más caros, pero no hatchbacks exactamente. Querés que te pase alguna en detalle o preferís que te muestre más opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "CON $24.000.000 Y PIDIENDO HATCHBACK: el Peugeot 208 2025 sale $21.000.000 y le entra con holgura — tiene que estar. Los otros tres hatchbacks son de gama bastante más baja y NO hace falta que los liste (esa es justamente la protección que la etiqueta 'economica' tiene que seguir dando). Lo que no puede pasar es decirle que no tiene hatchbacks, o saltar a otra carrocería, cuando hay uno que le entra."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "hatchback-que-entra-no-se-silencia",
+    "bug": "EL GEMELO DEL BUG DEL ETIOS, EN LA DIMENSIÓN CARROCERÍA. Mismo mecanismo que cerró v118 para el tamaño: la etiqueta 'economica' (precio < 90% del capital) más la línea 125 del prompt ('las economica NO se ofrecen') silencian al auto que el cliente pidió Y que le entra al bolsillo. VERIFICADO CONTRA LA BASE (2026-08-11): con $24.000.000 los CUATRO hatchbacks caen en 'economica' — Peugeot 208 $21.000.000, Toyota Etios $14.500.000, Gol Trend $9.200.000, Ford Fiesta $8.200.000 — así que quedan CERO 'entra' y CERO 'estirar'. Franco se queda sin nada ofrecible de la carrocería que le pidieron, cuando el 208 entra con $3.000.000 de sobra. NO ES TEÓRICO NI ES EXCLUSIVO DEL HATCHBACK: barriendo capitales de $10M a $40M el agujero aparece en las cinco carrocerías — Hatchback en 25 de 31 capitales (desde $11M), Utilitario en 20 (desde $21M), Sedán en 13 (desde $19M), SUV en 8 (desde $29M) y Pickup en 2 (desde $36M). SE ELIGIÓ HATCHBACK CON 24M porque es el más reproducible y el más caro de equivocar: hay un auto casi perfecto para ese cliente y no se lo muestra. EL FIX ES LA MITAD DE v118: el mecanismo del CTE 'criterio' ya quedó diseñado genérico por criterio, así que sólo hace falta la parte de PROMOVER (que el más caro que cumple y entra deje de estar silenciado). La parte de REETIQUETAR no va: para la carrocería ya existen 'carroceria_solo_si_hay' y la prosa que prohíbe llamar pickup a un hatchback.",
+    "sessionId": "eval-8b17dd8e-d548-4b6b-9b67-156eca33fc1b",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 24 millones y busco un hatchback. qué tenés?",
+        "ms": 7049,
+        "response": {
+          "session_id": "eval-8b17dd8e-d548-4b6b-9b67-156eca33fc1b",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, estas hatchbacks entran en tu presupuesto de 24 millones y cumplen con lo que buscás:\n- Peugeot 208 2025 — 8.000 km — $21.000.000, compacto y con bajo consumo (6,8 L/100km)."
+            },
+            {
+              "type": "text",
+              "content": "Dentro de tu presupuesto no hay más hatchbacks, pero si te interesa ver todas las opciones en stock, avisame y te paso la lista completa."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 1 · text_not_matches: matcheó /(?i)no (tengo|hay|tenemos|me queda)[^.]{0,45}hatchback/ y no debería: \"no hay más hatchback\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 1 · text_not_matches: matcheó /(?i)no (tengo|hay|tenemos|me queda)[^.]{0,45}hatchback/ y no debería: \"no hay más hatchback\""
+    ],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "CON $24.000.000 Y PIDIENDO HATCHBACK: el Peugeot 208 2025 sale $21.000.000 y le entra con holgura — tiene que estar. Los otros tres hatchbacks son de gama bastante más baja y NO hace falta que los liste (esa es justamente la protección que la etiqueta 'economica' tiene que seguir dando). Lo que no puede pasar es decirle que no tiene hatchbacks, o saltar a otra carrocería, cuando hay uno que le entra."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "hatchback-que-entra-no-se-silencia",
+    "bug": "EL GEMELO DEL BUG DEL ETIOS, EN LA DIMENSIÓN CARROCERÍA. Mismo mecanismo que cerró v118 para el tamaño: la etiqueta 'economica' (precio < 90% del capital) más la línea 125 del prompt ('las economica NO se ofrecen') silencian al auto que el cliente pidió Y que le entra al bolsillo. VERIFICADO CONTRA LA BASE (2026-08-11): con $24.000.000 los CUATRO hatchbacks caen en 'economica' — Peugeot 208 $21.000.000, Toyota Etios $14.500.000, Gol Trend $9.200.000, Ford Fiesta $8.200.000 — así que quedan CERO 'entra' y CERO 'estirar'. Franco se queda sin nada ofrecible de la carrocería que le pidieron, cuando el 208 entra con $3.000.000 de sobra. NO ES TEÓRICO NI ES EXCLUSIVO DEL HATCHBACK: barriendo capitales de $10M a $40M el agujero aparece en las cinco carrocerías — Hatchback en 25 de 31 capitales (desde $11M), Utilitario en 20 (desde $21M), Sedán en 13 (desde $19M), SUV en 8 (desde $29M) y Pickup en 2 (desde $36M). SE ELIGIÓ HATCHBACK CON 24M porque es el más reproducible y el más caro de equivocar: hay un auto casi perfecto para ese cliente y no se lo muestra. EL FIX ES LA MITAD DE v118: el mecanismo del CTE 'criterio' ya quedó diseñado genérico por criterio, así que sólo hace falta la parte de PROMOVER (que el más caro que cumple y entra deje de estar silenciado). La parte de REETIQUETAR no va: para la carrocería ya existen 'carroceria_solo_si_hay' y la prosa que prohíbe llamar pickup a un hatchback.",
+    "sessionId": "eval-e2df066d-897f-4e30-82e8-a036f3ee8862",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, tengo 24 millones y busco un hatchback. qué tenés?",
+        "ms": 4201,
+        "response": {
+          "session_id": "eval-e2df066d-897f-4e30-82e8-a036f3ee8862",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, con $24 millones y buscando un hatchback te puedo ofrecer estas opciones que entran justo dentro de tu presupuesto:\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, chico, consume 6,8 L/100km)\n\nSi querés algo de más categoría, pero que se pasa un poco del techo que mencionaste, está el Jeep Renegade 2021, 42.000 km, a $25.500.000 (SUV mediano).\n\nY si querés, te paso todo el stock que tenemos para que veas más opciones, avisame.\n"
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-3.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "CON $24.000.000 Y PIDIENDO HATCHBACK: el Peugeot 208 2025 sale $21.000.000 y le entra con holgura — tiene que estar. Los otros tres hatchbacks son de gama bastante más baja y NO hace falta que los liste (esa es justamente la protección que la etiqueta 'economica' tiene que seguir dando). Lo que no puede pasar es decirle que no tiene hatchbacks, o saltar a otra carrocería, cuando hay uno que le entra."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-fugar-vocabulario-interno",
+    "bug": "FUGA DE VOCABULARIO INTERNO AL CLIENTE. Franco le dice al cliente las etiquetas que le llegan de Listar stock. Medido el 2026-08-11 contra mensajes_demo: 19 sesiones sobre 2701. El caso que lo abrió, sesion 89f55764: \"La opcion chico mas accesible ... pero es categoria \"economica\"\" — dos fugas en una sola oracion. La mas frecuente es \"estirar\" (11 de 15): el modelo NOMBRA el bloque de arriba con su etiqueta en vez de describirlo. QUIEN LO CAZA: el check no_vocabulario_interno, que corre en ALWAYS (o sea en los 91 casos); este caso no aporta un check propio, aporta el ESTADO que lo provoca. POR QUE ESTE GUION Y NO EL DE chico-no-es-utilitario: ahi la fuga se midio 3 de 26 (~12%), pero 12 corridas sobre v127 dieron 0. Mirando las respuestas se ve por que — todas dicen \"el auto chico que entra bien es: Etios\", o sea que el bloque entra NO estaba vacio. En las dos corridas que fugaron el 08-10 el Etios estaba silenciado por el bug de categoria economica (v118), el bloque entra quedaba VACIO y el modelo tenia que nombrar los otros bloques para explicarse. v118 arreglo el silenciamiento, asi que ese guion ya no llega al estado que provoca la fuga. ACA EL ESTADO SE FUERZA CON EL PRESUPUESTO: con 12 millones la ventana entra (10.8M-12M) esta vacia de verdad, la Fiesta 8.2M y el Gol Trend 9.2M caen en economica (precio < capital*0.90, y el prompt dice que las economica no se ofrecen) y el Etios 14.5M queda en estirar. Verificado contra autos_disponibles el 2026-08-11.",
+    "sessionId": "eval-3b3c2ff6-e67f-4bbb-a92b-19e6a0fb1d30",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un auto chico. tengo 12 millones, qué me podés ofrecer?",
+        "ms": 4000,
+        "response": {
+          "session_id": "eval-3b3c2ff6-e67f-4bbb-a92b-19e6a0fb1d30",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con 12 millones y buscando un auto chico, la opción que tengo es el Toyota Etios 2021, hatchback, 45.000 km, $14.500.000, que se pasa un poco de tu presupuesto.\n\nDado que está un poco arriba de tu techo, podrías llegar a él con alguna financiación o entregando un usado como parte de pago. Querés que te explique cómo sería esa financiación o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y si pongo un poco más de plata, qué me conviene?",
+        "ms": 4552,
+        "response": {
+          "session_id": "eval-3b3c2ff6-e67f-4bbb-a92b-19e6a0fb1d30",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con un poco más de presupuesto, hasta 15 millones, el Toyota Etios 2021 sigue siendo la opción más cercana y recomendable por tamaño chico, hatchback y consumo moderado (7.0 L/100km).\n\nSi estirás un poco más, podrías empezar a considerar autos medianos como el Fiat Cronos 2023 o el Renault Kangoo 2021, que están un poco por encima de los 15 millones.\n\nQuerés que te muestre el Toyota Etios en detalle o preferís que te pase otras opciones para ver?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "ENTRA ESTA VACIO A PROPOSITO. Lo correcto es describir la situacion en castellano: que por 12 millones lo que hay son opciones mas economicas (Fiesta 8.2M, Gol Trend 9.2M) y que el Etios 14.5M queda un poco por encima. Lo que NO puede hacer es nombrar los bloques por su etiqueta: \"entra\", \"estirar\", \"economica\" son terminos nuestros. El rojo lo pone no_vocabulario_interno, que corre solo."
+      },
+      {
+        "turn": 2,
+        "note": "EL TURNO DONDE MAS FUGA (11 de las 15 medidas). Tiene que presentar el Etios 2021 4.500.000 como el paso siguiente, descrito con palabras: \"un poco por encima\", \"estirando un poco\". Lo que no puede es llamarlo por la etiqueta: opciones \"estirar\", categoria \"estirar\", gama \"estirar\"."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-fugar-vocabulario-interno",
+    "bug": "FUGA DE VOCABULARIO INTERNO AL CLIENTE. Franco le dice al cliente las etiquetas que le llegan de Listar stock. Medido el 2026-08-11 contra mensajes_demo: 19 sesiones sobre 2701. El caso que lo abrió, sesion 89f55764: \"La opcion chico mas accesible ... pero es categoria \"economica\"\" — dos fugas en una sola oracion. La mas frecuente es \"estirar\" (11 de 15): el modelo NOMBRA el bloque de arriba con su etiqueta en vez de describirlo. QUIEN LO CAZA: el check no_vocabulario_interno, que corre en ALWAYS (o sea en los 91 casos); este caso no aporta un check propio, aporta el ESTADO que lo provoca. POR QUE ESTE GUION Y NO EL DE chico-no-es-utilitario: ahi la fuga se midio 3 de 26 (~12%), pero 12 corridas sobre v127 dieron 0. Mirando las respuestas se ve por que — todas dicen \"el auto chico que entra bien es: Etios\", o sea que el bloque entra NO estaba vacio. En las dos corridas que fugaron el 08-10 el Etios estaba silenciado por el bug de categoria economica (v118), el bloque entra quedaba VACIO y el modelo tenia que nombrar los otros bloques para explicarse. v118 arreglo el silenciamiento, asi que ese guion ya no llega al estado que provoca la fuga. ACA EL ESTADO SE FUERZA CON EL PRESUPUESTO: con 12 millones la ventana entra (10.8M-12M) esta vacia de verdad, la Fiesta 8.2M y el Gol Trend 9.2M caen en economica (precio < capital*0.90, y el prompt dice que las economica no se ofrecen) y el Etios 14.5M queda en estirar. Verificado contra autos_disponibles el 2026-08-11.",
+    "sessionId": "eval-6ae16b24-5599-4098-9a55-6fe58a86f1ec",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un auto chico. tengo 12 millones, qué me podés ofrecer?",
+        "ms": 3750,
+        "response": {
+          "session_id": "eval-6ae16b24-5599-4098-9a55-6fe58a86f1ec",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Para un auto chico, con tu presupuesto de 12 millones te puede servir el Toyota Etios 2021, hatchback, 45.000 km, $14.500.000. Es un poco más de tu techo, pero podrías considerar estirar un poco para esta opción."
+            },
+            {
+              "type": "text",
+              "content": "Si querés, puedo mostrarte todo el stock disponible para que veas otras opciones. Querés que te lo pase?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y si pongo un poco más de plata, qué me conviene?",
+        "ms": 4716,
+        "response": {
+          "session_id": "eval-6ae16b24-5599-4098-9a55-6fe58a86f1ec",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con un poco más de plata, podrías considerar estas opciones de autos chicos y medianos que se ajustan a lo que buscás:\n\n- Toyota Etios 2021, hatchback, consume 7.0 L/100km, $14.500.000 (un poco por encima de los 12M).\n\nSi querés estirar el presupuesto, te convienen más opciones como el Fiat Cronos 2023, sedán mediano, $16.800.000, o la Renault Kangoo 2021, utilitario mediano, $18.500.000.\n\nQuerés que te pase todo el stock para que veas más opciones o preferís que te ayude a elegir según otras características?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 4,
+              "titulo": "Toyota Etios 2021",
+              "precio": "$14.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp"
+            },
+            {
+              "id": 1,
+              "titulo": "Fiat Cronos 2023",
+              "precio": "$16.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "ENTRA ESTA VACIO A PROPOSITO. Lo correcto es describir la situacion en castellano: que por 12 millones lo que hay son opciones mas economicas (Fiesta 8.2M, Gol Trend 9.2M) y que el Etios 14.5M queda un poco por encima. Lo que NO puede hacer es nombrar los bloques por su etiqueta: \"entra\", \"estirar\", \"economica\" son terminos nuestros. El rojo lo pone no_vocabulario_interno, que corre solo."
+      },
+      {
+        "turn": 2,
+        "note": "EL TURNO DONDE MAS FUGA (11 de las 15 medidas). Tiene que presentar el Etios 2021 4.500.000 como el paso siguiente, descrito con palabras: \"un poco por encima\", \"estirando un poco\". Lo que no puede es llamarlo por la etiqueta: opciones \"estirar\", categoria \"estirar\", gama \"estirar\"."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "no-fugar-vocabulario-interno",
+    "bug": "FUGA DE VOCABULARIO INTERNO AL CLIENTE. Franco le dice al cliente las etiquetas que le llegan de Listar stock. Medido el 2026-08-11 contra mensajes_demo: 19 sesiones sobre 2701. El caso que lo abrió, sesion 89f55764: \"La opcion chico mas accesible ... pero es categoria \"economica\"\" — dos fugas en una sola oracion. La mas frecuente es \"estirar\" (11 de 15): el modelo NOMBRA el bloque de arriba con su etiqueta en vez de describirlo. QUIEN LO CAZA: el check no_vocabulario_interno, que corre en ALWAYS (o sea en los 91 casos); este caso no aporta un check propio, aporta el ESTADO que lo provoca. POR QUE ESTE GUION Y NO EL DE chico-no-es-utilitario: ahi la fuga se midio 3 de 26 (~12%), pero 12 corridas sobre v127 dieron 0. Mirando las respuestas se ve por que — todas dicen \"el auto chico que entra bien es: Etios\", o sea que el bloque entra NO estaba vacio. En las dos corridas que fugaron el 08-10 el Etios estaba silenciado por el bug de categoria economica (v118), el bloque entra quedaba VACIO y el modelo tenia que nombrar los otros bloques para explicarse. v118 arreglo el silenciamiento, asi que ese guion ya no llega al estado que provoca la fuga. ACA EL ESTADO SE FUERZA CON EL PRESUPUESTO: con 12 millones la ventana entra (10.8M-12M) esta vacia de verdad, la Fiesta 8.2M y el Gol Trend 9.2M caen en economica (precio < capital*0.90, y el prompt dice que las economica no se ofrecen) y el Etios 14.5M queda en estirar. Verificado contra autos_disponibles el 2026-08-11.",
+    "sessionId": "eval-06f72a31-8fff-4051-85e2-4457c156d728",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco un auto chico. tengo 12 millones, qué me podés ofrecer?",
+        "ms": 4228,
+        "response": {
+          "session_id": "eval-06f72a31-8fff-4051-85e2-4457c156d728",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con un presupuesto de 12 millones, el único auto chico que podría entrar es el Toyota Etios 2021, aunque está un poco por encima del presupuesto, a $14.500.000. Es un hatchback chico que podría adaptarse bien a lo que buscás."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te muestre opciones más grandes o preferís que te ayude con alguna otra búsqueda?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y si pongo un poco más de plata, qué me conviene?",
+        "ms": 4323,
+        "response": {
+          "session_id": "eval-06f72a31-8fff-4051-85e2-4457c156d728",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con un poco más de presupuesto, te conviene el Toyota Etios 2021 que está a $14.500.000, es un hatchback chico ideal para ciudad y tiene un consumo aproximado de 7.0 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Si puedes estirar un poco más, también podrías considerar el Fiat Cronos 2023 a $16.800.000, que es un sedán mediano con 28.000 km y consumo de 6.7 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te pase más detalles de alguno de estos autos o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-1-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "ENTRA ESTA VACIO A PROPOSITO. Lo correcto es describir la situacion en castellano: que por 12 millones lo que hay son opciones mas economicas (Fiesta 8.2M, Gol Trend 9.2M) y que el Etios 14.5M queda un poco por encima. Lo que NO puede hacer es nombrar los bloques por su etiqueta: \"entra\", \"estirar\", \"economica\" son terminos nuestros. El rojo lo pone no_vocabulario_interno, que corre solo."
+      },
+      {
+        "turn": 2,
+        "note": "EL TURNO DONDE MAS FUGA (11 de las 15 medidas). Tiene que presentar el Etios 2021 4.500.000 como el paso siguiente, descrito con palabras: \"un poco por encima\", \"estirando un poco\". Lo que no puede es llamarlo por la etiqueta: opciones \"estirar\", categoria \"estirar\", gama \"estirar\"."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "eval-64a79ce3-caaa-4d4b-b6f8-e39d9342943a",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 4277,
+        "response": {
+          "session_id": "eval-64a79ce3-caaa-4d4b-b6f8-e39d9342943a",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. El precio es $32.000.000, tiene 135.000 km y consume aproximadamente 9,2 L/100 km."
+            },
+            {
+              "type": "text",
+              "content": "Si buscás algo más nuevo dentro del segmento de pickups, tengo una Ford Ranger 2024 (4x4 automática) a $57.000.000, una Chevrolet S10 2022 (4x2) a $39.500.000, y una Toyota Hilux 2021 (4x4) a $38.000.000."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te cuente más detalles de la Amarok 2018 o de alguna de estas otras pickups?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "eval-dd1dd67d-ad8c-43b8-be7b-aa57d0cf6e31",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 6361,
+        "response": {
+          "session_id": "eval-dd1dd67d-ad8c-43b8-be7b-aa57d0cf6e31",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018, que es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Es ideal para quien necesita tracción real y no quiere pagar una unidad más reciente. El precio es $32.000.000, tiene 135.000 km y consume aproximadamente 9.2 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Como alternativas de pickups, también tengo:\n- Ford Ranger 2024, 18.000 km, $57.000.000 (4x4)\n- Chevrolet S10 2022, 68.000 km, $39.500.000 (4x2)\n- Toyota Hilux 2021, 95.000 km, $38.000.000 (4x4)"
+            },
+            {
+              "type": "text",
+              "content": "Cuál te interesa que te cuente más o querés que te muestre otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "modelo-inexistente-se-avisa-y-se-ofrece",
+    "bug": "ANOTADO POR AGUSTINA 2026-08-12 sobre v134, con captura. El cliente dice \"Estoy buscando una Amarok 2023.\" y Franco arranca con \"La Volkswagen Amarok ... 2018 es la 4x4 diésel más accesible del stock\": le presenta la 2018 como si fuera lo que pidió, sin aclarar NUNCA que la 2023 no existe. LA REGLA: si piden un modelo/año que no hay, (1) se dice que no lo tenemos, (2) se ofrece la o las opciones más similares, (3) se cierra con la pregunta comercial. AGUJERO QUE LO DEJÓ PASAR: `no-repite-la-ficha` arranca con este mismísimo mensaje pero todos sus checks están en el turno 2; su turno 1 sólo pide media_min. El bug ocurre en un turno que ya estaba en la suite y que nadie miraba.",
+    "sessionId": "eval-8aa4f2ae-2dd8-41f7-8d14-bdc9a34a9a16",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Estoy buscando una Amarok 2023.",
+        "ms": 4162,
+        "response": {
+          "session_id": "eval-8aa4f2ae-2dd8-41f7-8d14-bdc9a34a9a16",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "La Amarok 2023 no la tengo. La única Amarok que tengo es la 2018: es la 4x4 diésel más accesible del stock, con buena potencia y equipamiento completo. Precio $32.000.000, 135.000 km, consumo aproximado 9,2 L/100km. La transmisión es manual y el motor es diésel.\n\nSi buscás algo más nuevo, también tengo otras pickups como la Ford Ranger 2024, la Chevrolet S10 2022 y la Toyota Hilux 2021. Querés que te cuente más de alguna o querés ver otras opciones?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 15,
+              "titulo": "Volkswagen Amarok 2018",
+              "precio": "$32.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-15-1.webp"
+            },
+            {
+              "id": 14,
+              "titulo": "Ford Ranger 2024",
+              "precio": "$57.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-14-1.webp"
+            },
+            {
+              "id": 16,
+              "titulo": "Chevrolet S10 2022",
+              "precio": "$39.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp"
+            },
+            {
+              "id": 13,
+              "titulo": "Toyota Hilux 2021",
+              "precio": "$38.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-13-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL CASO. No hay Amarok 2023 en stock; la única Amarok es la 2018 ($32.000.000, 135.000 km). Franco tiene que decir que la 2023 no la tenemos, ofrecer la 2018 y/o las otras pickups (S10, Hilux, Ranger) como lo más parecido, y cerrar con la pregunta comercial. Lo que NO puede hacer es abrir con la ficha de la 2018 como si fuera lo que el cliente pidió."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "presupuesto-sin-usado-no-se-traba",
+    "bug": "REPORTADO POR AGUSTINA 2026-08-12 sobre v140/v137 (pasa en las dos: se aisló revirtiendo). Franco contesta \"Uy, se me trabo el sistema un segundo. Me repetis lo ultimo?\" a un pedido de autos por presupuesto. REPRODUCIDO 3/3 contra produccion, deterministico. CAUSA leida del log (ejecuciones 16613 y 16614): \"Received tool input did not match expected schema - Required at con_financiacion / usado_anio / usado_marca / usado_modelo / usado_categoria / usado_km\". El cliente no nombra ningun usado, el modelo omite los cinco usado_*, n8n rechaza la llamada entera y Armar respuesta cae al fallback. OJO: tiene_permuta NO esta entre los rechazados, el modelo lo mando en 0 - se le exigen los datos de un usado que el propio modelo declaro que no existe. AGUJERO QUE LO DEJO PASAR: no_fallback_bubble ya corre en ALWAYS, pero NINGUN caso de la suite pedia autos por plata SIN mencionar un usado; los que tienen presupuesto lo dan junto a un usado (km-con-presupuesto: \"mi fiat mobi 2018, tengo 13 millones\") y ahi la llamada pasa.",
+    "sessionId": "eval-c414efef-8cef-4861-9e5c-465c48e42620",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Hola! busco un auto de 20M aprox, que tenes disonible?",
+        "ms": 4799,
+        "response": {
+          "session_id": "eval-c414efef-8cef-4861-9e5c-465c48e42620",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, con un presupuesto de alrededor de 20 millones estas te pueden servir:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000\n- Renault Kangoo 2021 — 82.000 km — $18.500.000\n\nY si querés algo un poco más moderno y de última generación, están estas opciones que se van un poco arriba del presupuesto:\n- Toyota Corolla 2022 — 35.000 km — $24.800.000\n- Renault Duster 2023 — 31.000 km — $22.500.000\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000\n- Peugeot 208 2025 — 8.000 km — $21.000.000\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algo un poco más nuevo?",
+        "ms": 4085,
+        "response": {
+          "session_id": "eval-c414efef-8cef-4861-9e5c-465c48e42620",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con un presupuesto de 20 millones, las opciones más nuevas que tenemos están un poco arriba de ese valor:\n- Jeep Renegade 2021, SUV mediano, $25.500.000\n- Toyota Corolla 2022, sedán mediano, $24.800.000\n- Renault Duster 2023, SUV mediano, $22.500.000\n- Chevrolet Onix 2024, sedán chico, $21.500.000\n- Peugeot 208 2025, hatchback chico, $21.000.000\n\nEstas opciones están por encima de los 20 millones, pero podrían interesarte si pensás en financiación o entregar un usado para completar. Querés que te muestre alguna en detalle o prefieres que te pase todo el stock que tenemos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 12,
+              "titulo": "Jeep Renegade 2021",
+              "precio": "$25.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-12-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL BUG. Con $20.000.000 el cliente tiene que ver opciones reales (el Onix $21.500.000 esta apenas arriba; entran Duster $22.500.000 no, Renegade no; si entran Etios $14.500.000, Cronos $16.800.000, Kangoo $18.500.000, EcoSport $19.800.000). Lo que NO puede pasar, y es el bug, es la burbuja \"se me trabo el sistema\". Tampoco puede pedirle datos de un usado que el cliente no nombro."
+      },
+      {
+        "turn": 2,
+        "note": "Sigue sin usado. No puede caer al fallback ni pedir marca/modelo/anio de un usado inexistente. Tiene que ofrecer los mas nuevos que entren o decir con el numero por que no."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "presupuesto-sin-usado-no-se-traba",
+    "bug": "REPORTADO POR AGUSTINA 2026-08-12 sobre v140/v137 (pasa en las dos: se aisló revirtiendo). Franco contesta \"Uy, se me trabo el sistema un segundo. Me repetis lo ultimo?\" a un pedido de autos por presupuesto. REPRODUCIDO 3/3 contra produccion, deterministico. CAUSA leida del log (ejecuciones 16613 y 16614): \"Received tool input did not match expected schema - Required at con_financiacion / usado_anio / usado_marca / usado_modelo / usado_categoria / usado_km\". El cliente no nombra ningun usado, el modelo omite los cinco usado_*, n8n rechaza la llamada entera y Armar respuesta cae al fallback. OJO: tiene_permuta NO esta entre los rechazados, el modelo lo mando en 0 - se le exigen los datos de un usado que el propio modelo declaro que no existe. AGUJERO QUE LO DEJO PASAR: no_fallback_bubble ya corre en ALWAYS, pero NINGUN caso de la suite pedia autos por plata SIN mencionar un usado; los que tienen presupuesto lo dan junto a un usado (km-con-presupuesto: \"mi fiat mobi 2018, tengo 13 millones\") y ahi la llamada pasa.",
+    "sessionId": "eval-99f255aa-6a03-4c80-8b80-2c0d24d2c5fc",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Hola! busco un auto de 20M aprox, que tenes disonible?",
+        "ms": 5216,
+        "response": {
+          "session_id": "eval-99f255aa-6a03-4c80-8b80-2c0d24d2c5fc",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Con unos 20 millones, estas opciones te pueden interesar, aunque están un poco por encima del presupuesto:\n\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán, mediano)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, mediano)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, chico)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, chico)\n\nY dentro del presupuesto, estas son las opciones:\n\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            },
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algo un poco más nuevo?",
+        "ms": 4955,
+        "response": {
+          "session_id": "eval-99f255aa-6a03-4c80-8b80-2c0d24d2c5fc",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Para algo un poco más nuevo, estos son los que tenemos, pero todos están un poco por encima de tu presupuesto aproximado de 20M:\n\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (sedán, mediano)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, mediano)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (sedán, chico)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (hatchback, chico)\n\nDentro de los 20M justos sí están estas opciones:\n\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (utilitario, mediano)\n\nQuerés que te pase más opciones o te interesa alguna en particular?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL BUG. Con $20.000.000 el cliente tiene que ver opciones reales (el Onix $21.500.000 esta apenas arriba; entran Duster $22.500.000 no, Renegade no; si entran Etios $14.500.000, Cronos $16.800.000, Kangoo $18.500.000, EcoSport $19.800.000). Lo que NO puede pasar, y es el bug, es la burbuja \"se me trabo el sistema\". Tampoco puede pedirle datos de un usado que el cliente no nombro."
+      },
+      {
+        "turn": 2,
+        "note": "Sigue sin usado. No puede caer al fallback ni pedir marca/modelo/anio de un usado inexistente. Tiene que ofrecer los mas nuevos que entren o decir con el numero por que no."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "presupuesto-sin-usado-no-se-traba",
+    "bug": "REPORTADO POR AGUSTINA 2026-08-12 sobre v140/v137 (pasa en las dos: se aisló revirtiendo). Franco contesta \"Uy, se me trabo el sistema un segundo. Me repetis lo ultimo?\" a un pedido de autos por presupuesto. REPRODUCIDO 3/3 contra produccion, deterministico. CAUSA leida del log (ejecuciones 16613 y 16614): \"Received tool input did not match expected schema - Required at con_financiacion / usado_anio / usado_marca / usado_modelo / usado_categoria / usado_km\". El cliente no nombra ningun usado, el modelo omite los cinco usado_*, n8n rechaza la llamada entera y Armar respuesta cae al fallback. OJO: tiene_permuta NO esta entre los rechazados, el modelo lo mando en 0 - se le exigen los datos de un usado que el propio modelo declaro que no existe. AGUJERO QUE LO DEJO PASAR: no_fallback_bubble ya corre en ALWAYS, pero NINGUN caso de la suite pedia autos por plata SIN mencionar un usado; los que tienen presupuesto lo dan junto a un usado (km-con-presupuesto: \"mi fiat mobi 2018, tengo 13 millones\") y ahi la llamada pasa.",
+    "sessionId": "eval-869c4f4a-4722-4fbf-9e21-682f6f3e1a69",
+    "turns": [
+      {
+        "n": 1,
+        "say": "Hola! busco un auto de 20M aprox, que tenes disonible?",
+        "ms": 5403,
+        "response": {
+          "session_id": "eval-869c4f4a-4722-4fbf-9e21-682f6f3e1a69",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá, con un presupuesto de $20.000.000 aprox. estas opciones te pueden servir:\n- Ford EcoSport 2020 — 55.000 km — $19.800.000 (SUV, mediano)\n- Renault Kangoo 2021 — 82.000 km — $18.500.000 (Utilitario, mediano)\n\nEstos están un poco por encima de ese presupuesto, pero con financiación o entregando un usado podrías acceder a ellos:\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (Sedán, mediano)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, mediano)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (Sedán, chico)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (Hatchback, chico)\n\nY si querés te paso todo el stock que tenemos, avisame."
+            },
+            {
+              "type": "text",
+              "content": "Buscás algo puntual o querés que te ayude a encontrar el ideal según lo que necesitás?"
+            }
+          ],
+          "images": [],
+          "product_cards": [
+            {
+              "id": 9,
+              "titulo": "Ford EcoSport 2020",
+              "precio": "$19.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-9-1.webp"
+            },
+            {
+              "id": 17,
+              "titulo": "Renault Kangoo 2021",
+              "precio": "$18.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-17-1.webp"
+            },
+            {
+              "id": 5,
+              "titulo": "Toyota Corolla 2022",
+              "precio": "$24.800.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-5-1.webp"
+            },
+            {
+              "id": 11,
+              "titulo": "Renault Duster 2023",
+              "precio": "$22.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-11-1.webp"
+            },
+            {
+              "id": 7,
+              "titulo": "Chevrolet Onix 2024",
+              "precio": "$21.500.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-7-1.webp"
+            },
+            {
+              "id": 8,
+              "titulo": "Peugeot 208 2025",
+              "precio": "$21.000.000",
+              "foto_principal": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp"
+            }
+          ],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "y algo un poco más nuevo?",
+        "ms": 3955,
+        "response": {
+          "session_id": "eval-869c4f4a-4722-4fbf-9e21-682f6f3e1a69",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Mirá, con un presupuesto de $20.000.000 aprox., los autos que tenemos más nuevos están un poco por encima de ese presupuesto:\n- Toyota Corolla 2022 — 35.000 km — $24.800.000 (Sedán, mediano)\n- Renault Duster 2023 — 31.000 km — $22.500.000 (SUV, mediano)\n- Chevrolet Onix 2024 — 12.000 km — $21.500.000 (Sedán, chico)\n- Peugeot 208 2025 — 8.000 km — $21.000.000 (Hatchback, chico)\n\nSi querés, te puedo mostrar estos autos o también el stock completo. Qué preferís?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "EL TURNO DEL BUG. Con $20.000.000 el cliente tiene que ver opciones reales (el Onix $21.500.000 esta apenas arriba; entran Duster $22.500.000 no, Renegade no; si entran Etios $14.500.000, Cronos $16.800.000, Kangoo $18.500.000, EcoSport $19.800.000). Lo que NO puede pasar, y es el bug, es la burbuja \"se me trabo el sistema\". Tampoco puede pedirle datos de un usado que el cliente no nombro."
+      },
+      {
+        "turn": 2,
+        "note": "Sigue sin usado. No puede caer al fallback ni pedir marca/modelo/anio de un usado inexistente. Tiene que ofrecer los mas nuevos que entren o decir con el numero por que no."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T01:18:25.790Z",
+      "despues": "2026-08-13T01:18:25.790Z"
+    },
+    "aCaballo": false
+  }
+]

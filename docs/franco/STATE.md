@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v143.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v144.json` · 35 nodos
 
 | | |
 |---|---|
@@ -14,11 +14,38 @@
 | Modelos | OpenAI Chat Model: gpt-4.1-mini · OpenAI Chat Model (CRM): gpt-4.1 |
 | Ventana de memoria de Franco | 20 |
 | Empresa configurada | Automotores Tucumán |
-| Evals | 103 casos · baseline-v141.json → 20/30 |
+| Evals | 103 casos · baseline-v144.json → 20/24 |
 
 **Invariantes:** ✅ los 7 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🟢 v144: LA CENTINELA DE `Detalle auto`. NADA BAJÓ. Sesión 2026-08-12.**
+> `scripts/detalle-auto-sin-id-avisa.mjs` · `workflows/franco-n8n-v144.json`
+>
+> **QUÉ ARREGLA, Y ES UN ERROR DEL FIX ANTERIOR:** v143 le puso neutro a `auto_id` para que un id
+> faltante no matara el turno. Correcto pero incompleto: con `auto_id = 0` la query devolvía **cero
+> filas EN SILENCIO** y el modelo lee ese vacío como "no hay". Medido: `hatchback-que-entra-no-se-
+> silencia` 3/3 (v141) -> 1/3 (v143), fallando por `matcheó /hatchback…no (tengo|hay)/`. **Franco
+> negaba stock que existe**, el peor síntoma de la demo. Cambié un error fatal por uno silencioso.
+>
+> **EL PATRÓN YA ESTABA RESUELTO Y NO LO APLIQUÉ:** es el centinela de v93 y el de v141 —*nunca
+> devolver el conjunto vacío cuando el vacío se puede confundir con "no hay"*—. Ahora sin id sale
+> UNA fila con `id NULL` que dice, textual, que no sabe nada del stock y que está PROHIBIDO decir
+> que no hay. `Armar respuesta` filtra las filas sin id (no puede ser card ni foto) y el titulo
+> arranca con la frase que vigila `no_filtra_centinela`.
+>
+> **EJECUTADA CONTRA LA BASE ANTES DE DESPLEGAR:** 1 fila, `id` NULL, los 17 tipos del UNION matchean.
+>
+> **MEDICIÓN v143 -> v144 (8 casos x 3): NADA BAJÓ.**
+> `hatchback-que-entra` 1/3 -> **2/3** ▲ · `capacidad-de-compra-financiada` 1/3 -> **2/3** ▲ (mejor
+> que el 0/3 de v141) · `km-con-presupuesto` 0/3 -> **1/3** ▲ · y se mantienen en **3/3**
+> `presupuesto-sin-usado-no-se-traba`, `modelo-inexistente`, `detalle-un-auto-fotos`,
+> `no-fugar-vocabulario-interno` y `permuta-una-pregunta-por-vez`.
+>
+> **⚠️ QUEDA 1 TURNO CON FALLBACK** en `capacidad-de-compra-financiada`, igual que en v143. **No es
+> de schema** (los required ya no existen): es la otra causa, la del parser, y sigue sin diagnosticar.
+> **Y `hatchback` no recuperó el 3/3 de v141** — quedó en 2/3, sin explicar.
 
 > **🔴🟢 v143: LA SEGUNDA CAÍDA DEL MISMO DÍA, Y LA CAUSA FUE UNA DECISIÓN MÍA DOCUMENTADA COMO
 > "A CONCIENCIA". Sesión 2026-08-12.**
