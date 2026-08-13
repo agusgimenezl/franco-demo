@@ -23,7 +23,7 @@ const resolveWf = (p) => {
 }
 // EL PUNTERO DE PRODUCCIÓN. Se edita acá, en una línea sola y con nombre propio: antes vivía
 // dentro del ternario de abajo y se editaba a ciegas.
-const PRODUCCION = 'franco-n8n-v142.json'
+const PRODUCCION = 'franco-n8n-v143.json'
 const WORKFLOW = argFile !== -1 ? resolveWf(process.argv[argFile + 1]) : join(ROOT, 'workflows', PRODUCCION)
 const STATE = join(ROOT, 'docs/franco/STATE.md')
 const checkOnly = process.argv.includes('--check') || argFile !== -1
@@ -130,11 +130,24 @@ for (const [nodo, campo, aguja, porque] of INYECCIONES) {
 const DECLARA_NEUTRO = /Poner\s+(0|vac[ií]o)|(^|[.;]\s*)0\s+si\s+|Poner\s+1\s+si[^.]*\.?\s*0\s+si/i
 // Excepciones: obligatorios A CONCIENCIA, con el motivo. No es una lista para tapar: es para que la
 // próxima persona vea la decisión y la discuta, en vez de descubrirla en producción.
-const REQUIRED_A_CONCIENCIA = {
-  tiene_permuta:
-    'es el discriminador del que cuelga toda la rama del usado. Un default de 0 podría tragarse una '
-    + 'permuta real EN SILENCIO, que es el modo de falla peor (v139). Se deja obligatorio hasta tener '
-    + 'una guarda que detecte "el lead tiene usado pero el modelo mandó 0".',
+// ⚠️ ESTA LISTA QUEDÓ VACÍA Y TIENE QUE QUEDARSE VACÍA. Tenía una entrada —`tiene_permuta`— con un
+// razonamiento que sonaba bien: "un default de 0 podría tragarse una permuta EN SILENCIO, y eso es
+// peor que un error ruidoso". **La jerarquía estaba al revés y costó una segunda caída de producción
+// el mismo día** (v142, "Me dirías que tenes 2021 en adelante?" -> fallback, log 16963:
+// `Required → at tiene_permuta`). El error NO es ruidoso para el cliente: rechaza la llamada entera
+// y le contesta "se me trabó el sistema". El default silencioso sólo degrada una rama y el cliente
+// igual recibe respuesta. **Si vas a agregar algo acá, no lo agregues.**
+const REQUIRED_A_CONCIENCIA = {}
+// Y la regla dura, que no depende de que la descripción prometa nada: en las tools que llama
+// FRANCO, ningún parámetro puede ser required. Un faltante se lleva puesto el turno entero.
+const TOOLS_DE_LECTURA = ['Listar stock', 'Buscar auto', 'Detalle auto']
+for (const n of wf.nodes.filter((x) => TOOLS_DE_LECTURA.includes(x.name))) {
+  for (const m of JSON.stringify(n.parameters ?? {}).matchAll(/fromAI\('([a-z_]+)', ?'(?:[^'\\]|\\.)*?', ?'[a-z]+'\)/g)) {
+    fail('REQUIRED', `${n.name}: $fromAI '${m[1]}' es REQUIRED. En una tool de lectura eso no va nunca:\n`
+      + `        si el modelo lo omite, n8n rechaza la llamada ENTERA y el turno cae al fallback.\n`
+      + `        Ponele un defaultValue. La validación de "este dato falta" va en la SQL, donde\n`
+      + `        falla de forma recuperable (ver la centinela de v141).`)
+  }
 }
 for (const n of wf.nodes) {
   const blob = JSON.stringify(n.parameters ?? {})

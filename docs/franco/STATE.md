@@ -4,7 +4,7 @@
 
 <!-- AUTOGENERADO: no editar a mano. Regenerar con: node scripts/state-sync.mjs -->
 
-**Workflow en producción:** `franco-n8n-v142.json` · 35 nodos
+**Workflow en producción:** `franco-n8n-v143.json` · 35 nodos
 
 | | |
 |---|---|
@@ -19,6 +19,37 @@
 **Invariantes:** ✅ los 7 pasan
 
 <!-- FIN AUTOGENERADO -->
+
+> **🔴🟢 v143: LA SEGUNDA CAÍDA DEL MISMO DÍA, Y LA CAUSA FUE UNA DECISIÓN MÍA DOCUMENTADA COMO
+> "A CONCIENCIA". Sesión 2026-08-12.**
+> `scripts/ningun-parametro-puede-matar-el-turno.mjs` · `workflows/franco-n8n-v143.json`
+>
+> **EL BUG:** *"Hola! Me dirías que tenes 2021 en adelante?"* -> fallback, dos veces seguidas, con
+> v142 en producción. Log (ejecución **16963**): `Received tool input did not match expected schema
+> ✖ Required → at tiene_permuta`.
+>
+> **ES EL ÚNICO PARÁMETRO QUE DEJÉ OBLIGATORIO EN v141, Y LO DEJÉ A PROPÓSITO**, razonando que un
+> default de 0 podía tragarse una permuta EN SILENCIO y que eso era peor que un error ruidoso.
+> **La jerarquía estaba al revés, y es la lección:** el error NO es ruidoso para el cliente — rechaza
+> la llamada ENTERA y le contesta "se me trabó el sistema". El default silencioso sólo degrada una
+> rama (no se valúa el usado) y el cliente igual recibe una respuesta. **Un modo de falla fatal nunca
+> es preferible a uno degradado.**
+>
+> **EL FIX ES POR CONSTRUCCIÓN, NO POR CRITERIO:** `tiene_permuta` (Listar stock) y `auto_id`
+> (Detalle auto) reciben neutro. **Cero parámetros obligatorios en las tres tools que llama Franco.**
+>
+> **EL INVARIANTE YA NO TIENE EXCEPCIONES:** la lista `REQUIRED_A_CONCIENCIA` quedó VACÍA y con el
+> comentario de por qué no hay que volver a llenarla. Y se agregó una regla dura que no depende de
+> que la descripción prometa un neutro: en `Listar stock`, `Buscar auto` y `Detalle auto`, ningún
+> `$fromAI` puede ser required. Corrido contra **v142 tira 21 hallazgos**; contra v143, ninguno.
+> (`Guardar lead` queda fuera del alcance a propósito: es del agente CRM, corre en otra rama, y si se
+> rechaza se pierde el lead pero la respuesta al cliente sale igual. Es otro riesgo y otro fix.)
+>
+> **DESPLEGADO SIN LÍNEA DE BASE, Y SE DICE:** la compuerta pedía `baseline-v142.json` y no existía.
+> Con producción caída para cualquier pregunta por año, esperar la medición era peor que desplegar
+> dos `defaultValue` que sólo pueden quitar un error fatal. **Verificado en vivo sobre los 5 caminos
+> principales: los 5 en verde**, incluido el mensaje textual de la captura. La medición completa
+> quedó corriendo aparte (`evals/baseline-v143.json`).
 
 > **🟢 v142 DESPLEGADO Y VERIFICADO EN VIVO: EL HISTORIAL SE GUARDA SOLO, Y LOS EVALS NO ENTRAN.
 > 1 nodo (`Guardar lead`). Sesión 2026-08-12.**
