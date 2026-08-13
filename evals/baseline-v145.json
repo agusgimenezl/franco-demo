@@ -1,0 +1,1840 @@
+[
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "eval-e23c6b46-8e4d-4bd1-878c-c2f9fb7f36d3",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 7186,
+        "response": {
+          "session_id": "eval-e23c6b46-8e4d-4bd1-878c-c2f9fb7f36d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tenemos es gris y tiene 45.000 km. Es un hatchback chico con motor 1.5 naftero de 103 CV, caja manual de 6ta, y un consumo aproximado de 7.0 L/100km. Viene con control electrónico de estabilidad, volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas. Está a $14.500.000."
+            },
+            {
+              "type": "text",
+              "content": "El único detalle es que es caja manual; si buscás automático en esta franja de precio, podría interesarte el Fiat Cronos. Querés que te cuente más del Etios, te muestre alternativas o te pase contacto con un asesor para que te ayude?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 3269,
+        "response": {
+          "session_id": "eval-e23c6b46-8e4d-4bd1-878c-c2f9fb7f36d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del auto. La financiación puede ser propia de la agencia o con prenda, dependiendo del auto y tu perfil. Para avanzar con la simulación, necesitaría saber de cuánto pensás poner de anticipo, más o menos."
+            },
+            {
+              "type": "text",
+              "content": "Como es tu primer auto, no tenés usado para entregar, correcto? Contame cuánto pensás poner de anticipo para seguir."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 4546,
+        "response": {
+          "session_id": "eval-e23c6b46-8e4d-4bd1-878c-c2f9fb7f36d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Entiendo que te gustaría financiar en 24 cuotas, eso está genial. Ahora necesito que me digas de cuánto sería el anticipo, más o menos, para que un asesor te pueda armar la simulación exacta y te pase todos los detalles."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 3627,
+        "response": {
+          "session_id": "eval-e23c6b46-8e4d-4bd1-878c-c2f9fb7f36d3",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, podés decirme de cuánto sería el anticipo, más o menos? Es clave para preparar la simulación y que un asesor te pueda dar los números exactos."
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "eval-4ff3a201-da86-412a-90c8-ae27bcd3c853",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 6663,
+        "response": {
+          "session_id": "eval-4ff3a201-da86-412a-90c8-ae27bcd3c853",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tengo es gris, hatchback chico con 45.000 km y caja manual. Motor 1.5 de 103 CV, consumo aproximado de 7.0 L/100 km. Tiene control electrónico de estabilidad, volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas. El precio es $14.500.000."
+            },
+            {
+              "type": "text",
+              "content": "El sistema de cadena en lugar de correa es una ventaja para la reventa y el mantenimiento. La caja es manual; si buscás automático en esta franja, te puedo mostrar un Cronos."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo pasar más info, fotos o asesor para cotización. Querés que te cuente cómo sería financiarlo o preferís ver algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 4634,
+        "response": {
+          "session_id": "eval-4ff3a201-da86-412a-90c8-ae27bcd3c853",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo. Para avanzar, se toma un anticipo y el saldo se puede pagar en cuotas. El monto y plazo exacto depende de las condiciones de la operación, por eso un asesor te arma una simulación personalizada."
+            },
+            {
+              "type": "text",
+              "content": "Para eso, contame, más o menos, de cuánto pensás poner de anticipo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 1978,
+        "response": {
+          "session_id": "eval-4ff3a201-da86-412a-90c8-ae27bcd3c853",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 1403,
+        "response": {
+          "session_id": "eval-4ff3a201-da86-412a-90c8-ae27bcd3c853",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-pide-anticipo",
+    "bug": "captura (2 pantallas): cliente interesado en el Etios pregunta cómo financiarlo ('sería mi primer auto'). Franco pregunta compuesto ('cuánto de anticipo O si entregás un usado' + 'cuántas cuotas'); el cliente responde solo las cuotas ('24'), después 'con anticipo' SIN el monto, y Franco NUNCA le pidió el monto del anticipo: avanzó a pedir nombre para derivar como si tuviera todo ('con el anticipo que tenés y las 24 cuotas'). Dos bugs: (1) captura de dato incompleto — avanzó sin el monto del anticipo; (2) transparencia — antes dijo 'querés que te prepare una simulación de cuotas' (suena a que la hace Franco) y después 'un asesor te prepara una cotización' y '(el asesor) se va a contactar'. Fix v47: pre-perfil de a UNA pregunta, anticipo PRIMERO; si contesta solo una parte, re-pedir el monto ANTES de avanzar; la simulación SIEMPRE la arma el asesor (Franco nunca ofrece prepararla él). ESTE CASO FALLA EN v45 (avanza sin el monto / pide nombre) Y PASA EN v47.",
+    "sessionId": "eval-f17c72d9-3968-4aca-9fa6-d3b145254f6d",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, me interesa el etios 2019 que vi",
+        "ms": 10084,
+        "response": {
+          "session_id": "eval-f17c72d9-3968-4aca-9fa6-d3b145254f6d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que viste no lo tenemos, pero sí una versión 2021 del modelo XLS 1.5 Dual VVT-i en color gris, con 45.000 km y un precio de $14.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Es un hatchback chico con mecánica Toyota y cadena de distribución para mejor reventa y menor costo de service. Tiene motor 1.5 de 103 CV, caja manual de 6ta, control electrónico de estabilidad, volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla y llantas de aleación."
+            },
+            {
+              "type": "text",
+              "content": "El consumo promedio es de 7.0 L/100km."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos están publicadas en el stock para que las veas. Querés que te pase el contacto de un asesor para más detalles o te interesa saber cómo sería financiarlo?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 4
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 4
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo puedo financiarlo? sería mi primer auto",
+        "ms": 3332,
+        "response": {
+          "session_id": "eval-f17c72d9-3968-4aca-9fa6-d3b145254f6d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con financiación propia o mediante prenda, dependiendo del perfil y el auto. Para avanzar, necesitás hacer una entrega inicial y el saldo se puede pagar en cuotas, que varían según el monto y las condiciones."
+            },
+            {
+              "type": "text",
+              "content": "Para darte números exactos, un asesor debe armarte una simulación personalizada. Como es tu primer auto, no te ofreceré permuta ni usado, pero puedo ayudarte a ver las opciones para financiar con cuotas."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme la simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "24 creo que sería mejor",
+        "ms": 5024,
+        "response": {
+          "session_id": "eval-f17c72d9-3968-4aca-9fa6-d3b145254f6d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 4,
+        "say": "con anticipo",
+        "ms": 2732,
+        "response": {
+          "session_id": "eval-f17c72d9-3968-4aca-9fa6-d3b145254f6d",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Dale, y de cuánto sería el anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 4,
+        "note": "TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-techo-50-por-ciento",
+    "bug": "reporte Agustina 2026-08-05: Franco fija la regla de negocio (financiamos hasta el 50%) y despues la contradice. Al cliente que quiere financiar $30.000.000 no le dice que para eso el vehiculo tiene que valer al menos $60.000.000 ni que el anticipo minimo seria $30.000.000; y cuando ese cliente ofrece $5.000.000 de anticipo, lo da por valido en vez de explicarle que con ese anticipo el maximo es un auto de $10.000.000. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe precio_objetivo=30000000 (el monto A FINANCIAR usado como si fuera el techo), asi que la tool calcula capacidad 30M x 2 = 60M y Franco termina ofreciendo la Ford Ranger de $57.000.000 a alguien que tiene 5 millones. Se vio otra vez en el baseline de financiacion-no-dumpea-abanico-sin-pedirlo: \"Teniendo en cuenta $30.000.000 de presupuesto, $5.000.000 de anticipo y financiacion hasta el 50%\". LA ARITMETICA ES DETERMINISTICA y por la regla del proyecto NO va al prompt: financiado <= 50% del precio => precio >= 2 x financiado, y anticipo minimo = monto a financiar; con anticipo A y sin usado, el techo es 2A. Coincide EXACTO con la formula que ya usa Listar stock ((anticipo + usado*0.70) * 2), asi que lo que Franco dice concuerda con los autos que la tool devuelve — eso es lo que hace que la respuesta sea coherente y no dos numeros peleados. Los montos se calculan sobre monto_financiar (v86) y entrega_plata (v87), que ya existen.",
+    "sessionId": "eval-43b8c854-d191-4b12-bd85-5eaba34ef092",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco una pickup 4x2",
+        "ms": 4185,
+        "response": {
+          "session_id": "eval-43b8c854-d191-4b12-bd85-5eaba34ef092",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá las pickups 4x2 que tenemos ahora:\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2)\n\nSi querés te cuento más detalles de alguna o querés ver opciones con otra configuración. Qué te gustaría?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Quiero financiar 30.000.000",
+        "ms": 3637,
+        "response": {
+          "session_id": "eval-43b8c854-d191-4b12-bd85-5eaba34ef092",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $30.000.000 el auto tiene que valer al menos $60.000.000, y la otra mitad la cubrís vos entre anticipo y usado."
+            },
+            {
+              "type": "text",
+              "content": "Dale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Puedo entregar 5.000.000?",
+        "ms": 5273,
+        "response": {
+          "session_id": "eval-43b8c854-d191-4b12-bd85-5eaba34ef092",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $5.000.000 de anticipo seguimos."
+            },
+            {
+              "type": "text",
+              "content": "La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a financiar es el 50% del valor del vehículo."
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo sí te entran otras carrocerías, como hatchback, sedán y SUV; querés que te las muestre?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)10[\\.\\s]?000[\\.\\s]?000|10 millones/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)10[\\.\\s]?000[\\.\\s]?000|10 millones/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Tiene que decir que para financiar $30.000.000 el vehiculo debe valer al menos $60.000.000 (porque se financia hasta el 50%) y que el anticipo minimo seria $30.000.000. Y despues seguir el embudo preguntando el anticipo."
+      },
+      {
+        "turn": 3,
+        "note": "Con $5.000.000 de anticipo y sin usado, lo maximo financiable son otros $5.000.000: un auto de hasta $10.000.000. No puede dar por valido el anticipo de $5.000.000 para los $30.000.000 que pidio financiar. Ojo: tampoco puede inventar un usado (eso es v87/v88)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-techo-50-por-ciento",
+    "bug": "reporte Agustina 2026-08-05: Franco fija la regla de negocio (financiamos hasta el 50%) y despues la contradice. Al cliente que quiere financiar $30.000.000 no le dice que para eso el vehiculo tiene que valer al menos $60.000.000 ni que el anticipo minimo seria $30.000.000; y cuando ese cliente ofrece $5.000.000 de anticipo, lo da por valido en vez de explicarle que con ese anticipo el maximo es un auto de $10.000.000. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe precio_objetivo=30000000 (el monto A FINANCIAR usado como si fuera el techo), asi que la tool calcula capacidad 30M x 2 = 60M y Franco termina ofreciendo la Ford Ranger de $57.000.000 a alguien que tiene 5 millones. Se vio otra vez en el baseline de financiacion-no-dumpea-abanico-sin-pedirlo: \"Teniendo en cuenta $30.000.000 de presupuesto, $5.000.000 de anticipo y financiacion hasta el 50%\". LA ARITMETICA ES DETERMINISTICA y por la regla del proyecto NO va al prompt: financiado <= 50% del precio => precio >= 2 x financiado, y anticipo minimo = monto a financiar; con anticipo A y sin usado, el techo es 2A. Coincide EXACTO con la formula que ya usa Listar stock ((anticipo + usado*0.70) * 2), asi que lo que Franco dice concuerda con los autos que la tool devuelve — eso es lo que hace que la respuesta sea coherente y no dos numeros peleados. Los montos se calculan sobre monto_financiar (v86) y entrega_plata (v87), que ya existen.",
+    "sessionId": "eval-597d8b2a-8ceb-4f94-ad5f-2738e9d09a59",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco una pickup 4x2",
+        "ms": 4093,
+        "response": {
+          "session_id": "eval-597d8b2a-8ceb-4f94-ad5f-2738e9d09a59",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá las pickups 4x2 que tenemos en stock:\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2)\n\nSi te interesa alguno, puedo darte más detalles o mostrarte otras opciones. Qué te parece?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Quiero financiar 30.000.000",
+        "ms": 3134,
+        "response": {
+          "session_id": "eval-597d8b2a-8ceb-4f94-ad5f-2738e9d09a59",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $30.000.000 el auto tiene que valer al menos $60.000.000, y la otra mitad la cubrís vos entre anticipo y usado."
+            },
+            {
+              "type": "text",
+              "content": "Dale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Puedo entregar 5.000.000?",
+        "ms": 4167,
+        "response": {
+          "session_id": "eval-597d8b2a-8ceb-4f94-ad5f-2738e9d09a59",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $5.000.000 de anticipo seguimos."
+            },
+            {
+              "type": "text",
+              "content": "La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a financiar es el 50% del valor del vehículo."
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo sí te entran opciones de hatchback, sedán, utilitario o SUV. Querés que te muestre algunas?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 3 · text_matches: no matcheó /(?i)10[\\.\\s]?000[\\.\\s]?000|10 millones/"
+        ]
+      }
+    ],
+    "failures": [
+      "turno 3 · text_matches: no matcheó /(?i)10[\\.\\s]?000[\\.\\s]?000|10 millones/"
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Tiene que decir que para financiar $30.000.000 el vehiculo debe valer al menos $60.000.000 (porque se financia hasta el 50%) y que el anticipo minimo seria $30.000.000. Y despues seguir el embudo preguntando el anticipo."
+      },
+      {
+        "turn": 3,
+        "note": "Con $5.000.000 de anticipo y sin usado, lo maximo financiable son otros $5.000.000: un auto de hasta $10.000.000. No puede dar por valido el anticipo de $5.000.000 para los $30.000.000 que pidio financiar. Ojo: tampoco puede inventar un usado (eso es v87/v88)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiacion-techo-50-por-ciento",
+    "bug": "reporte Agustina 2026-08-05: Franco fija la regla de negocio (financiamos hasta el 50%) y despues la contradice. Al cliente que quiere financiar $30.000.000 no le dice que para eso el vehiculo tiene que valer al menos $60.000.000 ni que el anticipo minimo seria $30.000.000; y cuando ese cliente ofrece $5.000.000 de anticipo, lo da por valido en vez de explicarle que con ese anticipo el maximo es un auto de $10.000.000. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe precio_objetivo=30000000 (el monto A FINANCIAR usado como si fuera el techo), asi que la tool calcula capacidad 30M x 2 = 60M y Franco termina ofreciendo la Ford Ranger de $57.000.000 a alguien que tiene 5 millones. Se vio otra vez en el baseline de financiacion-no-dumpea-abanico-sin-pedirlo: \"Teniendo en cuenta $30.000.000 de presupuesto, $5.000.000 de anticipo y financiacion hasta el 50%\". LA ARITMETICA ES DETERMINISTICA y por la regla del proyecto NO va al prompt: financiado <= 50% del precio => precio >= 2 x financiado, y anticipo minimo = monto a financiar; con anticipo A y sin usado, el techo es 2A. Coincide EXACTO con la formula que ya usa Listar stock ((anticipo + usado*0.70) * 2), asi que lo que Franco dice concuerda con los autos que la tool devuelve — eso es lo que hace que la respuesta sea coherente y no dos numeros peleados. Los montos se calculan sobre monto_financiar (v86) y entrega_plata (v87), que ya existen.",
+    "sessionId": "eval-9f66ca07-9f3d-4e0e-81d8-123725ddaede",
+    "turns": [
+      {
+        "n": 1,
+        "say": "hola, busco una pickup 4x2",
+        "ms": 3653,
+        "response": {
+          "session_id": "eval-9f66ca07-9f3d-4e0e-81d8-123725ddaede",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "Mirá las pickups 4x2 que tenemos disponibles:\n- Chevrolet S10 2022 — 68.000 km — $39.500.000 (4x2)\n\nAdemás tenemos otras pickups 4x4, si te interesan te las puedo mostrar también."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-16-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "Quiero financiar 30.000.000",
+        "ms": 3772,
+        "response": {
+          "session_id": "eval-9f66ca07-9f3d-4e0e-81d8-123725ddaede",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $30.000.000 el auto tiene que valer al menos $60.000.000, y la otra mitad la cubrís vos entre anticipo y usado.\n\ndale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "Puedo entregar 5.000.000?",
+        "ms": 4046,
+        "response": {
+          "session_id": "eval-9f66ca07-9f3d-4e0e-81d8-123725ddaede",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $5.000.000 de anticipo seguimos. Con ese anticipo se puede financiar hasta otro tanto, así que el techo es un auto de $10.000.000."
+            },
+            {
+              "type": "text",
+              "content": "La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a financiar es el 50% del valor del vehículo."
+            },
+            {
+              "type": "text",
+              "content": "Con tu anticipo sí te entran otras carrocerías, como hatchbacks y sedanes. Querés que te los muestre?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "Tiene que decir que para financiar $30.000.000 el vehiculo debe valer al menos $60.000.000 (porque se financia hasta el 50%) y que el anticipo minimo seria $30.000.000. Y despues seguir el embudo preguntando el anticipo."
+      },
+      {
+        "turn": 3,
+        "note": "Con $5.000.000 de anticipo y sin usado, lo maximo financiable son otros $5.000.000: un auto de hasta $10.000.000. No puede dar por valido el anticipo de $5.000.000 para los $30.000.000 que pidio financiar. Ojo: tampoco puede inventar un usado (eso es v87/v88)."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "cuotas-el-plazo-se-contesta-y-se-deriva",
+    "bug": "CHARLA REAL DE VALENTINA URIA, sesion 340c6109 (2026-08-09). Franco ofrece el menu \"en cuantas cuotas, 12, 24, 36 o 48?\", el cliente contesta \"como seria con 24?\" y Franco devuelve la frase del asesor y pide el nombre, sin explicar por que no puede dar el numero. Se lee como evasiva. DECISION DE AGUSTINA (2026-08-11), y define el caso: Franco NO tiene que decir el monto a financiar. La respuesta correcta es reconocer el plazo, decir que el plan y el valor de la cuota los confirma un asesor PORQUE DEPENDE DE LAS CONDICIONES DE FINANCIACION, y ofrecer derivar. Frase de referencia, textual: \"Con 24 cuotas, el plan y el valor de la cuota te los confirma un asesor, porque depende de las condiciones de financiacion. Si queres, te derivo para que te pase el detalle.\" NO ES UN BUG DE NUMEROS, ES DE CONSISTENCIA. Medido el 2026-08-11 sobre v127, 6 respuestas reales del turno 3: 3 cumplen (dan el motivo), 2 van directo a pedir el nombre sin decir de que depende, y 1 se va a pedir \"cuantos anos y kilometros tiene un usado\" que NADIE menciono. O sea que la conducta correcta ya existe pero sale la mitad de las veces: lo que falta es fijar el guion (trampa 6). LO QUE NO HAY QUE ARREGLAR: que Franco no invente un valor de cuota es CORRECTO y tiene que seguir asi. No hay tasa en Config a proposito y la FAQ ya dice que la simulacion la arma un asesor. DESCARTADO A CONCIENCIA: que devuelva el monto a financiar (precio - anticipo). Se evaluo, era determinístico y hubiera ido a SQL, pero Agustina decidio que no hace falta decirlo. De paso evita el problema medido de que el corrector de precios de v105 se lo comia en 2 de 7 redacciones.",
+    "sessionId": "eval-1e70022b-3d00-4237-bfdd-18e6844b3267",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el peugeot 208. hacen financiación?",
+        "ms": 7581,
+        "response": {
+          "session_id": "eval-1e70022b-3d00-4237-bfdd-18e6844b3267",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Peugeot 208 2025 es un hatchback de 5 puertas con apenas 8.000 km, color azul, y la versión Allure T200 Turbo. Tiene motor 1.0 Turbo de 120 CV naftero y transmisión automática CVT, con un consumo promedio aproximado de 6.8 L/100 km. El equipamiento incluye puesto i-Cockpit con pantalla digital de 10\", luces DRL con diseño en garras de león, climatizador automático digital, llantas de aleación de 16\" y cargador inductivo.\n\nEl precio es $21.000.000 y el anticipo mínimo para financiar es $10.500.000. Financiamos hasta el 50% del valor del vehículo, y el plan exacto, la cuota y demás condiciones te las confirma un asesor porque dependen de tu perfil y de la operación.\n\nQuerés que te pase contacto de un asesor para que te arme una simulación o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "puedo dar un anticipo de 13 millones",
+        "ms": 3274,
+        "response": {
+          "session_id": "eval-1e70022b-3d00-4237-bfdd-18e6844b3267",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Con $13.000.000 de anticipo podés financiar hasta otro tanto, así que estarías en condiciones de acceder a autos de hasta $26.000.000. En este rango entran varias opciones de hatchback, sedán, utilitarios y SUV. Querés que te muestre algunas opciones que te podrían interesar, o preferís que te pase todo el stock completo?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "cómo sería si hacemos 24 cuotas??",
+        "ms": 6909,
+        "response": {
+          "session_id": "eval-1e70022b-3d00-4237-bfdd-18e6844b3267",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con 24 cuotas, el plan y el valor exacto de la cuota te los confirma un asesor, porque dependen del monto financiado, tu perfil y las condiciones de la operación. Para que el asesor te arme esa simulación personalizada, me dejás tu nombre y apellido así te contacta con todos los detalles?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Contexto. Tiene que quedar claro que el 208 sale $21.000.000 y que se financia hasta el 50%."
+      },
+      {
+        "turn": 2,
+        "note": "13M esta por ENCIMA del anticipo minimo (10.5M), asi que la operacion es viable. Aca Franco suele ofrecer el menu 12/24/36/48."
+      },
+      {
+        "turn": 3,
+        "note": "EL TURNO DEL CASO. Tiene que: (1) reconocer las 24 cuotas, (2) decir que el plan y el valor de la cuota los confirma un asesor, (3) DECIR POR QUE — que depende de las condiciones de financiacion, que es lo que mas se saltea, y (4) ofrecer derivar. Lo que NO puede: inventar un valor de cuota (no hay tasa configurada) ni pedir datos de un usado que el cliente nunca menciono, que es la falla medida en la sesion 78becd31."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "cuotas-el-plazo-se-contesta-y-se-deriva",
+    "bug": "CHARLA REAL DE VALENTINA URIA, sesion 340c6109 (2026-08-09). Franco ofrece el menu \"en cuantas cuotas, 12, 24, 36 o 48?\", el cliente contesta \"como seria con 24?\" y Franco devuelve la frase del asesor y pide el nombre, sin explicar por que no puede dar el numero. Se lee como evasiva. DECISION DE AGUSTINA (2026-08-11), y define el caso: Franco NO tiene que decir el monto a financiar. La respuesta correcta es reconocer el plazo, decir que el plan y el valor de la cuota los confirma un asesor PORQUE DEPENDE DE LAS CONDICIONES DE FINANCIACION, y ofrecer derivar. Frase de referencia, textual: \"Con 24 cuotas, el plan y el valor de la cuota te los confirma un asesor, porque depende de las condiciones de financiacion. Si queres, te derivo para que te pase el detalle.\" NO ES UN BUG DE NUMEROS, ES DE CONSISTENCIA. Medido el 2026-08-11 sobre v127, 6 respuestas reales del turno 3: 3 cumplen (dan el motivo), 2 van directo a pedir el nombre sin decir de que depende, y 1 se va a pedir \"cuantos anos y kilometros tiene un usado\" que NADIE menciono. O sea que la conducta correcta ya existe pero sale la mitad de las veces: lo que falta es fijar el guion (trampa 6). LO QUE NO HAY QUE ARREGLAR: que Franco no invente un valor de cuota es CORRECTO y tiene que seguir asi. No hay tasa en Config a proposito y la FAQ ya dice que la simulacion la arma un asesor. DESCARTADO A CONCIENCIA: que devuelva el monto a financiar (precio - anticipo). Se evaluo, era determinístico y hubiera ido a SQL, pero Agustina decidio que no hace falta decirlo. De paso evita el problema medido de que el corrector de precios de v105 se lo comia en 2 de 7 redacciones.",
+    "sessionId": "eval-eec66afd-c014-437f-9796-f0345fd2a445",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el peugeot 208. hacen financiación?",
+        "ms": 8144,
+        "response": {
+          "session_id": "eval-eec66afd-c014-437f-9796-f0345fd2a445",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Peugeot 208 2025 que tenemos es casi 0 km, con solo 8.000 km, color azul y versión Allure T200 Turbo. Tiene motor 1.0 Turbo T200 de 120 CV, nafta, caja automática CVT y un consumo aproximado de 6.8 L/100km. Cuenta con puesto i-Cockpit con pantalla digital de 10 pulgadas, climatizador automático digital y cargador inductivo.\n\nSí, hacemos financiación: se puede financiar hasta el 50% del valor del vehículo. El anticipo mínimo para este auto es de $10.500.000. Los detalles exactos de cuotas y condiciones te los confirma un asesor porque dependen del plan y tu perfil.\n\nDe cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "puedo dar un anticipo de 13 millones",
+        "ms": 3773,
+        "response": {
+          "session_id": "eval-eec66afd-c014-437f-9796-f0345fd2a445",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. En cuántas cuotas lo pensabas, 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "cómo sería si hacemos 24 cuotas??",
+        "ms": 4155,
+        "response": {
+          "session_id": "eval-eec66afd-c014-437f-9796-f0345fd2a445",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con 24 cuotas el plan y el valor exacto de la cuota te los confirma un asesor, porque dependen de las condiciones de financiación. Me dejás tu nombre y apellido así te contacta y te pasa el detalle?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Contexto. Tiene que quedar claro que el 208 sale $21.000.000 y que se financia hasta el 50%."
+      },
+      {
+        "turn": 2,
+        "note": "13M esta por ENCIMA del anticipo minimo (10.5M), asi que la operacion es viable. Aca Franco suele ofrecer el menu 12/24/36/48."
+      },
+      {
+        "turn": 3,
+        "note": "EL TURNO DEL CASO. Tiene que: (1) reconocer las 24 cuotas, (2) decir que el plan y el valor de la cuota los confirma un asesor, (3) DECIR POR QUE — que depende de las condiciones de financiacion, que es lo que mas se saltea, y (4) ofrecer derivar. Lo que NO puede: inventar un valor de cuota (no hay tasa configurada) ni pedir datos de un usado que el cliente nunca menciono, que es la falla medida en la sesion 78becd31."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "cuotas-el-plazo-se-contesta-y-se-deriva",
+    "bug": "CHARLA REAL DE VALENTINA URIA, sesion 340c6109 (2026-08-09). Franco ofrece el menu \"en cuantas cuotas, 12, 24, 36 o 48?\", el cliente contesta \"como seria con 24?\" y Franco devuelve la frase del asesor y pide el nombre, sin explicar por que no puede dar el numero. Se lee como evasiva. DECISION DE AGUSTINA (2026-08-11), y define el caso: Franco NO tiene que decir el monto a financiar. La respuesta correcta es reconocer el plazo, decir que el plan y el valor de la cuota los confirma un asesor PORQUE DEPENDE DE LAS CONDICIONES DE FINANCIACION, y ofrecer derivar. Frase de referencia, textual: \"Con 24 cuotas, el plan y el valor de la cuota te los confirma un asesor, porque depende de las condiciones de financiacion. Si queres, te derivo para que te pase el detalle.\" NO ES UN BUG DE NUMEROS, ES DE CONSISTENCIA. Medido el 2026-08-11 sobre v127, 6 respuestas reales del turno 3: 3 cumplen (dan el motivo), 2 van directo a pedir el nombre sin decir de que depende, y 1 se va a pedir \"cuantos anos y kilometros tiene un usado\" que NADIE menciono. O sea que la conducta correcta ya existe pero sale la mitad de las veces: lo que falta es fijar el guion (trampa 6). LO QUE NO HAY QUE ARREGLAR: que Franco no invente un valor de cuota es CORRECTO y tiene que seguir asi. No hay tasa en Config a proposito y la FAQ ya dice que la simulacion la arma un asesor. DESCARTADO A CONCIENCIA: que devuelva el monto a financiar (precio - anticipo). Se evaluo, era determinístico y hubiera ido a SQL, pero Agustina decidio que no hace falta decirlo. De paso evita el problema medido de que el corrector de precios de v105 se lo comia en 2 de 7 redacciones.",
+    "sessionId": "eval-43c74afa-c2c7-4072-aa08-789449d64cf6",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el peugeot 208. hacen financiación?",
+        "ms": 9180,
+        "response": {
+          "session_id": "eval-43c74afa-c2c7-4072-aa08-789449d64cf6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Peugeot 208 2025 que tenemos es un hatchback chico, casi 0 km y con solo 8000 km, color azul. Lleva motor 1.0 Turbo T200 de 120 CV, naftero con transmisión automática CVT, y consume en promedio aproximadamente 6.8 L/100km. El equipamiento incluye puesto i-Cockpit con pantalla digital de 10 pulgadas, luces DRL, climatizador automático digital y cargador inductivo."
+            },
+            {
+              "type": "text",
+              "content": "Sí, hacemos financiación hasta el 50% del valor del vehículo. El anticipo mínimo para este auto es $10.500.000 y el saldo se puede pagar en cuotas. El valor de las cuotas y condiciones finales te las confirma un asesor, porque depende de la operación. Para avanzar con la financiación, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-8-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "puedo dar un anticipo de 13 millones",
+        "ms": 1953,
+        "response": {
+          "session_id": "eval-43c74afa-c2c7-4072-aa08-789449d64cf6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. En cuántas cuotas lo pensabas, 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "cómo sería si hacemos 24 cuotas??",
+        "ms": 2632,
+        "response": {
+          "session_id": "eval-43c74afa-c2c7-4072-aa08-789449d64cf6",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Con 24 cuotas, el plan y el valor de la cuota te los confirma un asesor, porque depende de las condiciones de financiación. Me dejás tu nombre y apellido así te contacta y te pasa el detalle?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 1,
+        "note": "Contexto. Tiene que quedar claro que el 208 sale $21.000.000 y que se financia hasta el 50%."
+      },
+      {
+        "turn": 2,
+        "note": "13M esta por ENCIMA del anticipo minimo (10.5M), asi que la operacion es viable. Aca Franco suele ofrecer el menu 12/24/36/48."
+      },
+      {
+        "turn": 3,
+        "note": "EL TURNO DEL CASO. Tiene que: (1) reconocer las 24 cuotas, (2) decir que el plan y el valor de la cuota los confirma un asesor, (3) DECIR POR QUE — que depende de las condiciones de financiacion, que es lo que mas se saltea, y (4) ofrecer derivar. Lo que NO puede: inventar un valor de cuota (no hay tasa configurada) ni pedir datos de un usado que el cliente nunca menciono, que es la falla medida en la sesion 78becd31."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "anticipo-no-cubre-el-auto-de-interes",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-11, sesión REAL edc12363-45c5-4860-9d5d-aeba606adfb0 (Julieta Vega). La clienta vino por el Toyota Etios ($14.500.000, anticipo mínimo $7.250.000), preguntó por financiación, Franco le pidió el anticipo y ella contestó \"tengo 6 millones\" — le faltan $1.250.000. Franco contestó \"Perfecto, ya lo tengo anotado\" y la derivó: NUNCA comparó el anticipo contra el precio del auto de interés. Ninguna guarda de plata cubre este camino: v98/v99 exige monto_financiar, v100 exige que diga \"no tengo usado\", y v97/v113/v120 comparan contra el piso de una CARROCERÍA, no contra un auto puntual. El dato está en el lead (vehiculo_interes) y el precio en catalogo_precios: los dos ya viajan en \"Leer lead (estado)\" y nada los cruza.",
+    "sessionId": "eval-b4977b95-c12c-4380-a796-1909534d5fba",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 6475,
+        "response": {
+          "session_id": "eval-b4977b95-c12c-4380-a796-1909534d5fba",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 XLS 1.5 Dual VVT-i es un hatchback chico y gris con 45.000 km, conocido por su mecánica con cadena de distribución que ayuda a mantener su valor y evita un service caro. Está equipado con motor 1.5 de 103 CV, naftero, caja manual de 6ta, control electrónico de estabilidad y tracción, volante multifunción en cuero y central multimedia con pantalla táctil y Bluetooth. Su consumo promedio aproximado es de 7.0 L/100km y el precio es $14.500.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Toyota Etios son las que están publicadas con vistas generales y de la carrocería. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo es el tema de la financiación?",
+        "ms": 2546,
+        "response": {
+          "session_id": "eval-b4977b95-c12c-4380-a796-1909534d5fba",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, puede ser con financiación propia de la agencia o mediante prenda, según el auto y tu perfil. Para avanzar se toma una entrega inicial y el saldo se puede pagar en cuotas. El valor de la cuota depende del monto financiado, el plazo elegido y las condiciones de la operación, por eso el plan y el valor de la cuota te los confirma un asesor."
+            },
+            {
+              "type": "text",
+              "content": "Para que un asesor te arme la simulación exacta, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "tengo 6 millones",
+        "ms": 5054,
+        "response": {
+          "session_id": "eval-b4977b95-c12c-4380-a796-1909534d5fba",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Toyota Etios sale $14.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $7.250.000: con $6.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $12.000.000. Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "EL TURNO DEL CASO. El Etios sale $14.500.000 y el anticipo mínimo es $7.250.000: con $6.000.000 NO alcanza, le faltan $1.250.000. Franco tiene que decírselo con el número —el mínimo del Etios o el techo de $12.000.000— sin maquillarlo y sin dar la operación por armada. Puede seguir siendo comercial (ofrecer lo que sí le entra), pero NO puede anotar el anticipo como si cerrara."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "anticipo-no-cubre-el-auto-de-interes",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-11, sesión REAL edc12363-45c5-4860-9d5d-aeba606adfb0 (Julieta Vega). La clienta vino por el Toyota Etios ($14.500.000, anticipo mínimo $7.250.000), preguntó por financiación, Franco le pidió el anticipo y ella contestó \"tengo 6 millones\" — le faltan $1.250.000. Franco contestó \"Perfecto, ya lo tengo anotado\" y la derivó: NUNCA comparó el anticipo contra el precio del auto de interés. Ninguna guarda de plata cubre este camino: v98/v99 exige monto_financiar, v100 exige que diga \"no tengo usado\", y v97/v113/v120 comparan contra el piso de una CARROCERÍA, no contra un auto puntual. El dato está en el lead (vehiculo_interes) y el precio en catalogo_precios: los dos ya viajan en \"Leer lead (estado)\" y nada los cruza.",
+    "sessionId": "eval-92efc8e6-9c1c-4303-956e-2bcb9efb0916",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 7427,
+        "response": {
+          "session_id": "eval-92efc8e6-9c1c-4303-956e-2bcb9efb0916",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tenemos es un hatchback gris, con 45.000 km. Viene con motor 1.5 Dual VVT-i de 103 CV, naftero y caja manual de 6ta. Su consumo promedio es de aproximadamente 7,0 L/100km. Tiene control de estabilidad y tracción, volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas. El precio es $14.500.000 y el anticipo mínimo para financiarlo es de $7.250.000.\n\nEs un auto con mecánica Toyota de cadena de distribución, lo que ayuda a que se deprecie menos y evita servicios caros. Te aviso que es caja manual; si buscás automático en esa franja de precio, la opción es el Cronos.\n\nLas fotos que tenemos son las que están publicadas, que incluyen vistas generales del auto. Si querés fotos específicas del interior o algo puntual, puedo comunicarte con un asesor para que te las facilite. Querés que te ayude con eso o te muestro otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo es el tema de la financiación?",
+        "ms": 2804,
+        "response": {
+          "session_id": "eval-92efc8e6-9c1c-4303-956e-2bcb9efb0916",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, y podés hacerlo con financiación propia de la agencia o mediante prenda, dependiendo del auto y tu perfil. Para avanzar en eso, necesitás hacer una entrega inicial y después el saldo se puede pagar en cuotas. El valor exacto de la cuota depende del monto financiado, el plazo que elijas y las condiciones específicas de tu operación.\n\nPara darte un número exacto, un asesor arma una simulación personalizada con la entrega, cuotas y requisitos según tu caso.\n\nPara empezar, de cuánto pensás poner de anticipo más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "tengo 6 millones",
+        "ms": 2976,
+        "response": {
+          "session_id": "eval-92efc8e6-9c1c-4303-956e-2bcb9efb0916",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Toyota Etios sale $14.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $7.250.000: con $6.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $12.000.000. Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "EL TURNO DEL CASO. El Etios sale $14.500.000 y el anticipo mínimo es $7.250.000: con $6.000.000 NO alcanza, le faltan $1.250.000. Franco tiene que decírselo con el número —el mínimo del Etios o el techo de $12.000.000— sin maquillarlo y sin dar la operación por armada. Puede seguir siendo comercial (ofrecer lo que sí le entra), pero NO puede anotar el anticipo como si cerrara."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "anticipo-no-cubre-el-auto-de-interes",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-11, sesión REAL edc12363-45c5-4860-9d5d-aeba606adfb0 (Julieta Vega). La clienta vino por el Toyota Etios ($14.500.000, anticipo mínimo $7.250.000), preguntó por financiación, Franco le pidió el anticipo y ella contestó \"tengo 6 millones\" — le faltan $1.250.000. Franco contestó \"Perfecto, ya lo tengo anotado\" y la derivó: NUNCA comparó el anticipo contra el precio del auto de interés. Ninguna guarda de plata cubre este camino: v98/v99 exige monto_financiar, v100 exige que diga \"no tengo usado\", y v97/v113/v120 comparan contra el piso de una CARROCERÍA, no contra un auto puntual. El dato está en el lead (vehiculo_interes) y el precio en catalogo_precios: los dos ya viajan en \"Leer lead (estado)\" y nada los cruza.",
+    "sessionId": "eval-bb02a5bc-52b4-459d-b294-2c7434ce9b3f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 6324,
+        "response": {
+          "session_id": "eval-bb02a5bc-52b4-459d-b294-2c7434ce9b3f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tenemos es gris, hatchback chico con 45.000 km. Tiene motor 1.5 naftero de 103 CV con caja manual de 6 velocidades y consumo aproximado de 7.0 L/100km. Viene con control de estabilidad, volante multifunción en cuero y central multimedia con pantalla táctil y Bluetooth."
+            },
+            {
+              "type": "text",
+              "content": "El precio es $14.500.000 y el anticipo mínimo para financiar puede ser $7.250.000. Las fotos que tenemos del Etios son las que están publicadas en el stock; incluyen vistas generales y de la carrocería. Para fotos específicas del interior o algún detalle, puedo ayudarte con un asesor."
+            },
+            {
+              "type": "text",
+              "content": "Querés que un asesor te prepare una cotización, o preferís que te muestre algo parecido?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo es el tema de la financiación?",
+        "ms": 3167,
+        "response": {
+          "session_id": "eval-bb02a5bc-52b4-459d-b294-2c7434ce9b3f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con financiación propia o mediante prenda, dependiendo del auto y tu perfil. Para avanzar, necesitás hacer una entrega inicial y el saldo se paga en cuotas. El monto de la cuota depende del dinero que entregues de entrada, las cuotas que elijas y las condiciones específicas."
+            },
+            {
+              "type": "text",
+              "content": "Para darte números exactos, un asesor arma una simulación personalizada con entrega, cuotas y requisitos. Para eso, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "tengo 6 millones",
+        "ms": 4519,
+        "response": {
+          "session_id": "eval-bb02a5bc-52b4-459d-b294-2c7434ce9b3f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Te comento que el Toyota Etios sale $14.500.000 y, como financiamos hasta el 50% del valor, el anticipo mínimo para ese auto es $7.250.000: con $6.000.000 te faltarían $1.250.000. Con ese anticipo podríamos buscar hasta $12.000.000. Querés que te muestre lo que entra en ese rango?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "EL TURNO DEL CASO. El Etios sale $14.500.000 y el anticipo mínimo es $7.250.000: con $6.000.000 NO alcanza, le faltan $1.250.000. Franco tiene que decírselo con el número —el mínimo del Etios o el techo de $12.000.000— sin maquillarlo y sin dar la operación por armada. Puede seguir siendo comercial (ofrecer lo que sí le entra), pero NO puede anotar el anticipo como si cerrara."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "preperfilado-pregunta-las-cuotas-tras-el-anticipo",
+    "bug": "MISMA CAPTURA 2026-08-11 (sesión edc12363), la otra mitad del bug. La línea 330 del prompt manda TEXTUAL: \"Recién con el anticipo preguntás las cuotas (12, 24, 36 o 48) si no las dio\", y que el embudo termina en el NOMBRE recién cuando están el anticipo Y las cuotas. Franco tenía el anticipo y saltó directo al cierre con \"Perfecto, ya lo tengo anotado. Querés que te contacte un asesor, o preferís que te muestre opciones?\" — que es lo que esa misma línea prohíbe con todas las letras (\"el embudo NO termina en 'se lo dejo anotado al asesor'\", \"NO cierres con ... 'querés ver otras opciones?'\"). Sospecha a confirmar: la 330 es el párrafo más largo del prompt y encadena ~8 reglas con varios guiones de SALIDA listos para copiar; \"preguntás las cuotas\" es una cláusula suelta en el medio. Es la lección 1 (un ejemplo elegible le gana a una regla que está más abajo). ADEMÁS ES EL CONTROL DE anticipo-no-cubre-el-auto-de-interes: con $8.000.000 el techo es $16.000.000 y el Etios ($14.500.000) SÍ entra, así que la guarda nueva NO tiene que disparar acá.",
+    "sessionId": "eval-eada044c-43f4-4dc5-842a-0dbb01d139d5",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 8218,
+        "response": {
+          "session_id": "eval-eada044c-43f4-4dc5-842a-0dbb01d139d5",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 es un hatchback chico y está en color gris. Tiene 45.000 km y usa nafta. Su motor es 1.5 Dual VVT-i de 103 CV con cadena de distribución, acompañado de una transmisión manual de 6 velocidades. El consumo promedio ronda los 7.0 L/100km.\n\nViene con control electrónico de estabilidad (ESP) y tracción (TRC), volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas. El precio es $14.500.000.\n\nEl anticipo mínimo para financiarlo es $7.250.000.\n\nLas fotos del auto están publicadas en el stock, si querés te las puedo mostrar.\n\nTe comento que es caja manual; si buscás automático en esta franja, la opción del stock es el Cronos. Querés que te cuente más de este o te muestro otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo es el tema de la financiación?",
+        "ms": 3480,
+        "response": {
+          "session_id": "eval-eada044c-43f4-4dc5-842a-0dbb01d139d5",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Podés financiar hasta el 50% del valor del vehículo, ya sea con la financiación propia de la agencia o mediante prenda, dependiendo del auto y tu perfil. Para avanzar se toma un pago inicial y el saldo se puede pagar en cuotas. El monto de las cuotas varía según cuánto financies, el plazo y las condiciones concretas, que te los confirma un asesor con una simulación personalizada.\n\nPara ir viendo si te entra bien o arreglar requisitos, para empezar me decís cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "tengo 8 millones",
+        "ms": 3066,
+        "response": {
+          "session_id": "eval-eada044c-43f4-4dc5-842a-0dbb01d139d5",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto. Para que un asesor te arme la simulación exacta, te confirmo que el anticipo mínimo del Toyota Etios es $7.250.000, así que estás bien para comenzar. Ahora me decís en cuántas cuotas pensás pagar: 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "CONTROL DEL CASO ANTERIOR Y CASO PROPIO. Con $8.000.000 la operación SÍ cierra para el Etios ($14.500.000, mínimo $7.250.000): acá NO tiene que aparecer ningún \"no te alcanza\". Lo que sí tiene que hacer es el paso que falta del pre-perfilado: preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de cerrar o pedir el nombre."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "preperfilado-pregunta-las-cuotas-tras-el-anticipo",
+    "bug": "MISMA CAPTURA 2026-08-11 (sesión edc12363), la otra mitad del bug. La línea 330 del prompt manda TEXTUAL: \"Recién con el anticipo preguntás las cuotas (12, 24, 36 o 48) si no las dio\", y que el embudo termina en el NOMBRE recién cuando están el anticipo Y las cuotas. Franco tenía el anticipo y saltó directo al cierre con \"Perfecto, ya lo tengo anotado. Querés que te contacte un asesor, o preferís que te muestre opciones?\" — que es lo que esa misma línea prohíbe con todas las letras (\"el embudo NO termina en 'se lo dejo anotado al asesor'\", \"NO cierres con ... 'querés ver otras opciones?'\"). Sospecha a confirmar: la 330 es el párrafo más largo del prompt y encadena ~8 reglas con varios guiones de SALIDA listos para copiar; \"preguntás las cuotas\" es una cláusula suelta en el medio. Es la lección 1 (un ejemplo elegible le gana a una regla que está más abajo). ADEMÁS ES EL CONTROL DE anticipo-no-cubre-el-auto-de-interes: con $8.000.000 el techo es $16.000.000 y el Etios ($14.500.000) SÍ entra, así que la guarda nueva NO tiene que disparar acá.",
+    "sessionId": "eval-6f9226ab-771b-4156-8841-513558288ff8",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 11244,
+        "response": {
+          "session_id": "eval-6f9226ab-771b-4156-8841-513558288ff8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tenemos es gris, hatchback chico con 45.000 km. Es la versión XLS 1.5 Dual VVT-i, con motor 1.5 de 103 CV, nafta, y caja manual de 6 velocidades. Tiene control electrónico de estabilidad, volante multifunción en cuero, central multimedia con pantalla táctil y Bluetooth, faros antiniebla delanteros y llantas de aleación de 15 pulgadas. Su consumo promedio aproximado es de 7.0 L/100km.\n\nUn punto a tener en cuenta es que es caja manual; si buscás automático en esta franja de precio, el Cronos es una opción en nuestro stock.\n\nEl precio es $14.500.000 con un anticipo mínimo de $7.250.000 para financiar.\n\nLas fotos del Etios están arriba para que las puedas ver. Querés que te pase info de financiación o preferís que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo es el tema de la financiación?",
+        "ms": 3680,
+        "response": {
+          "session_id": "eval-6f9226ab-771b-4156-8841-513558288ff8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con financiación propia de la agencia o mediante prenda, siempre según el auto y tu perfil. Para avanzar se toma una entrega inicial como anticipo y el saldo se puede pagar en cuotas. El monto de cada cuota depende del dinero que pongas de entrada, el plazo que elijas y otras condiciones específicas de la operación, que un asesor te confirmará con una simulación personalizada."
+            },
+            {
+              "type": "text",
+              "content": "Para avanzar con la simulación, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "tengo 8 millones",
+        "ms": 2910,
+        "response": {
+          "session_id": "eval-6f9226ab-771b-4156-8841-513558288ff8",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Perfecto, con $8.000.000 de anticipo la capacidad de compra mejora bastante. Para armar bien el abanico, pensás financiar el resto con cuotas? Y si es así, en cuántas cuotas te gustaría pagarlo, 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "CONTROL DEL CASO ANTERIOR Y CASO PROPIO. Con $8.000.000 la operación SÍ cierra para el Etios ($14.500.000, mínimo $7.250.000): acá NO tiene que aparecer ningún \"no te alcanza\". Lo que sí tiene que hacer es el paso que falta del pre-perfilado: preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de cerrar o pedir el nombre."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "preperfilado-pregunta-las-cuotas-tras-el-anticipo",
+    "bug": "MISMA CAPTURA 2026-08-11 (sesión edc12363), la otra mitad del bug. La línea 330 del prompt manda TEXTUAL: \"Recién con el anticipo preguntás las cuotas (12, 24, 36 o 48) si no las dio\", y que el embudo termina en el NOMBRE recién cuando están el anticipo Y las cuotas. Franco tenía el anticipo y saltó directo al cierre con \"Perfecto, ya lo tengo anotado. Querés que te contacte un asesor, o preferís que te muestre opciones?\" — que es lo que esa misma línea prohíbe con todas las letras (\"el embudo NO termina en 'se lo dejo anotado al asesor'\", \"NO cierres con ... 'querés ver otras opciones?'\"). Sospecha a confirmar: la 330 es el párrafo más largo del prompt y encadena ~8 reglas con varios guiones de SALIDA listos para copiar; \"preguntás las cuotas\" es una cláusula suelta en el medio. Es la lección 1 (un ejemplo elegible le gana a una regla que está más abajo). ADEMÁS ES EL CONTROL DE anticipo-no-cubre-el-auto-de-interes: con $8.000.000 el techo es $16.000.000 y el Etios ($14.500.000) SÍ entra, así que la guarda nueva NO tiene que disparar acá.",
+    "sessionId": "eval-70c4ce40-54da-498d-a90d-37ef8b2968ab",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 6371,
+        "response": {
+          "session_id": "eval-70c4ce40-54da-498d-a90d-37ef8b2968ab",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 gris que tenemos es un hatchback chico con 45.000 km y caja manual. Tiene motor 1.5 Dual VVT-i de 103 CV, naftero, y un consumo aproximado de 7.0 L/100km. Viene con control de estabilidad y tracción, volante multifunción en cuero, y pantalla táctil con Bluetooth. Está en $14.500.000 y el anticipo mínimo para financiar es $7.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Te puedo mostrar fotos del auto o contarte cómo sería financiarlo. Qué te interesa?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 2
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 2
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "cómo es el tema de la financiación?",
+        "ms": 3121,
+        "response": {
+          "session_id": "eval-70c4ce40-54da-498d-a90d-37ef8b2968ab",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Financiamos hasta el 50% del valor del vehículo, ya sea con financiación propia o mediante prenda, según el auto y tu perfil. Se toma un anticipo inicial y el saldo se puede pagar en cuotas, cuyo valor final depende del monto financiado, el plazo y las condiciones. Para que un asesor te arme la simulación exacta con cuotas y requisitos, de cuánto pensás poner de anticipo, más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 3,
+        "say": "tengo 8 millones",
+        "ms": 3037,
+        "response": {
+          "session_id": "eval-70c4ce40-54da-498d-a90d-37ef8b2968ab",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Buenísimo, con $8 millones de anticipo tenés una buena base para financiar. Ahora, en cuántas cuotas pensás pagar, 12, 24, 36 o 48?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      }
+    ],
+    "failures": [],
+    "manuals": [
+      {
+        "turn": 3,
+        "note": "CONTROL DEL CASO ANTERIOR Y CASO PROPIO. Con $8.000.000 la operación SÍ cierra para el Etios ($14.500.000, mínimo $7.250.000): acá NO tiene que aparecer ningún \"no te alcanza\". Lo que sí tiene que hacer es el paso que falta del pre-perfilado: preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de cerrar o pedir el nombre."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiar-monto-se-valida-contra-el-auto-elegido",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-12 11:48. El cliente ya eligio el Etios ($14.500.000) y dice \"me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?\". Franco contesta \"Tene en cuenta que financiamos hasta el 50% del valor del vehiculo, asi que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubris vos entre anticipo y usado\" y cierra con \"Y de anticipo, de cuanto pensas poner mas o menos?\". TRES bugs en un turno: (1) no cruza el auto elegido con el monto, trata la pregunta como abstracta; (2) le recita la regla para que el cliente saque una cuenta que Franco ya puede hacer -sabe que el Etios sale 14.500.000 y que 5.000.000 entra en el 50%-; (3) pide el anticipo, que ahi ya no es variable libre: es 14.500.000 - 5.000.000. Lo correcto es confirmar que se puede y pedir las CUOTAS para derivar. ES DETERMINISTICO: Config ya parsea monto_financiar, el precio sale de la base y la comparacion es aritmetica.",
+    "sessionId": "eval-494fc132-fcc4-4173-bab6-491b8a3960dd",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 8102,
+        "response": {
+          "session_id": "eval-494fc132-fcc4-4173-bab6-491b8a3960dd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tenemos es un hatchback chico, color gris, con 45.000 km. Tiene motor 1.5 de 103 CV con cadena de distribución, nafta y caja manual de 6 velocidades. El consumo promedio es de unos 7.0 L/100 km. Entre su equipamiento sobresale el control electrónico de estabilidad, volante multifunción en cuero, y central multimedia con pantalla táctil y Bluetooth. Cuesta $14.500.000 y el anticipo mínimo para financiar es $7.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos del Toyota Etios son estas:   y"
+            },
+            {
+              "type": "text",
+              "content": "Es caja manual, así que si buscás automático en esa franja de precio, la opción del stock sería el Fiat Cronos. Querés que te prepare un presupuesto, o preferís que te muestre otras opciones?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "perfecto, me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?",
+        "ms": 4472,
+        "response": {
+          "session_id": "eval-494fc132-fcc4-4173-bab6-491b8a3960dd",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubrís vos entre anticipo y usado."
+            },
+            {
+              "type": "text",
+              "content": "dale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)cuota/",
+          "turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \\$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: \"tiene que valer\"",
+          "turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: \"anticipo, de cuánto pensás\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)cuota/",
+      "turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \\$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: \"tiene que valer\"",
+      "turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: \"anticipo, de cuánto pensás\""
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El Etios sale $14.500.000, asi que $5.000.000 entra comodo en el 50%. Franco tiene que confirmar que se puede y pedir las CUOTAS para derivar. Lo que NO puede hacer: recitar la regla del 50% con el piso de $10.000.000 para que el cliente saque la cuenta, ni preguntar cuanto pone de anticipo, que ahi ya es 14.500.000 - 5.000.000 = 9.500.000."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiar-monto-se-valida-contra-el-auto-elegido",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-12 11:48. El cliente ya eligio el Etios ($14.500.000) y dice \"me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?\". Franco contesta \"Tene en cuenta que financiamos hasta el 50% del valor del vehiculo, asi que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubris vos entre anticipo y usado\" y cierra con \"Y de anticipo, de cuanto pensas poner mas o menos?\". TRES bugs en un turno: (1) no cruza el auto elegido con el monto, trata la pregunta como abstracta; (2) le recita la regla para que el cliente saque una cuenta que Franco ya puede hacer -sabe que el Etios sale 14.500.000 y que 5.000.000 entra en el 50%-; (3) pide el anticipo, que ahi ya no es variable libre: es 14.500.000 - 5.000.000. Lo correcto es confirmar que se puede y pedir las CUOTAS para derivar. ES DETERMINISTICO: Config ya parsea monto_financiar, el precio sale de la base y la comparacion es aritmetica.",
+    "sessionId": "eval-91c79cad-81da-4467-b7df-94842a4f911f",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 9126,
+        "response": {
+          "session_id": "eval-91c79cad-81da-4467-b7df-94842a4f911f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 que tenemos es un hatchback chico, color gris, con 45.000 km. La versión es XLS 1.5 Dual VVT-i, con motor 1.5 de 103 CV naftero y caja manual de 6ta. Consume aproximadamente 7.0 L/100km y tiene control de estabilidad, volante multifunción en cuero y central multimedia con pantalla táctil y Bluetooth. Está en $14.500.000, y el anticipo mínimo para financiar es $7.250.000."
+            },
+            {
+              "type": "text",
+              "content": "Las fotos que tenemos son estas, que te muestran varias vistas del auto."
+            },
+            {
+              "type": "text",
+              "content": "Querés que te conecte con un asesor para que te cuente más o preferís que te muestre otras opciones similares?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 3
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 3
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "perfecto, me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?",
+        "ms": 2313,
+        "response": {
+          "session_id": "eval-91c79cad-81da-4467-b7df-94842a4f911f",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubrís vos entre anticipo y usado."
+            },
+            {
+              "type": "text",
+              "content": "dale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)cuota/",
+          "turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \\$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: \"tiene que valer\"",
+          "turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: \"anticipo, de cuánto pensás\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)cuota/",
+      "turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \\$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: \"tiene que valer\"",
+      "turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: \"anticipo, de cuánto pensás\""
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El Etios sale $14.500.000, asi que $5.000.000 entra comodo en el 50%. Franco tiene que confirmar que se puede y pedir las CUOTAS para derivar. Lo que NO puede hacer: recitar la regla del 50% con el piso de $10.000.000 para que el cliente saque la cuenta, ni preguntar cuanto pone de anticipo, que ahi ya es 14.500.000 - 5.000.000 = 9.500.000."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  },
+  {
+    "id": "financiar-monto-se-valida-contra-el-auto-elegido",
+    "bug": "CAPTURA DE AGUSTINA 2026-08-12 11:48. El cliente ya eligio el Etios ($14.500.000) y dice \"me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?\". Franco contesta \"Tene en cuenta que financiamos hasta el 50% del valor del vehiculo, asi que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubris vos entre anticipo y usado\" y cierra con \"Y de anticipo, de cuanto pensas poner mas o menos?\". TRES bugs en un turno: (1) no cruza el auto elegido con el monto, trata la pregunta como abstracta; (2) le recita la regla para que el cliente saque una cuenta que Franco ya puede hacer -sabe que el Etios sale 14.500.000 y que 5.000.000 entra en el 50%-; (3) pide el anticipo, que ahi ya no es variable libre: es 14.500.000 - 5.000.000. Lo correcto es confirmar que se puede y pedir las CUOTAS para derivar. ES DETERMINISTICO: Config ya parsea monto_financiar, el precio sale de la base y la comparacion es aritmetica.",
+    "sessionId": "eval-4914e7af-7599-44a8-8955-128f754fbd01",
+    "turns": [
+      {
+        "n": 1,
+        "say": "me interesa el toyota etios",
+        "ms": 6140,
+        "response": {
+          "session_id": "eval-4914e7af-7599-44a8-8955-128f754fbd01",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Hola! Soy Franco, asistente de Automotores Tucumán. Cómo estás?"
+            },
+            {
+              "type": "text",
+              "content": "El Toyota Etios 2021 versión XLS 1.5 Dual VVT-i es un hatchback gris con 45.000 km, motor 1.5 de 103 CV y caja manual de 6 velocidades. Tiene control electrónico de estabilidad (ESP), control de tracción (TRC), volante multifunción en cuero y central multimedia con pantalla táctil y Bluetooth. Su consumo promedio es de 7.0 L/100km. Está $14.500.000 y necesita un anticipo mínimo de $7.250.000 para financiar.\n\nEs un auto con mecánica Toyota de cadena de distribución, lo que lo hace confiable y con buena reventa. Si buscás automático en esta franja de precio, la opción sería el Cronos.\n\nLas fotos del Etios son las que están publicadas, incluyendo vistas generales del auto. Fotos específicas del interior las puede facilitar un asesor. Querés que te conecte con uno o te ayudo con algo más?"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-1.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-2.webp",
+              "after_message_index": 1
+            },
+            {
+              "url": "https://qfmsdgjtlduravrtqrif.supabase.co/storage/v1/object/public/fotos-vehiculos-stock/foto-4-3.webp",
+              "after_message_index": 1
+            }
+          ],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": []
+      },
+      {
+        "n": 2,
+        "say": "perfecto, me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?",
+        "ms": 2504,
+        "response": {
+          "session_id": "eval-4914e7af-7599-44a8-8955-128f754fbd01",
+          "messages": [
+            {
+              "type": "text",
+              "content": "Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubrís vos entre anticipo y usado.\n\ndale. Y de anticipo, de cuánto pensás poner más o menos?"
+            }
+          ],
+          "images": [],
+          "product_cards": [],
+          "error": null
+        },
+        "failures": [
+          "turno 2 · text_matches: no matcheó /(?i)cuota/",
+          "turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \\$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: \"tiene que valer\"",
+          "turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: \"anticipo, de cuánto pensás\""
+        ]
+      }
+    ],
+    "failures": [
+      "turno 2 · text_matches: no matcheó /(?i)cuota/",
+      "turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \\$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: \"tiene que valer\"",
+      "turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: \"anticipo, de cuánto pensás\""
+    ],
+    "manuals": [
+      {
+        "turn": 2,
+        "note": "El Etios sale $14.500.000, asi que $5.000.000 entra comodo en el 50%. Franco tiene que confirmar que se puede y pedir las CUOTAS para derivar. Lo que NO puede hacer: recitar la regla del 50% con el piso de $10.000.000 para que el cliente saque la cuenta, ni preguntar cuanto pone de anticipo, que ahi ya es 14.500.000 - 5.000.000 = 9.500.000."
+      }
+    ],
+    "error": null,
+    "deploy": {
+      "antes": "2026-08-13T15:02:11.504Z",
+      "despues": "2026-08-13T15:02:11.504Z"
+    },
+    "aCaballo": false
+  }
+]

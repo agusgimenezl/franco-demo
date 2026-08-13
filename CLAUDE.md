@@ -53,7 +53,20 @@ son del prompt y costaron tres intentos fallidos en un día. No las redescubras.
    Lo que sí funcionó fue reescribir el guion. Corolario para escribir el fix: si la regla
    nueva no tiene un ejemplo, va a perder contra el ejemplo viejo que quedó abajo.
 
-7. **Antes de culpar al prompt, fijate si la frase la inyecta el código.** El guard de cierre
+7. **Antes de culpar al prompt, fijate si la frase la inyecta el código — Y ESO SE CORRE, NO SE
+   RECUERDA.** El primer comando ante cualquier bug de lenguaje, antes de diseñar nada:
+
+   ```bash
+   node scripts/quien-dicta-esta-frase.mjs "<frase textual de la captura>"
+   ```
+
+   Si imprime algo, **el bug no es del modelo: es un guion**, y el fix es acotar o reescribir ESE
+   guion — agregar una regla arriba pierde (trampa 6). Busca en TODO el workflow (systemMessage,
+   descripciones de tools, `jsCode`, assignments de Config) y normaliza tildes y `¿¡`, que es lo
+   que hizo dar por descartada esta trampa otras veces.
+   El 2026-08-12 se salteó este paso y costó un despliegue entero: v145 agregó un bloque nuevo para
+   el monto a financiar y dio **0/3**, porque las dos frases del bug las dictaba, textual, un guion
+   bajo `# Financiación`. La respuesta del eval salió byte-idéntica a la captura. El guard de cierre
    de `Armar respuesta` agrega una pregunta comercial y una de sus variantes ofrece un
    asesor. Más de una vez se atribuyó a Franco algo que escribía ese nodo.
 

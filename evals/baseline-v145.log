@@ -1,0 +1,166 @@
+
+Franco evals · 6 caso(s) · https://n8n.utopiaflow.tech
+[2mcleanup=true · token=NO (si n8n ya exige auth, esto va a dar 403)[0m
+[2mguardia de deploy: activa · workflow Khct6BjiMNXZK5Oi @ 2026-08-13T15:02:11.504Z[0m
+
+  financiacion-pide-anticipo [1/3]       [32mok[0m     18628ms
+  financiacion-pide-anticipo [2/3]       [32mok[0m     14678ms
+  financiacion-pide-anticipo [3/3]       [32mok[0m     21172ms
+  [2m└─[0m [32m3/3 estable[0m
+  financiacion-techo-50-por-ciento [1/3] [31mFAIL[0m   1 check(s)
+  financiacion-techo-50-por-ciento [2/3] [31mFAIL[0m   1 check(s)
+  financiacion-techo-50-por-ciento [3/3] [32mok[0m     11471ms
+  [2m└─[0m [33m1/3 estable[0m
+  cuotas-el-plazo-se-contesta-y-se-deriva [1/3] [32mok[0m     17764ms
+  cuotas-el-plazo-se-contesta-y-se-deriva [2/3] [32mok[0m     16072ms
+  cuotas-el-plazo-se-contesta-y-se-deriva [3/3] [32mok[0m     13765ms
+  [2m└─[0m [32m3/3 estable[0m
+  anticipo-no-cubre-el-auto-de-interes [1/3] [32mok[0m     14075ms
+  anticipo-no-cubre-el-auto-de-interes [2/3] [32mok[0m     13207ms
+  anticipo-no-cubre-el-auto-de-interes [3/3] [32mok[0m     14010ms
+  [2m└─[0m [32m3/3 estable[0m
+  preperfilado-pregunta-las-cuotas-tras-el-anticipo [1/3] [32mok[0m     14764ms
+  preperfilado-pregunta-las-cuotas-tras-el-anticipo [2/3] [32mok[0m     17834ms
+  preperfilado-pregunta-las-cuotas-tras-el-anticipo [3/3] [32mok[0m     12529ms
+  [2m└─[0m [32m3/3 estable[0m
+  financiar-monto-se-valida-contra-el-auto-elegido [1/3] [31mFAIL[0m   3 check(s)
+  financiar-monto-se-valida-contra-el-auto-elegido [2/3] [31mFAIL[0m   3 check(s)
+  financiar-monto-se-valida-contra-el-auto-elegido [3/3] [31mFAIL[0m   3 check(s)
+  [2m└─[0m [31m0/3 estable[0m
+
+[31m── Fallas ──[0m
+
+[31m✗ financiacion-techo-50-por-ciento[0m [2m(reporte Agustina 2026-08-05: Franco fija la regla de negocio (financiamos hasta el 50%) y despues la contradice. Al cliente que quiere financiar $30.000.000 no le dice que para eso el vehiculo tiene que valer al menos $60.000.000 ni que el anticipo minimo seria $30.000.000; y cuando ese cliente ofrece $5.000.000 de anticipo, lo da por valido en vez de explicarle que con ese anticipo el maximo es un auto de $10.000.000. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe precio_objetivo=30000000 (el monto A FINANCIAR usado como si fuera el techo), asi que la tool calcula capacidad 30M x 2 = 60M y Franco termina ofreciendo la Ford Ranger de $57.000.000 a alguien que tiene 5 millones. Se vio otra vez en el baseline de financiacion-no-dumpea-abanico-sin-pedirlo: "Teniendo en cuenta $30.000.000 de presupuesto, $5.000.000 de anticipo y financiacion hasta el 50%". LA ARITMETICA ES DETERMINISTICA y por la regla del proyecto NO va al prompt: financiado <= 50% del precio => precio >= 2 x financiado, y anticipo minimo = monto a financiar; con anticipo A y sin usado, el techo es 2A. Coincide EXACTO con la formula que ya usa Listar stock ((anticipo + usado*0.70) * 2), asi que lo que Franco dice concuerda con los autos que la tool devuelve — eso es lo que hace que la respuesta sea coherente y no dos numeros peleados. Los montos se calculan sobre monto_financiar (v86) y entrega_plata (v87), que ya existen.)[0m
+    · turno 3 · text_matches: no matcheó /(?i)10[\.\s]?000[\.\s]?000|10 millones/
+    [2múltima respuesta:[0m
+      [2m| Perfecto, con $5.000.000 de anticipo seguimos.[0m
+      [2m| La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a [0m
+      [2m| Con tu anticipo sí te entran otras carrocerías, como hatchback, sedán y SUV; querés que te las muestre?[0m
+
+[31m✗ financiacion-techo-50-por-ciento[0m [2m(reporte Agustina 2026-08-05: Franco fija la regla de negocio (financiamos hasta el 50%) y despues la contradice. Al cliente que quiere financiar $30.000.000 no le dice que para eso el vehiculo tiene que valer al menos $60.000.000 ni que el anticipo minimo seria $30.000.000; y cuando ese cliente ofrece $5.000.000 de anticipo, lo da por valido en vez de explicarle que con ese anticipo el maximo es un auto de $10.000.000. PRUEBA VINCULANTE — ejecucion 11621: `Listar stock` recibe precio_objetivo=30000000 (el monto A FINANCIAR usado como si fuera el techo), asi que la tool calcula capacidad 30M x 2 = 60M y Franco termina ofreciendo la Ford Ranger de $57.000.000 a alguien que tiene 5 millones. Se vio otra vez en el baseline de financiacion-no-dumpea-abanico-sin-pedirlo: "Teniendo en cuenta $30.000.000 de presupuesto, $5.000.000 de anticipo y financiacion hasta el 50%". LA ARITMETICA ES DETERMINISTICA y por la regla del proyecto NO va al prompt: financiado <= 50% del precio => precio >= 2 x financiado, y anticipo minimo = monto a financiar; con anticipo A y sin usado, el techo es 2A. Coincide EXACTO con la formula que ya usa Listar stock ((anticipo + usado*0.70) * 2), asi que lo que Franco dice concuerda con los autos que la tool devuelve — eso es lo que hace que la respuesta sea coherente y no dos numeros peleados. Los montos se calculan sobre monto_financiar (v86) y entrega_plata (v87), que ya existen.)[0m
+    · turno 3 · text_matches: no matcheó /(?i)10[\.\s]?000[\.\s]?000|10 millones/
+    [2múltima respuesta:[0m
+      [2m| Perfecto, con $5.000.000 de anticipo seguimos.[0m
+      [2m| La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a [0m
+      [2m| Con tu anticipo sí te entran opciones de hatchback, sedán, utilitario o SUV. Querés que te muestre algunas?[0m
+
+[31m✗ financiar-monto-se-valida-contra-el-auto-elegido[0m [2m(CAPTURA DE AGUSTINA 2026-08-12 11:48. El cliente ya eligio el Etios ($14.500.000) y dice "me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?". Franco contesta "Tene en cuenta que financiamos hasta el 50% del valor del vehiculo, asi que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubris vos entre anticipo y usado" y cierra con "Y de anticipo, de cuanto pensas poner mas o menos?". TRES bugs en un turno: (1) no cruza el auto elegido con el monto, trata la pregunta como abstracta; (2) le recita la regla para que el cliente saque una cuenta que Franco ya puede hacer -sabe que el Etios sale 14.500.000 y que 5.000.000 entra en el 50%-; (3) pide el anticipo, que ahi ya no es variable libre: es 14.500.000 - 5.000.000. Lo correcto es confirmar que se puede y pedir las CUOTAS para derivar. ES DETERMINISTICO: Config ya parsea monto_financiar, el precio sale de la base y la comparacion es aritmetica.)[0m
+    · turno 2 · text_matches: no matcheó /(?i)cuota/
+    · turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: "tiene que valer"
+    · turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: "anticipo, de cuánto pensás"
+    [2múltima respuesta:[0m
+      [2m| Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto [0m
+      [2m| dale. Y de anticipo, de cuánto pensás poner más o menos?[0m
+
+[31m✗ financiar-monto-se-valida-contra-el-auto-elegido[0m [2m(CAPTURA DE AGUSTINA 2026-08-12 11:48. El cliente ya eligio el Etios ($14.500.000) y dice "me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?". Franco contesta "Tene en cuenta que financiamos hasta el 50% del valor del vehiculo, asi que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubris vos entre anticipo y usado" y cierra con "Y de anticipo, de cuanto pensas poner mas o menos?". TRES bugs en un turno: (1) no cruza el auto elegido con el monto, trata la pregunta como abstracta; (2) le recita la regla para que el cliente saque una cuenta que Franco ya puede hacer -sabe que el Etios sale 14.500.000 y que 5.000.000 entra en el 50%-; (3) pide el anticipo, que ahi ya no es variable libre: es 14.500.000 - 5.000.000. Lo correcto es confirmar que se puede y pedir las CUOTAS para derivar. ES DETERMINISTICO: Config ya parsea monto_financiar, el precio sale de la base y la comparacion es aritmetica.)[0m
+    · turno 2 · text_matches: no matcheó /(?i)cuota/
+    · turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: "tiene que valer"
+    · turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: "anticipo, de cuánto pensás"
+    [2múltima respuesta:[0m
+      [2m| Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto [0m
+      [2m| dale. Y de anticipo, de cuánto pensás poner más o menos?[0m
+
+[31m✗ financiar-monto-se-valida-contra-el-auto-elegido[0m [2m(CAPTURA DE AGUSTINA 2026-08-12 11:48. El cliente ya eligio el Etios ($14.500.000) y dice "me quedo con el etios me parece. Me gustaria financiar 5 millones puede ser?". Franco contesta "Tene en cuenta que financiamos hasta el 50% del valor del vehiculo, asi que para financiar $5.000.000 el auto tiene que valer al menos $10.000.000, y la otra mitad la cubris vos entre anticipo y usado" y cierra con "Y de anticipo, de cuanto pensas poner mas o menos?". TRES bugs en un turno: (1) no cruza el auto elegido con el monto, trata la pregunta como abstracta; (2) le recita la regla para que el cliente saque una cuenta que Franco ya puede hacer -sabe que el Etios sale 14.500.000 y que 5.000.000 entra en el 50%-; (3) pide el anticipo, que ahi ya no es variable libre: es 14.500.000 - 5.000.000. Lo correcto es confirmar que se puede y pedir las CUOTAS para derivar. ES DETERMINISTICO: Config ya parsea monto_financiar, el precio sale de la base y la comparacion es aritmetica.)[0m
+    · turno 2 · text_matches: no matcheó /(?i)cuota/
+    · turno 2 · text_not_matches: matcheó /(?i)tiene que valer|al menos \$?10|deber[ií]a valer|valor m[ií]nimo/ y no debería: "tiene que valer"
+    · turno 2 · text_not_matches: matcheó /(?i)(de cu[aá]nto|cu[aá]nto)[^.?!]{0,40}anticipo|anticipo[^.?!]{0,25}pens[aá]s/ y no debería: "anticipo, de cuánto pensás"
+    [2múltima respuesta:[0m
+      [2m| Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto [0m
+
+[33m── Revisión manual (no cuentan como falla) ──[0m
+
+[33m? financiacion-pide-anticipo[0m
+    turno 4: TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla.
+      [2m| Perfecto, podés decirme de cuánto sería el anticipo, más o menos? Es clave para preparar la simulación y que u[0m
+
+[33m? financiacion-pide-anticipo[0m
+    turno 4: TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla.
+      [2m| Dale, y de cuánto sería el anticipo, más o menos?[0m
+
+[33m? financiacion-pide-anticipo[0m
+    turno 4: TRANSPARENCIA (regex no la mide bien por la ambigüedad del 'te prepare' en español; leer el texto): Franco NUNCA debe ofrecer 'prepararte/armarte una simulación' él mismo — la simulación SIEMPRE la arma el asesor ('para que un asesor te arme la simulación...'). CAPTURA: el cliente dijo 'con anticipo' SIN el monto → Franco debe PEDIR el monto del anticipo como el único próximo paso, NO avanzar a pedir el nombre ni confirmar la derivación. Sin saturar de burbujas (la captura mostró 4). En v45 avanza a pedir nombre 'con el anticipo que tenés' (que nunca dio) → falla.
+      [2m| Dale, y de cuánto sería el anticipo, más o menos?[0m
+
+[33m? financiacion-techo-50-por-ciento[0m
+    turno 2: Tiene que decir que para financiar $30.000.000 el vehiculo debe valer al menos $60.000.000 (porque se financia hasta el 50%) y que el anticipo minimo seria $30.000.000. Y despues seguir el embudo preguntando el anticipo.
+    turno 3: Con $5.000.000 de anticipo y sin usado, lo maximo financiable son otros $5.000.000: un auto de hasta $10.000.000. No puede dar por valido el anticipo de $5.000.000 para los $30.000.000 que pidio financiar. Ojo: tampoco puede inventar un usado (eso es v87/v88).
+      [2m| Perfecto, con $5.000.000 de anticipo seguimos.[0m
+      [2m| La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a [0m
+      [2m| Con tu anticipo sí te entran otras carrocerías, como hatchback, sedán y SUV; querés que te las muestre?[0m
+
+[33m? financiacion-techo-50-por-ciento[0m
+    turno 2: Tiene que decir que para financiar $30.000.000 el vehiculo debe valer al menos $60.000.000 (porque se financia hasta el 50%) y que el anticipo minimo seria $30.000.000. Y despues seguir el embudo preguntando el anticipo.
+    turno 3: Con $5.000.000 de anticipo y sin usado, lo maximo financiable son otros $5.000.000: un auto de hasta $10.000.000. No puede dar por valido el anticipo de $5.000.000 para los $30.000.000 que pidio financiar. Ojo: tampoco puede inventar un usado (eso es v87/v88).
+      [2m| Perfecto, con $5.000.000 de anticipo seguimos.[0m
+      [2m| La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a [0m
+      [2m| Con tu anticipo sí te entran opciones de hatchback, sedán, utilitario o SUV. Querés que te muestre algunas?[0m
+
+[33m? financiacion-techo-50-por-ciento[0m
+    turno 2: Tiene que decir que para financiar $30.000.000 el vehiculo debe valer al menos $60.000.000 (porque se financia hasta el 50%) y que el anticipo minimo seria $30.000.000. Y despues seguir el embudo preguntando el anticipo.
+    turno 3: Con $5.000.000 de anticipo y sin usado, lo maximo financiable son otros $5.000.000: un auto de hasta $10.000.000. No puede dar por valido el anticipo de $5.000.000 para los $30.000.000 que pidio financiar. Ojo: tampoco puede inventar un usado (eso es v87/v88).
+      [2m| Perfecto, con $5.000.000 de anticipo seguimos. Con ese anticipo se puede financiar hasta otro tanto, así que e[0m
+      [2m| La pickup más accesible que tengo es de $32.000.000. Necesitarías $16.000.000 de anticipo, ya que el máximo a [0m
+      [2m| Con tu anticipo sí te entran otras carrocerías, como hatchbacks y sedanes. Querés que te los muestre?[0m
+
+[33m? cuotas-el-plazo-se-contesta-y-se-deriva[0m
+    turno 1: Contexto. Tiene que quedar claro que el 208 sale $21.000.000 y que se financia hasta el 50%.
+    turno 2: 13M esta por ENCIMA del anticipo minimo (10.5M), asi que la operacion es viable. Aca Franco suele ofrecer el menu 12/24/36/48.
+    turno 3: EL TURNO DEL CASO. Tiene que: (1) reconocer las 24 cuotas, (2) decir que el plan y el valor de la cuota los confirma un asesor, (3) DECIR POR QUE — que depende de las condiciones de financiacion, que es lo que mas se saltea, y (4) ofrecer derivar. Lo que NO puede: inventar un valor de cuota (no hay tasa configurada) ni pedir datos de un usado que el cliente nunca menciono, que es la falla medida en la sesion 78becd31.
+      [2m| Con 24 cuotas, el plan y el valor exacto de la cuota te los confirma un asesor, porque dependen del monto fina[0m
+
+[33m? cuotas-el-plazo-se-contesta-y-se-deriva[0m
+    turno 1: Contexto. Tiene que quedar claro que el 208 sale $21.000.000 y que se financia hasta el 50%.
+    turno 2: 13M esta por ENCIMA del anticipo minimo (10.5M), asi que la operacion es viable. Aca Franco suele ofrecer el menu 12/24/36/48.
+    turno 3: EL TURNO DEL CASO. Tiene que: (1) reconocer las 24 cuotas, (2) decir que el plan y el valor de la cuota los confirma un asesor, (3) DECIR POR QUE — que depende de las condiciones de financiacion, que es lo que mas se saltea, y (4) ofrecer derivar. Lo que NO puede: inventar un valor de cuota (no hay tasa configurada) ni pedir datos de un usado que el cliente nunca menciono, que es la falla medida en la sesion 78becd31.
+      [2m| Con 24 cuotas el plan y el valor exacto de la cuota te los confirma un asesor, porque dependen de las condicio[0m
+
+[33m? cuotas-el-plazo-se-contesta-y-se-deriva[0m
+    turno 1: Contexto. Tiene que quedar claro que el 208 sale $21.000.000 y que se financia hasta el 50%.
+    turno 2: 13M esta por ENCIMA del anticipo minimo (10.5M), asi que la operacion es viable. Aca Franco suele ofrecer el menu 12/24/36/48.
+    turno 3: EL TURNO DEL CASO. Tiene que: (1) reconocer las 24 cuotas, (2) decir que el plan y el valor de la cuota los confirma un asesor, (3) DECIR POR QUE — que depende de las condiciones de financiacion, que es lo que mas se saltea, y (4) ofrecer derivar. Lo que NO puede: inventar un valor de cuota (no hay tasa configurada) ni pedir datos de un usado que el cliente nunca menciono, que es la falla medida en la sesion 78becd31.
+      [2m| Con 24 cuotas, el plan y el valor de la cuota te los confirma un asesor, porque depende de las condiciones de [0m
+
+[33m? anticipo-no-cubre-el-auto-de-interes[0m
+    turno 3: EL TURNO DEL CASO. El Etios sale $14.500.000 y el anticipo mínimo es $7.250.000: con $6.000.000 NO alcanza, le faltan $1.250.000. Franco tiene que decírselo con el número —el mínimo del Etios o el techo de $12.000.000— sin maquillarlo y sin dar la operación por armada. Puede seguir siendo comercial (ofrecer lo que sí le entra), pero NO puede anotar el anticipo como si cerrara.
+      [2m| Perfecto. Te comento que el Toyota Etios sale $14.500.000 y, como financiamos hasta el 50% del valor, el antic[0m
+
+[33m? anticipo-no-cubre-el-auto-de-interes[0m
+    turno 3: EL TURNO DEL CASO. El Etios sale $14.500.000 y el anticipo mínimo es $7.250.000: con $6.000.000 NO alcanza, le faltan $1.250.000. Franco tiene que decírselo con el número —el mínimo del Etios o el techo de $12.000.000— sin maquillarlo y sin dar la operación por armada. Puede seguir siendo comercial (ofrecer lo que sí le entra), pero NO puede anotar el anticipo como si cerrara.
+      [2m| Perfecto. Te comento que el Toyota Etios sale $14.500.000 y, como financiamos hasta el 50% del valor, el antic[0m
+
+[33m? anticipo-no-cubre-el-auto-de-interes[0m
+    turno 3: EL TURNO DEL CASO. El Etios sale $14.500.000 y el anticipo mínimo es $7.250.000: con $6.000.000 NO alcanza, le faltan $1.250.000. Franco tiene que decírselo con el número —el mínimo del Etios o el techo de $12.000.000— sin maquillarlo y sin dar la operación por armada. Puede seguir siendo comercial (ofrecer lo que sí le entra), pero NO puede anotar el anticipo como si cerrara.
+      [2m| Perfecto. Te comento que el Toyota Etios sale $14.500.000 y, como financiamos hasta el 50% del valor, el antic[0m
+
+[33m? preperfilado-pregunta-las-cuotas-tras-el-anticipo[0m
+    turno 3: CONTROL DEL CASO ANTERIOR Y CASO PROPIO. Con $8.000.000 la operación SÍ cierra para el Etios ($14.500.000, mínimo $7.250.000): acá NO tiene que aparecer ningún "no te alcanza". Lo que sí tiene que hacer es el paso que falta del pre-perfilado: preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de cerrar o pedir el nombre.
+      [2m| Perfecto. Para que un asesor te arme la simulación exacta, te confirmo que el anticipo mínimo del Toyota Etios[0m
+
+[33m? preperfilado-pregunta-las-cuotas-tras-el-anticipo[0m
+    turno 3: CONTROL DEL CASO ANTERIOR Y CASO PROPIO. Con $8.000.000 la operación SÍ cierra para el Etios ($14.500.000, mínimo $7.250.000): acá NO tiene que aparecer ningún "no te alcanza". Lo que sí tiene que hacer es el paso que falta del pre-perfilado: preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de cerrar o pedir el nombre.
+      [2m| Perfecto, con $8.000.000 de anticipo la capacidad de compra mejora bastante. Para armar bien el abanico, pensá[0m
+
+[33m? preperfilado-pregunta-las-cuotas-tras-el-anticipo[0m
+    turno 3: CONTROL DEL CASO ANTERIOR Y CASO PROPIO. Con $8.000.000 la operación SÍ cierra para el Etios ($14.500.000, mínimo $7.250.000): acá NO tiene que aparecer ningún "no te alcanza". Lo que sí tiene que hacer es el paso que falta del pre-perfilado: preguntar en cuántas cuotas (12, 24, 36 o 48) ANTES de cerrar o pedir el nombre.
+      [2m| Buenísimo, con $8 millones de anticipo tenés una buena base para financiar. Ahora, en cuántas cuotas pensás pa[0m
+
+[33m? financiar-monto-se-valida-contra-el-auto-elegido[0m
+    turno 2: El Etios sale $14.500.000, asi que $5.000.000 entra comodo en el 50%. Franco tiene que confirmar que se puede y pedir las CUOTAS para derivar. Lo que NO puede hacer: recitar la regla del 50% con el piso de $10.000.000 para que el cliente saque la cuenta, ni preguntar cuanto pone de anticipo, que ahi ya es 14.500.000 - 5.000.000 = 9.500.000.
+      [2m| Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto [0m
+      [2m| dale. Y de anticipo, de cuánto pensás poner más o menos?[0m
+
+[33m? financiar-monto-se-valida-contra-el-auto-elegido[0m
+    turno 2: El Etios sale $14.500.000, asi que $5.000.000 entra comodo en el 50%. Franco tiene que confirmar que se puede y pedir las CUOTAS para derivar. Lo que NO puede hacer: recitar la regla del 50% con el piso de $10.000.000 para que el cliente saque la cuenta, ni preguntar cuanto pone de anticipo, que ahi ya es 14.500.000 - 5.000.000 = 9.500.000.
+      [2m| Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto [0m
+      [2m| dale. Y de anticipo, de cuánto pensás poner más o menos?[0m
+
+[33m? financiar-monto-se-valida-contra-el-auto-elegido[0m
+    turno 2: El Etios sale $14.500.000, asi que $5.000.000 entra comodo en el 50%. Franco tiene que confirmar que se puede y pedir las CUOTAS para derivar. Lo que NO puede hacer: recitar la regla del 50% con el piso de $10.000.000 para que el cliente saque la cuenta, ni preguntar cuanto pone de anticipo, que ahi ya es 14.500.000 - 5.000.000 = 9.500.000.
+      [2m| Tené en cuenta que financiamos hasta el 50% del valor del vehículo, así que para financiar $5.000.000 el auto [0m
+
+[2mdetalle completo -> evals/baseline-v145.json[0m
+
+[2mguardia de deploy: OK — una sola versión en toda la tanda (2026-08-13T15:02:11.504Z)[0m
+
+[31m13/18 casos ok[0m
+
